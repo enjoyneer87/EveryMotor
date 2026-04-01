@@ -1,0 +1,8 @@
+{
+  "command": [
+    "python",
+    "check_env.py"
+  ],
+  "cwd": ".",
+  "timeout_sec": 60
+}

@@ -36,7 +36,9 @@
 1. `python check_submodule_branch.py --repo . --submodule eMach --expected-branch devVeriACLoss`
 2. `python check_runtime_contract.py --host-data /workspace/host_data --doe-data /workspace/host_data/doe_data --mso-root /workspace/multiscale-pde-operators`
 3. `./sync_notion_fields.ps1 -Token $env:NOTION_TOKEN -DatabaseId $env:NOTION_DATABASE_ID`
-4. `./notion_task_update.ps1 -Token $env:NOTION_TOKEN -DatabaseId $env:NOTION_DATABASE_ID -Mode heartbeat`
+4. `./notion_pick_workitem.ps1 -Token $env:NOTION_TOKEN -DatabaseId $env:NOTION_DATABASE_ID`
+5. `./notion_task_update.ps1 -Token $env:NOTION_TOKEN -DatabaseId $env:NOTION_DATABASE_ID -Mode heartbeat`
+6. `./overnight_agent_cycle.ps1 -Token $env:NOTION_TOKEN -DatabaseId $env:NOTION_DATABASE_ID -AutoPick -Mode heartbeat`
 
 ## Commit Policy
 - Commit message format:
