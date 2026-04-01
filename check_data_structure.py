@@ -1,5 +1,9 @@
 from doe_data_utils import load_doe_data
-data = load_doe_data('/workspace/host_data/doe_data')
+from runtime_paths import get_runtime_paths
+
+paths = get_runtime_paths()
+data = load_doe_data(str(paths["doe_data"]))
+print(f"DOE data path: {paths['doe_data']}")
 print(f"Type: {type(data)}")
 if isinstance(data, tuple):
     print(f"Tuple length: {len(data)}")

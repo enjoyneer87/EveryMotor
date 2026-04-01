@@ -1,8 +1,14 @@
 import torch
-import sys
 
-for ckpt_path in ["/workspace/host_data/doe_fno_ckpt.pt",
-                  "/workspace/host_data/doe_meshgraphnet_ckpt.pt"]:
+from runtime_paths import get_runtime_paths
+
+paths = get_runtime_paths()
+host_data = paths["host_data"]
+
+for ckpt_path in [
+    str(host_data / "doe_fno_ckpt.pt"),
+    str(host_data / "doe_meshgraphnet_ckpt.pt"),
+]:
     try:
         ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
         name = ckpt.get("model_name", "MGN" if "meshgraphnet" in ckpt_path else "?")
