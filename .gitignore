@@ -1,0 +1,29 @@
+# Ignore PyTorch Checkpoints and Numpy Archives
+*.pt
+*.npz
+*.h5
+
+# Ignore raw datasets
+doe_data/
+**/postproc/
+*.mat
+
+# Ignore logs
+*.log
+eval_all_models_output.txt
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
+
+# Images and outputs
+paper_figures/
+*.png
+*.pdf
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
