@@ -105,7 +105,9 @@ foreach ($row in $rows) {
         $priorityName = $pMap[$propPriority].select.name
     }
 
-    if ($statusId -eq $statusInProgressId -and $serverVal -eq $ServerId) {
+    $isTaskRow = -not [string]::IsNullOrWhiteSpace($taskKeyVal)
+
+    if ($isTaskRow -and $statusId -eq $statusInProgressId -and $serverVal -eq $ServerId) {
         $inProgressMine += [PSCustomObject]@{
             id = $row.id
             title = Get-RowTitle $row
@@ -115,7 +117,7 @@ foreach ($row in $rows) {
         }
     }
 
-    if ($statusId -eq $statusStartBeforeId) {
+    if ($isTaskRow -and $statusId -eq $statusStartBeforeId) {
         $readyRows += [PSCustomObject]@{
             id = $row.id
             title = Get-RowTitle $row
