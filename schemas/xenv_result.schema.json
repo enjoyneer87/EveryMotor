@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://everymotor.local/schemas/xenv_result.schema.json",
+  "title": "XENV Subprocess Result",
+  "type": "object",
+  "required": [
+    "ok",
+    "command",
+    "cwd",
+    "timeout_sec",
+    "returncode",
+    "stdout",
+    "stderr",
+    "start_utc",
+    "end_utc",
+    "duration_sec"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "ok": { "type": "boolean" },
+    "command": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cwd": { "type": "string" },
+    "timeout_sec": { "type": "integer" },
+    "returncode": { "type": "integer" },
+    "stdout": { "type": "string" },
+    "stderr": { "type": "string" },
+    "start_utc": { "type": "string" },
+    "end_utc": { "type": "string" },
+    "duration_sec": { "type": "number" },
+    "error": { "type": "string" }
+  }
+}

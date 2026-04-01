@@ -22,6 +22,7 @@ from typing import Any
 
 @dataclass
 class CommandResult:
+    ok: bool
     command: list[str]
     cwd: str
     timeout_sec: int
@@ -50,6 +51,7 @@ def run_command(command: list[str], cwd: str | None = None, timeout_sec: int = 3
     )
     end_utc = now_utc_iso()
     return CommandResult(
+        ok=proc.returncode == 0,
         command=command,
         cwd=str(Path(cwd).resolve()) if cwd else str(Path.cwd()),
         timeout_sec=timeout_sec,
@@ -90,18 +92,39 @@ def main() -> int:
         result = run_from_payload(payload)
         result_json = json.dumps(asdict(result), ensure_ascii=False, indent=2)
     except subprocess.TimeoutExpired as exc:
+        error_result = {
+            "ok": False,
+            "command": payload.get("command", []),
+            "cwd": str(Path(payload.get("cwd", ".")).resolve()),
+            "timeout_sec": int(payload.get("timeout_sec", 300)),
+            "returncode": -1,
+            "stdout": "",
+            "stderr": str(exc),
+            "start_utc": now_utc_iso(),
+            "end_utc": now_utc_iso(),
+            "duration_sec": 0.0,
+            "error": "timeout",
+        }
         result_json = json.dumps(
-            {
-                "error": "timeout",
-                "command": payload.get("command", []),
-                "timeout_sec": int(payload.get("timeout_sec", 300)),
-                "details": str(exc),
-            },
+            error_result,
             ensure_ascii=False,
             indent=2,
         )
     except Exception as exc:
-        result_json = json.dumps({"error": str(exc)}, ensure_ascii=False, indent=2)
+        error_result = {
+            "ok": False,
+            "command": payload.get("command", []) if isinstance(payload, dict) else [],
+            "cwd": str(Path(".").resolve()),
+            "timeout_sec": int(payload.get("timeout_sec", 300)) if isinstance(payload, dict) else 300,
+            "returncode": -1,
+            "stdout": "",
+            "stderr": str(exc),
+            "start_utc": now_utc_iso(),
+            "end_utc": now_utc_iso(),
+            "duration_sec": 0.0,
+            "error": str(exc),
+        }
+        result_json = json.dumps(error_result, ensure_ascii=False, indent=2)
 
     if args.out:
         out_path = Path(args.out)

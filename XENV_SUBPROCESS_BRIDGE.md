@@ -25,6 +25,7 @@ Example:
 
 Fields:
 - command: executed command list
+- ok: true when returncode is 0
 - cwd: resolved working directory
 - timeout_sec: timeout used
 - returncode: process return code
@@ -33,6 +34,10 @@ Fields:
 - start_utc: ISO timestamp
 - end_utc: ISO timestamp
 - duration_sec: elapsed seconds
+
+Schema files:
+- schemas/xenv_payload.schema.json
+- schemas/xenv_result.schema.json
 
 ## CLI Usage
 
