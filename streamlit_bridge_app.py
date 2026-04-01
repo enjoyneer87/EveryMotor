@@ -63,6 +63,18 @@ def make_actions() -> dict[str, dict]:
             "timeout_sec": 60,
             "cwd": str(ROOT),
         },
+        "Ops Status Snapshot": {
+            "command": [
+                python_cmd(),
+                str(ROOT / "ops_status_snapshot.py"),
+                "--repo",
+                str(ROOT),
+                "--out",
+                str(ROOT / "ops_status_snapshot.json"),
+            ],
+            "timeout_sec": 60,
+            "cwd": str(ROOT),
+        },
     }
 
     if ps:
