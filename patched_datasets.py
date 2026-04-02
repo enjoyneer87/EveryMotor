@@ -224,3 +224,78 @@ class OverfitDataModule(pl.LightningDataModule):
 
     def test_dataloader(self):
         return DataLoader([self.overfit_sample], batch_size=1)
+
+
+class StaticMotorDataset(Dataset):
+    """Map-style dataset for the 1/8 static motor model with anti-periodic PBC edges.
+
+    Wraps a list of torch_geometric.Data objects that contain:
+        x:          node features [x_coord, y_coord, region_code, ...]
+        edge_index: interior + PBC edges (combined)
+        edge_attr:  [dx, dy, dist, pbc_flag]  (pbc_flag: +1.0 interior, -1.0 PBC)
+        y:          target fields [Bx, By, A, J] from FEM
+        pos:        raw node coordinates [x, y] (used for autograd physics loss)
+        master_idx: (optional) master boundary node indices
+        slave_idx:  (optional) slave boundary node indices
+
+    Factory method ``from_records`` builds the dataset from parsed H5 records using
+    the shared ``build_graph`` utility in doe_data_utils.py.
+
+    Example::
+
+        from doe_data_utils import parse_h5_timeseries, load_doe_data
+        records, conditions = load_doe_data(data_dir)
+        ds = StaticMotorDataset.from_records(records, conditions, use_pbc=True)
+        loader = DataLoader(ds, batch_size=4, shuffle=True)
+    """
+
+    def __init__(self, graphs: list[Data], transform=None) -> None:
+        self.graphs = graphs
+        self.transform = transform
+
+    def __len__(self) -> int:
+        return len(self.graphs)
+
+    def __getitem__(self, idx: int) -> Data:
+        data = self.graphs[idx]
+        if self.transform is not None:
+            data = self.transform(data)
+        return data
+
+    @classmethod
+    def from_records(
+        cls,
+        records: list,
+        conditions: list,
+        use_pbc: bool = True,
+        master_angle_deg: float = 0.0,
+        slave_angle_deg: float = 45.0,
+        pbc_angle_tol_deg: float = 0.5,
+        pbc_match_tol: float = 1e-3,
+        transform=None,
+    ) -> "StaticMotorDataset":
+        """Build the dataset from a flat list of FEA records and conditions.
+
+        Args:
+            records:           List of record dicts from ``parse_h5_timeseries``.
+            conditions:        Parallel list of condition dicts (one per record).
+            use_pbc:           Attach anti-periodic PBC edges (1/8 model).
+            master_angle_deg:  Master boundary angle (degrees).
+            slave_angle_deg:   Slave boundary angle (degrees).
+            pbc_angle_tol_deg: Angular tolerance for boundary identification.
+            pbc_match_tol:     KDTree distance tolerance for node matching.
+        """
+        from doe_data_utils import build_graph  # local import avoids circular deps
+        graphs: list[Data] = []
+        for rec, cond in zip(records, conditions):
+            g = build_graph(
+                rec, cond,
+                use_pbc=use_pbc,
+                master_angle_deg=master_angle_deg,
+                slave_angle_deg=slave_angle_deg,
+                pbc_angle_tol_deg=pbc_angle_tol_deg,
+                pbc_match_tol=pbc_match_tol,
+            )
+            if g is not None:
+                graphs.append(g)
+        return cls(graphs, transform=transform)

@@ -19,6 +19,14 @@ import h5py
 import numpy as np
 import torch
 from scipy.interpolate import griddata
+from torch_geometric.data import Data
+
+# PBC utilities (imported lazily to avoid hard dependency when use_pbc=False)
+try:
+    from pbc_utils import identify_boundary_nodes, find_pbc_edge_pairs
+    _PBC_AVAILABLE = True
+except ImportError:
+    _PBC_AVAILABLE = False
 
 # ---------------------------------------------------------------------------
 # H5 parser  (identical to train_doe_meshgraphnet.py)
@@ -386,3 +394,161 @@ def load_doe_data(data_dir: str, max_steps_per_case: Optional[int] = None,
 
     print(f"\nTotal records loaded: {len(all_records)}")
     return all_records, all_conditions
+
+
+# ---------------------------------------------------------------------------
+# Graph builder with optional PBC support  (canonical shared version)
+# ---------------------------------------------------------------------------
+
+def build_graph(
+    rec: dict,
+    condition: Dict[str, float],
+    use_pbc: bool = False,
+    master_angle_deg: float = 0.0,
+    slave_angle_deg: float = 45.0,
+    pbc_angle_tol_deg: float = 0.5,
+    pbc_match_tol: float = 1e-3,
+) -> Optional[Data]:
+    """Build a torch_geometric.Data graph from one FEA timestep record.
+
+    Node features (x):
+        [pos_x, pos_y, region_code, time_s, rotate_step,
+         Ratio_Bore, Ratio_SlotDepth, PeakCurrent, PhaseAdvance]
+    Target (y):  [Bx, By, A, J]
+    Edge attr (use_pbc=False):  [dx, dy, dist]            -- 3 dims (backward-compatible)
+    Edge attr (use_pbc=True):   [dx, dy, dist, pbc_flag]  -- 4 dims
+        pbc_flag = +1.0 for interior edges, -1.0 for anti-periodic PBC edges.
+
+    Args:
+        rec:                Record dict from parse_h5_timeseries.
+        condition:          Condition dict with geometry/electrical parameters.
+        use_pbc:            Add anti-periodic PBC edges for 1/8 motor model.
+                            Default False keeps backward compatibility.
+        master_angle_deg:   Angle of master symmetry boundary (degrees).
+        slave_angle_deg:    Angle of slave symmetry boundary (degrees).
+        pbc_angle_tol_deg:  Angular tolerance for boundary node identification.
+        pbc_match_tol:      KDTree distance tolerance for master-slave matching.
+    """
+    n = rec["_n"]
+    if n == 0:
+        return None
+
+    pos = np.column_stack([rec["pos_x"], rec["pos_y"]])  # (n, 2)
+    edge_pairs = rec["_edge_pairs"]
+    if len(edge_pairs) == 0:
+        return None
+
+    all_idx = rec["_all_idx_3"]
+    node_reg = rec["_node_reg"]
+    valid_elem = rec["_valid_elem"]
+
+    bx_raw, by_raw = rec["bx"], rec["by"]
+    aa_raw, jj_raw = rec["a"], rec["j"]
+
+    # Scatter element fields → node averages (vectorized)
+    m = len(valid_elem)
+    bx_v = bx_raw[:m][valid_elem].astype(np.float32)
+    by_v = by_raw[:m][valid_elem].astype(np.float32)
+    aa_v = aa_raw[:m][valid_elem].astype(np.float32)
+    jj_v = jj_raw[:m][valid_elem].astype(np.float32)
+
+    all_bx = np.tile(bx_v, 3)
+    all_by = np.tile(by_v, 3)
+    all_a  = np.tile(aa_v, 3)
+    all_j  = np.tile(jj_v, 3)
+
+    sum_bx = np.zeros(n, np.float32); np.add.at(sum_bx, all_idx, all_bx)
+    sum_by = np.zeros(n, np.float32); np.add.at(sum_by, all_idx, all_by)
+    sum_a  = np.zeros(n, np.float32); np.add.at(sum_a,  all_idx, all_a)
+    sum_j  = np.zeros(n, np.float32); np.add.at(sum_j,  all_idx, all_j)
+    cnt    = np.zeros(n, np.float32); np.add.at(cnt,    all_idx, 1.0)
+    cnt = np.clip(cnt, 1.0, None)
+
+    node_bx = sum_bx / cnt; node_by = sum_by / cnt
+    node_a  = sum_a  / cnt; node_j  = sum_j  / cnt
+
+    t_s = float(rec.get("time_s", 0.0))
+    rot = float(rec.get("rotate_step", 0.0))
+    cond_rb  = float(condition.get("Ratio_Bore", 0.0))
+    cond_rsd = float(condition.get("Ratio_SlotDepth_ParallelSlot", 0.0))
+    cond_ipk = float(condition.get("PeakCurrent", 0.0))
+    cond_ph  = float(condition.get("PhaseAdvance", 0.0))
+
+    x_feat = np.column_stack([
+        pos,                                       # 0,1: x,y
+        node_reg[:, None],                         # 2: region code
+        np.full((n, 1), t_s,       np.float32),    # 3: time [s]
+        np.full((n, 1), rot,       np.float32),    # 4: rotate step
+        np.full((n, 1), cond_rb,   np.float32),    # 5: Ratio_Bore
+        np.full((n, 1), cond_rsd,  np.float32),    # 6: Ratio_SlotDepth
+        np.full((n, 1), cond_ipk,  np.float32),    # 7: PeakCurrent
+        np.full((n, 1), cond_ph,   np.float32),    # 8: PhaseAdvance
+    ]).astype(np.float32)
+
+    yt = np.stack([node_bx, node_by, node_a, node_j], axis=1).astype(np.float32)
+
+    # Interior edges
+    edge_index_np = edge_pairs.T.astype(np.int64)          # (2, E)
+    dxy  = pos[edge_index_np[1]] - pos[edge_index_np[0]]
+    dist = np.linalg.norm(dxy, axis=1, keepdims=True)
+
+    if not use_pbc:
+        edge_attr_np = np.concatenate([dxy, dist], axis=1).astype(np.float32)
+        return Data(
+            x=torch.from_numpy(x_feat),
+            y=torch.from_numpy(yt),
+            pos=torch.from_numpy(pos.astype(np.float32)),
+            edge_index=torch.from_numpy(edge_index_np),
+            edge_attr=torch.from_numpy(edge_attr_np),
+        )
+
+    # ---- PBC mode: 4-dim edge_attr [dx, dy, dist, pbc_flag] ----
+    if not _PBC_AVAILABLE:
+        raise ImportError(
+            "pbc_utils.py not found. Cannot use use_pbc=True without pbc_utils."
+        )
+
+    ones = np.ones((edge_index_np.shape[1], 1), dtype=np.float32)
+    interior_attr = np.concatenate([dxy, dist, ones], axis=1)  # (E_int, 4)
+
+    master_idx, slave_idx = identify_boundary_nodes(
+        rec["pos_x"], rec["pos_y"],
+        master_angle_deg=master_angle_deg,
+        slave_angle_deg=slave_angle_deg,
+        angle_tol_deg=pbc_angle_tol_deg,
+    )
+
+    pbc_edge_index, pbc_flag_attr = find_pbc_edge_pairs(
+        rec["pos_x"], rec["pos_y"],
+        master_idx, slave_idx,
+        rotation_deg=-(slave_angle_deg - master_angle_deg),
+        tol=pbc_match_tol,
+    )
+
+    if pbc_edge_index.shape[1] > 0:
+        pbc_np = pbc_edge_index.numpy()
+        dxy_pbc  = pos[pbc_np[1]] - pos[pbc_np[0]]
+        dist_pbc = np.linalg.norm(dxy_pbc, axis=1, keepdims=True)
+        pbc_attr_geom = np.concatenate(
+            [dxy_pbc, dist_pbc, pbc_flag_attr.numpy()], axis=1
+        ).astype(np.float32)
+
+        combined_edge_index = torch.cat(
+            [torch.from_numpy(edge_index_np), pbc_edge_index], dim=1
+        )
+        combined_edge_attr = torch.from_numpy(
+            np.concatenate([interior_attr, pbc_attr_geom], axis=0)
+        )
+    else:
+        combined_edge_index = torch.from_numpy(edge_index_np)
+        combined_edge_attr  = torch.from_numpy(interior_attr)
+
+    return Data(
+        x=torch.from_numpy(x_feat),
+        y=torch.from_numpy(yt),
+        pos=torch.from_numpy(pos.astype(np.float32)),
+        edge_index=combined_edge_index,
+        edge_attr=combined_edge_attr,
+        master_idx=torch.from_numpy(master_idx.astype(np.int64)),
+        slave_idx=torch.from_numpy(slave_idx.astype(np.int64)),
+    )

@@ -399,6 +399,88 @@ def plot_training_history(ckpt: dict, save_path: Optional[str] = None, dpi: int 
 
 
 # ---------------------------------------------------------------------------
+# PBC boundary continuity check (Phase 1)
+# ---------------------------------------------------------------------------
+
+def plot_pbc_boundary_check(
+    graph,
+    pred_B: np.ndarray,
+    true_B: np.ndarray,
+    save_path: Optional[str] = None,
+    dpi: int = 150,
+):
+    """Visualise predicted B at master/slave PBC boundary nodes.
+
+    Checks that:
+      1. Bx and By are continuous across the boundary (master ≈ slave values).
+      2. The sign reversal (anti-periodic) is consistent with FEM ground truth.
+
+    Args:
+        graph:     torch_geometric Data with .pos, .master_idx, .slave_idx.
+        pred_B:    (N, 2) predicted [Bx, By] in physical units.
+        true_B:    (N, 2) FEM [Bx, By] in physical units.
+        save_path: Optional file path to save the figure.
+    """
+    if not (hasattr(graph, "master_idx") and hasattr(graph, "slave_idx")):
+        print("[plot_pbc_boundary_check] graph has no master_idx / slave_idx; skipping.")
+        return None
+
+    master_idx = graph.master_idx.numpy() if hasattr(graph.master_idx, "numpy") else np.array(graph.master_idx)
+    slave_idx  = graph.slave_idx.numpy()  if hasattr(graph.slave_idx,  "numpy") else np.array(graph.slave_idx)
+
+    if len(master_idx) == 0 or len(slave_idx) == 0:
+        print("[plot_pbc_boundary_check] Empty boundary indices; skipping.")
+        return None
+
+    pos = graph.pos.numpy() if hasattr(graph.pos, "numpy") else np.array(graph.pos)
+
+    # Sort by radius to get comparable position plots
+    r_master = np.hypot(pos[master_idx, 0], pos[master_idx, 1])
+    r_slave  = np.hypot(pos[slave_idx,  0], pos[slave_idx,  1])
+    order_m  = np.argsort(r_master)
+    order_s  = np.argsort(r_slave)
+
+    m_idx_s = master_idx[order_m]
+    s_idx_s = slave_idx[order_s]
+    r_m = r_master[order_m]
+    r_s = r_slave[order_s]
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 9))
+    fig.suptitle("PBC Boundary Check: Master vs Slave (anti-periodic symmetry)")
+    comp_labels = ["Bx", "By"]
+    colors = {"master_pred": "#1f77b4", "slave_pred": "#ff7f0e",
+              "master_true": "#aec7e8", "slave_true": "#ffbb78"}
+
+    for ci, comp in enumerate(comp_labels):
+        ax_pred = axes[0, ci]
+        ax_true = axes[1, ci]
+
+        ax_pred.plot(r_m, pred_B[m_idx_s, ci],  color=colors["master_pred"], label="Master (pred)")
+        ax_pred.plot(r_s, pred_B[s_idx_s, ci],  color=colors["slave_pred"],  label="Slave (pred)")
+        ax_pred.plot(r_m, -pred_B[m_idx_s, ci], color=colors["master_pred"], ls="--", alpha=0.4, label="-Master (pred)")
+        ax_pred.set_title(f"Prediction: {comp} on boundary")
+        ax_pred.set_xlabel("Radius (mm)")
+        ax_pred.set_ylabel(comp)
+        ax_pred.legend(fontsize=8)
+        ax_pred.grid(True, alpha=0.3)
+
+        ax_true.plot(r_m, true_B[m_idx_s, ci],  color=colors["master_true"], label="Master (FEM)")
+        ax_true.plot(r_s, true_B[s_idx_s, ci],  color=colors["slave_true"],  label="Slave (FEM)")
+        ax_true.plot(r_m, -true_B[m_idx_s, ci], color=colors["master_true"], ls="--", alpha=0.4, label="-Master (FEM)")
+        ax_true.set_title(f"FEM: {comp} on boundary")
+        ax_true.set_xlabel("Radius (mm)")
+        ax_true.set_ylabel(comp)
+        ax_true.legend(fontsize=8)
+        ax_true.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    if save_path:
+        fig.savefig(save_path, dpi=dpi, bbox_inches="tight")
+        print(f"  Saved PBC check: {save_path}")
+    return fig
+
+
+# ---------------------------------------------------------------------------
 # CLI entry point
 # ---------------------------------------------------------------------------
 
