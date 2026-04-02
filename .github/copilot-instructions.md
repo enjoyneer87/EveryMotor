@@ -18,6 +18,7 @@
 - Before any code edit, review recent repository commits from other servers/contributors.
 - Summarize what changed, potential conflicts, and carry-over tasks.
 - Cross-check with current Notion plan rows (`진행 중`, `시작 전`, `홀드`) and synthesize one short execution plan.
+- If recent commit summary evidence is unavailable, do not block by default: use Notion plan cross-check as fallback and proceed with an explicit note in `비고`.
 - Start code edits only after this review and plan synthesis are complete.
 
 3. Pick work item
