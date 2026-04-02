@@ -14,20 +14,26 @@
 - Run submodule and runtime checks first.
 - Update Notion metadata heartbeat for rows in progress.
 
-2. Pick work item
+2. Pre-implementation review gate
+- Before any code edit, review recent repository commits from other servers/contributors.
+- Summarize what changed, potential conflicts, and carry-over tasks.
+- Cross-check with current Notion plan rows (`진행 중`, `시작 전`, `홀드`) and synthesize one short execution plan.
+- Start code edits only after this review and plan synthesis are complete.
+
+3. Pick work item
 - Prefer rows with status `진행 중` assigned to this server.
 - If none exist, pick highest-priority `시작 전` row and move it to `진행 중`.
 
-3. Implement
+4. Implement
 - Make focused code changes for one task at a time.
 - Keep commits small and descriptive.
 - Avoid destructive git operations.
 
-4. Validate
+5. Validate
 - Run minimum relevant checks for touched files.
 - If validation fails, keep working until fixed or explicitly blocked.
 
-5. Sync Notion evidence
+6. Sync Notion evidence
 - Always update `동기화일`, `서버ID`.
 - On success: set `상태=완료`, `검증완료=true`, set `커밋해시`, add short `비고`.
 - On block: set `상태=홀드`, `검증완료=false`, add blocker to `비고`.
