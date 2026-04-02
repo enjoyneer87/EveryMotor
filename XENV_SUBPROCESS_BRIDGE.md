@@ -1,4 +1,5 @@
 # XENV Subprocess Bridge
+> Migrated: Active workflow source is [.github/skills/xenv-subprocess-bridge/SKILL.md](.github/skills/xenv-subprocess-bridge/SKILL.md).
 
 This document defines the JSON contract used by xenv_subprocess_bridge.py.
 

@@ -1,4 +1,5 @@
 # XENV-5 Validate 3 Cases
+> Migrated: Active workflow source is [.github/skills/xenv-validate-3-cases/SKILL.md](.github/skills/xenv-validate-3-cases/SKILL.md).
 
 ## Goal
 Run inference validation for three DOE cases and emit summary evidence for Notion.
