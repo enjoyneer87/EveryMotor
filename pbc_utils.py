@@ -51,8 +51,8 @@ def identify_boundary_nodes(
     angles_deg = np.degrees(np.arctan2(pos_y, pos_x))
 
     # Angular difference modulo 360 → clamp to [-180, 180]
-    def _angle_diff(a, ref):
-        d = (a - ref + 180.0) % 360.0 - 180.0
+    def _angle_diff(angle: np.ndarray, reference_angle: float) -> np.ndarray:
+        d = (angle - reference_angle + 180.0) % 360.0 - 180.0
         return np.abs(d)
 
     master_mask = valid & (_angle_diff(angles_deg, master_angle_deg) < angle_tol_deg)

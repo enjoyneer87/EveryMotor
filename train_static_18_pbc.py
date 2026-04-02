@@ -128,13 +128,14 @@ def load_graphs(data_dir: Path, max_steps_per_case: Optional[int]) -> List:
             for rec in records:
                 g = build_graph(rec, condition, use_pbc=True)
                 if g is not None:
-                    g = g  # sanitize below
                     all_graphs.append(g)
 
         if all_graphs:
             n = case["index"]
+            rb = condition.get('Ratio_Bore')
+            rb_str = f"{rb:.4f}" if rb is not None else "?"
             print(f"  case {n:04d}: total {len(all_graphs)} graphs so far | "
-                  f"RB={condition.get('Ratio_Bore', '?'):.4f}")
+                  f"RB={rb_str}")
 
     print(f"\nTotal graphs loaded: {len(all_graphs)}")
     return all_graphs

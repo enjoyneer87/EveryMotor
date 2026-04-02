@@ -80,8 +80,8 @@ class AntiPeriodicMessageLayer(MessagePassing):
 
     def message(
         self,
-        x_i: torch.Tensor,        # [E, H]  source-node hidden
-        x_j: torch.Tensor,        # [E, H]  target-node hidden  (receiver convention)
+        x_i: torch.Tensor,        # [E, H]  target-node hidden (receiver)
+        x_j: torch.Tensor,        # [E, H]  source-node hidden (sender)
         edge_feats: torch.Tensor,  # [E, F]
         sign_flag: torch.Tensor,   # [E, 1]
     ) -> torch.Tensor:

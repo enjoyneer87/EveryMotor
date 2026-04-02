@@ -103,6 +103,9 @@ class PhysicsInformedLoss(nn.Module):
             )
 
         # dA/d(x,y): shape [N, 2]
+        # .sum() reduces to a scalar so autograd computes the Jacobian row-sum,
+        # which equals elementwise ∂A_i/∂coord_i for independent node-wise A
+        # (valid because node i's A only depends on coord_i through the GNN).
         dA_dxy = torch.autograd.grad(
             outputs=pred_A.sum(),
             inputs=coords,

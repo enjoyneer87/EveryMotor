@@ -521,6 +521,7 @@ def build_graph(
     pbc_edge_index, pbc_flag_attr = find_pbc_edge_pairs(
         rec["pos_x"], rec["pos_y"],
         master_idx, slave_idx,
+        # Negate the sector angle so slave nodes rotate back to the master reference frame
         rotation_deg=-(slave_angle_deg - master_angle_deg),
         tol=pbc_match_tol,
     )
