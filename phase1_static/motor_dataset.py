@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, Optional, Sequence
 
@@ -10,8 +11,11 @@ import numpy as np
 import torch
 from torch_geometric.data import Data, Dataset
 
-from .contracts import normalize_channels_to_bx_by_a_j
+from .contracts import encode_fidelity_metadata, normalize_channels_to_bx_by_a_j
 from .data_preprocessing import combine_edges, to_tensor
+
+
+LOG = logging.getLogger(__name__)
 
 
 def _as_feature(tensor: torch.Tensor, dim: int) -> torch.Tensor:
@@ -129,6 +133,14 @@ class StaticMotorDataset(Dataset):
         data.sample_weight = torch.tensor([float(s.get("sample_weight", 1.0))], dtype=self.dtype)
         data.step_index = torch.tensor([int(s.get("step_index", -1))], dtype=torch.long)
         data.sequence_id = torch.tensor([int(s.get("sequence_id", -1))], dtype=torch.long)
+        step_code, fidelity_code, coupling_code = encode_fidelity_metadata(
+            str(s.get("step_semantics", "explicit_time_step")),
+            str(s.get("source_file_type", "Unknown")),
+            str(s.get("coupling_policy", "weak_coupled")),
+        )
+        data.step_semantics = torch.tensor([step_code], dtype=torch.long)
+        data.fidelity_type = torch.tensor([fidelity_code], dtype=torch.long)
+        data.coupling_policy = torch.tensor([coupling_code], dtype=torch.long)
         return data
 
 
@@ -162,6 +174,9 @@ def build_samples_from_npz(npz_path: str) -> Sequence[Dict[str, Any]]:
                 "sequence_id": int(case_idx[i]) if case_idx is not None else 0,
                 "time_s": float(time_values[i]) if time_values is not None else 0.0,
                 "rotate_step": float(rotate_values[i]) if rotate_values is not None else 0.0,
+                "step_semantics": "explicit_time_step",
+                "coupling_policy": "transient_coupled",
+                "source_file_type": "OnLoadTorque",
             }
         )
     return samples
@@ -183,7 +198,13 @@ def _resolve_h5_candidate(data_dir: Path, case_idx: int, h5_ref: str) -> Optiona
 def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[int] = None) -> Sequence[Dict[str, Any]]:
     """Build canonical phase samples from DOE manifest + H5 files."""
     try:
-        from doe_data_utils import parse_h5_timeseries, scatter_elem_to_node
+        from doe_data_utils import (
+            classify_motorcad_h5_filename,
+            infer_coupling_policy,
+            infer_step_semantics,
+            parse_h5_timeseries,
+            scatter_elem_to_node,
+        )
     except ImportError as exc:
         raise ImportError("doe_data_utils import failed. Run from repository root.") from exc
 
@@ -215,7 +236,20 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
             h5_path = _resolve_h5_candidate(root, case_idx, str(h5_ref))
             if h5_path is None:
                 continue
-            records = parse_h5_timeseries(h5_path, max_steps=max_steps_per_case)
+            source_type = classify_motorcad_h5_filename(str(h5_ref))
+            step_semantics = infer_step_semantics(source_type)
+            coupling_policy = infer_coupling_policy(source_type)
+            try:
+                records = parse_h5_timeseries(h5_path, max_steps=max_steps_per_case)
+            except (ValueError, OSError, KeyError) as exc:
+                LOG.warning(
+                    "Skipping non-timeseries or invalid H5: case=%04d type=%s file=%s reason=%s",
+                    case_idx,
+                    source_type,
+                    h5_path,
+                    exc,
+                )
+                continue
 
             for rec in records:
                 n_nodes = int(rec["_n"])
@@ -223,10 +257,9 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
                     continue
 
                 pos = np.column_stack([rec["pos_x"], rec["pos_y"]]).astype(np.float32)
-                node_reg = np.asarray(rec["_node_reg"], dtype=np.int64)
-                node_reg_oh = _onehot_from_labels(node_reg)
+                node_reg = np.asarray(rec["_node_reg"], dtype=np.float32).reshape(-1, 1)
                 cond_feat = np.tile(cond_vec[None, :], (n_nodes, 1))
-                node_type_onehot = np.concatenate([node_reg_oh, cond_feat], axis=1).astype(np.float32)
+                node_type_onehot = np.concatenate([node_reg, cond_feat], axis=1).astype(np.float32)
 
                 node_bx, node_by, node_a, node_j = scatter_elem_to_node(rec)
                 y = np.stack([node_bx, node_by, node_a, node_j], axis=1).astype(np.float32)
@@ -251,6 +284,10 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
                         "sequence_id": case_idx,
                         "time_s": float(rec.get("time_s", 0.0)),
                         "rotate_step": float(rec.get("rotate_step", 0.0)),
+                        "step_semantics": step_semantics,
+                        "coupling_policy": coupling_policy,
+                        "source_file_type": source_type,
+                        "source_file_name": Path(str(h5_ref).replace("\\", "/")).name,
                     }
                 )
 

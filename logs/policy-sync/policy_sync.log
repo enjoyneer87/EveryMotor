@@ -1,0 +1,32 @@
+[2026-04-02 16:16:27][INFO] Policy sync start.
+[2026-04-02 16:16:27][ERROR] Failed to check policy path status.
+[2026-04-02 16:16:27][INFO] Notion token/db missing. Skip Notion update.
+[2026-04-02 16:17:17][INFO] Policy sync start.
+[2026-04-02 16:17:17][ERROR] Failed to check policy path status.
+[2026-04-02 16:17:17][INFO] Notion token/db missing. Skip Notion update.
+[2026-04-02 16:17:51][INFO] Policy sync start.
+[2026-04-02 16:17:51][WARN] Local policy changes detected. Pull skipped for safety.
+[2026-04-02 16:17:51][INFO] Notion token/db missing. Skip Notion update.
+[2026-04-02 16:21:01][INFO] Policy sync start.
+[2026-04-02 16:21:02][WARN] Local policy changes detected. Pull skipped for safety.
+[2026-04-02 16:21:02][INFO] Notion token/db missing. Skip Notion update.
+[2026-04-02 16:26:00][INFO] Policy sync start.
+[2026-04-02 16:26:01][WARN] Local policy changes detected. Pull skipped for safety.
+[2026-04-02 16:26:01][INFO] Notion token/db missing. Skip Notion update.
+[2026-04-02 16:31:00][INFO] Policy sync start.
+[2026-04-02 16:51:00][INFO] Policy sync start.
+[2026-04-02 16:56:00][INFO] Policy sync start.
+[2026-04-02 17:01:00][INFO] Policy sync start.
+[2026-04-02 17:06:00][INFO] Policy sync start.
+[2026-04-02 17:11:00][INFO] Policy sync start.
+[2026-04-02 18:01:01][INFO] Policy sync start.
+[2026-04-02 18:06:00][INFO] Policy sync start.
+[2026-04-02 18:11:00][INFO] Policy sync start.
+[2026-04-02 18:56:01][INFO] Policy sync start.
+[2026-04-02 19:01:01][INFO] Policy sync start.
+[2026-04-02 19:06:01][INFO] Policy sync start.
+[2026-04-02 19:11:01][INFO] Policy sync start.
+[2026-04-02 19:16:01][INFO] Policy sync start.
+[2026-04-02 19:21:01][INFO] Policy sync start.
+[2026-04-02 19:26:01][INFO] Policy sync start.
+[2026-04-02 19:31:01][INFO] Policy sync start.

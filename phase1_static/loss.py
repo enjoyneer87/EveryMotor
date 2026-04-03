@@ -13,6 +13,7 @@ from typing import Dict, Tuple
 import torch
 import torch.nn.functional as F
 
+from .contracts import validate_loss_boundary_inputs
 from .physics_operators import PhysicsOperator
 
 
@@ -40,16 +41,20 @@ def hybrid_physics_loss(
     Expects channel order [Bx, By, A, J].
     J is currently excluded from loss, but retained in the target contract.
     """
-    if pred.dim() != 2 or target.dim() != 2 or pred.shape[1] < 3 or target.shape[1] < 3:
-        raise ValueError("pred/target must have shape [N, >=3] with channels [Bx, By, A, ...]")
+    validate_loss_boundary_inputs(
+        pred=pred,
+        target=target,
+        coords=coords,
+        spatial_dim=operator.spatial_dim,
+    )
 
     b0, b1 = operator.channel_contract.b_slice
     a_index = operator.channel_contract.a_index
 
     pred_b = pred[:, b0:b1]
     target_b = target[:, b0:b1]
-    pred_a = pred[:, a_index : a_index + 1]
-    target_a = target[:, a_index : a_index + 1]
+    pred_a = pred[:, a_index:a_index + 1]
+    target_a = target[:, a_index:a_index + 1]
 
     a_loss = F.mse_loss(pred_a, target_a)
     b_loss = F.mse_loss(pred_b, target_b)

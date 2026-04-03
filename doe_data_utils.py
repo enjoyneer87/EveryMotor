@@ -20,6 +20,45 @@ import numpy as np
 import torch
 from scipy.interpolate import griddata
 
+
+def classify_motorcad_h5_filename(path_like: str) -> str:
+    """Classify MotorCAD postprocess file type from filename."""
+    name = Path(str(path_like).replace("\\", "/")).name.lower()
+    if "onloadtorque" in name:
+        return "OnLoadTorque"
+    if "losselement" in name or "onloadloss" in name:
+        return "LossElement_OnLoadLoss"
+    if "staticloadinductance" in name:
+        return "StaticLoadInductance"
+    if "staticload" in name:
+        return "StaticLoad"
+    if "staticoc" in name:
+        return "StaticOC"
+    return "Unknown"
+
+
+def is_timeseries_h5(path: Path) -> bool:
+    """Return True when H5 is supported by training loader."""
+    try:
+        with h5py.File(path, "r") as f:
+            return ("steps" in f) or ("step" in f)
+    except OSError:
+        return False
+
+
+def infer_step_semantics(source_type: str) -> str:
+    """Infer step semantics by source file type."""
+    if source_type == "OnLoadTorque":
+        return "explicit_time_step"
+    return "implicit_single_step"
+
+
+def infer_coupling_policy(source_type: str) -> str:
+    """Infer coupling policy by source file type."""
+    if source_type == "OnLoadTorque":
+        return "transient_coupled"
+    return "weak_coupled"
+
 # ---------------------------------------------------------------------------
 # H5 parser  (identical to train_doe_meshgraphnet.py)
 # ---------------------------------------------------------------------------
@@ -28,10 +67,16 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
     """Parse a pyMCAD magnetic timeseries H5 file into record dicts."""
     records = []
     with h5py.File(path, "r") as f:
-        if "steps" not in f:
-            raise ValueError(f"Invalid H5 (missing 'steps'): {path}")
+        if ("steps" not in f) and ("step" not in f):
+            kind = classify_motorcad_h5_filename(str(path))
+            raise ValueError(
+                f"Invalid H5 (missing 'steps'/'step'): {path} [type={kind}]"
+            )
 
-        steps = np.asarray(f["steps"][:], dtype=np.int32)
+        if "steps" in f:
+            steps = np.asarray(f["steps"][:], dtype=np.int32)
+        else:
+            steps = np.asarray([int(np.asarray(f["step"][()]))], dtype=np.int32)
         node_id = np.asarray(f["mesh/node_id"][:], dtype=np.int32)
         node_x0 = np.asarray(f["mesh/node_x_mm"][:], dtype=np.float64)
         node_y0 = np.asarray(f["mesh/node_y_mm"][:], dtype=np.float64)
@@ -41,10 +86,15 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
         node_3 = np.asarray(f["mesh/node_3"][:], dtype=np.int32)
         reg_code = np.asarray(f["mesh/reg_code"][:], dtype=np.int32)
 
-        bx_mat = np.asarray(f["fields/bx"][:], dtype=np.float32)
-        by_mat = np.asarray(f["fields/by"][:], dtype=np.float32)
-        a_mat = np.asarray(f["fields/a"][:], dtype=np.float32) if "fields/a" in f else np.zeros_like(bx_mat)
-        j_mat = np.asarray(f["fields/j"][:], dtype=np.float32) if "fields/j" in f else np.zeros_like(bx_mat)
+        bx_raw = np.asarray(f["fields/bx"][:], dtype=np.float32)
+        by_raw = np.asarray(f["fields/by"][:], dtype=np.float32)
+        a_raw = np.asarray(f["fields/a"][:], dtype=np.float32) if "fields/a" in f else np.zeros_like(bx_raw)
+        j_raw = np.asarray(f["fields/j"][:], dtype=np.float32) if "fields/j" in f else np.zeros_like(bx_raw)
+
+        bx_mat = bx_raw.reshape(1, -1) if bx_raw.ndim == 1 else bx_raw
+        by_mat = by_raw.reshape(1, -1) if by_raw.ndim == 1 else by_raw
+        a_mat = a_raw.reshape(1, -1) if a_raw.ndim == 1 else a_raw
+        j_mat = j_raw.reshape(1, -1) if j_raw.ndim == 1 else j_raw
 
         meta_time = np.asarray(f["meta/time_s"][:], dtype=np.float64) if "meta/time_s" in f else None
         meta_rot = np.asarray(f["meta/rotate_step"][:], dtype=np.float64) if "meta/rotate_step" in f else None
@@ -352,6 +402,9 @@ def load_doe_data(data_dir: str, max_steps_per_case: Optional[int] = None,
 
         for h5p in h5_paths:
             h5_basename = h5p.replace("\\", "/").split("/")[-1]
+            source_type = classify_motorcad_h5_filename(h5p)
+            step_semantics = infer_step_semantics(source_type)
+            coupling_policy = infer_coupling_policy(source_type)
             candidates = [
                 Path(h5p),
                 data_dir / f"case_{case['index']:04d}" / "postproc" / h5_basename,
@@ -366,13 +419,24 @@ def load_doe_data(data_dir: str, max_steps_per_case: Optional[int] = None,
             if h5_file is None:
                 continue
 
+            if not is_timeseries_h5(h5_file):
+                print(
+                    f"  [INFO] skip non-timeseries H5: {h5_file} "
+                    f"(type={source_type})"
+                )
+                continue
+
             try:
                 records = parse_h5_timeseries(h5_file, max_steps=max_steps_per_case)
-            except Exception as e:
+            except (ValueError, OSError, KeyError) as e:
                 print(f"  [WARN] parse error {h5_file}: {e}")
                 continue
 
             for rec in records:
+                rec["source_file_type"] = source_type
+                rec["source_file_name"] = h5_basename
+                rec["step_semantics"] = step_semantics
+                rec["coupling_policy"] = coupling_policy
                 all_records.append(rec)
                 all_conditions.append(condition)
 

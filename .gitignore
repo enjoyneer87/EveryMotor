@@ -25,5 +25,27 @@ paper_figures/
 *.png
 *.pdf
 
+# Generated reports and experiment artifacts
+logs/**
+!logs/README.md
+!logs/policy-sync/
+logs/policy-sync/**
+!logs/policy-sync/policy_sync.jsonl
+!logs/policy-sync/policy_sync.log
+analysis_outputs/
+mgn_fem_comparison/
+mgn_fem_comparison_physical/
+comparison_results.json
+model_comparison_summary.json
+rnn_eval_complete.txt
+rnn_eval_final.txt
+eval_output.txt
+
+# Local automation or workspace files
+EveryMotor.code-workspace
+DockerDesktopWSL/
+Project/
+_backup_pre_nested_repo_move/
+
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
