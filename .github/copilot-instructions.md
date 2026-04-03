@@ -55,5 +55,6 @@
 
 ## Safety Rules
 - Do not run long GPU training automatically unless task explicitly requires it.
+- Run inference scripts in Docker (PhysicsNeMo container) by default; avoid host Python execution for infer workflows unless explicitly requested.
 - Do not rewrite history.
 - Do not revert user changes unrelated to current task.

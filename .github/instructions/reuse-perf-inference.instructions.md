@@ -24,8 +24,13 @@ For model updates, record on same case/environment:
 - output file size (MB)
 - peak GPU memory if available
 
+## Execution environment (mandatory)
+- Run infer scripts in Docker by default (PhysicsNeMo runtime), not host Python.
+- Use host Python for infer only when explicitly requested by user.
+- Prefer mounted workspace paths used by the container (for example `/workspace/app`, `/workspace/host_data`).
+
 Use:
-- Command template: python infer_all_steps_nodes.py --case-idx <idx> --out <path>
+- Command template: docker exec <container_name> bash -lc "cd /workspace/app; python infer_all_steps_nodes.py --case-idx <idx> --out <path>"
 - Log template: logs/infer_<model>_<yyyymmdd_hhmm>.log
 
 ## Pre-merge checklist
