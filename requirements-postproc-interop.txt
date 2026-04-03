@@ -1,0 +1,7 @@
+numpy
+h5py
+
+# Optional interoperability layers
+meshio
+pyvista
+vtk

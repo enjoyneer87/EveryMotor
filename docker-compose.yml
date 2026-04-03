@@ -1,0 +1,37 @@
+# Template: split code/data/output mounts to avoid nested-repo pollution
+# Usage:
+#   1) Copy this file to docker-compose.yml (or include as override)
+#   2) Update host paths for your machine
+#   3) Run: docker compose up -d --build
+
+services:
+  motor_compare:
+    image: nvcr.io/nvidia/physicsnemo/physicsnemo:26.03
+    container_name: motor_compare
+    working_dir: /workspace/app
+    tty: true
+    stdin_open: true
+    environment:
+      - EMACH_SERVER_ID=${EMACH_SERVER_ID:-3389}
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # 1) Code mount (Git workspace)
+      - /mnt/d/KDH/NvidiaNemo:/workspace/app
+
+      # 2) Data mount (raw/intermediate datasets)
+      - /mnt/d/KDH/EveryMotorData:/workspace/data
+
+      # 3) Output mount (npz/figures/logs)
+      - /mnt/d/KDH/EveryMotorOut:/workspace/out
+
+      # Optional: keep read-only access to external repos if needed
+      # - D:/KDH/repos/physicsnemo_from_nvidia:/workspace/ext/physicsnemo:ro
+      # - D:/KDH/repos/multiscale_from_nvidia:/workspace/ext/multiscale-pde-operators:ro
+
+    # Optional ports (enable if needed)
+    ports:
+      - "8888:8888"
+      - "6006:6006"
+
+    # Example command (customize as needed)
+    command: bash -lc "echo Container ready at /workspace/app && sleep infinity"
