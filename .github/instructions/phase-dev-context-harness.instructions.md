@@ -14,6 +14,13 @@ Before coding feature behavior, freeze:
 - Canonical target channel contract: `[Bx, By, A, J]`
 - Stage boundaries: `raw -> canonical sample -> graph -> batch -> loss`
 - Purity at boundaries: stage inputs are not mutated in-place
+- Multi-fidelity observation contract:
+  - `step_semantics` must be explicit per sample:
+    - `explicit_time_step` (transient)
+    - `implicit_single_step` (static single-step)
+    - `derived_static_step` (aligned/derived mapping)
+  - `fidelity_type` and `coupling_policy` must be attached at sample build time
+  - Do not force static-only targets into transient step loss directly; route by coupling policy
 
 If any contract changes, update plan docs and validation checks in the same commit.
 
@@ -37,6 +44,13 @@ Every training/inference change must have:
   - 1-epoch run with deterministic seed and small data slice
 - Regression harness:
   - Baseline metric snapshot and tolerance-based comparison
+
+Multi-fidelity harness additions:
+- Alignment harness:
+  - Verify static observations can be represented as `T=1` sequence entries
+  - Verify multi-static alignment mapping to transient indices is deterministic and pure
+- Routing harness:
+  - Verify loss routing by `coupling_policy` (transient/weak/decoupled) matches expectation
 
 Use Docker PhysicsNeMo runtime for final validation consistency.
 

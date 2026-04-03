@@ -20,6 +20,10 @@ description: "Use when: MotorCAD postprocess interoperability across h5/txt/vtu/
 3. Isolate visualization/export specifics in exporters (`exporters/*.py`).
 4. Use lazy optional imports for heavy dependencies (pyvista, meshio, vtk).
 5. Preserve unit metadata and field semantics (`A`, `Bx`, `By`, `J`) explicitly.
+6. Preserve observation semantics explicitly:
+  - `step_semantics`: `explicit_time_step` | `implicit_single_step` | `derived_static_step`
+  - `fidelity_type`: e.g., `OnLoadTorque`, `StaticLoad`, `StaticOC`, `StaticLoadInductance`
+  - `coupling_policy`: `transient_coupled` | `weak_coupled` | `decoupled`
 
 ## Recommended Workflow
 1. Define/extend schema in `postproc_interop/model.py`.
@@ -27,9 +31,14 @@ description: "Use when: MotorCAD postprocess interoperability across h5/txt/vtu/
 3. Validate required keys and attach warnings for partial data.
 4. Implement export bridge (`exporters/*`) from canonical schema.
 5. Add a thin CLI path in `postproc_interop/cli.py` for repeatable conversions.
+6. When static and transient files coexist, normalize static sources as `T=1` observations and attach alignment metadata rather than dropping files.
 
 ## Expected Outputs
 - Canonical mesh+field object from source file.
+- Canonical observation metadata for multi-fidelity training:
+  - source filename type
+  - step semantics
+  - coupling policy
 - Optional exports:
   - VTU file path
   - PyVista `PolyData`/`UnstructuredGrid`
