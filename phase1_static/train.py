@@ -10,9 +10,11 @@ import torch
 from torch import nn
 from torch_geometric.loader import DataLoader
 
+from .contracts import normalize_channels_to_bx_by_a_j
 from .custom_mgn import AntiPeriodicMessagePassing
 from .loss import hybrid_physics_loss, lambda_anneal
-from .motor_dataset import StaticMotorDataset, build_samples_from_npz
+from .motor_dataset import StaticMotorDataset, build_samples_from_doe_manifest, build_samples_from_npz
+from .physics_operators import PhysicsOperator, build_physics_operator
 
 LOG = logging.getLogger(__name__)
 
@@ -58,7 +60,16 @@ def build_model(input_dim: int, hidden_dim: int, output_dim: int, use_physicsnem
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Phase 1 static 1/8 training")
-    p.add_argument("--data", required=True, help="Path to npz/pt bundle containing samples")
+    p.add_argument("--input-format", choices=("auto", "npz", "doe"), default="auto")
+    p.add_argument("--data", help="Path to npz/pt bundle (used for --input-format npz/auto)")
+    p.add_argument("--data-dir", default="doe_data", help="DOE root dir containing doe_manifest.json")
+    p.add_argument("--max-steps-per-case", type=int, default=None, help="Optional cap for DOE timesteps per case")
+    p.add_argument(
+        "--include-temporal-features",
+        action="store_true",
+        help="Append [time_s, rotate_step, dt_s, step_index] to node input features",
+    )
+    p.add_argument("--spatial-dim", type=int, default=2, help="Spatial coordinate dimension (2 supported now)")
     p.add_argument("--epochs", type=int, default=50)
     p.add_argument("--batch-size", type=int, default=4)
     p.add_argument("--lr", type=float, default=1e-3)
@@ -85,57 +96,39 @@ def forward_model(model: nn.Module, batch) -> torch.Tensor:
 
 
 def _normalize_target_channels(y: torch.Tensor) -> Tuple[torch.Tensor, str]:
-    """Normalize target channels to [Bx, By, A, J]."""
-    if y.dim() == 1:
-        y = y.unsqueeze(-1)
-    if y.dim() != 2:
-        raise ValueError(f"Expected y with shape [N, C], got {tuple(y.shape)}")
-
-    channels = y.shape[1]
-    if channels >= 4:
-        return y[:, 0:4], "bx_by_a_j"
-    if channels == 3:
-        # Backward-compatible fallback: [A, Bx, By] -> [Bx, By, A, J=0]
-        a = y[:, 0:1]
-        bx = y[:, 1:2]
-        by = y[:, 2:3]
-        j = torch.zeros_like(a)
-        return torch.cat([bx, by, a, j], dim=1), "a_bx_by"
-    if channels == 2:
-        # Fallback: [Bx, By] -> [Bx, By, A=0, J=0]
-        bx = y[:, 0:1]
-        by = y[:, 1:2]
-        z = torch.zeros_like(bx)
-        return torch.cat([bx, by, z, z], dim=1), "bx_by"
-    raise ValueError(f"Unsupported y channel count: {channels}")
+    return normalize_channels_to_bx_by_a_j(y)
 
 
 def _normalize_prediction_channels(pred: torch.Tensor) -> torch.Tensor:
-    """Normalize model output channels to [Bx, By, A, J]."""
-    if pred.dim() == 1:
-        pred = pred.unsqueeze(-1)
-    if pred.dim() != 2:
-        raise ValueError(f"Expected prediction with shape [N, C], got {tuple(pred.shape)}")
+    norm, _ = normalize_channels_to_bx_by_a_j(pred)
+    return norm
 
-    channels = pred.shape[1]
-    if channels >= 4:
-        return pred[:, 0:4]
-    if channels == 3:
-        a = pred[:, 0:1]
-        bx = pred[:, 1:2]
-        by = pred[:, 2:3]
-        j = torch.zeros_like(a)
-        return torch.cat([bx, by, a, j], dim=1)
-    if channels == 2:
-        bx = pred[:, 0:1]
-        by = pred[:, 1:2]
-        z = torch.zeros_like(bx)
-        return torch.cat([bx, by, z, z], dim=1)
-    if channels == 1:
-        a = pred[:, 0:1]
-        z = torch.zeros_like(a)
-        return torch.cat([z, z, a, z], dim=1)
-    raise ValueError(f"Unsupported prediction channel count: {channels}")
+
+def _resolve_sample_weight(batch) -> float:
+    """Multi-fidelity hook: per-batch scalar weight from sample metadata."""
+    sample_weight = getattr(batch, "sample_weight", None)
+    if sample_weight is None:
+        return 1.0
+    if isinstance(sample_weight, torch.Tensor):
+        if sample_weight.numel() == 0:
+            return 1.0
+        return float(sample_weight.float().mean().item())
+    return float(sample_weight)
+
+
+def _load_samples(args: argparse.Namespace):
+    fmt = args.input_format
+    if fmt == "auto":
+        if args.data:
+            return build_samples_from_npz(args.data), "npz"
+        return build_samples_from_doe_manifest(args.data_dir, args.max_steps_per_case), "doe"
+    if fmt == "npz":
+        if not args.data:
+            raise ValueError("--data is required when --input-format=npz")
+        return build_samples_from_npz(args.data), "npz"
+    if fmt == "doe":
+        return build_samples_from_doe_manifest(args.data_dir, args.max_steps_per_case), "doe"
+    raise ValueError(f"Unsupported input format: {fmt}")
 
 
 def train_epoch(
@@ -143,6 +136,7 @@ def train_epoch(
     loader: DataLoader,
     optimizer: torch.optim.Optimizer,
     device: torch.device,
+    operator: PhysicsOperator,
     w_a: float,
     w_b: float,
     w_curl: float,
@@ -163,19 +157,24 @@ def train_epoch(
             pred=pred,
             target=target,
             coords=batch.pos,
+            operator=operator,
             w_a=w_a_eff,
             w_b=float(w_b),
             w_curl=float(w_curl),
             retain_graph=False,
         )
+        sample_weight = _resolve_sample_weight(batch)
+        total_loss = total_loss * sample_weight
 
         optimizer.zero_grad(set_to_none=True)
         total_loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
 
-        for key in sums:
-            sums[key] += float(metrics[key].item())
+        sums["total_loss"] += float(total_loss.detach().item())
+        sums["a_loss"] += float(metrics["a_loss"].item())
+        sums["b_loss"] += float(metrics["b_loss"].item())
+        sums["curl_loss"] += float(metrics["curl_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -185,6 +184,7 @@ def eval_epoch(
     model: nn.Module,
     loader: DataLoader,
     device: torch.device,
+    operator: PhysicsOperator,
     w_a: float,
     w_b: float,
     w_curl: float,
@@ -205,13 +205,17 @@ def eval_epoch(
                 pred=pred,
                 target=target,
                 coords=batch.pos,
+                operator=operator,
                 w_a=w_a_eff,
                 w_b=float(w_b),
                 w_curl=float(w_curl),
                 retain_graph=False,
             )
-        for key in sums:
-            sums[key] += float(metrics[key].item())
+        sample_weight = _resolve_sample_weight(batch)
+        sums["total_loss"] += float(metrics["total_loss"].item() * sample_weight)
+        sums["a_loss"] += float(metrics["a_loss"].item())
+        sums["b_loss"] += float(metrics["b_loss"].item())
+        sums["curl_loss"] += float(metrics["curl_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -221,10 +225,18 @@ def main() -> None:
     args = parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-    samples = build_samples_from_npz(args.data)
-    dataset = StaticMotorDataset(samples)
+    samples, resolved_fmt = _load_samples(args)
+    dataset = StaticMotorDataset(samples, include_temporal_features=args.include_temporal_features)
     train_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=not args.overfit_single)
     val_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
+    operator = build_physics_operator(spatial_dim=args.spatial_dim)
+    LOG.info(
+        "Loaded %d samples (format=%s, temporal_features=%s, operator=%s)",
+        len(samples),
+        resolved_fmt,
+        args.include_temporal_features,
+        operator.name,
+    )
 
     input_dim = dataset[0].x.shape[1]
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -250,6 +262,7 @@ def main() -> None:
             loader=train_loader_epoch,
             optimizer=optimizer,
             device=device,
+            operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
             w_curl=curl_w,
@@ -258,6 +271,7 @@ def main() -> None:
             model=model,
             loader=val_loader,
             device=device,
+            operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
             w_curl=curl_w,

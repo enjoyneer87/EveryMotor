@@ -13,6 +13,8 @@ from typing import Dict, Tuple
 import torch
 import torch.nn.functional as F
 
+from .physics_operators import PhysicsOperator
+
 
 def lambda_anneal(epoch: int, warmup_epochs: int, base_lambda: float, max_lambda: float) -> float:
     """Linear warmup for a loss weight."""
@@ -26,6 +28,7 @@ def hybrid_physics_loss(
     pred: torch.Tensor,
     target: torch.Tensor,
     coords: torch.Tensor,
+    operator: PhysicsOperator,
     *,
     w_a: float = 1.0,
     w_b: float = 1.0,
@@ -40,32 +43,19 @@ def hybrid_physics_loss(
     if pred.dim() != 2 or target.dim() != 2 or pred.shape[1] < 3 or target.shape[1] < 3:
         raise ValueError("pred/target must have shape [N, >=3] with channels [Bx, By, A, ...]")
 
-    pred_b = pred[:, 0:2]
-    target_b = target[:, 0:2]
-    pred_a = pred[:, 2:3]
-    target_a = target[:, 2:3]
+    b0, b1 = operator.channel_contract.b_slice
+    a_index = operator.channel_contract.a_index
+
+    pred_b = pred[:, b0:b1]
+    target_b = target[:, b0:b1]
+    pred_a = pred[:, a_index : a_index + 1]
+    target_a = target[:, a_index : a_index + 1]
 
     a_loss = F.mse_loss(pred_a, target_a)
     b_loss = F.mse_loss(pred_b, target_b)
 
-    ones = torch.ones_like(pred_a)
-    grads = torch.autograd.grad(
-        outputs=pred_a,
-        inputs=coords,
-        grad_outputs=ones,
-        create_graph=True,
-        retain_graph=retain_graph,
-        only_inputs=True,
-        allow_unused=False,
-    )[0]
-
-    dA_dx = grads[:, 0:1]
-    dA_dy = grads[:, 1:2]
-    pred_bx = dA_dy
-    pred_by = -dA_dx
-    pred_b = torch.cat([pred_bx, pred_by], dim=1)
-
-    curl_loss = F.mse_loss(pred_b, target_b)
+    pred_b_from_operator = operator.predict_b_from_pred(pred=pred, coords=coords, retain_graph=retain_graph)
+    curl_loss = F.mse_loss(pred_b_from_operator, target_b)
     total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss) + (float(w_curl) * curl_loss)
     metrics = {
         "total_loss": total_loss.detach(),
