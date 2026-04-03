@@ -101,6 +101,7 @@ Real sample file: `data/MagTransient_20260130_152245.txt`
 
 See `.github/plans/` for ongoing refactoring tasks:
 - [`postproc_interop_refactor.md`](.github/plans/postproc_interop_refactor.md) — pyleecan-style MeshSolution architecture (in progress, checklist inside)
+- [`phase1_phase2_phase3_motorgnn_roadmap.md`](.github/plans/phase1_phase2_phase3_motorgnn_roadmap.md) — shared Phase 1-3 execution roadmap for Codex/Claude/Copilot/Antigravity
 
 ---
 
