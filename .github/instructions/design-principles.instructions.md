@@ -134,6 +134,31 @@ def test_txt_to_dataframe_pipeline():
 
 ---
 
+## 규칙 7: 예외(Exception) 던지기 대신 '결과(Result)' 래핑 반환
+
+Morphism(순수 변환 함수) 내부에서 발생하는 예상 가능한 예외(파일 없음, 파싱 실패 등)를 `raise Exception`으로 던지지 마세요. 대신 실패 상태를 래퍼(Wrapper)에 담아 반환하세요.
+
+```python
+# ✗ 금지 — 예상 가능한 실패를 예외로 던짐 (파이프라인 강제 파괴)
+def read(self, path: str) -> MeshSolution:
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"File not found: {path}")
+    ...
+
+# ✓ 올바름 — 실패 가능성을 타입으로 래핑하여 제어 (범주론적 접근)
+# (Action09_Execution_Failure_Taxonomy_KO.md 의 범주 코드표 활용)
+def read(self, path: str) -> tuple[MeshSolution | None, str | None]:
+    if not os.path.exists(path):
+        return None, "E-IO-001"  # Taxonomy Category 에러 코드 반환
+    
+    # ... 정상 파싱 완료 시
+    return mesh_sol, None
+```
+
+**Why:** 함수 합성(Function Composition) 시 흐름이 예외 처리(try/except)로 인해 더러워지거나 끊어지는 것을 막고, 오류(Failure) 상태조차 파이프라인의 데이터 흐름(Data Flow) 안에서 안전하게 제어하기 위함입니다.
+
+---
+
 ## 적용 대상 파일 구조
 
 ```
