@@ -1,4 +1,4 @@
-# Motor GNN Roadmap (Phase 1-3)
+# Motor GNN Roadmap (Phase 0-3)
 
 This document is the shared execution contract for Codex, Claude, GitHub Copilot, and Antigravity.
 
@@ -22,6 +22,32 @@ Required adjustments for this repo:
 - Primary loss strategy is hybrid: supervised A + supervised B + curl consistency
 - Inference/training runtime should be validated in Docker PhysicsNeMo environment
 - Keep `eMach/` independent (no `postproc_interop` dependency injection)
+
+## Phase 0 (Required): Contract Freeze Before Coding
+### Objective
+Freeze shared data and transformation contracts before feature growth.
+
+### Why this is mandatory
+- Category-theory-aligned development requires stable objects and pure morphisms first.
+- If dynamic logic is added before contracts stabilize, refactor cost grows quickly in Phase 2-3.
+
+### Contract freeze tasks
+- Object contract freeze:
+  - Define canonical sample schema for training data with explicit channel order `[Bx, By, A, J]`.
+  - Treat phase data objects as immutable values after construction.
+- Morphism contract freeze:
+  - Ensure parsing, graph building, normalization, and loss input mapping are pure transforms.
+  - No hidden global writes or in-place mutation of shared upstream inputs.
+- Composition contract freeze:
+  - Lock the pipeline shape as composable stages: `raw -> canonical sample -> graph -> batch -> loss`.
+  - Declare input/output type expectations at each stage.
+- Test gate freeze:
+  - Add or update tests by layer: object shape, transform correctness, pipeline composition.
+
+### Exit criteria (must pass before Phase 1 coding continues)
+- Canonical schema and channel order are written and referenced by training code.
+- All critical transforms are side-effect-free at API boundaries.
+- Contract-level tests pass for at least one real sample path.
 
 ## Phase 1 (Now): Static 1/8 + PBC + Hybrid Loss
 ### Objective
@@ -110,13 +136,41 @@ Enable robust long-horizon rollout with controlled error accumulation.
 ## Agent Handoff Protocol
 All agents should follow these rules when continuing work:
 - Read `AGENTS.md` first
+- Read `.github/instructions/design-principles.instructions.md` before editing `.py`
+- Read `.github/instructions/phase-dev-context-harness.instructions.md` before running phase tasks
 - Read this roadmap before editing phase code
 - Keep commit scope focused to one subtask
 - Keep commit message format: `[TASKKEY] short action summary`
 - Do not rewrite history and do not revert unrelated local changes
 
+## Context + Harness Engineering (Operational)
+Use these techniques to reduce drift across Codex, Claude, Copilot, and Antigravity.
+
+### Context engineering techniques
+- Context pack per task:
+  - Goal, invariants, interface contracts, non-goals, and acceptance checks in one short block.
+- Retrieval-first handoff:
+  - Always link the exact plan/instruction files instead of paraphrasing from memory.
+- Constraint pinning:
+  - Keep immutable constraints in explicit bullets (channel order, purity rules, environment).
+- Decision log:
+  - Record key design decisions and rejected alternatives in commit messages or task notes.
+
+### Harness engineering techniques
+- Deterministic run harness:
+  - Fixed random seed, explicit data slice, explicit epoch count for reproducible smoke tests.
+- Contract test harness:
+  - Fast checks validating shape/type/order at stage boundaries before long runs.
+- Overfit harness:
+  - Single-batch or single-graph overfit command as the first gate for every training change.
+- Regression harness:
+  - Keep a minimal baseline metrics snapshot and fail when divergence exceeds thresholds.
+- Runtime harness:
+  - Validate in Docker PhysicsNeMo first for environment consistency.
+
 ## Suggested Next Task Slice
 Complete Phase 1 to "verification complete":
+- Complete Phase 0 contract freeze gates for phase pipeline
 - Stabilize dataset+model+loss integration
 - Pass overfit-single target
 - Produce boundary continuity artifact

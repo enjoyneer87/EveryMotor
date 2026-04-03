@@ -38,6 +38,7 @@ Pipeline = composition          (TXT → MeshSolution → DataFrame → VTU)
 6. **File name = Class name** (pyleecan convention, PascalCase)
 
 Full rationale: `.github/instructions/design-principles.instructions.md`
+Phase execution playbook: `.github/instructions/phase-dev-context-harness.instructions.md`
 
 ---
 
