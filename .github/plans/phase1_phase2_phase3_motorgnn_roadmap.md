@@ -96,11 +96,13 @@ Use these comments directly in code files to drive GitHub Copilot generation:
   - Boundary continuity and sign behavior must be visually verified
 
 ### Verification checklist (mandatory before Phase 2)
-- No isolated nodes after PBC edge insertion
-- `edge_index` shape is valid `[2, E]`
-- PBC sign handling is correctly applied on boundary edges
-- Overfit-single converges without divergence
-- Boundary continuity plots are archived (Matplotlib/Paraview evidence)
+- ✅ No isolated nodes after PBC edge insertion
+- ✅ `edge_index` shape is valid `[2, E]`
+- ✅ PBC sign handling is correctly applied on boundary edges
+- ✅ Overfit-single converges without divergence (best_loss=0.000344 ≤ target=0.01)
+- ✅ Boundary continuity plots are archived (`logs/pbc_boundary_vis.png` via `visualize_pbc_boundary.py`)
+- ✅ PBC test suite: 23 tests passing (pbc_bundle + motor_dataset_pbc)
+- ✅ `results/regression_baseline.json` recorded
 
 ## Phase 2: Dynamic Sliding-Band Time-Series Pipeline
 ### Objective

@@ -4,11 +4,17 @@ Generate node-wise predictions for all steps of one DOE case.
 
 This script compares multiple models on the same case and stores results on
 mesh nodes:
-- GT:   Bx, By, A, J
-- FNO:  Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
-- MGN:  Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
-- GINO: Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
-- RNN:  Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
+- GT:       Bx, By, A, J
+- FNO:      Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
+- MGN:      Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
+- SymMGN:   Bx, By, A, J — PBC-aware MeshGraphNet (anti-periodic boundary edges)
+- GINO:     Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
+- RNN:      Bx, By, A, J (A/J may be zero if checkpoint output has 2 channels)
+
+PBC architecture note:
+  MGN/FNO/RNN/GINO — trained WITHOUT explicit PBC topology
+  SymMGN           — trained WITH anti-periodic PBC edge_attr=-1.0 (phase1_static.train)
+                     run via infer_phase1_pbc.py or --symm-mgn-ckpt flag here
 """
 from __future__ import annotations
 
@@ -17,7 +23,7 @@ import json
 import sys
 import time
 from pathlib import Path
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 import numpy as np
 import torch
@@ -429,6 +435,67 @@ def infer_rnn(
     return out
 
 
+def infer_symm_mgn(
+    records: list,
+    cond: dict,
+    ckpt_path: Path,
+    device: torch.device,
+) -> Optional[Dict[str, np.ndarray]]:
+    """SymMGN (PBC-aware MeshGraphNet) inference via phase1_static pipeline.
+
+    Returns None if checkpoint is unavailable; caller should treat as skip.
+    PBC edges are rebuilt from mesh topology inside StaticMotorDataset.
+    """
+    try:
+        from infer_phase1_pbc import load_symm_mgn, run_inference
+        from phase1_static.motor_dataset import build_samples_from_doe_manifest
+    except ImportError as exc:
+        print(f"[SymMGN] import failed: {exc}")
+        return None
+
+    if not ckpt_path.exists():
+        print(f"[SymMGN] checkpoint not found: {ckpt_path} — skipped")
+        return None
+
+    model, _ = load_symm_mgn(ckpt_path, device)
+
+    # Build phase1_static samples from DOE records
+    # Reuse node coordinates and y-targets from pre-parsed records
+    samples = []
+    for rec in records:
+        pos = np.stack([rec["pos_x"], rec["pos_y"]], axis=1).astype(np.float32)
+        bx_n, by_n, a_n, j_n = scatter_elem_to_node(rec)
+        y = np.stack([bx_n, by_n, a_n, j_n], axis=1).astype(np.float32)
+        n = pos.shape[0]
+        # Minimal interior edges: use triangle neighbours if available, else self-loops
+        tri = rec.get("triangles", None)
+        if tri is not None and np.asarray(tri).size > 0:
+            tri_np = np.asarray(tri, dtype=np.int32)
+            src = np.concatenate([tri_np[:, 0], tri_np[:, 1], tri_np[:, 2]])
+            dst = np.concatenate([tri_np[:, 1], tri_np[:, 2], tri_np[:, 0]])
+            ie = np.stack([np.concatenate([src, dst]),
+                           np.concatenate([dst, src])], axis=0).astype(np.int64)
+        else:
+            ie = np.zeros((2, 0), dtype=np.int64)
+        samples.append({
+            "pos": pos,
+            "node_type_onehot": np.ones((n, 1), dtype=np.float32),
+            "interior_edge_index": ie,
+            "y": y,
+        })
+
+    result = run_inference(model, samples, device)
+    s = len(records)
+    n = records[0]["_n"]
+    out = {
+        "bx": result["pred_bx"].reshape(s, -1)[:, :n],
+        "by": result["pred_by"].reshape(s, -1)[:, :n],
+        "a":  result["pred_a"].reshape(s, -1)[:, :n],
+        "j":  result["pred_j"].reshape(s, -1)[:, :n],
+    }
+    return out
+
+
 def save_results_npz(
     out_path: Path,
     case_idx: int,
@@ -438,6 +505,7 @@ def save_results_npz(
     mgn_pred: Dict[str, np.ndarray],
     gino_pred: Dict[str, np.ndarray],
     rnn_pred: Dict[str, np.ndarray],
+    symm_mgn_pred: Optional[Dict[str, np.ndarray]] = None,
 ) -> None:
     s, n = prepared["node_x"].shape
     np.savez_compressed(
@@ -472,6 +540,11 @@ def save_results_npz(
         rnn_by_node=rnn_pred["by"],
         rnn_a_node=rnn_pred["a"],
         rnn_j_node=rnn_pred["j"],
+        # SymMGN (PBC-aware) — zeros if not run
+        symm_mgn_bx_node=symm_mgn_pred["bx"] if symm_mgn_pred else np.zeros_like(prepared["gt_bx"]),
+        symm_mgn_by_node=symm_mgn_pred["by"] if symm_mgn_pred else np.zeros_like(prepared["gt_by"]),
+        symm_mgn_a_node=symm_mgn_pred["a"]  if symm_mgn_pred else np.zeros_like(prepared["gt_a"]),
+        symm_mgn_j_node=symm_mgn_pred["j"]  if symm_mgn_pred else np.zeros_like(prepared["gt_j"]),
     )
 
 
@@ -484,6 +557,11 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--fno-ckpt", default="/workspace/host_data/doe_fno_ckpt.pt")
     ap.add_argument("--gino-ckpt", default="/workspace/host_data/doe_gino_ckpt.pt")
     ap.add_argument("--rnn-ckpt", default="/workspace/host_data/doe_rnn_ckpt.pt")
+    ap.add_argument(
+        "--symm-mgn-ckpt",
+        default=None,
+        help="SymMGN (PBC-aware) checkpoint from phase1_static.train --ckpt-out. If omitted, SymMGN is skipped.",
+    )
     ap.add_argument("--out", default="/workspace/host_data/field_compare_nodes_allsteps.npz")
     return ap.parse_args()
 
@@ -515,8 +593,14 @@ def main() -> None:
     rnn_pred = infer_rnn(prepared["grids"], prepared["node_x"], prepared["node_y"], Path(args.rnn_ckpt), device)
     print(f"RNN done in {time.time() - t0:.1f}s")
 
+    symm_mgn_pred = None
+    if args.symm_mgn_ckpt:
+        t0 = time.time()
+        symm_mgn_pred = infer_symm_mgn(records, cond, Path(args.symm_mgn_ckpt), device)
+        print(f"SymMGN done in {time.time() - t0:.1f}s" if symm_mgn_pred else "SymMGN skipped")
+
     out_path = Path(args.out)
-    save_results_npz(out_path, args.case_idx, cond, prepared, fno_pred, mgn_pred, gino_pred, rnn_pred)
+    save_results_npz(out_path, args.case_idx, cond, prepared, fno_pred, mgn_pred, gino_pred, rnn_pred, symm_mgn_pred)
     print(f"Saved: {out_path} ({out_path.stat().st_size / 1e6:.1f} MB)")
 
 
