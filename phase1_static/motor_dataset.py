@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 from pathlib import Path
 from typing import Any, Dict, Optional, Sequence
 
@@ -12,10 +13,23 @@ import torch
 from torch_geometric.data import Data, Dataset
 
 from .contracts import encode_fidelity_metadata, normalize_channels_to_bx_by_a_j
-from .data_preprocessing import combine_edges, to_tensor
+from .data_preprocessing import build_pbc_edges, combine_edges, rotate_points, to_tensor
+from .pbc_boundary import extract_boundary_chains_from_mesh
 
 
 LOG = logging.getLogger(__name__)
+
+PBC_SECTOR_ROTATION_DEG = -45.0
+PBC_MATCH_ATOL_MM = 5e-2
+PBC_MATCH_RTOL = 1e-6
+
+
+def _empty_np_edge_index() -> np.ndarray:
+    return np.zeros((2, 0), dtype=np.int64)
+
+
+def _empty_np_edge_attr() -> np.ndarray:
+    return np.zeros((0, 1), dtype=np.float32)
 
 
 def _as_feature(tensor: torch.Tensor, dim: int) -> torch.Tensor:
@@ -52,6 +66,171 @@ def _onehot_from_labels(labels: np.ndarray) -> np.ndarray:
     for i, value in enumerate(labels.tolist()):
         out[i, lut[value]] = 1.0
     return out
+
+
+def _extract_triangles_from_record(rec: Dict[str, Any]) -> np.ndarray:
+    i1 = np.asarray(rec.get("_i1v", []), dtype=np.int64)
+    i2 = np.asarray(rec.get("_i2v", []), dtype=np.int64)
+    i3 = np.asarray(rec.get("_i3v", []), dtype=np.int64)
+    if i1.size == 0 or i2.size == 0 or i3.size == 0:
+        return np.empty((0, 3), dtype=np.int32)
+
+    n = int(min(i1.size, i2.size, i3.size))
+    triangles = np.stack([i1[:n], i2[:n], i3[:n]], axis=1)
+    return triangles.astype(np.int32, copy=False)
+
+
+def _wrap_angle_deg(angle_deg: np.ndarray) -> np.ndarray:
+    wrapped = (np.asarray(angle_deg, dtype=np.float64) + 180.0) % 360.0 - 180.0
+    return wrapped
+
+
+def _chain_mean_theta_deg(points_xy: np.ndarray, origin_xy: np.ndarray) -> float:
+    rel = np.asarray(points_xy, dtype=np.float64) - np.asarray(origin_xy, dtype=np.float64)
+    theta = np.degrees(np.arctan2(rel[:, 1], rel[:, 0]))
+    theta_wrapped = _wrap_angle_deg(theta)
+    theta_rad = np.deg2rad(theta_wrapped)
+    mean_rad = math.atan2(np.sin(theta_rad).mean(), np.cos(theta_rad).mean())
+    return float(np.degrees(mean_rad))
+
+
+def _match_radial_chain_nodes_by_radius(
+    master_nodes_xy: np.ndarray,
+    slave_nodes_xy: np.ndarray,
+    origin_xy: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Fallback matcher for real DOE meshes when KDTree rotation matching fails.
+
+    Radial boundary chains are paired by relative radius ordering from inner to
+    outer radius. This is robust to small center estimation noise and different
+    node counts across the two sector boundaries.
+    """
+    master_nodes = np.asarray(master_nodes_xy, dtype=np.float64)
+    slave_nodes = np.asarray(slave_nodes_xy, dtype=np.float64)
+    origin = np.asarray(origin_xy, dtype=np.float64)
+
+    if master_nodes.shape[0] == 0 or slave_nodes.shape[0] == 0:
+        return np.empty((0,), dtype=np.int64), np.empty((0,), dtype=np.int64)
+
+    master_order = np.argsort(np.linalg.norm(master_nodes - origin, axis=1))
+    slave_order = np.argsort(np.linalg.norm(slave_nodes - origin, axis=1))
+    n_pairs = min(master_order.size, slave_order.size)
+    if n_pairs == 0:
+        return np.empty((0,), dtype=np.int64), np.empty((0,), dtype=np.int64)
+
+    master_pick = np.round(np.linspace(0, master_order.size - 1, n_pairs)).astype(np.int64)
+    slave_pick = np.round(np.linspace(0, slave_order.size - 1, n_pairs)).astype(np.int64)
+    return master_order[master_pick], slave_order[slave_pick]
+
+
+def build_sector_pbc_edges_from_mesh(
+    pos_xy: np.ndarray,
+    triangles: np.ndarray,
+    *,
+    region_code: Optional[np.ndarray] = None,
+    rotation_deg: float = PBC_SECTOR_ROTATION_DEG,
+    anti_periodic: bool = True,
+    atol: float = PBC_MATCH_ATOL_MM,
+    rtol: float = PBC_MATCH_RTOL,
+) -> tuple[np.ndarray, np.ndarray, Dict[str, float | int | str]]:
+    """Build global PBC edges for a 1/8-sector mesh using boundary-chain extraction.
+
+    Returns empty arrays with an error code in diagnostics when matching is not possible.
+    """
+    diagnostics: Dict[str, float | int | str] = {
+        "rotation_deg": float(rotation_deg),
+        "radial_chain_count": 0,
+        "match_ratio": 0.0,
+        "error_code": "",
+        "max_rotation_residual": 0.0,
+    }
+
+    pos = np.asarray(pos_xy, dtype=np.float64)
+    tri = np.asarray(triangles, dtype=np.int32)
+    if tri.size == 0 or pos.shape[0] == 0:
+        diagnostics["error_code"] = "E-PBC-BOUNDARY-EMPTY"
+        return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
+
+    if region_code is None:
+        reg = np.zeros((tri.shape[0],), dtype=np.int32)
+    else:
+        reg = np.asarray(region_code, dtype=np.int32)
+        if reg.shape[0] != tri.shape[0]:
+            reg = np.zeros((tri.shape[0],), dtype=np.int32)
+
+    chain_set, error_code = extract_boundary_chains_from_mesh(pos, tri, reg)
+    if chain_set is None:
+        diagnostics["error_code"] = error_code or "E-PBC-BOUNDARY-EXTRACT"
+        return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
+
+    origin = np.asarray(chain_set.rotation_origin_xy, dtype=np.float64)
+    radial_chains: list[tuple[float, np.ndarray]] = []
+    for chain in chain_set.chains:
+        if chain.chain_type != "radial":
+            continue
+        node_indices = np.asarray(chain.node_indices, dtype=np.int64)
+        if node_indices.size < 2:
+            continue
+        theta_mean = _chain_mean_theta_deg(pos[node_indices], origin)
+        radial_chains.append((theta_mean, node_indices))
+
+    diagnostics["radial_chain_count"] = int(len(radial_chains))
+    if len(radial_chains) < 2:
+        diagnostics["error_code"] = "E-PBC-RADIAL-CHAIN-NOT-FOUND"
+        return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
+
+    radial_chains.sort(key=lambda item: item[0])
+    master_global_idx = radial_chains[0][1]
+    slave_global_idx = radial_chains[-1][1]
+
+    fallback_used = False
+    try:
+        _, _, match = build_pbc_edges(
+            master_nodes=pos[master_global_idx],
+            slave_nodes=pos[slave_global_idx],
+            angle_deg=rotation_deg,
+            atol=atol,
+            rtol=rtol,
+            anti_periodic=anti_periodic,
+            origin_xy=origin,
+        )
+        matched_master = np.asarray(match.matched_master, dtype=np.int64)
+        matched_slave = np.asarray(match.matched_slave, dtype=np.int64)
+    except ValueError:
+        matched_master, matched_slave = _match_radial_chain_nodes_by_radius(
+            pos[master_global_idx],
+            pos[slave_global_idx],
+            origin,
+        )
+        fallback_used = True
+
+    if matched_master.size == 0 or matched_slave.size == 0:
+        diagnostics["error_code"] = "E-PBC-MATCH-EMPTY"
+        return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
+
+    global_master = master_global_idx[matched_master]
+    global_slave = slave_global_idx[matched_slave]
+
+    forward = np.column_stack([global_master, global_slave])
+    backward = np.column_stack([global_slave, global_master])
+    edge_pairs = np.concatenate([forward, backward], axis=0)
+    edge_index = edge_pairs.T.astype(np.int64, copy=False)
+
+    edge_sign = -1.0 if anti_periodic else 1.0
+    edge_attr = np.full((edge_pairs.shape[0], 1), edge_sign, dtype=np.float32)
+
+    diagnostics["match_ratio"] = float(matched_slave.size / max(1, slave_global_idx.size))
+    diagnostics["match_mode"] = "radius_fallback" if fallback_used else "kdtree_rotation"
+
+    rotated_slave = rotate_points(
+        pos[global_slave],
+        rotation_deg,
+        origin_xy=origin,
+    )
+    residual = np.linalg.norm(pos[global_master] - rotated_slave, axis=1)
+    diagnostics["max_rotation_residual"] = float(np.max(residual)) if residual.size > 0 else 0.0
+
+    return edge_index, edge_attr, diagnostics
 
 
 class StaticMotorDataset(Dataset):
@@ -145,7 +324,11 @@ class StaticMotorDataset(Dataset):
 
 
 def build_samples_from_npz(npz_path: str) -> Sequence[Dict[str, Any]]:
-    """Load NPZ/PT samples to canonical sample dicts."""
+    """Load NPZ/PT samples to canonical sample dicts.
+
+    If precomputed ``pbc_edge_index``/``pbc_edge_attr`` exist in the bundle,
+    they are preserved and used directly during training.
+    """
     if npz_path.endswith(".pt"):
         bundle = torch.load(npz_path, map_location="cpu")
     else:
@@ -164,13 +347,14 @@ def build_samples_from_npz(npz_path: str) -> Sequence[Dict[str, Any]]:
                 "pos": arr["pos"][i],
                 "node_type_onehot": arr.get("node_type_onehot", [])[i] if "node_type_onehot" in arr else [],
                 "interior_edge_index": arr["interior_edge_index"][i],
-                "pbc_edge_index": arr["pbc_edge_index"][i] if "pbc_edge_index" in arr else np.zeros((2, 0), dtype=np.int64),
-                "pbc_edge_attr": arr["pbc_edge_attr"][i] if "pbc_edge_attr" in arr else np.zeros((0, 1), dtype=np.float32),
+                "pbc_edge_index": arr["pbc_edge_index"][i] if "pbc_edge_index" in arr else _empty_np_edge_index(),
+                "pbc_edge_attr": arr["pbc_edge_attr"][i] if "pbc_edge_attr" in arr else _empty_np_edge_attr(),
                 "y": arr["y"][i],
                 "spatial_dim": 2,
                 "fidelity_level": 1,
                 "sample_weight": 1.0,
                 "step_index": int(step_idx[i]) if step_idx is not None else i,
+                "case_idx": int(case_idx[i]) if case_idx is not None else 0,
                 "sequence_id": int(case_idx[i]) if case_idx is not None else 0,
                 "time_s": float(time_values[i]) if time_values is not None else 0.0,
                 "rotate_step": float(rotate_values[i]) if rotate_values is not None else 0.0,
@@ -195,8 +379,20 @@ def _resolve_h5_candidate(data_dir: Path, case_idx: int, h5_ref: str) -> Optiona
     return None
 
 
-def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[int] = None) -> Sequence[Dict[str, Any]]:
-    """Build canonical phase samples from DOE manifest + H5 files."""
+def build_samples_from_doe_manifest(
+    data_dir: str,
+    max_steps_per_case: Optional[int] = None,
+    case_indices: Optional[Sequence[int]] = None,
+    source_file_types: Optional[Sequence[str]] = None,
+) -> Sequence[Dict[str, Any]]:
+    """Build canonical phase samples from DOE manifest + H5 files.
+
+    Args:
+        data_dir: DOE root directory containing doe_manifest.json.
+        max_steps_per_case: Optional cap for parsed steps per H5 file.
+        case_indices: Optional explicit DOE case indices to include.
+        source_file_types: Optional MotorCAD filename classes to include.
+    """
     try:
         from doe_data_utils import (
             classify_motorcad_h5_filename,
@@ -216,9 +412,14 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
     with open(manifest_path, encoding="utf-8") as f:
         manifest = json.load(f)
 
+    case_filter = None if case_indices is None else {int(idx) for idx in case_indices}
+    source_filter = None if source_file_types is None else {str(name) for name in source_file_types}
+
     out: list[Dict[str, Any]] = []
     for case in manifest.get("cases", []):
         case_idx = int(case.get("index", -1))
+        if case_filter is not None and case_idx not in case_filter:
+            continue
         condition = {}
         condition.update(case.get("geometry", {}))
         condition.update(case.get("electrical", {}))
@@ -237,6 +438,8 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
             if h5_path is None:
                 continue
             source_type = classify_motorcad_h5_filename(str(h5_ref))
+            if source_filter is not None and source_type not in source_filter:
+                continue
             step_semantics = infer_step_semantics(source_type)
             coupling_policy = infer_coupling_policy(source_type)
             try:
@@ -269,17 +472,33 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
                     continue
                 interior_edge_index = edge_pairs.T.copy()
 
+                triangles = _extract_triangles_from_record(rec)
+                pbc_edge_index, pbc_edge_attr, pbc_diag = build_sector_pbc_edges_from_mesh(
+                    pos_xy=pos,
+                    triangles=triangles,
+                    rotation_deg=PBC_SECTOR_ROTATION_DEG,
+                    anti_periodic=True,
+                )
+                if pbc_diag.get("error_code"):
+                    LOG.info(
+                        "PBC boundary match skipped: case=%04d step=%s reason=%s",
+                        case_idx,
+                        rec.get("step_key", -1),
+                        pbc_diag["error_code"],
+                    )
+
                 out.append(
                     {
                         "pos": pos,
                         "node_type_onehot": node_type_onehot,
                         "interior_edge_index": interior_edge_index,
-                        "pbc_edge_index": np.zeros((2, 0), dtype=np.int64),
-                        "pbc_edge_attr": np.zeros((0, 1), dtype=np.float32),
+                        "pbc_edge_index": pbc_edge_index,
+                        "pbc_edge_attr": pbc_edge_attr,
                         "y": y,
                         "spatial_dim": 2,
                         "fidelity_level": 2,
                         "sample_weight": 1.0,
+                        "case_idx": case_idx,
                         "step_index": int(rec.get("step_key", -1)),
                         "sequence_id": case_idx,
                         "time_s": float(rec.get("time_s", 0.0)),
@@ -288,6 +507,9 @@ def build_samples_from_doe_manifest(data_dir: str, max_steps_per_case: Optional[
                         "coupling_policy": coupling_policy,
                         "source_file_type": source_type,
                         "source_file_name": Path(str(h5_ref).replace("\\", "/")).name,
+                        "pbc_match_ratio": float(pbc_diag.get("match_ratio", 0.0)),
+                        "pbc_rotation_deg": float(pbc_diag.get("rotation_deg", PBC_SECTOR_ROTATION_DEG)),
+                        "pbc_error_code": str(pbc_diag.get("error_code", "")),
                     }
                 )
 

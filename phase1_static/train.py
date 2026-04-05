@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import logging
 import random
+from pathlib import Path
 from typing import Dict, Optional, Tuple
 
 import numpy as np
@@ -18,7 +19,6 @@ from .contracts import (
     validate_batch_fidelity_policy,
     validate_graph_batch_contract,
 )
-from .custom_mgn import AntiPeriodicMessagePassing
 from .loss import hybrid_physics_loss, lambda_anneal
 from .motor_dataset import StaticMotorDataset, build_samples_from_doe_manifest, build_samples_from_npz
 from .physics_operators import PhysicsOperator, build_physics_operator
@@ -52,43 +52,33 @@ def run_contract_gate(loader: DataLoader, spatial_dim: int) -> None:
     )
 
 
-class SimpleAntiPeriodicNet(nn.Module):
-    """Lightweight anti-periodic GNN fallback when PhysicsNeMo is unavailable."""
+def build_model(input_dim: int, hidden_dim: int, output_dim: int) -> nn.Module:
+    """Build PhysicsNeMo MeshGraphNet. Must run inside Docker PhysicsNeMo container.
 
-    def __init__(self, input_dim: int, hidden_dim: int = 128, output_dim: int = 4) -> None:
-        super().__init__()
-        self.mp1 = AntiPeriodicMessagePassing(in_channels=input_dim * 2 + 1, out_channels=hidden_dim)
-        self.mp2 = AntiPeriodicMessagePassing(in_channels=hidden_dim * 2 + 1, out_channels=hidden_dim)
-        self.out = nn.Linear(hidden_dim, output_dim)
+    Raises RuntimeError if physicsnemo is not available — do NOT silently fall back
+    to a lighter model (would invalidate training comparisons).
+    Run via: docker exec physicsnemo python -m phase1_static.train ...
+    """
+    try:
+        from physicsnemo.models.meshgraphnet import MeshGraphNet
+    except ImportError as exc:
+        raise RuntimeError(
+            "physicsnemo.models.meshgraphnet is required but not installed.\n"
+            "Run training inside the PhysicsNeMo Docker container:\n"
+            "  docker exec physicsnemo python -m phase1_static.train ..."
+        ) from exc
 
-    def forward(self, data) -> torch.Tensor:
-        h1 = self.mp1(data.x, data.edge_index, data.edge_attr)
-        h2 = self.mp2(h1, data.edge_index, data.edge_attr)
-        return self.out(h2)
-
-
-def build_model(input_dim: int, hidden_dim: int, output_dim: int, use_physicsnemo: bool):
-    if use_physicsnemo:
-        try:
-            from physicsnemo.models.meshgraphnet import MeshGraphNet
-        except Exception as exc:  # pragma: no cover - optional dependency
-            LOG.warning("physicsnemo not available, falling back to SimpleAntiPeriodicNet: %s", exc)
-            use_physicsnemo = False
-
-    if use_physicsnemo:
-        return MeshGraphNet(
-            input_dim_nodes=input_dim,
-            input_dim_edges=1,
-            output_dim=output_dim,
-            processor_size=10,
-            hidden_dim_processor=hidden_dim,
-            hidden_dim_node_encoder=hidden_dim,
-            hidden_dim_edge_encoder=hidden_dim,
-            hidden_dim_node_decoder=hidden_dim,
-            aggregation="sum",
-        )
-
-    return SimpleAntiPeriodicNet(input_dim=input_dim, hidden_dim=hidden_dim, output_dim=output_dim)
+    return MeshGraphNet(
+        input_dim_nodes=input_dim,
+        input_dim_edges=1,
+        output_dim=output_dim,
+        processor_size=10,
+        hidden_dim_processor=hidden_dim,
+        hidden_dim_node_encoder=hidden_dim,
+        hidden_dim_edge_encoder=hidden_dim,
+        hidden_dim_node_decoder=hidden_dim,
+        aggregation="sum",
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -97,6 +87,19 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--data", help="Path to npz/pt bundle (used for --input-format npz/auto)")
     p.add_argument("--data-dir", default="doe_data", help="DOE root dir containing doe_manifest.json")
     p.add_argument("--max-steps-per-case", type=int, default=None, help="Optional cap for DOE timesteps per case")
+    p.add_argument(
+        "--case-indices",
+        nargs="+",
+        type=int,
+        default=None,
+        help="Optional explicit DOE case indices to include during training",
+    )
+    p.add_argument(
+        "--source-file-types",
+        nargs="+",
+        default=None,
+        help="Optional MotorCAD source file classes to include, e.g. OnLoadTorque StaticLoad",
+    )
     p.add_argument(
         "--include-temporal-features",
         action="store_true",
@@ -118,7 +121,21 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--curl-warmup", type=int, default=10, help="Warmup epochs for curl weight annealing")
     p.add_argument("--overfit-single", action="store_true", help="Repeat the first batch to check overfitting")
     p.add_argument("--overfit-target", type=float, default=1e-4, help="Pass threshold for overfit-single train loss")
-    p.add_argument("--use-physicsnemo", action="store_true", help="Force PhysicsNeMo MeshGraphNet")
+    p.add_argument(
+        "--sequence-len",
+        type=int,
+        default=1,
+        help=(
+            "Temporal sequence length. "
+            "1 = static Phase 1 (default, backward-compatible). "
+            ">1 = Phase 2 temporal mode (TemporalMotorSample, dynamic edge refresh per step)."
+        ),
+    )
+    p.add_argument(
+        "--ckpt-out",
+        default=None,
+        help="Save trained SymMGN checkpoint to this path (.pt). If omitted, no checkpoint is saved.",
+    )
     return p.parse_args()
 
 
@@ -192,13 +209,23 @@ def _load_samples(args: argparse.Namespace):
     if fmt == "auto":
         if args.data:
             return build_samples_from_npz(args.data), "npz"
-        return build_samples_from_doe_manifest(args.data_dir, args.max_steps_per_case), "doe"
+        return build_samples_from_doe_manifest(
+            args.data_dir,
+            args.max_steps_per_case,
+            case_indices=args.case_indices,
+            source_file_types=args.source_file_types,
+        ), "doe"
     if fmt == "npz":
         if not args.data:
             raise ValueError("--data is required when --input-format=npz")
         return build_samples_from_npz(args.data), "npz"
     if fmt == "doe":
-        return build_samples_from_doe_manifest(args.data_dir, args.max_steps_per_case), "doe"
+        return build_samples_from_doe_manifest(
+            args.data_dir,
+            args.max_steps_per_case,
+            case_indices=args.case_indices,
+            source_file_types=args.source_file_types,
+        ), "doe"
     raise ValueError(f"Unsupported input format: {fmt}")
 
 
@@ -308,6 +335,14 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     set_deterministic_seed(args.seed)
 
+    if args.sequence_len != 1:
+        LOG.warning(
+            "--sequence-len=%d requested. Phase 2 temporal mode is not yet implemented in train.py. "
+            "Falling back to static (sequence_len=1). "
+            "Implement TemporalMotorDataset in phase2_dynamic/ and wire it here.",
+            args.sequence_len,
+        )
+
     samples, resolved_fmt = _load_samples(args)
     if args.smoke_max_samples and args.smoke_max_samples > 0:
         samples = samples[: args.smoke_max_samples]
@@ -339,7 +374,6 @@ def main() -> None:
         input_dim=input_dim,
         hidden_dim=args.hidden_dim,
         output_dim=4,
-        use_physicsnemo=args.use_physicsnemo,
     )
     model = model.to(device)
 
@@ -401,6 +435,25 @@ def main() -> None:
             best_train_total,
             float(args.overfit_target),
         )
+
+    if args.ckpt_out:
+        from infer_phase1_pbc import save_checkpoint
+        ckpt_path = Path(args.ckpt_out)
+        save_checkpoint(
+            path=ckpt_path,
+            model=model,
+            epoch=args.epochs,
+            best_loss=best_train_total,
+            args_dict={
+                "input_dim": input_dim,
+                "hidden_dim": args.hidden_dim,
+                "epochs": args.epochs,
+                "lr": args.lr,
+                "seed": args.seed,
+                "pbc_rotation_deg": -45.0,
+            },
+        )
+        LOG.info("SymMGN checkpoint saved: %s", ckpt_path)
 
     LOG.info("Training complete.")
 

@@ -36,12 +36,21 @@ class PBCMatchResult:
     distances: np.ndarray
 
 
-def rotate_points(xy: np.ndarray, angle_deg: float) -> np.ndarray:
-    """Rotate 2D points by ``angle_deg`` degrees (counter-clockwise)."""
+def rotate_points(
+    xy: np.ndarray,
+    angle_deg: float,
+    origin_xy: Optional[np.ndarray] = None,
+) -> np.ndarray:
+    """Rotate 2D points by ``angle_deg`` degrees around ``origin_xy``."""
     rad = math.radians(angle_deg)
     c, s = math.cos(rad), math.sin(rad)
     rot = np.array([[c, -s], [s, c]], dtype=np.float64)
-    return np.asarray(xy, dtype=np.float64) @ rot.T
+    pts = np.asarray(xy, dtype=np.float64)
+    if origin_xy is None:
+        origin = np.zeros((2,), dtype=np.float64)
+    else:
+        origin = np.asarray(origin_xy, dtype=np.float64)
+    return (pts - origin) @ rot.T + origin
 
 
 def match_periodic_boundary(
@@ -50,6 +59,7 @@ def match_periodic_boundary(
     angle_deg: float = -45.0,
     atol: float = 1e-5,
     rtol: float = 1e-8,
+    origin_xy: Optional[np.ndarray] = None,
 ) -> PBCMatchResult:
     """Match master/slave boundary nodes for the 1/8 model.
 
@@ -57,13 +67,26 @@ def match_periodic_boundary(
     Returns indices (0-based) into the provided arrays.
     """
     master = np.asarray(master_nodes, dtype=np.float64)
-    slave = rotate_points(np.asarray(slave_nodes, dtype=np.float64), angle_deg)
+    slave = rotate_points(
+        np.asarray(slave_nodes, dtype=np.float64),
+        angle_deg,
+        origin_xy=origin_xy,
+    )
 
     tree = KDTree(master)
     dist, idx = tree.query(slave, distance_upper_bound=atol)
 
     finite = np.isfinite(dist)
-    within_tol = finite & (dist <= atol + rtol * np.abs(master[idx] - slave).max(axis=1, initial=0.0))
+    valid_idx = finite & (idx < master.shape[0])
+
+    rel_scale = np.zeros(slave.shape[0], dtype=np.float64)
+    if np.any(valid_idx):
+        rel_scale[valid_idx] = np.max(
+            np.abs(master[idx[valid_idx]] - slave[valid_idx]),
+            axis=1,
+        )
+
+    within_tol = valid_idx & (dist <= atol + rtol * rel_scale)
     matched_slave = np.nonzero(within_tol)[0]
     matched_master = idx[within_tol].astype(np.int64, copy=False)
     unmatched_slave = np.nonzero(~within_tol)[0]
@@ -113,9 +136,17 @@ def build_pbc_edges(
     atol: float = 1e-5,
     rtol: float = 1e-8,
     anti_periodic: bool = True,
+    origin_xy: Optional[np.ndarray] = None,
 ) -> Tuple[torch.Tensor, torch.Tensor, PBCMatchResult]:
     """Create bidirectional PBC edge_index and edge_attr tensors."""
-    match = match_periodic_boundary(master_nodes, slave_nodes, angle_deg=angle_deg, atol=atol, rtol=rtol)
+    match = match_periodic_boundary(
+        master_nodes,
+        slave_nodes,
+        angle_deg=angle_deg,
+        atol=atol,
+        rtol=rtol,
+        origin_xy=origin_xy,
+    )
     master_idx = match.matched_master
     slave_idx = match.matched_slave
     n_edges = master_idx.size

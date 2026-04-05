@@ -16,13 +16,13 @@ services:
       - PYTHONUNBUFFERED=1
     volumes:
       # 1) Code mount (Git workspace)
-      - /mnt/d/KDH/NvidiaNemo:/workspace/app
+      - D:/KDH/NvidiaNemo:/workspace/app
 
       # 2) Data mount (raw/intermediate datasets)
-      - /mnt/d/KDH/EveryMotorData:/workspace/data
+      - D:/KDH/EveryMotorData:/workspace/data
 
       # 3) Output mount (npz/figures/logs)
-      - /mnt/d/KDH/EveryMotorOut:/workspace/out
+      - D:/KDH/EveryMotorOut:/workspace/out
 
       # Optional: keep read-only access to external repos if needed
       # - D:/KDH/repos/physicsnemo_from_nvidia:/workspace/ext/physicsnemo:ro
