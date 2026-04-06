@@ -35,6 +35,10 @@ CORNER_TURN_DEG = 45.0  # Corner detection threshold (degrees)
 RADIAL_THETA_TOL_DEG = 5.0  # Radial classification tolerance
 ARC_RADIUS_RTOL = 5e-2  # Arc classification tolerance (5%)
 LINE_FIT_RESIDUAL_TOL = 1e-3  # Threshold for "non-linear" chain
+PERIODIC_EDGE_THETA_TOL_DEG = 2.0
+PERIODIC_CLUSTER_THETA_TOL_DEG = 3.0
+PERIODIC_GAP_TOL_DEG = 7.0
+PERIODIC_MIN_CLUSTER_EDGE_COUNT = 2
 
 
 # ============================================================================
@@ -375,6 +379,347 @@ def compute_chain_descriptor(
         return "mixed_polyline"
     else:
         return "unresolved"
+
+
+def _wrap_angle_deg(angle_deg: np.ndarray) -> np.ndarray:
+    return (np.asarray(angle_deg, dtype=np.float64) + 180.0) % 360.0 - 180.0
+
+
+def _mean_angle_deg(angle_deg: np.ndarray) -> float:
+    wrapped = _wrap_angle_deg(angle_deg)
+    radians = np.deg2rad(wrapped)
+    return float(
+        np.degrees(
+            np.arctan2(
+                np.sin(radians).mean(),
+                np.cos(radians).mean(),
+            )
+        )
+    )
+
+
+def _angular_span_deg(angle_deg: np.ndarray) -> float:
+    wrapped = _wrap_angle_deg(angle_deg)
+    span = float(np.max(wrapped) - np.min(wrapped))
+    if span <= 180.0:
+        return span
+    lifted = np.where(wrapped < 0.0, wrapped + 360.0, wrapped)
+    return float(np.max(lifted) - np.min(lifted))
+
+
+def build_external_edge_region_lookup(
+    triangles: np.ndarray,
+    region_code: np.ndarray,
+) -> Tuple[Set[Tuple[int, int]], Dict[Tuple[int, int], int]]:
+    """Map each external boundary edge to the adjacent element reg_code."""
+    tri = np.asarray(triangles, dtype=np.int32)
+    reg = np.asarray(region_code, dtype=np.int32)
+    if tri.ndim != 2 or tri.shape[1] != 3 or tri.shape[0] == 0:
+        return set(), {}
+
+    if reg.shape[0] != tri.shape[0]:
+        reg = np.zeros((tri.shape[0],), dtype=np.int32)
+
+    edge_count = triangles_to_undirected_edges(tri)
+    external = find_external_boundary_edges(edge_count)
+    edge_to_reg: Dict[Tuple[int, int], int] = {}
+    for tri_idx, tri_nodes in enumerate(tri.tolist()):
+        tri_reg = int(reg[tri_idx])
+        for i, j in ((0, 1), (1, 2), (2, 0)):
+            edge = tuple(sorted((int(tri_nodes[i]), int(tri_nodes[j]))))
+            if edge in external and edge not in edge_to_reg:
+                edge_to_reg[edge] = tri_reg
+
+    return external, edge_to_reg
+
+
+def _infer_moving_reg_code_set(
+    region_code: np.ndarray,
+    *,
+    moving_reg_codes: np.ndarray | None = None,
+    region_name_by_code: Dict[int, str] | None = None,
+) -> Set[int]:
+    if moving_reg_codes is not None:
+        moving = {
+            int(code)
+            for code in np.asarray(moving_reg_codes, dtype=np.int32).tolist()
+            if int(code) > 0
+        }
+        if moving:
+            return moving
+
+    if region_name_by_code:
+        keywords = (
+            "rotor",
+            "shaft",
+            "magnet",
+            "pocket",
+            "a2",
+            "a3",
+            "a4",
+        )
+        inferred = {
+            int(code)
+            for code, name in region_name_by_code.items()
+            if any(token in str(name).strip().lower() for token in keywords)
+        }
+        if inferred:
+            return inferred
+
+    _ = np.asarray(region_code, dtype=np.int32)
+    return set()
+
+
+def _build_radial_edge_fragments(
+    nodes_xy: np.ndarray,
+    external_edges: Set[Tuple[int, int]],
+    edge_to_reg: Dict[Tuple[int, int], int],
+    *,
+    origin_xy: np.ndarray,
+    theta_tol_deg: float,
+) -> List[Dict[str, object]]:
+    fragments: List[Dict[str, object]] = []
+    points = np.asarray(nodes_xy, dtype=np.float64)
+    origin = np.asarray(origin_xy, dtype=np.float64)
+
+    for edge in external_edges:
+        reg_code = int(edge_to_reg.get(edge, 0))
+        edge_points = points[list(edge)]
+        rel = edge_points - origin
+        theta_deg = np.degrees(np.arctan2(rel[:, 1], rel[:, 0]))
+        theta_span = _angular_span_deg(theta_deg)
+        radius = np.linalg.norm(rel, axis=1)
+        radius_span = float(np.max(radius) - np.min(radius))
+        if theta_span >= theta_tol_deg or radius_span <= 1e-3:
+            continue
+
+        fragments.append(
+            {
+                "edge": edge,
+                "reg_code": reg_code,
+                "theta_deg": _mean_angle_deg(theta_deg),
+                "radius_span": radius_span,
+            }
+        )
+
+    return fragments
+
+
+def _cluster_periodic_edge_fragments(
+    fragments: List[Dict[str, object]],
+    nodes_xy: np.ndarray,
+    *,
+    origin_xy: np.ndarray,
+    theta_tol_deg: float,
+) -> List[Dict[str, object]]:
+    if not fragments:
+        return []
+
+    sorted_fragments = sorted(
+        fragments,
+        key=lambda item: float(item["theta_deg"]),
+    )
+    grouped: List[List[Dict[str, object]]] = []
+    current: List[Dict[str, object]] = []
+    for fragment in sorted_fragments:
+        theta_deg = float(fragment["theta_deg"])
+        if not current:
+            current = [fragment]
+            continue
+        center_deg = float(
+            np.mean([float(item["theta_deg"]) for item in current])
+        )
+        if abs(theta_deg - center_deg) <= theta_tol_deg:
+            current.append(fragment)
+            continue
+        grouped.append(current)
+        current = [fragment]
+
+    if current:
+        grouped.append(current)
+
+    clusters: List[Dict[str, object]] = []
+    points = np.asarray(nodes_xy, dtype=np.float64)
+    origin = np.asarray(origin_xy, dtype=np.float64)
+    for group in grouped:
+        node_ids = np.unique(
+            np.asarray(
+                [
+                    node_id
+                    for item in group
+                    for node_id in tuple(item["edge"])
+                ],
+                dtype=np.int64,
+            )
+        )
+        if node_ids.size == 0:
+            continue
+        radius = np.linalg.norm(points[node_ids] - origin, axis=1)
+        order = np.argsort(radius)
+        node_ids = node_ids[order]
+        radius = radius[order]
+        clusters.append(
+            {
+                "theta_deg": float(
+                    np.mean([float(item["theta_deg"]) for item in group])
+                ),
+                "edge_count": int(len(group)),
+                "node_ids": node_ids,
+                "radial_span": (
+                    float(np.max(radius) - np.min(radius))
+                    if radius.size > 0 else 0.0
+                ),
+            }
+        )
+
+    return clusters
+
+
+def _select_periodic_cluster_pair(
+    clusters: List[Dict[str, object]],
+    *,
+    expected_gap_deg: float,
+    gap_tol_deg: float,
+    min_cluster_edge_count: int,
+) -> Tuple[Dict[str, object], Dict[str, object]] | None:
+    eligible = [
+        cluster
+        for cluster in clusters
+        if int(cluster["edge_count"]) >= int(min_cluster_edge_count)
+    ]
+    if len(eligible) < 2:
+        return None
+
+    best_score = None
+    best_pair: Tuple[Dict[str, object], Dict[str, object]] | None = None
+    for low_idx in range(len(eligible)):
+        for high_idx in range(low_idx + 1, len(eligible)):
+            low_cluster = eligible[low_idx]
+            high_cluster = eligible[high_idx]
+            low_theta = float(low_cluster["theta_deg"])
+            high_theta = float(high_cluster["theta_deg"])
+            gap_deg = high_theta - low_theta
+            gap_error = abs(gap_deg - expected_gap_deg)
+            if gap_error > gap_tol_deg:
+                continue
+
+            score = (
+                gap_error,
+                -(
+                    float(low_cluster["radial_span"])
+                    + float(high_cluster["radial_span"])
+                ),
+                -(
+                    int(low_cluster["edge_count"])
+                    + int(high_cluster["edge_count"])
+                ),
+            )
+            if best_score is None or score < best_score:
+                best_score = score
+                best_pair = (low_cluster, high_cluster)
+
+    return best_pair
+
+
+def extract_periodic_boundary_groups_from_mesh(
+    nodes_xy: np.ndarray,
+    triangles: np.ndarray,
+    region_code: np.ndarray,
+    *,
+    moving_reg_codes: np.ndarray | None = None,
+    region_name_by_code: Dict[int, str] | None = None,
+    origin_xy: np.ndarray | None = None,
+    rotation_deg: float = -45.0,
+) -> Tuple[Tuple[Tuple[str, np.ndarray, np.ndarray], ...], Dict[str, object], str | None]:
+    """Extract reg-aware periodic master/slave node groups from external edges."""
+    diagnostics: Dict[str, object] = {
+        "group_count": 0,
+        "group_labels": tuple(),
+        "external_radial_edge_count": 0,
+        "origin_xy": (0.0, 0.0),
+    }
+
+    points = np.asarray(nodes_xy, dtype=np.float64)
+    tri = np.asarray(triangles, dtype=np.int32)
+    reg = np.asarray(region_code, dtype=np.int32)
+    if points.ndim != 2 or points.shape[1] != 2 or tri.ndim != 2 or tri.shape[1] != 3:
+        return tuple(), diagnostics, "E-PBC-PERIODIC-GEOMETRY"
+    if points.shape[0] == 0 or tri.shape[0] == 0:
+        return tuple(), diagnostics, "E-PBC-PERIODIC-EMPTY"
+    if reg.shape[0] != tri.shape[0]:
+        reg = np.zeros((tri.shape[0],), dtype=np.int32)
+
+    origin = (
+        np.asarray(origin_xy, dtype=np.float64)
+        if origin_xy is not None else np.zeros((2,), dtype=np.float64)
+    )
+    diagnostics["origin_xy"] = tuple(float(value) for value in origin.tolist())
+
+    external_edges, edge_to_reg = build_external_edge_region_lookup(tri, reg)
+    if not external_edges:
+        return tuple(), diagnostics, "E-PBC-PERIODIC-EDGE-NOT-FOUND"
+
+    fragments = _build_radial_edge_fragments(
+        points,
+        external_edges,
+        edge_to_reg,
+        origin_xy=origin,
+        theta_tol_deg=PERIODIC_EDGE_THETA_TOL_DEG,
+    )
+    diagnostics["external_radial_edge_count"] = int(len(fragments))
+    if not fragments:
+        return tuple(), diagnostics, "E-PBC-PERIODIC-RADIAL-EDGE-NOT-FOUND"
+
+    moving_set = _infer_moving_reg_code_set(
+        reg,
+        moving_reg_codes=moving_reg_codes,
+        region_name_by_code=region_name_by_code,
+    )
+
+    groups: List[Tuple[str, np.ndarray, np.ndarray]] = []
+    family_specs = (
+        (("moving", True), ("stationary", False))
+        if moving_set else (("all", None),)
+    )
+    expected_gap_deg = abs(float(rotation_deg))
+    for family_label, moving_flag in family_specs:
+        family_fragments: List[Dict[str, object]] = []
+        for fragment in fragments:
+            reg_code_value = int(fragment["reg_code"])
+            if moving_flag is None:
+                family_fragments.append(fragment)
+                continue
+            if (reg_code_value in moving_set) == bool(moving_flag):
+                family_fragments.append(fragment)
+
+        clusters = _cluster_periodic_edge_fragments(
+            family_fragments,
+            points,
+            origin_xy=origin,
+            theta_tol_deg=PERIODIC_CLUSTER_THETA_TOL_DEG,
+        )
+        pair = _select_periodic_cluster_pair(
+            clusters,
+            expected_gap_deg=expected_gap_deg,
+            gap_tol_deg=PERIODIC_GAP_TOL_DEG,
+            min_cluster_edge_count=PERIODIC_MIN_CLUSTER_EDGE_COUNT,
+        )
+        if pair is None:
+            continue
+
+        master_cluster, slave_cluster = pair
+        master_nodes = np.asarray(master_cluster["node_ids"], dtype=np.int64)
+        slave_nodes = np.asarray(slave_cluster["node_ids"], dtype=np.int64)
+        if master_nodes.size < 2 or slave_nodes.size < 2:
+            continue
+        groups.append((family_label, master_nodes, slave_nodes))
+
+    if not groups:
+        return tuple(), diagnostics, "E-PBC-PERIODIC-GROUP-NOT-FOUND"
+
+    diagnostics["group_count"] = int(len(groups))
+    diagnostics["group_labels"] = tuple(label for label, _, _ in groups)
+    return tuple(groups), diagnostics, None
 
 
 # ============================================================================

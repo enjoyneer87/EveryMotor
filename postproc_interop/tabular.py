@@ -3,7 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from postproc_interop.adapters.MotorCADMeshSolutionH5Reader import MotorCADMeshSolutionH5Reader
+from postproc_interop.adapters.MotorCADMeshSolutionH5Reader import (
+    MotorCADMeshSolutionH5Reader,
+)
+from postproc_interop.model.MeshFrame import MeshFrame
 from postproc_interop.model.MeshMat import MeshMat
 from postproc_interop.model.MeshSolution import MeshSolution
 
@@ -25,7 +28,9 @@ def meshsolution_to_dataframes(meshsol: MeshSolution):
     try:
         import pandas as pd
     except ImportError as exc:
-        raise RuntimeError("pandas is required for tabular conversion") from exc
+        raise RuntimeError(
+            "pandas is required for tabular conversion"
+        ) from exc
 
     m: MeshMat = meshsol.mesh
 
@@ -55,7 +60,9 @@ def meshsolution_to_dataframes(meshsol: MeshSolution):
             == len(elementtable["Node2"])
             == len(elementtable["Node3"])
             == len(elementtable["RegCode"])):
-        raise ValueError("Element connectivity arrays must have the same length")
+        raise ValueError(
+            "Element connectivity arrays must have the same length"
+        )
 
     node_index_set = set(nodetable["NodeIndex"].tolist())
     missing_n1 = int((~elementtable["Node1"].isin(node_index_set)).sum())
@@ -65,15 +72,110 @@ def meshsolution_to_dataframes(meshsol: MeshSolution):
     node_xy = nodetable[["NodeIndex", "X", "Y"]].copy()
     elementtable_with_xy = (
         elementtable
-        .merge(node_xy.rename(columns={"NodeIndex": "Node1", "X": "Node1_X", "Y": "Node1_Y"}),
-               on="Node1", how="left")
-        .merge(node_xy.rename(columns={"NodeIndex": "Node2", "X": "Node2_X", "Y": "Node2_Y"}),
-               on="Node2", how="left")
-        .merge(node_xy.rename(columns={"NodeIndex": "Node3", "X": "Node3_X", "Y": "Node3_Y"}),
-               on="Node3", how="left")
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node1", "X": "Node1_X", "Y": "Node1_Y"}
+            ),
+            on="Node1",
+            how="left",
+        )
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node2", "X": "Node2_X", "Y": "Node2_Y"}
+            ),
+            on="Node2",
+            how="left",
+        )
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node3", "X": "Node3_X", "Y": "Node3_Y"}
+            ),
+            on="Node3",
+            how="left",
+        )
     )
 
-    stats = {"missing_n1": missing_n1, "missing_n2": missing_n2, "missing_n3": missing_n3}
+    stats = {
+        "missing_n1": missing_n1,
+        "missing_n2": missing_n2,
+        "missing_n3": missing_n3,
+    }
+    return nodetable, regiontable, elementtable, elementtable_with_xy, stats
+
+
+def _meshframe_tables(frame: MeshFrame):
+    try:
+        import pandas as pd
+    except ImportError as exc:
+        raise RuntimeError(
+            "pandas is required for tabular conversion"
+        ) from exc
+
+    nodetable = pd.DataFrame({
+        "NodeIndex": frame.nodes.node_id,
+        "X": frame.nodes.x_mm,
+        "Y": frame.nodes.y_mm,
+    })
+
+    regiontable = None
+    if frame.regions is not None:
+        regiontable = pd.DataFrame({
+            "RegionCode": frame.regions.reg_code,
+            "RegionName": [_decode_region_name(v) for v in frame.regions.name],
+        })
+
+    elementtable = pd.DataFrame({
+        "TriIndex": frame.topology.tri_index,
+        "Node1": frame.topology.node_1,
+        "Node2": frame.topology.node_2,
+        "Node3": frame.topology.node_3,
+        "RegCode": frame.topology.reg_code,
+    })
+
+    for key, observation in frame.field_observations.items():
+        if observation.values.ndim != 1:
+            continue
+        if observation.association == "node":
+            nodetable[key] = observation.values
+        else:
+            elementtable[key] = observation.values
+
+    node_index_set = set(nodetable["NodeIndex"].tolist())
+    missing_n1 = int((~elementtable["Node1"].isin(node_index_set)).sum())
+    missing_n2 = int((~elementtable["Node2"].isin(node_index_set)).sum())
+    missing_n3 = int((~elementtable["Node3"].isin(node_index_set)).sum())
+
+    node_xy = nodetable[["NodeIndex", "X", "Y"]].copy()
+    elementtable_with_xy = (
+        elementtable
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node1", "X": "Node1_X", "Y": "Node1_Y"}
+            ),
+            on="Node1",
+            how="left",
+        )
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node2", "X": "Node2_X", "Y": "Node2_Y"}
+            ),
+            on="Node2",
+            how="left",
+        )
+        .merge(
+            node_xy.rename(
+                columns={"NodeIndex": "Node3", "X": "Node3_X", "Y": "Node3_Y"}
+            ),
+            on="Node3",
+            how="left",
+        )
+    )
+
+    stats = {
+        "missing_n1": missing_n1,
+        "missing_n2": missing_n2,
+        "missing_n3": missing_n3,
+    }
     return nodetable, regiontable, elementtable, elementtable_with_xy, stats
 
 
@@ -83,13 +185,27 @@ def load_h5_as_tables(h5_path: str | Path):
     Returns
     -------
     tuple
-        (meshsol, nodetable, regiontable, elementtable, elementtable_with_xy, stats)
+        (
+            meshsol,
+            nodetable,
+            regiontable,
+            elementtable,
+            elementtable_with_xy,
+            stats,
+        )
     """
     meshsol = MotorCADMeshSolutionH5Reader().read(Path(h5_path))
     nodetable, regiontable, elementtable, elementtable_with_xy, stats = (
         meshsolution_to_dataframes(meshsol)
     )
-    return meshsol, nodetable, regiontable, elementtable, elementtable_with_xy, stats
+    return (
+        meshsol,
+        nodetable,
+        regiontable,
+        elementtable,
+        elementtable_with_xy,
+        stats,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -97,4 +213,10 @@ def load_h5_as_tables(h5_path: str | Path):
 # ---------------------------------------------------------------------------
 def meshframe_to_dataframes(frame):
     """Backward-compat wrapper: accepts MeshSolution or old MeshFrame."""
-    return meshsolution_to_dataframes(frame)
+    if isinstance(frame, MeshSolution):
+        return meshsolution_to_dataframes(frame)
+    if isinstance(frame, MeshFrame):
+        return _meshframe_tables(frame)
+    raise TypeError(
+        "meshframe_to_dataframes expects MeshSolution or MeshFrame"
+    )

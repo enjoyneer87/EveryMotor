@@ -13,8 +13,13 @@ import torch
 from torch_geometric.data import Data, Dataset
 
 from .contracts import encode_fidelity_metadata, normalize_channels_to_bx_by_a_j
-from .data_preprocessing import build_pbc_edges, combine_edges, rotate_points, to_tensor
-from .pbc_boundary import extract_boundary_chains_from_mesh
+from .data_preprocessing import (
+    build_pbc_edges,
+    combine_edges,
+    rotate_points,
+    to_tensor,
+)
+from .pbc_boundary import extract_periodic_boundary_groups_from_mesh
 
 
 LOG = logging.getLogger(__name__)
@@ -128,6 +133,8 @@ def build_sector_pbc_edges_from_mesh(
     triangles: np.ndarray,
     *,
     region_code: Optional[np.ndarray] = None,
+    moving_reg_codes: Optional[np.ndarray] = None,
+    region_name_by_code: Optional[Dict[int, str]] = None,
     rotation_deg: float = PBC_SECTOR_ROTATION_DEG,
     anti_periodic: bool = True,
     atol: float = PBC_MATCH_ATOL_MM,
@@ -140,6 +147,7 @@ def build_sector_pbc_edges_from_mesh(
     diagnostics: Dict[str, float | int | str] = {
         "rotation_deg": float(rotation_deg),
         "radial_chain_count": 0,
+        "group_count": 0,
         "match_ratio": 0.0,
         "error_code": "",
         "max_rotation_residual": 0.0,
@@ -158,77 +166,115 @@ def build_sector_pbc_edges_from_mesh(
         if reg.shape[0] != tri.shape[0]:
             reg = np.zeros((tri.shape[0],), dtype=np.int32)
 
-    chain_set, error_code = extract_boundary_chains_from_mesh(pos, tri, reg)
-    if chain_set is None:
+    group_specs, group_diag, error_code = (
+        extract_periodic_boundary_groups_from_mesh(
+        pos,
+        tri,
+        reg,
+        moving_reg_codes=(
+            np.asarray(moving_reg_codes, dtype=np.int32)
+            if moving_reg_codes is not None else None
+        ),
+        region_name_by_code=dict(region_name_by_code or {}),
+        rotation_deg=rotation_deg,
+        )
+    )
+    diagnostics["radial_chain_count"] = int(
+        group_diag.get("external_radial_edge_count", 0)
+    )
+    diagnostics["group_count"] = int(group_diag.get("group_count", 0))
+    group_labels = tuple(group_diag.get("group_labels", tuple()))
+    if group_labels:
+        diagnostics["group_labels"] = ",".join(
+            str(label) for label in group_labels
+        )
+
+    if not group_specs:
         diagnostics["error_code"] = error_code or "E-PBC-BOUNDARY-EXTRACT"
         return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
 
-    origin = np.asarray(chain_set.rotation_origin_xy, dtype=np.float64)
-    radial_chains: list[tuple[float, np.ndarray]] = []
-    for chain in chain_set.chains:
-        if chain.chain_type != "radial":
+    origin = np.zeros((2,), dtype=np.float64)
+    matched_pairs: list[np.ndarray] = []
+    residual_max = 0.0
+    total_slave_nodes = 0
+    total_matched = 0
+    match_modes: list[str] = []
+
+    for _, master_global_idx, slave_global_idx in group_specs:
+        master_global_idx = np.asarray(master_global_idx, dtype=np.int64)
+        slave_global_idx = np.asarray(slave_global_idx, dtype=np.int64)
+        if master_global_idx.size < 2 or slave_global_idx.size < 2:
             continue
-        node_indices = np.asarray(chain.node_indices, dtype=np.int64)
-        if node_indices.size < 2:
+
+        fallback_used = False
+        try:
+            _, _, match = build_pbc_edges(
+                master_nodes=pos[master_global_idx],
+                slave_nodes=pos[slave_global_idx],
+                angle_deg=rotation_deg,
+                atol=atol,
+                rtol=rtol,
+                anti_periodic=anti_periodic,
+                origin_xy=origin,
+            )
+            matched_master = np.asarray(match.matched_master, dtype=np.int64)
+            matched_slave = np.asarray(match.matched_slave, dtype=np.int64)
+        except ValueError:
+            matched_master, matched_slave = (
+                _match_radial_chain_nodes_by_radius(
+                    pos[master_global_idx],
+                    pos[slave_global_idx],
+                    origin,
+                )
+            )
+            fallback_used = True
+
+        if matched_master.size == 0 or matched_slave.size == 0:
             continue
-        theta_mean = _chain_mean_theta_deg(pos[node_indices], origin)
-        radial_chains.append((theta_mean, node_indices))
 
-    diagnostics["radial_chain_count"] = int(len(radial_chains))
-    if len(radial_chains) < 2:
-        diagnostics["error_code"] = "E-PBC-RADIAL-CHAIN-NOT-FOUND"
-        return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
+        global_master = master_global_idx[matched_master]
+        global_slave = slave_global_idx[matched_slave]
+        matched_pairs.append(
+            np.column_stack([global_master, global_slave]).astype(
+                np.int64,
+                copy=False,
+            )
+        )
+        total_slave_nodes += int(slave_global_idx.size)
+        total_matched += int(matched_slave.size)
+        match_modes.append(
+            "radius_fallback" if fallback_used else "kdtree_rotation"
+        )
 
-    radial_chains.sort(key=lambda item: item[0])
-    master_global_idx = radial_chains[0][1]
-    slave_global_idx = radial_chains[-1][1]
-
-    fallback_used = False
-    try:
-        _, _, match = build_pbc_edges(
-            master_nodes=pos[master_global_idx],
-            slave_nodes=pos[slave_global_idx],
-            angle_deg=rotation_deg,
-            atol=atol,
-            rtol=rtol,
-            anti_periodic=anti_periodic,
+        rotated_slave = rotate_points(
+            pos[global_slave],
+            rotation_deg,
             origin_xy=origin,
         )
-        matched_master = np.asarray(match.matched_master, dtype=np.int64)
-        matched_slave = np.asarray(match.matched_slave, dtype=np.int64)
-    except ValueError:
-        matched_master, matched_slave = _match_radial_chain_nodes_by_radius(
-            pos[master_global_idx],
-            pos[slave_global_idx],
-            origin,
-        )
-        fallback_used = True
+        residual = np.linalg.norm(pos[global_master] - rotated_slave, axis=1)
+        if residual.size > 0:
+            residual_max = max(residual_max, float(np.max(residual)))
 
-    if matched_master.size == 0 or matched_slave.size == 0:
+    if not matched_pairs:
         diagnostics["error_code"] = "E-PBC-MATCH-EMPTY"
         return _empty_np_edge_index(), _empty_np_edge_attr(), diagnostics
 
-    global_master = master_global_idx[matched_master]
-    global_slave = slave_global_idx[matched_slave]
-
-    forward = np.column_stack([global_master, global_slave])
-    backward = np.column_stack([global_slave, global_master])
+    forward = np.concatenate(matched_pairs, axis=0)
+    backward = np.column_stack([forward[:, 1], forward[:, 0]])
     edge_pairs = np.concatenate([forward, backward], axis=0)
     edge_index = edge_pairs.T.astype(np.int64, copy=False)
 
     edge_sign = -1.0 if anti_periodic else 1.0
     edge_attr = np.full((edge_pairs.shape[0], 1), edge_sign, dtype=np.float32)
 
-    diagnostics["match_ratio"] = float(matched_slave.size / max(1, slave_global_idx.size))
-    diagnostics["match_mode"] = "radius_fallback" if fallback_used else "kdtree_rotation"
-
-    rotated_slave = rotate_points(
-        pos[global_slave],
-        rotation_deg,
-        origin_xy=origin,
+    diagnostics["match_ratio"] = float(
+        total_matched / max(1, total_slave_nodes)
     )
-    residual = np.linalg.norm(pos[global_master] - rotated_slave, axis=1)
-    diagnostics["max_rotation_residual"] = float(np.max(residual)) if residual.size > 0 else 0.0
+    diagnostics["match_mode"] = (
+        match_modes[0]
+        if len(set(match_modes)) == 1 else "mixed"
+    )
+    diagnostics["max_rotation_residual"] = float(residual_max)
 
     return edge_index, edge_attr, diagnostics
 
@@ -473,11 +519,22 @@ def build_samples_from_doe_manifest(
                 interior_edge_index = edge_pairs.T.copy()
 
                 triangles = _extract_triangles_from_record(rec)
-                pbc_edge_index, pbc_edge_attr, pbc_diag = build_sector_pbc_edges_from_mesh(
+                pbc_edge_index, pbc_edge_attr, pbc_diag = (
+                    build_sector_pbc_edges_from_mesh(
                     pos_xy=pos,
                     triangles=triangles,
+                    region_code=np.asarray(
+                        rec.get("_reg_code", []),
+                        dtype=np.int32,
+                    ),
+                    moving_reg_codes=np.asarray(
+                        rec.get("_moving_reg_codes", []),
+                        dtype=np.int32,
+                    ),
+                    region_name_by_code=dict(rec.get("_region_name_by_code", {})),
                     rotation_deg=PBC_SECTOR_ROTATION_DEG,
                     anti_periodic=True,
+                    )
                 )
                 if pbc_diag.get("error_code"):
                     LOG.info(

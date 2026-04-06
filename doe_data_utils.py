@@ -85,6 +85,22 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
         node_2 = np.asarray(f["mesh/node_2"][:], dtype=np.int32)
         node_3 = np.asarray(f["mesh/node_3"][:], dtype=np.int32)
         reg_code = np.asarray(f["mesh/reg_code"][:], dtype=np.int32)
+        moving_reg_codes = (
+            np.asarray(f["mesh/moving_reg_codes"][:], dtype=np.int32)
+            if "mesh/moving_reg_codes" in f else np.empty((0,), dtype=np.int32)
+        )
+        region_name_by_code = {}
+        if "regions/reg_code" in f and "regions/name" in f:
+            region_codes = np.asarray(f["regions/reg_code"][:], dtype=np.int32)
+            region_names = [
+                name.decode("utf-8", errors="replace")
+                if isinstance(name, bytes) else str(name)
+                for name in f["regions/name"][:]
+            ]
+            region_name_by_code = {
+                int(code): str(name)
+                for code, name in zip(region_codes.tolist(), region_names)
+            }
 
         bx_raw = np.asarray(f["fields/bx"][:], dtype=np.float32)
         by_raw = np.asarray(f["fields/by"][:], dtype=np.float32)
@@ -186,10 +202,13 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
                 "bx": bx_mat[si], "by": by_mat[si],
                 "a": a_mat[si], "j": j_mat[si],
                 "_i1v": i1v, "_i2v": i2v, "_i3v": i3v,
+                "_reg_code": reg_v.astype(np.int32),
                 "_valid_elem": valid_elem,
                 "_all_idx_3": all_idx_3,
                 "_edge_pairs": edge_pairs,
                 "_node_reg": node_reg,
+                "_moving_reg_codes": moving_reg_codes,
+                "_region_name_by_code": region_name_by_code,
                 "_n": n,
             })
     return records

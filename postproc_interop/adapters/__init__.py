@@ -1,5 +1,8 @@
 from .MeshReader import MeshReader
 from .MotorCADMeshSolutionH5Reader import MotorCADMeshSolutionH5Reader
+from .MotorCADMeshSolutionH5PyMCADReader import (
+    MotorCADMeshSolutionH5PyMCADReader,
+)
 from .MotorCADMeshSolutionTxtReader import MotorCADMeshSolutionTxtReader
 from .VTUMeshReader import VTUMeshReader
 
@@ -10,6 +13,7 @@ VTUAdapter = VTUMeshReader
 __all__ = [
     "MeshReader",
     "MotorCADMeshSolutionH5Reader",
+    "MotorCADMeshSolutionH5PyMCADReader",
     "MotorCADMeshSolutionTxtReader",
     "VTUMeshReader",
     # aliases

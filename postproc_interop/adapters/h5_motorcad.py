@@ -6,7 +6,14 @@ import h5py
 import numpy as np
 
 from postproc_interop.adapters.base import PostprocAdapter
-from postproc_interop.model import MeshFrame, MeshTopology, NodeTable, RegionTable
+from postproc_interop.conversions import build_solver_metadata
+from postproc_interop.model import (
+    FieldObservation,
+    MeshFrame,
+    MeshTopology,
+    NodeTable,
+    RegionTable,
+)
 
 
 class MotorCADH5Adapter(PostprocAdapter):
@@ -37,20 +44,43 @@ class MotorCADH5Adapter(PostprocAdapter):
                     name=np.asarray(f["regions/name"][:]),
                 )
 
-            fields: dict[str, np.ndarray] = {}
+            n_nodes = int(nodes.node_id.shape[0])
+            field_observations: dict[str, FieldObservation] = {}
             for key in ("a", "bx", "by", "j"):
                 h5_key = f"fields/{key}"
                 if h5_key in f:
-                    fields[key] = np.asarray(f[h5_key][:])
+                    values = np.asarray(f[h5_key][:])
+                    association = (
+                        "node"
+                        if (
+                            values.ndim >= 1
+                            and int(values.shape[-1]) == n_nodes
+                        )
+                        else "element"
+                    )
+                    field_observations[key] = FieldObservation(
+                        name=key,
+                        values=values,
+                        association=association,
+                        source_key=key,
+                    )
 
             attrs = {"source_path": str(path)}
+            step_index = -1
             if "steps" in f:
                 attrs["steps"] = np.asarray(f["steps"][:])
+                if int(attrs["steps"].size) > 0:
+                    step_index = int(attrs["steps"].ravel()[0])
 
-        return MeshFrame(
+        return MeshFrame.from_components(
             topology=topology,
             nodes=nodes,
             regions=regions,
-            fields=fields,
+            field_observations=field_observations,
+            solver_metadata=build_solver_metadata(
+                source_path=path,
+                step_index=step_index,
+                reader_name=self.__class__.__name__,
+            ),
             attrs=attrs,
         )
