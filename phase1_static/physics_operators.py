@@ -66,10 +66,6 @@ class Magnetostatics2DOperator(PhysicsOperator):
         dA_dy = grads[:, 1:2]
         return torch.cat([dA_dy, -dA_dx], dim=1)
 
-        dA_dx = grads[:, 0:1]
-        dA_dy = grads[:, 1:2]
-        return torch.cat([dA_dy, -dA_dx], dim=1)
-
 
 def build_physics_operator(spatial_dim: int) -> PhysicsOperator:
     """Factory for physics operators by spatial dimension.

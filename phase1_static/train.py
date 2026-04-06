@@ -19,7 +19,7 @@ from .contracts import (
     validate_batch_fidelity_policy,
     validate_graph_batch_contract,
 )
-from .loss import hybrid_physics_loss, lambda_anneal
+from .loss import hybrid_physics_loss
 from .motor_dataset import StaticMotorDataset, build_samples_from_doe_manifest, build_samples_from_npz
 from .physics_operators import PhysicsOperator, build_physics_operator
 
@@ -116,9 +116,6 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--contract-check-only", action="store_true", help="Validate contracts and exit")
     p.add_argument("--weight-a", type=float, default=1.0, help="Supervised A loss weight")
     p.add_argument("--weight-b", type=float, default=1.0, help="Supervised Bx/By loss weight")
-    p.add_argument("--curl-base", type=float, default=0.05, help="Initial curl consistency loss weight")
-    p.add_argument("--curl-max", type=float, default=1.0, help="Maximum curl consistency loss weight")
-    p.add_argument("--curl-warmup", type=int, default=10, help="Warmup epochs for curl weight annealing")
     p.add_argument("--overfit-single", action="store_true", help="Repeat the first batch to check overfitting")
     p.add_argument("--overfit-target", type=float, default=1e-4, help="Pass threshold for overfit-single train loss")
     p.add_argument(
@@ -175,11 +172,10 @@ def _resolve_loss_routing_from_batch(
     schema: str,
     w_a: float,
     w_b: float,
-    w_curl: float,
-) -> Tuple[float, float, float, float]:
+) -> Tuple[float, float, float]:
     """Resolve effective loss weights from schema and batch fidelity metadata."""
     fidelity_code, coupling_code = validate_batch_fidelity_policy(batch)
-    a_scale, b_scale, curl_scale, sample_weight_mult = resolve_loss_routing_from_codes(
+    a_scale, b_scale, _curl_scale, sample_weight_mult = resolve_loss_routing_from_codes(
         fidelity_code=fidelity_code,
         coupling_code=coupling_code,
     )
@@ -189,9 +185,8 @@ def _resolve_loss_routing_from_batch(
         w_a_eff = 0.0
 
     w_b_eff = float(w_b) * b_scale
-    w_curl_eff = float(w_curl) * curl_scale
     sample_weight_eff = _resolve_sample_weight(batch) * sample_weight_mult
-    return w_a_eff, w_b_eff, w_curl_eff, sample_weight_eff
+    return w_a_eff, w_b_eff, sample_weight_eff
 
 
 def _attach_pos_to_x(batch) -> None:
@@ -237,24 +232,21 @@ def train_epoch(
     operator: PhysicsOperator,
     w_a: float,
     w_b: float,
-    w_curl: float,
 ) -> Dict[str, float]:
     model.train()
-    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "curl_loss": 0.0}
+    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0}
     steps = 0
     for batch in loader:
         batch = batch.to(device)
-        batch.pos = batch.pos.detach().requires_grad_(True)
         _attach_pos_to_x(batch)
 
         pred = _normalize_prediction_channels(forward_model(model, batch))
         target, schema = _normalize_target_channels(batch.y)
-        w_a_eff, w_b_eff, w_curl_eff, sample_weight = _resolve_loss_routing_from_batch(
+        w_a_eff, w_b_eff, sample_weight = _resolve_loss_routing_from_batch(
             batch=batch,
             schema=schema,
             w_a=w_a,
             w_b=w_b,
-            w_curl=w_curl,
         )
 
         total_loss, metrics = hybrid_physics_loss(
@@ -264,8 +256,6 @@ def train_epoch(
             operator=operator,
             w_a=w_a_eff,
             w_b=w_b_eff,
-            w_curl=w_curl_eff,
-            retain_graph=False,
         )
         total_loss = total_loss * sample_weight
 
@@ -277,7 +267,6 @@ def train_epoch(
         sums["total_loss"] += float(total_loss.detach().item())
         sums["a_loss"] += float(metrics["a_loss"].item())
         sums["b_loss"] += float(metrics["b_loss"].item())
-        sums["curl_loss"] += float(metrics["curl_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -290,26 +279,22 @@ def eval_epoch(
     operator: PhysicsOperator,
     w_a: float,
     w_b: float,
-    w_curl: float,
 ) -> Dict[str, float]:
-    # curl(A) requires gradient wrt coordinates, so we cannot wrap with torch.no_grad().
     model.eval()
-    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "curl_loss": 0.0}
+    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0}
     steps = 0
     for batch in loader:
         batch = batch.to(device)
-        batch.pos = batch.pos.detach().requires_grad_(True)
         _attach_pos_to_x(batch)
 
-        with torch.set_grad_enabled(True):
+        with torch.no_grad():
             pred = _normalize_prediction_channels(forward_model(model, batch))
             target, schema = _normalize_target_channels(batch.y)
-            w_a_eff, w_b_eff, w_curl_eff, sample_weight = _resolve_loss_routing_from_batch(
+            w_a_eff, w_b_eff, sample_weight = _resolve_loss_routing_from_batch(
                 batch=batch,
                 schema=schema,
                 w_a=w_a,
                 w_b=w_b,
-                w_curl=w_curl,
             )
             _, metrics = hybrid_physics_loss(
                 pred=pred,
@@ -318,13 +303,10 @@ def eval_epoch(
                 operator=operator,
                 w_a=w_a_eff,
                 w_b=w_b_eff,
-                w_curl=w_curl_eff,
-                retain_graph=False,
             )
         sums["total_loss"] += float(metrics["total_loss"].item() * sample_weight)
         sums["a_loss"] += float(metrics["a_loss"].item())
         sums["b_loss"] += float(metrics["b_loss"].item())
-        sums["curl_loss"] += float(metrics["curl_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -385,7 +367,6 @@ def main() -> None:
 
     best_train_total = float("inf")
     for epoch in range(1, args.epochs + 1):
-        curl_w = lambda_anneal(epoch, args.curl_warmup, args.curl_base, args.curl_max)
         train_loader_epoch = first_batch if first_batch is not None else train_loader
         train_metrics = train_epoch(
             model=model,
@@ -395,7 +376,6 @@ def main() -> None:
             operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
-            w_curl=curl_w,
         )
         best_train_total = min(best_train_total, train_metrics["total_loss"])
         val_metrics = eval_epoch(
@@ -405,23 +385,19 @@ def main() -> None:
             operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
-            w_curl=curl_w,
         )
 
         if epoch == 1 or epoch % 5 == 0 or epoch == args.epochs:
             LOG.info(
-                "epoch=%d curl_w=%.3f train(total=%.6f,a=%.6f,b=%.6f,curl=%.6f) "
-                "val(total=%.6f,a=%.6f,b=%.6f,curl=%.6f)",
+                "epoch=%d train(total=%.6f,a=%.6f,b=%.6f) "
+                "val(total=%.6f,a=%.6f,b=%.6f)",
                 epoch,
-                curl_w,
                 train_metrics["total_loss"],
                 train_metrics["a_loss"],
                 train_metrics["b_loss"],
-                train_metrics["curl_loss"],
                 val_metrics["total_loss"],
                 val_metrics["a_loss"],
                 val_metrics["b_loss"],
-                val_metrics["curl_loss"],
             )
 
     if args.overfit_single:

@@ -1,9 +1,9 @@
 """Loss functions for Phase 1 static 1/8 motor training.
 
-Hybrid strategy:
-- Supervise A directly
-- Supervise Bx/By directly
-- Enforce curl(A) ~= [Bx, By]
+Strategy:
+- Supervise A directly (vector potential)
+- Supervise Bx/By directly (flux density)
+- curl(A) consistency is evaluated in post-processing, not during training.
 """
 
 from __future__ import annotations
@@ -17,14 +17,6 @@ from .contracts import validate_loss_boundary_inputs
 from .physics_operators import PhysicsOperator
 
 
-def lambda_anneal(epoch: int, warmup_epochs: int, base_lambda: float, max_lambda: float) -> float:
-    """Linear warmup for a loss weight."""
-    if warmup_epochs <= 0:
-        return min(base_lambda, max_lambda)
-    scale = min(1.0, float(epoch) / float(warmup_epochs))
-    return float(min(max_lambda, base_lambda * (1.0 + scale)))
-
-
 def hybrid_physics_loss(
     pred: torch.Tensor,
     target: torch.Tensor,
@@ -33,13 +25,13 @@ def hybrid_physics_loss(
     *,
     w_a: float = 1.0,
     w_b: float = 1.0,
-    w_curl: float = 0.1,
-    retain_graph: bool = False,
 ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
-    """Compute weighted A + B + curl consistency loss.
+    """Compute weighted A + B supervision loss.
 
     Expects channel order [Bx, By, A, J].
     J is currently excluded from loss, but retained in the target contract.
+    curl(A) consistency is NOT computed here — use mesh_edge_curl_b() in
+    post-processing for physics consistency checks.
     """
     validate_loss_boundary_inputs(
         pred=pred,
@@ -59,19 +51,11 @@ def hybrid_physics_loss(
     a_loss = F.mse_loss(pred_a, target_a)
     b_loss = F.mse_loss(pred_b, target_b)
 
-    # TODO: curl(A) computation is temporarily disabled. PhysicsNeMo 26.03's
-    # TransformerEngine fuser has a backward bug (ctx._saved_tensors_range=None)
-    # that triggers when autograd.grad is called with retain_graph=True before
-    # total_loss.backward(). Will re-enable once the container is upgraded or
-    # a mesh-edge finite-difference curl is implemented.
-    curl_loss = torch.tensor(0.0, device=pred.device)
-
     total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss)
     metrics = {
         "total_loss": total_loss.detach(),
         "a_loss": a_loss.detach(),
         "b_loss": b_loss.detach(),
-        "curl_loss": curl_loss,
     }
     return total_loss, metrics
 
