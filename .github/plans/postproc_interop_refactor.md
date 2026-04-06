@@ -3,12 +3,12 @@
 
 ## 진행 상태 (체크리스트)
 
-- [ ] 1. `postproc_interop/model/` 패키지 생성 (5개 파일)
-- [ ] 2. `postproc_interop/adapters/` 신규 파일 생성 (4개)
-- [ ] 3. `postproc_interop/adapters/__init__.py` 업데이트
-- [ ] 4. `postproc_interop/__init__.py` 업데이트
-- [ ] 5. `postproc_interop/tabular.py` 업데이트
-- [ ] 6. 구 파일 삭제
+- [x] 1. `postproc_interop/model/` 패키지 생성 (15개 파일 — 원래 5개 + PBC/metadata 확장)
+- [x] 2. `postproc_interop/adapters/` 신규 파일 생성 (5개: MeshReader, H5Reader, H5PyMCADReader, TxtReader, VTUMeshReader)
+- [x] 3. `postproc_interop/adapters/__init__.py` 업데이트 (backward-compat aliases 포함)
+- [x] 4. `postproc_interop/__init__.py` 업데이트 (model, adapters, bridges 공개)
+- [x] 5. `postproc_interop/tabular.py` 업데이트 (new model package imports 사용)
+- [x] 6. 구 파일 삭제 (`model.py`, `adapters/base.py`, `adapters/h5_motorcad.py`, `adapters/vtu.py`)
 - [ ] 7. `eMach/tools/motorCAD/pyMCAD/magnetic.py` 업데이트
 
 ---

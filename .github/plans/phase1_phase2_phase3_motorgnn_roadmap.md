@@ -108,6 +108,14 @@ Use these comments directly in code files to drive GitHub Copilot generation:
 ### Objective
 Support time-varying topology/conditions without memory instability.
 
+### Contract freeze (mandatory — see phase2_dynamic_edge_pipeline.md)
+- ✅ TemporalMotorSample frozen dataclass with shape invariants
+- ✅ NormStats + pure normalize/denormalize roundtrip
+- ✅ build_sliding_band_edges pure function (KDTree, bidirectional, dedup)
+- ✅ collate_temporal_batch numpy stacker with sequence_len guard
+- ✅ Contract tests: 11 passed (test_phase2_contracts.py)
+- ✅ Memory profile: collation loop no-accumulation + no-aliasing (test_phase2_memory_profile.py)
+
 ### Implementation tasks
 - Build dynamic edge refresh for gap/sliding regions per timestep
 - Reuse static region topology to reduce overhead
@@ -115,9 +123,10 @@ Support time-varying topology/conditions without memory instability.
 - Apply normalization/standardization policy for mixed-scale physical features
 
 ### Verification checklist
-- No memory leak under long dataloader iteration
-- Stable GPU/CPU usage during multi-step epoch execution
-- Interpolated rotor angles do not produce boundary discontinuities
+- ✅ No memory leak under 100-batch collation loop (host numpy path)
+- [ ] No memory leak under long dataloader iteration (GPU path — Docker)
+- [ ] Stable GPU/CPU usage during multi-step epoch execution
+- [ ] Interpolated rotor angles do not produce boundary discontinuities
 
 ## Phase 3: Autoregressive Rollout Stability
 ### Objective
