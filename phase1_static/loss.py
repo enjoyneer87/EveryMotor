@@ -59,14 +59,19 @@ def hybrid_physics_loss(
     a_loss = F.mse_loss(pred_a, target_a)
     b_loss = F.mse_loss(pred_b, target_b)
 
-    pred_b_from_operator = operator.predict_b_from_pred(pred=pred, coords=coords, retain_graph=retain_graph)
-    curl_loss = F.mse_loss(pred_b_from_operator, target_b)
-    total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss) + (float(w_curl) * curl_loss)
+    # TODO: curl(A) computation is temporarily disabled. PhysicsNeMo 26.03's
+    # TransformerEngine fuser has a backward bug (ctx._saved_tensors_range=None)
+    # that triggers when autograd.grad is called with retain_graph=True before
+    # total_loss.backward(). Will re-enable once the container is upgraded or
+    # a mesh-edge finite-difference curl is implemented.
+    curl_loss = torch.tensor(0.0, device=pred.device)
+
+    total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss)
     metrics = {
         "total_loss": total_loss.detach(),
         "a_loss": a_loss.detach(),
         "b_loss": b_loss.detach(),
-        "curl_loss": curl_loss.detach(),
+        "curl_loss": curl_loss,
     }
     return total_loss, metrics
 

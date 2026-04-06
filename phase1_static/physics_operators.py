@@ -45,15 +45,26 @@ class Magnetostatics2DOperator(PhysicsOperator):
             raise ValueError(f"{self.name} requires coords with shape [N,2], got {tuple(coords.shape)}")
 
         pred_a = pred[:, self.channel_contract.a_index : self.channel_contract.a_index + 1]
+        # NOTE: create_graph=False because PhysicsNeMo MeshGraphNet uses
+        # @once_differentiable custom autograd ops that do not support
+        # higher-order differentiation. With create_graph=False, curl_loss
+        # serves as a monitoring metric only (gradient does NOT flow back
+        # to model params through the curl path). Direct A and B supervision
+        # remain the primary training signals.
+        # TODO: replace with mesh-edge finite-difference curl for trainable curl loss.
         grads = torch.autograd.grad(
             outputs=pred_a,
             inputs=coords,
             grad_outputs=torch.ones_like(pred_a),
-            create_graph=True,
+            create_graph=False,
             retain_graph=retain_graph,
             only_inputs=True,
             allow_unused=False,
         )[0]
+
+        dA_dx = grads[:, 0:1]
+        dA_dy = grads[:, 1:2]
+        return torch.cat([dA_dy, -dA_dx], dim=1)
 
         dA_dx = grads[:, 0:1]
         dA_dy = grads[:, 1:2]

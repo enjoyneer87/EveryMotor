@@ -33,5 +33,19 @@ services:
       - "8888:8888"
       - "6006:6006"
 
+    # GPU access
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
     # Example command (customize as needed)
     command: bash -lc "echo Container ready at /workspace/app && sleep infinity"

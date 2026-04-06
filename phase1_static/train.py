@@ -265,7 +265,7 @@ def train_epoch(
             w_a=w_a_eff,
             w_b=w_b_eff,
             w_curl=w_curl_eff,
-            retain_graph=True,
+            retain_graph=False,
         )
         total_loss = total_loss * sample_weight
 
