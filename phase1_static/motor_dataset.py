@@ -462,6 +462,7 @@ def build_samples_from_doe_manifest(
     source_filter = None if source_file_types is None else {str(name) for name in source_file_types}
 
     out: list[Dict[str, Any]] = []
+    missing_h5_cases: list[int] = []
     for case in manifest.get("cases", []):
         case_idx = int(case.get("index", -1))
         if case_filter is not None and case_idx not in case_filter:
@@ -479,7 +480,15 @@ def build_samples_from_doe_manifest(
             dtype=np.float32,
         )
 
-        for h5_ref in case.get("h5_paths", []) or []:
+        h5_refs = case.get("h5_paths", []) or []
+        if not h5_refs:
+            txt_refs = case.get("txt_paths", []) or []
+            phases_completed = case.get("phases_completed") or {}
+            if txt_refs or phases_completed.get("export_txt"):
+                missing_h5_cases.append(case_idx)
+            continue
+
+        for h5_ref in h5_refs:
             h5_path = _resolve_h5_candidate(root, case_idx, str(h5_ref))
             if h5_path is None:
                 continue
@@ -572,6 +581,19 @@ def build_samples_from_doe_manifest(
 
     if not out:
         raise RuntimeError(f"No phase samples created from DOE manifest under: {data_dir}")
+    if not out and missing_h5_cases:
+        case_labels = ", ".join(f"{idx:04d}" for idx in sorted(set(missing_h5_cases)))
+        raise ValueError(
+            "DOE manifest contains txt-only cases without h5_paths. "
+            f"Run the H5 export step first for cases: {case_labels}."
+        )
+
+    if missing_h5_cases:
+        LOG.warning(
+            "Skipping txt-only DOE cases without h5_paths. Run the H5 export step first: %s",
+            ", ".join(f"{idx:04d}" for idx in sorted(set(missing_h5_cases))),
+        )
+
     return out
 
 

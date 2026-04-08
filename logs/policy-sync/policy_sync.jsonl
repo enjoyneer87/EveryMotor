@@ -30,3 +30,549 @@
 {"ts":"2026-04-02T19:21:01.0991264+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
 {"ts":"2026-04-02T19:26:01.0489092+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
 {"ts":"2026-04-02T19:31:01.1315907+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:36:00.7841356+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:36:00.9896501+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T19:36:00.9966483+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T19:41:00.7777294+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:41:00.9490044+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T19:41:00.9560048+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T19:46:00.7806740+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:46:00.9453423+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T19:46:00.9519100+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T19:51:00.7890487+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:51:00.9526482+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T19:51:00.9586480+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T19:56:00.8004079+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T19:56:00.9715706+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T19:56:00.9785711+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:01:00.8026351+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:01:00.9641449+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:01:00.9701450+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:06:00.8195468+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:06:00.9876241+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:06:00.9946231+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:11:00.8409037+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:11:01.0041961+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:11:01.0101974+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:16:00.8469581+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:16:01.0146687+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:16:01.0212427+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:21:00.8466032+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:21:01.0111629+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:21:01.0171630+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:26:00.8413838+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:26:01.0097329+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:26:01.0157330+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:31:00.8604724+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:31:01.0255553+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:31:01.0315554+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:36:00.8805447+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:36:01.0515956+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:36:01.0585957+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:41:00.9061697+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:41:01.0768545+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:41:01.0838500+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:46:00.9019242+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:46:01.0770005+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:46:01.0835728+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:51:00.8942863+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:51:01.0748959+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:51:01.0818960+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T20:56:00.9116905+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T20:56:01.0823176+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T20:56:01.0893170+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:01:00.9644983+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:01:01.1627756+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:01:01.1693510+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:06:00.9336455+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:06:01.1000506+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:06:01.1070495+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:11:00.9197172+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:11:01.0931804+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:11:01.0998953+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:16:00.9389451+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:16:01.1142963+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:16:01.1213548+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:21:00.9381621+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:21:01.1083894+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:21:01.1149632+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:26:00.9460259+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:26:01.1177508+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:26:01.1253554+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:31:00.9452296+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:31:01.1093118+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:31:01.1158776+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:36:00.9596246+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:36:01.1339207+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:36:01.1419194+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:41:00.9444607+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:41:01.1071492+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:41:01.1142153+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:46:00.9637912+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:46:01.1390480+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:46:01.1456792+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:51:01.0095168+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:51:01.1745880+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:51:01.1825875+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T21:56:00.9949139+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T21:56:01.1774886+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T21:56:01.1844879+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:01:00.9800375+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:01:01.1628577+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:01:01.1714632+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:06:00.9846710+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:06:01.1493314+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:06:01.1553318+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:11:00.9915610+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:11:01.1615602+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:11:01.1685596+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:16:01.0052278+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:16:01.1735650+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:16:01.1815665+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:21:01.0167631+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:21:01.1833176+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:21:01.1903163+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:26:00.9978389+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:26:01.1651547+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:26:01.1723273+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:31:01.0135847+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:31:01.1805846+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:31:01.1865843+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:36:01.0499812+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:36:01.2167425+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:36:01.2233149+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:41:01.0440348+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:41:01.2092008+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:41:01.2167695+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:46:01.0413608+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:46:01.2108125+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:46:01.2173726+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:51:01.0489682+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:51:01.2145080+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:51:01.2205042+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T22:56:01.0615391+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T22:56:01.2281040+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T22:56:01.2357008+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:01:01.0696069+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:01:01.2367372+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:01:01.2443177+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:06:01.0783903+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:06:01.2459027+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:06:01.2529005+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:11:01.0863399+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:11:01.2543404+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:11:01.2603407+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:16:01.1000760+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:16:01.2721027+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:16:01.2791055+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:21:01.1247309+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:21:01.2930095+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:21:01.3000081+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:26:01.0957786+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:26:01.2596177+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:26:01.2656180+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:31:01.1172234+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:31:01.2808910+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:31:01.2878915+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:36:01.1327725+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:36:01.2986734+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:36:01.3056732+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:41:01.1326502+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:41:01.3091056+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:41:01.3161061+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:46:01.1330145+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:46:01.2987314+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:46:01.3057294+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:51:01.1441216+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:51:01.3083807+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:51:01.3143802+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-05T23:56:01.1622285+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-05T23:56:01.3340815+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-05T23:56:01.3411239+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:01:01.1529028+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:01:01.3363391+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:01:01.3433390+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:06:01.1619029+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:06:01.3269632+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:06:01.3339622+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:11:01.1602488+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:11:01.3283953+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:11:01.3353945+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:16:01.1817631+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:16:01.3563120+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:16:01.3638717+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:21:01.2027735+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:21:01.3708658+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:21:01.3778651+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:26:01.2162544+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:26:01.3887572+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:26:01.3953161+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:31:01.2032329+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:31:01.3798639+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:31:01.3878646+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:36:01.2322268+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:36:01.4037912+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:36:01.4107878+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:41:01.2374643+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:41:01.4063867+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:41:01.4140484+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:46:01.2213850+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:46:01.3889405+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:46:01.3959919+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:51:01.2389211+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:51:01.4053135+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:51:01.4123106+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T00:56:01.2516581+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T00:56:01.4225894+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T00:56:01.4285894+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:01:01.2576127+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:01:01.4267868+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:01:01.4340000+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:06:01.2619940+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:06:01.4251586+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:06:01.4311612+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:11:01.2724571+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:11:01.4431068+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:11:01.4491057+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:16:01.2983403+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:16:01.4710250+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:16:01.4775882+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:21:01.2893686+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:21:01.4528925+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:21:01.4594736+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:26:01.2960579+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:26:01.4647122+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:26:01.4707112+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:31:01.3429980+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:31:01.5141876+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:31:01.5217685+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:36:01.3512450+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:36:01.5286236+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:36:01.5351955+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:41:01.3081768+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:41:01.4925243+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:41:01.5000362+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:46:01.3190787+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:46:01.4840779+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:46:01.4900780+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:51:01.3205432+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:51:01.4909237+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:51:01.4979233+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T01:56:01.3443886+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T01:56:01.5184057+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T01:56:01.5265309+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:01:01.3319495+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:01:01.4985019+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:01:01.5055010+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:06:01.3567290+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:06:01.5210903+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:06:01.5280898+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:11:01.3582728+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:11:01.5244421+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:11:01.5314926+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:16:01.3701225+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:16:01.5383358+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:16:01.5464250+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:21:01.3688951+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:21:01.5333374+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:21:01.5403372+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:26:01.3737716+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:26:01.5445115+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:26:01.5515106+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:31:01.3819587+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:31:01.5486750+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:31:01.5556731+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:36:01.3830526+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:36:01.5545746+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:36:01.5615738+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:41:01.3776316+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:41:01.5451528+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:41:01.5516695+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:46:01.3935542+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:46:01.5635144+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:46:01.5695145+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:51:01.4010029+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:51:01.5685766+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:51:01.5755735+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T02:56:00.4263081+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T02:56:00.5960862+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T02:56:00.6036466+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:01:00.4289821+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:01:00.5956331+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:01:00.6027578+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:06:00.4330536+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:06:00.5967670+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:06:00.6033488+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:11:00.4389867+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:11:00.6009040+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:11:00.6069055+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:16:00.4585973+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:16:00.6282184+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:16:00.6352191+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:21:00.4530816+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:21:00.6183013+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:21:00.6248931+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:26:00.4555927+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:26:00.6249656+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:26:00.6319649+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:31:00.4913928+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:31:00.6683369+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:31:00.6753353+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:36:00.4984018+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:36:00.6736360+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:36:00.6796366+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:41:00.5029072+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:41:00.6744383+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:41:00.6815258+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:46:00.5177938+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:46:00.6926767+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:46:00.6996763+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:51:00.4772508+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:51:00.6545955+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:51:00.6615956+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T03:56:00.5093120+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T03:56:00.6819022+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T03:56:00.6889010+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:01:00.5115028+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:01:00.6746751+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:01:00.6812651+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:06:00.5186250+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:06:00.6855627+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:06:00.6925615+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:11:00.5202263+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:11:00.6957855+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:11:00.7033605+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:16:00.5402914+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:16:00.7115724+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:16:00.7185726+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:21:00.5318712+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:21:00.6980768+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:21:00.7050774+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:26:00.5496130+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:26:00.7148522+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:26:00.7219579+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:31:00.5554917+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:31:00.7193975+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:31:00.7263975+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:36:00.5709347+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:36:00.7425147+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:36:00.7495147+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:41:00.5733825+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:41:00.7458703+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:41:00.7528676+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:46:00.5790975+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:46:00.7476044+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:46:00.7546714+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:51:00.6150818+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:51:00.7803114+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:51:00.7863116+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T04:56:00.6477857+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T04:56:00.8165379+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T04:56:00.8235379+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:01:00.6283668+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:01:00.8150277+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:01:00.8220265+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:06:00.6232213+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:06:00.7928826+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:06:00.8011581+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:11:00.6369651+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:11:00.8035404+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:11:00.8105417+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:16:00.6557799+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:16:00.8257801+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:16:00.8333478+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:21:00.6630063+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:21:00.8360550+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:21:00.8430549+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:26:00.6754820+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:26:00.8411266+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:26:00.8476388+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:31:00.6778443+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:31:00.8460014+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:31:00.8520013+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:36:00.6962834+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:36:00.8679990+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:36:00.8739997+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:41:00.6949802+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:41:00.8651628+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:41:00.8729204+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:46:00.6994922+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:46:00.8651911+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:46:00.8721923+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:51:00.7036417+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:51:00.8734554+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:51:00.8804553+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T05:56:00.7212409+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T05:56:00.8883516+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T05:56:00.8949460+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:01:00.7158734+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:01:00.8887797+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:01:00.8947800+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:06:00.7206476+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:06:00.8924737+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:06:00.9000668+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:11:00.7195774+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:11:00.9019347+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:11:00.9089348+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:16:00.7475132+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:16:00.9270297+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:16:00.9340295+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:21:00.7437476+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:21:00.9211424+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:21:00.9276571+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:26:00.7497850+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:26:00.9214073+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:26:00.9288736+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:31:00.7659083+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:31:00.9378339+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:31:00.9464265+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:36:00.7821077+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:36:00.9526603+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:36:00.9596609+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:41:00.7706668+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:41:00.9349117+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:41:00.9414943+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:46:00.7781137+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:46:00.9440504+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:46:00.9510481+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:51:00.7825558+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:51:00.9517721+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:51:00.9593556+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T06:56:00.8010846+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T06:56:00.9770834+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T06:56:00.9841628+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:01:00.8027710+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:01:00.9693922+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:01:00.9763951+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:06:00.8111421+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:06:00.9772591+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:06:00.9832600+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:11:00.8097253+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:11:00.9745203+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:11:00.9795944+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:16:00.8305448+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:16:01.0038894+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:16:01.0098879+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:21:00.8336276+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:21:00.9982684+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:21:01.0052696+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:26:00.8684403+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:26:01.0400766+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:26:01.0470768+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:31:00.8511422+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:31:01.0278391+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:31:01.0344285+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:36:00.8549139+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:36:01.0303216+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:36:01.0390652+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:41:00.8517337+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:41:01.0148418+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:41:01.0208425+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:46:00.8635561+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:46:01.0302561+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:46:01.0367686+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:51:00.8909485+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:51:01.0555669+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:51:01.0621440+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T07:56:00.8962520+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T07:56:01.0723019+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T07:56:01.0778618+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:01:00.8849088+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:01:01.0508286+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:01:01.0574054+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:06:00.9035298+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:06:01.0692389+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:06:01.0762392+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:11:00.9181901+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:11:01.0849271+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:11:01.0920807+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:16:00.9326910+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:16:01.1062383+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:16:01.1138034+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:21:00.9227967+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:21:01.0922050+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:21:01.0992038+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:26:00.9333128+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:26:01.0975188+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:26:01.1045183+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:31:00.9715143+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:31:01.1400505+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:31:01.1470484+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:36:00.9473190+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:36:01.1143548+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:36:01.1213541+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:41:00.9443294+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:41:01.1093825+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:41:01.1163830+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:46:00.9536008+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:46:01.1182233+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:46:01.1242223+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:51:01.1115739+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T08:51:01.2891721+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/phase1_phase2_phase3_motorgnn_roadmap.md\n?? .github/plans/phase2_dynamic_edge_pipeline.md"}}
+{"ts":"2026-04-06T08:51:01.2971721+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T08:56:01.1003381+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:01:01.2517777+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:06:01.0719970+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:11:01.1267859+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:16:01.1708423+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:21:01.1415249+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:26:01.1241548+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:31:01.1576140+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:36:01.1488964+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:41:01.1302868+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:46:01.1754275+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:51:01.1615571+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T09:56:01.1895215+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:01:01.1849375+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:06:01.2700983+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:11:01.2801342+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:16:01.2699531+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:21:01.2282635+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:26:01.2295433+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:31:01.2551974+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:36:01.2232599+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:41:01.1780986+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:46:01.1762482+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:51:01.1780469+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T10:56:01.2546311+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:01:01.2110066+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:06:01.1889104+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:11:01.2340530+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:16:01.2236172+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:21:01.2226280+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:26:01.2709343+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:31:01.2716010+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:36:01.2471651+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:41:01.2338739+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:46:01.2690449+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:51:01.2964704+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T11:56:01.2770361+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:01:01.3000865+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:06:01.2902536+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:11:01.2689039+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:16:01.2737449+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:21:01.2741190+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:26:01.2916699+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:31:01.2940887+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:36:01.3187582+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:41:01.3409199+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:46:01.3289950+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:51:01.3694140+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T12:56:01.4262670+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:01:01.4192131+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:06:01.4415861+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:11:00.4422331+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:16:00.4732012+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:21:00.4585322+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:21:00.6341882+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"M .github/plans/postproc_interop_refactor.md"}}
+{"ts":"2026-04-06T13:21:00.6411870+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-06T13:26:00.4580145+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:31:00.4586556+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:36:00.4726365+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:41:00.4708839+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:46:00.5027018+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:51:00.5306643+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T13:56:00.5067906+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T14:01:00.4985059+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T14:06:00.4903394+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-06T14:11:00.5363086+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}

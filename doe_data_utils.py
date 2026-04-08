@@ -409,10 +409,15 @@ def load_doe_data(data_dir: str, max_steps_per_case: Optional[int] = None,
 
     all_records: List[dict] = []
     all_conditions: List[Dict[str, float]] = []
+    missing_h5_cases: List[int] = []
 
     for case in manifest["cases"]:
         h5_paths = case.get("h5_paths") or []
         if not h5_paths:
+            txt_paths = case.get("txt_paths") or []
+            phases_completed = case.get("phases_completed") or {}
+            if txt_paths or phases_completed.get("export_txt"):
+                missing_h5_cases.append(int(case.get("index", -1)))
             continue
 
         condition = {}
@@ -466,6 +471,20 @@ def load_doe_data(data_dir: str, max_steps_per_case: Optional[int] = None,
                 print(f"  case {idx:04d}: {n_new} timesteps | "
                       f"RB={condition.get('Ratio_Bore', '?'):.4f} "
                       f"Ipk={condition.get('PeakCurrent', '?'):.1f}")
+
+    if not all_records and missing_h5_cases:
+        case_labels = ", ".join(f"{idx:04d}" for idx in sorted(set(missing_h5_cases)))
+        raise ValueError(
+            "DOE manifest contains txt-only cases without h5_paths. "
+            f"Run the H5 export step first for cases: {case_labels}."
+        )
+
+    if missing_h5_cases:
+        case_labels = ", ".join(f"{idx:04d}" for idx in sorted(set(missing_h5_cases)))
+        print(
+            "[WARN] skipping txt-only DOE cases without h5_paths. "
+            f"Run the H5 export step first: {case_labels}"
+        )
 
     print(f"\nTotal records loaded: {len(all_records)}")
     return all_records, all_conditions
