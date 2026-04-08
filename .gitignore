@@ -49,3 +49,6 @@ _backup_pre_nested_repo_move/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# Local agent worktrees
+.claude/worktrees/
