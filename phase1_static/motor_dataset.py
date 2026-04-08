@@ -335,6 +335,7 @@ class StaticMotorDataset(Dataset):
             by_raw = _first_present(s, ("b_y", "by", "gt_by_node", "gt_by"))
             a_raw = _first_present(s, ("a", "gt_a_node", "gt_a"))
             j_raw = _first_present(s, ("j", "gt_j_node", "gt_j"))
+            je_raw = _first_present(s, ("je", "gt_je_node", "gt_je"))
             if bx_raw is None or by_raw is None:
                 raise ValueError("Sample requires either 'y' or explicit Bx/By channels")
 
@@ -342,7 +343,8 @@ class StaticMotorDataset(Dataset):
             by = _as_feature(to_tensor(by_raw, dtype=self.dtype), 2)
             a = _as_feature(to_tensor(a_raw if a_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
             j = _as_feature(to_tensor(j_raw if j_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
-            y_raw = torch.cat([bx, by, a, j], dim=1)
+            je = _as_feature(to_tensor(je_raw if je_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
+            y_raw = torch.cat([bx, by, a, j, je], dim=1)
 
         y, _ = normalize_channels_to_bx_by_a_j(y_raw)
 
@@ -445,7 +447,7 @@ def build_samples_from_doe_manifest(
             infer_coupling_policy,
             infer_step_semantics,
             parse_h5_timeseries,
-            scatter_elem_to_node,
+            scatter_elem_to_node_with_je,
         )
     except ImportError as exc:
         raise ImportError("doe_data_utils import failed. Run from repository root.") from exc
@@ -519,8 +521,8 @@ def build_samples_from_doe_manifest(
                 cond_feat = np.tile(cond_vec[None, :], (n_nodes, 1))
                 node_type_onehot = np.concatenate([node_reg, cond_feat], axis=1).astype(np.float32)
 
-                node_bx, node_by, node_a, node_j = scatter_elem_to_node(rec)
-                y = np.stack([node_bx, node_by, node_a, node_j], axis=1).astype(np.float32)
+                node_bx, node_by, node_a, node_j, node_je = scatter_elem_to_node_with_je(rec)
+                y = np.stack([node_bx, node_by, node_a, node_j, node_je], axis=1).astype(np.float32)
 
                 edge_pairs = np.asarray(rec["_edge_pairs"], dtype=np.int64)
                 if edge_pairs.ndim != 2 or edge_pairs.shape[1] != 2:

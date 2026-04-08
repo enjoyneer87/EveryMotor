@@ -106,11 +106,13 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
         by_raw = np.asarray(f["fields/by"][:], dtype=np.float32)
         a_raw = np.asarray(f["fields/a"][:], dtype=np.float32) if "fields/a" in f else np.zeros_like(bx_raw)
         j_raw = np.asarray(f["fields/j"][:], dtype=np.float32) if "fields/j" in f else np.zeros_like(bx_raw)
+        je_raw = np.asarray(f["fields/je"][:], dtype=np.float32) if "fields/je" in f else np.zeros_like(bx_raw)
 
         bx_mat = bx_raw.reshape(1, -1) if bx_raw.ndim == 1 else bx_raw
         by_mat = by_raw.reshape(1, -1) if by_raw.ndim == 1 else by_raw
         a_mat = a_raw.reshape(1, -1) if a_raw.ndim == 1 else a_raw
         j_mat = j_raw.reshape(1, -1) if j_raw.ndim == 1 else j_raw
+        je_mat = je_raw.reshape(1, -1) if je_raw.ndim == 1 else je_raw
 
         meta_time = np.asarray(f["meta/time_s"][:], dtype=np.float64) if "meta/time_s" in f else None
         meta_rot = np.asarray(f["meta/rotate_step"][:], dtype=np.float64) if "meta/rotate_step" in f else None
@@ -200,7 +202,7 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
                 "pos_x": pos_x.astype(np.float32),
                 "pos_y": pos_y.astype(np.float32),
                 "bx": bx_mat[si], "by": by_mat[si],
-                "a": a_mat[si], "j": j_mat[si],
+                "a": a_mat[si], "j": j_mat[si], "je": je_mat[si],
                 "_i1v": i1v, "_i2v": i2v, "_i3v": i3v,
                 "_reg_code": reg_v.astype(np.int32),
                 "_valid_elem": valid_elem,
@@ -244,6 +246,39 @@ def scatter_elem_to_node(rec: dict):
     cnt = np.clip(cnt, 1.0, None)
 
     return sum_bx / cnt, sum_by / cnt, sum_a / cnt, sum_j / cnt
+
+
+def scatter_elem_to_node_with_je(rec: dict):
+    """Scatter element FEA fields to node-averaged values including Je.
+
+    Returns (node_bx, node_by, node_a, node_j, node_je) arrays of shape (n,).
+    """
+    n = rec["_n"]
+    all_idx = rec["_all_idx_3"]
+    valid_elem = rec["_valid_elem"]
+    m = len(valid_elem)
+
+    bx_v = rec["bx"][:m][valid_elem].astype(np.float32)
+    by_v = rec["by"][:m][valid_elem].astype(np.float32)
+    aa_v = rec["a"][:m][valid_elem].astype(np.float32)
+    jj_v = rec["j"][:m][valid_elem].astype(np.float32)
+    jje_v = rec.get("je", np.zeros_like(rec["j"]))[:m][valid_elem].astype(np.float32)
+
+    all_bx = np.tile(bx_v, 3)
+    all_by = np.tile(by_v, 3)
+    all_a = np.tile(aa_v, 3)
+    all_j = np.tile(jj_v, 3)
+    all_je = np.tile(jje_v, 3)
+
+    sum_bx = np.zeros(n, np.float32); np.add.at(sum_bx, all_idx, all_bx)
+    sum_by = np.zeros(n, np.float32); np.add.at(sum_by, all_idx, all_by)
+    sum_a = np.zeros(n, np.float32); np.add.at(sum_a, all_idx, all_a)
+    sum_j = np.zeros(n, np.float32); np.add.at(sum_j, all_idx, all_j)
+    sum_je = np.zeros(n, np.float32); np.add.at(sum_je, all_idx, all_je)
+    cnt = np.zeros(n, np.float32); np.add.at(cnt, all_idx, 1.0)
+    cnt = np.clip(cnt, 1.0, None)
+
+    return sum_bx / cnt, sum_by / cnt, sum_a / cnt, sum_j / cnt, sum_je / cnt
 
 
 # ---------------------------------------------------------------------------

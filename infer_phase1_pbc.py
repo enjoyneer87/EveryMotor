@@ -54,6 +54,10 @@ from phase1_static.motor_dataset import (
 from phase1_static.contracts import normalize_channels_to_bx_by_a_j
 
 
+CHANNEL_ORDER = ["Bx", "By", "A", "J", "Je"]
+CHANNEL_KEYS = tuple(channel.lower() for channel in CHANNEL_ORDER)
+
+
 # ─── Checkpoint I/O ─────────────────────────────────────────────────────────
 
 def save_checkpoint(
@@ -72,7 +76,7 @@ def save_checkpoint(
             "epoch": epoch,
             "best_loss": best_loss,
             "args": args_dict,
-            "channel_order": ["Bx", "By", "A", "J"],
+            "channel_order": CHANNEL_ORDER,
             "pbc_enabled": True,
             "pbc_rotation_deg": -45.0,
         },
@@ -96,6 +100,8 @@ def load_symm_mgn(
     saved_args = ckpt.get("args", {})
     input_dim = saved_args.get("input_dim", None)
     hidden_dim = saved_args.get("hidden_dim", 128)
+    channel_order = ckpt.get("channel_order") or saved_args.get("channel_order") or CHANNEL_ORDER
+    output_dim = int(saved_args.get("output_dim", len(channel_order)))
 
     if input_dim is None:
         raise RuntimeError(
@@ -103,7 +109,7 @@ def load_symm_mgn(
             "Re-train with the current phase1_static.train to regenerate the checkpoint."
         )
 
-    model = build_model(input_dim=input_dim, hidden_dim=hidden_dim, output_dim=4)
+    model = build_model(input_dim=input_dim, hidden_dim=hidden_dim, output_dim=output_dim)
     model.load_state_dict(ckpt["model_state_dict"])
     model = model.to(device)
     model.eval()
@@ -143,24 +149,24 @@ def run_inference(
         all_gt.append(gt.detach().cpu().numpy())
         all_pos.append(batch.pos.detach().cpu().numpy())
 
-    pred_np = np.concatenate(all_pred, axis=0)   # [N_total, 4]
-    gt_np = np.concatenate(all_gt, axis=0)        # [N_total, 4]
+    pred_np = np.concatenate(all_pred, axis=0)   # [N_total, 5]
+    gt_np = np.concatenate(all_gt, axis=0)        # [N_total, 5]
     pos_np = np.concatenate(all_pos, axis=0)      # [N_total, 2]
 
-    return {
+    result = {
         "pos_x": pos_np[:, 0],
         "pos_y": pos_np[:, 1],
-        "gt_bx":  gt_np[:, 0], "gt_by":  gt_np[:, 1],
-        "gt_a":   gt_np[:, 2], "gt_j":   gt_np[:, 3],
-        "pred_bx": pred_np[:, 0], "pred_by": pred_np[:, 1],
-        "pred_a":  pred_np[:, 2], "pred_j":  pred_np[:, 3],
     }
+    for channel_index, channel_name in enumerate(CHANNEL_KEYS):
+        result[f"gt_{channel_name}"] = gt_np[:, channel_index]
+        result[f"pred_{channel_name}"] = pred_np[:, channel_index]
+    return result
 
 
 def compute_per_channel_metrics(result: Dict[str, np.ndarray]) -> Dict[str, float]:
     """Compute RMSE and relative error per channel."""
     metrics = {}
-    for ch in ("bx", "by", "a", "j"):
+    for ch in CHANNEL_KEYS:
         gt = result[f"gt_{ch}"]
         pred = result[f"pred_{ch}"]
         err = gt - pred
@@ -185,9 +191,9 @@ def save_infer_npz(
         pos_x=result["pos_x"],
         pos_y=result["pos_y"],
         gt_bx=result["gt_bx"], gt_by=result["gt_by"],
-        gt_a=result["gt_a"], gt_j=result["gt_j"],
+        gt_a=result["gt_a"], gt_j=result["gt_j"], gt_je=result["gt_je"],
         pred_bx=result["pred_bx"], pred_by=result["pred_by"],
-        pred_a=result["pred_a"], pred_j=result["pred_j"],
+        pred_a=result["pred_a"], pred_j=result["pred_j"], pred_je=result["pred_je"],
         metrics=json.dumps(metrics),
         meta=json.dumps(meta),
     )
@@ -249,7 +255,7 @@ def main() -> None:
 
     metrics = compute_per_channel_metrics(result)
     print("  Per-channel RMSE:")
-    for ch in ("bx", "by", "a", "j"):
+    for ch in CHANNEL_KEYS:
         print(f"    {ch}: RMSE={metrics[f'rmse_{ch}']:.5f}  rel={metrics[f'rel_err_{ch}']:.3f}")
 
     meta = {
@@ -258,7 +264,7 @@ def main() -> None:
         "case_idx": args.case_idx,
         "n_samples": len(samples),
         "elapsed_s": round(elapsed, 3),
-        "channel_order": ["Bx", "By", "A", "J"],
+        "channel_order": ckpt.get("channel_order", CHANNEL_ORDER),
         "pbc_enabled": True,
         "pbc_rotation_deg": -45.0,
         "source_file_types": args.source_file_types or [],

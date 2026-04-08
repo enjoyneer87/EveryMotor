@@ -25,11 +25,12 @@ def hybrid_physics_loss(
     *,
     w_a: float = 1.0,
     w_b: float = 1.0,
+    w_current: float = 1.0,
 ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
     """Compute weighted A + B supervision loss.
 
-    Expects channel order [Bx, By, A, J].
-    J is currently excluded from loss, but retained in the target contract.
+    Expects channel order [Bx, By, A, J, Je].
+    J/Je current-density channels are supervised jointly via one current loss.
     curl(A) consistency is NOT computed here — use mesh_edge_curl_b() in
     post-processing for physics consistency checks.
     """
@@ -42,20 +43,25 @@ def hybrid_physics_loss(
 
     b0, b1 = operator.channel_contract.b_slice
     a_index = operator.channel_contract.a_index
+    c0, c1 = operator.channel_contract.current_density_slice
 
     pred_b = pred[:, b0:b1]
     target_b = target[:, b0:b1]
     pred_a = pred[:, a_index:a_index + 1]
     target_a = target[:, a_index:a_index + 1]
+    pred_current = pred[:, c0:c1]
+    target_current = target[:, c0:c1]
 
     a_loss = F.mse_loss(pred_a, target_a)
     b_loss = F.mse_loss(pred_b, target_b)
+    current_loss = F.mse_loss(pred_current, target_current)
 
-    total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss)
+    total_loss = (float(w_a) * a_loss) + (float(w_b) * b_loss) + (float(w_current) * current_loss)
     metrics = {
         "total_loss": total_loss.detach(),
         "a_loss": a_loss.detach(),
         "b_loss": b_loss.detach(),
+        "current_loss": current_loss.detach(),
     }
     return total_loss, metrics
 

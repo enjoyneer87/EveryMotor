@@ -17,11 +17,12 @@ def test_channel_normalization_contract_a_bx_by_to_bx_by_a_j() -> None:
     norm, schema = normalize_channels_to_bx_by_a_j(y)
 
     assert schema == "a_bx_by"
-    assert norm.shape == (2, 4)
+    assert norm.shape == (2, 5)
     assert torch.allclose(norm[:, 0], torch.tensor([1.0, 4.0]))
     assert torch.allclose(norm[:, 1], torch.tensor([2.0, 5.0]))
     assert torch.allclose(norm[:, 2], torch.tensor([3.0, 6.0]))
     assert torch.allclose(norm[:, 3], torch.zeros(2))
+    assert torch.allclose(norm[:, 4], torch.zeros(2))
 
 
 def test_loader_to_training_boundary_contract_accepts_valid_batch() -> None:
@@ -33,16 +34,16 @@ def test_loader_to_training_boundary_contract_accepts_valid_batch() -> None:
         pos=torch.tensor([[0.0, 0.0], [1.0, 0.0], [0.0, 1.0]], dtype=torch.float32),
         edge_index=torch.tensor([[0, 1, 2], [1, 2, 0]], dtype=torch.long),
         edge_attr=torch.tensor([[1.0], [-1.0], [1.0]], dtype=torch.float32),
-        y=torch.randn(3, 4),
+        y=torch.randn(3, 5),
     )
 
     schema = validate_graph_batch_contract(batch, spatial_dim=2)
-    assert schema == "bx_by_a_j"
+    assert schema == "bx_by_a_j_je"
 
 
 def test_training_to_loss_boundary_contract_rejects_bad_coords() -> None:
-    pred = torch.randn(4, 4)
-    target = torch.randn(4, 4)
+    pred = torch.randn(4, 5)
+    target = torch.randn(4, 5)
     coords = torch.randn(3, 2)
 
     with pytest.raises(ValueError, match="same N dimension"):

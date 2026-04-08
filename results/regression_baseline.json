@@ -1,18 +1,24 @@
 {
-  "_comment": "Phase 1 overfit-single baseline. Update when training config changes significantly.",
-  "timestamp": "2026-04-03",
-  "git_branch": "codex/phase-1-static-1-8-model",
-  "run_context": "Docker PhysicsNeMo (physicsnemo container), /workspace/app",
+  "_comment": "Phase 1 overfit-single baseline for the 5-channel [Bx, By, A, J, Je] contract.",
+  "timestamp": "2026-04-08",
+  "git_branch": "claude/lucid-chaplygin",
+  "run_context": "Docker motor_compare container, /workspace/app",
   "overfit_target": 0.01,
-  "best_train_total": 0.000344,
+  "best_train_total": 7.941950570966583e-06,
   "epoch_at_best": 150,
   "seed": 42,
   "model": "MeshGraphNet",
-  "num_input_features": 4,
-  "num_output_features": 4,
-  "channel_order": ["Bx", "By", "A", "J"],
+  "num_input_features": 3,
+  "num_output_features": 5,
+  "channel_order": [
+    "Bx",
+    "By",
+    "A",
+    "J",
+    "Je"
+  ],
   "pbc_enabled": true,
   "pbc_rotation_deg": -45.0,
   "anti_periodic_sign": -1.0,
-  "notes": "First verified overfit-single run post PBC integration. interior_edge_index fixed to [2,E] layout."
+  "notes": "Refreshed after enabling Je supervision end-to-end in the Phase 1 pipeline."
 }

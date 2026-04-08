@@ -116,6 +116,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--contract-check-only", action="store_true", help="Validate contracts and exit")
     p.add_argument("--weight-a", type=float, default=1.0, help="Supervised A loss weight")
     p.add_argument("--weight-b", type=float, default=1.0, help="Supervised Bx/By loss weight")
+    p.add_argument("--weight-current", type=float, default=1.0, help="Supervised J/Je loss weight")
     p.add_argument("--overfit-single", action="store_true", help="Repeat the first batch to check overfitting")
     p.add_argument("--overfit-target", type=float, default=1e-4, help="Pass threshold for overfit-single train loss")
     p.add_argument(
@@ -172,7 +173,8 @@ def _resolve_loss_routing_from_batch(
     schema: str,
     w_a: float,
     w_b: float,
-) -> Tuple[float, float, float]:
+    w_current: float,
+) -> Tuple[float, float, float, float]:
     """Resolve effective loss weights from schema and batch fidelity metadata."""
     fidelity_code, coupling_code = validate_batch_fidelity_policy(batch)
     a_scale, b_scale, _curl_scale, sample_weight_mult = resolve_loss_routing_from_codes(
@@ -185,8 +187,12 @@ def _resolve_loss_routing_from_batch(
         w_a_eff = 0.0
 
     w_b_eff = float(w_b) * b_scale
+    w_current_eff = float(w_current) * b_scale
+    if schema in {"a_bx_by", "bx_by", "a_only"}:
+        w_current_eff = 0.0
+
     sample_weight_eff = _resolve_sample_weight(batch) * sample_weight_mult
-    return w_a_eff, w_b_eff, sample_weight_eff
+    return w_a_eff, w_b_eff, w_current_eff, sample_weight_eff
 
 
 def _attach_pos_to_x(batch) -> None:
@@ -232,9 +238,10 @@ def train_epoch(
     operator: PhysicsOperator,
     w_a: float,
     w_b: float,
+    w_current: float,
 ) -> Dict[str, float]:
     model.train()
-    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0}
+    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "current_loss": 0.0}
     steps = 0
     for batch in loader:
         batch = batch.to(device)
@@ -242,11 +249,12 @@ def train_epoch(
 
         pred = _normalize_prediction_channels(forward_model(model, batch))
         target, schema = _normalize_target_channels(batch.y)
-        w_a_eff, w_b_eff, sample_weight = _resolve_loss_routing_from_batch(
+        w_a_eff, w_b_eff, w_current_eff, sample_weight = _resolve_loss_routing_from_batch(
             batch=batch,
             schema=schema,
             w_a=w_a,
             w_b=w_b,
+            w_current=w_current,
         )
 
         total_loss, metrics = hybrid_physics_loss(
@@ -256,6 +264,7 @@ def train_epoch(
             operator=operator,
             w_a=w_a_eff,
             w_b=w_b_eff,
+            w_current=w_current_eff,
         )
         total_loss = total_loss * sample_weight
 
@@ -267,6 +276,7 @@ def train_epoch(
         sums["total_loss"] += float(total_loss.detach().item())
         sums["a_loss"] += float(metrics["a_loss"].item())
         sums["b_loss"] += float(metrics["b_loss"].item())
+        sums["current_loss"] += float(metrics["current_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -279,9 +289,10 @@ def eval_epoch(
     operator: PhysicsOperator,
     w_a: float,
     w_b: float,
+    w_current: float,
 ) -> Dict[str, float]:
     model.eval()
-    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0}
+    sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "current_loss": 0.0}
     steps = 0
     for batch in loader:
         batch = batch.to(device)
@@ -290,11 +301,12 @@ def eval_epoch(
         with torch.no_grad():
             pred = _normalize_prediction_channels(forward_model(model, batch))
             target, schema = _normalize_target_channels(batch.y)
-            w_a_eff, w_b_eff, sample_weight = _resolve_loss_routing_from_batch(
+            w_a_eff, w_b_eff, w_current_eff, sample_weight = _resolve_loss_routing_from_batch(
                 batch=batch,
                 schema=schema,
                 w_a=w_a,
                 w_b=w_b,
+                w_current=w_current,
             )
             _, metrics = hybrid_physics_loss(
                 pred=pred,
@@ -303,10 +315,12 @@ def eval_epoch(
                 operator=operator,
                 w_a=w_a_eff,
                 w_b=w_b_eff,
+                w_current=w_current_eff,
             )
         sums["total_loss"] += float(metrics["total_loss"].item() * sample_weight)
         sums["a_loss"] += float(metrics["a_loss"].item())
         sums["b_loss"] += float(metrics["b_loss"].item())
+        sums["current_loss"] += float(metrics["current_loss"].item())
         steps += 1
     denom = max(steps, 1)
     return {k: v / denom for k, v in sums.items()}
@@ -355,7 +369,7 @@ def main() -> None:
     model = build_model(
         input_dim=input_dim,
         hidden_dim=args.hidden_dim,
-        output_dim=4,
+        output_dim=5,
     )
     model = model.to(device)
 
@@ -376,6 +390,7 @@ def main() -> None:
             operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
+            w_current=args.weight_current,
         )
         best_train_total = min(best_train_total, train_metrics["total_loss"])
         val_metrics = eval_epoch(
@@ -385,19 +400,22 @@ def main() -> None:
             operator=operator,
             w_a=args.weight_a,
             w_b=args.weight_b,
+            w_current=args.weight_current,
         )
 
         if epoch == 1 or epoch % 5 == 0 or epoch == args.epochs:
             LOG.info(
-                "epoch=%d train(total=%.6f,a=%.6f,b=%.6f) "
-                "val(total=%.6f,a=%.6f,b=%.6f)",
+                "epoch=%d train(total=%.6f,a=%.6f,b=%.6f,current=%.6f) "
+                "val(total=%.6f,a=%.6f,b=%.6f,current=%.6f)",
                 epoch,
                 train_metrics["total_loss"],
                 train_metrics["a_loss"],
                 train_metrics["b_loss"],
+                train_metrics["current_loss"],
                 val_metrics["total_loss"],
                 val_metrics["a_loss"],
                 val_metrics["b_loss"],
+                val_metrics["current_loss"],
             )
 
     if args.overfit_single:
@@ -423,6 +441,7 @@ def main() -> None:
             args_dict={
                 "input_dim": input_dim,
                 "hidden_dim": args.hidden_dim,
+                "output_dim": 5,
                 "epochs": args.epochs,
                 "lr": args.lr,
                 "seed": args.seed,
