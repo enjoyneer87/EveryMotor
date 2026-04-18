@@ -29,8 +29,8 @@ def hybrid_physics_loss(
 ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
     """Compute weighted A + B supervision loss.
 
-    Expects channel order [Bx, By, A, J, Je].
-    J/Je current-density channels are supervised jointly via one current loss.
+    Expects channel order [Bx, By, A, Je].
+    Je current-density channel is supervised via current loss.
     curl(A) consistency is NOT computed here — use mesh_edge_curl_b() in
     post-processing for physics consistency checks.
     """

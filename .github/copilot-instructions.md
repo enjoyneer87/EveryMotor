@@ -58,3 +58,42 @@
 - Run inference scripts in Docker (PhysicsNeMo container) by default; avoid host Python execution for infer workflows unless explicitly requested.
 - Do not rewrite history.
 - Do not revert user changes unrelated to current task.
+
+## NPZ / Checkpoint Backup Policy
+
+**Rule: 코드를 수정한 뒤 추론 또는 학습을 재실행하기 전에 반드시 기존 결과를 백업한다.**
+
+### 백업 대상
+| 수정 파일 | 백업 대상 |
+|-----------|-----------|
+| `contracts.py` (채널 순서·정규화) | 모든 inference NPZ 디렉토리 |
+| `motor_dataset.py` (샘플 생성·전처리) | 모든 inference NPZ 디렉토리 |
+| `infer_phase1_pbc.py` | 해당 추론 NPZ 디렉토리 |
+| `train.py` / `loss.py` | checkpoint `.pt` 파일 |
+| `physics_operators.py` (`Je` 계산) | 모든 inference NPZ 디렉토리 |
+
+### 백업 방법 (노트북)
+```python
+# 셀 13 에 정의된 backup_npz_dir() 사용
+backup_npz_dir(ROOT / "results" / "full40_infer", label="before_4ch")
+backup_npz_dir(ROOT / "results" / "3case_infer",  label="before_4ch")
+```
+
+### 백업 방법 (스크립트 / 오버나이트 에이전트)
+```powershell
+# 추론 재실행 직전 자동 백업 (타임스탬프 고유 디렉토리 생성)
+python -c "
+from pathlib import Path; from datetime import datetime; import shutil
+d = Path('results/full40_infer')
+b = d.parent/'backups'/f'{d.name}_{datetime.now().strftime(\"%Y%m%d_%H%M%S\")}'
+b.mkdir(parents=True, exist_ok=True)
+[shutil.move(str(f), str(b/f.name)) for f in d.glob('*.npz')]
+print(b)
+"
+```
+
+### 불변 원칙
+- 백업은 덮어쓰지 않는다. 타임스탬프로 항상 새 디렉토리를 만든다.
+- `results/backups/` 는 `.gitignore` 에 추가해 커밋하지 않는다.
+- checkpoint `.pt` 가 교체될 때는 `results/backups/ckpt/` 에 수동 복사한다.
+- Notion 비고에 백업 경로와 코드 변경 사유를 짧게 기록한다.

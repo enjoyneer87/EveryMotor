@@ -51,10 +51,10 @@ from phase1_static.motor_dataset import (
     build_samples_from_npz,
     build_samples_from_doe_manifest,
 )
-from phase1_static.contracts import normalize_channels_to_bx_by_a_j
+from phase1_static.contracts import normalize_channels_to_bx_by_a_je
 
 
-CHANNEL_ORDER = ["Bx", "By", "A", "J", "Je"]
+CHANNEL_ORDER = ["Bx", "By", "A", "Je"]
 CHANNEL_KEYS = tuple(channel.lower() for channel in CHANNEL_ORDER)
 
 
@@ -142,15 +142,15 @@ def run_inference(
         batch.x = torch.cat([batch.pos, batch.x[:, d:]], dim=1)
 
         pred_raw = forward_model(model, batch)
-        pred, _ = normalize_channels_to_bx_by_a_j(pred_raw)
-        gt, _ = normalize_channels_to_bx_by_a_j(batch.y)
+        pred, _ = normalize_channels_to_bx_by_a_je(pred_raw)
+        gt, _ = normalize_channels_to_bx_by_a_je(batch.y)
 
         all_pred.append(pred.detach().cpu().numpy())
         all_gt.append(gt.detach().cpu().numpy())
         all_pos.append(batch.pos.detach().cpu().numpy())
 
-    pred_np = np.concatenate(all_pred, axis=0)   # [N_total, 5]
-    gt_np = np.concatenate(all_gt, axis=0)        # [N_total, 5]
+    pred_np = np.concatenate(all_pred, axis=0)   # [N_total, 4]
+    gt_np = np.concatenate(all_gt, axis=0)        # [N_total, 4]
     pos_np = np.concatenate(all_pos, axis=0)      # [N_total, 2]
 
     result = {
@@ -191,12 +191,26 @@ def save_infer_npz(
         pos_x=result["pos_x"],
         pos_y=result["pos_y"],
         gt_bx=result["gt_bx"], gt_by=result["gt_by"],
-        gt_a=result["gt_a"], gt_j=result["gt_j"], gt_je=result["gt_je"],
+        gt_a=result["gt_a"], gt_je=result["gt_je"],
         pred_bx=result["pred_bx"], pred_by=result["pred_by"],
-        pred_a=result["pred_a"], pred_j=result["pred_j"], pred_je=result["pred_je"],
+        pred_a=result["pred_a"], pred_je=result["pred_je"],
         metrics=json.dumps(metrics),
         meta=json.dumps(meta),
     )
+
+
+def filter_samples_by_step_index(
+    samples: list,
+    step_index: int | None,
+) -> list:
+    """Return only samples matching the requested step index."""
+    if step_index is None:
+        return samples
+    return [
+        sample
+        for sample in samples
+        if int(sample.get("step_index", -1)) == int(step_index)
+    ]
 
 
 # ─── CLI ────────────────────────────────────────────────────────────────────
@@ -215,6 +229,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional MotorCAD source file classes to include, e.g. OnLoadTorque StaticLoad",
     )
     ap.add_argument("--max-steps", type=int, default=None)
+    ap.add_argument(
+        "--step-index",
+        type=int,
+        default=None,
+        help="Optional explicit step_index to select after DOE samples are loaded.",
+    )
     ap.add_argument("--batch-size", type=int, default=8)
     ap.add_argument("--out", default="results/symm_mgn_infer.npz")
     return ap.parse_args()
@@ -246,6 +266,15 @@ def main() -> None:
             source_file_types=args.source_file_types,
         )
 
+    samples = filter_samples_by_step_index(samples, args.step_index)
+    if not samples:
+        requested = (
+            f" case={args.case_idx} step_index={args.step_index}"
+            if args.step_index is not None else ""
+        )
+        print(f"[ERROR] No samples found for{requested}", file=sys.stderr)
+        sys.exit(1)
+
     print(f"  {len(samples)} samples loaded")
 
     t0 = time.time()
@@ -263,6 +292,12 @@ def main() -> None:
         "ckpt": str(ckpt_path),
         "case_idx": args.case_idx,
         "n_samples": len(samples),
+        "step_idx": (
+            int(samples[0].get("step_index", -1))
+            if len({int(sample.get("step_index", -1)) for sample in samples}) == 1
+            else None
+        ),
+        "step_indices": sorted({int(sample.get("step_index", -1)) for sample in samples}),
         "elapsed_s": round(elapsed, 3),
         "channel_order": ckpt.get("channel_order", CHANNEL_ORDER),
         "pbc_enabled": True,

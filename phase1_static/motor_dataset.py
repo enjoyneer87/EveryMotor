@@ -12,7 +12,7 @@ import numpy as np
 import torch
 from torch_geometric.data import Data, Dataset
 
-from .contracts import encode_fidelity_metadata, normalize_channels_to_bx_by_a_j
+from .contracts import encode_fidelity_metadata, normalize_channels_to_bx_by_a_je
 from .data_preprocessing import (
     build_pbc_edges,
     combine_edges,
@@ -344,9 +344,9 @@ class StaticMotorDataset(Dataset):
             a = _as_feature(to_tensor(a_raw if a_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
             j = _as_feature(to_tensor(j_raw if j_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
             je = _as_feature(to_tensor(je_raw if je_raw is not None else torch.zeros_like(bx), dtype=self.dtype), 2)
-            y_raw = torch.cat([bx, by, a, j, je], dim=1)
+            y_raw = torch.cat([bx, by, a, je], dim=1)
 
-        y, _ = normalize_channels_to_bx_by_a_j(y_raw)
+        y, _ = normalize_channels_to_bx_by_a_je(y_raw)
 
         data = Data(
             x=x,
@@ -522,7 +522,7 @@ def build_samples_from_doe_manifest(
                 node_type_onehot = np.concatenate([node_reg, cond_feat], axis=1).astype(np.float32)
 
                 node_bx, node_by, node_a, node_j, node_je = scatter_elem_to_node_with_je(rec)
-                y = np.stack([node_bx, node_by, node_a, node_j, node_je], axis=1).astype(np.float32)
+                y = np.stack([node_bx, node_by, node_a, node_je], axis=1).astype(np.float32)
 
                 edge_pairs = np.asarray(rec["_edge_pairs"], dtype=np.int64)
                 if edge_pairs.ndim != 2 or edge_pairs.shape[1] != 2:
@@ -559,6 +559,7 @@ def build_samples_from_doe_manifest(
                     {
                         "pos": pos,
                         "node_type_onehot": node_type_onehot,
+                        "j_raw": node_j.astype(np.float32),
                         "interior_edge_index": interior_edge_index,
                         "pbc_edge_index": pbc_edge_index,
                         "pbc_edge_attr": pbc_edge_attr,

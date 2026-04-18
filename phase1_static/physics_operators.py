@@ -38,7 +38,7 @@ class Magnetostatics2DOperator(PhysicsOperator):
 
     name = "magnetostatics_2d"
     spatial_dim = 2
-    channel_contract = ChannelContract(b_slice=(0, 2), a_index=2, current_density_slice=(3, 5))
+    channel_contract = ChannelContract(b_slice=(0, 2), a_index=2, current_density_slice=(3, 4))
 
     def predict_b_from_pred(self, pred: torch.Tensor, coords: torch.Tensor, *, retain_graph: bool) -> torch.Tensor:
         if coords.dim() != 2 or coords.shape[1] != 2:
