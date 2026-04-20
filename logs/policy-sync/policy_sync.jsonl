@@ -2822,3 +2822,727 @@
 {"ts":"2026-04-17T11:36:00.6972134+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
 {"ts":"2026-04-17T11:41:00.7017212+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
 {"ts":"2026-04-17T11:46:00.7275618+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T11:51:00.6326335+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T11:56:00.6557536+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:01:00.6904464+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:06:00.6982164+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:11:00.7025698+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:16:00.7069370+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:21:00.7247110+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:26:00.7390768+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:31:00.7488431+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:36:00.7480382+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:41:00.7590270+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:46:00.7700263+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:51:00.7753405+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T12:56:00.8092452+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:01:00.7927179+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:06:00.7957160+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:11:00.8268540+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:16:00.8360579+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:21:00.8228409+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:26:00.8291927+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:26:00.9867039+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/prompts/"}}
+{"ts":"2026-04-20T13:26:00.9947044+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:31:00.8419905+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:31:00.9991271+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/prompts/"}}
+{"ts":"2026-04-20T13:31:01.0071262+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:36:00.8594519+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:36:01.0249680+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T13:36:01.0329656+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:41:00.8908766+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:41:01.0553414+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T13:41:01.0643419+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:46:00.8650437+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:46:01.0235975+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T13:46:01.0315970+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:51:00.8679657+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:51:01.0260360+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T13:51:01.0340336+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T13:56:00.9157869+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T13:56:01.0793013+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T13:56:01.0883028+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:01:00.9280788+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:01:01.1186104+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:01:01.1276103+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:06:00.8950230+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:06:01.0515590+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:06:01.0591524+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:11:00.9069693+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:11:01.0643414+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:11:01.0718523+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:16:00.8846875+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:16:01.0388602+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:16:01.0458687+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:21:00.9014143+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:21:01.0600650+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:21:01.0680648+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:26:00.8937256+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:26:01.0556206+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:26:01.0641892+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:31:00.9149712+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:31:01.0694561+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:31:01.0764540+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:36:00.9033337+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:36:01.0583353+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:36:01.0663317+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:41:00.9187723+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:41:01.0726967+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:41:01.0806967+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:46:00.9362801+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:46:01.0933588+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:46:01.1013586+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:51:00.9465091+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:51:01.1036204+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:51:01.1106206+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T14:56:00.9578740+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T14:56:01.1140865+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T14:56:01.1216498+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:01:00.9616347+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:01:01.1184013+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:01:01.1253993+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:06:00.9837284+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:06:01.1412169+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:06:01.1497935+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:11:01.0110839+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:11:01.1828905+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:11:01.1915746+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:16:00.9762666+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:16:01.1520893+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:16:01.1602713+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:21:00.9750505+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:21:01.1398798+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:21:01.1479976+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:26:00.9636816+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:26:01.1191947+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:26:01.1261945+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:31:00.9755425+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:31:01.1319783+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:31:01.1389778+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:36:00.9902209+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:36:01.1481036+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:36:01.1552203+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:41:00.9954873+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:41:01.1494971+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:41:01.1574967+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:46:00.9983643+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:46:01.1526463+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:46:01.1596453+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:51:01.0113332+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:51:01.1692090+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:51:01.1767831+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T15:56:01.0093205+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T15:56:01.1638435+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T15:56:01.1708435+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:01:01.0256538+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:01:01.1764757+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:01:01.1840457+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:06:01.0296230+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:06:01.1832825+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:06:01.1902824+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:11:01.0537628+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:11:01.2183595+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:11:01.2258734+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:16:01.0657517+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:16:01.2263194+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:16:01.2343193+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:21:01.1215794+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:21:01.2847047+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:21:01.2933442+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:26:01.7722941+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:26:01.9267533+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:26:01.9343770+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:31:02.0976915+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:31:02.2582291+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:31:02.2652291+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:36:01.5337716+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:36:01.6871784+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:36:01.6947581+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:41:01.7857485+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:41:01.9402047+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:41:01.9482142+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:46:01.1803947+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:46:01.3346007+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:46:01.3426004+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:51:01.6600652+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:51:01.8163776+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:51:01.8233737+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T16:56:01.9033767+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T16:56:02.0583890+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T16:56:02.0659717+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:01:02.1759581+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:01:02.3323147+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:01:02.3403144+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:06:02.0449682+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:06:02.2062754+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:06:02.2142754+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:11:03.0816423+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:11:03.2451597+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:11:03.2542104+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:16:01.6224457+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:16:01.7757160+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:16:01.7832858+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:21:02.0935543+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:21:02.2504335+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:21:02.2584332+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:26:01.6973942+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:26:01.8546187+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:26:01.8626186+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:31:01.5958607+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:31:01.7623558+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:31:01.7699694+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:36:01.7884489+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:36:01.9415973+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:36:01.9495974+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:41:01.7366446+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:41:01.8979727+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:41:01.9067214+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:46:01.4181299+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:46:01.5801221+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:46:01.5886335+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:51:04.0559750+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:51:04.2087587+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:51:04.2157587+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T17:56:03.4326294+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T17:56:03.5930300+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T17:56:03.6014889+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:01:01.4154410+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:01:01.5717219+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:01:01.5777302+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:06:01.6975931+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:06:01.8593560+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:06:01.8678963+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:11:01.7841286+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:11:01.9429910+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:11:01.9511047+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:16:01.6340511+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:16:01.8040343+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:16:01.8130458+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:21:01.4930393+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:21:01.6563792+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:21:01.6654915+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:26:01.3084657+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:26:01.4728443+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:26:01.4797255+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:31:02.8048506+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:31:02.9658406+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:31:02.9717248+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:36:01.5501846+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:36:01.7108155+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:36:01.7198149+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:41:02.1625748+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:41:02.3239439+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:41:02.3320726+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:46:01.2962614+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:46:01.4576915+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:46:01.4662663+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:51:01.5861687+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:51:01.7484649+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:51:01.7570915+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T18:56:01.6000907+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T18:56:01.7600595+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T18:56:01.7690594+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:01:02.0148159+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:01:02.1744182+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:01:02.1834177+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:06:01.6911598+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:06:01.8785384+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:06:01.8880513+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:11:02.7492849+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:11:02.9120739+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:11:02.9206358+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:16:02.0329580+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:16:02.2098745+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:16:02.2188742+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:21:01.7798375+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:21:01.9400509+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:21:01.9481423+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:26:03.1389672+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:26:03.3047813+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:26:03.3140156+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:31:03.1833274+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:31:03.3515699+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:31:03.3605643+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:36:01.7363691+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:36:01.8989739+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:36:01.9079374+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:41:02.9187581+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:41:03.0798338+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:41:03.0883456+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:46:02.7017715+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:46:02.8622298+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:46:02.8702357+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:51:03.3229056+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:51:03.4860788+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:51:03.4946177+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T19:56:01.1244515+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T19:56:01.2898912+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T19:56:01.2974659+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:01:01.5041951+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:01:01.7107196+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:01:01.7187194+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:06:01.2236604+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:06:01.3877312+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:06:01.3957406+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:11:01.9264016+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:11:02.0920481+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:11:02.1000465+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:16:03.3014577+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:16:03.4600727+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:16:03.4686436+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:21:01.2377243+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:21:01.4134737+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:21:01.4254826+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:26:01.1673058+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:26:01.3271042+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:26:01.3351011+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:31:01.2369284+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:31:01.3910834+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:31:01.3990837+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:36:00.9528315+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:36:01.1191219+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:36:01.1246765+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:41:01.1847027+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:41:01.3409028+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:41:01.3496510+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:46:01.5320233+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:46:01.6889330+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:46:01.6965100+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:51:01.3154427+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:51:01.4677190+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:51:01.4767195+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T20:56:01.3766478+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T20:56:01.5337411+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T20:56:01.5417409+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:01:01.5266416+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:01:01.6803759+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:01:01.6883764+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:06:01.0276267+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:06:01.1844710+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:06:01.1920295+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:11:01.1942664+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:11:01.3514678+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:11:01.3604679+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:16:01.5710720+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:16:01.7287590+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:16:01.7363721+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:21:01.4937442+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:21:01.6548981+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:21:01.6629059+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:26:00.5596257+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:26:00.7143631+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:26:00.7243630+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:31:01.4060120+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:31:01.5602720+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:31:01.5682717+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:36:01.4825671+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:36:01.6391920+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:36:01.6471922+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:41:01.7115868+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:41:01.8630339+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:41:01.8710340+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:46:01.3006174+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:46:01.4542845+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:46:01.4612841+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:51:01.3514814+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:51:01.5067300+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:51:01.5147299+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T21:56:01.3143796+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T21:56:01.4724127+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T21:56:01.4801948+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:01:00.5816141+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:01:00.7634891+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:01:00.7750629+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:06:00.6203181+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:06:00.7957276+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:06:00.8063813+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:11:01.5313027+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:11:01.6868705+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:11:01.6948704+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:16:00.5719844+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:16:00.7255099+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:16:00.7335847+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:21:01.6520821+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:21:01.8098989+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:21:01.8174538+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:26:01.3379800+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:26:01.4943457+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:26:01.5013424+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:31:00.6172814+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:31:00.8417848+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:31:00.8527845+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:36:01.6616880+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:36:01.8216692+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:36:01.8296691+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:41:01.5567931+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:41:01.7143288+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:41:01.7218948+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:46:03.2291459+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:46:03.3811997+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:46:03.3881994+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:51:03.1347725+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:51:03.3002879+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:51:03.3073939+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T22:56:00.6519680+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T22:56:00.8098805+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T22:56:00.8158630+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:01:02.4856758+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:01:02.6525795+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:01:02.6605787+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:06:00.6724989+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:06:00.8300837+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:06:00.8391668+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:11:00.7130748+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:11:00.8804110+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:11:00.8899868+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:16:01.3458503+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:16:01.5158712+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:16:01.5238694+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:21:02.0023268+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:21:02.1648638+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:21:02.1728629+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:26:01.7378639+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:26:01.9034332+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:26:01.9105531+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:31:03.1670354+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:31:03.3426166+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:31:03.3511307+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:36:01.0712312+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:36:01.2377747+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:36:01.2462896+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:41:02.3129224+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:41:02.4709551+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:41:02.4799541+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:46:02.3417485+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:46:02.5010406+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:46:02.5060401+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:51:04.0756172+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:51:04.2325138+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:51:04.2405368+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-20T23:56:02.1766832+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-20T23:56:02.3391661+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-20T23:56:02.3481660+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:01:00.8371037+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:01:01.0035121+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:01:01.0125098+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:06:02.8587315+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:06:03.0227969+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:06:03.0307977+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:11:01.1674724+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:11:01.3294724+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:11:01.3384697+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:16:00.8625020+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:16:01.0228197+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:16:01.0308188+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:21:01.4717077+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:21:01.6338718+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:21:01.6418714+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:26:02.4336632+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:26:02.5946599+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:26:02.6027826+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:31:01.9998744+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:31:02.1610420+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:31:02.1700407+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:36:01.4981471+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:36:01.6627252+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:36:01.6713096+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:41:01.3838901+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:41:01.5764874+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:41:01.5865761+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:46:00.8967383+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:46:01.0843628+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:46:01.0939863+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:51:02.2547884+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:51:02.4041363+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:51:02.4041363+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T00:56:03.2991670+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T00:56:03.4578279+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T00:56:03.4669542+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:01:02.8527736+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:01:03.0119559+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:01:03.0180496+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:06:03.2853630+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:06:03.4480319+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:06:03.4580559+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:11:02.5313608+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:11:02.6892860+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:11:02.6975739+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:16:04.4616736+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:16:04.6191535+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:16:04.6232172+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:21:00.9604415+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:21:01.1222208+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:21:01.1222208+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:26:00.9525832+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:26:01.1062893+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:26:01.1062893+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:31:00.9664756+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:31:01.1102529+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:31:01.1203501+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:36:00.9852271+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:36:01.1339949+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:36:01.1385525+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:41:00.9992893+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:41:01.1434257+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:41:01.1534940+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:46:00.9824828+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:46:01.1355387+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:46:01.1355387+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:51:00.9987279+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:51:01.1428362+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:51:01.1528828+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T01:56:00.9978990+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T01:56:01.1408379+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T01:56:01.1510622+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:01:01.0066289+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:01:01.1497763+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:01:01.1598011+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:06:01.0087153+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:06:01.1655576+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:06:01.1711688+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:11:01.0183802+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:11:01.1800948+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:11:01.1880872+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:16:01.0116161+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:16:01.1650387+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:16:01.1650387+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:21:01.0271116+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:21:01.1689233+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:21:01.1791678+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:26:01.0196742+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:26:01.1650519+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:26:01.1725947+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:31:01.0298600+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:31:01.1800209+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:31:01.1902622+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:36:01.0470884+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:36:01.1889555+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:36:01.1985300+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:41:01.0460570+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:41:01.1981371+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:41:01.1981371+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:46:01.0483628+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:46:01.1966423+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:46:01.2017047+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:51:01.0644281+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:51:01.2176389+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:51:01.2176389+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T02:56:01.0627171+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T02:56:01.2125329+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T02:56:01.2209264+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:01:01.0722271+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:01:01.2277188+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:01:01.2376815+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:06:01.0714685+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:06:01.2197589+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:06:01.2298823+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:11:01.0779513+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:11:01.2214763+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:11:01.2306253+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:16:01.0758313+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:16:01.2288313+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:16:01.2394306+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:21:01.0795900+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:21:01.2284671+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:21:01.2380308+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:26:01.0893859+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:26:01.2422121+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:26:01.2422121+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:31:01.1338938+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:31:01.2772268+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:31:01.2902678+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:36:01.1418685+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:36:01.2985381+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:36:01.3081593+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:41:01.1199552+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:41:01.2808847+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:41:01.2900864+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:46:01.1320984+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:46:01.2748230+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:46:01.2848457+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:51:01.1392293+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:51:01.2916360+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:51:01.3017011+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T03:56:01.1490123+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T03:56:01.3008696+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T03:56:01.3054534+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:01:01.1576977+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:01:01.3094793+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:01:01.3195688+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:06:01.1772528+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:06:01.3293219+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:06:01.3394603+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:11:01.1914706+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:11:01.3526559+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:11:01.3547442+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:16:01.2128313+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:16:01.3574114+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:16:01.3674710+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:21:01.2336113+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:21:01.3903242+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:21:01.4003965+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:26:01.2277189+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:26:01.3774297+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:26:01.3839642+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:31:01.2178377+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:31:01.3700902+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:31:01.3801067+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:36:01.2366950+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:36:01.3838829+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:36:01.3909830+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:41:01.2415002+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:41:01.3838501+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:41:01.3934050+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:46:01.2661473+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:46:01.4151077+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:46:01.4186438+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:51:01.2744548+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:51:01.4266034+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:51:01.4266034+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T04:56:01.2910364+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T04:56:01.4384363+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T04:56:01.4465443+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:01:01.3062577+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:01:01.4579727+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:01:01.4685737+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:06:01.3150401+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:06:01.4684738+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:06:01.4780608+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:11:01.3284119+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:11:01.4783962+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:11:01.4804475+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:16:01.3359340+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:16:01.4884708+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:16:01.4990055+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:21:01.3681669+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:21:01.5115832+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:21:01.5217149+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:26:00.3848485+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:26:00.5381061+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:26:00.5401252+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:31:00.3840644+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:31:00.5437249+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:31:00.5453933+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:36:00.4060941+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:36:00.5645564+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:36:00.5727945+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:41:00.4027594+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:41:00.5632335+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:41:00.5716465+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:46:00.4150215+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:46:00.5613806+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:46:00.5714208+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:51:00.4349630+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:51:00.5892172+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:51:00.5985192+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T05:56:00.4493453+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T05:56:00.6026402+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T05:56:00.6031576+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:01:00.4450931+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:01:00.5981645+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:01:00.6026852+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:06:00.4965682+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:06:00.6481674+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:06:00.6583680+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:11:00.4887421+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:11:00.6637414+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:11:00.6733966+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:16:00.4800146+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:16:00.6338669+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:16:00.6409822+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:21:00.4961356+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:21:00.6495645+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:21:00.6595883+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:26:00.5056428+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:26:00.6580923+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:26:00.6683753+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:31:00.5087767+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:31:00.6610760+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:31:00.6650970+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:36:00.5087438+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:36:00.6650296+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:36:00.6711747+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:41:00.5257068+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:41:00.6677711+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:41:00.6783560+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:46:00.5296003+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:46:00.6830991+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:46:00.6830991+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:51:00.5418034+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:51:00.6963548+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:51:00.7070452+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T06:56:00.5401974+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T06:56:00.6850401+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T06:56:00.6850401+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:01:00.5403832+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:01:00.6925928+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:01:00.7021670+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:06:00.5483675+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:06:00.6967564+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:06:00.7018377+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:11:00.5527470+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:11:00.6963416+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:11:00.7055207+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:16:00.5795464+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:16:00.7333964+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:16:00.7436286+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:21:00.5940970+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:21:00.7368960+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:21:00.7475046+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:26:00.5958412+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:26:00.7411929+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:26:00.7477763+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:31:00.6167943+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:31:00.7683133+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:31:00.7783771+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:36:00.6283269+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:36:00.7713201+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:36:00.7819166+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:41:00.6532445+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:41:00.7975359+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:41:00.8070989+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:46:00.6606326+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:46:00.8136455+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:46:00.8136455+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:51:00.6524086+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:51:00.8075813+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:51:00.8216605+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T07:56:00.6780221+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T07:56:00.8213642+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T07:56:00.8306117+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:01:00.6963156+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:01:00.8525800+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:01:00.8561936+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:06:00.6962423+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:06:00.8393887+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:06:00.8526410+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:11:00.7123034+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:11:00.8637337+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:11:00.8739562+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:16:00.7335017+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:16:00.8853870+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:16:00.8954549+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:21:00.7422642+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:21:00.9048503+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:21:00.9048503+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:26:00.7624494+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:26:00.9043973+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:26:00.9154411+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:31:00.7826176+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:31:00.9425811+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:31:00.9519452+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:36:01.0435045+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:36:01.1992866+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:36:01.2072867+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:41:00.7377423+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:41:00.8909378+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:41:00.9009942+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:46:00.7656598+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:46:00.9283746+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:46:00.9390131+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:51:00.8216716+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:51:00.9808140+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:51:00.9909243+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}
+{"ts":"2026-04-21T08:56:00.8116680+09:00","level":"INFO","msg":"Policy sync start.","data":{"branch":"main","repo":"D:\\KDH\\NvidiaNemo","remote":"origin"}}
+{"ts":"2026-04-21T08:56:00.9688802+09:00","level":"WARN","msg":"Local policy changes detected. Pull skipped for safety.","data":{"changed":"?? .github/agents/\n?? .github/prompts/"}}
+{"ts":"2026-04-21T08:56:00.9768801+09:00","level":"INFO","msg":"Notion token/db missing. Skip Notion update.","data":{}}

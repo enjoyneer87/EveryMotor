@@ -24,6 +24,7 @@ __pycache__/
 paper_figures/
 *.png
 *.pdf
+*.gif
 
 # Generated reports and experiment artifacts
 logs/**
@@ -53,3 +54,7 @@ _backup_pre_nested_repo_move/
 
 # Local agent worktrees
 .claude/worktrees/
+
+# Temporary debug/check scripts (prefix _ = scratch)
+_*.py
+monitor_train.py
