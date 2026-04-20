@@ -14,6 +14,10 @@ import torch
 from torch import nn
 from torch_geometric.loader import DataLoader
 from torch.utils.data import Sampler
+try:
+    from torch.utils.tensorboard import SummaryWriter as _SummaryWriter
+except ImportError:  # tensorboard optional
+    _SummaryWriter = None
 
 from .contracts import (
     normalize_channels_to_bx_by_a_je,
@@ -144,7 +148,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Phase 1 static 1/8 training")
     p.add_argument("--input-format", choices=("auto", "npz", "doe"), default="auto")
     p.add_argument("--data", help="Path to npz/pt bundle (used for --input-format npz/auto)")
-    p.add_argument("--data-dir", default="doe_data", help="DOE root dir containing doe_manifest.json")
+    p.add_argument("--data-dir", default="doe_data", help="DOE root dir containing train_manifest.json (or doe_manifest.json fallback)")
     p.add_argument("--max-steps-per-case", type=int, default=None, help="Optional cap for DOE timesteps per case")
     p.add_argument(
         "--step-index",
@@ -221,6 +225,22 @@ def parse_args() -> argparse.Namespace:
         "--ckpt-out",
         default=None,
         help="Save trained SymMGN checkpoint to this path (.pt). If omitted, no checkpoint is saved.",
+    )
+    p.add_argument(
+        "--ckpt-interval",
+        type=int,
+        default=0,
+        help="Save intermediate checkpoint every N epochs (0 = disabled). Saved as <ckpt-out>.ep<N>.",
+    )
+    p.add_argument(
+        "--log-file",
+        default=None,
+        help="Append epoch metrics to this text file (one JSON line per epoch). Enables progress monitoring.",
+    )
+    p.add_argument(
+        "--tb-log-dir",
+        default=None,
+        help="TensorBoard log directory. If omitted, TensorBoard logging is disabled.",
     )
     return p.parse_args()
 
@@ -509,7 +529,24 @@ def main() -> None:
     if args.overfit_single:
         first_batch = DataLoader([dataset[0]], batch_size=1, shuffle=False)
 
+    # ── TensorBoard ──────────────────────────────────────────────────────────
+    tb_writer = None
+    if getattr(args, "tb_log_dir", None) and _SummaryWriter is not None:
+        tb_writer = _SummaryWriter(log_dir=args.tb_log_dir)
+        LOG.info("TensorBoard logging: %s", args.tb_log_dir)
+    elif getattr(args, "tb_log_dir", None):
+        LOG.warning("tensorboard not installed — TB logging disabled")
+
+    # ── 파일 로그 핸들러 ─────────────────────────────────────────────────────
+    _log_fh = None
+    if args.log_file:
+        import os as _os
+        _os.makedirs(_os.path.dirname(_os.path.abspath(args.log_file)), exist_ok=True)
+        _log_fh = open(args.log_file, "a", buffering=1)  # line-buffered
+        LOG.info("Epoch log file: %s", args.log_file)
+
     best_train_total = float("inf")
+    best_val_total = float("inf")
     for epoch in range(1, args.epochs + 1):
         if args.step_aware_batching and not args.overfit_single:
             batch_sampler = getattr(train_loader, "batch_sampler", None)
@@ -542,21 +579,57 @@ def main() -> None:
 
         current_lr = float(optimizer.param_groups[0]["lr"])
 
-        if epoch == 1 or epoch % 5 == 0 or epoch == args.epochs:
-            LOG.info(
-                "epoch=%d lr=%.6e train(total=%.6f,a=%.6f,b=%.6f,current=%.6f) "
-                "val(total=%.6f,a=%.6f,b=%.6f,current=%.6f)",
-                epoch,
-                current_lr,
-                train_metrics["total_loss"],
-                train_metrics["a_loss"],
-                train_metrics["b_loss"],
-                train_metrics["current_loss"],
-                val_metrics["total_loss"],
-                val_metrics["a_loss"],
-                val_metrics["b_loss"],
-                val_metrics["current_loss"],
-            )
+        LOG.info(
+            "epoch=%d/%d lr=%.6e train(total=%.6f,a=%.6f,b=%.6f,current=%.6f) "
+            "val(total=%.6f,a=%.6f,b=%.6f,current=%.6f)",
+            epoch,
+            args.epochs,
+            current_lr,
+            train_metrics["total_loss"],
+            train_metrics["a_loss"],
+            train_metrics["b_loss"],
+            train_metrics["current_loss"],
+            val_metrics["total_loss"],
+            val_metrics["a_loss"],
+            val_metrics["b_loss"],
+            val_metrics["current_loss"],
+        )
+
+        best_val_total = min(best_val_total, val_metrics["total_loss"])
+
+        # ── 파일 로그: JSON 한 줄 ─────────────────────────────────────────────
+        if _log_fh is not None:
+            import json as _json
+            _log_fh.write(_json.dumps({
+                "epoch": epoch, "epochs": args.epochs, "lr": current_lr,
+                "train_total": train_metrics["total_loss"],
+                "train_a": train_metrics["a_loss"],
+                "train_b": train_metrics["b_loss"],
+                "val_total": val_metrics["total_loss"],
+                "best_val": best_val_total,
+            }) + "\n")
+
+        # ── 중간 체크포인트 ───────────────────────────────────────────────────
+        if args.ckpt_interval and args.ckpt_out and (epoch % args.ckpt_interval == 0):
+            from infer_phase1_pbc import save_checkpoint as _sc
+            _ep_path = Path(args.ckpt_out).with_suffix("") / f"ep{epoch:04d}.pt"
+            _ep_path.parent.mkdir(parents=True, exist_ok=True)
+            _sc(path=_ep_path, model=model, epoch=epoch, best_loss=best_val_total,
+                args_dict={"hidden_dim": args.hidden_dim, "output_dim": 4})
+            LOG.info("Intermediate checkpoint saved: %s", _ep_path)
+
+        # TensorBoard: 매 epoch 기록
+        if tb_writer is not None:
+            tb_writer.add_scalar("train/loss_total",   train_metrics["total_loss"],   epoch)
+            tb_writer.add_scalar("train/loss_a",       train_metrics["a_loss"],       epoch)
+            tb_writer.add_scalar("train/loss_b",       train_metrics["b_loss"],       epoch)
+            tb_writer.add_scalar("train/loss_current", train_metrics["current_loss"], epoch)
+            tb_writer.add_scalar("val/loss_total",     val_metrics["total_loss"],     epoch)
+            tb_writer.add_scalar("val/loss_a",         val_metrics["a_loss"],         epoch)
+            tb_writer.add_scalar("val/loss_b",         val_metrics["b_loss"],         epoch)
+            tb_writer.add_scalar("val/loss_current",   val_metrics["current_loss"],   epoch)
+            tb_writer.add_scalar("train/lr",           current_lr,                    epoch)
+            tb_writer.flush()
 
     if args.overfit_single:
         if best_train_total > float(args.overfit_target):
@@ -569,6 +642,13 @@ def main() -> None:
             best_train_total,
             float(args.overfit_target),
         )
+
+    if _log_fh is not None:
+        _log_fh.close()
+
+    if tb_writer is not None:
+        tb_writer.close()
+        LOG.info("TensorBoard writer closed.")
 
     if args.ckpt_out:
         from infer_phase1_pbc import save_checkpoint
