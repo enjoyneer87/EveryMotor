@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EveryMotor — 개발 현황 대시보드</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 40px 32px;
+      min-width: 900px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #30363d;
+    }
+    .header-icon { font-size: 48px; }
+    .header-title { font-size: 28px; font-weight: 700; color: #f0f6fc; }
+    .header-subtitle { font-size: 13px; color: #8b949e; margin-top: 4px; }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .badge-private { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+    .badge-active  { background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb; }
+
+    /* ── Section ── */
+    section { margin-bottom: 36px; }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #21262d;
+      margin-left: 8px;
+    }
+
+    /* ── Grid ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    /* ── Card ── */
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .card-title {
+      font-size: 12px;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0f6fc;
+    }
+    .card-sub { font-size: 12px; color: #8b949e; margin-top: 4px; }
+
+    /* ── Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      background: #161b22;
+      color: #8b949e;
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid #30363d;
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #21262d;
+      color: #c9d1d9;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #161b22; }
+
+    /* ── Status chips ── */
+    .chip {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 20px;
+    }
+    .chip-done   { background: #1a4731; color: #3fb950; border: 1px solid #238636; }
+    .chip-wip    { background: #2d1b00; color: #d29922; border: 1px solid #9e6a03; }
+    .chip-early  { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+    .chip-ai     { background: #1f2d5c; color: #79c0ff; border: 1px solid #1f6feb; }
+    .chip-open   { background: #3d1c1c; color: #f85149; border: 1px solid #da3633; }
+
+    /* ── Progress bar ── */
+    .prog-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .prog-label { width: 220px; font-size: 13px; color: #c9d1d9; flex-shrink: 0; }
+    .prog-bar-bg {
+      flex: 1;
+      height: 10px;
+      background: #21262d;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .prog-bar-fill { height: 100%; border-radius: 6px; }
+    .fill-green  { background: linear-gradient(90deg, #238636, #3fb950); }
+    .fill-yellow { background: linear-gradient(90deg, #9e6a03, #d29922); }
+    .fill-blue   { background: linear-gradient(90deg, #1f6feb, #58a6ff); }
+    .prog-pct { width: 36px; text-align: right; font-size: 12px; color: #8b949e; }
+
+    /* ── Pipeline flow ── */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      overflow-x: auto;
+      padding: 8px 0;
+    }
+    .pipe-step {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 16px;
+      min-width: 148px;
+      text-align: center;
+      position: relative;
+    }
+    .pipe-step .pipe-icon { font-size: 22px; margin-bottom: 6px; }
+    .pipe-step .pipe-name { font-size: 12px; font-weight: 700; color: #f0f6fc; }
+    .pipe-step .pipe-desc { font-size: 10px; color: #8b949e; margin-top: 4px; line-height: 1.4; }
+    .pipe-arrow {
+      display: flex;
+      align-items: center;
+      color: #30363d;
+      font-size: 20px;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
+
+    /* ── File tree ── */
+    .tree { font-family: 'Consolas', 'Fira Code', monospace; font-size: 12px; line-height: 1.9; }
+    .tree-dir  { color: #58a6ff; font-weight: 700; }
+    .tree-file { color: #c9d1d9; }
+    .tree-ok   { color: #3fb950; }
+    .tree-wip  { color: #d29922; }
+    .tree-dim  { color: #8b949e; }
+
+    /* ── Issue card ── */
+    .issue-card {
+      background: #161b22;
+      border: 1px solid #da363355;
+      border-left: 4px solid #da3633;
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .issue-number { color: #8b949e; font-size: 13px; font-weight: 600; }
+    .issue-title  { font-size: 14px; font-weight: 700; color: #f0f6fc; margin-bottom: 4px; }
+    .issue-meta   { font-size: 11px; color: #8b949e; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #30363d;
+      font-size: 11px;
+      color: #484f58;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="header-icon">🚀</div>
+  <div>
+    <div class="header-title">
+      EveryMotor
+      <span class="badge badge-private">🔒 Private</span>
+      <span class="badge badge-active">● Active</span>
+    </div>
+    <div class="header-subtitle">
+      enjoyneer87/EveryMotor &nbsp;·&nbsp; 주 언어: Jupyter Notebook / Python &nbsp;·&nbsp; 서브모듈: eMach
+    </div>
+  </div>
+</div>
+
+<!-- ═══ OVERVIEW CARDS ═══ -->
+<section>
+  <div class="section-title">📊 프로젝트 개요</div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">생성일</div>
+      <div class="card-value">23일 전</div>
+      <div class="card-sub">2026년 4월 초</div>
+    </div>
+    <div class="card">
+      <div class="card-title">마지막 Push</div>
+      <div class="card-value">4일 전</div>
+      <div class="card-sub">2026-04-21</div>
+    </div>
+    <div class="card">
+      <div class="card-title">브랜치 수</div>
+      <div class="card-value">5개</div>
+      <div class="card-sub">main + 4 feature/AI</div>
+    </div>
+    <div class="card">
+      <div class="card-title">열린 이슈</div>
+      <div class="card-value" style="color:#f85149;">1개</div>
+      <div class="card-sub">#1 PHASE1-PBC</div>
+    </div>
+    <div class="card">
+      <div class="card-title">모델 종류</div>
+      <div class="card-value">5종</div>
+      <div class="card-sub">MGN / GINO / FNO / RNN / MGN-AJ</div>
+    </div>
+    <div class="card">
+      <div class="card-title">테스트 파일</div>
+      <div class="card-value">12개</div>
+      <div class="card-sub">tests/ 디렉토리</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BRANCHES ═══ -->
+<section>
+  <div class="section-title">🌿 브랜치 현황</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>브랜치</th>
+          <th>목적</th>
+          <th>상태</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>main</code></td>
+          <td>기본 안정 브랜치</td>
+          <td><span class="chip chip-done">✅ 안정</span></td>
+        </tr>
+        <tr>
+          <td><code>feature/cli-native-training</code></td>
+          <td>CLI 기반 네이티브 학습</td>
+          <td><span class="chip chip-wip">🔨 개발 중</span></td>
+        </tr>
+        <tr>
+          <td><code>codex/phase-1-static-1-8-model</code></td>
+          <td>Phase 1 정적 1/8 모델 (Codex AI)</td>
+          <td><span class="chip chip-ai">🤖 AI 작업</span></td>
+        </tr>
+        <tr>
+          <td><code>copilot/phase-1-static-1-8-model</code></td>
+          <td>Phase 1 정적 1/8 모델 (Copilot AI)</td>
+          <td><span class="chip chip-ai">🤖 AI 작업</span></td>
+        </tr>
+        <tr>
+          <td><code>codex/update-development-status</code></td>
+          <td>개발 현황 문서 업데이트</td>
+          <td><span class="chip chip-early">📝 문서</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ PROGRESS ═══ -->
+<section>
+  <div class="section-title">✅ 전체 진행 요약</div>
+  <div class="card">
+    <div style="margin-bottom:18px;">
+      <div style="font-size:13px;font-weight:700;color:#8b949e;margin-bottom:10px;">Phase 1 — 정적 전자기 해석</div>
+
+      <div class="prog-row">
+        <div class="prog-label">데이터 파이프라인</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-green" style="width:100%"></div></div>
+        <div class="prog-pct">100%</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label">PBC 전처리 스택</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-green" style="width:100%"></div></div>
+        <div class="prog-pct">100%</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label">모델 학습 / 평가</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-green" style="width:100%"></div></div>
+        <div class="prog-pct">100%</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label">테스트 커버리지</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-yellow" style="width:85%"></div></div>
+        <div class="prog-pct">85%</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label">1/8 모델 통합</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-blue" style="width:70%"></div></div>
+        <div class="prog-pct">70%</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#8b949e;margin-bottom:10px;">Phase 2 — 동적 해석</div>
+      <div class="prog-row">
+        <div class="prog-label">계약 정의</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-yellow" style="width:30%"></div></div>
+        <div class="prog-pct">30%</div>
+      </div>
+      <div class="prog-row">
+        <div class="prog-label">메모리 프로파일</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill fill-yellow" style="width:30%"></div></div>
+        <div class="prog-pct">30%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PBC PIPELINE ═══ -->
+<section>
+  <div class="section-title">🔄 PBC 전처리 파이프라인</div>
+  <div class="card">
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-icon">📥</div>
+        <div class="pipe-name">메시 입력</div>
+        <div class="pipe-desc">nodes_xy<br/>triangles<br/>region_code</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step" style="border-color:#238636;">
+        <div class="pipe-icon">📋</div>
+        <div class="pipe-name">pbc_contracts</div>
+        <div class="pipe-desc">불변 데이터 객체<br/>frozen dataclass</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step" style="border-color:#238636;">
+        <div class="pipe-icon">🗺️</div>
+        <div class="pipe-name">pbc_boundary</div>
+        <div class="pipe-desc">경계 체인 추출<br/>45° 코너 분할</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step" style="border-color:#238636;">
+        <div class="pipe-icon">🧠</div>
+        <div class="pipe-name">pbc_prior</div>
+        <div class="pipe-desc">글로벌 기하<br/>사전 추론</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step" style="border-color:#238636;">
+        <div class="pipe-icon">🔗</div>
+        <div class="pipe-name">pbc_pairing</div>
+        <div class="pipe-desc">KDTree 매칭<br/>pbc_edge_index [2,2P]</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step" style="border-color:#238636;">
+        <div class="pipe-icon">📦</div>
+        <div class="pipe-name">pbc_bundle</div>
+        <div class="pipe-desc">PBCBundle<br/>통합 빌더</div>
+      </div>
+      <div class="pipe-arrow">›</div>
+      <div class="pipe-step">
+        <div class="pipe-icon">🤖</div>
+        <div class="pipe-name">GNN 입력</div>
+        <div class="pipe-desc">MeshGraphNet<br/>학습 준비 완료</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODELS & TESTS GRID ═══ -->
+<div class="grid-2" style="margin-bottom:36px;">
+
+  <!-- Models -->
+  <section style="margin-bottom:0;">
+    <div class="section-title">🧪 모델 현황</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>모델</th><th>학습</th><th>평가</th><th>상태</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>MeshGraphNet</strong></td>
+            <td>✅</td><td>✅</td>
+            <td><span class="chip chip-done">완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>MGN-AJ</strong></td>
+            <td>✅</td><td>✅</td>
+            <td><span class="chip chip-done">완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>GINO</strong></td>
+            <td>✅</td><td>✅</td>
+            <td><span class="chip chip-done">완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>FNO</strong></td>
+            <td>✅</td><td>✅</td>
+            <td><span class="chip chip-done">완료</span></td>
+          </tr>
+          <tr>
+            <td><strong>RNN</strong></td>
+            <td>✅</td><td>✅</td>
+            <td><span class="chip chip-done">완료</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Tests -->
+  <section style="margin-bottom:0;">
+    <div class="section-title">🧬 테스트 파일</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>파일</th><th>대상</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>test_phase1_pbc_contracts</td><td>PBC 계약</td></tr>
+          <tr><td>test_phase1_pbc_boundary</td><td>경계 추출</td></tr>
+          <tr><td>test_phase1_pbc_prior</td><td>사전 추론</td></tr>
+          <tr><td>test_phase1_pbc_pairing</td><td>체인 페어링</td></tr>
+          <tr><td>test_phase1_pbc_bundle</td><td>번들 빌더</td></tr>
+          <tr><td>test_phase1_contract_boundaries</td><td>계약 경계</td></tr>
+          <tr><td>test_phase1_motor_dataset_pbc</td><td>데이터셋+PBC</td></tr>
+          <tr><td>test_phase2_contracts</td><td>Phase2 계약</td></tr>
+          <tr><td>test_phase2_memory_profile</td><td>메모리 프로파일</td></tr>
+          <tr><td>test_overfit_single_smoke</td><td>오버핏 스모크</td></tr>
+          <tr><td>test_curl_postproc</td><td>curl 후처리</td></tr>
+          <tr><td>test_regression_baseline</td><td>회귀 베이스라인</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ ISSUE ═══ -->
+<section>
+  <div class="section-title">🎫 이슈 현황</div>
+  <div class="issue-card">
+    <div>
+      <span class="chip chip-open" style="font-size:12px;">● OPEN</span>
+    </div>
+    <div>
+      <div class="issue-title">#1 &nbsp; [PHASE1-PBC] Implement PBC preprocessing stack: contracts → boundary → prior → pairing → bundle</div>
+      <div class="issue-meta">👤 dhkang87 &nbsp;·&nbsp; 📅 21일 전 &nbsp;·&nbsp; 💬 댓글 0 &nbsp;·&nbsp; ⚠️ 구현은 main에 완료 — Close 검토 권장</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODULE TREE ═══ -->
+<section>
+  <div class="section-title">🏗️ 모듈 구조</div>
+  <div class="card">
+    <div class="tree">
+      <span class="tree-dir">EveryMotor/</span><br/>
+      &nbsp;&nbsp;├── <span class="tree-dir">phase1_static/</span> &nbsp;<span class="tree-ok">██████████ 100%</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">contracts.py</span> <span class="tree-dim">— 데이터 계약</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">data_preprocessing.py</span> <span class="tree-dim">— 전처리</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">motor_dataset.py</span> <span class="tree-dim">— 데이터셋</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">train.py</span> <span class="tree-dim">— 학습 루프</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">pbc_contracts.py</span> <span class="tree-dim">— PBC 불변 객체</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">pbc_boundary.py</span> <span class="tree-dim">— 경계 추출</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">pbc_prior.py</span> <span class="tree-dim">— 사전 추론</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">pbc_pairing.py</span> <span class="tree-dim">— KDTree 페어링</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-ok">✅</span> <span class="tree-file">pbc_bundle.py</span> <span class="tree-dim">— 번들 빌더</span><br/>
+      &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="tree-ok">✅</span> <span class="tree-file">loss.py, custom_mgn.py, physics_operators.py …</span><br/>
+      &nbsp;&nbsp;│<br/>
+      &nbsp;&nbsp;├── <span class="tree-dir">phase2_dynamic/</span> &nbsp;<span class="tree-wip">████░░░░░░ 초기 단계</span><br/>
+      &nbsp;&nbsp;│<br/>
+      &nbsp;&nbsp;├── <span class="tree-dir">tests/</span> &nbsp;<span class="tree-ok">█████████░ 85%</span> &nbsp;<span class="tree-dim">12개 파일</span><br/>
+      &nbsp;&nbsp;│<br/>
+      &nbsp;&nbsp;├── <span class="tree-dir">tools/ &nbsp;schemas/ &nbsp;data/ &nbsp;results/ &nbsp;watcher/ &nbsp;postproc_interop/</span><br/>
+      &nbsp;&nbsp;│<br/>
+      &nbsp;&nbsp;└── <span class="tree-dim">train_*.py &nbsp;eval_*.py &nbsp;infer_*.py &nbsp;compare_*.py &nbsp;check_*.py …</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INFRA ═══ -->
+<section>
+  <div class="section-title">🛠️ 운영 / 자동화 도구</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>카테고리</th><th>도구</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🐳 컨테이너</td><td>docker-compose.yml, docker-compose.mount-template.yml</td></tr>
+        <tr><td>📓 Jupyter</td><td>start_jupyter.py, h5_txt_structure_inspector.ipynb</td></tr>
+        <tr><td>🤖 야간 자동화</td><td>nightly_autopilot.ps1, overnight_agent_cycle.ps1</td></tr>
+        <tr><td>📊 Notion 연동</td><td>notion_pick_workitem.ps1, notion_task_update.ps1, update_notion_status.py</td></tr>
+        <tr><td>📈 학습 모니터</td><td>training_monitor_server.py, monitor_training.sh</td></tr>
+        <tr><td>☁️ 데이터 다운로드</td><td>download_gdrive_motor.sh, download_motor_drive.py</td></tr>
+        <tr><td>🔁 정책 동기화</td><td>policy_sync.ps1, register_policy_sync_task.ps1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  Generated by GitHub Copilot &nbsp;·&nbsp; enjoyneer87/EveryMotor &nbsp;·&nbsp; 2026-04-25
+</div>
+
+</body>
+</html>
