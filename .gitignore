@@ -22,7 +22,6 @@ __pycache__/
 
 # Images and outputs
 paper_figures/
-*.png
 *.pdf
 *.gif
 
