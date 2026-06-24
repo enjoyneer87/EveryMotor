@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 from phase1_static.contracts import (
     encode_fidelity_metadata,
-    normalize_channels_to_bx_by_a_j,
+    normalize_channels_to_bx_by_a_je,
     resolve_loss_routing_from_codes,
     validate_batch_fidelity_policy,
     validate_graph_batch_contract,
@@ -12,16 +12,16 @@ from phase1_static.contracts import (
 )
 
 
-def test_channel_normalization_contract_a_bx_by_to_bx_by_a_j() -> None:
+def test_channel_normalization_contract_a_bx_by_to_bx_by_a_je() -> None:
     y = torch.tensor([[3.0, 1.0, 2.0], [6.0, 4.0, 5.0]], dtype=torch.float32)
-    norm, schema = normalize_channels_to_bx_by_a_j(y)
+    norm, schema = normalize_channels_to_bx_by_a_je(y)
 
     assert schema == "a_bx_by"
     assert norm.shape == (2, 4)
     assert torch.allclose(norm[:, 0], torch.tensor([1.0, 4.0]))
     assert torch.allclose(norm[:, 1], torch.tensor([2.0, 5.0]))
     assert torch.allclose(norm[:, 2], torch.tensor([3.0, 6.0]))
-    assert torch.allclose(norm[:, 3], torch.zeros(2))
+    assert torch.allclose(norm[:, 3], torch.zeros(2))  # Je=0 (padded)
 
 
 def test_loader_to_training_boundary_contract_accepts_valid_batch() -> None:
@@ -37,7 +37,7 @@ def test_loader_to_training_boundary_contract_accepts_valid_batch() -> None:
     )
 
     schema = validate_graph_batch_contract(batch, spatial_dim=2)
-    assert schema == "bx_by_a_j"
+    assert schema == "bx_by_a_je"
 
 
 def test_training_to_loss_boundary_contract_rejects_bad_coords() -> None:

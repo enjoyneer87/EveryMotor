@@ -15,9 +15,11 @@ MOTORCAD_TXT_HEADER_TO_H5_KEY_MAP: dict[str, str] = {
     "By": "fields/by",
     "A": "fields/a",
     "J": "fields/j",
+    "Je": "fields/je",
     "NodeIndex": "mesh/node_id",
     "X": "mesh/node_x_mm",
     "Y": "mesh/node_y_mm",
+    "A_node": "fields/a_node",
 }
 
 

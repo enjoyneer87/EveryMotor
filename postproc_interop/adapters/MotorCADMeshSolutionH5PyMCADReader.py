@@ -18,6 +18,7 @@ _FIELD_META: dict[str, tuple[str, str]] = {
     "by": ("By", "T"),
     "a": ("A", "Wb/m"),
     "j": ("J", "A/mm2"),
+    "je": ("Je", "A/mm2"),
 }
 
 
@@ -79,6 +80,7 @@ class MotorCADMeshSolutionH5PyMCADReader(MeshReader):
         by: list[float] = []
         a: list[float] = []
         j: list[float] = []
+        je: list[float] = []
         region_names: dict[int, str] = {}
 
         for region in getattr(regions, "_regions", []):
@@ -109,6 +111,7 @@ class MotorCADMeshSolutionH5PyMCADReader(MeshReader):
                 by.append(float(element.by))
                 a.append(float(element.a))
                 j.append(float(element.j))
+                je.append(float(getattr(element, 'je', 0.0)))
 
         if not tri_index:
             raise ValueError(
@@ -172,6 +175,11 @@ class MotorCADMeshSolutionH5PyMCADReader(MeshReader):
                 label=_FIELD_META["j"][0],
                 field=np.asarray(j, dtype=np.float64)[order],
                 unit=_FIELD_META["j"][1],
+            ),
+            "je": SolutionMat(
+                label=_FIELD_META["je"][0],
+                field=np.asarray(je, dtype=np.float64)[order],
+                unit=_FIELD_META["je"][1],
             ),
         }
         return MeshSolution(

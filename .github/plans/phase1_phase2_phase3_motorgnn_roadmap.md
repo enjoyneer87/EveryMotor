@@ -104,9 +104,61 @@ Use these comments directly in code files to drive GitHub Copilot generation:
 - ✅ PBC test suite: 23 tests passing (pbc_bundle + motor_dataset_pbc)
 - ✅ `results/regression_baseline.json` recorded
 
+### NPZ Inference Visualization Policy
+- NPZ 추론 결과(`pos_x/pos_y/gt_*/pred_*`)에는 삼각형(connectivity) 정보를 **저장하지 않는다**.
+  - 삼각형은 형상 전용이므로 다른 형상 추론 시 무의미
+  - NPZ는 경량 추론 기록용으로 유지
+- **NPZ 시각화**: `scatter(pos_x, pos_y, c=field)` 사용 (Delaunay 아티팩트 방지)
+- **정밀 메시 렌더링**: H5 원본 → `tripcolor(triang, field, shading="gouraud")` 참조
+- 셀 33 (H5 reference)은 `tripcolor`, 셀 47 (NPZ GT/Pred)는 `scatter`가 올바른 조합
+
 ## Phase 2: Dynamic Sliding-Band Time-Series Pipeline
 ### Objective
 Support time-varying topology/conditions without memory instability.
+
+### Architecture: 3-Module Separation (Geometry / Graph / Field)
+
+Phase 2 이후 아키텍처는 **세 모듈로 명확히 분리**한다.
+SB connectivity는 로터 회전각 θ의 결정론적 함수이므로 학습 대상이 아니다.
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  [Geometry Encoder]  (학습)                                  │
+│    Input:  pos(θ), node_type, region_code                    │
+│    Output: node_embed  (형상 latent)                         │
+│    - 동일 형상이면 인코딩 1회 → 모든 step에서 재사용        │
+│    - 다른 DOE 케이스(다른 슬롯/극수)에도 일반화 가능        │
+│                                                              │
+│  [Graph Builder]  (비학습, 알고리즘적)                       │
+│    Input:  θ(t), stator mesh, rotor mesh                     │
+│    Output: edge_index(t) = static_edges + SB_edges(θ)        │
+│    - per-step SB connectivity를 결정론적으로 생성            │
+│    - stator mesh 고정, rotor mesh 좌표만 회전                │
+│    - SB 영역: θ에 따라 stator-rotor 연결 재계산             │
+│                                                              │
+│  [Field GNN]  (학습)                                         │
+│    Input:  node_embed + edge_index(t) + field(t-1)           │
+│    Output: field(t) = [Bx, By, A, Je]                        │
+│    - connectivity 생성 부담 없이 필드 예측에 집중            │
+│    - Phase 3에서 autoregressive rollout 확장                 │
+└──────────────────────────────────────────────────────────────┘
+```
+
+**분리 근거:**
+- SB connectivity = f(θ) 이며 기하학적 결정론이므로 학습 불필요
+- NPZ 추론 결과에 삼각형 정보를 저장해도 새 형상에 범용적이지 않음
+- 시각화 시 NPZ는 scatter로, 정밀 렌더링은 H5 원본 connectivity 참조
+- Phase 4+ (미래)에서 완전히 새로운 형상(다른 모터 토폴로지)에 대해
+  connectivity까지 예측하려면 별도 Connectivity Predictor Network 필요
+
+**Phase별 connectivity 전략:**
+
+| Phase | Connectivity 출처 | 접근 |
+|-------|-------------------|------|
+| Phase 1 (Static) | H5에서 per-step 고정 merge | 현재 구현 (doe_data_utils.py) |
+| Phase 2 (Dynamic) | θ(t) → Graph Builder 알고리즘 생성 | 모듈 분리 |
+| Phase 3 (Rollout) | 이전 step θ → 다음 θ 예측 → Graph Builder | autoregressive 확장 |
+| Phase 4+ (미래) | 새 형상 일반화 | Connectivity Predictor (학습) |
 
 ### Contract freeze (mandatory — see phase2_dynamic_edge_pipeline.md)
 - ✅ TemporalMotorSample frozen dataclass with shape invariants
@@ -117,6 +169,9 @@ Support time-varying topology/conditions without memory instability.
 - ✅ Memory profile: collation loop no-accumulation + no-aliasing (test_phase2_memory_profile.py)
 
 ### Implementation tasks
+- Implement Graph Builder module: θ(t) → edge_index(t) (deterministic, non-learned)
+- Implement Geometry Encoder: pos + node_type → node_embed (learned, per-shape cached)
+- Refactor Field GNN to consume (node_embed, edge_index(t), field(t-1))
 - Build dynamic edge refresh for gap/sliding regions per timestep
 - Reuse static region topology to reduce overhead
 - Build time-aware dataloader returning `(x_t, edge_t, y_t)`

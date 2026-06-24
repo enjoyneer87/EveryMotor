@@ -8,7 +8,7 @@ from typing import Dict, Tuple
 import torch
 
 
-TARGET_CHANNEL_ORDER: Tuple[str, str, str, str] = ("Bx", "By", "A", "J")
+TARGET_CHANNEL_ORDER: Tuple[str, str, str, str] = ("Bx", "By", "A", "Je")
 
 STEP_SEMANTICS_TO_CODE = {
     "explicit_time_step": 0,
@@ -104,7 +104,7 @@ class BatchBoundaryContract:
 class LossBoundaryContract:
     """Immutable training-to-loss boundary contract."""
 
-    min_channels: int = 3
+    min_channels: int = 4
     expected_rank: int = 2
 
 
@@ -141,7 +141,7 @@ def validate_graph_batch_contract(
     if getattr(batch, "y", None) is None:
         raise ValueError("Contract gate failed: y is missing")
 
-    y_norm, schema = normalize_channels_to_bx_by_a_j(batch.y)
+    y_norm, schema = normalize_channels_to_bx_by_a_je(batch.y)
     if y_norm.shape[1] != contract.target_channels:
         raise ValueError(
             "Contract gate failed: canonical y channel count mismatch, "
@@ -270,14 +270,14 @@ def encode_fidelity_metadata(
     return step_code, fidelity_code, coupling_code
 
 
-def normalize_channels_to_bx_by_a_j(tensor: torch.Tensor) -> Tuple[torch.Tensor, str]:
-    """Normalize tensor channels to canonical order [Bx, By, A, J].
+def normalize_channels_to_bx_by_a_je(tensor: torch.Tensor) -> Tuple[torch.Tensor, str]:
+    """Normalize tensor channels to canonical order [Bx, By, A, Je].
 
     Supported source layouts:
-    - 4+ channels: assumes first four are already [Bx, By, A, J]
-    - 3 channels:  [A, Bx, By] -> [Bx, By, A, J=0]
-    - 2 channels:  [Bx, By]     -> [Bx, By, A=0, J=0]
-    - 1 channel:   [A]          -> [Bx=0, By=0, A, J=0]
+    - 4+ channels: assumes first four are already [Bx, By, A, Je]
+    - 3 channels:  [A, Bx, By] -> [Bx, By, A, Je=0]
+    - 2 channels:  [Bx, By]    -> [Bx, By, A=0, Je=0]
+    - 1 channel:   [A]         -> [Bx=0, By=0, A, Je=0]
     """
     if tensor.dim() == 1:
         tensor = tensor.unsqueeze(-1)
@@ -286,13 +286,13 @@ def normalize_channels_to_bx_by_a_j(tensor: torch.Tensor) -> Tuple[torch.Tensor,
 
     channels = tensor.shape[1]
     if channels >= 4:
-        return tensor[:, 0:4], "bx_by_a_j"
+        return tensor[:, 0:4], "bx_by_a_je"
     if channels == 3:
         a = tensor[:, 0:1]
         bx = tensor[:, 1:2]
         by = tensor[:, 2:3]
-        j = torch.zeros_like(a)
-        return torch.cat([bx, by, a, j], dim=1), "a_bx_by"
+        je = torch.zeros_like(a)
+        return torch.cat([bx, by, a, je], dim=1), "a_bx_by"
     if channels == 2:
         bx = tensor[:, 0:1]
         by = tensor[:, 1:2]
@@ -303,3 +303,7 @@ def normalize_channels_to_bx_by_a_j(tensor: torch.Tensor) -> Tuple[torch.Tensor,
         z = torch.zeros_like(a)
         return torch.cat([z, z, a, z], dim=1), "a_only"
     raise ValueError("Channel count must be >= 1")
+
+
+# Backward-compatible alias — will be removed in a future cleanup pass
+normalize_channels_to_bx_by_a_j = normalize_channels_to_bx_by_a_je

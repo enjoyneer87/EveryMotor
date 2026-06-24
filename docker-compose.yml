@@ -24,6 +24,9 @@ services:
       # 3) Output mount (npz/figures/logs)
       - D:/KDH/EveryMotorOut:/workspace/out
 
+      # 4) DOE H5 data (TXT→H5 변환 결과, 학습 시 read-only)
+      - D:/KDH/Sim_4SolverX/DOE4TrainingData:/workspace/doe_data:ro
+
       # Optional: keep read-only access to external repos if needed
       # - D:/KDH/repos/physicsnemo_from_nvidia:/workspace/ext/physicsnemo:ro
       # - D:/KDH/repos/multiscale_from_nvidia:/workspace/ext/multiscale-pde-operators:ro

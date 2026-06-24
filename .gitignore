@@ -22,8 +22,8 @@ __pycache__/
 
 # Images and outputs
 paper_figures/
-*.png
 *.pdf
+*.gif
 
 # Generated reports and experiment artifacts
 logs/**
@@ -36,6 +36,7 @@ analysis_outputs/
 mgn_fem_comparison/
 mgn_fem_comparison_physical/
 comparison_results.json
+results/backups/
 model_comparison_summary.json
 rnn_eval_complete.txt
 rnn_eval_final.txt

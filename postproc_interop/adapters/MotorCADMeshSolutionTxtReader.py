@@ -11,22 +11,29 @@ from postproc_interop.model.MeshMat import MeshMat
 from postproc_interop.model.MeshSolution import MeshSolution
 from postproc_interop.model.SolutionMat import SolutionMat
 
-_ELEM_KEYS = frozenset({"TriIndex", "Node1", "Node2", "Node3", "RegCode", "Bx", "By", "A", "J"})
-_NODE_KEYS = frozenset({"NodeIndex", "X", "Y"})
+_ELEM_KEYS = frozenset({"TriIndex", "Node1", "Node2", "Node3", "RegCode", "Bx", "By", "A", "J", "Je"})
+_NODE_KEYS = frozenset({"NodeIndex", "X", "Y", "A"})
 _REGION_KEYS = frozenset({"RegionCode", "RegionName"})
 
 # Fallback positional indices when column name is absent from header
-# (matches MotorCAD "new format" 9-column ElementsTable order)
+# (matches MotorCAD "new format" 10-column ElementsTable order)
 _ELEM_FALLBACK  = {"TriIndex": 0, "Node1": 1, "Node2": 2, "Node3": 3,
-                   "RegCode": 4, "Bx": 5, "By": 6, "A": 7, "J": 8}
-_NODE_FALLBACK  = {"NodeIndex": 0, "X": 1, "Y": 2}
+                   "RegCode": 4, "Bx": 5, "By": 6, "A": 7, "J": 8, "Je": 9}
+_NODE_FALLBACK  = {"NodeIndex": 0, "X": 1, "Y": 2, "A": 3}
 _REGION_FALLBACK = {"RegionCode": 0}
 
+# Element-level field metadata (from ElementsTable)
 _FIELD_META: dict[str, tuple[str, str]] = {
     "Bx": ("Bx", "T"),
     "By": ("By", "T"),
     "A":  ("A",  "Wb/m"),
     "J":  ("J",  "A/mm2"),
+    "Je": ("Je", "A/mm2"),
+}
+
+# Node-level field metadata (from NodesTable)
+_NODE_FIELD_META: dict[str, tuple[str, str]] = {
+    "A": ("A_node", "Wb/m"),
 }
 
 
@@ -110,6 +117,7 @@ class MotorCADMeshSolutionTxtReader(MeshReader):
         node_ids: list[int] = []
         x_mms: list[float] = []
         y_mms: list[float] = []
+        node_field_vals: dict[str, list[float]] = {k: [] for k in _NODE_FIELD_META}
 
         region_codes: list[int] = []
         region_names: list[str] = []
@@ -155,6 +163,8 @@ class MotorCADMeshSolutionTxtReader(MeshReader):
                 ni_i = ni_map.get("NodeIndex", _NODE_FALLBACK["NodeIndex"])
                 x_i  = ni_map.get("X",         _NODE_FALLBACK["X"])
                 y_i  = ni_map.get("Y",          _NODE_FALLBACK["Y"])
+                nf_idx = {k: ni_map.get(k, _NODE_FALLBACK.get(k))
+                          for k in _NODE_FIELD_META if k in ni_map or k in _NODE_FALLBACK}
                 for _ in range(n_nodes):
                     row = f.readline().split(",")
                     try:
@@ -163,6 +173,11 @@ class MotorCADMeshSolutionTxtReader(MeshReader):
                         y_mms.append(float(row[y_i]))
                     except (ValueError, IndexError):
                         pass
+                    for k, idx in nf_idx.items():
+                        try:
+                            node_field_vals[k].append(float(row[idx]))
+                        except (ValueError, IndexError):
+                            pass
 
             # ── RegionsTable ─────────────────────────────────────
             hdr = _scan_to_table(f, "RegionsTable")
@@ -203,6 +218,15 @@ class MotorCADMeshSolutionTxtReader(MeshReader):
             vals = field_vals[k]
             if vals and len(vals) == n:
                 solution_dict[k.lower()] = SolutionMat(
+                    label=label,
+                    field=np.array(vals, dtype=np.float64),
+                    unit=unit,
+                )
+        n_nd = len(node_ids)
+        for k, (label, unit) in _NODE_FIELD_META.items():
+            vals = node_field_vals[k]
+            if vals and len(vals) == n_nd:
+                solution_dict[label.lower()] = SolutionMat(
                     label=label,
                     field=np.array(vals, dtype=np.float64),
                     unit=unit,

@@ -13,10 +13,6 @@ from __future__ import annotations
 
 import json
 import subprocess
-import tempfile
-from pathlib import Path
-
-import numpy as np
 import pytest
 
 
@@ -32,14 +28,21 @@ try:
 
     # Build minimal synthetic NPZ with 3 nodes, 1 triangle
     angles = np.deg2rad(np.array([0.0, 22.5, 45.0], dtype=np.float64))
-    inner = np.stack([np.cos(angles), np.sin(angles)], axis=1).astype(np.float32)
+    inner = np.stack(
+        [np.cos(angles), np.sin(angles)],
+        axis=1,
+    ).astype(np.float32)
 
     pos = inner[np.newaxis, ...]                             # [1, 3, 2]
     node_type = np.ones((1, 3, 1), dtype=np.float32)
-    interior_edge_index = np.array([[[0,1],[1,2],[2,0],[1,0],[2,1],[0,2]]], dtype=np.int64)
+    edge_pairs = np.array(
+        [[0, 1], [1, 2], [2, 0], [1, 0], [2, 1], [0, 2]],
+        dtype=np.int64,
+    )
+    interior_edge_index = edge_pairs.T[np.newaxis, ...]
     pbc_edge_index = np.zeros((1, 2, 0), dtype=np.int64)
     pbc_edge_attr = np.zeros((1, 0, 1), dtype=np.float32)
-    y = np.random.RandomState(42).randn(1, 3, 4).astype(np.float32)
+    y = np.random.RandomState(42).randn(1, 3, 5).astype(np.float32)
 
     with tempfile.TemporaryDirectory() as td:
         npz_path = Path(td) / "overfit_smoke.npz"
@@ -89,6 +92,7 @@ def _docker_available(container: str) -> bool:
     try:
         r = subprocess.run(
             ["docker", "inspect", "--format", "{{.State.Running}}", container],
+            check=False,
             capture_output=True,
             text=True,
             timeout=5,
@@ -106,6 +110,7 @@ def test_overfit_single_converges_in_docker():
     """Run overfit-single inside Docker and confirm returncode 0."""
     cp = subprocess.run(
         ["docker", "exec", DOCKER_CONTAINER, "python", "-c", OVERFIT_SCRIPT],
+        check=False,
         capture_output=True,
         text=True,
         timeout=300,
