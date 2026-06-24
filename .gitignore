@@ -49,3 +49,9 @@ _backup_pre_nested_repo_move/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+#1 Ignore design files
+*.fig
+
+#
+*.csv
