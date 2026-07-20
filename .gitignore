@@ -10,6 +10,7 @@ doe_data/
 
 # Ignore logs
 *.log
+*.err
 eval_all_models_output.txt
 
 # Python cache
