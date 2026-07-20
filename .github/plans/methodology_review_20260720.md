@@ -254,3 +254,20 @@ test case 32는 PhaseAdvance 89.07°(DOE 최대)로 평균 토크가 ~0이며 �
 
 `eval/splits/doe40_case_split.json` (seed 42, DOE digest f62202a0):
 train 30 / val 4 / **test [4, 7, 18, 32, 37, 39]**. 전 모델이 이 파일을 공유한다.
+
+### G. anti-periodic 엣지가 "제약"이 아니라 "힌트"로 들어갔다 (미해결)
+
+`phase1_static/custom_mgn.py`의 `AntiPeriodicMessagePassing`은 `msg * signed_attr`로
+**메시지에 부호를 곱한다**. 이것이 원래 설계이고 물리적으로 올바른 반주기 전파다.
+
+그러나 현재 DOE 학습기는 PhysicsNeMo stock `MeshGraphNet`을 쓰고, 이 구현의 소스에는
+`* edge`, `mul(`, `sign` 이 전혀 없다 -- 표준 Pfaff 구조대로 [src, dst, edge]를 concat해
+MLP에 넣을 뿐이다. 따라서 `edge_attr`에 넣은 `edge_sign` 채널은 **모델이 학습해야 할
+특징**이지 강제되는 제약이 아니다.
+
+즉 §6.D의 "anti-periodic 엣지 추가"는 연결성(두 절단면을 잇는 엣지)은 확보했지만
+부호 전파는 확보하지 못했다. 사전/사후 비교는 "부호를 힌트로 준 것이 도움이 되는가"를
+답할 뿐이며, 제대로 된 반주기 전파의 효과는 아직 측정되지 않았다.
+
+해소하려면 stock MeshGraphNet 대신 custom_mgn 경로로 바꿔야 하는데, 그러면 아키텍처가
+달라져 기존 비교 기준선과 단절된다. 별도 실험으로 분리하는 것이 옳다.
