@@ -63,12 +63,24 @@ from torch_geometric.loader import DataLoader
 from eval.case_split import assign_records, resolve_case_split
 from eval.doe_dataset import CaseRecord, CaseSample, load_doe_cases
 from eval.feature_guard import (
+    MGN_EDGE_FEATURES,
+    MGN_EDGE_FEATURES_V2,
     MGN_NODE_FEATURES,
+    MGN_NODE_FEATURES_V2,
     assert_feature_count,
     assert_input_features_clean,
 )
 from eval.mesh_regions import sliding_band_mask
 from phase1_static.discrete_curl import build_p1_curl_operator, mesh_validity_mask
+from phase1_static.sector_symmetry import (
+    DEFAULT_SECTOR_DEG,
+    anti_periodic_edges,
+    cumulative_rotor_angle,
+    cut_plane_pairs,
+    rigid_rotor_node_mask,
+    rotor_angle_features,
+    wrap_rotor_coordinates,
+)
 
 SOURCE_TYPES_FOR_TRAINING = ("OnLoadTorque",)
 
@@ -83,12 +95,12 @@ class CurlData(Data):
     """
 
     def __inc__(self, key, value, *args, **kwargs):
-        if key == "curl_node_index":
+        if key in ("curl_node_index", "cut_pairs"):
             return self.num_nodes
         return super().__inc__(key, value, *args, **kwargs)
 
     def __cat_dim__(self, key, value, *args, **kwargs):
-        if key == "curl_node_index":
+        if key in ("curl_node_index", "cut_pairs"):
             return 0
         return super().__cat_dim__(key, value, *args, **kwargs)
 
@@ -97,12 +109,23 @@ def build_curl_graph(
     record: CaseRecord,
     sample: CaseSample,
     band_mask: np.ndarray,
+    rigid_mask: np.ndarray,
+    cumulative_deg: float,
+    sector_deg: float = DEFAULT_SECTOR_DEG,
+    wrap_rotor: bool = True,
+    anti_periodic: bool = True,
+    legacy_features: bool = False,
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
 
-    Node features are the 9 in `MGN_NODE_FEATURES` — position, region code, the
-    operating point and the DOE geometry parameters. No solved quantity is used
-    as an input; `assert_input_features_clean` enforces it here.
+    Node features are the 10 in `MGN_NODE_FEATURES_V2` — position, region code,
+    the operating point, the DOE geometry parameters and the cumulative rotor
+    angle. No solved quantity is used as an input; `assert_input_features_clean`
+    enforces it here.
+
+    With `wrap_rotor` the rigid rotor is folded back into the modelled sector and
+    the B target is multiplied by the anti-periodic sign, so every sample shows
+    the network a configuration that was actually solved.
     """
     mesh = record.mesh
     n_nodes = mesh.n_nodes
@@ -110,9 +133,16 @@ def build_curl_graph(
     if n_nodes == 0 or i1.size == 0:
         return None
 
-    node_x_m = sample.node_x_mm * 1e-3
-    node_y_m = sample.node_y_mm * 1e-3
-    pos = np.column_stack([sample.node_x_mm, sample.node_y_mm]).astype(np.float64)
+    if wrap_rotor:
+        node_x_mm, node_y_mm, field_sign = wrap_rotor_coordinates(
+            sample.node_x_mm, sample.node_y_mm, rigid_mask, cumulative_deg, sector_deg
+        )
+    else:
+        node_x_mm, node_y_mm, field_sign = sample.node_x_mm, sample.node_y_mm, 1.0
+
+    node_x_m = node_x_mm * 1e-3
+    node_y_m = node_y_mm * 1e-3
+    pos = np.column_stack([node_x_mm, node_y_mm]).astype(np.float64)
 
     # Region code per node: majority vote over incident elements, counted with a
     # single flattened bincount rather than a per-node mask.
@@ -126,19 +156,27 @@ def build_curl_graph(
     node_reg = counts.argmax(axis=1).astype(np.float64)
 
     cond = record.condition
-    scalars = [
-        sample.time_s,
-        sample.rotate_step,
+    geom_and_drive = [
         float(cond.get("Ratio_Bore", 0.0)),
         float(cond.get("Ratio_SlotDepth_ParallelSlot", 0.0)),
         float(cond.get("PeakCurrent", 0.0)),
         float(cond.get("PhaseAdvance", 0.0)),
     ]
+    if legacy_features:
+        # Pre-fix layout, kept only so checkpoints trained before the sector
+        # symmetry work can still be scored as a baseline.
+        scalars = [sample.time_s, sample.rotate_step] + geom_and_drive
+        node_names, edge_names = MGN_NODE_FEATURES, MGN_EDGE_FEATURES
+    else:
+        angle_sin, angle_cos = rotor_angle_features(cumulative_deg, sector_deg)
+        scalars = [sample.time_s, angle_sin, angle_cos] + geom_and_drive
+        node_names, edge_names = MGN_NODE_FEATURES_V2, MGN_EDGE_FEATURES_V2
+
     x = np.column_stack(
         [pos, node_reg[:, None]] + [np.full((n_nodes, 1), s) for s in scalars]
     ).astype(np.float32)
-    assert_input_features_clean(MGN_NODE_FEATURES, context="curl trainer node features")
-    assert_feature_count(MGN_NODE_FEATURES, x.shape[1], context="curl trainer node features")
+    assert_input_features_clean(node_names, context="curl trainer node features")
+    assert_feature_count(node_names, x.shape[1], context="curl trainer node features")
 
     # Curl operator on geometrically valid, non-sliding-band elements only.
     valid = mesh_validity_mask(node_x_m, node_y_m, mesh.tri, exclude=band_mask)
@@ -146,7 +184,8 @@ def build_curl_graph(
         return None
     operator = build_p1_curl_operator(node_x_m, node_y_m, mesh.tri, valid=valid)
 
-    b_true = np.stack(
+    # The wrapped configuration's field is `field_sign` times the exported one.
+    b_true = field_sign * np.stack(
         [
             sample.fields["bx"][operator.element_index],
             sample.fields["by"][operator.element_index],
@@ -159,9 +198,22 @@ def build_curl_graph(
     src = np.concatenate([i1, i2, i3, i2, i3, i1])
     dst = np.concatenate([i2, i3, i1, i1, i2, i3])
     edge_index = np.unique(np.stack([src, dst], axis=1), axis=0).T.astype(np.int64)
+    edge_sign = np.ones(edge_index.shape[1], dtype=np.float64)
+
+    # Anti-periodic edges close the sector: without them message passing cannot
+    # cross the cut, and a tooth at theta=0 never sees its physical neighbour at
+    # theta=-45 even though they are one sector apart.
+    pairs = cut_plane_pairs(node_x_mm, node_y_mm, sector_deg)
+    if anti_periodic and pairs.size:
+        pbc_index, pbc_sign = anti_periodic_edges(pairs)
+        edge_index = np.concatenate([edge_index, pbc_index], axis=1)
+        edge_sign = np.concatenate([edge_sign, pbc_sign])
+
     dxy = pos[edge_index[1]] - pos[edge_index[0]]
     dist = np.linalg.norm(dxy, axis=1, keepdims=True)
-    edge_attr = np.concatenate([dxy, dist], axis=1).astype(np.float32)
+    parts = [dxy, dist] if legacy_features else [edge_sign[:, None], dxy, dist]
+    edge_attr = np.concatenate(parts, axis=1).astype(np.float32)
+    assert_feature_count(edge_names, edge_attr.shape[1], context="curl trainer edge features")
 
     return CurlData(
         x=torch.from_numpy(x),
@@ -169,12 +221,17 @@ def build_curl_graph(
         edge_attr=torch.from_numpy(edge_attr),
         pos=torch.from_numpy(pos.astype(np.float32)),
         curl_node_index=torch.from_numpy(operator.node_index.astype(np.int64)),
+        # Which elements the operator produces B on, so the evaluator can place
+        # the prediction back into the full element array.
+        curl_element_index=torch.from_numpy(operator.element_index.astype(np.int64)),
         curl_coef_bx=torch.from_numpy(operator.coef_bx.astype(np.float32)),
         curl_coef_by=torch.from_numpy(operator.coef_by.astype(np.float32)),
         b_true=torch.from_numpy(b_true),
         a_export=torch.from_numpy(
-            _element_to_nodal(sample.fields["a"], mesh.tri, n_nodes).astype(np.float32)
+            (field_sign * _element_to_nodal(sample.fields["a"], mesh.tri, n_nodes)).astype(np.float32)
         ).unsqueeze(1),
+        cut_pairs=torch.from_numpy(pairs.astype(np.int64)) if pairs.size
+        else torch.zeros((0, 2), dtype=torch.long),
         n_elements_total=int(mesh.n_elements),
         num_nodes=n_nodes,
     )
@@ -217,6 +274,17 @@ def main() -> int:
                         help="Weight on MSE(A, exported A). Default 0: the exported "
                              "potential is element-averaged and fitting it caps the "
                              "model at a 38.7%% |B| nRMSE floor")
+    parser.add_argument("--w-pbc", type=float, default=1e-2,
+                        help="Weight on the anti-periodicity penalty "
+                             "MSE(A(theta=0) + A(theta=-sector)) at the cut planes")
+    parser.add_argument("--sector-deg", type=float, default=DEFAULT_SECTOR_DEG,
+                        help="Modelled sector span; 45 deg for the 1/8 DOE model")
+    parser.add_argument("--no-wrap-rotor", action="store_true",
+                        help="Keep the exported (unwrapped) rotor coordinates. The "
+                             "export reports the rotor out to -153 deg, which is not "
+                             "the domain that was solved")
+    parser.add_argument("--no-anti-periodic-edges", action="store_true",
+                        help="Leave the two cut planes unconnected in the graph")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt", type=str, default="results/mgn_curl_caseholdout.pt")
     args = parser.parse_args()
@@ -239,19 +307,37 @@ def main() -> int:
     stride = max(1, int(args.step_stride))
     graphs: List[CurlData] = []
     graph_case: List[int] = []
+    n_wrapped = 0
     t_load = time.time()
     for record in report.records:
-        band = sliding_band_mask(
-            record.mesh.reg_code, record.mesh.name_of_code, record.mesh.moving_reg_codes
+        mesh = record.mesh
+        band = sliding_band_mask(mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes)
+        rigid = rigid_rotor_node_mask(
+            mesh.tri, mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes, mesh.n_nodes
         )
+        # rotate_step is the per-step increment, so the absolute rotor angle has
+        # to be accumulated over the sweep.
+        cum_deg = cumulative_rotor_angle([s.rotate_step for s in record.samples])
+
         chosen = list(range(0, len(record.samples), stride))
         if args.max_steps_per_case:
             chosen = chosen[: int(args.max_steps_per_case)]
         for si in chosen:
-            g = build_curl_graph(record, record.samples[si], band)
+            g = build_curl_graph(
+                record,
+                record.samples[si],
+                band,
+                rigid,
+                cumulative_deg=float(cum_deg[si]),
+                sector_deg=args.sector_deg,
+                wrap_rotor=not args.no_wrap_rotor,
+                anti_periodic=not args.no_anti_periodic_edges,
+            )
             if g is not None:
                 graphs.append(g)
                 graph_case.append(record.case_index)
+                if abs(float(cum_deg[si])) >= args.sector_deg:
+                    n_wrapped += 1
     print(f"Total graphs: {len(graphs)}  (built in {time.time() - t_load:.0f}s)")
     if len(graphs) < 2:
         print("ERROR: need at least 2 graphs. Exiting.")
@@ -265,6 +351,10 @@ def main() -> int:
     frac = covered / np.clip(total, 1.0, None)
     print(f"Curl loss covers {100 * frac.mean():.1f}% of elements "
           f"(min {100 * frac.min():.1f}%, max {100 * frac.max():.1f}%)")
+    n_pbc = int(graphs[0].cut_pairs.shape[0])
+    print(f"Sector symmetry: wrap_rotor={not args.no_wrap_rotor} "
+          f"({n_wrapped} of {len(graphs)} samples past one sector), "
+          f"anti_periodic_edges={not args.no_anti_periodic_edges} ({n_pbc} cut-plane pairs)")
 
     split = resolve_case_split(manifest, sorted(set(graph_case)), Path(args.split), seed=args.seed)
     assigned = assign_records(graph_case, split)
@@ -337,7 +427,7 @@ def main() -> int:
 
     def run_epoch(loader, training: bool):
         model.train() if training else model.eval()
-        totals = {"loss": 0.0, "b": 0.0, "nrmse": 0.0}
+        totals = {"loss": 0.0, "b": 0.0, "nrmse": 0.0, "pbc": 0.0}
         n_batch = 0
         for batch in loader:
             batch = batch.to(device)
@@ -350,6 +440,16 @@ def main() -> int:
                 b_loss = torch.nn.functional.mse_loss(b_pred / b_std_d, batch.b_true / b_std_d)
                 gauge = a_hat.mean().pow(2)
                 loss = args.w_b * b_loss + args.w_gauge * gauge
+
+                # Anti-periodicity: A(theta=0) = -A(theta=-sector). The FEM
+                # solution satisfies this to ~1.7%; nothing else in the loss
+                # asks the model to.
+                pbc = a_hat.new_zeros(())
+                if args.w_pbc > 0.0 and batch.cut_pairs.numel():
+                    lo = a_hat.view(-1)[batch.cut_pairs[:, 0]]
+                    hi = a_hat.view(-1)[batch.cut_pairs[:, 1]]
+                    pbc = (lo + hi).pow(2).mean()
+                    loss = loss + args.w_pbc * pbc
                 if args.w_a > 0.0:
                     # Normalized by a_scale^2 so w_a is comparable to w_b.
                     a_loss = torch.nn.functional.mse_loss(a_pred, batch.a_export) / a_scale_d**2
@@ -370,6 +470,7 @@ def main() -> int:
                 totals["nrmse"] += float(100.0 * err / ref)
             totals["loss"] += float(loss)
             totals["b"] += float(b_loss)
+            totals["pbc"] += float(pbc)
             n_batch += 1
         return {k: v / max(n_batch, 1) for k, v in totals.items()}
 
@@ -397,7 +498,14 @@ def main() -> int:
                     "train_hist": train_hist, "val_hist": val_hist,
                     "args": {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items()},
                     "output_kind": "nodal_A_curl_to_element_B",
-                    "node_features": list(MGN_NODE_FEATURES),
+                    "node_features": list(MGN_NODE_FEATURES_V2),
+                    "edge_features": list(MGN_EDGE_FEATURES_V2),
+                    "sector_symmetry": {
+                        "sector_deg": args.sector_deg,
+                        "wrap_rotor": not args.no_wrap_rotor,
+                        "anti_periodic_edges": not args.no_anti_periodic_edges,
+                        "w_pbc": args.w_pbc,
+                    },
                     "split": {
                         "granularity": "case",
                         "manifest": str(args.split),
@@ -413,7 +521,7 @@ def main() -> int:
 
         if ep == 1 or ep % 5 == 0 or ep == args.epochs:
             print(f"  ep {ep:04d}/{args.epochs} | train B {tr['b']:.6f} nRMSE {tr['nrmse']:6.2f}% "
-                  f"| val B {va['b']:.6f} nRMSE {va['nrmse']:6.2f}% "
+                  f"| val B {va['b']:.6f} nRMSE {va['nrmse']:6.2f}% pbc {va['pbc']:.2e} "
                   f"| best {best_val:.6f} | {time.time() - t0:.0f}s")
 
     print(f"\nTraining complete: {args.epochs} epochs in {time.time() - t0:.1f}s")

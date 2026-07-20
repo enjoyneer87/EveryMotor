@@ -74,6 +74,10 @@ ALLOWED_INPUT_FEATURES = frozenset(
         "phase_advance",
         "time_s",
         "rotate_step",
+        "rotor_angle_sin",
+        "rotor_angle_cos",
+        "rotor_angle_deg",
+        "edge_sign",
         "step_index",
         "dt_s",
         # fidelity metadata
@@ -100,7 +104,26 @@ MGN_NODE_FEATURES: Tuple[str, ...] = (
     "PhaseAdvance",
 )
 
+# Layout with the sector-symmetry fixes: `rotate_step` (which only ever takes
+# the values {0, -2} and so cannot distinguish timesteps) is replaced by the
+# cumulative rotor angle encoded at the anti-periodic frequency.
+MGN_NODE_FEATURES_V2: Tuple[str, ...] = (
+    "pos_x",
+    "pos_y",
+    "region_code",
+    "time_s",
+    "rotor_angle_sin",
+    "rotor_angle_cos",
+    "Ratio_Bore",
+    "Ratio_SlotDepth_ParallelSlot",
+    "PeakCurrent",
+    "PhaseAdvance",
+)
+
 MGN_EDGE_FEATURES: Tuple[str, ...] = ("dx", "dy", "dist")
+
+# With anti-periodic edges the sign rides alongside the geometric attributes.
+MGN_EDGE_FEATURES_V2: Tuple[str, ...] = ("edge_sign", "dx", "dy", "dist")
 
 
 class FeatureLeakageError(ValueError):

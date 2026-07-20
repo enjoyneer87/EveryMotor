@@ -304,6 +304,19 @@ class MeshGraphNetPredictor:
         }
 
 
+def _wrap_sign(cumulative_deg: float, sector_deg: float, wrapped: bool) -> Tuple[float, int, float]:
+    """Anti-periodic sign that was applied to the target during training.
+
+    Returns ``(wrapped_deg, k, sign)``; `sign` is 1.0 when wrapping is off, so
+    the caller can apply it unconditionally.
+    """
+    if not wrapped:
+        return float(cumulative_deg), 0, 1.0
+    from phase1_static.sector_symmetry import wrap_rotor_angle
+
+    return wrap_rotor_angle(cumulative_deg, sector_deg)
+
+
 @dataclass
 class CurlMeshGraphNetPredictor:
     """Scores a checkpoint that predicts nodal A and derives B by the P1 curl.
@@ -333,6 +346,9 @@ class CurlMeshGraphNetPredictor:
     n_params: int = 0
     provenance: Optional[Dict[str, object]] = None
     train_args: Optional[Dict[str, object]] = None
+    sector_symmetry: Optional[Dict[str, object]] = None
+    node_features: Tuple[str, ...] = ()
+    edge_features: Tuple[str, ...] = ()
 
     @classmethod
     def from_checkpoint(
@@ -355,9 +371,15 @@ class CurlMeshGraphNetPredictor:
             )
 
         args = ckpt.get("args", {}) or {}
+        # Feature layout comes from the checkpoint, not from a constant here:
+        # the sector-symmetry fixes changed both the node and edge widths.
+        node_features = tuple(ckpt.get("node_features") or MGN_NODE_FEATURES)
+        edge_features = tuple(ckpt.get("edge_features") or MGN_EDGE_FEATURES)
+        assert_input_features_clean(node_features, context=f"{Path(path).name} node features")
+
         model = MeshGraphNet(
-            input_dim_nodes=len(MGN_NODE_FEATURES),
-            input_dim_edges=len(MGN_EDGE_FEATURES),
+            input_dim_nodes=len(node_features),
+            input_dim_edges=len(edge_features),
             output_dim=1,
             processor_size=int(args.get("processor_size", 15)),
             hidden_dim_processor=int(args.get("hidden_dim", 128)),
@@ -383,45 +405,81 @@ class CurlMeshGraphNetPredictor:
             n_params=sum(p.numel() for p in model.parameters()),
             provenance=split_provenance(ckpt),
             train_args={k: v for k, v in args.items() if k != "ckpt"} if isinstance(args, dict) else {},
+            sector_symmetry=dict(ckpt.get("sector_symmetry") or {}),
+            node_features=node_features,
+            edge_features=edge_features,
         )
 
     @torch.no_grad()
     def predict(self, record: CaseRecord, sample: CaseSample) -> np.ndarray:
         from torch_geometric.data import Data
 
+        # The graph is built by the *training* module, not re-implemented here.
+        # A second implementation is exactly how the pre-R0 pipeline ended up
+        # with a 9-feature builder and an 11-feature docstring.
+        from train_doe_curl_mgn import build_curl_graph
+
         from eval.mesh_regions import sliding_band_mask
-        from phase1_static.discrete_curl import (
-            build_p1_curl_operator,
-            curl_a_to_b_torch,
-            mesh_validity_mask,
-        )
-
-        x, edge_index, edge_attr, _ = build_mgn_inputs(record, sample)
-
-        xt = torch.as_tensor(x, dtype=torch.float32, device=self.device)
-        et = torch.as_tensor(edge_attr, dtype=torch.float32, device=self.device)
-        graph = Data(
-            x=torch.nan_to_num((xt - self.x_mean) / self.x_std),
-            edge_index=torch.as_tensor(edge_index, dtype=torch.long, device=self.device),
-            edge_attr=torch.nan_to_num((et - self.e_mean) / self.e_std),
-        )
-        a_nodal = self.model(graph.x, graph.edge_attr, graph).squeeze(-1) * self.a_scale
+        from phase1_static.sector_symmetry import cumulative_rotor_angle, rigid_rotor_node_mask
 
         mesh = record.mesh
+        symmetry = self.sector_symmetry or {}
+        sector_deg = float(symmetry.get("sector_deg", 45.0))
+
         band = sliding_band_mask(mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes)
-        valid = mesh_validity_mask(
-            sample.node_x_mm * 1e-3, sample.node_y_mm * 1e-3, mesh.tri, exclude=band
+        rigid = rigid_rotor_node_mask(
+            mesh.tri, mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes, mesh.n_nodes
         )
-        operator = build_p1_curl_operator(
-            sample.node_x_mm * 1e-3, sample.node_y_mm * 1e-3, mesh.tri, valid=valid
+        cum = cumulative_rotor_angle([s.rotate_step for s in record.samples])
+        step = next(
+            (i for i, s in enumerate(record.samples) if s.step_index == sample.step_index), 0
         )
 
-        b = curl_a_to_b_torch(operator, a_nodal.double()).cpu().numpy()
+        # A checkpoint with no sector_symmetry block predates the fixes and was
+        # trained on the 9-feature layout; build it the way it was trained.
+        legacy = not symmetry
+        graph = build_curl_graph(
+            record,
+            sample,
+            band,
+            rigid,
+            cumulative_deg=float(cum[step]),
+            sector_deg=sector_deg,
+            wrap_rotor=bool(symmetry.get("wrap_rotor", True)) and not legacy,
+            anti_periodic=bool(symmetry.get("anti_periodic_edges", True)) and not legacy,
+            legacy_features=legacy,
+        )
+        if graph is None:
+            return np.full((mesh.n_elements, len(self.channels)), np.nan, dtype=np.float64)
+
+        xt = graph.x.to(self.device)
+        et = graph.edge_attr.to(self.device)
+        batch = Data(
+            x=torch.nan_to_num((xt - self.x_mean) / self.x_std),
+            edge_index=graph.edge_index.to(self.device),
+            edge_attr=torch.nan_to_num((et - self.e_mean) / self.e_std),
+        )
+        a_hat = self.model(batch.x, batch.edge_attr, batch).view(-1) * self.a_scale
+
+        idx = graph.curl_node_index.to(self.device)
+        cbx = graph.curl_coef_bx.to(self.device).double()
+        cby = graph.curl_coef_by.to(self.device).double()
+        gathered = a_hat.double()[idx]
+        bx = (cbx * gathered).sum(1).cpu().numpy()
+        by = (cby * gathered).sum(1).cpu().numpy()
+
+        # Undo the anti-periodic sign so the prediction is comparable to the
+        # exported FEM field, which is reported in the unwrapped convention.
+        _, _, sign = _wrap_sign(
+            float(cum[step]), sector_deg, bool(symmetry.get("wrap_rotor", True)) and not legacy
+        )
+        bx, by = sign * bx, sign * by
 
         out = np.full((mesh.n_elements, len(self.channels)), np.nan, dtype=np.float64)
         ix, iy = self.channels.index("Bx"), self.channels.index("By")
-        out[operator.element_index, ix] = b[:, 0]
-        out[operator.element_index, iy] = b[:, 1]
+        elements = graph.curl_element_index.cpu().numpy()
+        out[elements, ix] = bx
+        out[elements, iy] = by
         return out
 
     def describe(self) -> Dict[str, object]:
@@ -429,8 +487,9 @@ class CurlMeshGraphNetPredictor:
             "kind": "MeshGraphNet + P1 curl",
             "checkpoint": str(self.checkpoint_path) if self.checkpoint_path else None,
             "params": int(self.n_params),
-            "node_features": list(MGN_NODE_FEATURES),
-            "edge_features": list(MGN_EDGE_FEATURES),
+            "node_features": list(self.node_features),
+            "edge_features": list(self.edge_features),
+            "sector_symmetry": self.sector_symmetry or {},
             "predicts": "nodal A",
             "derives": "element B = curl(A)",
             "output_support": self.output_support,
