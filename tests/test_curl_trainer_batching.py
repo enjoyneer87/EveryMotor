@@ -125,3 +125,54 @@ def test_gradients_reach_every_graph_in_the_batch():
         chunk = a.grad[offsets[i] : offsets[i + 1]]
         assert torch.isfinite(chunk).all()
         assert chunk.abs().sum() > 0, f"graph {i} received no gradient"
+
+
+def test_node_average_matches_per_element_mean():
+    """The --target B path: element value is the mean of its three nodal values."""
+    from train_doe_curl_mgn import average_nodes_to_elements
+
+    graphs, fields = [], []
+    for seed in range(3):
+        g, _, _ = make_graph(seed, n_points=30 + 5 * seed)
+        n = int(g.num_nodes)
+        b = torch.stack(
+            [torch.linspace(0, 1, n, dtype=torch.float64) * (seed + 1),
+             torch.linspace(1, 2, n, dtype=torch.float64) * (seed + 1)],
+            dim=1,
+        )
+        g.b_nodal = b
+        graphs.append(g)
+        fields.append(b)
+
+    batch = next(iter(DataLoader(graphs, batch_size=3, shuffle=False)))
+    got = average_nodes_to_elements(batch, batch.b_nodal).numpy()
+
+    expected = []
+    for g, b in zip(graphs, fields):
+        idx = g.curl_node_index.numpy()
+        expected.append(b.numpy()[idx].mean(axis=1))
+    np.testing.assert_allclose(got, np.concatenate(expected, axis=0), rtol=1e-12)
+
+
+def test_both_targets_score_the_same_elements():
+    """A/B fairness: curl and node-average produce values on one element set."""
+    from train_doe_curl_mgn import average_nodes_to_elements
+
+    g, op, a = make_graph(4, n_points=45)
+    n = int(g.num_nodes)
+    g.b_nodal = torch.zeros((n, 2), dtype=torch.float64)
+    batch = next(iter(DataLoader([g], batch_size=1, shuffle=False)))
+
+    curl_out = curl_from_batch(batch, batch.a_nodal)
+    avg_out = average_nodes_to_elements(batch, batch.b_nodal)
+    assert curl_out.shape == avg_out.shape == (op.n_valid, 2)
+
+
+def test_uniform_nodal_field_averages_to_itself():
+    from train_doe_curl_mgn import average_nodes_to_elements
+
+    g, _, _ = make_graph(1, n_points=25)
+    n = int(g.num_nodes)
+    g.b_nodal = torch.full((n, 2), 0.75, dtype=torch.float64)
+    batch = next(iter(DataLoader([g], batch_size=1, shuffle=False)))
+    np.testing.assert_allclose(average_nodes_to_elements(batch, batch.b_nodal).numpy(), 0.75)
