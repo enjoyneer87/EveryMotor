@@ -51,9 +51,8 @@ _backup_pre_nested_repo_move/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Local agent worktrees
-.claude/worktrees/
+#1 Ignore design files
+*.fig
 
-# Temporary debug/check scripts (prefix _ = scratch)
-_*.py
-monitor_train.py
+#
+*.csv
