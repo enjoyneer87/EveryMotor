@@ -338,6 +338,7 @@ class CurlMeshGraphNetPredictor:
     e_mean: torch.Tensor
     e_std: torch.Tensor
     a_scale: float
+    predicts_a: bool = True
     channels: Tuple[str, ...] = DEFAULT_CHANNELS
     name: str = "mgn_curl"
     output_support: str = "element"
@@ -364,11 +365,13 @@ class CurlMeshGraphNetPredictor:
         ckpt = load_checkpoint(Path(path), map_location=str(device))
 
         kind = ckpt.get("output_kind")
-        if kind != "nodal_A_curl_to_element_B":
+        if kind not in ("nodal_A_curl_to_element_B", "nodal_B_average_to_element_B"):
             raise CheckpointFeatureMismatch(
-                f"{Path(path).name} has output_kind {kind!r}; this adapter expects "
-                "'nodal_A_curl_to_element_B' (written by train_doe_curl_mgn.py)."
+                f"{Path(path).name} has output_kind {kind!r}; this adapter expects one of "
+                "'nodal_A_curl_to_element_B' / 'nodal_B_average_to_element_B' "
+                "(written by train_doe_curl_mgn.py)."
             )
+        predicts_a = kind == "nodal_A_curl_to_element_B"
 
         args = ckpt.get("args", {}) or {}
         # Feature layout comes from the checkpoint, not from a constant here:
@@ -380,7 +383,7 @@ class CurlMeshGraphNetPredictor:
         model = MeshGraphNet(
             input_dim_nodes=len(node_features),
             input_dim_edges=len(edge_features),
-            output_dim=1,
+            output_dim=1 if predicts_a else 2,
             processor_size=int(args.get("processor_size", 15)),
             hidden_dim_processor=int(args.get("hidden_dim", 128)),
             hidden_dim_node_encoder=int(args.get("hidden_dim", 128)),
@@ -397,7 +400,8 @@ class CurlMeshGraphNetPredictor:
             x_std=ckpt["x_std"].to(device),
             e_mean=ckpt["e_mean"].to(device),
             e_std=ckpt["e_std"].to(device),
-            a_scale=float(ckpt["a_scale"]),
+            a_scale=float(ckpt.get("out_scale", ckpt["a_scale"])),
+            predicts_a=predicts_a,
             channels=tuple(channels),
             name=name,
             device=device,
@@ -459,14 +463,20 @@ class CurlMeshGraphNetPredictor:
             edge_index=graph.edge_index.to(self.device),
             edge_attr=torch.nan_to_num((et - self.e_mean) / self.e_std),
         )
-        a_hat = self.model(batch.x, batch.edge_attr, batch).view(-1) * self.a_scale
-
+        raw = self.model(batch.x, batch.edge_attr, batch) * self.a_scale
         idx = graph.curl_node_index.to(self.device)
-        cbx = graph.curl_coef_bx.to(self.device).double()
-        cby = graph.curl_coef_by.to(self.device).double()
-        gathered = a_hat.double()[idx]
-        bx = (cbx * gathered).sum(1).cpu().numpy()
-        by = (cby * gathered).sum(1).cpu().numpy()
+
+        if self.predicts_a:
+            gathered = raw.view(-1).double()[idx]                 # (K, 3)
+            cbx = graph.curl_coef_bx.to(self.device).double()
+            cby = graph.curl_coef_by.to(self.device).double()
+            bx = (cbx * gathered).sum(1).cpu().numpy()
+            by = (cby * gathered).sum(1).cpu().numpy()
+        else:
+            # Node-support baseline: average the three nodal values per element.
+            elem = raw.double()[idx].mean(dim=1)                  # (K, 2)
+            bx = elem[:, 0].cpu().numpy()
+            by = elem[:, 1].cpu().numpy()
 
         # Undo the anti-periodic sign so the prediction is comparable to the
         # exported FEM field, which is reported in the unwrapped convention.
@@ -490,8 +500,9 @@ class CurlMeshGraphNetPredictor:
             "node_features": list(self.node_features),
             "edge_features": list(self.edge_features),
             "sector_symmetry": self.sector_symmetry or {},
-            "predicts": "nodal A",
-            "derives": "element B = curl(A)",
+            "predicts": "nodal A" if self.predicts_a else "nodal Bx, By",
+            "derives": "element B = curl(A)" if self.predicts_a
+            else "element B = mean of nodal B (round trip)",
             "output_support": self.output_support,
             "a_scale": self.a_scale,
             "train_args": self.train_args or {},

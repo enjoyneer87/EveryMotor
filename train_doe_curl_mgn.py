@@ -254,6 +254,16 @@ def curl_from_batch(batch, a_nodal: torch.Tensor) -> torch.Tensor:
     return torch.stack([bx, by], dim=1)
 
 
+def average_nodes_to_elements(batch, b_nodal: torch.Tensor) -> torch.Tensor:
+    """Average a node-wise vector field onto the operator's elements.
+
+    This is the node-support baseline's path to element support — the round trip
+    whose cost the curl route avoids. It reuses `curl_node_index`, so both
+    targets are compared on exactly the same element subset.
+    """
+    return b_nodal[batch.curl_node_index].mean(dim=1)         # (K_total, 2)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--data-dir", type=Path, default=Path("backup/doe_data"))
@@ -285,6 +295,12 @@ def main() -> int:
                              "the domain that was solved")
     parser.add_argument("--no-anti-periodic-edges", action="store_true",
                         help="Leave the two cut planes unconnected in the graph")
+    parser.add_argument("--target", choices=("A", "B"), default="A",
+                        help="'A': predict nodal A, derive element B by the P1 curl. "
+                             "'B': predict nodal Bx,By and average onto elements — the "
+                             "node-support baseline, run through this same script so "
+                             "features, split and scoring differ in nothing but the "
+                             "output representation")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt", type=str, default="results/mgn_curl_caseholdout.pt")
     args = parser.parse_args()
@@ -406,10 +422,16 @@ def main() -> int:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
 
+    predicts_a = args.target == "A"
+    out_dim = 1 if predicts_a else 2
+    # A is scaled into the potential range so its curl starts near the right
+    # magnitude; B is scaled directly by the field spread.
+    out_scale = a_scale if predicts_a else b_std
+
     model = MeshGraphNet(
         input_dim_nodes=train_graphs[0].x.shape[1],
         input_dim_edges=train_graphs[0].edge_attr.shape[1],
-        output_dim=1,                                   # nodal A
+        output_dim=out_dim,
         processor_size=args.processor_size,
         hidden_dim_processor=args.hidden_dim,
         hidden_dim_node_encoder=args.hidden_dim,
@@ -424,6 +446,7 @@ def main() -> int:
 
     b_std_d = b_std.to(device)
     a_scale_d = a_scale.to(device)
+    out_scale_d = out_scale.to(device)
 
     def run_epoch(loader, training: bool):
         model.train() if training else model.eval()
@@ -432,27 +455,30 @@ def main() -> int:
         for batch in loader:
             batch = batch.to(device)
             with torch.set_grad_enabled(training):
-                a_hat = model(batch.x, batch.edge_attr, batch)          # (N, 1)
-                a_pred = a_hat * a_scale_d
-                b_pred = curl_from_batch(batch, a_pred)                 # (K, 2) tesla
+                raw = model(batch.x, batch.edge_attr, batch)             # (N, out_dim)
+                if predicts_a:
+                    b_pred = curl_from_batch(batch, raw * out_scale_d)   # (K, 2) tesla
+                else:
+                    b_pred = average_nodes_to_elements(batch, raw * out_scale_d)
 
                 # Loss in normalized B units so it is scale-free.
                 b_loss = torch.nn.functional.mse_loss(b_pred / b_std_d, batch.b_true / b_std_d)
-                gauge = a_hat.mean().pow(2)
-                loss = args.w_b * b_loss + args.w_gauge * gauge
+                loss = args.w_b * b_loss
 
-                # Anti-periodicity: A(theta=0) = -A(theta=-sector). The FEM
-                # solution satisfies this to ~1.7%; nothing else in the loss
-                # asks the model to.
-                pbc = a_hat.new_zeros(())
-                if args.w_pbc > 0.0 and batch.cut_pairs.numel():
-                    lo = a_hat.view(-1)[batch.cut_pairs[:, 0]]
-                    hi = a_hat.view(-1)[batch.cut_pairs[:, 1]]
-                    pbc = (lo + hi).pow(2).mean()
-                    loss = loss + args.w_pbc * pbc
+                # The gauge and anti-periodicity terms are properties of the
+                # scalar potential. Bx is not a potential — the anti-periodic
+                # relation for a vector field carries a rotation as well as the
+                # sign — so they are applied only when A is the output.
+                pbc = raw.new_zeros(())
+                if predicts_a:
+                    loss = loss + args.w_gauge * raw.mean().pow(2)
+                    if args.w_pbc > 0.0 and batch.cut_pairs.numel():
+                        flat = raw.view(-1)
+                        pbc = (flat[batch.cut_pairs[:, 0]] + flat[batch.cut_pairs[:, 1]]).pow(2).mean()
+                        loss = loss + args.w_pbc * pbc
                 if args.w_a > 0.0:
                     # Normalized by a_scale^2 so w_a is comparable to w_b.
-                    a_loss = torch.nn.functional.mse_loss(a_pred, batch.a_export) / a_scale_d**2
+                    a_loss = torch.nn.functional.mse_loss(raw * out_scale_d, batch.a_export) / a_scale_d**2
                     loss = loss + args.w_a * a_loss
 
                 if not torch.isfinite(loss):
@@ -494,10 +520,13 @@ def main() -> int:
                     "optimizer_state_dict": optimizer.state_dict(),
                     "x_mean": x_mean, "x_std": x_std,
                     "e_mean": e_mean, "e_std": e_std,
-                    "b_std": b_std, "a_scale": a_scale,
+                    "b_std": b_std, "a_scale": a_scale, "out_scale": out_scale,
                     "train_hist": train_hist, "val_hist": val_hist,
                     "args": {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items()},
-                    "output_kind": "nodal_A_curl_to_element_B",
+                    "output_kind": (
+                        "nodal_A_curl_to_element_B" if predicts_a
+                        else "nodal_B_average_to_element_B"
+                    ),
                     "node_features": list(MGN_NODE_FEATURES_V2),
                     "edge_features": list(MGN_EDGE_FEATURES_V2),
                     "sector_symmetry": {

@@ -180,6 +180,37 @@ Combining them inverts 180–246 elements from step 3 onward, all in layer `a2`.
 - The benchmark masks these elements for every model alike and reports
   `element_coverage` (~0.865) in the artifact.
 
+## Sector symmetry: the model is 1/8 anti-periodic
+
+45-degree sector, 8-fold, **anti**-periodic. Measured on the export: rotating one
+sector negates the field (corr -0.994), two sectors restores it (+0.981), and
+across the cut planes `||A(0)+A(-45)||/||A|| = 0.017` while the periodic
+hypothesis gives 2.007. `phase1_static/sector_symmetry.py` owns this.
+
+Four things the DOE path got wrong before, all now handled by
+`train_doe_curl_mgn.py`:
+
+1. **`rotate_step` is the per-step increment**, so it only ever holds {0, -2} and
+   cannot identify a timestep. Use `rotor_angle_features` — cumulative angle as
+   sin/cos at a two-sector period, so one sector shifts the phase by pi and the
+   sign flip is carried by the encoding.
+2. **The export reports the rotor unwrapped** (out to -153 deg while the stator
+   stays at [-45, 0]). 47% of the training samples sat outside the solved
+   domain. `wrap_rotor_coordinates` folds the rigid rotor back and returns the
+   anti-periodic `sign` — **multiply the target by it**, or the wrapped samples
+   are mislabeled.
+3. **The two cut planes had zero connecting edges.** `cut_plane_pairs` +
+   `anti_periodic_edges` add sign -1 edges so message passing can cross.
+4. **Nothing asked the model to be anti-periodic.** `--w-pbc` penalizes
+   `A(0) + A(-45)`.
+
+Wrapping does **not** fix the `a2` inversions — that layer is re-meshed by the
+solver every step, and wrapping neither causes nor cures it. What matters is
+that wrapping introduces zero inversions *outside* the already-excluded sliding
+band, which is asserted in `tests/test_sector_symmetry.py`.
+
+Only the rigid rotor regions are rotated; `a2`'s own nodes are never moved.
+
 ### Running it
 
 ```bash
