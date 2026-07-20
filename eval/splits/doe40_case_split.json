@@ -1,0 +1,58 @@
+{
+  "version": "case_split/v1",
+  "seed": 42,
+  "doe_digest": "f62202a031d2dde8",
+  "sizes": {
+    "train": 30,
+    "val": 4,
+    "test": 6
+  },
+  "granularity": "case",
+  "note": "Case-level holdout. Every model in the benchmark must consume this exact split; see .github/plans/methodology_review_20260720.md R0.",
+  "train": [
+    0,
+    1,
+    2,
+    3,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    27,
+    29,
+    30,
+    31,
+    33,
+    34,
+    35,
+    36,
+    38
+  ],
+  "val": [
+    5,
+    16,
+    25,
+    28
+  ],
+  "test": [
+    4,
+    7,
+    18,
+    32,
+    37,
+    39
+  ]
+}

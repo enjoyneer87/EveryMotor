@@ -7,6 +7,16 @@ injects per-case condition features (Ratio_Bore, Ratio_SlotDepth, PeakCurrent,
 PhaseAdvance) into every node, and trains a single MeshGraphNet to predict
 (Bx, By) across all conditions.
 
+Node features are the 9 listed in `eval.predictors.MGN_NODE_FEATURES`. A and J
+are NOT inputs — they are solved quantities, and feeding them back would make
+validation meaningless. `eval.feature_guard` asserts this at graph-build time.
+
+Train/val split is cut at **case** granularity via `eval.case_split`, sharing the
+version-controlled split manifest with `eval/benchmark.py`. Splitting the flat
+record list at random puts different rotor angles of the same geometry on both
+sides, which measures angle interpolation rather than generalization to a new
+design; see `.github/plans/methodology_review_20260720.md` F1a.
+
 Usage (inside Docker):
     python /workspace/train_doe_meshgraphnet.py \
         --data-dir /workspace/doe_data \
@@ -33,13 +43,35 @@ import torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 
+from eval.case_split import assign_records, resolve_case_split
+from eval.doe_dataset import classify_source_type
+from eval.feature_guard import (
+    MGN_NODE_FEATURES,
+    assert_feature_count,
+    assert_input_features_clean,
+)
+
+# Only the moving-mesh timeseries solves carry a rotor sweep to learn from.
+SOURCE_TYPES_FOR_TRAINING = ("OnLoadTorque",)
+
 # ---------------------------------------------------------------------------
 # H5 parser (matches pyMCAD magnetic timeseries H5 schema)
 # ---------------------------------------------------------------------------
 
-def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dict]:
+def parse_h5_timeseries(
+    path: Path,
+    max_steps: Optional[int] = None,
+    step_stride: int = 1,
+) -> List[dict]:
     """Parse a pyMCAD magnetic timeseries H5 file into record dicts.
-    Returns list of dicts with numpy arrays (no Python-level loops per node)."""
+
+    Returns list of dicts with numpy arrays (no Python-level loops per node).
+
+    `step_stride` subsamples the rotor sweep evenly. Prefer it over `max_steps`
+    when trading data volume for run time: `max_steps` truncates, so it keeps
+    only the first fraction of the electrical cycle and biases the model toward
+    one region of rotor angle.
+    """
     records = []
     with h5py.File(path, "r") as f:
         if "steps" not in f:
@@ -105,15 +137,18 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
         all_idx_3 = np.concatenate([i1v, i2v, i3v])  # 3*nv
         n = len(sorted_ids)
 
-        # Region majority vote (shared topology)
+        # Region majority vote (shared topology).
+        # Counted with a single flattened bincount over (node, region) pairs.
+        # The previous per-node mask over the full incidence array was
+        # O(n_nodes * 3*n_elements) and dominated the whole load: ~3 minutes per
+        # H5 file, so several hours just to reach the first epoch.
         all_reg_3 = np.tile(reg_v.astype(np.int32), 3)
         node_reg = np.zeros(n, np.float32)
         if nv > 0 and len(all_reg_3) > 0:
             max_reg = int(all_reg_3.max()) + 1
-            for nidx in np.unique(all_idx_3):
-                mask = all_idx_3 == nidx
-                bc = np.bincount(all_reg_3[mask], minlength=max_reg)
-                node_reg[nidx] = float(np.argmax(bc))
+            flat = all_idx_3.astype(np.int64) * max_reg + all_reg_3.astype(np.int64)
+            counts = np.bincount(flat, minlength=n * max_reg).reshape(n, max_reg)
+            node_reg = counts.argmax(axis=1).astype(np.float32)
 
         # Moving node precompute
         if moving_idx is not None and moving_idx.size > 0:
@@ -123,8 +158,11 @@ def parse_h5_timeseries(path: Path, max_steps: Optional[int] = None) -> List[dic
 
         sort_order = np.argsort(node_id)  # precompute sort index
 
-        n_steps = min(int(steps.shape[0]), max_steps) if max_steps else int(steps.shape[0])
-        for si in range(n_steps):
+        n_steps = int(steps.shape[0])
+        selected = list(range(0, n_steps, max(1, int(step_stride))))
+        if max_steps:
+            selected = selected[: int(max_steps)]
+        for si in selected:
             x = node_x0.copy()
             y = node_y0.copy()
 
@@ -179,11 +217,15 @@ def build_graph(rec: dict, condition: Dict[str, float]) -> Optional[Data]:
     """Build a torch_geometric.Data graph from one FEA timestep record.
 
     Uses precomputed topology from parse_h5_timeseries.
-    Node features (x):
-        [pos_x, pos_y, A, J, region_code, time_s, rotate_step,
+    Node features (x), 9 columns — must stay in sync with
+    `eval.predictors.MGN_NODE_FEATURES`:
+        [pos_x, pos_y, region_code, time_s, rotate_step,
          Ratio_Bore, Ratio_SlotDepth, PeakCurrent, PhaseAdvance]
     Target (y):  [Bx, By]
     Edge attr:   [dx, dy, dist]
+
+    A and J are deliberately absent from x: both are FEM outputs, so using them
+    as inputs would leak the answer. `assert_input_features_clean` enforces it.
     """
     n = rec["_n"]
     if n == 0:
@@ -244,6 +286,9 @@ def build_graph(rec: dict, condition: Dict[str, float]) -> Optional[Data]:
         np.full((n,1), cond_ph,  np.float32),      # 8: PhaseAdvance
     ]).astype(np.float32)
 
+    assert_input_features_clean(MGN_NODE_FEATURES, context="build_graph node features")
+    assert_feature_count(MGN_NODE_FEATURES, x.shape[1], context="build_graph node features")
+
     yt = np.stack([node_bx, node_by], axis=1).astype(np.float32)
 
     edge_index = edge_pairs.T.astype(np.int64)
@@ -275,8 +320,14 @@ def main():
                         help="Number of message-passing layers")
     parser.add_argument("--hidden-dim", type=int, default=128)
     parser.add_argument("--max-steps-per-case", type=int, default=None,
-                        help="Cap timesteps per H5 (None=all)")
-    parser.add_argument("--train-ratio", type=float, default=0.8)
+                        help="Cap timesteps per H5 (None=all). Truncates, so it "
+                             "keeps only the start of the electrical cycle")
+    parser.add_argument("--step-stride", type=int, default=1,
+                        help="Keep every Nth timestep. Preferred over "
+                             "--max-steps-per-case: samples the whole rotor sweep evenly")
+    parser.add_argument("--split", type=str, default="eval/splits/doe40_case_split.json",
+                        help="Case-level split manifest, shared with eval/benchmark.py "
+                             "(created on first use)")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt", type=str, default="/workspace/doe_meshgraphnet_ckpt.pt")
     args = parser.parse_args()
@@ -292,6 +343,8 @@ def main():
 
     # ---- 2. Parse all H5 and build graphs ----
     all_graphs: List[Data] = []
+    # Case index of every graph, so the split can be cut at case granularity.
+    graph_case_index: List[int] = []
     case_counts = []
 
     for case in manifest["cases"]:
@@ -306,6 +359,13 @@ def main():
 
         case_graph_count = 0
         for h5p in h5_paths:
+            # StaticLoad / StaticOC / StaticLoadInductance use the static-mesh
+            # layout (scalar `step`, 1-D fields) that parse_h5_timeseries cannot
+            # read. Skipping them by type keeps the log readable instead of
+            # emitting a parse warning per file; eval/doe_dataset.py reads both
+            # layouts when the benchmark needs them.
+            if classify_source_type(h5p) not in SOURCE_TYPES_FOR_TRAINING:
+                continue
             # Extract filename robustly (handles Windows paths on Linux)
             # e.g. "D:\\KDH\\...\\Mag_OnLoadTorque_result_1.h5" → "Mag_OnLoadTorque_result_1.h5"
             h5_basename = h5p.replace("\\", "/").split("/")[-1]
@@ -327,7 +387,11 @@ def main():
                 continue
 
             try:
-                records = parse_h5_timeseries(h5_file, max_steps=args.max_steps_per_case)
+                records = parse_h5_timeseries(
+                    h5_file,
+                    max_steps=args.max_steps_per_case,
+                    step_stride=args.step_stride,
+                )
             except Exception as e:
                 print(f"  [WARN] parse error {h5_file}: {e}")
                 continue
@@ -336,6 +400,7 @@ def main():
                 g = build_graph(rec, condition)
                 if g is not None:
                     all_graphs.append(g)
+                    graph_case_index.append(int(case["index"]))
                     case_graph_count += 1
 
         case_counts.append(case_graph_count)
@@ -352,17 +417,38 @@ def main():
         print("ERROR: Need at least 2 graphs for training. Exiting.")
         sys.exit(1)
 
-    # ---- 3. Train / Val split (shuffle across all cases) ----
+    # ---- 3. Train / Val split (case-level holdout) ----
+    # Cut by geometry, never by record: two rotor angles of the same case are
+    # near-duplicates, so a record-level shuffle would leak the val geometry into
+    # training and report angle interpolation as if it were generalization.
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
-    indices = np.random.permutation(n_total)
-    n_train = max(1, int(n_total * args.train_ratio))
-    train_idx = indices[:n_train]
-    val_idx   = indices[n_train:]
+    split = resolve_case_split(
+        manifest,
+        sorted(set(graph_case_index)),
+        Path(args.split),
+        seed=args.seed,
+    )
+    assigned = assign_records(graph_case_index, split)
+    train_idx, val_idx = assigned["train"], assigned["val"]
+
+    print(f"Split manifest: {args.split}")
+    print(f"  train cases {len(split.train)} / val {len(split.val)} / test {len(split.test)} "
+          f"(test held back for eval/benchmark.py)")
+    if assigned["unassigned"].size:
+        print(f"  [WARN] {assigned['unassigned'].size} graphs from cases outside the split "
+              f"were dropped")
+    if train_idx.size == 0 or val_idx.size == 0:
+        print("ERROR: case-level split produced an empty train or val subset. Exiting.")
+        sys.exit(1)
 
     train_graphs = [all_graphs[i] for i in train_idx]
-    val_graphs   = [all_graphs[i] for i in val_idx] if len(val_idx) > 0 else [all_graphs[-1]]
+    val_graphs   = [all_graphs[i] for i in val_idx]
+
+    train_cases = {graph_case_index[i] for i in train_idx}
+    val_cases   = {graph_case_index[i] for i in val_idx}
+    assert not (train_cases & val_cases), "case-level holdout violated"
 
     # ---- 3b. Sanitize NaN / Inf  ----
     def _sanitize(t: torch.Tensor) -> torch.Tensor:
@@ -393,7 +479,8 @@ def main():
     train_loader = DataLoader(train_graphs, batch_size=args.batch_size, shuffle=True)
     val_loader   = DataLoader(val_graphs,   batch_size=args.batch_size, shuffle=False)
 
-    print(f"Train: {len(train_graphs)}, Val: {len(val_graphs)}")
+    print(f"Train: {len(train_graphs)} graphs / {len(train_cases)} cases, "
+          f"Val: {len(val_graphs)} graphs / {len(val_cases)} cases")
     print(f"Node features: {train_graphs[0].x.shape[1]}, "
           f"Edge features: {train_graphs[0].edge_attr.shape[1]}, "
           f"Targets: {train_graphs[0].y.shape[1]}")
@@ -466,6 +553,18 @@ def main():
                 "e_mean": e_mean, "e_std": e_std,
                 "train_hist": train_hist, "val_hist": val_hist,
                 "args": vars(args),
+                # Recorded so eval/benchmark.py can verify the checkpoint was
+                # trained against the split it is being scored on.
+                "split": {
+                    "granularity": "case",
+                    "manifest": str(args.split),
+                    "seed": split.seed,
+                    "doe_digest": split.digest,
+                    "train_cases": list(split.train),
+                    "val_cases": list(split.val),
+                    "test_cases": list(split.test),
+                },
+                "node_features": list(MGN_NODE_FEATURES),
             }, args.ckpt)
 
         if ep == 1 or ep % 5 == 0 or ep == args.epochs:
