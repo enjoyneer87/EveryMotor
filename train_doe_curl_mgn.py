@@ -408,8 +408,9 @@ def main() -> int:
         g.edge_attr = torch.nan_to_num((g.edge_attr - e_mean) / e_std)
         g.b_true = torch.nan_to_num(g.b_true)
 
+    target_desc = "1 (nodal A -> curl)" if args.target == "A" else "2 (nodal Bx,By -> average)"
     print(f"Node features: {train_graphs[0].x.shape[1]}, "
-          f"Edge features: {train_graphs[0].edge_attr.shape[1]}, Output: 1 (A)")
+          f"Edge features: {train_graphs[0].edge_attr.shape[1]}, Output: {target_desc}")
     print(f"b_std = {float(b_std):.4f} T, a_scale = {float(a_scale):.4e} Wb/m")
     print(f"Curl elements per graph: {train_graphs[0].b_true.shape[0]} "
           f"(sliding band and inverted elements excluded)")
