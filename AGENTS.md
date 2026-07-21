@@ -140,6 +140,13 @@ python -m eval.benchmark --data-dir backup/doe_data --mgn-ckpt <ckpt.pt>   # nee
 `eval/` imports no torch (adapters in `eval/predictors.py` do), so the harness and
 its tests run on the host: `python -m pytest tests/test_eval_*.py`
 
+Its dependencies are **numpy, h5py and scipy**. scipy is used in exactly one place —
+`GridResamplingFloorPredictor`, which needs a Delaunay triangulation to reproduce the
+mesh→grid round trip — and that row is on by default, so it is a hard requirement of a
+plain `python -m eval.benchmark`. The predictor probes for scipy when it is constructed
+(before the multi-minute H5 load) rather than failing deep inside scoring. Pass
+`--skip-grid-floor` to score without it.
+
 ---
 
 ## Field Representation: predict A, derive B

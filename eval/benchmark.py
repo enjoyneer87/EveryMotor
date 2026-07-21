@@ -492,6 +492,132 @@ class NodeResamplingFloorPredictor:
         }
 
 
+def _bilinear_sample(
+    field: np.ndarray,
+    gx: np.ndarray,
+    gy: np.ndarray,
+    x: np.ndarray,
+    y: np.ndarray,
+) -> np.ndarray:
+    """Bilinearly sample a regular grid at scattered query points.
+
+    `field` is indexed ``[row, col]`` with row along `gy` and column along `gx`,
+    matching the ``np.meshgrid(gx, gy)`` layout the grid trainers build.
+    """
+    n_x, n_y = len(gx), len(gy)
+    dx = (gx[-1] - gx[0]) / (n_x - 1)
+    dy = (gy[-1] - gy[0]) / (n_y - 1)
+
+    fx = np.clip((x - gx[0]) / dx, 0.0, n_x - 1)
+    fy = np.clip((y - gy[0]) / dy, 0.0, n_y - 1)
+    j0 = np.clip(np.floor(fx).astype(np.int64), 0, n_x - 2)
+    i0 = np.clip(np.floor(fy).astype(np.int64), 0, n_y - 2)
+    tx = fx - j0
+    ty = fy - i0
+
+    return (
+        field[i0, j0] * (1.0 - tx) * (1.0 - ty)
+        + field[i0, j0 + 1] * tx * (1.0 - ty)
+        + field[i0 + 1, j0] * (1.0 - tx) * ty
+        + field[i0 + 1, j0 + 1] * tx * ty
+    )
+
+
+@dataclass(frozen=True)
+class GridResamplingFloorPredictor:
+    """Ground truth pushed through the mesh -> regular grid -> mesh round trip.
+
+    Grid models (FNO, and the RNN that consumed the same tensors) never see the
+    unstructured mesh. `doe_data_utils.mesh_to_grid` scatters the element fields
+    onto nodes, then linearly interpolates them onto a `grid_res` x `grid_res`
+    Cartesian grid spanning the mesh bounding box, filling everything outside the
+    convex hull with 0.0. Whatever such a model predicts has to come back through
+    that grid to be compared against the FEM element fields.
+
+    This predictor applies exactly that transform to the truth itself, so its
+    score is the *best case* for any grid model: a perfect FNO, one with zero
+    error of its own, still lands here. The measurement is why FNO/GINO/RNN were
+    retired rather than tuned — the round trip alone costs far more than the
+    torque gate allows, so no amount of model capacity can recover it.
+
+    Two things make the loss large. The motor annulus is mostly empty in a square
+    bounding box, so a 64x64 grid spends most of its cells on air while the
+    airgap — one or two elements thick and the only place torque comes from — is
+    thinner than a single cell. And the bounding box is rebuilt from each step's
+    own node coordinates, so as the rotor sweeps, the grid moves with it and the
+    resampling error is not even stationary across a case.
+    """
+
+    channels: Tuple[str, ...] = DEFAULT_CHANNELS
+    name: str = "grid_resampling_floor"
+    output_support: str = "element"
+    grid_res: int = 64
+
+    def __post_init__(self) -> None:
+        # This is the only scipy use in `eval/` — the rest of the package is
+        # numpy-only — and the row is on by default. Probe it here, at
+        # construction, which main() does *before* load_doe_cases: otherwise a
+        # scipy-less host reads all six test cases from H5 (minutes), scores
+        # fem_identity, and only then dies inside predict().
+        try:
+            import scipy  # noqa: F401
+        except ModuleNotFoundError as exc:  # pragma: no cover - env-dependent
+            raise ModuleNotFoundError(
+                "grid_resampling_floor needs scipy, the only scipy dependency in "
+                "eval/. Install scipy, or pass --skip-grid-floor to score without "
+                "this row."
+            ) from exc
+
+    def predict(self, record: CaseRecord, sample: CaseSample) -> np.ndarray:
+        # scipy.interpolate.griddata(method="linear") *is* LinearNDInterpolator on
+        # a Delaunay triangulation of the points; constructing it once and reusing
+        # it across channels is numerically identical and avoids re-triangulating
+        # ~20k nodes per channel per step.
+        from scipy.interpolate import LinearNDInterpolator
+        from scipy.spatial import Delaunay
+
+        from eval.mesh_regions import element_centroids_m
+        from eval.torque import element_to_nodal
+
+        truth = truth_matrix(sample, self.channels)
+        mesh = record.mesh
+        node_x = np.asarray(sample.node_x_mm, dtype=np.float64) * 1e-3
+        node_y = np.asarray(sample.node_y_mm, dtype=np.float64) * 1e-3
+
+        # The grid spans THIS step's node bounding box, as mesh_to_grid does; the
+        # rotor sweep moves it, so the floor must be measured over the full step
+        # range, not the first few steps.
+        res = int(self.grid_res)
+        gx = np.linspace(node_x.min(), node_x.max(), res)
+        gy = np.linspace(node_y.min(), node_y.max(), res)
+        grid_x, grid_y = np.meshgrid(gx, gy)
+        query = np.column_stack([grid_x.ravel(), grid_y.ravel()])
+
+        triangulation = Delaunay(np.column_stack([node_x, node_y]))
+        centroid_x, centroid_y = element_centroids_m(sample.node_x_mm, sample.node_y_mm, mesh.tri)
+
+        out = np.empty((mesh.n_elements, len(self.channels)), dtype=np.float64)
+        for c in range(truth.shape[1]):
+            node_values = element_to_nodal(truth[:, c], mesh.tri, mesh.n_nodes)
+            interpolator = LinearNDInterpolator(triangulation, node_values, fill_value=0.0)
+            on_grid = interpolator(query).reshape(res, res).astype(np.float32)
+            out[:, c] = _bilinear_sample(on_grid, gx, gy, centroid_x, centroid_y)
+        return out
+
+    def describe(self) -> Dict[str, object]:
+        return {
+            "kind": "pipeline_floor",
+            "params": 0,
+            "grid_res": int(self.grid_res),
+            "note": (
+                f"irreducible error of the element->node->{self.grid_res}x{self.grid_res} "
+                "regular grid->element round trip that every grid model (FNO/RNN) is "
+                "subject to; grid rebuilt per step from that step's node bounding box, "
+                "outside-hull fill 0.0"
+            ),
+        }
+
+
 @dataclass(frozen=True)
 class CurlFloorPredictor:
     """Best B field a nodal-A model could produce through the P1 curl.
@@ -620,6 +746,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--skip-curl-floor", action="store_true",
                         help="Skip the P1-curl representation floor (it solves a "
                              "least-squares problem per sample; ~1.5 s each)")
+    parser.add_argument("--skip-grid-floor", action="store_true",
+                        help="Skip the mesh->grid->mesh representation floor (it "
+                             "triangulates the mesh per sample; ~0.3 s each)")
+    parser.add_argument("--grid-floor-res", type=int, default=64,
+                        help="Resolution of the grid representation floor; default "
+                             "64, the resolution train_doe_fno.py trained at")
     parser.add_argument("--mgn-ckpt", type=Path, nargs="+", default=None,
                         help="MeshGraphNet checkpoint(s) to score (requires torch)")
     parser.add_argument("--curl-ckpt", type=Path, nargs="+", default=None,
@@ -643,6 +775,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         NodeResamplingFloorPredictor(channels=config.channels),
         ZeroFieldPredictor(channels=config.channels),
     ]
+    if not args.skip_grid_floor:
+        predictors.insert(
+            2, GridResamplingFloorPredictor(channels=config.channels, grid_res=args.grid_floor_res)
+        )
     if not args.skip_curl_floor:
         predictors.insert(1, CurlFloorPredictor(channels=config.channels))
 

@@ -1,5 +1,6 @@
 numpy
 h5py
+scipy   # eval/: Delaunay + LinearNDInterpolator behind grid_resampling_floor
 
 # Optional interoperability layers
 meshio

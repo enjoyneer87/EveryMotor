@@ -15,6 +15,7 @@ from eval.benchmark import (
     BenchmarkConfig,
     CurlFloorPredictor,
     FemIdentityPredictor,
+    GridResamplingFloorPredictor,
     NodeResamplingFloorPredictor,
     TrainMeanPredictor,
     ZeroFieldPredictor,
@@ -305,6 +306,125 @@ def test_curl_floor_beats_the_node_roundtrip_floor(onload_record):
     # The torque gap is the decisive one: ~1-3% against ~60-80%.
     assert curl_s["torque"]["nrmse_torque_pct"] < 10.0
     assert node_s["torque"]["nrmse_torque_pct"] > 40.0
+
+
+def _trimmed(record, n_samples):
+    return record.__class__(
+        case_index=record.case_index,
+        source_type=record.source_type,
+        path=record.path,
+        mesh=record.mesh,
+        samples=record.samples[:n_samples],
+        condition=record.condition,
+    )
+
+
+def test_bilinear_sample_reproduces_a_known_linear_field():
+    """Unit check of the grid->element back-map, no DOE export needed."""
+    from eval.benchmark import _bilinear_sample
+
+    gx = np.linspace(-1.0, 3.0, 9)
+    gy = np.linspace(0.0, 2.0, 5)
+    grid_x, grid_y = np.meshgrid(gx, gy)
+    field = 2.0 * grid_x - 3.0 * grid_y + 0.5  # bilinear interpolation is exact here
+
+    qx = np.array([-1.0, 0.37, 1.5, 3.0])
+    qy = np.array([0.0, 1.11, 0.25, 2.0])
+    got = _bilinear_sample(field, gx, gy, qx, qy)
+    assert got == pytest.approx(2.0 * qx - 3.0 * qy + 0.5)
+
+    # Points outside the grid clamp to the border rather than extrapolating.
+    edge = _bilinear_sample(field, gx, gy, np.array([9.0]), np.array([-4.0]))
+    assert edge == pytest.approx(_bilinear_sample(field, gx, gy, np.array([3.0]), np.array([0.0])))
+
+
+@requires_doe
+def test_grid_floor_is_far_worse_than_the_node_roundtrip_floor(onload_record):
+    """The measurement that retires FNO/GINO/RNN.
+
+    Pushing the truth through mesh -> 64x64 grid -> mesh is what a *perfect* grid
+    model is subject to. It costs an order of magnitude more torque error than
+    the node round trip, which is already far outside the 3% gate, so the
+    retirement is a measured floor and not a claim.
+    """
+    config = BenchmarkConfig(data_dir=DATA_DIR, split_path=Path("unused.json"))
+    trimmed = _trimmed(onload_record, 3)
+
+    grid, grid_fail = evaluate_predictor(GridResamplingFloorPredictor(), [trimmed], config)
+    node, _ = evaluate_predictor(NodeResamplingFloorPredictor(), [trimmed], config)
+    assert grid_fail == ()
+
+    grid_s = summarize(grid, config.channels)
+    node_s = summarize(node, config.channels)
+
+    assert grid_s["overall"]["Bnorm"]["nrmse_pct"] > node_s["overall"]["Bnorm"]["nrmse_pct"]
+    # No grid model can reach the 3% torque gate: the transform alone blows past it.
+    assert grid_s["torque"]["nrmse_torque_pct"] > 100.0
+
+
+@requires_doe
+def test_grid_floor_records_its_resolution_and_worsens_as_it_coarsens(onload_record):
+    """The row must be self-describing: the number means nothing without the res."""
+    config = BenchmarkConfig(data_dir=DATA_DIR, split_path=Path("unused.json"))
+    trimmed = _trimmed(onload_record, 2)
+
+    assert GridResamplingFloorPredictor().grid_res == 64, "default must match train_doe_fno.py"
+    card = GridResamplingFloorPredictor(grid_res=32).describe()
+    assert card["grid_res"] == 32 and "32x32" in card["note"]
+
+    coarse, _ = evaluate_predictor(GridResamplingFloorPredictor(grid_res=16), [trimmed], config)
+    fine, _ = evaluate_predictor(GridResamplingFloorPredictor(grid_res=128), [trimmed], config)
+
+    coarse_nrmse = summarize(coarse, config.channels)["overall"]["Bnorm"]["nrmse_pct"]
+    fine_nrmse = summarize(fine, config.channels)["overall"]["Bnorm"]["nrmse_pct"]
+    assert coarse_nrmse > fine_nrmse
+
+
+@requires_doe
+def test_grid_floor_resamples_each_step_against_its_own_geometry(onload_record):
+    """Guard for the window artifact: the grid follows each step's own bbox.
+
+    The floor is 157% torque nRMSE over the full 45-step sweep but 217% over the
+    first five steps, because the bounding box is rebuilt from each step's node
+    coordinates and the rotor sweeps out of the early-step box. A refactor that
+    hoisted the bbox out of the per-step path would silently turn the whole-sweep
+    number into the early-step one.
+
+    Asserting only that the *data's* bbox moves does not catch that — the
+    predictor has to actually run. So check the round trip tracks the step it was
+    given: step 10's resampled field must sit closer to step 10's truth than to
+    step 0's.
+    """
+    # Step 20, not 10: the rotor sweeps in -x, and through step ~14 the bounding
+    # box is still pinned by the stationary stator (x stays [0, 99] mm). By step
+    # 20 it has opened to [-20.1, 99] mm, so the grid demonstrably differs from
+    # the one step 0 would have built.
+    first, late = onload_record.samples[0], onload_record.samples[20]
+
+    bbox_first = (first.node_x_mm.min(), first.node_x_mm.max())
+    bbox_late = (late.node_x_mm.min(), late.node_x_mm.max())
+    assert bbox_first != bbox_late, "precondition: rotor sweep must move the x bbox"
+
+    grid = GridResamplingFloorPredictor()
+    pred_late = grid.predict(onload_record, late)
+
+    truth_first = truth_matrix(first, grid.channels)
+    truth_late = truth_matrix(late, grid.channels)
+    err_matched = float(np.abs(pred_late - truth_late).mean())
+    err_crossed = float(np.abs(pred_late - truth_first).mean())
+    assert err_matched < err_crossed, (
+        f"step 10's resampled field must track step 10's truth "
+        f"({err_matched:.4g}) more closely than step 0's ({err_crossed:.4g})"
+    )
+
+
+@requires_doe
+def test_grid_floor_output_is_finite_and_on_element_support(onload_record):
+    grid = GridResamplingFloorPredictor()
+    assert grid.output_support == "element"
+    pred = grid.predict(onload_record, onload_record.samples[0])
+    assert pred.shape == (onload_record.mesh.n_elements, 2)
+    assert np.all(np.isfinite(pred))
 
 
 @requires_doe
