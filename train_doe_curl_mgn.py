@@ -70,7 +70,7 @@ from eval.feature_guard import (
     assert_feature_count,
     assert_input_features_clean,
 )
-from eval.mesh_regions import sliding_band_mask
+from eval.mesh_regions import AIRGAP_NAME_PATTERN, sliding_band_mask
 from phase1_static.discrete_curl import build_p1_curl_operator, mesh_validity_mask
 from phase1_static.sector_symmetry import (
     DEFAULT_SECTOR_DEG,
@@ -115,6 +115,7 @@ def build_curl_graph(
     wrap_rotor: bool = True,
     anti_periodic: bool = True,
     legacy_features: bool = False,
+    airgap_weight: float = 1.0,
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
 
@@ -184,6 +185,21 @@ def build_curl_graph(
         return None
     operator = build_p1_curl_operator(node_x_m, node_y_m, mesh.tri, valid=valid)
 
+    # Per-element loss weight. The airgap band carries the torque — it is 6.4%
+    # of the scoreable elements but sets the acceptance metric — so it can be
+    # emphasised without letting it dominate. After the sliding band is
+    # excluded, the only airgap layer left is the stationary `a1`, which is
+    # exactly the band the Arkkio integral runs on.
+    elem_weight = np.ones(operator.n_valid, dtype=np.float64)
+    if airgap_weight != 1.0:
+        is_airgap = np.array(
+            [
+                bool(AIRGAP_NAME_PATTERN.match(str(mesh.name_of_code.get(int(c), ""))))
+                for c in np.asarray(mesh.reg_code)[operator.element_index]
+            ]
+        )
+        elem_weight[is_airgap] = float(airgap_weight)
+
     # The wrapped configuration's field is `field_sign` times the exported one.
     b_true = field_sign * np.stack(
         [
@@ -227,6 +243,7 @@ def build_curl_graph(
         curl_coef_bx=torch.from_numpy(operator.coef_bx.astype(np.float32)),
         curl_coef_by=torch.from_numpy(operator.coef_by.astype(np.float32)),
         b_true=torch.from_numpy(b_true),
+        elem_weight=torch.from_numpy(elem_weight.astype(np.float32)),
         a_export=torch.from_numpy(
             (field_sign * _element_to_nodal(sample.fields["a"], mesh.tri, n_nodes)).astype(np.float32)
         ).unsqueeze(1),
@@ -284,6 +301,10 @@ def main() -> int:
                         help="Weight on MSE(A, exported A). Default 0: the exported "
                              "potential is element-averaged and fitting it caps the "
                              "model at a 38.7%% |B| nRMSE floor")
+    parser.add_argument("--airgap-weight", type=float, default=1.0,
+                        help="Loss weight on airgap-band elements. They are 6.4%% of the "
+                             "scoreable elements but determine the torque; weight 5 lifts "
+                             "their share of the loss to ~26%%. 1.0 disables the weighting")
     parser.add_argument("--w-pbc", type=float, default=1e-2,
                         help="Weight on the anti-periodicity penalty "
                              "MSE(A(theta=0) + A(theta=-sector)) at the cut planes")
@@ -348,6 +369,7 @@ def main() -> int:
                 sector_deg=args.sector_deg,
                 wrap_rotor=not args.no_wrap_rotor,
                 anti_periodic=not args.no_anti_periodic_edges,
+                airgap_weight=args.airgap_weight,
             )
             if g is not None:
                 graphs.append(g)
@@ -367,6 +389,13 @@ def main() -> int:
     frac = covered / np.clip(total, 1.0, None)
     print(f"Curl loss covers {100 * frac.mean():.1f}% of elements "
           f"(min {100 * frac.min():.1f}%, max {100 * frac.max():.1f}%)")
+    if args.airgap_weight != 1.0:
+        w0 = graphs[0].elem_weight.numpy()
+        n_air = int((w0 > 1.0).sum())
+        share = float(w0[w0 > 1.0].sum() / w0.sum()) if n_air else 0.0
+        print(f"Airgap weighting: {args.airgap_weight:g}x on {n_air}/{w0.size} elements "
+              f"({100 * n_air / w0.size:.1f}% of elements -> {100 * share:.1f}% of the loss)")
+
     n_pbc = int(graphs[0].cut_pairs.shape[0])
     print(f"Sector symmetry: wrap_rotor={not args.no_wrap_rotor} "
           f"({n_wrapped} of {len(graphs)} samples past one sector), "
@@ -463,7 +492,12 @@ def main() -> int:
                     b_pred = average_nodes_to_elements(batch, raw * out_scale_d)
 
                 # Loss in normalized B units so it is scale-free.
-                b_loss = torch.nn.functional.mse_loss(b_pred / b_std_d, batch.b_true / b_std_d)
+                # Weighted MSE, normalized by the weight sum so the effective
+                # step size does not change with the weighting — a plain
+                # sum-of-weighted-errors would silently raise the learning rate.
+                sq = ((b_pred - batch.b_true) / b_std_d).pow(2)          # (K, 2)
+                w = batch.elem_weight.unsqueeze(1)
+                b_loss = (w * sq).sum() / (w.sum() * sq.shape[1])
                 loss = args.w_b * b_loss
 
                 # The gauge and anti-periodicity terms are properties of the
@@ -536,6 +570,7 @@ def main() -> int:
                         "anti_periodic_edges": not args.no_anti_periodic_edges,
                         "w_pbc": args.w_pbc,
                     },
+                    "airgap_weight": args.airgap_weight,
                     "split": {
                         "granularity": "case",
                         "manifest": str(args.split),

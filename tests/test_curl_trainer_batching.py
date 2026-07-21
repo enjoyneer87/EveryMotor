@@ -176,3 +176,57 @@ def test_uniform_nodal_field_averages_to_itself():
     g.b_nodal = torch.full((n, 2), 0.75, dtype=torch.float64)
     batch = next(iter(DataLoader([g], batch_size=1, shuffle=False)))
     np.testing.assert_allclose(average_nodes_to_elements(batch, batch.b_nodal).numpy(), 0.75)
+
+
+def _weighted_mse(pred, true, weight):
+    """Reference weighted MSE matching the trainer's normalization."""
+    sq = (pred - true) ** 2
+    w = weight[:, None]
+    return float((w * sq).sum() / (w.sum() * sq.shape[1]))
+
+
+def test_uniform_weights_reduce_to_plain_mse():
+    """airgap_weight=1 must leave the loss numerically unchanged."""
+    rng = np.random.default_rng(0)
+    pred = rng.normal(size=(50, 2))
+    true = rng.normal(size=(50, 2))
+    w = np.ones(50)
+    assert _weighted_mse(pred, true, w) == pytest.approx(float(((pred - true) ** 2).mean()))
+
+
+def test_weighting_moves_the_loss_toward_the_weighted_region():
+    """Errors inside the weighted region must count more, not just more total."""
+    pred = np.zeros((10, 2))
+    true = np.zeros((10, 2))
+    true[:2] = 1.0                       # error only in the "airgap" rows
+    w_flat = np.ones(10)
+    w_air = np.ones(10); w_air[:2] = 5.0
+
+    flat = _weighted_mse(pred, true, w_flat)
+    weighted = _weighted_mse(pred, true, w_air)
+    assert weighted > flat
+
+    # And the reverse: error outside the weighted region counts less.
+    true2 = np.zeros((10, 2)); true2[5:7] = 1.0
+    assert _weighted_mse(pred, true2, w_air) < _weighted_mse(pred, true2, w_flat)
+
+
+def test_weighted_loss_is_scale_normalized():
+    """Scaling every weight must not change the loss (guards the /w.sum())."""
+    rng = np.random.default_rng(3)
+    pred, true = rng.normal(size=(30, 2)), rng.normal(size=(30, 2))
+    w = rng.uniform(1.0, 5.0, size=30)
+    assert _weighted_mse(pred, true, w) == pytest.approx(_weighted_mse(pred, true, 7.5 * w))
+
+
+def test_batched_element_weights_concatenate():
+    graphs = []
+    for seed in range(3):
+        g, op, _ = make_graph(seed, n_points=30)
+        g.elem_weight = torch.full((op.n_valid,), float(seed + 1), dtype=torch.float32)
+        graphs.append(g)
+
+    batch = next(iter(DataLoader(graphs, batch_size=3, shuffle=False)))
+    assert batch.elem_weight.shape[0] == sum(g.elem_weight.shape[0] for g in graphs)
+    assert batch.elem_weight.shape[0] == batch.curl_node_index.shape[0]
+    assert set(batch.elem_weight.unique().tolist()) == {1.0, 2.0, 3.0}
