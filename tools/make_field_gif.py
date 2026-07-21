@@ -57,7 +57,8 @@ from phase1_static.sector_symmetry import (  # noqa: E402
 )
 
 
-def compute_frames(record, predictor, steps: List[int], wrap_display: bool = True):
+def compute_frames(record, predictor, steps: List[int], wrap_display: bool = True,
+                   axial_length_m: float = 0.150):
     """Per-step FEM/predicted |B|, the validity mask and both torque curves.
 
     `wrap_display` folds the rigid rotor back into the modelled sector **for
@@ -112,8 +113,8 @@ def compute_frames(record, predictor, steps: List[int], wrap_display: bool = Tru
                 "valid": valid,
                 "b_fem": np.hypot(bx_t, by_t),
                 "b_pred": np.hypot(pred[:, 0], pred[:, 1]),
-                "t_fem": arkkio_torque(band, bx_t, by_t),
-                "t_pred": arkkio_torque(band, pred[:, 0], pred[:, 1]),
+                "t_fem": arkkio_torque(band, bx_t, by_t, axial_length_m),
+                "t_pred": arkkio_torque(band, pred[:, 0], pred[:, 1], axial_length_m),
             }
         )
     return frames
@@ -165,8 +166,11 @@ def _panel(ax, triang, values, vmin, vmax, cmap, title):
 
 
 def render(
-    frames, case_index: int, out_path: Path, fps: float, label: str, wrap_note: str = ""
+    frames, case_index: int, out_path: Path, fps: float, label: str, wrap_note: str = "",
+    axial_length_m: float = 0.150,
 ) -> Tuple[Path, float, float]:
+    torque_unit = ("torque  [N·m per m of stack]" if axial_length_m == 1.0
+                   else f"torque  [N·m]  (stack {axial_length_m * 1e3:.0f} mm)")
     # One scale for FEM and prediction so the two panels are comparable, and a
     # separate one for the error. p99 rather than max keeps a handful of
     # saturated tooth-tip elements from flattening the rest of the picture.
@@ -209,7 +213,7 @@ def render(
         axt.plot([f["step"]], [t_fem[k]], "o", color="#1f77b4", ms=6)
         axt.plot([f["step"]], [t_pred[k]], "o", color="#d62728", ms=6)
         axt.set_xlabel("rotor step", fontsize=9)
-        axt.set_ylabel("torque  [N·m per m of stack]", fontsize=9)
+        axt.set_ylabel(torque_unit, fontsize=9)
         axt.legend(loc="upper right", fontsize=8, ncol=2)
         axt.grid(alpha=0.25)
         axt.tick_params(labelsize=8)
@@ -217,7 +221,7 @@ def render(
         fig.suptitle(
             f"DOE case {case_index:04d} (holdout) — {label}\n"
             f"step {f['step']:02d}/{steps.max():02d}   "
-            f"T_FEM {t_fem[k]:8.1f}   T_pred {t_pred[k]:8.1f}  N·m per m of stack   |   "
+            f"T_FEM {t_fem[k]:7.1f}   T_pred {t_pred[k]:7.1f}   |   "
             f"|B| 0–{vmax:.1f} T, error 0–{emax:.2f} T{wrap_note}",
             fontsize=9.5,
         )
@@ -250,6 +254,10 @@ def main() -> int:
     parser.add_argument("--max-steps", type=int, default=None)
     parser.add_argument("--fps", type=float, default=6.0)
     parser.add_argument("--label", type=str, default="")
+    parser.add_argument("--axial-length-m", type=float, default=0.150,
+                        help="Stack length for the torque axis. 0.150 m is "
+                             "Stator_Lam_Length from the Motor-CAD .mot for this design; "
+                             "pass 1.0 to plot torque per metre of stack instead")
     parser.add_argument("--no-wrap-display", action="store_true",
                         help="Draw the rotor at its raw exported (unwrapped) position, "
                              "which separates it from the stator on screen")
@@ -268,7 +276,8 @@ def main() -> int:
     print(f"case {args.case}: {len(steps)} frames from {len(record.samples)} steps")
 
     wrap = not args.no_wrap_display
-    frames = compute_frames(record, predictor, steps, wrap_display=wrap)
+    frames = compute_frames(record, predictor, steps, wrap_display=wrap,
+                            axial_length_m=args.axial_length_m)
     for f in frames:
         if f.get("draw_tri") is None:
             f["draw_tri"] = record.mesh.tri
@@ -276,6 +285,7 @@ def main() -> int:
     out, vmax, emax = render(
         frames, args.case, args.out, args.fps,
         args.label or Path(args.ckpt).stem,
+        axial_length_m=args.axial_length_m,
         wrap_note="   (rotor wrapped into the sector for display)" if wrap else "",
     )
     size_mb = out.stat().st_size / 1e6
@@ -283,7 +293,8 @@ def main() -> int:
     t_pred = np.array([f["t_pred"] for f in frames])
     print(f"wrote {out}  ({size_mb:.2f} MB, {len(frames)} frames)")
     print(f"  |B| scale 0-{vmax:.1f} T, error scale 0-{emax:.2f} T")
-    print(f"  mean torque  FEM {t_fem.mean():.1f}  pred {t_pred.mean():.1f} N.m/m")
+    print(f"  mean torque  FEM {t_fem.mean():.1f}  pred {t_pred.mean():.1f}  "
+          f"(stack {args.axial_length_m * 1e3:.0f} mm)")
     return 0
 
 
