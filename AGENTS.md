@@ -235,7 +235,29 @@ python -m eval.benchmark --data-dir backup/doe_data \
 
 ## Environment Rules
 
-- Run inference scripts in Docker (PhysicsNeMo container), not host Python
+- **Execution path is machine-dependent — check which machine you are on first.**
+  - Machines with Docker + WDDM GPU: run in the PhysicsNeMo container, not host Python.
+  - `HPC_134` / `192.168.0.134` (L40S): **Docker is not available.** The GPU is in
+    TCC driver mode and WSL2 GPU passthrough requires WDDM, so container+GPU cannot
+    work. Use the native `.venv` (`.venv\Scripts\python.exe`). This path is
+    validated — it reproduces the reference scorecard exactly (13.324% |B| /
+    9.207% torque on `mgn_nodeB_long.pt`). The `.sh` files in `results/logs/`
+    hardcode the container path `/workspace/app` and will not run as-is.
+  - Whichever path you use, the acceptance contract is the same: score
+    `mgn_nodeB_long.pt` and confirm **13.324% |B| / 9.207% torque** before
+    trusting any new result from that machine.
+- **`physicsnemo`'s MeshGraphNet requires `torch_scatter`.** Without it the
+  benchmark loads the checkpoint and silently scores **zero samples** — no
+  exception, exit code 0, just `no samples`. `check_runtime_contract.py` does
+  not check for it. Verify it imports before trusting a clean-looking run.
+- **When adding a section to any `.md`, record which machine produced the
+  result** — hostname + IP (e.g. `HPC_134 / 192.168.0.134`). Stacks differ per
+  machine (container vs native), so results are only comparable when the origin
+  is known. See `.github/plans/methodology_review_20260720.md` §10 for the format.
+- Data (`backup/doe_data`, `*.pt`) travels via the department share
+  `\\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration`,
+  never git. Code travels via git only. Checkpoints with the same filename may
+  hold different weights — check the sha256 before overwriting.
 - `eMach/` is a git submodule — do NOT add `postproc_interop` as a dependency inside it
 - Commit format: `[TASKKEY] short action summary`
 - Do not run long GPU training unless task explicitly requires it
