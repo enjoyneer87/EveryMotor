@@ -34,6 +34,7 @@ from typing import Dict, List, Mapping, Optional, Protocol, Sequence, Tuple
 import numpy as np
 
 from eval.case_split import CaseSplit, manifest_digest, resolve_case_split
+from eval.determinism import pin_determinism
 from eval.doe_dataset import CaseRecord, CaseSample, load_doe_cases
 from eval.mesh_regions import REGION_GROUP_ORDER
 from eval.metrics import ChannelMetric, aggregate_channel, field_metrics, metrics_to_dict, region_metrics
@@ -349,6 +350,12 @@ def run_benchmark(
     output_path: Optional[Path] = None,
 ) -> Dict[str, object]:
     """Run the benchmark end to end and optionally write the results artifact."""
+    # Before any scoring: fix TF32, cuDNN autotuning and the seeds, so a number
+    # cannot move because a torch default changed underneath it. This does not
+    # make the run bitwise reproducible — see eval.determinism for what it can
+    # and cannot promise — and the settings it fixed go into the artifact.
+    determinism = pin_determinism()
+
     manifest = json.loads((Path(config.data_dir) / "doe_manifest.json").read_text(encoding="utf-8"))
     digest = manifest_digest(manifest)
     all_cases = [int(c["index"]) for c in manifest.get("cases", [])]
@@ -399,6 +406,7 @@ def run_benchmark(
             "python": sys.version.split()[0],
             "platform": platform.platform(),
             "numpy": np.__version__,
+            "determinism": determinism,
         },
         "models": scorecards,
     }

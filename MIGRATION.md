@@ -254,6 +254,26 @@ broken, and `eval.benchmark` now exits non-zero if any model scored no samples.
 Before those existed, a missing `torch_scatter` produced `no samples` and exit
 0 — a broken run that read as a clean one.
 
+`eval/determinism.py` pins the float32 settings the scorecard is measured under
+(TF32 off, cuDNN autotuning off, seeds fixed) and writes them into the
+artifact's `environment.determinism`. On torch 2.11 most of those already hold
+the pinned values — which is the point, since they are defaults rather than
+guarantees and torch here comes from the global interpreter.
+
+This was measured, not assumed. Before pinning, three runs of the same
+checkpoint on this machine gave |B| `13.32386180647098`, `13.323861819126696`
+and `13.32386179404891`, while the numpy floors stayed bit-identical — so the
+drift was entirely in the GPU model path. After pinning, three runs produced
+**byte-identical scorecards** (same sha256). The flag that did it is
+`use_deterministic_algorithms`: `torch_scatter` delegates its sum to torch's
+`scatter_add_`, which has a deterministic implementation.
+
+Two limits on that claim. It runs `warn_only`, so an op with no deterministic
+variant would warn rather than fail — the guarantee is measured, not enforced.
+And it is a *same machine* claim: **across** machines the contract remains
+**three decimals** (13.324% |B| / 9.207% torque), which is what the WSL2
+container and this native venv agree on.
+
 ## Resuming the no-time_s run
 
 > **DONE — completed 2026-07-21 on `HPC_134` / `192.168.0.134`.** The 60-epoch run

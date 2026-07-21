@@ -253,6 +253,21 @@ python -m eval.benchmark --data-dir backup/doe_data \
   - Whichever path you use, the acceptance contract is the same: score
     `mgn_nodeB_long.pt` and confirm **13.324% |B| / 9.207% torque** before
     trusting any new result from that machine.
+- **Score through `eval/determinism.py`; an unpinned run is not repeatable.**
+  Before it existed, the same checkpoint scored on the same machine with the
+  same code moved the ~8th significant digit every run (measured: |B|
+  13.32386180647098 / 13.323861819126696 / 13.32386179404891). The numpy floors
+  were bit-identical throughout, so the drift was entirely in the GPU path.
+  With TF32, cuDNN autotuning and `use_deterministic_algorithms` pinned, three
+  runs produced **byte-identical scorecards**. The flag that did it is
+  `use_deterministic_algorithms`: `torch_scatter` delegates its sum to torch's
+  `scatter_add_`, which has a deterministic implementation. `run_benchmark`
+  calls the pinning itself, so this is automatic — but it runs `warn_only`, so
+  the guarantee is *measured, not enforced*. Re-measure after changing the model.
+- **Bitwise equality is a same-machine claim. Across machines the contract is
+  still three decimals** — **13.324% |B| / 9.207% torque** — which is what the
+  WSL2 container and the `HPC_134` native venv agree on. Do not read a
+  cross-machine difference in the 8th digit as a regression.
 - **`physicsnemo`'s MeshGraphNet requires `torch_scatter`.** Without it the
   benchmark used to load the checkpoint and silently score **zero samples** — no
   exception, exit code 0, just `no samples`. That is now guarded twice:
