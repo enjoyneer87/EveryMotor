@@ -325,6 +325,24 @@ def summarize(results: Sequence[SampleResult], channels: Sequence[str]) -> Dict[
     return summary
 
 
+def models_with_no_samples(artifact: Mapping[str, object]) -> List[str]:
+    """Names of models in a scorecard that scored nothing.
+
+    `evaluate_predictor` catches per-sample exceptions so one broken sample
+    cannot silently shrink the test set. The cost of that safeguard is that a
+    *systematic* fault — a missing graph-op backend, a checkpoint whose graph
+    never builds — also arrives as per-sample failures, leaving a scorecard that
+    is structurally complete and numerically empty. Callers use this to tell the
+    two apart; `main` turns a non-empty result into a non-zero exit code.
+    """
+    models = artifact.get("models") or {}
+    return [
+        name
+        for name, card in models.items()
+        if not (card.get("summary") or {}).get("n_samples")
+    ]
+
+
 def run_benchmark(
     predictors: Sequence[FieldPredictor],
     config: BenchmarkConfig,
@@ -834,10 +852,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print(f"  split: {config.subset} cases {list(split.subset(config.subset))}")
     print(f"  samples scored: {artifact['data']['n_samples']} "
           f"(skipped {artifact['data']['n_skipped']})")
+    scored_nothing = models_with_no_samples(artifact)
     for name, card in artifact["models"].items():
         summary = card["summary"]
         if not summary.get("n_samples"):
-            print(f"  {name:22s} no samples")
+            print(f"  {name:22s} NO SAMPLES SCORED")
+            if card["failures"]:
+                print(f"    {len(card['failures'])} failure(s), first: {card['failures'][0]}")
             continue
         bn = summary["overall"].get("Bnorm", {})
         tq = summary.get("torque", {})
@@ -850,6 +871,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print(f"    [!] {provenance.get('warning', 'checkpoint split provenance unknown')}")
         if card["failures"]:
             print(f"    {len(card['failures'])} failure(s), first: {card['failures'][0]}")
+
+    # A model that scored nothing is a broken run, not a result. The harness
+    # catches per-sample exceptions so one bad sample cannot shrink the test
+    # set, which means a systematic fault — a missing graph-op backend, a
+    # checkpoint that cannot build its graph — reaches this point looking like
+    # a success. Only the exit code separates the two, so it has to say so.
+    if scored_nothing:
+        print(
+            f"\nFAIL: {len(scored_nothing)} model(s) scored no samples: "
+            f"{', '.join(scored_nothing)}\n"
+            "  The scorecard was still written, but it holds no numbers for these.\n"
+            "  Check the failure lines above; a systematic cause repeats identically "
+            "on every sample."
+        )
+        return 1
     return 0
 
 

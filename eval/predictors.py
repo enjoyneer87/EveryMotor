@@ -31,6 +31,7 @@ from eval.feature_guard import (
     assert_feature_count,
     assert_input_features_clean,
 )
+from eval.runtime_guard import require_graph_ops
 
 
 def load_checkpoint(path: Path, map_location: str = "cpu") -> Dict[str, object]:
@@ -205,6 +206,10 @@ class MeshGraphNetPredictor:
         name: str = "meshgraphnet",
         output_channel_order: Optional[Sequence[str]] = None,
     ) -> "MeshGraphNetPredictor":
+        # Before anything else: a missing torch_scatter does not stop the model
+        # from loading, only from running, and the harness would fold that into
+        # per-sample failures and report a clean 'no samples'.
+        require_graph_ops(context=f"{Path(path).name} (MeshGraphNet)")
         from physicsnemo.models.meshgraphnet import MeshGraphNet
 
         device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -371,6 +376,7 @@ class CurlMeshGraphNetPredictor:
         device: Optional[torch.device] = None,
         name: str = "mgn_curl",
     ) -> "CurlMeshGraphNetPredictor":
+        require_graph_ops(context=f"{Path(path).name} (MeshGraphNet + P1 curl)")
         from physicsnemo.models.meshgraphnet import MeshGraphNet
 
         device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")

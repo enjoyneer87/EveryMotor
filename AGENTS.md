@@ -254,9 +254,16 @@ python -m eval.benchmark --data-dir backup/doe_data \
     `mgn_nodeB_long.pt` and confirm **13.324% |B| / 9.207% torque** before
     trusting any new result from that machine.
 - **`physicsnemo`'s MeshGraphNet requires `torch_scatter`.** Without it the
-  benchmark loads the checkpoint and silently scores **zero samples** — no
-  exception, exit code 0, just `no samples`. `check_runtime_contract.py` does
-  not check for it. Verify it imports before trusting a clean-looking run.
+  benchmark used to load the checkpoint and silently score **zero samples** — no
+  exception, exit code 0, just `no samples`. That is now guarded twice:
+  `eval/runtime_guard.py` fails at checkpoint load with the fix in the message,
+  and `eval.benchmark` exits **1** if any model scored nothing, whatever the
+  cause. `check_runtime_contract.py` still does not check for it.
+- **`.venv` is `--system-site-packages`: `torch` and `numpy` come from the
+  *global* interpreter, the graph stack from the venv.** `torch_scatter` is
+  compiled against one exact torch release (`2.1.2+pt211cu128` ↔ torch 2.11.0),
+  so a global torch upgrade breaks the acceptance path without touching `.venv`.
+  Full table and rationale: MIGRATION.md, **Environment pinning**.
 - **When adding a section to any `.md`, record which machine produced the
   result** — hostname + IP (e.g. `HPC_134 / 192.168.0.134`). Stacks differ per
   machine (container vs native), so results are only comparable when the origin

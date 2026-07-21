@@ -207,6 +207,53 @@ docker run --rm -v "$PWD:/workspace/app" -w /workspace/app \
 
 If those two match, the migration is faithful.
 
+## Environment pinning
+
+Recorded on `HPC_134` / `192.168.0.134`, the machine that reproduces the
+acceptance gate natively. This is the stack the 13.324% / 9.207% number was
+produced on:
+
+| Package | Version | Resolved from |
+| --- | --- | --- |
+| Python | 3.12.9 | global interpreter |
+| `torch` | **2.11.0+cu128** | **global** `site-packages` |
+| `numpy` | 2.4.6 | **global** `site-packages` |
+| `physicsnemo` | 2.1.1 | `.venv` |
+| `torch_geometric` | 2.8.0.post1 | `.venv` |
+| `torch_scatter` | **2.1.2+pt211cu128** | `.venv` |
+| `h5py` | 3.16.0 | `.venv` |
+| `scipy` | 1.18.0 | `.venv` |
+
+**`.venv` is not self-contained.** It was created with
+`--system-site-packages` (see `.venv/pyvenv.cfg`), so `torch` and `numpy` are
+*not* in it — they resolve to the global Python 3.12 installation at
+`C:\Users\HPC_134\AppData\Local\Programs\Python\Python312`. Only the graph
+stack lives in the venv.
+
+That split is the fragile part, because `torch_scatter` ships compiled against
+one exact torch release. The wheel here is `2.1.2+pt211cu128` — torch 2.11 /
+CUDA 12.8 — and the venv has no way to hold that pairing: **upgrading global
+torch breaks the benchmark without any change inside `.venv`**. Anything that
+touches the global interpreter (`pip install -U torch`, a new Python from the
+installer, another project's requirements) is a change to this repo's
+acceptance path.
+
+The venv is deliberately left as-is rather than rebuilt self-contained: it is
+the configuration the reference scorecard was measured on, and re-pinning it
+would invalidate that measurement for a gain that does not affect the numbers.
+The pairing is therefore held by documentation and by a runtime guard rather
+than by the venv:
+
+```bash
+# what the guard sees; run this after any interpreter change
+.venv/Scripts/python.exe -c "from eval.runtime_guard import probe_graph_ops; print(probe_graph_ops())"
+```
+
+`eval/runtime_guard.py` fails checkpoint loading loudly when that stack is
+broken, and `eval.benchmark` now exits non-zero if any model scored no samples.
+Before those existed, a missing `torch_scatter` produced `no samples` and exit
+0 — a broken run that read as a clean one.
+
 ## Resuming the no-time_s run
 
 > **DONE — completed 2026-07-21 on `HPC_134` / `192.168.0.134`.** The 60-epoch run
