@@ -283,6 +283,13 @@ python -m eval.benchmark --data-dir backup/doe_data \
   result** — hostname + IP (e.g. `HPC_134 / 192.168.0.134`). Stacks differ per
   machine (container vs native), so results are only comparable when the origin
   is known. See `.github/plans/methodology_review_20260720.md` §10 for the format.
+  The JSON scorecards now record this themselves: `run_benchmark` writes a
+  `provenance` block with the commit (and whether the tree was dirty), the
+  hostname and IP, the **interpreter path** — which is what separates a `.venv`
+  run from a bare global-interpreter one — and the command. Quote it rather than
+  reconstructing it by hand. Scorecards written before `eval/provenance.py` keep
+  their thin `environment` block; do not backfill one, since a provenance field
+  invented after the fact is a guess wearing a record's clothes.
 - Data (`backup/doe_data`, `*.pt`) travels via the department share
   `\\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration`,
   never git. Code travels via git only. Checkpoints with the same filename may

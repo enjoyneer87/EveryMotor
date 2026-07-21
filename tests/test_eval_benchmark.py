@@ -247,6 +247,16 @@ def test_end_to_end_run_writes_a_self_describing_artifact(tmp_path, manifest):
     assert on_disk["data"]["n_skipped"] == 0
     assert "model_comparison_summary.json" in on_disk["supersedes"]
 
+    # ...which means naming the tree, the machine and the settings, not just the
+    # data. A scorecard that says "13.324%" without them cannot be traced back.
+    assert on_disk["provenance"]["machine"]["hostname"]
+    assert on_disk["provenance"]["recorded_at"]
+    assert on_disk["environment"]["determinism"]["seed"] is not None
+    git = on_disk["provenance"]["git"]
+    if git["available"]:
+        assert len(git["commit"]) == 40
+        assert "dirty" in git, "a number measured on a dirty tree pins to no commit"
+
     scored_cases = set(on_disk["split"]["evaluated_cases"])
     split = json.loads((tmp_path / "split.json").read_text(encoding="utf-8"))
     assert scored_cases == set(split["test"])

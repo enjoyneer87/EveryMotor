@@ -274,6 +274,15 @@ And it is a *same machine* claim: **across** machines the contract remains
 **three decimals** (13.324% |B| / 9.207% torque), which is what the WSL2
 container and this native venv agree on.
 
+Every scorecard also carries a `provenance` block naming the commit (and
+whether the tree was dirty), the hostname and IP, the interpreter path and the
+command. After migrating, that is the fastest way to confirm the new machine is
+running what you think it is:
+
+```bash
+.venv/Scripts/python.exe -c "import json;p=json.load(open('results/your_run.json'))['provenance'];print(p['machine']['hostname'],p['machine']['python_executable'],p['git']['describe'])"
+```
+
 ## Resuming the no-time_s run
 
 > **DONE — completed 2026-07-21 on `HPC_134` / `192.168.0.134`.** The 60-epoch run

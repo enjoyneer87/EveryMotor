@@ -38,6 +38,7 @@ from eval.determinism import pin_determinism
 from eval.doe_dataset import CaseRecord, CaseSample, load_doe_cases
 from eval.mesh_regions import REGION_GROUP_ORDER
 from eval.metrics import ChannelMetric, aggregate_channel, field_metrics, metrics_to_dict, region_metrics
+from eval.provenance import run_provenance
 from eval.torque import AirgapBand, TorqueComparison, aggregate_torque, build_airgap_band, compare_torque, nodal_to_element
 
 BENCHMARK_VERSION = "benchmark/v2"
@@ -408,6 +409,11 @@ def run_benchmark(
             "numpy": np.__version__,
             "determinism": determinism,
         },
+        # Where this number came from: commit, machine, interpreter, command.
+        # AGENTS.md already requires the machine be named for any result written
+        # into a .md; the scorecards carried none of it, so a JSON on disk could
+        # not be traced to the tree that produced it.
+        "provenance": run_provenance(),
         "models": scorecards,
     }
 
