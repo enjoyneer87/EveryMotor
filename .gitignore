@@ -63,3 +63,5 @@ tools/bin/
 # Native training venv (HPC_134) — never commit
 .venv/
 .pytest_cache/
+Thumbs.db
+desktop.ini
