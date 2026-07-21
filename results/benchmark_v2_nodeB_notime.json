@@ -2183,6 +2183,17 @@
           ],
           "seed": 42,
           "doe_digest": "f62202a031d2dde8"
+        },
+        "identity": {
+          "sha256": "6937a2e207bc744bcfe42868f173acda4406b0151b5a3d40f7c2705a30bc6b43",
+          "bytes": 28340541,
+          "epoch": 55,
+          "filename": "mgn_nodeB_notime.pt",
+          "canonical_name": "mgn_nodeB_notime_ep55_HPC134.pt",
+          "machine": "HPC134",
+          "registered": true,
+          "backfilled": true,
+          "resolved_by": "ambiguous filename disambiguated by |B| nRMSE 13.016%"
         }
       },
       "summary": {

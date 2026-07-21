@@ -35,8 +35,8 @@ overhead matters.
 | `results/viz/*.png` (torque three-way, Motor-CAD validation, GIF previews) | 500 KB | yes |
 | `backup/doe_data/` (40 DOE cases, H5) | **348 MB** | no — `.gitignore: doe_data/` |
 | `results/mgn_nodeB_long.pt` (current best, 13.32% / 9.20%) | **28 MB** | no — `.gitignore: *.pt` |
-| `results/mgn_nodeB_notime.pt` (no-time_s, **60 ep complete**, 13.016% / 8.240%) | **28 MB** | no |
-| `results/mgn_nodeB_notime_epoch34_prevmachine.pt` (the interrupted run — **epoch 34, not 20**) | **28 MB** | no |
+| `results/mgn_nodeB_notime_ep55_HPC134.pt` (no-time_s, **60 ep complete**, 13.016% / 8.240%) | **28 MB** | no |
+| `results/mgn_nodeB_notime_ep34_WSL2.pt` (the interrupted run — **epoch 34, not 20**) | **28 MB** | no |
 | `results/viz/*.gif` | 3.2 MB | no — `.gitignore: *.gif`; **on the share**, and regenerable via `results/logs/run_viz.sh` |
 | `results/logs/*.log`, `*.err` (training curves, scoring runs) | 66 KB | no — `.gitignore: *.log`; on the share |
 | `results/diag_infer/*.npz` (early-cycle diagnosis dumps) | 4.2 MB | no — on the share; regenerable |
@@ -68,11 +68,31 @@ EveryMotor_migration/          256 files, 428,723,034 B
 
 Verified after each copy: **file counts and byte totals match on both sides.**
 
-**Checkpoint filenames are not unique across machines.** `mgn_nodeB_notime.pt` has
-already meant two different tensor sets (epoch 34 here, epoch 55 on `HPC_134`), and
-scorecards record only the checkpoint *path*, never a hash — so the receiving side
-cannot tell them apart from the artifact alone. `MANIFEST.md` on the share carries
-the sha256 of each. Match it before use, and add a new name rather than overwriting.
+**Checkpoint filenames are not unique across machines.** `mgn_nodeB_notime.pt`
+already meant two different tensor sets at the same time (epoch 34 on the share,
+epoch 55 in the repo), and scorecards recorded only the checkpoint *path*, never a
+hash — so the receiving side could not tell them apart from the artifact alone.
+
+That is now fixed at three levels:
+
+1. **Naming.** Checkpoints are named `<arch>_<variant>_ep<NN>_<machine>.pt`
+   (e.g. `mgn_nodeB_notime_ep55_HPC134.pt`). Epoch and machine are in the name,
+   so two runs cannot collide on one filename in the first place.
+2. **Registry.** `results/checkpoints.json` is tracked in git and records the
+   sha256, size, epoch, machine and past names of every known checkpoint. The
+   weights travel by the share; their *identity* travels by `git pull`. It also
+   lists `ambiguous_names` — names that have meant more than one thing and must
+   never be trusted on their own.
+3. **Scorecards.** Every `model` block now carries an `identity` field with the
+   sha256 and epoch of the weights that produced it, so a number can always be
+   traced back. Loading a checkpoint whose epoch contradicts the registry raises
+   `CheckpointIdentityError` instead of scoring it.
+
+Rebuild the registry after adding a checkpoint:
+
+    python -m tools.ckpt_registry --scan results --hash-only "<share>/checkpoints"
+
+Match the sha256 before use, and add a new name rather than overwriting.
 
 `viz/` is the figures themselves. Only the GIFs actually need carrying — the PNGs
 are in git (`.gitignore: *.gif` but not `*.png`) — but they are 100 KB and keeping

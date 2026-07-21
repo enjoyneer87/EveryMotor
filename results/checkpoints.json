@@ -1,0 +1,67 @@
+{
+  "version": "checkpoints/v1",
+  "naming": "<arch>_<variant>_ep<NN>_<machine>.pt",
+  "checkpoints": [
+    {
+      "sha256": "a55b77623f8176daaa02b087e3a03cdc8daad4694667e952eecda8849a3e32b2",
+      "bytes": 28347381,
+      "epoch": 51,
+      "machine": "WSL2-container",
+      "canonical_name": "mgn_nodeB_long_ep51_WSL2.pt",
+      "seen_as": [
+        "mgn_nodeB_long.pt"
+      ],
+      "variant": "nodeB_long (10 node features, with time_s)",
+      "scorecard": "results/benchmark_v2_nodeB_long.json",
+      "metrics": {
+        "B_nrmse_pct": 13.324,
+        "torque_nrmse_pct": 9.207
+      },
+      "note": "Portable acceptance gate. 13.324/9.207 reproduces on both the Linux container and the Windows native stack; that is why it is the contract."
+    },
+    {
+      "sha256": "4ef2c47584292d56c1b4e2fbfd3dfc4ffaeaa3112b4febfc71d4c75c4ca4daab",
+      "bytes": 28345917,
+      "epoch": 34,
+      "machine": "WSL2-container",
+      "canonical_name": "mgn_nodeB_notime_ep34_WSL2.pt",
+      "seen_as": [
+        "mgn_nodeB_notime.pt",
+        "mgn_nodeB_notime_ep34_WSL2.pt",
+        "mgn_nodeB_notime_epoch34_prevmachine.pt"
+      ],
+      "variant": "nodeB_notime (9 node features, no time_s)",
+      "scorecard": null,
+      "metrics": null,
+      "note": "Interrupted at epoch 34 on GPU contention; never scored. Superseded by the ep55 run. Kept only so the share's short-named copy can be identified."
+    },
+    {
+      "sha256": "6937a2e207bc744bcfe42868f173acda4406b0151b5a3d40f7c2705a30bc6b43",
+      "bytes": 28340541,
+      "epoch": 55,
+      "machine": "HPC134",
+      "canonical_name": "mgn_nodeB_notime_ep55_HPC134.pt",
+      "seen_as": [
+        "mgn_nodeB_notime.pt",
+        "mgn_nodeB_notime_ep55_HPC134.pt"
+      ],
+      "variant": "nodeB_notime (9 node features, no time_s)",
+      "scorecard": "results/benchmark_v2_nodeB_notime.json",
+      "metrics": {
+        "B_nrmse_pct": 13.016,
+        "torque_nrmse_pct": 8.24
+      },
+      "note": "Completed 60-epoch run, best at 55. Already on the share under the canonical name; the repo copy still carried the ambiguous short name."
+    }
+  ],
+  "ambiguous_names": {
+    "mgn_nodeB_notime.pt": {
+      "reason": "2 different checkpoints have been stored under this name",
+      "seen_as": [
+        "4ef2c4758429... (epoch 34, WSL2-container)",
+        "6937a2e207bc... (epoch 55, HPC134)"
+      ]
+    }
+  },
+  "note": "Checkpoint weights are gitignored (28 MB each) and travel by the department share; their identity travels by git, in this file. Match sha256 -- never a filename -- before trusting a checkpoint."
+}

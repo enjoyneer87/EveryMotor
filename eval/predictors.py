@@ -23,6 +23,7 @@ import numpy as np
 import torch
 
 from eval.benchmark import DEFAULT_CHANNELS
+from eval.ckpt_identity import identify
 from eval.doe_dataset import CaseRecord, CaseSample
 from eval.feature_guard import (
     MGN_EDGE_FEATURES,
@@ -191,6 +192,9 @@ class MeshGraphNetPredictor:
     n_params: int = 0
     provenance: Optional[Dict[str, object]] = None
     train_args: Optional[Dict[str, object]] = None
+    # Content identity of the weights: sha256 + the epoch the checkpoint reports.
+    # A scorecard that records only a path cannot be traced back to its weights.
+    identity: Optional[Dict[str, object]] = None
 
     @classmethod
     def from_checkpoint(
@@ -263,6 +267,7 @@ class MeshGraphNetPredictor:
             n_params=sum(p.numel() for p in model.parameters()),
             provenance=split_provenance(ckpt),
             train_args={k: v for k, v in args.items() if k != "ckpt"} if isinstance(args, dict) else {},
+            identity=identify(Path(path), epoch=ckpt.get("epoch")),
         )
 
     @torch.no_grad()
@@ -304,6 +309,7 @@ class MeshGraphNetPredictor:
             "output_support": self.output_support,
             "train_args": self.train_args or {},
             "split_provenance": self.provenance or {},
+            "identity": self.identity or {},
         }
 
 
@@ -350,6 +356,9 @@ class CurlMeshGraphNetPredictor:
     n_params: int = 0
     provenance: Optional[Dict[str, object]] = None
     train_args: Optional[Dict[str, object]] = None
+    # Content identity of the weights: sha256 + the epoch the checkpoint reports.
+    # A scorecard that records only a path cannot be traced back to its weights.
+    identity: Optional[Dict[str, object]] = None
     sector_symmetry: Optional[Dict[str, object]] = None
     node_features: Tuple[str, ...] = ()
     edge_features: Tuple[str, ...] = ()
@@ -415,6 +424,7 @@ class CurlMeshGraphNetPredictor:
             n_params=sum(p.numel() for p in model.parameters()),
             provenance=split_provenance(ckpt),
             train_args={k: v for k, v in args.items() if k != "ckpt"} if isinstance(args, dict) else {},
+            identity=identify(Path(path), epoch=ckpt.get("epoch")),
             sector_symmetry=dict(ckpt.get("sector_symmetry") or {}),
             node_features=node_features,
             edge_features=edge_features,
@@ -517,4 +527,5 @@ class CurlMeshGraphNetPredictor:
             "a_scale": self.a_scale,
             "train_args": self.train_args or {},
             "split_provenance": self.provenance or {},
+            "identity": self.identity or {},
         }

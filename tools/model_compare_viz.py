@@ -33,14 +33,14 @@ The rotor is folded back into the modelled sector for display only (see
 
 Usage:
     python tools/model_compare_viz.py --case 4 --step 10 \
-        --model "curl-notime=results/mgn_nodeB_notime.pt" \
+        --model "curl-notime=results/mgn_nodeB_notime_ep55_HPC134.pt" \
         --scorecard results/benchmark_v2_nodeB_notime.json \
         --out results/viz/case0004_step10_compare.png
 
 Several models on one figure, mixing supports:
     python tools/model_compare_viz.py --case 4 --step 10 \
         --model "long=results/mgn_nodeB_long.pt" \
-        --model "notime=results/mgn_nodeB_notime.pt" \
+        --model "notime=results/mgn_nodeB_notime_ep55_HPC134.pt" \
         --scorecard results/benchmark_v2_nodeB_long.json \
         --scorecard results/benchmark_v2_nodeB_notime.json \
         --out results/viz/compare_two.png

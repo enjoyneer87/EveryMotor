@@ -2183,6 +2183,17 @@
           ],
           "seed": 42,
           "doe_digest": "f62202a031d2dde8"
+        },
+        "identity": {
+          "sha256": "a55b77623f8176daaa02b087e3a03cdc8daad4694667e952eecda8849a3e32b2",
+          "bytes": 28347381,
+          "epoch": 51,
+          "filename": "mgn_nodeB_long.pt",
+          "canonical_name": "mgn_nodeB_long_ep51_WSL2.pt",
+          "machine": "WSL2-container",
+          "registered": true,
+          "backfilled": true,
+          "resolved_by": "unique filename in registry"
         }
       },
       "summary": {

@@ -2172,6 +2172,11 @@
           ],
           "seed": 42,
           "doe_digest": "f62202a031d2dde8"
+        },
+        "identity": {
+          "sha256": null,
+          "backfilled": true,
+          "unresolved_reason": "no registered checkpoint is known by the name 'mgn_caseholdout_g0.pt'"
         }
       },
       "summary": {
