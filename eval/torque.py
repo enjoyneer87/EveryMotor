@@ -29,7 +29,24 @@ Absolute scale
 stack length is not carried in the H5 export, and the metric that matters —
 relative error between predicted and FEM torque computed by this same operator —
 is invariant to it. Pass the real stack length when an absolute N*m number is
-wanted.
+wanted. For the DOE design that is ``Stator_Lam_Length = 150 mm`` from the .mot,
+so raw values here are **6.67x** the numbers Motor-CAD reports.
+
+Sign convention
+---------------
+`arkkio_torque` returns torque about **+theta** (counter-clockwise positive).
+In this export the rotor turns clockwise — ``rotate_step`` is negative and the
+rotor's mean angle falls from -43 to -120 deg over the sweep — and the machine
+is motoring, so the electromagnetic torque points along the motion and this
+function correctly returns a **negative** value. Motor-CAD reports motoring
+torque as a positive magnitude, so its curve is ``-1`` times ours.
+
+That is a convention difference, not an error, and it cannot be confused with a
+real sign fault: the waveform's mean (~368 N*m) dwarfs its ripple (+-28 N*m), so
+it never crosses zero, and therefore no phase shift can map +370 onto -370.
+Fitting Motor-CAD against the unflipped curve scores an RMSE 370x worse than
+against the flipped one. Validated against Motor-CAD's virtual-work torque to
+0.35% on the mean; see `.github/plans/methodology_review_20260720.md` section 8b.
 """
 
 from __future__ import annotations

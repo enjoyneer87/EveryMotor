@@ -319,3 +319,38 @@ def test_perfect_prediction_scores_zero_torque_nrmse():
 def test_aggregate_of_nothing_reports_nan():
     agg = aggregate_torque([])
     assert agg["n"] == 0 and np.isnan(agg["nrmse_torque_pct"])
+
+
+def test_sign_follows_the_plus_theta_convention():
+    """Torque is positive about +theta; a clockwise-motoring machine reads negative.
+
+    Locks the convention that the Motor-CAD comparison relies on: our number is
+    -1x Motor-CAD's positive-motoring magnitude. See eval/torque.py.
+    """
+    node_x, node_y, tri, band = _band()
+
+    # B_r > 0 with B_theta > 0 drives the rotor counter-clockwise -> +T.
+    bx, by = uniform_radial_tangential(node_x, node_y, tri, b_r=0.9, b_theta=0.3)
+    assert arkkio_torque(band, bx, by) > 0
+
+    # Reversing the tangential component reverses the drive direction -> -T.
+    bx_cw, by_cw = uniform_radial_tangential(node_x, node_y, tri, b_r=0.9, b_theta=-0.3)
+    assert arkkio_torque(band, bx_cw, by_cw) < 0
+
+
+def test_a_dc_dominated_waveform_cannot_be_sign_flipped_by_a_phase_shift():
+    """Why the Motor-CAD phase alignment cannot be masking a sign error.
+
+    The measured waveform has mean ~368 N*m and ripple ~+-28, so it never
+    crosses zero. Any circular shift preserves the mean, so no shift can turn
+    +mean into -mean.
+    """
+    phase = np.linspace(0.0, 2 * np.pi, 45, endpoint=False)
+    wave = 368.0 + 28.0 * np.sin(12 * phase)
+
+    assert wave.min() > 0.0  # never crosses zero
+    for shift in range(45):
+        rolled = np.roll(wave, shift)
+        assert rolled.mean() == pytest.approx(wave.mean())
+        # Best achievable RMSE against the negated waveform stays enormous.
+        assert np.sqrt(np.mean((rolled - (-wave)) ** 2)) > 500.0
