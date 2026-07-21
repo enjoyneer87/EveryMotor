@@ -35,7 +35,8 @@ overhead matters.
 | `results/viz/*.png` (torque three-way, Motor-CAD validation, GIF previews) | 500 KB | yes |
 | `backup/doe_data/` (40 DOE cases, H5) | **348 MB** | no — `.gitignore: doe_data/` |
 | `results/mgn_nodeB_long.pt` (current best, 13.32% / 9.20%) | **28 MB** | no — `.gitignore: *.pt` |
-| `results/mgn_nodeB_notime.pt` (no-time_s run, stopped at epoch 20) | **28 MB** | no |
+| `results/mgn_nodeB_notime.pt` (no-time_s, **60 ep complete**, 13.016% / 8.240%) | **28 MB** | no |
+| `results/mgn_nodeB_notime_epoch34_prevmachine.pt` (the interrupted run — **epoch 34, not 20**) | **28 MB** | no |
 | `results/viz/*.gif` | 3.2 MB | no — `.gitignore: *.gif`; **on the share**, and regenerable via `results/logs/run_viz.sh` |
 | `results/logs/*.log`, `*.err` (training curves, scoring runs) | 66 KB | no — `.gitignore: *.log`; on the share |
 | `results/diag_infer/*.npz` (early-cycle diagnosis dumps) | 4.2 MB | no — on the share; regenerable |
@@ -53,15 +54,25 @@ superseded and cheaper to retrain than to carry.
 ```
 EveryMotor_migration/          256 files, 428,723,034 B
 ├── doe_data/                  197 files, 364,026,511 B   40 DOE cases
-├── checkpoints/                 2 files,  56,693,298 B
-│   ├── mgn_nodeB_long.pt      28,347,381 B  current best: 13.32% |B| / 9.20% torque
-│   └── mgn_nodeB_notime.pt    28,345,917 B  no-time_s run, stopped at epoch 20
+├── checkpoints/                 3 files,  85,033,839 B
+│   ├── mgn_nodeB_long.pt              28,347,381 B  with time_s: 13.324% |B| / 9.207% torque (epoch 51/60)
+│   ├── mgn_nodeB_notime.pt            28,345,917 B  interrupted run — epoch 34 (NOT 20; see below)
+│   └── mgn_nodeB_notime_ep55_HPC134.pt 28,340,541 B  no time_s, 60 ep: 13.016% |B| / 8.240% torque
+├── scorecards/                              scorecards + §9 diagnosis JSONs + step-0 comparison PNGs
+├── recovery/                                a corrupt uncommitted notebook, preserved — see its README
 ├── viz/                         6 files,   3,697,890 B   GIFs + the figures (see below)
 ├── diag_infer/                 15 files,   4,238,751 B   early-cycle diagnosis dumps (§9 evidence)
-└── logs/                       36 files,      66,584 B   training/scoring logs + .sh drivers
+├── logs/                       36 files,      66,584 B   training/scoring logs + .sh drivers
+└── MANIFEST.md                              sha256 of every checkpoint — read it before overwriting
 ```
 
 Verified after each copy: **file counts and byte totals match on both sides.**
+
+**Checkpoint filenames are not unique across machines.** `mgn_nodeB_notime.pt` has
+already meant two different tensor sets (epoch 34 here, epoch 55 on `HPC_134`), and
+scorecards record only the checkpoint *path*, never a hash — so the receiving side
+cannot tell them apart from the artifact alone. `MANIFEST.md` on the share carries
+the sha256 of each. Match it before use, and add a new name rather than overwriting.
 
 `viz/` is the figures themselves. Only the GIFs actually need carrying — the PNGs
 are in git (`.gitignore: *.gif` but not `*.png`) — but they are 100 KB and keeping
@@ -178,21 +189,40 @@ If those two match, the migration is faithful.
 
 ## Resuming the no-time_s run
 
-The run was stopped at **epoch 20 of 60** — not because it failed, but because
-other ANSYS processes on this workstation had taken the GPU to 98% memory and an
-epoch had gone from 85 s to 508 s.
+> **DONE — completed 2026-07-21 on `HPC_134` / `192.168.0.134`.** The 60-epoch run
+> finished (3,496 s) and scored **13.016% |B| / 8.240% torque**, and the section-9
+> early-cycle question it was built to answer is resolved. Full write-up:
+> `.github/plans/methodology_review_20260720.md` §10. This section is kept for the
+> corrections below, which apply to any future carry of a checkpoint.
 
-**The trainer has no resume path**: it always starts from a fresh model, and
-`mgn_nodeB_notime.pt` holds only the best weights, no optimizer state. So the new
-machine restarts the 60-epoch run from scratch. The epoch-20 checkpoint is worth
-carrying anyway — it is enough for a preliminary read on whether removing
-`time_s` killed the early-cycle error concentration, without waiting ~75 min.
+The run was interrupted — not because it failed, but because other ANSYS processes
+on that workstation had taken the GPU to 98% memory and an epoch had gone from
+85 s to 508 s.
+
+**Two claims that were in this section are wrong; both were checked against the
+actual file on 2026-07-21.**
+
+* It said the run stopped at *epoch 20*. The carried checkpoint reports
+  **epoch 34** (`ck["epoch"]`, and `len(ck["train_hist"]) == 34`). The file is now
+  named `mgn_nodeB_notime_epoch34_prevmachine.pt` to stop the wrong number
+  propagating.
+* It said the checkpoint "holds only the best weights, no optimizer state."
+  It carries **`optimizer_state_dict` with 262 populated entries** — as do all
+  three checkpoints here. What is missing is the *resume code path* in the
+  trainer, not the state. Reading this as "resume is impossible" throws away
+  recoverable state and costs a needless 60-epoch rerun.
+
+To re-run it, the container path is:
 
 ```bash
 docker run --rm --gpus all --ipc=host -v "$PWD:/workspace/app" -w /workspace/app \
     nvcr.io/nvidia/physicsnemo/physicsnemo:26.03 \
     bash results/logs/run_no_timefeat.sh
 ```
+
+On a machine without Docker (see the note on `HPC_134` in `AGENTS.md` —
+the L40S is in TCC mode, so WSL2 GPU passthrough is unavailable), use the native
+twin `results/logs/run_no_timefeat_native.ps1`, which carries byte-identical flags.
 
 Two things that cost time here, worth not rediscovering:
 
