@@ -718,3 +718,114 @@ time_s는 특히 **사이클 초반 토크**를 망가뜨리고 있었다는 해
 새로 만든 `mgn_nodeB_notime.pt`(epoch 55, sha256 `6937a2e2…`)는 **같은
 이름에 다른 가중치**이고, 스코어카드는 체크포인트 해시를 기록하지 않아
 받는 쪽이 구분할 수 없다. 공유 전에 이름·매니페스트 규약이 필요하다.
+
+---
+
+## 11. 모델 포트폴리오 정리 -- R3 집행 (2026-07-21)
+
+> **실행 머신: `HPC_134` / `192.168.0.134`**
+
+R3("GINO 타임박스 후 drop, FNO는 공정 벤치마크에서 못 이기면 drop, RNN은
+정적 문제에서 제외")를 집행했다. 출발점은 "전 모델을 eval 하니스에 배선하라"
+였으나, 조사 결과 **정답은 배선이 아니라 폐기**였다. 네 모델 모두 서로 다른
+이유로 R0를 통과할 수 없고, 배선해도 게이트의 수십 배 되는 숫자만 나온다.
+
+각 감사를 독립 반증 검증에 붙였고, 아래는 검증을 통과한 것만 적는다.
+
+### FNO -- 폐기. 모델과 무관하게 게이트 통과 불가
+
+논증이 아니라 측정으로 답했다. **정답 필드**를 `train_doe_fno.py`가 의존하는
+변환(요소 -> 노드 -> bbox 격자 -> 요소 중심)에 그대로 통과시켜 실제
+`eval.torque`로 채점했다. 오차가 0인 완벽한 FNO도 이 값 아래로 못 내려간다.
+
+    grid_resampling_floor   |B| 31.295%   torque 157.174%    (grid 64, 45스텝 전 구간)
+    node_resampling_floor   |B| 17.131%   torque  59.542%
+    G2 게이트                              torque   3%
+
+**격자 왕복만으로 게이트의 52배**다. 기계적 원인도 특정됐다: Arkkio 적분
+밴드(고정 a1층)는 두께 0.25 mm인데 64격자 셀은 1.57 x 1.11 mm라 **밴드가 셀
+하나보다 얇다**. 밴드에 닿는 모든 보간 스텐실이 고정자 철심(|B|이 한 자릿수
+크다)까지 함께 집어오고, 적분량이 B_r·B_theta라 그 오염이 상쇄되지 않고
+누적된다.
+
+해상도로 못 푼다. 오차는 대략 res^-0.5로만 줄고(64→128→256에서 215→158→106,
+초반 창 기준), 진짜 병목은 FNO의 스펙트럼 절단이라 해상도와 무관하다. 밴드를
+파장으로 해상하려면 modes 394가 필요하고 이는 **약 102억 파라미터**다.
+"A를 격자로 나르고 메시에서 curl을 취한다"는 우회로도 측정했고 더 나빴다 --
+격자 오차가 h_grid=1.57 mm 규모인데 P1 curl이 h_mesh=0.135 mm로 나누며
+증폭한다.
+
+이 측정은 `GridResamplingFloorPredictor`로 하니스에 넣어 **스코어카드 한 행**이
+됐다. 폐기 근거가 문서가 아니라 재현 가능한 숫자로 남는다. 157.2%는 전 구간
+값이며 `--max-steps-per-case 5`로 좁히면 217.4%가 나온다 -- bbox가 스텝마다
+재계산되고 회전자가 초반 박스를 벗어나기 때문으로, 초반만 재면 창 아티팩트를
+전 구간 값으로 오인한다.
+
+### RNN -- 폐기. 규칙 2 하드 누수
+
+입력이 `[Bx, By, A, J, region_code, time_s, rotate_step]`이다. 해 유래 채널
+**4개를 입력으로 먹는다**(`train_doe_rnn.py:86-88`이 `g['target']`을 그대로
+concat). 경고가 아니라 `FeatureLeakageError` 사안이다.
+
+더 결정적으로, 같은 줄의 `g['input'][:3]` 슬라이스가 채널 3-6 --
+`Ratio_Bore`, `Ratio_SlotDepth`, `PeakCurrent`, `PhaseAdvance` -- 를 **전부
+버린다**. 모델에는 기하 파라미터도 운전점도 들어가지 않으므로, 케이스를
+구분할 유일한 단서가 누수된 필드다. 따라서 "누수만 막으면 쓸 만해진다"가
+성립하지 않는다. 누수를 막으면 입력이 남지 않는다.
+
+### GINO -- 폐기. 규칙 6에 의해 기존 수치 무효
+
+체크포인트도 학습 로그도 저장소에 없다. `eval_gino_only.py`는 GINO를 평가하지
+않는다 -- FNO 호출 규약으로 `(1,7,64,64)` 격자를 넣고 트레이너가 쓰지도 않는
+키를 읽는, 이름만 GINO인 FNO 평가기다. F5가 인용한 val MSE 0.08은 레코드 단위
+분할로 낸 **pre-R0 수치라 규칙 6에 의해 무효**이며, 채점 가능한 숫자를
+만들려면 트레이너 수정과 재학습으로 2-3일이 든다. R3의 1일 타임박스를 넘는다.
+
+### MGN_aj -- 폐기. 대체재가 이미 있다
+
+`np.random.permutation`으로 레코드 단위 분할을 하므로 규칙 1 위반이고,
+체크포인트에 `split`과 `node_features`를 남기지 않아 하니스가
+`contaminated=true`로 표시한다. 중요한 것은 **포팅할 필요가 없다**는 점이다.
+`train_doe_curl_mgn.py --target B`가 정확히 같은 노드 지지 Bx,By 트레이너이고
+R0 준수 사항을 모두 갖췄으며, 기준 체크포인트 `mgn_nodeB_long.pt`가 그것으로
+만들어졌다.
+
+### 함께 폐기한 것
+
+R0 규칙 1("모든 모델 비교는 eval/을 통과한다")을 위반하는 스크립트 12개:
+`run_comparison.py`, `compare_models.py`, `compare_mgn_fem.py`,
+`compare_mgn_fem_physical.py`, `model_comparison.ipynb`, `exec_comparison.py`,
+`exec_comparison2.py`, `eval_all_models.py`, `eval_fno_aj.py`,
+`eval_gino_only.py`, `eval_rnn_simple.py`, `infer_field_compare.py`.
+이들이 만든 산출물 3종은 이미 `eval/benchmark.py`의 `supersedes`에 무효로
+적혀 있었다.
+
+폐기 모델만 구동하던 드라이버 2개(`run_all_models.sh` -- "MGN vs FNO vs GINO
+vs Seq2SeqRNN" 파이프라인, 존재하지 않는 컨테이너 `friendly_knuth` 대상;
+`nightly_autopilot.ps1` -- 4모델 비교 야간 실행)와 고아 PNG 7개도 지웠다.
+
+**유지**: `validate_three_cases.py`는 지표를 계산하지 않는 스모크 체크이고
+활성 skill이 참조하므로 규칙 1 대상이 아니다.
+**이식**: `model_compare_viz.py` -> `tools/`. 렌더링은 실제 메시 연결성 위의
+tripcolor로 쓸 만하지만 제목의 MAE/RMSE/R2를 스스로 계산하고 있었다(규칙 1).
+이제 스코어카드에서 읽는다.
+
+### 검증에서 뒤집힌 기존 서술
+
+반증 검증이 감사 쪽 주장 몇 개를 무너뜨렸고, 그 과정에서 문서의 오류도 드러났다.
+
+* **노드 지지 표현은 "구조적 천장"이 아니다.** 한 감사는 규칙 5의 59.5% 토크
+  바닥값을 근거로 "모델 품질과 무관하게 G2 도달 불가"라고 했으나 거짓이다.
+  `curl:mgn_nodeB_long`이 정확히 그 표현(nodal Bx,By -> 요소 평균)으로 토크
+  **9.207%**를 낸다. 바닥값을 6.5배 넘어선다.
+* `train_doe_meshgraphnet.py`는 **이미 case-split을 준수한다**(`resolve_case_split`
+  사용). 레코드 단위로 자르던 것은 `_aj` 쪽이다. 깨끗한 트레이너는 하나가
+  아니라 둘이었다.
+* `rotate_step`은 `SHORTCUT_FEATURES`가 아니라 **`ALLOWED_INPUT_FEATURES`**다.
+  가드를 건드리는 것은 `time_s`뿐이다.
+
+### 남은 것
+
+`eval/`은 이제 numpy·h5py에 더해 **scipy**를 요구한다(격자 바닥값의 Delaunay).
+기본 켜짐이라 사실상 필수이며, 없으면 즉시 실패하도록 생성 시점에 확인한다.
+`--skip-grid-floor`로 끌 수 있다.

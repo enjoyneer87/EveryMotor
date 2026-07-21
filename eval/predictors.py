@@ -47,8 +47,10 @@ class CheckpointFeatureMismatch(ValueError):
     """Raised when a checkpoint's tensor interface does not match the clean contract."""
 
 
-# Historical output layouts, keyed by channel count. The 4-channel form is what
-# `train_doe_meshgraphnet_aj.py` wrote; the 2-channel form is the Bx/By-only run.
+# Historical output layouts, keyed by channel count. The 4-channel form was written
+# by `train_doe_meshgraphnet_aj.py`, now deleted — it cut a record-level split and so
+# violated benchmark rule 1. The layout is kept so an archived 4-channel checkpoint
+# can still be read; the 2-channel form is the Bx/By-only run every live checkpoint uses.
 _DEFAULT_OUTPUT_ORDERS: Mapping[int, Tuple[str, ...]] = {
     2: ("Bx", "By"),
     4: ("Bx", "By", "A", "J"),

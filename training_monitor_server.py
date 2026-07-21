@@ -26,8 +26,15 @@ def get_training_status():
         )
         processes = result.stdout.strip().split('\n') if result.stdout.strip() else []
         
-        rnn_running = any('train_doe_rnn.py' in p for p in processes)
-        mgn_running = any('train_doe_meshgraphnet_aj.py' in p for p in processes)
+        # train_doe_meshgraphnet_aj.py was deleted (record-level split, rule 1) and
+        # the RNN was retired, so matching either name would pin these False forever
+        # and the monitor would report "not training" during a real run. Match the
+        # trainers that actually exist.
+        rnn_running = False  # RNN retired; kept so the response shape does not change
+        mgn_running = any(
+            'train_doe_curl_mgn.py' in p or 'train_doe_meshgraphnet.py' in p
+            for p in processes
+        )
     except:
         rnn_running = mgn_running = False
     
