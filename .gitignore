@@ -57,3 +57,5 @@ _backup_pre_nested_repo_move/
 
 #
 *.csv
+# Portable tools fetched at setup time (rclone binary, 28 MB)
+tools/bin/

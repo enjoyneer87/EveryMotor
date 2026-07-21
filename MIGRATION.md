@@ -4,9 +4,25 @@ Code and results are in git. The DOE fields and the model checkpoints are not �
 they are gitignored on purpose (348 MB + 28 MB each), and the repo's `.git` is
 already 1.1 GB, so git-lfs would burn the GitHub free quota immediately.
 
-**OneDrive is the transport** — the client is already running on the source
-machine, so the copy is done and syncing. ~401 MB total. Google Drive and
-HuggingFace instructions are kept at the end as alternatives.
+**rclone → Google Drive is the transport.** ~401 MB total.
+
+**OneDrive on the source machine is installed but not signed in, and syncs
+nothing.** Verified, not assumed:
+
+| check | result |
+|---|---|
+| registered sync roots (`SyncRootManager`) | **0** |
+| `Accounts\Personal` → `UserEmail` / `UserFolder` / `cid` | **all absent** |
+| `LastSignInResult` | **`0x8004E4C8`** — an error HRESULT |
+
+A running `OneDrive.exe` proves nothing; sign-in is what matters and it failed.
+The earlier reading of "files show `Archive`, so they're uploading" was wrong —
+`Archive` only means *not a cloud placeholder*, which is exactly what you get
+when nothing is syncing at all.
+
+So `C:\Users\moa\OneDrive\EveryMotor_migration\` is **a local folder on C:**,
+nothing more. It is still a fine staging directory to upload *from*, and the
+byte-verified copy there is real — it just has not left the machine.
 
 Transfer as a **plain folder, not a zip**: `backup/doe_data` is 197 files
 (156 H5 + 41 small), largest 8.7 MB, and the H5 datasets are already gzip-
@@ -33,9 +49,9 @@ deliberately **not** in the migration set: two of them take 11 node features
 (they were fed A and J) and the harness refuses to score them, and the rest are
 superseded and cheaper to retrain than to carry.
 
-## Already staged on OneDrive
+## Staged locally, ready to upload
 
-`C:\Users\moa\OneDrive\EveryMotor_migration\` on the source machine:
+`C:\Users\moa\OneDrive\EveryMotor_migration\` (a plain local folder — see above):
 
 ```
 EveryMotor_migration/          199 files, 401.2 MB
@@ -45,13 +61,73 @@ EveryMotor_migration/          199 files, 401.2 MB
     └── mgn_nodeB_notime.pt    27.0 MB  no-time_s run, stopped at epoch 20
 ```
 
-Verified byte-for-byte after the copy: 197/197 files and 364,026,511 bytes on
-both sides, and both checkpoints match their source length exactly.
+Verified byte-for-byte: 197/197 files and 364,026,511 bytes on both sides, and
+both checkpoints match their source length exactly.
 
-It went into `C:\Users\moa\OneDrive`, which is the **personal** account — the
-machine has both a Personal and a Business1 account registered, and a business
-account would have mounted as `OneDrive - <Company>`. If the intent was the
-business tenant, move the folder there and adjust the path below.
+## rclone → Google Drive
+
+`tools/bin/rclone.exe` (v1.74.4, portable, gitignored) is already downloaded.
+
+### 1. Authorize — you must do this step
+
+OAuth needs a browser, and doing it yourself is what guarantees only *your*
+Google account is ever linked:
+
+```powershell
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe config
+```
+
+Answer: `n` (new remote) → name **`gdrive`** → storage **`drive`** →
+client_id/secret **blank** (Enter) → scope **`1`** (full access) →
+root_folder_id and service_account_file **blank** → advanced config **`n`** →
+use web browser **`y`**. Your browser opens, you approve, rclone writes the
+token. Then `q` to quit.
+
+Verify:
+
+```powershell
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe listremotes      # expect: gdrive:
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe about gdrive:    # expect: your 2 TB quota
+```
+
+### 2. Upload
+
+```powershell
+$rc = "D:\KDH\NvidiaNemo\tools\bin\rclone.exe"
+& $rc copy "C:\Users\moa\OneDrive\EveryMotor_migration" gdrive:EveryMotor_migration --progress
+```
+
+Or straight from the originals, skipping the staging folder entirely:
+
+```powershell
+& $rc copy D:\KDH\NvidiaNemo\backup\doe_data gdrive:EveryMotor_migration/doe_data --progress
+& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_long.pt   gdrive:EveryMotor_migration/checkpoints/ --progress
+& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_notime.pt gdrive:EveryMotor_migration/checkpoints/ --progress
+```
+
+Confirm what landed:
+
+```powershell
+& $rc size gdrive:EveryMotor_migration     # expect 199 files, ~401 MB
+& $rc check "C:\Users\moa\OneDrive\EveryMotor_migration" gdrive:EveryMotor_migration --size-only
+```
+
+### Who can reach it
+
+- **Google Drive files are private to your account by default.** rclone creates
+  no sharing links and sets no permissions; nothing is public unless you later
+  share it in the Drive UI.
+- **The OAuth token is stored in `C:\Users\moa\AppData\Roaming\rclone\rclone.conf`.**
+  It is plain text. Anyone who can log into *this Windows account* can use it —
+  so the data is exactly as private as your Windows login, no more.
+- Want more than that? Encrypt the config:
+  ```powershell
+  D:\KDH\NvidiaNemo\tools\bin\rclone.exe config encryption set
+  ```
+  Every later rclone call then prompts for that password. Lose it and the remote
+  must be re-authorized (the data on Drive is unaffected).
+- `tools/bin/` is gitignored, so neither the binary nor anything beside it can be
+  pushed by accident. `rclone.conf` lives outside the repo regardless.
 
 ## On the new machine — setup
 
@@ -62,23 +138,19 @@ git checkout codex/phase-1-static-1-8-model
 git submodule update --init --recursive        # if clone missed it
 ```
 
-Then bring the data across. Sign into the **same OneDrive account** and let it
-sync, or download the folder from onedrive.live.com:
+Then pull the data with rclone, authorizing against the **same Google account**:
 
 ```powershell
-$src = "$env:USERPROFILE\OneDrive\EveryMotor_migration"
-New-Item -ItemType Directory -Force backup | Out-Null
-Copy-Item -Recurse "$src\doe_data" backup\doe_data
-Copy-Item "$src\checkpoints\*.pt" results\
-```
+# fetch rclone once (portable, ~28 MB, gitignored)
+Invoke-WebRequest https://downloads.rclone.org/rclone-current-windows-amd64.zip -OutFile $env:TEMP\rclone.zip
+Expand-Archive $env:TEMP\rclone.zip $env:TEMP\rclone_x -Force
+New-Item -ItemType Directory -Force tools\bin | Out-Null
+Copy-Item (Get-ChildItem $env:TEMP\rclone_x -Recurse -Filter rclone.exe)[0].FullName tools\bin\rclone.exe
 
-If OneDrive has Files On-Demand on, the files may be cloud-only placeholders
-(`Attributes` shows `Offline`) and the copy will pull them down on demand —
-slower but correct. To force them local first, right-click the folder →
-*Always keep on this device*, or:
+.\tools\bin\rclone.exe config      # n -> gdrive -> drive -> blanks -> scope 1 -> browser auth
 
-```powershell
-attrib -U +P "$src\*" /S      # unpin -> pin, i.e. make locally available
+.\tools\bin\rclone.exe copy gdrive:EveryMotor_migration/doe_data     backup\doe_data --progress
+.\tools\bin\rclone.exe copy gdrive:EveryMotor_migration/checkpoints  results         --progress
 ```
 
 Verify you got everything before trusting it:
@@ -138,28 +210,17 @@ Two things that cost time here, worth not rediscovering:
 * **PowerShell here-strings break `bash -lc`** (CRLF). Run the `.sh` files in
   `results/logs/` directly, as above.
 
-## Alternative: Google Drive
+## Alternative: OneDrive
 
-Drive for Desktop is not installed on the source machine (no rclone either), so
-this needs one of:
+Only if OneDrive gets signed in first — right now it is not (see the top of this
+file). Once `SyncRootManager` shows a registered root and `Accounts\Personal`
+carries a `UserEmail`, the staged folder at
+`C:\Users\moa\OneDrive\EveryMotor_migration\` would sync on its own and the new
+machine could just sign into the same account.
 
-```powershell
-# a. Drive for Desktop (google.com/drive/download) mounts as a letter, often G:
-$dst = "G:\My Drive\EveryMotor_migration"
-New-Item -ItemType Directory -Force "$dst\checkpoints" | Out-Null
-Copy-Item -Recurse backup\doe_data "$dst\doe_data"
-Copy-Item results\mgn_nodeB_long.pt, results\mgn_nodeB_notime.pt "$dst\checkpoints\"
-```
-
-```bash
-# b. rclone — scriptable, no client install
-rclone config                                  # new remote "gdrive", type: drive
-rclone copy backup/doe_data gdrive:EveryMotor_migration/doe_data -P
-rclone copy results/mgn_nodeB_long.pt   gdrive:EveryMotor_migration/checkpoints/ -P
-rclone copy results/mgn_nodeB_notime.pt gdrive:EveryMotor_migration/checkpoints/ -P
-```
-
-Or drag the folders in at drive.google.com — fine for a one-off.
+Note the machine has both a Personal and a Business1 account registered; a
+business tenant would mount as `OneDrive - <Company>`, which does not exist here,
+so the staging folder sits under the personal profile.
 
 ## Alternative: HuggingFace private dataset
 
