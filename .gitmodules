@@ -1,4 +1,4 @@
 [submodule "eMach"]
 	path = eMach
 	url = https://github.com/enjoyneer87/eMach.git
-	branch = devVeriACLoss
+	branch = develop
