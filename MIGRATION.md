@@ -32,11 +32,13 @@ overhead matters.
 | Code, tests, `eval/`, `phase1_static/`, `tools/` | — | yes |
 | `eval/splits/doe40_case_split.json` (the case holdout) | 1 KB | **yes** — the split is reproducible from git alone |
 | `results/benchmark_v2_*.json` (all scorecards) | ~1 MB | yes |
-| `results/viz/*.png` | 200 KB | yes |
+| `results/viz/*.png` (torque three-way, Motor-CAD validation, GIF previews) | 500 KB | yes |
 | `backup/doe_data/` (40 DOE cases, H5) | **348 MB** | no — `.gitignore: doe_data/` |
 | `results/mgn_nodeB_long.pt` (current best, 13.32% / 9.20%) | **28 MB** | no — `.gitignore: *.pt` |
 | `results/mgn_nodeB_notime.pt` (no-time_s run, stopped at epoch 20) | **28 MB** | no |
-| `results/viz/*.gif` | 3.2 MB | no — regenerate with `tools/make_field_gif.py` |
+| `results/viz/*.gif` | 3.2 MB | no — `.gitignore: *.gif`; **on the share**, and regenerable via `results/logs/run_viz.sh` |
+| `results/logs/*.log`, `*.err` (training curves, scoring runs) | 66 KB | no — `.gitignore: *.log`; on the share |
+| `results/diag_infer/*.npz` (early-cycle diagnosis dumps) | 4.2 MB | no — on the share; regenerable |
 | Motor-CAD original solve (`D:\KDH\Sim_4SolverX\DOE4TrainingData`) | 141 MB/case | no — only needed to redo the Motor-CAD torque validation |
 
 Older checkpoints (`doe_*.pt`, `mgn_curl_*.pt`, `mgn_nodeB_v2.pt`, …) are
@@ -49,14 +51,76 @@ superseded and cheaper to retrain than to carry.
     \\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration
 
 ```
-EveryMotor_migration/          199 files, 401.2 MB
-├── doe_data/                  197 files, 347.2 MB   40 DOE cases
-└── checkpoints/
-    ├── mgn_nodeB_long.pt      28,347,381 B  current best: 13.32% |B| / 9.20% torque
-    └── mgn_nodeB_notime.pt    28,345,917 B  no-time_s run, stopped at epoch 20
+EveryMotor_migration/          256 files, 428,723,034 B
+├── doe_data/                  197 files, 364,026,511 B   40 DOE cases
+├── checkpoints/                 2 files,  56,693,298 B
+│   ├── mgn_nodeB_long.pt      28,347,381 B  current best: 13.32% |B| / 9.20% torque
+│   └── mgn_nodeB_notime.pt    28,345,917 B  no-time_s run, stopped at epoch 20
+├── viz/                         6 files,   3,697,890 B   GIFs + the figures (see below)
+├── diag_infer/                 15 files,   4,238,751 B   early-cycle diagnosis dumps (§9 evidence)
+└── logs/                       36 files,      66,584 B   training/scoring logs + .sh drivers
 ```
 
-Verified after the copy: **199/199 files and 420,719,809 bytes on both sides.**
+Verified after each copy: **file counts and byte totals match on both sides.**
+
+`viz/` is the figures themselves. Only the GIFs actually need carrying — the PNGs
+are in git (`.gitignore: *.gif` but not `*.png`) — but they are 100 KB and keeping
+the folder whole is simpler than explaining the split:
+
+| file | bytes | in git? |
+|---|---|---|
+| `case0004_representative.gif` | 1,730,107 | no |
+| `case0032_worst.gif` | 1,460,233 | no |
+| `case0004_representative_preview.png` | 97,113 | yes |
+| `case0032_worst_preview.png` | 87,974 | yes |
+| `torque_three_way_case0004.png` | 179,238 | yes |
+| `torque_validation_motorcad.png` | 143,225 | yes |
+
+**Not carried, deliberately:** `results/backups/` (95 MB) is April-era checkpoints and
+inference dumps from the superseded `symm_mgn_doe_full_onloadtorque` pipeline.
+
+## Reproducing the figures on the new machine
+
+Everything needed is either in git or in the list above:
+
+| piece | where |
+|---|---|
+| `tools/make_field_gif.py`, `eval/`, `phase1_static/`, both trainers | git |
+| `results/logs/run_viz.sh` (the exact commands used) | git |
+| `backup/doe_data`, `results/mgn_nodeB_long.pt` | share |
+| Python environment | the NGC container — **nothing custom** |
+
+```bash
+docker run --rm --gpus all --ipc=host -v "$PWD:/workspace/app" -w /workspace/app \
+    nvcr.io/nvidia/physicsnemo/physicsnemo:26.03 \
+    bash results/logs/run_viz.sh
+```
+
+**The container needs no `pip install`.** A fresh `docker pull` of
+`physicsnemo:26.03` already carries everything both the harness and the GIF tool
+import — verified on the image itself:
+
+```
+torch 2.10.0a0+a36e1d39eb.nv26.01.42222806   torch_geometric 2.7.0   physicsnemo 2.0.0
+numpy 1.26.4   h5py 3.15.1   scipy 1.17.1   matplotlib 3.10.8   pillow 12.1.1   pytest 8.1.1
+```
+
+Nothing was installed ad hoc inside a running container during this work, so there
+is no hidden state to reproduce. (The one `pip install --user pytest` in the session
+history was on the **host**, not in the container — see below.)
+
+### Host environment (only for the torch-free test run)
+
+The `python -m pytest tests/` check below runs on the host, not in the container,
+and the host therefore needs a few packages. This machine used Python 3.13 with:
+
+```
+pytest  numpy  h5py  scipy  matplotlib
+```
+
+No torch on the host — the tests that need it are the two that get `--ignore`d.
+If installing on the host is inconvenient, run the same suite in the container
+instead (it has pytest and all of the above).
 
 A local staging copy also sits at `C:\Users\moa\EveryMotor_migration\` (same
 content). It is only a source for re-uploads and can be deleted once the other
