@@ -2,10 +2,18 @@
 
 Code and results are in git. The DOE fields and the model checkpoints are not —
 they are gitignored on purpose (348 MB + 28 MB each), and the repo's `.git` is
-already 1.1 GB. Move those through a **private** HuggingFace dataset repo.
+already 1.1 GB, so git-lfs would burn the GitHub free quota immediately.
 
-> A HuggingFace repo created with `private=True` is visible only to you and
-> anyone you explicitly add. It is not public and is not indexed.
+**Google Drive is the chosen transport** (2 TB already paid for, private by
+default). ~404 MB total. HuggingFace instructions are kept at the end as an
+alternative — it buys versioning and a scriptable CLI, which a two-machine sync
+does not really need.
+
+Transfer as a **plain folder, not a zip**: `backup/doe_data` is 197 files
+(156 H5 + 41 small), largest 8.7 MB, and the H5 datasets are already gzip-
+compressed internally — zipping buys almost nothing and costs a pack/unpack
+round trip. That file count is far below the level where Drive's per-file sync
+overhead matters.
 
 ## What is where
 
@@ -26,26 +34,41 @@ deliberately **not** in the migration set: two of them take 11 node features
 (they were fed A and J) and the harness refuses to score them, and the rest are
 superseded and cheaper to retrain than to carry.
 
-## On this machine — upload once you have a token
+## Layout to create on Drive
 
-`huggingface_hub` is not installed here yet.
+```
+EveryMotor_migration/
+├── doe_data/            <- copy of backup/doe_data   (348 MB, 197 files)
+└── checkpoints/
+    ├── mgn_nodeB_long.pt      (28 MB, current best: 13.32% |B| / 9.20% torque)
+    └── mgn_nodeB_notime.pt    (28 MB, no-time_s run stopped at epoch 20)
+```
+
+## On this machine — upload
+
+**Google Drive for Desktop is not installed here** (only OneDrive is; no rclone
+either), so there is no synced folder to copy into. Pick one:
+
+**a. Install Drive for Desktop** — google.com/drive/download. It mounts as a
+drive letter (often `G:`), then:
+
+```powershell
+$dst = "G:\My Drive\EveryMotor_migration"
+New-Item -ItemType Directory -Force "$dst\checkpoints" | Out-Null
+Copy-Item -Recurse backup\doe_data "$dst\doe_data"
+Copy-Item results\mgn_nodeB_long.pt, results\mgn_nodeB_notime.pt "$dst\checkpoints\"
+```
+
+**b. Browser upload** — drive.google.com, new folder `EveryMotor_migration`,
+drag `backup\doe_data` and the two `.pt` files in. Fine for a one-off.
+
+**c. rclone** (scriptable, no client install):
 
 ```bash
-pip install -U "huggingface_hub[cli]"
-huggingface-cli login          # paste a WRITE token from hf.co/settings/tokens
-
-# private dataset repo
-huggingface-cli repo create everymotor-doe40 --type dataset --private
-
-# 348 MB of DOE fields
-huggingface-cli upload enjoyneer87/everymotor-doe40 \
-    backup/doe_data doe_data --repo-type dataset
-
-# the two checkpoints worth carrying
-huggingface-cli upload enjoyneer87/everymotor-doe40 \
-    results/mgn_nodeB_long.pt   checkpoints/mgn_nodeB_long.pt   --repo-type dataset
-huggingface-cli upload enjoyneer87/everymotor-doe40 \
-    results/mgn_nodeB_notime.pt checkpoints/mgn_nodeB_notime.pt --repo-type dataset
+rclone config                                  # new remote "gdrive", type: drive
+rclone copy backup/doe_data gdrive:EveryMotor_migration/doe_data -P
+rclone copy results/mgn_nodeB_long.pt   gdrive:EveryMotor_migration/checkpoints/ -P
+rclone copy results/mgn_nodeB_notime.pt gdrive:EveryMotor_migration/checkpoints/ -P
 ```
 
 ## On the new machine — setup
@@ -55,18 +78,28 @@ git clone --recurse-submodules https://github.com/enjoyneer87/EveryMotor.git
 cd EveryMotor
 git checkout codex/phase-1-static-1-8-model
 git submodule update --init --recursive        # if clone missed it
+```
 
-pip install -U "huggingface_hub[cli]"
-huggingface-cli login                           # READ token is enough
+Then bring the data across — Drive for Desktop, browser download, or rclone:
 
-huggingface-cli download enjoyneer87/everymotor-doe40 \
-    --repo-type dataset --local-dir . --include "doe_data/*"
-mkdir -p backup && mv doe_data backup/          # loader expects backup/doe_data
+```powershell
+# with Drive for Desktop mounted
+$src = "G:\My Drive\EveryMotor_migration"
+New-Item -ItemType Directory -Force backup | Out-Null
+Copy-Item -Recurse "$src\doe_data" backup\doe_data
+Copy-Item "$src\checkpoints\*.pt" results\
+```
 
-huggingface-cli download enjoyneer87/everymotor-doe40 \
-    --repo-type dataset --local-dir . --include "checkpoints/*"
-mv checkpoints/*.pt results/
+```bash
+# or with rclone
+rclone copy gdrive:EveryMotor_migration/doe_data backup/doe_data -P
+rclone copy gdrive:EveryMotor_migration/checkpoints results/ -P
+```
 
+The loader expects the data at **`backup/doe_data`** — that exact path is the
+default for `--data-dir` everywhere. Then:
+
+```bash
 docker pull nvcr.io/nvidia/physicsnemo/physicsnemo:26.03
 ```
 
@@ -111,6 +144,29 @@ Two things that cost time here, worth not rediscovering:
   showed up.
 * **PowerShell here-strings break `bash -lc`** (CRLF). Run the `.sh` files in
   `results/logs/` directly, as above.
+
+## Alternative: HuggingFace private dataset
+
+Worth it only if this becomes a recurring sync and you want versioning plus a
+one-line scripted fetch. A repo created with `private=True` is visible to you
+and anyone you explicitly add — not public, not indexed.
+
+```bash
+pip install -U "huggingface_hub[cli]"
+huggingface-cli login                     # WRITE token from hf.co/settings/tokens
+huggingface-cli repo create everymotor-doe40 --type dataset --private
+
+huggingface-cli upload enjoyneer87/everymotor-doe40 backup/doe_data doe_data --repo-type dataset
+huggingface-cli upload enjoyneer87/everymotor-doe40 \
+    results/mgn_nodeB_long.pt checkpoints/mgn_nodeB_long.pt --repo-type dataset
+huggingface-cli upload enjoyneer87/everymotor-doe40 \
+    results/mgn_nodeB_notime.pt checkpoints/mgn_nodeB_notime.pt --repo-type dataset
+
+# on the new machine (READ token is enough)
+huggingface-cli download enjoyneer87/everymotor-doe40 --repo-type dataset \
+    --local-dir . --include "doe_data/*"
+mkdir -p backup && mv doe_data backup/
+```
 
 ## Where the work stands
 
