@@ -4,26 +4,20 @@ Code and results are in git. The DOE fields and the model checkpoints are not �
 they are gitignored on purpose (348 MB + 28 MB each), and the repo's `.git` is
 already 1.1 GB, so git-lfs would burn the GitHub free quota immediately.
 
-**rclone with the OneDrive backend is the transport.** ~401 MB total.
+**The department network share is the transport** -- both machines already
+reach it, so there is no account, no OAuth and no upload wait. ~401 MB.
 
-Note what *is* and *is not* broken here. The **OneDrive desktop client** on this
-machine is installed but never signed in, so it syncs nothing:
+    \\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration\ 
 
-| check | result |
-|---|---|
-| registered sync roots (`SyncRootManager`) | **0** |
-| `Accounts\Personal` -> `UserEmail` / `UserFolder` / `cid` | **all absent** |
-| `LastSignInResult` | **`0x8004E4C8`** -- an error HRESULT |
+**Privacy: this is a shared departmental folder.** Anyone with permissions on
+that share -- colleagues, IT -- can read the DOE fields and the checkpoints.
+That is a real difference from the personal-cloud options below, which are
+private to one account. Nothing here is secret, but decide deliberately rather
+than by default.
 
-That failure belongs to the desktop client and has **no bearing on rclone**,
-which does its own OAuth against the same Microsoft account and never touches
-the client's state.
-
-An earlier note in this file claimed the staged files were uploading because
-their attribute read `Archive`. That was wrong: `Archive` only means *not a
-cloud placeholder*, which is exactly what you see when nothing syncs at all.
-The staging folder has therefore been moved out of the OneDrive tree to
-`C:\Users\moa\EveryMotor_migration\` so its path stops implying otherwise.
+rclone (OneDrive or Google Drive) is kept below for the case where the two
+machines are not on the same network, or where the data should not sit on a
+share.
 
 Transfer as a **plain folder, not a zip**: `backup/doe_data` is 197 files
 (156 H5 + 41 small), largest 8.7 MB, and the H5 datasets are already gzip-
@@ -50,96 +44,23 @@ deliberately **not** in the migration set: two of them take 11 node features
 (they were fed A and J) and the harness refuses to score them, and the rest are
 superseded and cheaper to retrain than to carry.
 
-## Staged locally, ready to upload
+## Already copied to the share
 
-`C:\Users\moa\EveryMotor_migration\` (a plain local folder):
+    \\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration
 
 ```
 EveryMotor_migration/          199 files, 401.2 MB
-├── doe_data/                  197 files, 347.2 MB  <- copy of backup/doe_data
+├── doe_data/                  197 files, 347.2 MB   40 DOE cases
 └── checkpoints/
-    ├── mgn_nodeB_long.pt      27.0 MB  current best: 13.32% |B| / 9.20% torque
-    └── mgn_nodeB_notime.pt    27.0 MB  no-time_s run, stopped at epoch 20
+    ├── mgn_nodeB_long.pt      28,347,381 B  current best: 13.32% |B| / 9.20% torque
+    └── mgn_nodeB_notime.pt    28,345,917 B  no-time_s run, stopped at epoch 20
 ```
 
-Verified byte-for-byte: 197/197 files and 364,026,511 bytes on both sides, and
-both checkpoints match their source length exactly.
+Verified after the copy: **199/199 files and 420,719,809 bytes on both sides.**
 
-## rclone -> OneDrive
-
-`tools/bin/rclone.exe` (v1.74.4, portable, gitignored) is already downloaded.
-
-### 1. Authorize -- you must do this step
-
-OAuth needs a browser, and doing it yourself is what guarantees only *your*
-Microsoft account is ever linked:
-
-```powershell
-D:\KDH\NvidiaNemo\tools\bin\rclone.exe config
-```
-
-Answer: `n` (new remote) -> name **`od`** -> storage **`onedrive`** ->
-client_id/client_secret **blank** (Enter) -> region **`1`** (Microsoft Cloud
-Global) -> advanced config **`n`** -> use web browser **`y`**. Your browser
-opens; sign in and approve.
-
-rclone then asks which kind of drive to connect. Pick **OneDrive Personal or
-Business** (option `1`), and if it lists more than one drive, choose the one you
-want. Confirm the drive it found, then `y` to save and `q` to quit.
-
-This machine has both a Personal and a Business1 account registered with the
-desktop client, so the sign-in page may offer a choice -- pick whichever account
-the other machine will also use. The desktop client's failed sign-in does not
-constrain this; rclone authorizes independently.
-
-Verify:
-
-```powershell
-D:\KDH\NvidiaNemo\tools\bin\rclone.exe listremotes   # expect: od:
-D:\KDH\NvidiaNemo\tools\bin\rclone.exe about od:     # expect: your quota
-```
-
-### 2. Upload
-
-```powershell
-$rc = "D:\KDH\NvidiaNemo\tools\bin\rclone.exe"
-& $rc copy "C:\Users\moa\EveryMotor_migration" od:EveryMotor_migration --progress
-```
-
-Or straight from the originals, skipping the staging folder entirely:
-
-```powershell
-& $rc copy D:\KDH\NvidiaNemo\backup\doe_data od:EveryMotor_migration/doe_data --progress
-& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_long.pt   od:EveryMotor_migration/checkpoints/ --progress
-& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_notime.pt od:EveryMotor_migration/checkpoints/ --progress
-```
-
-Confirm what landed:
-
-```powershell
-& $rc size od:EveryMotor_migration     # expect 199 files, ~401 MB
-& $rc check "C:\Users\moa\EveryMotor_migration" od:EveryMotor_migration --size-only
-```
-
-### Who can reach it
-
-- **OneDrive files are private to your Microsoft account by default.** rclone
-  creates no sharing links and changes no permissions; nothing is shared unless
-  you later share it yourself in the OneDrive web UI.
-- **The OAuth token is stored in `C:\Users\moa\AppData\Roaming\rclone\rclone.conf`.**
-  It is plain text. Anyone who can log into *this Windows account* can use it --
-  so the data is exactly as private as your Windows login, no more.
-- Want more than that? Encrypt the config:
-  ```powershell
-  D:\KDH\NvidiaNemo\tools\bin\rclone.exe config encryption set
-  ```
-  Every later rclone call then prompts for that password. Lose it and the remote
-  must be re-authorized (the data in the cloud is unaffected).
-- If this is the **Business** tenant, your organisation's admin can in principle
-  reach the data and retention policies apply. Use the Personal account if that
-  matters.
-- `tools/bin/` is gitignored, so the binary cannot be pushed by accident, and
-  `rclone.conf` lives outside the repo regardless.
+A local staging copy also sits at `C:\Users\moa\EveryMotor_migration\` (same
+content). It is only a source for re-uploads and can be deleted once the other
+machine has pulled from the share.
 
 ## On the new machine — setup
 
@@ -150,20 +71,16 @@ git checkout codex/phase-1-static-1-8-model
 git submodule update --init --recursive        # if clone missed it
 ```
 
-Then pull the data with rclone, authorizing against the **same Microsoft account**:
+Then pull the data from the share:
 
 ```powershell
-# fetch rclone once (portable, ~28 MB, gitignored)
-Invoke-WebRequest https://downloads.rclone.org/rclone-current-windows-amd64.zip -OutFile $env:TEMP\rclone.zip
-Expand-Archive $env:TEMP\rclone.zip $env:TEMP\rclone_x -Force
-New-Item -ItemType Directory -Force tools\bin | Out-Null
-Copy-Item (Get-ChildItem $env:TEMP\rclone_x -Recurse -Filter rclone.exe)[0].FullName tools\bin\rclone.exe
-
-.\tools\bin\rclone.exe config      # n -> od -> onedrive -> blanks -> region 1 -> browser auth
-
-.\tools\bin\rclone.exe copy od:EveryMotor_migration/doe_data     backup\doe_data --progress
-.\tools\bin\rclone.exe copy od:EveryMotor_migration/checkpoints  results         --progress
+$share = "\\192.168.0.165\디지털융합사업본부\01_EM사업부\강도현\EveryMotor_migration"
+robocopy "$share\doe_data" backup\doe_data /E /NFL /NDL /NJH /NP /MT:8
+Copy-Item "$share\checkpoints\*.pt" results\ -Force
 ```
+
+robocopy exits **1** on a successful copy (0 means *nothing needed copying*), so
+do not read that as an error.
 
 Verify you got everything before trusting it:
 
@@ -221,6 +138,84 @@ Two things that cost time here, worth not rediscovering:
   showed up.
 * **PowerShell here-strings break `bash -lc`** (CRLF). Run the `.sh` files in
   `results/logs/` directly, as above.
+
+## Alternative: rclone -> OneDrive
+
+For when the machines are not on the same network, or the data should not live
+on a departmental share. `tools/bin/rclone.exe` (v1.74.4, portable, gitignored)
+is already downloaded.
+
+### Authorize (browser, one time)
+
+OAuth needs a browser, and doing it yourself is what guarantees only *your*
+Microsoft account is ever linked:
+
+```powershell
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe config
+```
+
+Answer: `n` (new remote) -> name **`od`** -> storage **`onedrive`** ->
+client_id/client_secret **blank** (Enter) -> region **`1`** (Microsoft Cloud
+Global) -> advanced config **`n`** -> use web browser **`y`**. Your browser
+opens; sign in and approve.
+
+rclone then asks which kind of drive to connect. Pick **OneDrive Personal or
+Business** (option `1`), and if it lists more than one drive, choose the one you
+want. Confirm the drive it found, then `y` to save and `q` to quit.
+
+This machine has both a Personal and a Business1 account registered with the
+desktop client, so the sign-in page may offer a choice -- pick whichever account
+the other machine will also use. The desktop client's failed sign-in does not
+constrain this; rclone authorizes independently.
+
+Verify:
+
+```powershell
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe listremotes   # expect: od:
+D:\KDH\NvidiaNemo\tools\bin\rclone.exe about od:     # expect: your quota
+```
+
+### Upload
+
+```powershell
+$rc = "D:\KDH\NvidiaNemo\tools\bin\rclone.exe"
+& $rc copy "C:\Users\moa\EveryMotor_migration" od:EveryMotor_migration --progress
+```
+
+Or straight from the originals, skipping the staging folder entirely:
+
+```powershell
+& $rc copy D:\KDH\NvidiaNemo\backup\doe_data od:EveryMotor_migration/doe_data --progress
+& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_long.pt   od:EveryMotor_migration/checkpoints/ --progress
+& $rc copy D:\KDH\NvidiaNemo\results\mgn_nodeB_notime.pt od:EveryMotor_migration/checkpoints/ --progress
+```
+
+Confirm what landed:
+
+```powershell
+& $rc size od:EveryMotor_migration     # expect 199 files, ~401 MB
+& $rc check "C:\Users\moa\EveryMotor_migration" od:EveryMotor_migration --size-only
+```
+
+### Who can reach it
+
+- **OneDrive files are private to your Microsoft account by default.** rclone
+  creates no sharing links and changes no permissions; nothing is shared unless
+  you later share it yourself in the OneDrive web UI.
+- **The OAuth token is stored in `C:\Users\moa\AppData\Roaming\rclone\rclone.conf`.**
+  It is plain text. Anyone who can log into *this Windows account* can use it --
+  so the data is exactly as private as your Windows login, no more.
+- Want more than that? Encrypt the config:
+  ```powershell
+  D:\KDH\NvidiaNemo\tools\bin\rclone.exe config encryption set
+  ```
+  Every later rclone call then prompts for that password. Lose it and the remote
+  must be re-authorized (the data in the cloud is unaffected).
+- If this is the **Business** tenant, your organisation's admin can in principle
+  reach the data and retention policies apply. Use the Personal account if that
+  matters.
+- `tools/bin/` is gitignored, so the binary cannot be pushed by accident, and
+  `rclone.conf` lives outside the repo regardless.
 
 ## Alternative: Google Drive
 
