@@ -36,6 +36,7 @@ import argparse
 import json
 import sys
 import time
+import warnings
 from pathlib import Path
 from typing import Dict
 
@@ -52,6 +53,13 @@ from phase1_static.motor_dataset import (
     build_samples_from_doe_manifest,
 )
 from phase1_static.contracts import normalize_channels_to_bx_by_a_je
+
+# PhysicsNeMo emits DGL backend warnings even when the PyG execution path is used.
+warnings.filterwarnings(
+    "ignore",
+    message=r"MeshGraphNet \(DGL version\) requires the DGL library\.",
+    category=UserWarning,
+)
 
 
 CHANNEL_ORDER = ["Bx", "By", "A", "Je"]
