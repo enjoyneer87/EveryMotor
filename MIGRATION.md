@@ -4,10 +4,9 @@ Code and results are in git. The DOE fields and the model checkpoints are not �
 they are gitignored on purpose (348 MB + 28 MB each), and the repo's `.git` is
 already 1.1 GB, so git-lfs would burn the GitHub free quota immediately.
 
-**Google Drive is the chosen transport** (2 TB already paid for, private by
-default). ~404 MB total. HuggingFace instructions are kept at the end as an
-alternative — it buys versioning and a scriptable CLI, which a two-machine sync
-does not really need.
+**OneDrive is the transport** — the client is already running on the source
+machine, so the copy is done and syncing. ~401 MB total. Google Drive and
+HuggingFace instructions are kept at the end as alternatives.
 
 Transfer as a **plain folder, not a zip**: `backup/doe_data` is 197 files
 (156 H5 + 41 small), largest 8.7 MB, and the H5 datasets are already gzip-
@@ -34,42 +33,25 @@ deliberately **not** in the migration set: two of them take 11 node features
 (they were fed A and J) and the harness refuses to score them, and the rest are
 superseded and cheaper to retrain than to carry.
 
-## Layout to create on Drive
+## Already staged on OneDrive
+
+`C:\Users\moa\OneDrive\EveryMotor_migration\` on the source machine:
 
 ```
-EveryMotor_migration/
-├── doe_data/            <- copy of backup/doe_data   (348 MB, 197 files)
+EveryMotor_migration/          199 files, 401.2 MB
+├── doe_data/                  197 files, 347.2 MB  <- copy of backup/doe_data
 └── checkpoints/
-    ├── mgn_nodeB_long.pt      (28 MB, current best: 13.32% |B| / 9.20% torque)
-    └── mgn_nodeB_notime.pt    (28 MB, no-time_s run stopped at epoch 20)
+    ├── mgn_nodeB_long.pt      27.0 MB  current best: 13.32% |B| / 9.20% torque
+    └── mgn_nodeB_notime.pt    27.0 MB  no-time_s run, stopped at epoch 20
 ```
 
-## On this machine — upload
+Verified byte-for-byte after the copy: 197/197 files and 364,026,511 bytes on
+both sides, and both checkpoints match their source length exactly.
 
-**Google Drive for Desktop is not installed here** (only OneDrive is; no rclone
-either), so there is no synced folder to copy into. Pick one:
-
-**a. Install Drive for Desktop** — google.com/drive/download. It mounts as a
-drive letter (often `G:`), then:
-
-```powershell
-$dst = "G:\My Drive\EveryMotor_migration"
-New-Item -ItemType Directory -Force "$dst\checkpoints" | Out-Null
-Copy-Item -Recurse backup\doe_data "$dst\doe_data"
-Copy-Item results\mgn_nodeB_long.pt, results\mgn_nodeB_notime.pt "$dst\checkpoints\"
-```
-
-**b. Browser upload** — drive.google.com, new folder `EveryMotor_migration`,
-drag `backup\doe_data` and the two `.pt` files in. Fine for a one-off.
-
-**c. rclone** (scriptable, no client install):
-
-```bash
-rclone config                                  # new remote "gdrive", type: drive
-rclone copy backup/doe_data gdrive:EveryMotor_migration/doe_data -P
-rclone copy results/mgn_nodeB_long.pt   gdrive:EveryMotor_migration/checkpoints/ -P
-rclone copy results/mgn_nodeB_notime.pt gdrive:EveryMotor_migration/checkpoints/ -P
-```
+It went into `C:\Users\moa\OneDrive`, which is the **personal** account — the
+machine has both a Personal and a Business1 account registered, and a business
+account would have mounted as `OneDrive - <Company>`. If the intent was the
+business tenant, move the folder there and adjust the path below.
 
 ## On the new machine — setup
 
@@ -80,20 +62,31 @@ git checkout codex/phase-1-static-1-8-model
 git submodule update --init --recursive        # if clone missed it
 ```
 
-Then bring the data across — Drive for Desktop, browser download, or rclone:
+Then bring the data across. Sign into the **same OneDrive account** and let it
+sync, or download the folder from onedrive.live.com:
 
 ```powershell
-# with Drive for Desktop mounted
-$src = "G:\My Drive\EveryMotor_migration"
+$src = "$env:USERPROFILE\OneDrive\EveryMotor_migration"
 New-Item -ItemType Directory -Force backup | Out-Null
 Copy-Item -Recurse "$src\doe_data" backup\doe_data
 Copy-Item "$src\checkpoints\*.pt" results\
 ```
 
-```bash
-# or with rclone
-rclone copy gdrive:EveryMotor_migration/doe_data backup/doe_data -P
-rclone copy gdrive:EveryMotor_migration/checkpoints results/ -P
+If OneDrive has Files On-Demand on, the files may be cloud-only placeholders
+(`Attributes` shows `Offline`) and the copy will pull them down on demand —
+slower but correct. To force them local first, right-click the folder →
+*Always keep on this device*, or:
+
+```powershell
+attrib -U +P "$src\*" /S      # unpin -> pin, i.e. make locally available
+```
+
+Verify you got everything before trusting it:
+
+```powershell
+$d = Get-ChildItem backup\doe_data -Recurse -File
+"{0} files, {1} bytes" -f $d.Count, ($d | Measure-Object Length -Sum).Sum
+# expect: 197 files, 364026511 bytes
 ```
 
 The loader expects the data at **`backup/doe_data`** — that exact path is the
@@ -144,6 +137,29 @@ Two things that cost time here, worth not rediscovering:
   showed up.
 * **PowerShell here-strings break `bash -lc`** (CRLF). Run the `.sh` files in
   `results/logs/` directly, as above.
+
+## Alternative: Google Drive
+
+Drive for Desktop is not installed on the source machine (no rclone either), so
+this needs one of:
+
+```powershell
+# a. Drive for Desktop (google.com/drive/download) mounts as a letter, often G:
+$dst = "G:\My Drive\EveryMotor_migration"
+New-Item -ItemType Directory -Force "$dst\checkpoints" | Out-Null
+Copy-Item -Recurse backup\doe_data "$dst\doe_data"
+Copy-Item results\mgn_nodeB_long.pt, results\mgn_nodeB_notime.pt "$dst\checkpoints\"
+```
+
+```bash
+# b. rclone — scriptable, no client install
+rclone config                                  # new remote "gdrive", type: drive
+rclone copy backup/doe_data gdrive:EveryMotor_migration/doe_data -P
+rclone copy results/mgn_nodeB_long.pt   gdrive:EveryMotor_migration/checkpoints/ -P
+rclone copy results/mgn_nodeB_notime.pt gdrive:EveryMotor_migration/checkpoints/ -P
+```
+
+Or drag the folders in at drive.google.com — fine for a one-off.
 
 ## Alternative: HuggingFace private dataset
 
