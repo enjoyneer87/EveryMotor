@@ -456,6 +456,10 @@ class CurlMeshGraphNetPredictor:
             wrap_rotor=bool(symmetry.get("wrap_rotor", True)) and not legacy,
             anti_periodic=bool(symmetry.get("anti_periodic_edges", True)) and not legacy,
             legacy_features=legacy,
+            # Rebuild the exact layout this checkpoint was trained on, whatever
+            # the current default happens to be.
+            node_feature_names=self.node_features or None,
+            edge_feature_names=self.edge_features or None,
         )
         if graph is None:
             return np.full((mesh.n_elements, len(self.channels)), np.nan, dtype=np.float64)

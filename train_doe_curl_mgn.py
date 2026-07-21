@@ -115,6 +115,8 @@ def build_curl_graph(
     wrap_rotor: bool = True,
     anti_periodic: bool = True,
     legacy_features: bool = False,
+    node_feature_names: Optional[Tuple[str, ...]] = None,
+    edge_feature_names: Optional[Tuple[str, ...]] = None,
     airgap_weight: float = 1.0,
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
@@ -159,27 +161,48 @@ def build_curl_graph(
     node_reg = counts.argmax(axis=1).astype(np.float64)
 
     cond = record.condition
-    geom_and_drive = [
-        float(cond.get("Ratio_Bore", 0.0)),
-        float(cond.get("Ratio_SlotDepth_ParallelSlot", 0.0)),
-        float(cond.get("PeakCurrent", 0.0)),
-        float(cond.get("PhaseAdvance", 0.0)),
-    ]
-    if legacy_features:
-        # Pre-fix layout, kept only so checkpoints trained before the sector
-        # symmetry work can still be scored as a baseline.
-        scalars = [sample.time_s, sample.rotate_step] + geom_and_drive
+    angle_sin, angle_cos = rotor_angle_features(cumulative_deg, sector_deg)
+
+    # Every scalar this builder can supply, keyed by its declared feature name.
+    # Selecting by name rather than by a layout flag is what lets a checkpoint
+    # trained on an older feature set still be rebuilt exactly as it was trained:
+    # dropping `time_s` from the current layout silently broke every existing
+    # checkpoint until this became name-driven.
+    available = {
+        "time_s": sample.time_s,
+        "rotate_step": sample.rotate_step,
+        "rotor_angle_sin": angle_sin,
+        "rotor_angle_cos": angle_cos,
+        "Ratio_Bore": float(cond.get("Ratio_Bore", 0.0)),
+        "Ratio_SlotDepth_ParallelSlot": float(cond.get("Ratio_SlotDepth_ParallelSlot", 0.0)),
+        "PeakCurrent": float(cond.get("PeakCurrent", 0.0)),
+        "PhaseAdvance": float(cond.get("PhaseAdvance", 0.0)),
+    }
+    if node_feature_names is not None:
+        node_names = tuple(node_feature_names)
+        edge_names = tuple(edge_feature_names) if edge_feature_names else MGN_EDGE_FEATURES_V2
+    elif legacy_features:
         node_names, edge_names = MGN_NODE_FEATURES, MGN_EDGE_FEATURES
     else:
-        angle_sin, angle_cos = rotor_angle_features(cumulative_deg, sector_deg)
-        scalars = [angle_sin, angle_cos] + geom_and_drive
         node_names, edge_names = MGN_NODE_FEATURES_V2, MGN_EDGE_FEATURES_V2
+
+    # pos_x, pos_y and region_code are positional; everything else is a scalar
+    # broadcast to every node, looked up by name.
+    scalar_names = [n for n in node_names if n not in ("pos_x", "pos_y", "region_code")]
+    missing = [n for n in scalar_names if n not in available]
+    if missing:
+        raise ValueError(f"build_curl_graph cannot supply node feature(s) {missing}")
+    scalars = [available[n] for n in scalar_names]
 
     x = np.column_stack(
         [pos, node_reg[:, None]] + [np.full((n_nodes, 1), s) for s in scalars]
     ).astype(np.float32)
+    # Shortcut features are forbidden when *building* a model and tolerated when
+    # *replaying* one: an explicit layout means we are reconstructing exactly what
+    # some existing checkpoint was trained on, which is scoring, not training.
+    replaying = legacy_features or node_feature_names is not None
     assert_input_features_clean(node_names, context="curl trainer node features",
-                                allow_shortcuts=legacy_features)
+                                allow_shortcuts=replaying)
     assert_feature_count(node_names, x.shape[1], context="curl trainer node features")
 
     # Curl operator on geometrically valid, non-sliding-band elements only.
