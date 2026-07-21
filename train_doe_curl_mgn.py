@@ -119,10 +119,12 @@ def build_curl_graph(
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
 
-    Node features are the 10 in `MGN_NODE_FEATURES_V2` — position, region code,
+    Node features are the 9 in `MGN_NODE_FEATURES_V2` — position, region code,
     the operating point, the DOE geometry parameters and the cumulative rotor
-    angle. No solved quantity is used as an input; `assert_input_features_clean`
-    enforces it here.
+    angle. No solved quantity and no shortcut feature is used as an input;
+    `assert_input_features_clean` enforces both here. `time_s` used to be in this
+    list and was removed: it is proportional to rotor angle in this DOE, and the
+    model was using it as a shortcut (methodology review section 9).
 
     With `wrap_rotor` the rigid rotor is folded back into the modelled sector and
     the B target is multiplied by the anti-periodic sign, so every sample shows
@@ -170,13 +172,14 @@ def build_curl_graph(
         node_names, edge_names = MGN_NODE_FEATURES, MGN_EDGE_FEATURES
     else:
         angle_sin, angle_cos = rotor_angle_features(cumulative_deg, sector_deg)
-        scalars = [sample.time_s, angle_sin, angle_cos] + geom_and_drive
+        scalars = [angle_sin, angle_cos] + geom_and_drive
         node_names, edge_names = MGN_NODE_FEATURES_V2, MGN_EDGE_FEATURES_V2
 
     x = np.column_stack(
         [pos, node_reg[:, None]] + [np.full((n_nodes, 1), s) for s in scalars]
     ).astype(np.float32)
-    assert_input_features_clean(node_names, context="curl trainer node features")
+    assert_input_features_clean(node_names, context="curl trainer node features",
+                                allow_shortcuts=legacy_features)
     assert_feature_count(node_names, x.shape[1], context="curl trainer node features")
 
     # Curl operator on geometrically valid, non-sliding-band elements only.

@@ -286,7 +286,10 @@ def build_graph(rec: dict, condition: Dict[str, float]) -> Optional[Data]:
         np.full((n,1), cond_ph,  np.float32),      # 8: PhaseAdvance
     ]).astype(np.float32)
 
-    assert_input_features_clean(MGN_NODE_FEATURES, context="build_graph node features")
+    # Superseded layout: it still carries time_s, which train_doe_curl_mgn.py
+    # dropped as a shortcut feature (methodology review section 9).
+    assert_input_features_clean(MGN_NODE_FEATURES, context="build_graph node features",
+                                allow_shortcuts=True)
     assert_feature_count(MGN_NODE_FEATURES, x.shape[1], context="build_graph node features")
 
     yt = np.stack([node_bx, node_by], axis=1).astype(np.float32)

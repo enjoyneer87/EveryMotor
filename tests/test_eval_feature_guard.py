@@ -14,7 +14,6 @@ CLEAN_MGN_FEATURES = (
     "pos_x",
     "pos_y",
     "region_code",
-    "time_s",
     "rotate_step",
     "Ratio_Bore",
     "Ratio_SlotDepth_ParallelSlot",
@@ -53,16 +52,48 @@ def test_name_normalization_catches_spelling_variants():
 
 
 def test_unknown_features_are_surfaced_but_not_fatal():
-    leaking, unknown = classify_features(CLEAN_MGN_FEATURES + ("some_new_geometry_param",))
-    assert leaking == ()
+    leaking, shortcut, unknown = classify_features(
+        CLEAN_MGN_FEATURES + ("some_new_geometry_param",)
+    )
+    assert leaking == () and shortcut == ()
     assert unknown == ("some_new_geometry_param",)
     assert_input_features_clean(CLEAN_MGN_FEATURES + ("some_new_geometry_param",))
 
 
 def test_feature_count_mismatch_is_rejected():
-    assert_feature_count(CLEAN_MGN_FEATURES, 9)
+    assert_feature_count(CLEAN_MGN_FEATURES, 8)
     with pytest.raises(FeatureLeakageError, match="drifted"):
         assert_feature_count(CLEAN_MGN_FEATURES, 11)
+
+
+def test_shortcut_features_are_rejected():
+    """time_s duplicates rotor angle and the model used it as a shortcut."""
+    with pytest.raises(FeatureLeakageError, match="shortcut"):
+        assert_input_features_clean(CLEAN_MGN_FEATURES + ("time_s",))
+
+
+@pytest.mark.parametrize("name", ["time_s", "step_index", "sample_index", "case_index"])
+def test_index_like_features_are_all_rejected(name):
+    with pytest.raises(FeatureLeakageError, match="shortcut"):
+        assert_input_features_clean(["pos_x", name])
+
+
+def test_shortcuts_can_be_allowed_for_historical_checkpoints():
+    """Old checkpoints must stay scoreable; new models must not use the escape."""
+    assert_input_features_clean(["pos_x", "time_s"], allow_shortcuts=True)
+
+
+def test_the_v2_layout_has_no_time_s():
+    from eval.feature_guard import MGN_NODE_FEATURES_V2
+
+    assert "time_s" not in MGN_NODE_FEATURES_V2
+    assert_input_features_clean(MGN_NODE_FEATURES_V2)
+
+
+def test_a_solution_derived_feature_still_wins_over_shortcut():
+    """Leakage is the more serious finding and must be the reported one."""
+    with pytest.raises(FeatureLeakageError, match="solution-derived"):
+        assert_input_features_clean(["pos_x", "time_s", "Bx"])
 
 
 def test_error_message_points_at_the_review():

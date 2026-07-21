@@ -115,7 +115,8 @@ def build_mgn_inputs(
     whitelist is asserted here so a future edit that reintroduces A or J as an
     input fails at evaluation time.
     """
-    assert_input_features_clean(MGN_NODE_FEATURES, context="MeshGraphNet node features")
+    assert_input_features_clean(MGN_NODE_FEATURES, context="MeshGraphNet node features",
+                                allow_shortcuts=True)
 
     i1, i2, i3 = record.mesh.tri
     n_nodes = record.mesh.n_nodes
@@ -378,7 +379,10 @@ class CurlMeshGraphNetPredictor:
         # the sector-symmetry fixes changed both the node and edge widths.
         node_features = tuple(ckpt.get("node_features") or MGN_NODE_FEATURES)
         edge_features = tuple(ckpt.get("edge_features") or MGN_EDGE_FEATURES)
-        assert_input_features_clean(node_features, context=f"{Path(path).name} node features")
+        # Historical checkpoints predate the shortcut-feature finding; they are
+        # still scoreable, just not a template for new models.
+        assert_input_features_clean(node_features, context=f"{Path(path).name} node features",
+                                    allow_shortcuts=True)
 
         model = MeshGraphNet(
             input_dim_nodes=len(node_features),
