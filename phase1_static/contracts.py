@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 import torch
 
@@ -303,6 +303,59 @@ def normalize_channels_to_bx_by_a_je(tensor: torch.Tensor) -> Tuple[torch.Tensor
         z = torch.zeros_like(a)
         return torch.cat([z, z, a, z], dim=1), "a_only"
     raise ValueError("Channel count must be >= 1")
+
+
+@dataclass(frozen=True)
+class ChannelZScoreStats:
+    """Immutable per-channel z-score statistics for canonical [Bx, By, A, Je]."""
+
+    mean: torch.Tensor
+    std: torch.Tensor
+    eps: float = 1e-6
+
+
+def build_channel_zscore_stats(
+    channel_sum: torch.Tensor,
+    channel_sq_sum: torch.Tensor,
+    sample_count: int,
+    *,
+    eps: float = 1e-6,
+) -> ChannelZScoreStats:
+    """Build stable z-score statistics from streaming channel sums."""
+    if int(sample_count) <= 0:
+        raise ValueError("sample_count must be positive")
+
+    n = float(sample_count)
+    mean = channel_sum / n
+    var = (channel_sq_sum / n) - (mean ** 2)
+    var = torch.clamp(var, min=0.0)
+    std = torch.sqrt(var)
+    std = torch.clamp(std, min=float(eps))
+    return ChannelZScoreStats(mean=mean, std=std, eps=float(eps))
+
+
+def apply_channel_zscore(
+    tensor: torch.Tensor,
+    stats: Optional[ChannelZScoreStats],
+) -> torch.Tensor:
+    """Apply channel-wise z-score normalization if stats are provided."""
+    if stats is None:
+        return tensor
+    mean = stats.mean.to(device=tensor.device, dtype=tensor.dtype)
+    std = stats.std.to(device=tensor.device, dtype=tensor.dtype)
+    return (tensor - mean) / std
+
+
+def invert_channel_zscore(
+    tensor: torch.Tensor,
+    stats: Optional[ChannelZScoreStats],
+) -> torch.Tensor:
+    """Invert channel-wise z-score normalization if stats are provided."""
+    if stats is None:
+        return tensor
+    mean = stats.mean.to(device=tensor.device, dtype=tensor.dtype)
+    std = stats.std.to(device=tensor.device, dtype=tensor.dtype)
+    return (tensor * std) + mean
 
 
 # Backward-compatible alias — will be removed in a future cleanup pass
