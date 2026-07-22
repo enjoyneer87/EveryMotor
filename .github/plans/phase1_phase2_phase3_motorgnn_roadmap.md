@@ -53,6 +53,22 @@ Freeze shared data and transformation contracts before feature growth.
 ### Objective
 Build a stable static training baseline that can overfit one sample and satisfy boundary symmetry.
 
+> **"Static" means memoryless, not angle-free.** The model *does* learn the field as a
+> function of rotor angle — `rotor_angle_sin/cos` are node inputs and the 45 rotor
+> steps span a full electrical period. What makes Phase 1 *static* is that it fits a
+> **pointwise map** `(θ, operating point, geometry) → field`: each `(case, step)` is an
+> independent, shuffled i.i.d. sample, there is **no `field(t-1)` input** and **no
+> rollout**, and the **connectivity is read from the H5 file per step, not generated
+> from θ**. Rotor angle enters as a *condition coordinate*, not a time axis — which is
+> also why `time_s` (corr +1.0000 with θ; all cases run at one speed) was a redundant
+> shortcut and was removed. Angle-dependence is common to Phase 1 and Phase 2 and is
+> therefore *not* the static/dynamic axis. The dynamic step (Phase 2) is two specific
+> additions: connectivity generated from θ(t) via the sliding band, and `field(t-1)`
+> fed as state. Physically the data is a **multi-static rotor-position sweep**
+> (`Mag_OnLoadTorque`: an independent magnetostatic solve per position — no eddy
+> currents, no time integration, no history), so a memoryless fit is the correct model
+> of it.
+
 ### Copilot scaffold prompts
 Use these comments directly in code files to drive GitHub Copilot generation:
 

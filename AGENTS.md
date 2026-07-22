@@ -152,6 +152,15 @@ plain `python -m eval.benchmark`. The predictor probes for scipy when it is cons
 
 ## Field Representation: predict A, derive B
 
+**Phase 1 is a *static* (memoryless) fit, not an angle-free one.** The model learns
+`(rotor angle θ, operating point, geometry) → field` as a pointwise map: each
+`(case, step)` is an independent shuffled sample, with **no `field(t-1)` input and no
+rollout**, and connectivity is **read from the H5 per step, not generated from θ**.
+Rotor angle is a condition coordinate, not a time axis — so learning angle-dependence
+is *not* what would make it dynamic. That is Phase 2 (connectivity from θ(t) + `field(t-1)`
+state). The DOE data is a multi-static rotor sweep (`Mag_OnLoadTorque`, one magnetostatic
+solve per position), which is why `time_s` was a redundant shortcut for θ and was removed.
+
 Two trainers exist and they are not equivalent:
 
 | script | predicts | B support | torque floor |
