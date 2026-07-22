@@ -47,18 +47,34 @@ def _build_radial_strip(
 
 
 def test_build_sector_pbc_edges_from_mesh_matches_45deg_sector() -> None:
-    """Verify deterministic 45-degree PBC matching on synthetic annular sector."""
+    """Verify deterministic 45-degree PBC matching on synthetic annular sector.
+
+    The sector needs at least THREE radial rings, not two. Each periodic
+    boundary is a radial chain, and the extractor requires a chain of at least
+    ``PERIODIC_MIN_CLUSTER_EDGE_COUNT`` (2) edges before it will treat it as a
+    genuine boundary rather than a single stray external edge — a deliberate
+    guard so a lone airgap sliver in a real mesh is not mistaken for a periodic
+    cut. Two rings give one edge per boundary and fall below that floor, which
+    is why the original two-ring fixture never matched. Three rings give two
+    edges per boundary, the minimum a real 1/8-sector cut would ever produce.
+    """
     angles = np.deg2rad(np.array([0.0, 22.5, 45.0], dtype=np.float64))
-    inner = np.stack([np.cos(angles), np.sin(angles)], axis=1)
-    outer = 2.0 * inner
-    pos = np.vstack([inner, outer]).astype(np.float32)
+    unit = np.stack([np.cos(angles), np.sin(angles)], axis=1)
+    # Rings at r = 1, 2, 3 → node id = ring * 3 + angle column.
+    pos = np.vstack([1.0 * unit, 2.0 * unit, 3.0 * unit]).astype(np.float32)
 
     triangles = np.array(
         [
+            # ring 0 → ring 1
             [0, 1, 4],
             [0, 4, 3],
             [1, 2, 5],
             [1, 5, 4],
+            # ring 1 → ring 2
+            [3, 4, 7],
+            [3, 7, 6],
+            [4, 5, 8],
+            [4, 8, 7],
         ],
         dtype=np.int32,
     )
