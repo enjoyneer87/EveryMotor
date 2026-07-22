@@ -65,3 +65,6 @@ tools/bin/
 .pytest_cache/
 Thumbs.db
 desktop.ini
+
+# Share is offline -- artifacts staged here until it returns (2026-07-22)
+results/_share_pending/
