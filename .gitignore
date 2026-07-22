@@ -68,3 +68,7 @@ desktop.ini
 
 # Share is offline -- artifacts staged here until it returns (2026-07-22)
 results/_share_pending/
+
+# Fluent 전사로그 -> Google Drive
+fluent-*.trn
+*.trn
