@@ -101,6 +101,7 @@ Real sample file: `data/MagTransient_20260130_152245.txt`
 ## Active Work Plans
 
 See `.github/plans/` for ongoing refactoring tasks:
+- [`handoff_20260722.md`](.github/plans/handoff_20260722.md) — **latest session handoff (2026-07-22).** Tonight's commits, settled decisions, current gate status, and the next-task (G2 gap) proposal. Start here to resume.
 - [`methodology_review_20260720.md`](.github/plans/methodology_review_20260720.md) — **amends the roadmap below; read first.** Critical findings (split leak, target design, eval protocol) and the R0–R4 priority order
 - [`postproc_interop_refactor.md`](.github/plans/postproc_interop_refactor.md) — pyleecan-style MeshSolution architecture (in progress, checklist inside)
 - [`phase1_phase2_phase3_motorgnn_roadmap.md`](.github/plans/phase1_phase2_phase3_motorgnn_roadmap.md) — shared Phase 1-3 execution roadmap for Codex/Claude/Copilot/Antigravity
