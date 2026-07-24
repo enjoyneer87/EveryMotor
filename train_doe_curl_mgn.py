@@ -97,10 +97,15 @@ class CurlData(Data):
     def __inc__(self, key, value, *args, **kwargs):
         if key in ("curl_node_index", "cut_pairs"):
             return self.num_nodes
+        if key == "band_row_index":
+            # Positions into this graph's OPERATOR ROWS (b_true), not its nodes.
+            # PyG's default would shift any '*index*' key by num_nodes, silently
+            # pointing every batched band at the first graph's elements.
+            return self.b_true.size(0)
         return super().__inc__(key, value, *args, **kwargs)
 
     def __cat_dim__(self, key, value, *args, **kwargs):
-        if key in ("curl_node_index", "cut_pairs"):
+        if key in ("curl_node_index", "cut_pairs", "band_row_index"):
             return 0
         return super().__cat_dim__(key, value, *args, **kwargs)
 
@@ -307,6 +312,63 @@ def average_nodes_to_elements(batch, b_nodal: torch.Tensor) -> torch.Tensor:
     return b_nodal[batch.curl_node_index].mean(dim=1)         # (K_total, 2)
 
 
+# Spatial orders admissible on the anti-periodic 1/8 sector: odd multiples of 4
+# cycles per revolution (4 = fundamental of the 8-pole machine, 12/20/28 = MMF
+# harmonics, 44/52 and 92/100 and 140/148 = slotting sidebands of 48/96/144).
+# The band projection study (methodology review §14b) showed the model's torque
+# error lives ENTIRELY in the coefficients of these orders — filtering removed
+# nothing — so this loss supervises those coefficients directly instead of
+# letting them be diluted across ~13k per-element errors.
+BAND_SPECTRAL_ORDERS: Tuple[int, ...] = tuple(4 * (2 * m + 1) for m in range(24))
+
+
+def band_spectral_operator(mesh) -> Optional[Dict[str, np.ndarray]]:
+    """Coefficient-extraction operator for the stationary Arkkio band.
+
+    Returns the band element ids, the radial unit vectors and the extraction
+    matrix ``ext`` with ``ext.T @ values = coefficients`` — i.e. rows of
+    ``pinv(design)`` transposed so batching can concatenate along elements.
+    ``None`` when the mesh has no usable band (the graph then trains without
+    the spectral term rather than failing).
+    """
+    from eval.torque import AirgapBandError, build_airgap_band
+
+    try:
+        band = build_airgap_band(
+            mesh.node_x_mm, mesh.node_y_mm, mesh.tri, mesh.reg_code,
+            mesh.name_of_code, moving_reg_codes=mesh.moving_reg_codes,
+        )
+    except AirgapBandError:
+        return None
+    phi = np.arctan2(band.sin_theta, band.cos_theta)
+    cols = []
+    for k in BAND_SPECTRAL_ORDERS:
+        cols.append(np.cos(k * phi))
+        cols.append(np.sin(k * phi))
+    design = np.column_stack(cols)
+    return {
+        "element_index": band.element_index.astype(np.int64),
+        "cos": band.cos_theta.astype(np.float32),
+        "sin": band.sin_theta.astype(np.float32),
+        "ext": np.linalg.pinv(design).T.astype(np.float32),   # (n_band, 2*orders)
+    }
+
+
+def band_coefficients(batch, values: torch.Tensor) -> torch.Tensor:
+    """Per-graph harmonic coefficients of a band scalar (segmented matmul).
+
+    ``values`` holds one scalar per batched band element; the return is
+    ``(num_graphs, 2*orders)`` with ``c[g, j] = sum_i ext[i, j] * values[i]``
+    over graph *g*'s band rows. Differentiable in ``values``.
+    """
+    gid = torch.repeat_interleave(
+        torch.arange(batch.num_graphs, device=values.device), batch.band_count
+    )
+    out = values.new_zeros((batch.num_graphs, batch.band_ext.shape[1]))
+    out.index_add_(0, gid, batch.band_ext * values.unsqueeze(1))
+    return out
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--data-dir", type=Path, default=Path("backup/doe_data"))
@@ -331,6 +393,14 @@ def main() -> int:
                         help="Loss weight on airgap-band elements. They are 6.4%% of the "
                              "scoreable elements but determine the torque; weight 5 lifts "
                              "their share of the loss to ~26%%. 1.0 disables the weighting")
+    parser.add_argument("--band-spectral-weight", type=float, default=0.0,
+                        help="Weight on the band harmonic-coefficient loss. The projection "
+                             "study (methodology review §14b) measured that the torque "
+                             "error is entirely in-band — the model gets the admissible "
+                             "harmonic coefficients themselves wrong — so this supervises "
+                             "those coefficients directly (Br/Btheta of the Arkkio band "
+                             "projected on the anti-periodic orders). 0 disables (default; "
+                             "the winning recipes were trained without it)")
     parser.add_argument("--w-pbc", type=float, default=1e-2,
                         help="Weight on the anti-periodicity penalty "
                              "MSE(A(theta=0) + A(theta=-sector)) at the cut planes")
@@ -372,12 +442,16 @@ def main() -> int:
     graph_case: List[int] = []
     n_wrapped = 0
     t_load = time.time()
+    n_band_missing = 0
     for record in report.records:
         mesh = record.mesh
         band = sliding_band_mask(mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes)
         rigid = rigid_rotor_node_mask(
             mesh.tri, mesh.reg_code, mesh.name_of_code, mesh.moving_reg_codes, mesh.n_nodes
         )
+        # The spectral operator is a property of the mesh (the Arkkio band is
+        # stationary), so it is built once per case and shared by every step.
+        spec = band_spectral_operator(mesh) if args.band_spectral_weight > 0.0 else None
         # rotate_step is the per-step increment, so the absolute rotor angle has
         # to be accumulated over the sweep.
         cum_deg = cumulative_rotor_angle([s.rotate_step for s in record.samples])
@@ -398,6 +472,39 @@ def main() -> int:
                 airgap_weight=args.airgap_weight,
             )
             if g is not None:
+                if args.band_spectral_weight > 0.0:
+                    if spec is None:
+                        n_band_missing += 1
+                        g.band_row_index = torch.zeros(0, dtype=torch.long)
+                        g.band_cos = torch.zeros(0)
+                        g.band_sin = torch.zeros(0)
+                        g.band_ext = torch.zeros((0, 2 * len(BAND_SPECTRAL_ORDERS)))
+                        g.band_count = torch.zeros(1, dtype=torch.long)
+                    else:
+                        # Map full-array band element ids onto this step's
+                        # operator rows. The a1 band is stationary, so normally
+                        # every band element is covered; if a step drops some,
+                        # the extraction matrix is recomputed on the survivors
+                        # so it stays an exact pseudo-inverse.
+                        lut = np.full(int(g.n_elements_total), -1, dtype=np.int64)
+                        lut[g.curl_element_index.numpy()] = np.arange(
+                            g.curl_element_index.shape[0], dtype=np.int64)
+                        rows = lut[spec["element_index"]]
+                        keep = rows >= 0
+                        if keep.all():
+                            ext = spec["ext"]
+                        else:
+                            phi = np.arctan2(spec["sin"][keep], spec["cos"][keep])
+                            cols = []
+                            for k in BAND_SPECTRAL_ORDERS:
+                                cols.append(np.cos(k * phi))
+                                cols.append(np.sin(k * phi))
+                            ext = np.linalg.pinv(np.column_stack(cols)).T.astype(np.float32)
+                        g.band_row_index = torch.from_numpy(rows[keep])
+                        g.band_cos = torch.from_numpy(spec["cos"][keep])
+                        g.band_sin = torch.from_numpy(spec["sin"][keep])
+                        g.band_ext = torch.from_numpy(ext)
+                        g.band_count = torch.tensor([int(keep.sum())], dtype=torch.long)
                 graphs.append(g)
                 graph_case.append(record.case_index)
                 if abs(float(cum_deg[si])) >= args.sector_deg:
@@ -426,6 +533,13 @@ def main() -> int:
     print(f"Sector symmetry: wrap_rotor={not args.no_wrap_rotor} "
           f"({n_wrapped} of {len(graphs)} samples past one sector), "
           f"anti_periodic_edges={not args.no_anti_periodic_edges} ({n_pbc} cut-plane pairs)")
+
+    if args.band_spectral_weight > 0.0:
+        nb = int(graphs[0].band_count)
+        print(f"Band spectral loss: weight {args.band_spectral_weight:g}, "
+              f"{nb} band elements, {len(BAND_SPECTRAL_ORDERS)} orders "
+              f"-> {4 * len(BAND_SPECTRAL_ORDERS)} coefficients (Br+Btheta, cos+sin)"
+              + (f"  [WARN: {n_band_missing} graphs without a band]" if n_band_missing else ""))
 
     split = resolve_case_split(manifest, sorted(set(graph_case)), Path(args.split), seed=args.seed)
     assigned = assign_records(graph_case, split)
@@ -506,7 +620,7 @@ def main() -> int:
 
     def run_epoch(loader, training: bool):
         model.train() if training else model.eval()
-        totals = {"loss": 0.0, "b": 0.0, "nrmse": 0.0, "pbc": 0.0}
+        totals = {"loss": 0.0, "b": 0.0, "nrmse": 0.0, "pbc": 0.0, "spec": 0.0}
         n_batch = 0
         for batch in loader:
             batch = batch.to(device)
@@ -525,6 +639,24 @@ def main() -> int:
                 w = batch.elem_weight.unsqueeze(1)
                 b_loss = (w * sq).sum() / (w.sum() * sq.shape[1])
                 loss = args.w_b * b_loss
+
+                spec_loss = raw.new_zeros(())
+                if args.band_spectral_weight > 0.0 and int(batch.band_count.sum()) > 0:
+                    # Harmonic coefficients of the band field, prediction vs FEM,
+                    # in normalized units so the weight is comparable to w_b.
+                    # §14b measured the torque error to live exactly here.
+                    pn = b_pred[batch.band_row_index] / b_std_d          # (M, 2)
+                    tn = batch.b_true[batch.band_row_index] / b_std_d
+                    br_p = pn[:, 0] * batch.band_cos + pn[:, 1] * batch.band_sin
+                    bt_p = -pn[:, 0] * batch.band_sin + pn[:, 1] * batch.band_cos
+                    br_t = tn[:, 0] * batch.band_cos + tn[:, 1] * batch.band_sin
+                    bt_t = -tn[:, 0] * batch.band_sin + tn[:, 1] * batch.band_cos
+                    c_pred = torch.cat(
+                        [band_coefficients(batch, br_p), band_coefficients(batch, bt_p)], dim=1)
+                    c_true = torch.cat(
+                        [band_coefficients(batch, br_t), band_coefficients(batch, bt_t)], dim=1)
+                    spec_loss = torch.nn.functional.mse_loss(c_pred, c_true)
+                    loss = loss + args.band_spectral_weight * spec_loss
 
                 # The gauge and anti-periodicity terms are properties of the
                 # scalar potential. Bx is not a potential — the anti-periodic
@@ -558,6 +690,7 @@ def main() -> int:
             totals["loss"] += float(loss)
             totals["b"] += float(b_loss)
             totals["pbc"] += float(pbc)
+            totals["spec"] += float(spec_loss)
             n_batch += 1
         return {k: v / max(n_batch, 1) for k, v in totals.items()}
 
@@ -597,6 +730,10 @@ def main() -> int:
                         "w_pbc": args.w_pbc,
                     },
                     "airgap_weight": args.airgap_weight,
+                    "band_spectral": {
+                        "weight": args.band_spectral_weight,
+                        "orders": list(BAND_SPECTRAL_ORDERS),
+                    },
                     "split": {
                         "granularity": "case",
                         "manifest": str(args.split),
@@ -611,8 +748,10 @@ def main() -> int:
             )
 
         if ep == 1 or ep % 5 == 0 or ep == args.epochs:
+            spec_part = (f"spec {va['spec']:.2e} "
+                         if args.band_spectral_weight > 0.0 else "")
             print(f"  ep {ep:04d}/{args.epochs} | train B {tr['b']:.6f} nRMSE {tr['nrmse']:6.2f}% "
-                  f"| val B {va['b']:.6f} nRMSE {va['nrmse']:6.2f}% pbc {va['pbc']:.2e} "
+                  f"| val B {va['b']:.6f} nRMSE {va['nrmse']:6.2f}% pbc {va['pbc']:.2e} {spec_part}"
                   f"| best {best_val:.6f} | {time.time() - t0:.0f}s")
 
     print(f"\nTraining complete: {args.epochs} epochs in {time.time() - t0:.1f}s")
