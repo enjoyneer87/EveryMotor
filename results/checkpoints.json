@@ -52,6 +52,42 @@
         "torque_nrmse_pct": 8.24
       },
       "note": "Completed 60-epoch run, best at 55. Already on the share under the canonical name; the repo copy still carried the ambiguous short name."
+    },
+    {
+      "sha256": "d65f1c23d996ab69954d2b4b189f015012d88ee3a4ec85c258f571aff1197107",
+      "bytes": 111780789,
+      "epoch": 79,
+      "machine": "HPC134",
+      "canonical_name": "mgn_nodeB_h256_ep79_HPC134.pt",
+      "seen_as": [
+        "mgn_nodeB_h256.pt",
+        "mgn_nodeB_h256_ep79_HPC134.pt"
+      ],
+      "variant": "nodeB_notime h256 (9 node features, hidden_dim 256, processor_size 15)",
+      "scorecard": "results/benchmark_v2_nodeB_h256.json",
+      "metrics": {
+        "B_nrmse_pct": 12.682,
+        "torque_nrmse_pct": 6.804
+      },
+      "note": "Experiment 1 (capacity, width x2). 9.29M params. Width doubling did not move the TRAIN |B| floor (~10.3%); gain concentrated in torque. See methodology_review §13."
+    },
+    {
+      "sha256": "6645c6c44b741ed0e0ecc150948fe1b294c4743d87ffd52f05f62d025826769b",
+      "bytes": 175946685,
+      "epoch": 67,
+      "machine": "HPC134",
+      "canonical_name": "mgn_nodeB_proc24_ep67_HPC134.pt",
+      "seen_as": [
+        "mgn_nodeB_proc24.pt",
+        "mgn_nodeB_proc24_ep67_HPC134.pt"
+      ],
+      "variant": "nodeB_notime h256 p24 (9 node features, hidden_dim 256, processor_size 24)",
+      "scorecard": "results/benchmark_v2_nodeB_proc24.json",
+      "metrics": {
+        "B_nrmse_pct": 12.733,
+        "torque_nrmse_pct": 6.557
+      },
+      "note": "Experiment 2 (capacity, depth x1.6). 14.62M params, early-stopped ep67/100 on GPU return. Depth bought nothing over exp1; capacity axis declared exhausted. See methodology_review §15."
     }
   ],
   "ambiguous_names": {
