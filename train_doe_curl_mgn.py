@@ -379,6 +379,23 @@ def main() -> int:
     parser.add_argument("--weight-decay", type=float, default=1e-6)
     parser.add_argument("--processor-size", type=int, default=15)
     parser.add_argument("--hidden-dim", type=int, default=128)
+    parser.add_argument("--model", choices=("mgn", "transolver"), default="mgn",
+                        help="Field backbone. 'mgn': physicsnemo MeshGraphNet "
+                             "(local message passing). 'transolver': R3 physics-"
+                             "attention graph transformer (global receptive field; "
+                             "the --processor-size flag is ignored, --n-layers/"
+                             "--n-head/--slice-num apply). Use --batch-size 1 with "
+                             "transolver (global attention must not cross graphs)")
+    parser.add_argument("--n-layers", type=int, default=12,
+                        help="transolver: number of Transolver blocks (~9M params "
+                             "at hidden 256 / 12 layers, matching h256 MGN)")
+    parser.add_argument("--n-head", type=int, default=8,
+                        help="transolver: attention heads")
+    parser.add_argument("--slice-num", type=int, default=32,
+                        help="transolver: physics-attention slices (soft tokens); "
+                             "attention is O(N*slice_num)")
+    parser.add_argument("--emb-dim", type=int, default=64,
+                        help="transolver: positional-embedding width from (pos_x,pos_y)")
     parser.add_argument("--step-stride", type=int, default=3,
                         help="Keep every Nth timestep; samples the whole rotor sweep evenly")
     parser.add_argument("--max-steps-per-case", type=int, default=None)
@@ -587,7 +604,7 @@ def main() -> int:
     train_loader = DataLoader(train_graphs, batch_size=args.batch_size, shuffle=True)
     val_loader = DataLoader(val_graphs, batch_size=args.batch_size, shuffle=False)
 
-    from physicsnemo.models.meshgraphnet import MeshGraphNet
+    from r3_models import build_curl_model
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
@@ -598,18 +615,18 @@ def main() -> int:
     # magnitude; B is scaled directly by the field spread.
     out_scale = a_scale if predicts_a else b_std
 
-    model = MeshGraphNet(
-        input_dim_nodes=train_graphs[0].x.shape[1],
-        input_dim_edges=train_graphs[0].edge_attr.shape[1],
-        output_dim=out_dim,
-        processor_size=args.processor_size,
-        hidden_dim_processor=args.hidden_dim,
-        hidden_dim_node_encoder=args.hidden_dim,
-        hidden_dim_edge_encoder=args.hidden_dim,
-        hidden_dim_node_decoder=args.hidden_dim,
-        aggregation="sum",
-    ).to(device)
-    print(f"Model params: {sum(p.numel() for p in model.parameters() if p.requires_grad):,}")
+    # Construction goes through the shared factory so the trainer and the eval
+    # harness build the identical module (the "mgn" branch reproduces the exact
+    # kwargs used before the factory existed; the gate re-score guards it).
+    model = build_curl_model(
+        args.model,
+        in_node=train_graphs[0].x.shape[1],
+        in_edge=train_graphs[0].edge_attr.shape[1],
+        out_dim=out_dim,
+        hp=vars(args),
+        device=device,
+    )
+    print(f"Model[{args.model}] params: {sum(p.numel() for p in model.parameters() if p.requires_grad):,}")
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
@@ -717,6 +734,7 @@ def main() -> int:
                     "b_std": b_std, "a_scale": a_scale, "out_scale": out_scale,
                     "train_hist": train_hist, "val_hist": val_hist,
                     "args": {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items()},
+                    "model_arch": args.model,
                     "output_kind": (
                         "nodal_A_curl_to_element_B" if predicts_a
                         else "nodal_B_average_to_element_B"

@@ -376,8 +376,7 @@ class CurlMeshGraphNetPredictor:
         device: Optional[torch.device] = None,
         name: str = "mgn_curl",
     ) -> "CurlMeshGraphNetPredictor":
-        require_graph_ops(context=f"{Path(path).name} (MeshGraphNet + P1 curl)")
-        from physicsnemo.models.meshgraphnet import MeshGraphNet
+        require_graph_ops(context=f"{Path(path).name} (curl field model + P1 curl)")
 
         device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
         ckpt = load_checkpoint(Path(path), map_location=str(device))
@@ -401,17 +400,21 @@ class CurlMeshGraphNetPredictor:
         assert_input_features_clean(node_features, context=f"{Path(path).name} node features",
                                     allow_shortcuts=True)
 
-        model = MeshGraphNet(
-            input_dim_nodes=len(node_features),
-            input_dim_edges=len(edge_features),
-            output_dim=1 if predicts_a else 2,
-            processor_size=int(args.get("processor_size", 15)),
-            hidden_dim_processor=int(args.get("hidden_dim", 128)),
-            hidden_dim_node_encoder=int(args.get("hidden_dim", 128)),
-            hidden_dim_edge_encoder=int(args.get("hidden_dim", 128)),
-            hidden_dim_node_decoder=int(args.get("hidden_dim", 128)),
-            aggregation="sum",
-        ).to(device)
+        # Architecture is chosen from the checkpoint (default "mgn" for the many
+        # checkpoints written before the R3 arch key existed); hyperparameters
+        # and I/O widths come from the stored args / feature layout. Same shared
+        # factory the trainer used, so the module is reconstructed identically.
+        from r3_models import build_curl_model
+
+        arch = ckpt.get("model_arch", "mgn")
+        model = build_curl_model(
+            arch,
+            in_node=len(node_features),
+            in_edge=len(edge_features),
+            out_dim=1 if predicts_a else 2,
+            hp=args,
+            device=device,
+        )
         model.load_state_dict(ckpt["model_state_dict"])
         model.eval()
 
