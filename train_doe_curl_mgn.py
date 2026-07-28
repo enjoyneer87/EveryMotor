@@ -667,6 +667,11 @@ def main() -> int:
     for g in train_graphs + val_graphs:
         g.x = torch.nan_to_num((g.x - x_mean) / x_std)
         g.edge_attr = torch.nan_to_num((g.edge_attr - e_mean) / e_std)
+        # World edges (hybrid) share the mesh edge stats — normalize them the same
+        # way, or the model would train on raw-scale world features and be scored
+        # on normalized ones (a silent train/eval mismatch that wrecks the band).
+        if getattr(g, "world_edge_attr", None) is not None and g.world_edge_attr.numel():
+            g.world_edge_attr = torch.nan_to_num((g.world_edge_attr - e_mean) / e_std)
         g.b_true = torch.nan_to_num(g.b_true)
 
     target_desc = "1 (nodal A -> curl)" if args.target == "A" else "2 (nodal Bx,By -> average)"
