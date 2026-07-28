@@ -95,7 +95,8 @@ class CurlData(Data):
     """
 
     def __inc__(self, key, value, *args, **kwargs):
-        if key in ("curl_node_index", "cut_pairs"):
+        if key in ("curl_node_index", "cut_pairs", "world_edge_index"):
+            # world_edge_index holds node ids like edge_index — shift by num_nodes.
             return self.num_nodes
         if key == "band_row_index":
             # Positions into this graph's OPERATOR ROWS (b_true), not its nodes.
@@ -107,6 +108,8 @@ class CurlData(Data):
     def __cat_dim__(self, key, value, *args, **kwargs):
         if key in ("curl_node_index", "cut_pairs", "band_row_index"):
             return 0
+        if key == "world_edge_index":
+            return 1              # (2, E_world): concatenate along the edge axis
         return super().__cat_dim__(key, value, *args, **kwargs)
 
 
@@ -123,6 +126,7 @@ def build_curl_graph(
     node_feature_names: Optional[Tuple[str, ...]] = None,
     edge_feature_names: Optional[Tuple[str, ...]] = None,
     airgap_weight: float = 1.0,
+    world_edges: bool = False,
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
 
@@ -262,6 +266,17 @@ def build_curl_graph(
     edge_attr = np.concatenate(parts, axis=1).astype(np.float32)
     assert_feature_count(edge_names, edge_attr.shape[1], context="curl trainer edge features")
 
+    # Long-range "world" edges for the hybrid backbone (R3 fallback): connect
+    # airgap-band nodes at slot-pitch angular stride so the band couples across a
+    # slot in one hop instead of ~65 message-passing hops. Same 4-dim edge layout
+    # as the mesh edges (edge_sign=+1; these do not cross the anti-periodic cut).
+    world_edge_index, world_edge_attr = _build_world_edges(
+        mesh, node_x_mm, node_y_mm, pos, sector_deg, edge_names, legacy_features
+    ) if world_edges else (
+        np.zeros((2, 0), dtype=np.int64),
+        np.zeros((0, len(edge_names)), dtype=np.float32),
+    )
+
     return CurlData(
         x=torch.from_numpy(x),
         edge_index=torch.from_numpy(edge_index),
@@ -280,9 +295,65 @@ def build_curl_graph(
         ).unsqueeze(1),
         cut_pairs=torch.from_numpy(pairs.astype(np.int64)) if pairs.size
         else torch.zeros((0, 2), dtype=torch.long),
+        world_edge_index=torch.from_numpy(world_edge_index),
+        world_edge_attr=torch.from_numpy(world_edge_attr),
         n_elements_total=int(mesh.n_elements),
         num_nodes=n_nodes,
     )
+
+
+def _build_world_edges(mesh, node_x_mm, node_y_mm, pos, sector_deg, edge_names,
+                       legacy_features, slot_mults=(1, 2)):
+    """Long-range angular skip edges over the airgap-band nodes.
+
+    The Arkkio band (where torque and the residual |B| error live) is an arc of
+    ~`sector_deg` spanning ~6 slots for the 1/8 DOE sector. We sort its nodes by
+    angle and connect each to the node ~k slot-pitches away (k in `slot_mults`),
+    within the arc (no wrap across the anti-periodic cut). Returns
+    ``(edge_index (2,E), edge_attr (E, D_edge))`` matching the mesh edge layout;
+    empty when the mesh has no usable band.
+    """
+    from eval.torque import AirgapBandError, build_airgap_band
+
+    empty = (np.zeros((2, 0), dtype=np.int64),
+             np.zeros((0, len(edge_names)), dtype=np.float32))
+    try:
+        band = build_airgap_band(
+            mesh.node_x_mm, mesh.node_y_mm, mesh.tri, mesh.reg_code,
+            mesh.name_of_code, moving_reg_codes=mesh.moving_reg_codes,
+        )
+    except AirgapBandError:
+        return empty
+
+    i1, i2, i3 = mesh.tri
+    el = band.element_index
+    bnodes = np.unique(np.concatenate([i1[el], i2[el], i3[el]]))
+    if bnodes.size < 12:
+        return empty
+
+    theta = np.arctan2(node_y_mm[bnodes], node_x_mm[bnodes])
+    ring = bnodes[np.argsort(theta)]                    # band nodes in angular order
+    n_slots_per_sector = 6                              # 48 slots / 8 sectors
+    step = max(1, int(round(ring.size / n_slots_per_sector)))
+
+    src_list, dst_list = [], []
+    for k in slot_mults:
+        s = step * k
+        if s >= ring.size:
+            continue
+        src_list.append(ring[:-s]); dst_list.append(ring[s:])   # within-arc, no wrap
+    if not src_list:
+        return empty
+    a = np.concatenate(src_list); b = np.concatenate(dst_list)
+    w_src = np.concatenate([a, b]); w_dst = np.concatenate([b, a])   # undirected
+    world_ei = np.stack([w_src, w_dst], axis=0).astype(np.int64)
+
+    wdxy = pos[world_ei[1]] - pos[world_ei[0]]
+    wdist = np.linalg.norm(wdxy, axis=1, keepdims=True)
+    wsign = np.ones((world_ei.shape[1], 1))
+    parts = [wdxy, wdist] if legacy_features else [wsign, wdxy, wdist]
+    world_attr = np.concatenate(parts, axis=1).astype(np.float32)
+    return world_ei, world_attr
 
 
 def _element_to_nodal(values: np.ndarray, tri, n_nodes: int) -> np.ndarray:
@@ -379,13 +450,16 @@ def main() -> int:
     parser.add_argument("--weight-decay", type=float, default=1e-6)
     parser.add_argument("--processor-size", type=int, default=15)
     parser.add_argument("--hidden-dim", type=int, default=128)
-    parser.add_argument("--model", choices=("mgn", "transolver"), default="mgn",
+    parser.add_argument("--model", choices=("mgn", "transolver", "hybrid"), default="mgn",
                         help="Field backbone. 'mgn': physicsnemo MeshGraphNet "
                              "(local message passing). 'transolver': R3 physics-"
                              "attention graph transformer (global receptive field; "
                              "the --processor-size flag is ignored, --n-layers/"
-                             "--n-head/--slice-num apply). Use --batch-size 1 with "
-                             "transolver (global attention must not cross graphs)")
+                             "--n-head/--slice-num apply). 'hybrid': MGN + long-range "
+                             "airgap-band 'world' edges (keeps mesh MP, adds slot-"
+                             "pitch coupling; --hidden-dim/--processor-size apply, "
+                             "h208/p15 ~9.5M matches h256 MGN). Use --batch-size 1 "
+                             "with transolver (global attention must not cross graphs)")
     parser.add_argument("--n-layers", type=int, default=12,
                         help="transolver: number of Transolver blocks (~9M params "
                              "at hidden 256 / 12 layers, matching h256 MGN)")
@@ -487,6 +561,7 @@ def main() -> int:
                 wrap_rotor=not args.no_wrap_rotor,
                 anti_periodic=not args.no_anti_periodic_edges,
                 airgap_weight=args.airgap_weight,
+                world_edges=(args.model == "hybrid"),
             )
             if g is not None:
                 if args.band_spectral_weight > 0.0:

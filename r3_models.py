@@ -94,6 +94,53 @@ class R3Transolver(nn.Module):
         return out.squeeze(0)                            # (N, out_dim)
 
 
+class R3Hybrid(nn.Module):
+    """HybridMeshGraphNet (MGN + long-range "world" edges) at the curl-MGN contract.
+
+    Local message passing over the triangle mesh is kept intact; a separate
+    long-range "world" edge set (airgap-band angular skip connections at slot
+    pitch, built in ``build_curl_graph``) is added with its own encoder so the
+    band can couple across a slot pitch in one hop instead of ~65. This isolates
+    "add long-range coupling" from R3's Transolver (which discarded the mesh).
+
+    physicsnemo's HybridMeshGraphNet takes ``forward(node, mesh_edge_feat,
+    world_edge_feat, graph)`` and expects ``graph.edge_index`` to be the
+    concatenation ``[mesh | world]`` (verified: it splits by the two feature
+    tensors' lengths). The CurlData carries mesh edges in ``edge_index`` and the
+    world set in ``world_edge_index`` / ``world_edge_attr``; this wrapper
+    concatenates them. Batches fine (edges never cross graphs), but the R3 runs
+    use batch 1.
+    """
+
+    def __init__(self, in_node, in_edge, out_dim, hidden=208, processor_size=15):
+        super().__init__()
+        from physicsnemo.models.meshgraphnet import HybridMeshGraphNet
+
+        self.core = HybridMeshGraphNet(
+            input_dim_nodes=in_node,
+            input_dim_edges=in_edge,
+            output_dim=out_dim,
+            processor_size=processor_size,
+            hidden_dim_processor=hidden,
+            hidden_dim_node_encoder=hidden,
+            hidden_dim_edge_encoder=hidden,
+            hidden_dim_node_decoder=hidden,
+            aggregation="sum",
+        )
+
+    def forward(self, x, edge_attr, graph):
+        from torch_geometric.data import Data
+
+        world_ei = getattr(graph, "world_edge_index", None)
+        world_attr = getattr(graph, "world_edge_attr", None)
+        if world_ei is None or world_ei.numel() == 0:
+            world_ei = torch.zeros((2, 0), dtype=torch.long, device=x.device)
+            world_attr = torch.zeros((0, edge_attr.shape[1]), dtype=edge_attr.dtype, device=x.device)
+        combined = torch.cat([graph.edge_index, world_ei], dim=1)   # [mesh | world]
+        g = Data(edge_index=combined, num_nodes=x.shape[0])
+        return self.core(x, edge_attr, world_attr, g)              # (N, out_dim)
+
+
 def build_curl_model(
     arch: str,
     in_node: int,
@@ -141,4 +188,13 @@ def build_curl_model(
             emb_dim=int(hp.get("emb_dim", 64)),
         ).to(device)
 
-    raise ValueError(f"unknown model arch {arch!r} (expected 'mgn' or 'transolver')")
+    if arch == "hybrid":
+        return R3Hybrid(
+            in_node=in_node,
+            in_edge=in_edge,
+            out_dim=out_dim,
+            hidden=int(hp.get("hidden_dim", 208)),
+            processor_size=int(hp.get("processor_size", 15)),
+        ).to(device)
+
+    raise ValueError(f"unknown model arch {arch!r} (expected 'mgn', 'transolver', or 'hybrid')")

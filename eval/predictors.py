@@ -467,6 +467,7 @@ class CurlMeshGraphNetPredictor:
         # A checkpoint with no sector_symmetry block predates the fixes and was
         # trained on the 9-feature layout; build it the way it was trained.
         legacy = not symmetry
+        is_hybrid = (self.train_args or {}).get("model") == "hybrid"
         graph = build_curl_graph(
             record,
             sample,
@@ -481,6 +482,7 @@ class CurlMeshGraphNetPredictor:
             # the current default happens to be.
             node_feature_names=self.node_features or None,
             edge_feature_names=self.edge_features or None,
+            world_edges=is_hybrid,
         )
         if graph is None:
             return np.full((mesh.n_elements, len(self.channels)), np.nan, dtype=np.float64)
@@ -492,6 +494,12 @@ class CurlMeshGraphNetPredictor:
             edge_index=graph.edge_index.to(self.device),
             edge_attr=torch.nan_to_num((et - self.e_mean) / self.e_std),
         )
+        if is_hybrid:
+            # Carry the long-range world edges (same 4-dim edge stats) so the
+            # hybrid backbone sees them at eval exactly as in training.
+            wet = graph.world_edge_attr.to(self.device)
+            batch.world_edge_index = graph.world_edge_index.to(self.device)
+            batch.world_edge_attr = torch.nan_to_num((wet - self.e_mean) / self.e_std)
         raw = self.model(batch.x, batch.edge_attr, batch) * self.a_scale
         idx = graph.curl_node_index.to(self.device)
 
