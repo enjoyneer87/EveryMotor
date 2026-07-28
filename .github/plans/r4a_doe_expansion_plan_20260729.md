@@ -49,6 +49,18 @@
   기본 `parallel_workers=1`(안전) 사용, 가용 확인되면 상향.
 - 그 외(생성·수집·split·재학습·채점) 로컬 개입 불필요.
 
+## 정제 (2026-07-29, digest·비교설계)
+- **데이터 격리:** `manifest_digest`가 전 케이스 geometry/electrical을 해시하므로
+  40→120이면 digest가 바뀌어 40케이스 게이트 split이 예외("Regenerate the
+  split") 발생. 따라서 **120는 별도 dir `backup/doe_data_120`(기존40 복사+신규80)**.
+  `backup/doe_data`(40)는 불변 -> 게이트 13.324/9.207 및 §14–19 전부 재현 보존.
+- **공정 비교 = test 고정:** doe120 split은 **동일 test[4,7,18,32,37,39]·
+  val[5,16,25,28]**를 고정하고 train만 30→110으로 확장. 같은 6 geometry에서
+  |B| 일반화를 측정 -> 40모델 12.7%와 직접 비교. split은 수동 생성(고정 test/val
+  + digest=manifest_digest(120)), resolve_case_split이 재생성 않도록 사전 배치.
+- 재학습: `--data-dir backup/doe_data_120 --split eval/splits/doe120_case_split.json`,
+  bw30 구성(target B, h256/p15, BAND_W=30). 게이트는 기존 40 dir로 별도 확인.
+
 ## 준비도 (확인됨 2026-07-29)
 - base .mot: 존재(D:\KDH\Sim_4SolverX\TestCAD1.mot) ✓
 - PyMotorEnv_310: C:\Users\moa\.ansys_python_venvs\PyMotorEnv_310, pymotorcad 0.8.4 ✓
