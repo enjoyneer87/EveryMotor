@@ -88,6 +88,23 @@
         "torque_nrmse_pct": 6.557
       },
       "note": "Experiment 2 (capacity, depth x1.6). 14.62M params, early-stopped ep67/100 on GPU return. Depth bought nothing over exp1; capacity axis declared exhausted. See methodology_review §15."
+    },
+    {
+      "sha256": "7edee4f0e2dbeaa0c71d15cf50df12458f1f2485470f303199f8689285fb481f",
+      "bytes": 111792849,
+      "epoch": 39,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe120_bw30_ep39_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe120_bw30.pt"
+      ],
+      "variant": "nodeB doe120 h256 p15 spectral bw30 (120 training geometries)",
+      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30.json",
+      "metrics": {
+        "B_nrmse_pct": 11.96,
+        "torque_nrmse_pct": 5.252
+      },
+      "note": "R4(a): DOE geometry expansion 40->120 (80 new Motor-CAD LHS geometries), same bw30 recipe, test/val held identical to doe40. First |B| plateau break: 12.748%->11.960% (-0.79pp, broad across all 6 test cases). Data is the |B| bottleneck; model axes (capacity/supervision/architecture/representation) exhausted §13-19. Current best on |B|. See methodology_review §20."
     }
   ],
   "ambiguous_names": {
