@@ -110,8 +110,11 @@ three-point rising curve instead of a rise-then-plateau.
 - **VII. Discussion.** Data-limited generalization within a bounded range; **no
   extrapolation to G1(5%)** — the measured curve plateaus after one doubling, so the
   honest statement is that the data lever alone does not reach the 5% gate in this design
-  space; deployment candidate; (optional) FEM warm-start reuse of the "failed" curl-A
-  model as the route that keeps solver guarantees instead of chasing the gate.
+  space; deployment candidate; and a **measured** bar for the surrogate-as-solver-
+  initialiser idea rather than a speculative one — reusing the curl-A model (§19) as a
+  Newton warm start cuts iterations 15% against a zero start but loses to the trivial
+  previous-rotor-angle warm start by 60%, so "seed the solver with the surrogate" is
+  quantitatively premature at 18.7% |B| (§23).
 - **VIII. Limitations & IX. Reproducibility.** (see §5–6 below.)
 - **X. Conclusion.**
 
@@ -128,7 +131,7 @@ three-point rising curve instead of a rise-then-plateau.
 | F5 | **Data-scaling curve |B| vs #geometries (40/120/240)** | `benchmark_v2_nodeB_{spectral_bw30,doe120_bw30,doe240_bw30}.json` | numbers in hand (T3); figure **to draw** |
 | T3 | Per-case |B|/torque, 40 vs 120 vs 240 | by_case in the above JSONs | have — table below |
 | T4 | Motor-CAD solve-time / DOE cost | `doe_manifest.json` solve_time_s | have |
-| F6 | (opt) FEM warm-start Newton-iteration count | PoC output (pending) | future |
+| F6 | (opt) FEM warm-start Newton-iteration count | `results/fem_warmstart_case{4,7}.json` | **have — negative** |
 
 ### T2 — single-axis elimination (frozen numbers, all on the fixed 6-geometry holdout)
 
@@ -200,8 +203,12 @@ F5 to draw: |B| vs #training geometries (30 / 110 / 230 on a log x-axis), two se
   "no further gain at equal compute", not as data saturation.
 - The one clearly-moving axis (data) is also the most expensive and the least portable:
   it presumes a licensed Motor-CAD host and ~160 s of solve per added geometry.
-- Surrogate is a field/torque predictor, not a guaranteed solver (motivates the FEM
-  warm-start follow-up where the surrogate seeds a Newton solve that keeps FEM guarantees).
+- Surrogate is a field/torque predictor, not a guaranteed solver. The obvious remedy —
+  seed a Newton solve with it and keep FEM guarantees — was built and measured, not left
+  as future work, and it does not yet pay: across two held-out geometries × 45 rotor
+  positions the curl-A initial guess needs 14.8 Newton iterations against 9.3 for simply
+  reusing the previous rotor angle (17.5 from zero). Reported as a bound on the idea, not
+  a refutation of it (§23).
 
 ## 6. Reproducibility statement material
 
@@ -229,6 +236,12 @@ F5 to draw: |B| vs #training geometries (30 / 110 / 230 on a log x-axis), two se
 - **Decide the epoch-matched doe240 rerun** (~24.3 h GPU). It sets whether VI reads
   "rise then plateau" or "three-point rising curve", and whether the abstract can keep the
   bounded-range framing. Everything else in the paper is invariant to it.
-- Draw F5 (spec above); optionally F6 warm-start figure if that PoC lands.
+- Draw F5 (spec above). F6 is now optional-but-available: the warm-start PoC landed
+  negative, and a three-bar iteration-count chart (17.5 / 14.8 / 9.3) is the cleanest way
+  to state the bound if VII keeps that paragraph.
+- **New reproducibility asset worth a sentence in IX:** `fem_warmstart/` is a
+  licence-free reference solver (numpy + scipy only) that reproduces Motor-CAD's torque to
+  0.06–0.18% mean over a full rotor sweep. Reviewers can re-derive the ground truth
+  without a commercial licence, which is unusual for this literature.
 - Decide single vs double column, venue (Energy Conversion favors the design-utility
   framing; Magnetics favors the operator/floor rigor).
