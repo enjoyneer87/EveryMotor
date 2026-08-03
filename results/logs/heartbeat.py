@@ -30,7 +30,10 @@ INTERVAL = int(os.environ.get("INTERVAL", "600"))
 EP_RE = re.compile(
     r"ep\s+(\d+)/(\d+).*?val B [\d.]+ nRMSE\s+([\d.]+)%.*?spec\s+([\d.eE+\-]+).*?\|\s*(\d+)s\s*$"
 )
-DONE_RE = re.compile(r"SPECTRAL bw=\S+ DONE|R3 DONE")
+# Runner scripts end with a banner line whose last word is DONE ("SPECTRAL bw=30 DONE",
+# "R3 DONE", "DOE240 DONE"). Match the shape, not each campaign's name -- the old
+# hard-coded alternation silently reported a finished DOE run as still "running".
+DONE_RE = re.compile(r"^.*\bDONE\s*$", re.M)
 FAIL_RE = re.compile(r"CUDA out of memory|Traceback \(most recent call last\)|RuntimeError|Killed")
 
 

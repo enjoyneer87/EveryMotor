@@ -1,0 +1,9 @@
+{
+  "experiment": "r5-doe240-retrain",
+  "band_w": 30,
+  "total_epochs": 25,
+  "logfile": "D:/KDH/NvidiaNemo/results/logs/doe240_bw30.log",
+  "status_hint": "completed",
+  "next_in_queue": "\u00a721 scaling verdict recorded; deciding 50-epoch doe240 rerun (budget vs data) + FEM warm-start PoC P1",
+  "gpu_note_extra": "R5 DONE 07-31: |B| 12.106% / torque 6.349% (25 ep, 1749 s/ep). Scaling 40->12.748, 120->11.960, 240->12.106. GPU idle."
+}

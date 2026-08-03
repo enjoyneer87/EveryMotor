@@ -10,17 +10,18 @@ cd /workspace/app
 BAND_W="${BAND_W:-30}"
 EPOCHS="${EPOCHS:-100}"
 NLAYERS="${NLAYERS:-12}"
-TAG="r3_transolver"
+SLICE="${SLICE:-32}"
+TAG="${TAG:-r3_transolver}"
 CKPT="results/mgn_nodeB_${TAG}.pt"
 SCORE="results/benchmark_v2_nodeB_${TAG}.json"
 
-echo "=== R3 Transolver  BAND_W=${BAND_W}  epochs=${EPOCHS}  n_layers=${NLAYERS}  h256/slice32  batch=1 ==="
+echo "=== R3 Transolver  BAND_W=${BAND_W}  epochs=${EPOCHS}  n_layers=${NLAYERS}  h256/slice${SLICE}  batch=1 ==="
 python -u train_doe_curl_mgn.py \
   --data-dir backup/doe_data \
   --split eval/splits/doe40_case_split.json \
   --target B \
   --no-wrap-rotor --no-anti-periodic-edges \
-  --model transolver --hidden-dim 256 --n-layers "${NLAYERS}" --n-head 8 --slice-num 32 --emb-dim 64 \
+  --model transolver --hidden-dim 256 --n-layers "${NLAYERS}" --n-head 8 --slice-num "${SLICE}" --emb-dim 64 \
   --band-spectral-weight "${BAND_W}" \
   --epochs "${EPOCHS}" --batch-size 1 --step-stride 1 \
   --ckpt "${CKPT}"

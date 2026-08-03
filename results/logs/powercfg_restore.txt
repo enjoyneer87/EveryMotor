@@ -1,0 +1,6 @@
+﻿# powercfg restore values (recorded 2026-07-29, before R4 pipeline)
+# scheme: 9897998c-92de-4669-853f-b7cd3ecb2790 (AMD Ryzen Balanced)
+# STANDBYIDLE AC original = 1800s (30 min) ; DC = 900s (15 min)
+# HIBERNATEIDLE AC/DC = 0 (never) -- unchanged
+# RESTORE COMMAND when pipeline concludes:
+#   powercfg /change standby-timeout-ac 30
