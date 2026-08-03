@@ -105,6 +105,40 @@
         "torque_nrmse_pct": 5.252
       },
       "note": "R4(a): DOE geometry expansion 40->120 (80 new Motor-CAD LHS geometries), same bw30 recipe, test/val held identical to doe40. First |B| plateau break: 12.748%->11.960% (-0.79pp, broad across all 6 test cases). Data is the |B| bottleneck; model axes (capacity/supervision/architecture/representation) exhausted §13-19. Current best on |B|. See methodology_review §20."
+    },
+    {
+      "sha256": "df01435d7dcbd32bcb609bec549958335401abd9fccb2684b6b013ebedb25a12",
+      "bytes": 111790289,
+      "epoch": 21,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe240_bw30_ep21_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe240_bw30.pt"
+      ],
+      "variant": "nodeB doe240 h256 p15 spectral bw30 (240 training geometries, 25 epochs)",
+      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30.json",
+      "metrics": {
+        "B_nrmse_pct": 12.106,
+        "torque_nrmse_pct": 6.349
+      },
+      "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review 21."
+    },
+    {
+      "sha256": "df01435d7dcbd32bcb609bec549958335401abd9fccb2684b6b013ebedb25a12",
+      "bytes": 111790289,
+      "epoch": 21,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe240_bw30_ep21_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe240_bw30.pt"
+      ],
+      "variant": "nodeB doe240 h256 p15 spectral bw30 (240 training geometries, 25 epochs)",
+      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30.json",
+      "metrics": {
+        "B_nrmse_pct": 12.106,
+        "torque_nrmse_pct": 6.349
+      },
+      "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review section 21."
     }
   ],
   "ambiguous_names": {

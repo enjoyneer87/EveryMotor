@@ -2,7 +2,12 @@
 
 > Target register: **IEEE Trans. Energy Conversion / Trans. Magnetics** (sober IEEE).
 > Status: living outline; numbers cite the methodology review `.github/plans/
-> methodology_review_20260720.md` (§ refs). Fill §21 (240-case) when it lands.
+> methodology_review_20260720.md` (§ refs).
+> **Updated 2026-08-03**: §21 (240-case) has landed and is **negative under matched
+> compute** — the scaling claim is now a two-point rise plus a plateau, not an
+> open-ended slope. The Arkkio validation number is **0.35%**, not 0.60% (§22).
+> Remaining placeholder: whether the plateau is data saturation or training budget
+> (one 50-epoch doe240 run decides it).
 
 ## 1. Title + abstract skeletons
 
@@ -23,18 +28,24 @@ Alternates (register-consistent):
 > actually needs. We present (i) a torque-faithful, leakage-audited evaluation harness for
 > mesh-based graph-neural-network (GNN) surrogates of interior-permanent-magnet (IPM)
 > machines, built on an Arkkio air-gap operator validated against a commercial solver to
-> [0.60]%; (ii) representation floors that bound achievable error for two nodal-output
+> 0.35% in mean torque (0.54% pointwise RMSE, waveform correlation 0.996); (ii)
+> representation floors that bound achievable error for two nodal-output
 > conventions; and (iii) a controlled single-axis elimination showing that model capacity,
 > supervision signal, receptive-field architecture, and output representation each fail to
 > move a ~12.7% air-gap |B| generalization floor, whereas expanding training-geometry
-> diversity (40→120→[240] designs) does — the first and only lever to break it. Under a
+> diversity is the only axis that moves it — 40→120 designs drops held-out |B|
+> 12.75%→11.96% uniformly across all six test geometries. A further doubling to 240
+> designs at matched gradient-step budget does **not** improve it (12.11%, within
+> run-to-run variation), placing the lever's useful range inside the first doubling for
+> this design space. Under a
 > pinned, byte-reproducible protocol with a checksum-identified checkpoint registry, the
-> best surrogate reaches [11.96]% |B| / [5.25]% torque nRMSE on held-out geometries. The
+> best surrogate reaches 11.96% |B| / 5.25% torque nRMSE on held-out geometries. The
 > results reframe surrogate accuracy for electrical-machine analysis as a data-diversity
 > problem and provide a reusable, torque-faithful benchmark.
 
-Abstract knobs to finalize after §21: floor %, best %, "40→120→240" endpoint, headline
-scaling slope.
+Abstract knobs still open: whether the 240-case plateau survives an epoch-matched (rather
+than step-matched) rerun (§21 "다음"); if it does not, the third sentence becomes a
+three-point rising curve instead of a rise-then-plateau.
 
 ## 2. Contributions (claim list)
 
@@ -51,8 +62,11 @@ scaling slope.
    and explains why torque and |B| errors decouple (§7, floors JSON).
 3. **Arkkio air-gap operator validated against the commercial solver.** Torque from the
    surrogate's air-gap field via a segmented Arkkio operator, self-tested to FEM-identity
-   0.000% and validated vs Motor-CAD to [0.60]% (§14b), making torque a first-class,
-   trustworthy metric rather than a post-hoc estimate.
+   0.000% and validated vs Motor-CAD virtual-work over a full electrical cycle to
+   **0.35%** in mean torque / 0.54% pointwise RMSE / 0.996 correlation (§8c, re-derived
+   and confirmed §22), making torque a first-class, trustworthy metric rather than a
+   post-hoc estimate. The residual is a systematic mesh-faceting bias of the band area,
+   same sign at every rotor position, and cancels in the relative metrics the gates read.
 4. **Band spectral supervision.** The torque error lives entirely in the admissible band
    harmonic coefficients (band-projection study, §14b); a coefficient-supervision loss
    sweeps BAND_W∈{1,10,30}: torque 6.20/6.31/5.22%, |B| flat ~12.5–12.8% — a torque lever,
@@ -61,9 +75,16 @@ scaling slope.
    supervision, architecture (global attention / long-range edges), and representation
    (nodal-A + curl) each isolated as the sole variable; none moves the ~12.7% held-out |B|
    floor (§13,15–19).
-6. **Data scaling as the operative lever.** Expanding training-geometry count 40→120→[240]
-   (Motor-CAD LHS, test/val held fixed) drops held-out |B| 12.748%→11.960%→[§21], broadly
-   across all test geometries — the first and only axis to break the floor (§20–21).
+6. **Data scaling as the operative lever — and where it stops.** Expanding training-geometry
+   count 40→120 (Motor-CAD LHS, test/val held fixed) drops held-out |B| 12.748%→11.960%,
+   broadly across all six test geometries — the first and only axis to break the floor
+   (§20). A second doubling 120→240 at matched gradient-step budget returns 12.106%
+   (+0.15pp, inside the ~0.25pp run-to-run band) and *worsens* torque 5.252%→6.349%, so the
+   measured slope is a rise then a plateau, not an extrapolable trend (§21). Reported as a
+   bounded result: the useful range of the data lever for this four-parameter design space
+   lies in the first doubling. The 240-case model does improve *mean* torque monotonically
+   (2.95→1.17→0.71%) while compressing the case-to-case ripple spread — a regression-to-the-
+   mean signature that keeps the training-budget confound explicitly open (§21).
 
 ## 3. Section-by-section outline
 
@@ -82,10 +103,15 @@ scaling slope.
   band spectral supervision (§14b,16), global-attention/long-range architecture
   (Transolver §17, Hybrid §18, attention-capacity footnote), representation (curl-A §19).
   Each: hypothesis, single-axis config, result, verdict.
-- **VI. What Does: Training-Geometry Data Scaling.** DOE expansion pipeline; fixed
-  test/val; 40/120/[240] curve; per-case breadth; generalization-gap narrowing (§20–21).
-- **VII. Discussion.** Data-limited generalization; slope/extrapolation to G1(5%);
-  deployment candidate; (optional) FEM warm-start reuse of the "failed" curl-A model.
+- **VI. What Does: Training-Geometry Data Scaling — and its range.** DOE expansion
+  pipeline; fixed test/val; the 40/120/240 curve; per-case breadth of the 40→120 gain;
+  generalization-gap narrowing; the 120→240 plateau under matched gradient-step budget
+  and its confound (§20–21).
+- **VII. Discussion.** Data-limited generalization within a bounded range; **no
+  extrapolation to G1(5%)** — the measured curve plateaus after one doubling, so the
+  honest statement is that the data lever alone does not reach the 5% gate in this design
+  space; deployment candidate; (optional) FEM warm-start reuse of the "failed" curl-A
+  model as the route that keeps solver guarantees instead of chasing the gate.
 - **VIII. Limitations & IX. Reproducibility.** (see §5–6 below.)
 - **X. Conclusion.**
 
@@ -98,11 +124,68 @@ scaling slope.
 | F3 | Torque waveform: FEM vs surrogate (ripple) | `results/viz/torque_*_case*.png` | have |
 | F4 | Leakage: time_s shortcut before/after ranking | benchmark JSONs pre/post §9 | have |
 | T1 | Floors + baselines scorecard | `results/benchmark_v2_floors.json`, `gate_check.json` | have |
-| T2 | Single-axis elimination summary | `benchmark_v2_nodeB_{h256,proc24,spectral_bw*,r3_transolver,r3_hybrid,r4_curl_spectral}.json` | have |
-| F5 | **Data-scaling curve |B| vs #geometries (40/120/240)** | `benchmark_v2_nodeB_{spectral_bw30,doe120_bw30,doe240_bw30}.json` | **to make (§21 pending)** |
-| T3 | Per-case |B|/torque, 40 vs 120 [vs 240] | by_case in the above JSONs | have (240 pending) |
+| T2 | Single-axis elimination summary | `benchmark_v2_nodeB_{h256,proc24,spectral_bw*,r3_transolver,r3_hybrid,r4_curl_spectral}.json` | have — numbers frozen below |
+| F5 | **Data-scaling curve |B| vs #geometries (40/120/240)** | `benchmark_v2_nodeB_{spectral_bw30,doe120_bw30,doe240_bw30}.json` | numbers in hand (T3); figure **to draw** |
+| T3 | Per-case |B|/torque, 40 vs 120 vs 240 | by_case in the above JSONs | have — table below |
 | T4 | Motor-CAD solve-time / DOE cost | `doe_manifest.json` solve_time_s | have |
 | F6 | (opt) FEM warm-start Newton-iteration count | PoC output (pending) | future |
+
+### T2 — single-axis elimination (frozen numbers, all on the fixed 6-geometry holdout)
+
+Every row: same case-level split, same 270 samples, same element subset (coverage 0.8649),
+scored by `eval/benchmark.py`. Only the named axis differs from the row above it.
+
+| Axis | Config | Params | Ep | TEST \|B\| % | TEST torque % | § |
+|---|---|---|---|---|---|---|
+| baseline | h128 / p15, no spectral | 2,332,802 | 60 | 13.016 | 8.240 | §10 |
+| capacity — width | h256 / p15 | 9,285,890 | 100 | 12.682 | 6.804 | §13 |
+| capacity — depth | h256 / p24 | 14,617,346 | 100 | 12.733 | 6.557 | §15 |
+| supervision | + band spectral w=1 | 9,285,890 | 100 | 12.499 | 6.204 | §16 |
+| supervision | + band spectral w=10 | 9,285,890 | 100 | 12.774 | 6.306 | §16 |
+| supervision | + band spectral w=30 | 9,285,890 | 100 | **12.748** | **5.219** | §16 |
+| architecture — global attention | Transolver, slice 32 | 8,907,682 | 100 | 16.572 | 5.765 | §17 |
+| architecture — long-range edges | HybridMGN h208, world edges | 9,485,842 | 100 | 12.829 | 5.513 | §18 |
+| representation | target A → P1 curl | 9,285,633 | 100 | 18.731 | 8.720 | §19 |
+| **data** | **120 geometries** | 9,285,890 | 50 | **11.960** | **5.252** | §20 |
+| **data** | **240 geometries** (step-matched) | 9,285,890 | 25 | 12.106 | 6.349 | §21 |
+
+Run-to-run variation on this harness is ~0.25 pp in |B| (measured across repeats);
+nothing inside that band is claimed as an effect.
+
+### T3 / F5 — per-case data-scaling breakdown (test geometries, held identical)
+
+|B| nRMSE %:
+
+| case | 40 geom | 120 geom | 240 geom | 40→120 | 120→240 |
+|---|---|---|---|---|---|
+| 4 | 10.320 | 9.652 | 9.880 | −0.67 | +0.23 |
+| 7 | 11.318 | 10.586 | 10.948 | −0.73 | +0.36 |
+| 18 | 12.658 | 11.948 | 11.981 | −0.71 | +0.03 |
+| 32 | 22.075 | 20.778 | 20.565 | −1.30 | −0.21 |
+| 37 | 15.519 | 14.282 | 14.345 | −1.24 | +0.06 |
+| 39 | 10.482 | 9.980 | 10.220 | −0.50 | +0.24 |
+| **pooled** | **12.748** | **11.960** | **12.106** | **−0.79** | **+0.15** |
+
+Torque nRMSE %: 5.219 / 5.252 / 6.349 pooled. Case 32 dominates the pooled torque figure
+(its FEM mean torque is −5.0 N·m/m, near zero, so the normalization is inherently large,
+§13); **excluding case 32** the pooled torque is 4.151 / 4.013 / 5.076 % — the 240-case
+torque regression is real, not a normalization artifact.
+
+Torque decomposition, which is what keeps the budget confound open:
+
+| | 40 | 120 | 240 |
+|---|---|---|---|
+| mean-torque error (normalized) % | 2.948 | 1.168 | **0.709** |
+| ripple error (case mean) % | 24.49 | **10.89** | 43.81 |
+
+The 240-case model has the best mean torque of the campaign and the worst ripple; its
+per-case ripple predictions collapse toward the dataset mean (over-predicts the three
+low-ripple cases, under-predicts the three high-ripple ones) while the pooled ripple mean
+stays right (843.9 vs 862.1 true). That is an under-training signature, so F5 must be
+captioned "matched gradient-step budget", not "matched training".
+
+F5 to draw: |B| vs #training geometries (30 / 110 / 230 on a log x-axis), two series
+(|B| and torque), error band ±0.25 pp, and the 240 point annotated with its epoch count.
 
 ## 5. Limitations
 
@@ -111,7 +194,12 @@ scaling slope.
 - 2D magnetostatic, on-load torque operating condition; no 3D end-effects, no transient
   eddy/AC-loss, fixed mechanical speed.
 - Small validation/test holdout (4 val / 6 test geometries); scaling curve has three points
-  (40/120/240) — trend, not an asymptote.
+  (40/120/240) — a rise then a plateau, and the plateau point is confounded with training
+  budget (step-matched, so the 240-case model sees each sample half as often). One
+  epoch-matched rerun would separate the two; until then the plateau is reported as
+  "no further gain at equal compute", not as data saturation.
+- The one clearly-moving axis (data) is also the most expensive and the least portable:
+  it presumes a licensed Motor-CAD host and ~160 s of solve per added geometry.
 - Surrogate is a field/torque predictor, not a guaranteed solver (motivates the FEM
   warm-start follow-up where the surrogate seeds a Newton solve that keeps FEM guarantees).
 
@@ -131,8 +219,16 @@ scaling slope.
 - **Governing plan of record:** `.github/plans/methodology_review_20260720.md` §§7–21.
 
 ## 7. Open items before submission
-- Fill §21 (240-case |B|/torque) into abstract, T2/T3, F5.
-- Confirm the "[0.60]%" Arkkio-vs-Motor-CAD validation number and its source artifact.
-- Make F5 scaling curve figure; optionally F6 warm-start figure if that PoC lands.
+- ~~Fill §21 (240-case |B|/torque) into abstract, T2/T3, F5.~~ **Done 2026-08-03** — §21
+  landed negative under matched compute; abstract, T2, T3 now carry the frozen numbers.
+- ~~Confirm the "[0.60]%" Arkkio-vs-Motor-CAD validation number and its source artifact.~~
+  **Done 2026-08-03 (§22)** — the reproducible figure is **0.35%** (mean torque), 0.54%
+  pointwise RMSE, 0.9955 correlation, from `results/motorcad_torque_case0004.json` +
+  `backup/doe_data/case_0004` via `tools/compare_torque_waveforms.py`. The 0.60% in §8b
+  does not reproduce from any committed artifact and must not be cited.
+- **Decide the epoch-matched doe240 rerun** (~24.3 h GPU). It sets whether VI reads
+  "rise then plateau" or "three-point rising curve", and whether the abstract can keep the
+  bounded-range framing. Everything else in the paper is invariant to it.
+- Draw F5 (spec above); optionally F6 warm-start figure if that PoC lands.
 - Decide single vs double column, venue (Energy Conversion favors the design-utility
   framing; Magnetics favors the operator/floor rigor).
