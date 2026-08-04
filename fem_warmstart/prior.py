@@ -125,8 +125,12 @@ def nodal_prior_features(record, sample, bh_path: Optional[Path] = None,
 
     Cache layout: results/prior_cache/<dataset>/case_XXXX.npz with one
     ``step_<k>`` array of shape (n_nodes, 3) per rotor position. The dataset
-    key is the data directory's basename (doe_data, doe_data_120, ...), which
-    is how every other per-dataset artifact in this repo is keyed.
+    key is derived from the RESOLVED h5 path's grandparent directory — note
+    that the doe240 manifest references cases 40-119's files inside
+    backup/doe_data_120, so one training set legitimately spans two cache
+    directories (doe_data_120 + doe_data_240). Keys resolve identically on
+    host and in the container because both see the same repo-relative paths;
+    build_prior_cache populates whatever keys the resolution produces.
     """
     step = _step_index(record, sample)
     arr: Optional[np.ndarray] = None
