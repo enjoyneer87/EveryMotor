@@ -107,9 +107,18 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
 - **I. Introduction.** ML-FEA surrogates for machine design; the field-vs-torque gap;
   why leakage and evaluation rigor are underreported; contributions.
 - **II. Problem & Data.** 2D magnetostatic IPM (48-slot/8-pole, 1/8 anti-periodic sector);
-  DOE design space (Ratio_Bore ±10%, Ratio_SlotDepth ±15%, PeakCurrent 10–650 A,
-  PhaseAdvance 0–90°); Motor-CAD solve; OnLoadTorque 45-step rotor sweep; mesh (~6–12k
-  nodes / ~12–23k elements).
+  DOE design space as *sampled*: Ratio_Bore ±10%, Ratio_SlotDepth ±15%, PhaseAdvance
+  0–90°. **CORRECTION (2026-08-04, §24):** the nominal PeakCurrent axis (10–650 A) was
+  written to the .mot files but did **not** propagate into the electromagnetic solve — the
+  exported winding excitation is a constant 325.3 ampere-turns per slot region across the
+  entire DOE (verified to 0.03% over a 35× nominal-current range, three independent
+  computations). The effective operating-point axis is PhaseAdvance only, and every case
+  shares one saturation level. State this plainly in II; it does not affect the
+  geometry-scaling conclusions (§20–21b) but it bounds the deployment claim (no
+  current-dependence was ever trained) and it is itself a publishable data-audit point —
+  the leakage-audit framing of contribution 1 extends naturally to "DOE-integrity audit".
+  Motor-CAD solve; OnLoadTorque 45-step rotor sweep; mesh (~6–12k nodes / ~12–23k
+  elements).
 - **III. Mesh-GNN Surrogate.** MeshGraphNet backbone; 9-node/4-edge V2 feature contract;
   nodal-B (average) and nodal-A (P1 curl) output heads; element-support loss.
 - **IV. Torque-Faithful Evaluation Harness.** Case-level holdout; leakage taxonomy;
@@ -247,6 +256,19 @@ both panels, and the epoch/step counts annotated per point.
   `doe_make_split.py`, `run_doe{120,240}_docker.sh`; NGC container
   `nvcr.io/nvidia/physicsnemo/physicsnemo:26.03`, no custom install.
 - **Governing plan of record:** `.github/plans/methodology_review_20260720.md` §§7–21.
+
+## 6b. Pending decisions surfaced by the 2026-08-04 audit (§24–25, r7 design doc)
+
+- **Gate redefinition (needs user approval):** G1 (pooled |B| < 5%) sits *below* the curl
+  representation floor (5.31% pooled / 4.77% excluding noise regions) — it was never
+  attainable under this eval. Proposed G1' = airgap-|B| < 5% AND torque < 3%: torque-
+  faithful, honest (current best FAILS it at 7.30/5.40), achievable (airgap floor 2.68%).
+  If adopted, the abstract's "cannot be closed by data" sentence should be restated
+  against G1'.
+- **PeakCurrent correction** (§24, factual — folded into II above).
+- **Screening claim now measurable:** mean-torque ranking of the 6 held-out geometries is
+  Spearman 1.000 with a 2.1× safety margin (min true gap 270 N·m vs max error 126 N·m) —
+  supports a "screening-ready at current accuracy" paragraph in VII, with the n=6 caveat.
 
 ## 7. Open items before submission
 - ~~Fill §21 (240-case |B|/torque) into abstract, T2/T3, F5.~~ **Done 2026-08-03** — §21
