@@ -1,9 +1,9 @@
 {
-  "experiment": "r5b-doe240-ep50 (budget vs saturation)",
+  "experiment": "r5b-doe240-ep50 (DONE)",
   "band_w": 30,
   "total_epochs": 50,
   "logfile": "D:/KDH/NvidiaNemo/results/logs/doe240_bw30_ep50.log",
-  "status_hint": "running",
-  "next_in_queue": "score on fixed 6 test -> \u00a721b verdict: TEST |B| < 11.71% = H2 (data axis alive, justifies 480); 11.9-12.2% = H1 (data axis closed)",
-  "gpu_note_extra": "R5b: doe240 re-run at 50 epochs (517,500 grad steps, 2x the step-matched 25-ep run) to separate training budget from data saturation. Reference: doe120 50ep = 11.960%, doe240 25ep = 12.106%. ETA ~24.3h from 2026-08-03 09:2x KST. CPU FEM warm-start PoC runs alongside (no GPU contention)."
+  "status_hint": "completed",
+  "next_in_queue": "pipeline idle; powercfg restored; next candidate = doe120 @100 epochs (~11h) to test whether the 40/120 points are also under-trained",
+  "gpu_note_extra": "R5b DONE 08-04: |B| 11.638% / torque 5.400% -- H2 confirmed, new campaign best. Deployment candidate replaces doe120_bw30."
 }
