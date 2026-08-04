@@ -38,6 +38,12 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
+def _default_bh():
+    from fem_warmstart.prior import default_bh_path
+
+    return default_bh_path()
+
+
 def _gap_harmonic_patch(a_fit, op, b_pred, mesh, sample, n_orders):
     """Overwrite the fit's unconstrained gap nodes with an analytical Laplace field.
 
@@ -119,9 +125,16 @@ def main() -> int:
     ap.add_argument("--steps", type=int, default=45)
     ap.add_argument("--ckpt", type=Path, default=Path("results/mgn_nodeB_doe240_bw30_ep50.pt"))
     ap.add_argument("--gap-harmonic", type=int, default=0, metavar="N_ORDERS",
-                    help="stitch an analytical Laplace gap field (N anti-periodic "
-                         "orders fitted to the predicted a1-band B) into the "
-                         "otherwise-unconstrained sliding-band nodes")
+                    help="fit mode only: stitch an analytical Laplace gap field (N "
+                         "anti-periodic orders fitted to the predicted a1-band B) "
+                         "into the otherwise-unconstrained sliding-band nodes")
+    ap.add_argument("--mode", choices=("fit", "picard"), default="fit",
+                    help="fit: lsqr B->A (field-space match, NOT PDE-consistent; "
+                         "measured initial residual ~100x the load norm). "
+                         "picard: freeze nu at nu(|B_pred|) and do ONE linear solve "
+                         "of the true problem — PDE-consistent by construction, and "
+                         "nu only depends on B in steel, which the model does "
+                         "predict, so the unpredicted sliding band is irrelevant")
     ap.add_argument("--out", type=Path, default=Path("results/ai_init_b2a.npz"))
     args = ap.parse_args()
 
@@ -157,6 +170,32 @@ def main() -> int:
         finite = np.isfinite(b_pred).all(axis=1)
         if not finite.any():
             print(f"step {step}: no finite predictions at all, skipped")
+            continue
+        if args.mode == "picard":
+            from scipy.sparse.linalg import spsolve
+
+            from fem_warmstart.assemble import (
+                constraint_matrix,
+                element_nu,
+                load_vector,
+                stiffness,
+            )
+            from fem_warmstart.domain import build_domain
+
+            domain = build_domain(record, step, bh_path=_default_bh())
+            src = np.clip(domain.source_element, 0, None)
+            b_dom = b_pred[src]
+            b_dom[domain.source_element < 0] = 0.0        # rebuilt band = air, nu fixed
+            bmag = np.nan_to_num(np.hypot(b_dom[:, 0], b_dom[:, 1]))
+            nu, _ = element_nu(domain, bmag)
+            t = constraint_matrix(domain)
+            k = stiffness(domain, nu)
+            f = load_vector(domain)
+            a_full = t @ spsolve((t.T @ k @ t).tocsc(), t.T @ f)
+            out[f"step_{step}"] = a_full[: domain.n_original_nodes].astype(np.float64)
+            residuals.append(0.0)
+            print(f"step {step:2d}  picard linear solve, nu from |B_pred|  "
+                  f"{time.perf_counter()-t0:.1f}s", flush=True)
             continue
         xm = np.asarray(sample.node_x_mm, dtype=np.float64) * 1e-3
         ym = np.asarray(sample.node_y_mm, dtype=np.float64) * 1e-3
