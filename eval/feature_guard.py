@@ -103,6 +103,15 @@ ALLOWED_INPUT_FEATURES = frozenset(
         "rotor_angle_deg",
         "edge_sign",
         "dt_s",
+        # physics priors (R7-A): outputs of a LINEAR solve of the case geometry
+        # with the section-24 synthetic winding current and the fixed V-IPM
+        # magnet convention — computable strictly before the FEM solve the
+        # surrogate replaces. fem_warmstart/prior.py is the only sanctioned
+        # producer; a prior fitted to this sample's exported field would be
+        # leakage wearing these names.
+        "prior_a",
+        "prior_bx",
+        "prior_by",
         # fidelity metadata
         "fidelity_type",
         "coupling_policy",
@@ -141,6 +150,15 @@ MGN_NODE_FEATURES_V2: Tuple[str, ...] = (
     "Ratio_SlotDepth_ParallelSlot",
     "PeakCurrent",
     "PhaseAdvance",
+)
+
+# V2 plus the three linear-solve prior channels (R7-A). Priors are per-node
+# arrays and the graph builder appends them AFTER the broadcast scalars, so
+# they must stay at the end of the tuple.
+MGN_NODE_FEATURES_V3: Tuple[str, ...] = MGN_NODE_FEATURES_V2 + (
+    "prior_a",
+    "prior_bx",
+    "prior_by",
 )
 
 MGN_EDGE_FEATURES: Tuple[str, ...] = ("dx", "dy", "dist")

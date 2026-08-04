@@ -295,15 +295,21 @@ def _ccw(x: np.ndarray, y: np.ndarray, tri: np.ndarray) -> np.ndarray:
 
 def _magnet_axes(
     cx: np.ndarray, cy: np.ndarray, area: np.ndarray, mask: np.ndarray,
-    bx: np.ndarray, by: np.ndarray,
+    bx: Optional[np.ndarray], by: Optional[np.ndarray],
+    mode: str = "from_field",
 ) -> Tuple[np.ndarray, float, float]:
     """Easy axis (unit vector), polarity, and the block's elongation ratio.
 
     The magnets are elongated rectangles, so the PCA minor axis of the element
     centroids is the thickness direction, which for a block magnet is the
-    magnetisation direction. Polarity comes from the exported field: inside a
-    magnet the flux density runs along its own remanence, so the sign of
-    ``<B> . minor`` is the sign of Br along that axis.
+    magnetisation direction. Polarity:
+
+    * ``from_field`` — sign of ``<B> . minor`` from the exported field. Right
+      for solver benchmarks, but it reads one bit of the answer per magnet, so
+      it is barred from anything that feeds a surrogate.
+    * ``radial_outward`` — the fixed V-IPM convention: one pole per
+      anti-periodic sector, all four blocks magnetised outward. Section 23c
+      verified this reproduces the from_field polarity on this template.
     """
     p = np.stack([cx[mask], cy[mask]], axis=1)
     w = area[mask]
@@ -311,9 +317,13 @@ def _magnet_axes(
     centred = (p - mean) * np.sqrt(w)[:, None]
     _, sv, vt = np.linalg.svd(centred, full_matrices=False)
     minor = vt[1]
-    b_mean = np.stack([bx[mask], by[mask]], axis=1)
-    b_mean = (b_mean * w[:, None]).sum(0) / w.sum()
-    polarity = float(np.sign(b_mean @ minor)) or 1.0
+    if mode == "radial_outward":
+        radial = mean / np.linalg.norm(mean)
+        polarity = float(np.sign(minor @ radial)) or 1.0
+    else:
+        b_mean = np.stack([bx[mask], by[mask]], axis=1)
+        b_mean = (b_mean * w[:, None]).sum(0) / w.sum()
+        polarity = float(np.sign(b_mean @ minor)) or 1.0
     ratio = float(sv[0] / sv[1]) if sv[1] > 0 else np.inf
     return minor * polarity, polarity, ratio
 
@@ -327,12 +337,24 @@ def build_domain(
     radius_tol_mm: float = 2e-3,
     outer_radius_tol_mm: float = 0.2,
     remesh_band: bool = True,
+    j_source: str = "export",
+    magnet_polarity: str = "from_field",
+    current_scale: float = 1.0,
 ) -> FemDomain:
     """Assemble the geometry, materials, sources and constraints for one step.
 
     ``remesh_band`` replaces the exported ``a2`` shear layer with a freshly
     triangulated strip (see `band_remesh.py`). It is on by default because the
     exported layer is only valid for steps 0-2.
+
+    ``j_source``: "export" reads ``sample.fields['j']`` (the solver-benchmark
+    default); "synthetic" reconstructs J from the operating point via the
+    section-24 template law (`winding.py`) — required whenever the domain must
+    be computable from inputs only (the R7-A prior, synthetic operating points).
+    ``magnet_polarity``: "from_field" reads the sign off the exported B (solver
+    benchmarks); "radial_outward" uses the fixed V-IPM convention verified in
+    section 23c — again the inputs-only variant. ``current_scale`` multiplies
+    the synthetic ampere-turns (ignored for "export").
     """
     mesh = record.mesh
     sample = record.samples[step]
@@ -381,10 +403,27 @@ def build_domain(
     # Element fields follow the source map; freshly created band elements are air.
     keep_src = np.clip(source_element, 0, None)
     fresh = source_element < 0
-    j_z = np.where(fresh, 0.0,
-                   np.asarray(sample.fields["j"], dtype=np.float64)[keep_src]) * 1e6
-    bx_fem = np.where(fresh, 0.0, np.asarray(sample.fields["bx"], dtype=np.float64)[keep_src])
-    by_fem = np.where(fresh, 0.0, np.asarray(sample.fields["by"], dtype=np.float64)[keep_src])
+    if j_source == "synthetic":
+        from eval.mesh_regions import element_areas_m2
+        from fem_warmstart.winding import synthesize_j
+
+        area_export = element_areas_m2(sample.node_x_mm, sample.node_y_mm, mesh.tri)
+        j_export = synthesize_j(mesh, area_export,
+                                float(record.condition.get("PhaseAdvance", 0.0)),
+                                step, current_scale=current_scale)   # A/m^2 already
+        j_z = np.where(fresh, 0.0, j_export[keep_src])
+    elif j_source == "export":
+        j_z = np.where(fresh, 0.0,
+                       np.asarray(sample.fields["j"], dtype=np.float64)[keep_src]) * 1e6
+    else:
+        raise DomainError(f"unknown j_source {j_source!r}")
+    if magnet_polarity == "from_field":
+        bx_fem = np.where(fresh, 0.0, np.asarray(sample.fields["bx"], dtype=np.float64)[keep_src])
+        by_fem = np.where(fresh, 0.0, np.asarray(sample.fields["by"], dtype=np.float64)[keep_src])
+    elif magnet_polarity == "radial_outward":
+        bx_fem = by_fem = None                      # axes will not consult the field
+    else:
+        raise DomainError(f"unknown magnet_polarity {magnet_polarity!r}")
 
     br_by_region = parse_magnet_remanence(bh_path)
     br = np.zeros((tri.shape[0], 2), dtype=np.float64)
@@ -399,7 +438,8 @@ def build_domain(
         br_mag = br_by_region.get(str(name))
         if br_mag is None:
             raise DomainError(f"no remanence for magnet region {name!r} in {bh_path}")
-        axis, polarity, ratio = _magnet_axes(cx, cy, area, mask, bx_fem, by_fem)
+        axis, polarity, ratio = _magnet_axes(cx, cy, area, mask, bx_fem, by_fem,
+                                             mode=magnet_polarity)
         br[mask] = br_mag * axis
         magnet_report[str(name)] = {
             "Br_T": br_mag,

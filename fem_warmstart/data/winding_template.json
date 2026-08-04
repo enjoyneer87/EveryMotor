@@ -1,0 +1,15 @@
+{
+ "_provenance": "calibrated from case_0000 (PhaseAdvance 13.4439 deg); template constant per section 24 of the methodology review",
+ "ampere_turns": 325.27258325702695,
+ "ampere_turns_spread": 0.2526157897173107,
+ "phi0_deg": {
+  "56": 21.997443793214273,
+  "34": 81.99767592399573,
+  "2t": 142.0015127676684
+ },
+ "phi0_spread_deg": {
+  "56": 0.0,
+  "34": 0.0,
+  "2t": 0.0015058531096201477
+ }
+}

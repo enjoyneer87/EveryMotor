@@ -67,6 +67,7 @@ from eval.feature_guard import (
     MGN_EDGE_FEATURES_V2,
     MGN_NODE_FEATURES,
     MGN_NODE_FEATURES_V2,
+    MGN_NODE_FEATURES_V3,
     assert_feature_count,
     assert_input_features_clean,
 )
@@ -127,6 +128,7 @@ def build_curl_graph(
     edge_feature_names: Optional[Tuple[str, ...]] = None,
     airgap_weight: float = 1.0,
     world_edges: bool = False,
+    prior_features: bool = False,
 ) -> Optional[CurlData]:
     """Build one training graph: clean node features + a curl operator + element B.
 
@@ -192,20 +194,42 @@ def build_curl_graph(
         edge_names = tuple(edge_feature_names) if edge_feature_names else MGN_EDGE_FEATURES_V2
     elif legacy_features:
         node_names, edge_names = MGN_NODE_FEATURES, MGN_EDGE_FEATURES
+    elif prior_features:
+        node_names, edge_names = MGN_NODE_FEATURES_V3, MGN_EDGE_FEATURES_V2
     else:
         node_names, edge_names = MGN_NODE_FEATURES_V2, MGN_EDGE_FEATURES_V2
 
-    # pos_x, pos_y and region_code are positional; everything else is a scalar
-    # broadcast to every node, looked up by name.
-    scalar_names = [n for n in node_names if n not in ("pos_x", "pos_y", "region_code")]
+    # pos_x, pos_y and region_code are positional; prior_* features are per-node
+    # arrays appended last; everything else is a scalar broadcast to every node,
+    # looked up by name.
+    scalar_names = [n for n in node_names
+                    if n not in ("pos_x", "pos_y", "region_code")
+                    and not n.startswith("prior_")]
+    prior_names = [n for n in node_names if n.startswith("prior_")]
     missing = [n for n in scalar_names if n not in available]
     if missing:
         raise ValueError(f"build_curl_graph cannot supply node feature(s) {missing}")
     scalars = [available[n] for n in scalar_names]
 
-    x = np.column_stack(
-        [pos, node_reg[:, None]] + [np.full((n_nodes, 1), s) for s in scalars]
-    ).astype(np.float32)
+    cols = [pos, node_reg[:, None]] + [np.full((n_nodes, 1), s) for s in scalars]
+    if prior_names:
+        # Column order is positional + scalars + priors; a layout that interleaves
+        # them cannot be assembled and must fail loudly rather than silently
+        # permute columns under a checkpoint's declared names.
+        expected = ("pos_x", "pos_y", "region_code") + tuple(scalar_names) + tuple(prior_names)
+        if tuple(node_names) != expected:
+            raise ValueError(
+                f"prior features must come last: declared {tuple(node_names)}, "
+                f"buildable order is {expected}")
+        if wrap_rotor:
+            # The prior is computed in the export (unwrapped) frame; feeding it to
+            # a wrapped graph would recreate the section-18 train/eval asymmetry.
+            raise ValueError("prior features require wrap_rotor=False")
+        from fem_warmstart.prior import nodal_prior_features
+
+        prior = nodal_prior_features(record, sample)
+        cols += [np.asarray(prior[n], dtype=np.float64)[:, None] for n in prior_names]
+    x = np.column_stack(cols).astype(np.float32)
     # Shortcut features are forbidden when *building* a model and tolerated when
     # *replaying* one: an explicit layout means we are reconstructing exactly what
     # some existing checkpoint was trained on, which is scoring, not training.
@@ -503,6 +527,12 @@ def main() -> int:
                              "the domain that was solved")
     parser.add_argument("--no-anti-periodic-edges", action="store_true",
                         help="Leave the two cut planes unconnected in the graph")
+    parser.add_argument("--prior-features", action="store_true",
+                        help="R7-A: append the linear-solve physics prior "
+                             "(prior_a, prior_bx, prior_by from fem_warmstart/prior.py) "
+                             "to the node features — layout MGN_NODE_FEATURES_V3. "
+                             "Requires --no-wrap-rotor; priors are cached under "
+                             "results/prior_cache/ (~1 s/graph to build cold)")
     parser.add_argument("--target", choices=("A", "B"), default="A",
                         help="'A': predict nodal A, derive element B by the P1 curl. "
                              "'B': predict nodal Bx,By and average onto elements — the "
@@ -562,6 +592,7 @@ def main() -> int:
                 anti_periodic=not args.no_anti_periodic_edges,
                 airgap_weight=args.airgap_weight,
                 world_edges=(args.model == "hybrid"),
+                prior_features=args.prior_features,
             )
             if g is not None:
                 if args.band_spectral_weight > 0.0:
@@ -819,7 +850,8 @@ def main() -> int:
                         "nodal_A_curl_to_element_B" if predicts_a
                         else "nodal_B_average_to_element_B"
                     ),
-                    "node_features": list(MGN_NODE_FEATURES_V2),
+                    "node_features": list(MGN_NODE_FEATURES_V3 if args.prior_features
+                                          else MGN_NODE_FEATURES_V2),
                     "edge_features": list(MGN_EDGE_FEATURES_V2),
                     "sector_symmetry": {
                         "sector_deg": args.sector_deg,

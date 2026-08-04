@@ -259,12 +259,16 @@ both panels, and the epoch/step counts annotated per point.
 
 ## 6b. Pending decisions surfaced by the 2026-08-04 audit (§24–25, r7 design doc)
 
-- **Gate redefinition (needs user approval):** G1 (pooled |B| < 5%) sits *below* the curl
+- **Gate redefinition: ADOPTED (2026-08-04).** G1 (pooled |B| < 5%) sits *below* the curl
   representation floor (5.31% pooled / 4.77% excluding noise regions) — it was never
-  attainable under this eval. Proposed G1' = airgap-|B| < 5% AND torque < 3%: torque-
-  faithful, honest (current best FAILS it at 7.30/5.40), achievable (airgap floor 2.68%).
-  If adopted, the abstract's "cannot be closed by data" sentence should be restated
-  against G1'.
+  attainable under this eval. New primary gate G1' = airgap-|B| < 5% AND torque < 3%:
+  torque-faithful, honest (current best FAILS it at 7.30/5.40), achievable (airgap floor
+  2.68%). Abstract restatement under G1': the airgap slope is −0.59 → −0.32 pp/doubling
+  (epoch-matched 40/120/240), so data alone still needs ~7 further doublings ≈ 34k designs
+  ≈ 62 days of continuous Motor-CAD solve — impractical, though no longer the 10⁹ absurdity
+  of the ill-posed pooled gate. Present BOTH: "the original gate was unattainable by
+  construction (a methodology finding), and the corrected gate remains out of data's
+  practical reach (a scaling finding) — physics injection is the sanctioned lever."
 - **PeakCurrent correction** (§24, factual — folded into II above).
 - **Screening claim now measurable:** mean-torque ranking of the 6 held-out geometries is
   Spearman 1.000 with a 2.1× safety margin (min true gap 270 N·m vs max error 126 N·m) —
