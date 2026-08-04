@@ -124,21 +124,21 @@
       "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review 21."
     },
     {
-      "sha256": "df01435d7dcbd32bcb609bec549958335401abd9fccb2684b6b013ebedb25a12",
-      "bytes": 111790289,
-      "epoch": 21,
+      "sha256": "4cdf9d56a73e18c249f19a1e74d659dd85cec6f86bbae8e457349a2af7903726",
+      "bytes": 111800037,
+      "epoch": 35,
       "machine": "RTX3090-WDDM",
-      "canonical_name": "mgn_nodeB_doe240_bw30_ep21_RTX3090.pt",
+      "canonical_name": "mgn_nodeB_doe240_ep50budget_ep35_RTX3090.pt",
       "seen_as": [
-        "mgn_nodeB_doe240_bw30.pt"
+        "mgn_nodeB_doe240_bw30_ep50.pt"
       ],
-      "variant": "nodeB doe240 h256 p15 spectral bw30 (240 training geometries, 25 epochs)",
-      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30.json",
+      "variant": "nodeB doe240 h256 p15 spectral bw30, 50-epoch budget (240 training geometries)",
+      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30_ep50.json",
       "metrics": {
-        "B_nrmse_pct": 12.106,
-        "torque_nrmse_pct": 6.349
+        "B_nrmse_pct": 11.638,
+        "torque_nrmse_pct": 5.4
       },
-      "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review section 21."
+      "note": "R5b: same data/split/config as the 25-epoch run, epochs 25->50 as the ONLY variable. Settles the section-21 confound in favour of H2 (training budget), not data saturation: |B| 12.106 -> 11.638%, beating the previous best doe120 (11.960%) and clearing the pre-registered 11.71% threshold by 0.07pp. All 6 test geometries improve. Torque excluding the near-zero-mean case 32 is 3.938%, the campaign best. CURRENT DEPLOYMENT CANDIDATE, replaces doe120_bw30. Caveat recorded in section 21b: the per-doubling slope (-0.30pp) cannot reach the 5% gate at any feasible dataset size."
     }
   ],
   "ambiguous_names": {

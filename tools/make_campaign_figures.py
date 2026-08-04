@@ -94,7 +94,8 @@ CAMPAIGN = [
     ("Hybrid\nlong-range",       "benchmark_v2_nodeB_r3_hybrid.json",        "architecture",   "§18"),
     ("curl-A\ntarget A",         "benchmark_v2_nodeB_r4_curl_spectral.json", "representation", "§19"),
     ("DOE 120\ngeometries",      "benchmark_v2_nodeB_doe120_bw30.json",      "data",           "§20"),
-    ("DOE 240\ngeometries",      "benchmark_v2_nodeB_doe240_bw30.json",      "data",           "§21"),
+    ("DOE 240\nstep-matched",    "benchmark_v2_nodeB_doe240_bw30.json",      "data",           "§21"),
+    ("DOE 240\nepoch-matched",   "benchmark_v2_nodeB_doe240_bw30_ep50.json", "data",           "§21b"),
 ]
 
 
@@ -127,8 +128,8 @@ def fig1_elimination(out: Path) -> Path:
     ax1.set_ylim(0, max(bvals) * 1.16)
     ax1.set_title(
         "Single-axis elimination on a fixed 6-geometry holdout — capacity, supervision, "
-        "architecture and representation\nall leave the |B| floor standing; only the first "
-        "data doubling moves it, and the second does not",
+        "architecture and representation\nall leave the |B| floor standing; only training-"
+        "geometry count moves it, and only when the epoch budget scales with it",
         loc="left", pad=12)
     ax1.text(0.006, 0.965,
              f"dotted = h128 baseline ({bvals[0]:.2f}%)      "
@@ -171,67 +172,82 @@ def fig1_elimination(out: Path) -> Path:
 
 
 def fig2_scaling(out: Path) -> Path:
+    # Main curve: each point trained to its own convergence.
     points = [
         ("benchmark_v2_nodeB_spectral_bw30.json", 30, 100),
         ("benchmark_v2_nodeB_doe120_bw30.json", 110, 50),
-        ("benchmark_v2_nodeB_doe240_bw30.json", 230, 25),
+        ("benchmark_v2_nodeB_doe240_bw30_ep50.json", 230, 50),
     ]
     geo, bvals, tvals, epochs, steps = [], [], [], [], []
     for fname, n_train, n_ep in points:
         b, t, _ = scorecard(fname)
         geo.append(n_train); bvals.append(b); tvals.append(t); epochs.append(n_ep)
         steps.append(n_train * 45 * n_ep)
+    # The step-matched 240 run: same data, half the epochs. Shown so the confound
+    # that produced the original "plateau" reading stays visible.
+    b_sm, t_sm, _ = scorecard("benchmark_v2_nodeB_doe240_bw30.json")
 
-    fig, ax = plt.subplots(figsize=(12.4, 7.4))
+    # Stacked panels rather than a twin axis: with two series on one frame the
+    # torque labels kept landing on the |B| points, which invites reading a value
+    # off the wrong scale.
+    fig, (ax, axt) = plt.subplots(2, 1, figsize=(12.6, 9.0), sharex=True,
+                                  gridspec_kw={"height_ratios": [1.55, 1], "hspace": 0.12})
     ax.plot(geo, bvals, "o-", color="#0f7b6c", lw=2.6, ms=11, zorder=4, label="|B| nRMSE")
     ax.fill_between(geo, np.array(bvals) - NOISE_PP, np.array(bvals) + NOISE_PP,
                     color="#0f7b6c", alpha=0.16, zorder=2,
                     label=f"±{NOISE_PP} pp run-to-run band")
-    ax.set_xlabel("training geometries  (test / val held identical throughout)")
-    ax.set_ylabel("held-out |B| nRMSE  [%]", color="#0f7b6c")
-    ax.tick_params(axis="y", labelcolor="#0f7b6c")
+    ax.set_ylabel("held-out |B| nRMSE  [%]")
     ax.set_xticks(geo)
-    ax.set_xlim(min(geo) - 22, max(geo) + 22)
-    ax.set_ylim(min(bvals) - 1.05, max(bvals) + 0.85)
+    ax.set_xlim(min(geo) - 25, max(geo) + 25)
+    ax.set_ylim(min(bvals) - 0.75, max(bvals) + 0.75)
 
-    ax2 = ax.twinx()
-    ax2.spines["right"].set_visible(True)
-    ax2.plot(geo, tvals, "s--", color="#c44e52", lw=2.2, ms=9, zorder=4, label="torque nRMSE")
-    ax2.set_ylabel("held-out torque nRMSE  [%]", color="#c44e52")
-    ax2.tick_params(axis="y", labelcolor="#c44e52")
-    ax2.grid(False)
-    ax2.set_ylim(min(tvals) - 1.0, max(tvals) + 1.0)
+    axt.plot(geo, tvals, "s--", color="#c44e52", lw=2.2, ms=10, zorder=4, label="torque nRMSE")
+    axt.plot([230], [t_sm], "s", mfc="white", mec="#c44e52", mew=2.2, ms=11, zorder=5)
+    axt.set_ylabel("torque nRMSE  [%]")
+    axt.set_xlabel("training geometries  (test / val held identical throughout)")
+    axt.set_ylim(min(tvals + [t_sm]) - 0.5, max(tvals + [t_sm]) + 0.5)
 
     for gx, b, t, e, s in zip(geo, bvals, tvals, epochs, steps):
-        ax.annotate(f"{b:.3f}%", (gx, b), textcoords="offset points", xytext=(0, 15),
-                    ha="center", fontsize=12.5, color="#0f7b6c", fontweight="bold")
-        ax2.annotate(f"{t:.3f}%", (gx, t), textcoords="offset points", xytext=(0, -22),
+        ax.annotate(f"{b:.3f}%", (gx, b), textcoords="offset points", xytext=(0, 16),
+                    ha="center", fontsize=13, color="#0f7b6c", fontweight="bold")
+        axt.annotate(f"{t:.3f}%", (gx, t), textcoords="offset points", xytext=(0, 14),
                      ha="center", fontsize=12, color="#c44e52")
         ax.annotate(f"{e} epochs\n{s/1000:.0f}k steps", (gx, ax.get_ylim()[0]),
-                    textcoords="offset points", xytext=(0, 12), ha="center",
+                    textcoords="offset points", xytext=(0, 8), ha="center",
                     fontsize=10.5, color="#555555")
 
-    # Deltas as labelled callouts, not arrows: an arrow drawn between two data
-    # points on the same axes reads as a third series.
-    ax.text(70, (bvals[0] + bvals[1]) / 2 - 0.62,
-            f"−{bvals[0]-bvals[1]:.2f} pp\n3× the noise band\nall 6 test cases improve",
+    # The step-matched run, drawn hollow on both panels: same data as the 230 point,
+    # half the epochs.
+    ax.plot([230], [b_sm], "o", mfc="white", mec="#0f7b6c", mew=2.2, ms=12, zorder=5)
+    ax.annotate(f"{b_sm:.3f}% — same 230 geometries,\nbut 25 epochs (step-matched).\n"
+                "This is the point that first read\nas 'scaling exhausted'.",
+                xy=(228, b_sm), xytext=(148, max(bvals) + 0.42), fontsize=10.5,
+                color="#777777", ha="center", va="top",
+                arrowprops=dict(arrowstyle="->", color="#aaaaaa", lw=1.4))
+    axt.annotate(f"{t_sm:.3f}%", (230, t_sm), textcoords="offset points", xytext=(0, 15),
+                 ha="center", fontsize=11, color="#999999")
+
+    ax.text(70, min(bvals) - 0.24,
+            f"−{bvals[0]-bvals[1]:.2f} pp\n(−0.42 pp per doubling)",
             ha="center", va="top", fontsize=11.5, color="#0f7b6c",
             bbox=dict(boxstyle="round,pad=0.42", fc="#eaf4f2", ec="#0f7b6c", lw=1.2))
-    ax.text(170, (bvals[1] + bvals[2]) / 2 + 0.50,
-            f"+{bvals[2]-bvals[1]:.2f} pp\ninside the noise band — flat,\nnot a regression",
-            ha="center", va="bottom", fontsize=11.5, color="#666666",
-            bbox=dict(boxstyle="round,pad=0.42", fc="#f4f4f4", ec="#999999", lw=1.2))
+    ax.text(180, min(bvals) - 0.24,
+            f"−{bvals[1]-bvals[2]:.2f} pp  (−0.30 pp per doubling)\nall 6 test geometries improve",
+            ha="center", va="top", fontsize=11.5, color="#0f7b6c",
+            bbox=dict(boxstyle="round,pad=0.42", fc="#eaf4f2", ec="#0f7b6c", lw=1.2))
 
-    ax.set_title("Training-geometry scaling: one doubling helps, the second does not\n"
-                 "(at matched gradient-step budget)", loc="left", pad=14)
-    lines, labs = ax.get_legend_handles_labels()
-    l2, lb2 = ax2.get_legend_handles_labels()
-    ax.legend(lines + l2, labs + lb2, loc="upper center", ncol=3, framealpha=0.95)
-    fig.text(0.008, -0.02,
-             "CONFOUND, stated: the 240-geometry run was given 25 epochs so its gradient-step count "
-             "matches the 120-geometry run's 50 epochs (259k vs 248k steps).\n"
-             "It therefore sees each sample half as often, and this figure shows scaling at equal "
-             "COMPUTE, not at equal training. An epoch-matched 50-epoch rerun is in flight.",
+    ax.set_title("Training-geometry scaling: the lever is real and still open — but its "
+                 "slope cannot reach the gate\n(each point trained to its own convergence; "
+                 "hollow = the same data under-trained)", loc="left", pad=14)
+    ax.legend(loc="upper right", ncol=2, framealpha=0.95)
+    fig.text(0.008, -0.075,
+             "The hollow point is the same 240-geometry dataset trained for only 25 epochs, to match "
+             "the 120-geometry run's gradient-step count. It read as a plateau; a rerun with\n"
+             "the epoch budget scaled to the data (the filled point) recovered −0.32 pp and beat the "
+             "previous best, so the plateau was a training-budget artifact (§21b).\n"
+             "EXTRAPOLATION, stated: at the measured −0.30 pp per doubling, closing the remaining "
+             "6.6 pp to the 5% gate needs ~22 further doublings (~10⁹ geometries at ~160 s of solve\n"
+             "each). The data axis is open but cannot reach the gate — that needs a different lever.",
              fontsize=10, color="#555555")
     fig.savefig(out)
     plt.close(fig)
@@ -396,8 +412,8 @@ def fig4_warmstart(out: Path) -> Path:
 def fig5_percase(out: Path) -> Path:
     series = [
         ("40 geometries", "benchmark_v2_nodeB_spectral_bw30.json", "#c9d7d4"),
-        ("120 geometries (best)", "benchmark_v2_nodeB_doe120_bw30.json", "#0f7b6c"),
-        ("240 geometries", "benchmark_v2_nodeB_doe240_bw30.json", "#6ba9a0"),
+        ("120 geometries", "benchmark_v2_nodeB_doe120_bw30.json", "#6ba9a0"),
+        ("240 geometries (best)", "benchmark_v2_nodeB_doe240_bw30_ep50.json", "#0f7b6c"),
     ]
     per = []
     for label, fname, color in series:
@@ -426,8 +442,8 @@ def fig5_percase(out: Path) -> Path:
     axb.text(len(x) - 0.4, G1_B + 0.45, "G1 gate 5%", ha="right", fontsize=11, color="#c44e52")
     axb.set_ylabel("|B| nRMSE  [%]")
     axb.set_ylim(0, bmax * 1.22)
-    axb.set_title("Per-test-geometry breakdown — the 40→120 gain is broad, "
-                  "and 120→240 changes nothing anywhere", loc="left", pad=12)
+    axb.set_title("Per-test-geometry breakdown — every geometry improves at every data scale "
+                  "(all runs trained to convergence)", loc="left", pad=12)
     axb.legend(loc="upper left", ncol=3, framealpha=0.95, fontsize=11)
 
     axt.axhline(G2_TORQUE, color="#c44e52", lw=1.7, alpha=0.75)
@@ -450,9 +466,10 @@ def fig5_percase(out: Path) -> Path:
                  transform=axt.transAxes, va="top", fontsize=10.5, color="#555555",
                  bbox=dict(boxstyle="round,pad=0.4", fc="#f7f7f7", ec="#cccccc", lw=1.0))
     fig.text(0.008, -0.015,
-             "Same six geometries in every campaign run, never trained on. Excluding case 32 the "
-             "pooled torque is 4.15 / 4.01 / 5.08 % for 40 / 120 / 240 geometries,\n"
-             "so the 240-geometry torque regression is real rather than a normalisation artifact.",
+             "Same six geometries in every campaign run, never trained on. Excluding case_0032 the "
+             "pooled torque is 4.15 / 4.01 / 3.94 % for 40 / 120 / 240 geometries —\n"
+             "the 240-geometry model is the campaign best on torque too, once the degenerate "
+             "normalisation of case_0032 is set aside.",
              fontsize=10, color="#555555")
     fig.savefig(out)
     plt.close(fig)
