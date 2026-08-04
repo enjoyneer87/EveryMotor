@@ -1,9 +1,9 @@
 {
-  "experiment": "r5b-doe240-ep50 (DONE)",
+  "experiment": "r5c-doe120-ep100 (budget control for the scaling curve)",
   "band_w": 30,
-  "total_epochs": 50,
-  "logfile": "D:/KDH/NvidiaNemo/results/logs/doe240_bw30_ep50.log",
-  "status_hint": "completed",
-  "next_in_queue": "pipeline idle; powercfg restored; next candidate = doe120 @100 epochs (~11h) to test whether the 40/120 points are also under-trained",
-  "gpu_note_extra": "R5b DONE 08-04: |B| 11.638% / torque 5.400% -- H2 confirmed, new campaign best. Deployment candidate replaces doe120_bw30."
+  "total_epochs": 100,
+  "logfile": "D:/KDH/NvidiaNemo/results/logs/doe120_bw30_ep100.log",
+  "status_hint": "running",
+  "next_in_queue": "score on fixed 6 test -> pre-registered: |B| < 11.71% = the 120 point was under-trained (re-base scaling curve at 100-epoch exposure, decide doe240@100ep ~49h); 11.71-12.21% = 50-epoch budget was adequate, published curve and ceiling claim stand; > 12.21% = anomaly, re-estimate run-to-run variance",
+  "gpu_note_extra": "R5c: doe120 rerun at 100 epochs (495k grad steps ~ champion's 517k -> compute-matched; per-sample exposure 100 = doe40's -> exposure-matched). Tests whether the 40/120 scaling points are also under-trained (section 21b lesson). References: doe120@50ep = 11.960%, doe240@50ep = 11.638%. ~808 s/ep -> ~22.5h train + ~2h score. R7 physics-injection review workflow running on CPU alongside."
 }

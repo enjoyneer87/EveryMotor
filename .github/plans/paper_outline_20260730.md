@@ -49,11 +49,13 @@ Alternates (register-consistent):
 > problem, bound what that diversity can buy, and provide a reusable, torque-faithful
 > benchmark.
 
-Abstract knobs still open: none blocking. Optional strengthening — a 100-epoch 120-design
-run would separate "data" from "epoch budget" at the middle point as well, and is cheap
-(~11 h). Without it the 40- and 120-design points may themselves be mildly under-trained,
-which would make the reported −0.30 pp/doubling slope a *lower* bound on the true one.
-That cuts against our own "data cannot reach the gate" claim, so it is worth closing.
+Abstract knobs still open: none blocking. Strengthening in flight — a 100-epoch 120-design
+run (R5c, launched 2026-08-04, ~24 h wall; the earlier "~11 h" note wrongly copied the
+50-epoch runtime) separates "data" from "epoch budget" at the middle point as well.
+Without it the 40- and 120-design points may themselves be mildly under-trained, which
+would make the reported −0.30 pp/doubling slope a *lower* bound on the true one. That cuts
+against our own "data cannot reach the gate" claim, so it is worth closing. Pre-registered:
+<11.71% re-bases the curve at matched exposure; 11.71–12.21% confirms it as published.
 
 ## 2. Contributions (claim list)
 
@@ -258,8 +260,9 @@ both panels, and the epoch/step counts annotated per point.
   |B| 11.638%, clears the pre-registered 11.71% threshold. VI now reads as a three-point
   rising curve plus a measured ceiling, and the step-matched run is promoted from
   "confound to disclose" to contribution 7.
-- **Consider a 100-epoch 120-design run (~11 h)** — the one cheap experiment that could
-  undercut our own ceiling claim, so worth running before submission.
+- **A 100-epoch 120-design run is RUNNING (R5c, launched 2026-08-04, ~24 h wall)** — the
+  one experiment that could undercut our own ceiling claim; pre-registered decision rule
+  in methodology_review §21b.
 - ~~Draw F5.~~ Done (`tools/make_campaign_figures.py` fig2). F6 is optional-but-available:
   the warm-start PoC landed
   negative, and a three-bar iteration-count chart (17.5 / 14.8 / 9.3) is the cleanest way
