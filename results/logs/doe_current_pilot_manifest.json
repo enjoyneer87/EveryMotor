@@ -1,0 +1,1628 @@
+{
+ "n_cases": 80,
+ "campaign": "current_axis_pilot",
+ "anchor_ipk": 650.538238691624,
+ "levels": [
+  0.5,
+  0.25
+ ],
+ "cases": [
+  {
+   "index": 0,
+   "source_geometry_index": 0,
+   "geometry": {
+    "Ratio_Bore": 0.762933,
+    "Ratio_SlotDepth_ParallelSlot": 0.456527
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 13.443906,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0000\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0000\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0000\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 1,
+   "source_geometry_index": 0,
+   "geometry": {
+    "Ratio_Bore": 0.762933,
+    "Ratio_SlotDepth_ParallelSlot": 0.456527
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 13.443906,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0001\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0001\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0001\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 2,
+   "source_geometry_index": 1,
+   "geometry": {
+    "Ratio_Bore": 0.652483,
+    "Ratio_SlotDepth_ParallelSlot": 0.539386
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 28.529515,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0002\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0002\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0002\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 3,
+   "source_geometry_index": 1,
+   "geometry": {
+    "Ratio_Bore": 0.652483,
+    "Ratio_SlotDepth_ParallelSlot": 0.539386
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 28.529515,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0003\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0003\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0003\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 4,
+   "source_geometry_index": 2,
+   "geometry": {
+    "Ratio_Bore": 0.788446,
+    "Ratio_SlotDepth_ParallelSlot": 0.559244
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 40.292859,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0004\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0004\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0004\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 5,
+   "source_geometry_index": 2,
+   "geometry": {
+    "Ratio_Bore": 0.788446,
+    "Ratio_SlotDepth_ParallelSlot": 0.559244
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 40.292859,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0005\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0005\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0005\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 6,
+   "source_geometry_index": 3,
+   "geometry": {
+    "Ratio_Bore": 0.770412,
+    "Ratio_SlotDepth_ParallelSlot": 0.449752
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 51.857694,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0006\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0006\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0006\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 7,
+   "source_geometry_index": 3,
+   "geometry": {
+    "Ratio_Bore": 0.770412,
+    "Ratio_SlotDepth_ParallelSlot": 0.449752
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 51.857694,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0007\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0007\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0007\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 8,
+   "source_geometry_index": 4,
+   "geometry": {
+    "Ratio_Bore": 0.69629,
+    "Ratio_SlotDepth_ParallelSlot": 0.471293
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 6.228413,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0008\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0008\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0008\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0008\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 9,
+   "source_geometry_index": 4,
+   "geometry": {
+    "Ratio_Bore": 0.69629,
+    "Ratio_SlotDepth_ParallelSlot": 0.471293
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 6.228413,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0009\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0009\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0009\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0009\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 10,
+   "source_geometry_index": 5,
+   "geometry": {
+    "Ratio_Bore": 0.70057,
+    "Ratio_SlotDepth_ParallelSlot": 0.474833
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 85.215694,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0010\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0010\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0010\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0010\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 11,
+   "source_geometry_index": 5,
+   "geometry": {
+    "Ratio_Bore": 0.70057,
+    "Ratio_SlotDepth_ParallelSlot": 0.474833
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 85.215694,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0011\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0011\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0011\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0011\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 12,
+   "source_geometry_index": 6,
+   "geometry": {
+    "Ratio_Bore": 0.666506,
+    "Ratio_SlotDepth_ParallelSlot": 0.427688
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 82.067849,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0012\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0012\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0012\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0012\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 13,
+   "source_geometry_index": 6,
+   "geometry": {
+    "Ratio_Bore": 0.666506,
+    "Ratio_SlotDepth_ParallelSlot": 0.427688
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 82.067849,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0013\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0013\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0013\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0013\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 14,
+   "source_geometry_index": 7,
+   "geometry": {
+    "Ratio_Bore": 0.684101,
+    "Ratio_SlotDepth_ParallelSlot": 0.574709
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 36.532124,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0014\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0014\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0014\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 15,
+   "source_geometry_index": 7,
+   "geometry": {
+    "Ratio_Bore": 0.684101,
+    "Ratio_SlotDepth_ParallelSlot": 0.574709
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 36.532124,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0015\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0015\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0015\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 16,
+   "source_geometry_index": 8,
+   "geometry": {
+    "Ratio_Bore": 0.669882,
+    "Ratio_SlotDepth_ParallelSlot": 0.529496
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 19.900359,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0016\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0016\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0016\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 17,
+   "source_geometry_index": 8,
+   "geometry": {
+    "Ratio_Bore": 0.669882,
+    "Ratio_SlotDepth_ParallelSlot": 0.529496
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 19.900359,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0017\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0017\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0017\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 18,
+   "source_geometry_index": 9,
+   "geometry": {
+    "Ratio_Bore": 0.702224,
+    "Ratio_SlotDepth_ParallelSlot": 0.524007
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 67.794041,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0018\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0018\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0018\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 19,
+   "source_geometry_index": 9,
+   "geometry": {
+    "Ratio_Bore": 0.702224,
+    "Ratio_SlotDepth_ParallelSlot": 0.524007
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 67.794041,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0019\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0019\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0019\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 20,
+   "source_geometry_index": 10,
+   "geometry": {
+    "Ratio_Bore": 0.678662,
+    "Ratio_SlotDepth_ParallelSlot": 0.54346
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 8.70431,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0020\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0020\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0020\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0020\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 21,
+   "source_geometry_index": 10,
+   "geometry": {
+    "Ratio_Bore": 0.678662,
+    "Ratio_SlotDepth_ParallelSlot": 0.54346
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 8.70431,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0021\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0021\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0021\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0021\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 22,
+   "source_geometry_index": 11,
+   "geometry": {
+    "Ratio_Bore": 0.784653,
+    "Ratio_SlotDepth_ParallelSlot": 0.436565
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 33.712649,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0022\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0022\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0022\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 23,
+   "source_geometry_index": 11,
+   "geometry": {
+    "Ratio_Bore": 0.784653,
+    "Ratio_SlotDepth_ParallelSlot": 0.436565
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 33.712649,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0023\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0023\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0023\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 24,
+   "source_geometry_index": 12,
+   "geometry": {
+    "Ratio_Bore": 0.78551,
+    "Ratio_SlotDepth_ParallelSlot": 0.570614
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 61.857696,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0024\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0024\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0024\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 25,
+   "source_geometry_index": 12,
+   "geometry": {
+    "Ratio_Bore": 0.78551,
+    "Ratio_SlotDepth_ParallelSlot": 0.570614
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 61.857696,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0025\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0025\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0025\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 26,
+   "source_geometry_index": 13,
+   "geometry": {
+    "Ratio_Bore": 0.775089,
+    "Ratio_SlotDepth_ParallelSlot": 0.535342
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 20.759053,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0026\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0026\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0026\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 27,
+   "source_geometry_index": 13,
+   "geometry": {
+    "Ratio_Bore": 0.775089,
+    "Ratio_SlotDepth_ParallelSlot": 0.535342
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 20.759053,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0027\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0027\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0027\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 28,
+   "source_geometry_index": 14,
+   "geometry": {
+    "Ratio_Bore": 0.730103,
+    "Ratio_SlotDepth_ParallelSlot": 0.561793
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 22.923611,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0028\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0028\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0028\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 29,
+   "source_geometry_index": 14,
+   "geometry": {
+    "Ratio_Bore": 0.730103,
+    "Ratio_SlotDepth_ParallelSlot": 0.561793
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 22.923611,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0029\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0029\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0029\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 30,
+   "source_geometry_index": 15,
+   "geometry": {
+    "Ratio_Bore": 0.661176,
+    "Ratio_SlotDepth_ParallelSlot": 0.522286
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 56.490166,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0030\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0030\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0030\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 31,
+   "source_geometry_index": 15,
+   "geometry": {
+    "Ratio_Bore": 0.661176,
+    "Ratio_SlotDepth_ParallelSlot": 0.522286
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 56.490166,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0031\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0031\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0031\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 32,
+   "source_geometry_index": 16,
+   "geometry": {
+    "Ratio_Bore": 0.656319,
+    "Ratio_SlotDepth_ParallelSlot": 0.512646
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 76.630855,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0032\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0032\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0032\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 33,
+   "source_geometry_index": 16,
+   "geometry": {
+    "Ratio_Bore": 0.656319,
+    "Ratio_SlotDepth_ParallelSlot": 0.512646
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 76.630855,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0033\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0033\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0033\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 34,
+   "source_geometry_index": 17,
+   "geometry": {
+    "Ratio_Bore": 0.682971,
+    "Ratio_SlotDepth_ParallelSlot": 0.505964
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 75.146227,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0034\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0034\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0034\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 35,
+   "source_geometry_index": 17,
+   "geometry": {
+    "Ratio_Bore": 0.682971,
+    "Ratio_SlotDepth_ParallelSlot": 0.505964
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 75.146227,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0035\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0035\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0035\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 36,
+   "source_geometry_index": 18,
+   "geometry": {
+    "Ratio_Bore": 0.758601,
+    "Ratio_SlotDepth_ParallelSlot": 0.546807
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 66.25926,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0036\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0036\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0036\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 37,
+   "source_geometry_index": 18,
+   "geometry": {
+    "Ratio_Bore": 0.758601,
+    "Ratio_SlotDepth_ParallelSlot": 0.546807
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 66.25926,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0037\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0037\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0037\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 38,
+   "source_geometry_index": 19,
+   "geometry": {
+    "Ratio_Bore": 0.709732,
+    "Ratio_SlotDepth_ParallelSlot": 0.430656
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 13.664137,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0038\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0038\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0038\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 39,
+   "source_geometry_index": 19,
+   "geometry": {
+    "Ratio_Bore": 0.709732,
+    "Ratio_SlotDepth_ParallelSlot": 0.430656
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 13.664137,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0039\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0039\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0039\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 40,
+   "source_geometry_index": 20,
+   "geometry": {
+    "Ratio_Bore": 0.749216,
+    "Ratio_SlotDepth_ParallelSlot": 0.461399
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 49.042553,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0040\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0040\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0040\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 41,
+   "source_geometry_index": 20,
+   "geometry": {
+    "Ratio_Bore": 0.749216,
+    "Ratio_SlotDepth_ParallelSlot": 0.461399
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 49.042553,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0041\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0041\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0041\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 42,
+   "source_geometry_index": 21,
+   "geometry": {
+    "Ratio_Bore": 0.649331,
+    "Ratio_SlotDepth_ParallelSlot": 0.496409
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 9.599858,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0042\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0042\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0042\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 43,
+   "source_geometry_index": 21,
+   "geometry": {
+    "Ratio_Bore": 0.649331,
+    "Ratio_SlotDepth_ParallelSlot": 0.496409
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 9.599858,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0043\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0043\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0043\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 44,
+   "source_geometry_index": 22,
+   "geometry": {
+    "Ratio_Bore": 0.674839,
+    "Ratio_SlotDepth_ParallelSlot": 0.453372
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 55.970495,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0044\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0044\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0044\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 45,
+   "source_geometry_index": 22,
+   "geometry": {
+    "Ratio_Bore": 0.674839,
+    "Ratio_SlotDepth_ParallelSlot": 0.453372
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 55.970495,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0045\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0045\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0045\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 46,
+   "source_geometry_index": 23,
+   "geometry": {
+    "Ratio_Bore": 0.717276,
+    "Ratio_SlotDepth_ParallelSlot": 0.555366
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 60.435318,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0046\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0046\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0046\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 47,
+   "source_geometry_index": 23,
+   "geometry": {
+    "Ratio_Bore": 0.717276,
+    "Ratio_SlotDepth_ParallelSlot": 0.555366
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 60.435318,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0047\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0047\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0047\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 48,
+   "source_geometry_index": 24,
+   "geometry": {
+    "Ratio_Bore": 0.690605,
+    "Ratio_SlotDepth_ParallelSlot": 0.519146
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 31.153081,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0048\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0048\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0048\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 49,
+   "source_geometry_index": 24,
+   "geometry": {
+    "Ratio_Bore": 0.690605,
+    "Ratio_SlotDepth_ParallelSlot": 0.519146
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 31.153081,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0049\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0049\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0049\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 50,
+   "source_geometry_index": 25,
+   "geometry": {
+    "Ratio_Bore": 0.737789,
+    "Ratio_SlotDepth_ParallelSlot": 0.470069
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 41.606873,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0050\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0050\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0050\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 51,
+   "source_geometry_index": 25,
+   "geometry": {
+    "Ratio_Bore": 0.737789,
+    "Ratio_SlotDepth_ParallelSlot": 0.470069
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 41.606873,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0051\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0051\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0051\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 52,
+   "source_geometry_index": 26,
+   "geometry": {
+    "Ratio_Bore": 0.719969,
+    "Ratio_SlotDepth_ParallelSlot": 0.511988
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 0.47129,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0052\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0052\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0052\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0052\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 53,
+   "source_geometry_index": 26,
+   "geometry": {
+    "Ratio_Bore": 0.719969,
+    "Ratio_SlotDepth_ParallelSlot": 0.511988
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 0.47129,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0053\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0053\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0053\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0053\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 54,
+   "source_geometry_index": 27,
+   "geometry": {
+    "Ratio_Bore": 0.763227,
+    "Ratio_SlotDepth_ParallelSlot": 0.448231
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 24.773196,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0054\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0054\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0054\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 55,
+   "source_geometry_index": 27,
+   "geometry": {
+    "Ratio_Bore": 0.763227,
+    "Ratio_SlotDepth_ParallelSlot": 0.448231
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 24.773196,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0055\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0055\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0055\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 56,
+   "source_geometry_index": 28,
+   "geometry": {
+    "Ratio_Bore": 0.663867,
+    "Ratio_SlotDepth_ParallelSlot": 0.490725
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 80.458974,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0056\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0056\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0056\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 57,
+   "source_geometry_index": 28,
+   "geometry": {
+    "Ratio_Bore": 0.663867,
+    "Ratio_SlotDepth_ParallelSlot": 0.490725
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 80.458974,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0057\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0057\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0057\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 58,
+   "source_geometry_index": 29,
+   "geometry": {
+    "Ratio_Bore": 0.694032,
+    "Ratio_SlotDepth_ParallelSlot": 0.488793
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 34.814681,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0058\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0058\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0058\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 59,
+   "source_geometry_index": 29,
+   "geometry": {
+    "Ratio_Bore": 0.694032,
+    "Ratio_SlotDepth_ParallelSlot": 0.488793
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 34.814681,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0059\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0059\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0059\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 60,
+   "source_geometry_index": 30,
+   "geometry": {
+    "Ratio_Bore": 0.746106,
+    "Ratio_SlotDepth_ParallelSlot": 0.550197
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 50.115009,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0060\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0060\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0060\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 61,
+   "source_geometry_index": 30,
+   "geometry": {
+    "Ratio_Bore": 0.746106,
+    "Ratio_SlotDepth_ParallelSlot": 0.550197
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 50.115009,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0061\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0061\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0061\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 62,
+   "source_geometry_index": 31,
+   "geometry": {
+    "Ratio_Bore": 0.708047,
+    "Ratio_SlotDepth_ParallelSlot": 0.502052
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 70.022577,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0062\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0062\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0062\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 63,
+   "source_geometry_index": 31,
+   "geometry": {
+    "Ratio_Bore": 0.708047,
+    "Ratio_SlotDepth_ParallelSlot": 0.502052
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 70.022577,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0063\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0063\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0063\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 64,
+   "source_geometry_index": 32,
+   "geometry": {
+    "Ratio_Bore": 0.733439,
+    "Ratio_SlotDepth_ParallelSlot": 0.442756
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 89.069636,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0064\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0064\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0064\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0064\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 65,
+   "source_geometry_index": 32,
+   "geometry": {
+    "Ratio_Bore": 0.733439,
+    "Ratio_SlotDepth_ParallelSlot": 0.442756
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 89.069636,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0065\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0065\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0065\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0065\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 66,
+   "source_geometry_index": 33,
+   "geometry": {
+    "Ratio_Bore": 0.715297,
+    "Ratio_SlotDepth_ParallelSlot": 0.499616
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 87.334673,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0066\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0066\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0066\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0066\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 67,
+   "source_geometry_index": 33,
+   "geometry": {
+    "Ratio_Bore": 0.715297,
+    "Ratio_SlotDepth_ParallelSlot": 0.499616
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 87.334673,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0067\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0067\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0067\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0067\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 68,
+   "source_geometry_index": 34,
+   "geometry": {
+    "Ratio_Bore": 0.741833,
+    "Ratio_SlotDepth_ParallelSlot": 0.533945
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 4.361215,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0068\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0068\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0068\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0068\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 69,
+   "source_geometry_index": 34,
+   "geometry": {
+    "Ratio_Bore": 0.741833,
+    "Ratio_SlotDepth_ParallelSlot": 0.533945
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 4.361215,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0069\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0069\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0069\\postproc\\Mag_StaticLoadInductance_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0069\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 70,
+   "source_geometry_index": 35,
+   "geometry": {
+    "Ratio_Bore": 0.738665,
+    "Ratio_SlotDepth_ParallelSlot": 0.438748
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 46.202595,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0070\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0070\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0070\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 71,
+   "source_geometry_index": 35,
+   "geometry": {
+    "Ratio_Bore": 0.738665,
+    "Ratio_SlotDepth_ParallelSlot": 0.438748
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 46.202595,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0071\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0071\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0071\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 72,
+   "source_geometry_index": 36,
+   "geometry": {
+    "Ratio_Bore": 0.781031,
+    "Ratio_SlotDepth_ParallelSlot": 0.567968
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 15.815024,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0072\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0072\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0072\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 73,
+   "source_geometry_index": 36,
+   "geometry": {
+    "Ratio_Bore": 0.781031,
+    "Ratio_SlotDepth_ParallelSlot": 0.567968
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 15.815024,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0073\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0073\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0073\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 74,
+   "source_geometry_index": 37,
+   "geometry": {
+    "Ratio_Bore": 0.769509,
+    "Ratio_SlotDepth_ParallelSlot": 0.482766
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 73.568889,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0074\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0074\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0074\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 75,
+   "source_geometry_index": 37,
+   "geometry": {
+    "Ratio_Bore": 0.769509,
+    "Ratio_SlotDepth_ParallelSlot": 0.482766
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 73.568889,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0075\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0075\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0075\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 76,
+   "source_geometry_index": 38,
+   "geometry": {
+    "Ratio_Bore": 0.754914,
+    "Ratio_SlotDepth_ParallelSlot": 0.479308
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 64.488891,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0076\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0076\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0076\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 77,
+   "source_geometry_index": 38,
+   "geometry": {
+    "Ratio_Bore": 0.754914,
+    "Ratio_SlotDepth_ParallelSlot": 0.479308
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 64.488891,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0077\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0077\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0077\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 78,
+   "source_geometry_index": 39,
+   "geometry": {
+    "Ratio_Bore": 0.723965,
+    "Ratio_SlotDepth_ParallelSlot": 0.466288
+   },
+   "electrical": {
+    "PeakCurrent": 325.269119345812,
+    "PhaseAdvance": 43.544072,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0078\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0078\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0078\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  },
+  {
+   "index": 79,
+   "source_geometry_index": 39,
+   "geometry": {
+    "Ratio_Bore": 0.723965,
+    "Ratio_SlotDepth_ParallelSlot": 0.466288
+   },
+   "electrical": {
+    "PeakCurrent": 162.634559672906,
+    "PhaseAdvance": 43.544072,
+    "CurrentDefinition": 0,
+    "excitation_wired": 1
+   },
+   "h5_paths": [
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0079\\postproc\\Mag_OnLoadTorque_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0079\\postproc\\Mag_StaticLoad_result_1.h5",
+    "D:\\KDH\\Sim_4SolverX\\DOE_CurrentAxis\\case_0079\\postproc\\Mag_StaticOC_result_1.h5"
+   ],
+   "solve_time_s": null
+  }
+ ],
+ "failed": []
+}
