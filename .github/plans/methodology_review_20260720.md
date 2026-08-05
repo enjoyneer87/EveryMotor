@@ -1881,3 +1881,50 @@ FEM이 top-k를 검증"하는 Monumo형 파이프라인의 전제(순위 보존)
 - pooled-excl(<5%) 게이트는 명시적으로 기각(위 발견 2).
 - 논문에는 "G1이 표현 바닥 아래였다"는 사실 자체를 방법론 기여(게이트
   설계도 검증 대상)로 서술.
+
+---
+
+## 26. 여자 배선 진단 -- 루트 코즈 확정: RMS 모드에서 파생 변수를 설정했다 (2026-08-05)
+
+> **실행 머신: 로컬 호스트, PyMotorEnv_310 + Motor-CAD v261.** §24 발견의 원인
+> 추적. 문서 증거(.mot 텍스트) + 산수 + **인과 솔브 2회**(스크래치패드 사본,
+> 원본 불변 -- §8b 프로토콜)로 3단 확정. 아티팩트: 스크래치패드
+> `wiring_diag_result.json`, 스크립트 `wiring_diag.py`.
+
+### 루트 코즈
+
+모든 케이스의 .mot: `CurrentDefinition=1` (**RMS 모드**), `RMSCurrent=460`
+(템플릿, DOE가 한 번도 안 건드림), `ParallelPaths=2`. DOE가 설정한
+`PeakCurrent`는 RMS 모드에서 **솔브 입력이 아니라 파생 표시량**이다
+(ActiveX 3505: "Defines whether the current input is rms current, peak
+current or rms current density").
+
+산수 삼중 정합:
+- 460 A RMS × √2 = **650.54 A 피크** = 템플릿 .mot의 PeakCurrent 표시값이자
+  **DOE 축 상한(650.53)의 출처** -- 축 설계 자체가 템플릿 표시값을 읽어 만든 것.
+- 650.54 / 2 (병렬 경로) = **325.27 A-turns** = §24가 전 케이스에서 측정한 상수.
+
+### 인과 확정 (case_0004 사본, TorqueVW 46점 평균)
+
+    설정                          토크 평균      판정
+    기준(무변경, §8b)              370.13        --
+    PeakCurrent 224 -> 100        370.1316      **소수 4자리까지 무반응** -- 비소비 변수
+    RMSCurrent  460 -> 230        210.16        -43% -- 이것이 실제 전류 입력
+
+(230A = 절반 전류에서 토크가 절반이 아니라 57%인 것은 포화 완화로 토크/전류가
+비선형이기 때문 -- 그 자체가 §24의 "포화 다양성 부재"가 실재함을 보여준다.)
+
+부수: 확장 파이프라인(DOE_Ext*)의 .mot는 PeakCurrent가 650.538(재계산된
+표시값)로 되돌아가 있고, 원본 40케이스의 .mot는 설정값(224.05)이 남아 있다 --
+저장 시점의 재계산 여부 차이일 뿐 기능적 원인은 동일하다.
+
+### 수정 레시피 (후속 DOE 필수)
+
+1. `doe_gen.py`/`doe_batch.py`에서 케이스 변수 적용 **전에**
+   `mc.set_variable("CurrentDefinition", 0)` (피크 모드) -- 또는 RMS 모드를
+   유지하고 `RMSCurrent = PeakCurrent/√2`를 기입.
+2. **생성 후 게이트 신설**: export된 j의 도체 A-turns가 의도 전류와 일치하는지
+   검사(이 템플릿에서 A-turns = I_pk/2). §24를 잡은 감사를 1케이스 스모크로
+   파이프라인에 상설화 -- "변화시킨 축이 필드에 실제로 도달했는가".
+3. R7-C의 I_ref 앵커 확정: 템플릿 여자 = **460 A RMS (650.54 A 피크)**,
+   `winding.synthesize_j`의 current_scale = I_pk_target / 650.54.

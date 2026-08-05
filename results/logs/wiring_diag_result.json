@@ -1,0 +1,48 @@
+{
+ "baseline_ref": {
+  "torque_mean": 370.13,
+  "source": "section 8b re-solve, unmodified settings"
+ },
+ "A_peakcurrent_100": {
+  "sets": {
+   "PeakCurrent": 100.0
+  },
+  "before": {
+   "CurrentDefinition": 1,
+   "RMSCurrent": 460,
+   "PeakCurrent": 224.047777,
+   "PhaseAdvance": 6.228413
+  },
+  "after": {
+   "CurrentDefinition": 1,
+   "RMSCurrent": 460,
+   "PeakCurrent": 100,
+   "PhaseAdvance": 6.228413
+  },
+  "torque_mean": 370.13161177249657,
+  "graph": "TorqueVW",
+  "n_points": 46,
+  "solve_s": 162.7
+ },
+ "B_rmscurrent_230": {
+  "sets": {
+   "RMSCurrent": 230.0
+  },
+  "before": {
+   "CurrentDefinition": 1,
+   "RMSCurrent": 460,
+   "PeakCurrent": 224.047777,
+   "PhaseAdvance": 6.228413
+  },
+  "after": {
+   "CurrentDefinition": 1,
+   "RMSCurrent": 230,
+   "PeakCurrent": 224.047777,
+   "PhaseAdvance": 6.228413
+  },
+  "torque_mean": 210.15580383069312,
+  "graph": "TorqueVW",
+  "n_points": 46,
+  "solve_s": 159.3
+ }
+}
