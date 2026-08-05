@@ -139,6 +139,23 @@
         "torque_nrmse_pct": 5.4
       },
       "note": "R5b: same data/split/config as the 25-epoch run, epochs 25->50 as the ONLY variable. Settles the section-21 confound in favour of H2 (training budget), not data saturation: |B| 12.106 -> 11.638%, beating the previous best doe120 (11.960%) and clearing the pre-registered 11.71% threshold by 0.07pp. All 6 test geometries improve. Torque excluding the near-zero-mean case 32 is 3.938%, the campaign best. CURRENT DEPLOYMENT CANDIDATE, replaces doe120_bw30. Caveat recorded in section 21b: the per-doubling slope (-0.30pp) cannot reach the 5% gate at any feasible dataset size."
+    },
+    {
+      "sha256": "b329e8233b84883b8f3893618b770616e849975378ec44ba587426c87a20c34b",
+      "bytes": 111804841,
+      "epoch": 60,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe120_ep100budget_ep60_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe120_bw30_ep100.pt"
+      ],
+      "variant": "nodeB doe120 h256 p15 spectral bw30, 100-epoch budget control (R5c)",
+      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30_ep100.json",
+      "metrics": {
+        "B_nrmse_pct": 11.762,
+        "torque_nrmse_pct": 7.204
+      },
+      "note": "R5c: same data/split/config as doe120_bw30, epochs 50->100 as the only variable -- the budget control for the scaling curve. Pre-registered outcome B: 11.762% is inside [11.71, 12.21], so the 50-epoch budget was adequate and the published 40/120/240 curve stands (delta -0.198pp = 0.79x the run band; threshold missed by 0.05pp). Torque regressed 5.25->7.20 (excl-32 4.01->6.29) -- with section 21b this brackets torque as budget-fragile (+/-2pp on single runs). NOT a deployment candidate. See methodology review section 21c."
     }
   ],
   "ambiguous_names": {

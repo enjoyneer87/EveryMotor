@@ -1,9 +1,9 @@
 {
-  "experiment": "r5c-doe120-ep100 (budget control for the scaling curve)",
+  "experiment": "r7a-doe240-prior (physics-prior input features)",
   "band_w": 30,
-  "total_epochs": 100,
-  "logfile": "D:/KDH/NvidiaNemo/results/logs/doe120_bw30_ep100.log",
+  "total_epochs": 50,
+  "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_prior.log",
   "status_hint": "running",
-  "next_in_queue": "score on fixed 6 test -> pre-registered: |B| < 11.71% = the 120 point was under-trained (re-base scaling curve at 100-epoch exposure, decide doe240@100ep ~49h); 11.71-12.21% = 50-epoch budget was adequate, published curve and ceiling claim stand; > 12.21% = anomaly, re-estimate run-to-run variance",
-  "gpu_note_extra": "R5c: doe120 rerun at 100 epochs (495k grad steps ~ champion's 517k -> compute-matched; per-sample exposure 100 = doe40's -> exposure-matched). Tests whether the 40/120 scaling points are also under-trained (section 21b lesson). References: doe120@50ep = 11.960%, doe240@50ep = 11.638%. ~808 s/ep -> ~22.5h train + ~2h score. R7 physics-injection review workflow running on CPU alongside."
+  "next_in_queue": "pre-registered acceptance: TEST airgap |B| < 7.05% (champion 7.30 minus run band) = POSITIVE; overall |B| < 11.39% = positive on secondary; within band = prior uninformative. Pre-flight gate byte-identity runs before training (aborts on mismatch). After verdict: excitation-wiring diagnosis writeup (section 26).",
+  "gpu_note_extra": "R7-A: champion recipe (doe240 50ep bw30) + linear-FEM physics prior as node features V3 (prior_a/bx/by, mu_eff 20, synthetic J per section 24, fixed V-IPM polarity). Prior cache prebuilt (10,800 solves). R5c verdict recorded: outcome B, 11.762%, published curve stands (section 21c). Champion unchanged: doe240_bw30_ep50 11.638/7.30 airgap/5.400."
 }
