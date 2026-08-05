@@ -1928,3 +1928,17 @@ current or rms current density").
    파이프라인에 상설화 -- "변화시킨 축이 필드에 실제로 도달했는가".
 3. R7-C의 I_ref 앵커 확정: 템플릿 여자 = **460 A RMS (650.54 A 피크)**,
    `winding.synthesize_j`의 current_scale = I_pk_target / 650.54.
+
+### 수정 검증 완료 (2026-08-06)
+
+레시피를 doe_gen.py에 구현(`CurrentDefinition=0`을 케이스 변수에 주입)하고
+정량 스모크로 검증했다(`results/logs/wiring_fix_smoke.py`, 결과
+`wiring_fix_result.json`):
+
+    모드 0 + PeakCurrent 650.538  ->  토크 370.1310   (RMS 모드 기준 370.1316과 4자리 일치)
+    모드 0 + PeakCurrent 325.269  ->  토크 210.1558   (§26의 RMS 230 솔브 210.1558과 5자리 일치)
+
+같은 물리 전류를 두 정의 경로(RMS/피크)로 넣어 동일 해를 얻었으므로 모드-0
+의미론과 수정 경로가 동시에 확정된다. 생성 후 게이트는
+`results/logs/doe_verify_excitation.py`로 상설화. **후속 DOE부터 전류축이
+실제로 작동한다.**

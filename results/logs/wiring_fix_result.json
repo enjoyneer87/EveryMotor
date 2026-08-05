@@ -1,0 +1,31 @@
+{
+ "expect_A": 370.13,
+ "expect_B": 210.16,
+ "A_peak_650p538": {
+  "sets": {
+   "CurrentDefinition": 0,
+   "PeakCurrent": 650.538238691624
+  },
+  "readback_after_set": {
+   "CurrentDefinition": 0,
+   "RMSCurrent": 460,
+   "PeakCurrent": 650.538238691624
+  },
+  "torque_mean": 370.1309577756806,
+  "solve_s": 166.9
+ },
+ "B_peak_325p269": {
+  "sets": {
+   "CurrentDefinition": 0,
+   "PeakCurrent": 325.269119345812
+  },
+  "readback_after_set": {
+   "CurrentDefinition": 0,
+   "RMSCurrent": 460,
+   "PeakCurrent": 325.269119345812
+  },
+  "torque_mean": 210.15578466580243,
+  "solve_s": 163.4
+ },
+ "verdict": "FIX_VERIFIED"
+}
