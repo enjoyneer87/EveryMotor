@@ -42,6 +42,16 @@ try:
         DOEAxis("PhaseAdvance", 0.0, 90.0, steps=0),
     ]
     grid = build_doe_lhs(axes=axes, n_samples=N, seed=SEED, criterion="maximin")
+
+    # EXCITATION WIRING FIX (methodology review section 26): the template is in
+    # RMS current-definition mode (CurrentDefinition=1), where PeakCurrent is a
+    # DERIVED display quantity -- every pre-2026-08-05 DOE case solved at the
+    # template's RMSCurrent=460 regardless of the PeakCurrent axis. Forcing
+    # peak mode per case makes the axis live. Verified causally: in mode 0,
+    # PeakCurrent=650.538 reproduces the RMS-mode baseline torque and
+    # PeakCurrent=325.269 reproduces the RMSCurrent=230 solve.
+    for pt in grid:
+        pt.electrical["CurrentDefinition"] = 0
     if grid:
         print(f"[doe_gen] built {len(grid)} LHS points; first geom={grid[0].geometry} elec={grid[0].electrical}", flush=True)
 
