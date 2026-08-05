@@ -20,7 +20,16 @@ geometry index for the split builder.
 Run with the Ansys venv:
   C:/Users/moa/.ansys_python_venvs/PyMotorEnv_310/Scripts/python.exe results/logs/doe_current_pilot.py
 Env: PILOT_OUT (default D:/KDH/Sim_4SolverX/DOE_CurrentAxis), PILOT_GEOMS (default 0..39),
-     PILOT_LEVELS (default "0.5,0.25")
+     PILOT_LEVELS (default "0.5,0.25"), PILOT_SHARD (manifest shard tag for parallel
+     workers), PILOT_MERGE=1 (no solving: rebuild doe_manifest.json from case dirs)
+
+Parallelism and resume: the case index is DETERMINISTIC (k = 2*geom + level_idx),
+already-exported cases (postproc/*.h5 present) are skipped, and each worker writes
+its own manifest shard — so N workers can each take a PILOT_GEOMS slice with their
+own Motor-CAD instance (licence permitting), and a crashed/killed run resumes by
+relaunching over the full list. PILOT_MERGE reconstructs the final manifest from
+disk, which is safe because every field is derivable from k and the training
+manifest.
 """
 import json
 import os
@@ -51,20 +60,60 @@ ADV_OF = {int(c["index"]): float(c.get("electrical", {}).get("PhaseAdvance", 0.0
           for c in TRAIN_MANIFEST["cases"]}
 
 
+def case_entry(k, gi, lv, h5s, solve_s):
+    return {
+        "index": k,
+        "source_geometry_index": gi,
+        "geometry": GEOM_OF.get(gi, {}),
+        "electrical": {
+            "PeakCurrent": ANCHOR_IPK * lv,
+            "PhaseAdvance": ADV_OF.get(gi, 0.0),
+            "CurrentDefinition": 0,
+            "excitation_wired": 1,
+        },
+        "h5_paths": [str(p) for p in h5s],
+        "solve_time_s": solve_s,
+    }
+
+
+def merge_manifest():
+    """Rebuild doe_manifest.json from disk — every field is derivable from k."""
+    cases = []
+    for case_dir in sorted(OUT.glob("case_*")):
+        k = int(case_dir.name.split("_")[1])
+        gi, j = k // len(LEVELS), k % len(LEVELS)
+        h5s = sorted((case_dir / "postproc").glob("*.h5"))
+        if not h5s:
+            continue
+        cases.append(case_entry(k, gi, LEVELS[j], h5s, None))
+    (OUT / "doe_manifest.json").write_text(json.dumps(
+        {"n_cases": len(cases), "campaign": "current_axis_pilot",
+         "anchor_ipk": ANCHOR_IPK, "levels": LEVELS, "cases": cases,
+         "failed": []}, indent=1), encoding="utf-8")
+    print(f"PILOT_MERGE_DONE n={len(cases)}")
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    if os.environ.get("PILOT_MERGE") == "1":
+        merge_manifest()
+        return
+    shard = os.environ.get("PILOT_SHARD", "")
+    manifest_path = OUT / (f"doe_manifest_shard_{shard}.json" if shard else "doe_manifest.json")
     mc = pmc.MotorCAD()
     cases = []
     failed = []
     t_all = time.time()
     try:
         mc.set_variable("MessageDisplayState", 2)
-        k = -1
         for gi in GEOMS:
-            for lv in LEVELS:
-                k += 1
+            for j, lv in enumerate(LEVELS):
+                k = len(LEVELS) * gi + j          # deterministic across workers
                 tag = f"case_{k:04d} (geom {gi}, {lv:.2f}x = {ANCHOR_IPK*lv:.1f} A)"
                 case_dir = OUT / f"case_{k:04d}"
+                if sorted((case_dir / "postproc").glob("*.h5")):
+                    print(f"[pilot] {tag}: SKIP (already exported)", flush=True)
+                    continue
                 try:
                     src_mot = SRC_ROOT / f"case_{gi:04d}" / "TestCAD1.mot"
                     case_dir.mkdir(parents=True, exist_ok=True)
@@ -92,26 +141,14 @@ def main():
                     h5s = sorted((case_dir / "postproc").glob("*.h5"))
                     if not h5s:
                         raise FileNotFoundError("no h5 after export")
-                    cases.append({
-                        "index": k,
-                        "source_geometry_index": gi,
-                        "geometry": GEOM_OF.get(gi, {}),
-                        "electrical": {
-                            "PeakCurrent": ipk,
-                            "PhaseAdvance": ADV_OF.get(gi, 0.0),
-                            "CurrentDefinition": 0,
-                            "excitation_wired": 1,
-                        },
-                        "h5_paths": [str(p) for p in h5s],
-                        "solve_time_s": round(solve_s, 1),
-                    })
+                    cases.append(case_entry(k, gi, lv, h5s, round(solve_s, 1)))
                     print(f"[pilot] {tag}: solve {solve_s:.0f}s, {len(h5s)} h5  "
                           f"({time.time()-t_all:.0f}s total)", flush=True)
                 except Exception as exc:
                     failed.append({"index": k, "geom": gi, "level": lv, "error": str(exc)})
                     print(f"[pilot] {tag} FAILED: {exc}", flush=True)
                 # write manifest incrementally so a crash loses nothing
-                (OUT / "doe_manifest.json").write_text(json.dumps(
+                manifest_path.write_text(json.dumps(
                     {"n_cases": len(cases), "campaign": "current_axis_pilot",
                      "anchor_ipk": ANCHOR_IPK, "levels": LEVELS,
                      "cases": cases, "failed": failed}, indent=1), encoding="utf-8")
