@@ -1,10 +1,10 @@
 {
-  "experiment": "r7a-doe240-prior RESUME ep48-50 (physics-prior input features)",
+  "experiment": "r8-v2-320 (geometry x current, +prior current-coupled)",
   "owner": "R7-A 정지 진단·판정 (session A)",
   "band_w": 30,
   "total_epochs": 50,
-  "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_resume.log",
+  "logfile": "D:/KDH/NvidiaNemo/results/logs/v2_320.log",
   "status_hint": "running",
-  "next_in_queue": "R7-A final verdict on the completed 50 epochs (pre-registered: TEST airgap < 7.05% = positive; the ep47 interim scored 7.138%, inside the 7.05-7.55 dead band by 0.088pp) -> if positive, 320-case v2 training WITH prior features (current coupling now wired, PRIOR_CURRENT_GATE); if negative, 320-case v2 without them -> score BOTH the legacy fixed 6-test gate and the current-aware split v2 -> methodology section 27",
-  "gpu_note_extra": "Resumed run: epochs 48-50 only, ~29 min/epoch plus a ~20 min graph build, so expect ~1.7 h total. The original run died at ~ep49 when the host rebooted 2026-08-06 14:49:49 KST (NOT OOM, NOT a solver fault). Recovery is now cheap: the trainer has --resume and writes <ckpt>.last every epoch. NOTE: Docker Desktop does NOT auto-start after a Windows reboot -- start it before expecting any container job to survive. Champion unchanged: doe240_bw30_ep50 11.638 overall / 7.30 airgap / 5.400 torque."
+  "next_in_queue": "score BOTH gates on completion (the run script does this itself: legacy_650A group = fixed 6-test comparable to champion 11.638/7.30/5.400, plus new_current group = 12 held-out-geometry cases at 325.3/162.6 A) -> write the section-27 current-generalization verdict. R7-A final verdict already recorded: primary airgap 7.138% NEGATIVE (dead band), secondary overall 11.096% positive, torque 3.354%; prior features INCLUDED in this run per the section-27 decision record.",
+  "gpu_note_extra": "320-case v2 run: 240 re-labelled legacy (650.538 A, wired=0) + 80 pilot (325.3/162.6 A, wired=1), split geometry x current holdout train 290/val 12/test 18. Expect ~30 min graph build (pilot prior cache prebuilt, PRIOR_CACHE_DONE 14400 solves) then ~2300 s/epoch x 50 ~ 32 h; ETA ~2026-08-08 morning KST. Preflights: split digest, V3 byte-identity (11.096/3.354), pilot cache 80/80. Crash recovery: ckpt-every 1 writes .last each epoch (atomic); after a host reboot start Docker Desktop, then RESUME=results/mgn_nodeB_doe_v2_bw30_prior.pt.last bash results/logs/run_v2_320_docker.sh. Docker Desktop does NOT auto-start on Windows reboot."
 }

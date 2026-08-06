@@ -50,6 +50,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -925,6 +926,16 @@ def main() -> int:
         )
 
     last_ckpt = str(args.ckpt) + ".last"
+
+    def save_atomic(payload: dict, path: str) -> None:
+        # A ~110 MB torch.save takes seconds; a host reboot mid-write would leave a
+        # truncated file at the FINAL path -- fatal when that file is the resume source.
+        # Write to a pid-unique sibling and os.replace, so the final path only ever
+        # holds a complete checkpoint.
+        tmp = f"{path}.{os.getpid()}.tmp"
+        torch.save(payload, tmp)
+        os.replace(tmp, path)
+
     for ep in range(start_epoch, args.epochs + 1):
         tr = run_epoch(train_loader, True)
         va = run_epoch(val_loader, False)
@@ -934,12 +945,12 @@ def main() -> int:
 
         if va["b"] < best_val:
             best_val = va["b"]
-            torch.save(checkpoint_payload(ep), args.ckpt)
+            save_atomic(checkpoint_payload(ep), args.ckpt)
 
         # Crash insurance: the best-val checkpoint can be many epochs stale by the time
         # a host restart lands, and --resume from a stale epoch silently re-does work.
         if args.ckpt_every > 0 and (ep % args.ckpt_every == 0 or ep == args.epochs):
-            torch.save(checkpoint_payload(ep), last_ckpt)
+            save_atomic(checkpoint_payload(ep), last_ckpt)
 
         if ep == 1 or ep % 5 == 0 or ep == args.epochs:
             spec_part = (f"spec {va['spec']:.2e} "

@@ -26,10 +26,16 @@ a given scipy build. Results are cached per (dataset, case, step) under
 from __future__ import annotations
 
 import os
+import zipfile
 from pathlib import Path
 from typing import Dict, Optional
 
 import numpy as np
+
+# Everything np.load can raise on a truncated/corrupt npz: BadZipFile for broken zip
+# structure (a DIRECT Exception subclass -- neither OSError nor ValueError catches it),
+# the others for short reads and mangled headers inside a structurally-valid zip.
+_CACHE_READ_ERRORS = (zipfile.BadZipFile, OSError, ValueError, KeyError, EOFError)
 
 _REPO = Path(__file__).resolve().parent.parent
 _BH_CANDIDATES = (
@@ -181,28 +187,40 @@ def nodal_prior_features(record, sample, bh_path: Optional[Path] = None,
         dataset = Path(record.path).parent.parent.parent.name or "dataset"
         cache_file = CACHE_ROOT / dataset / f"case_{record.case_index:04d}.npz"
         if cache_file.exists():
-            with np.load(cache_file) as z:
-                key = f"step_{step}"
-                # The current the entry was computed at. Entries written before the
-                # R8 current axis existed carry no scale and were, correctly, all at
-                # the template current -- so absent means 1.0. A mismatch must
-                # recompute rather than serve a prior for the wrong excitation.
-                cached_scale = float(z[f"cs_{step}"]) if f"cs_{step}" in z else 1.0
-                if key in z and abs(cached_scale - scale) <= 1e-9 * max(1.0, abs(scale)):
-                    cand = np.asarray(z[key], dtype=np.float64)
-                    if cand.shape == (record.mesh.n_nodes, 3):
-                        arr = cand
+            # A concurrent writer (e.g. build_prior_cache running beside a training
+            # launch) or a crash mid-write can leave a partial/corrupt npz. Treat any
+            # unreadable file as a cache miss and overwrite it, instead of letting
+            # BadZipFile kill a 32 h run at the same case on every retry.
+            try:
+                with np.load(cache_file) as z:
+                    key = f"step_{step}"
+                    # The current the entry was computed at. Entries written before the
+                    # R8 current axis existed carry no scale and were, correctly, all at
+                    # the template current -- so absent means 1.0. A mismatch must
+                    # recompute rather than serve a prior for the wrong excitation.
+                    cached_scale = float(z[f"cs_{step}"]) if f"cs_{step}" in z else 1.0
+                    if key in z and abs(cached_scale - scale) <= 1e-9 * max(1.0, abs(scale)):
+                        cand = np.asarray(z[key], dtype=np.float64)
+                        if cand.shape == (record.mesh.n_nodes, 3):
+                            arr = cand
+            except _CACHE_READ_ERRORS as exc:
+                print(f"prior cache {cache_file.name}: unreadable ({exc!r}); recomputing")
     if arr is None:
         arr = compute_prior(record, step, bh_path, current_scale=scale)
         if cache_file is not None:
             cache_file.parent.mkdir(parents=True, exist_ok=True)
             existing = {}
             if cache_file.exists():
-                with np.load(cache_file) as z:
-                    existing = {k: z[k] for k in z.files}
+                try:
+                    with np.load(cache_file) as z:
+                        existing = {k: z[k] for k in z.files}
+                except _CACHE_READ_ERRORS:
+                    existing = {}                        # corrupt -> rebuild from scratch
             existing[f"step_{step}"] = arr.astype(np.float32)
             existing[f"cs_{step}"] = np.asarray(scale, dtype=np.float64)
-            tmp = cache_file.with_suffix(".tmp.npz")
+            # PID-unique tmp: two processes caching the same case must never share a
+            # tmp path, or one os.replace promotes the other's half-written file.
+            tmp = cache_file.with_suffix(f".{os.getpid()}.tmp.npz")
             np.savez_compressed(tmp, **existing)
             os.replace(tmp, cache_file)
     return {name: np.ascontiguousarray(arr[:, i])
