@@ -1,5 +1,6 @@
 {
   "experiment": "r7a-doe240-prior RESUME ep48-50 (physics-prior input features)",
+  "owner": "R7-A 정지 진단·판정 (session A)",
   "band_w": 30,
   "total_epochs": 50,
   "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_resume.log",
