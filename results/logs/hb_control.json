@@ -3,7 +3,7 @@
   "band_w": 30,
   "total_epochs": 50,
   "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_prior.log",
-  "status_hint": "running",
-  "next_in_queue": "pre-registered acceptance: TEST airgap |B| < 7.05% (champion 7.30 minus run band) = POSITIVE; overall |B| < 11.39% = positive on secondary; within band = prior uninformative. Pre-flight gate byte-identity runs before training (aborts on mismatch). After verdict: excitation-wiring diagnosis writeup (section 26).",
-  "gpu_note_extra": "R7-A: champion recipe (doe240 50ep bw30) + linear-FEM physics prior as node features V3 (prior_a/bx/by, mu_eff 20, synthetic J per section 24, fixed V-IPM polarity). Prior cache prebuilt (10,800 solves). R5c verdict recorded: outcome B, 11.762%, published curve stands (section 21c). Champion unchanged: doe240_bw30_ep50 11.638/7.30 airgap/5.400."
+  "status_hint": "dead-rebooted",
+  "next_in_queue": "R7-A verdict (pre-registered: TEST airgap < 7.05% = positive) -> pilot ingest + split v2 (geometry x current holdout) + A-turns gate on all 80 -> retrain 320 cases (~32h, +prior features if R7-A positive) -> score legacy gate AND current-aware split -> section 27 verdict",
+  "gpu_note_extra": "R7-A attempt 2 training (prior features V3); ep15 val-best 0.0366 ~ 7 epochs ahead of champion trajectory. PARALLEL: R8 current-axis pilot generation running on CPU (80 Motor-CAD solves, ~4.5h, DOE_CurrentAxis) -- expect epoch-time inflation from CPU contention, not a fault. Wiring fix VERIFIED (mode-0 smoke 2/2). Champion unchanged: doe240_bw30_ep50 11.638/7.30 airgap/5.400."
 }

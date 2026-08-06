@@ -1,0 +1,654 @@
+﻿{
+    "gate":  "excitation (A-turns reach the field)",
+    "script":  "results/logs/doe_verify_excitation.py",
+    "reproduce":  "docker run --rm -e CUDA_VISIBLE_DEVICES=-1 -e PYTHONPATH=/workspace/app -v D:\\KDH\\NvidiaNemo:/workspace/app -w /workspace/app nvcr.io/nvidia/physicsnemo/physicsnemo:26.03 python results/logs/doe_verify_excitation.py --data-dir backup/doe_data_v2 --cases 240..319",
+    "note":  "Independent re-run on 2026-08-06 verifying the 80/80 claim in commit df11eb5, which recorded the pass only in its message. Tolerance 2%; A-turns = I_pk / ParallelPaths(2).",
+    "data_dir":  "backup/doe_data_v2",
+    "n_cases":  80,
+    "n_ok":  80,
+    "n_failed":  0,
+    "max_off_pct":  0.01,
+    "verdict":  "EXCITATION_GATE_PASS",
+    "cases":  [
+                  {
+                      "case":  240,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  241,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  242,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  243,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  244,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  245,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  246,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  247,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  248,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  249,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  250,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  251,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  252,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  253,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  254,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  255,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  256,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  257,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  258,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  259,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  260,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  261,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  262,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  263,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  264,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  265,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  266,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  267,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  268,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  269,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  270,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  271,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  272,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  273,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  274,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  275,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  276,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  277,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  278,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  279,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  280,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  281,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  282,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  283,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  284,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  285,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  286,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  287,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  288,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  289,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  290,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.62,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  291,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  292,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  293,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  294,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  295,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  296,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  297,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  298,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  299,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  300,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  301,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  302,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  303,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  304,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  305,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  306,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  307,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  308,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  309,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  310,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  311,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  312,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  313,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.31,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  314,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.64,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  315,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  316,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.63,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  317,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  318,
+                      "nominal_ipk_a":  325.27,
+                      "expect_aturns":  162.63,
+                      "measured_aturns":  162.65,
+                      "off_pct":  0.01,
+                      "status":  "OK"
+                  },
+                  {
+                      "case":  319,
+                      "nominal_ipk_a":  162.63,
+                      "expect_aturns":  81.32,
+                      "measured_aturns":  81.32,
+                      "off_pct":  0,
+                      "status":  "OK"
+                  }
+              ]
+}

@@ -1,0 +1,23 @@
+{
+  "experiment": "r7a-doe240-prior (physics-prior input features)",
+  "band_w": 30,
+  "epoch": 47,
+  "total_epochs": 50,
+  "latest_val_nrmse": 17.42,
+  "best_val_nrmse": 17.42,
+  "sec_per_epoch": 1724.0,
+  "eta_iso": null,
+  "last_log_write_iso": "2026-08-06T03:28:01Z",
+  "gpu_note": "DEAD -- host rebooted 2026-08-06 14:49:49 KST (RuntimeBroker-initiated restart, System event 1074 '기타(계획되지 않음)'). Not OOM, not a solver fault: training was converging normally and died between ep49 and ep50, ~2 min short of finishing. Docker daemon was down after the reboot until restarted manually. Surviving best-val checkpoint is results/mgn_nodeB_doe240_bw30_prior.pt at epoch 47/50 with optimizer_state_dict intact (262 entries).",
+  "status": "dead-rebooted",
+  "next_in_queue": "AWAITING APPROVAL: (a) resume ep47->50 (~1.4h; needs a --resume path added to train_doe_curl_mgn.py, optimizer state is on disk) then re-score, and (b) fix the v2 manifest host-absolute paths (V2_PATH_GATE_FAIL: legacy 0/240 resolve in-container) before any 320-case retrain. R7-A ep47 verdict recorded in methodology section 27.",
+  "heartbeat_iso": "2026-08-06T05:42:25Z",
+  "r7a_ep47_scorecard": {
+    "note": "legacy fixed 6-test gate (cases 4,7,18,32,37,39; 270 samples) -- 47/50-epoch checkpoint, NOT a completed run",
+    "airgap_bnorm_nrmse_pct": 7.138,
+    "overall_bnorm_nrmse_pct": 11.096,
+    "torque_nrmse_pct": 3.354,
+    "champion_ep50": {"airgap": 7.3, "overall": 11.638, "torque": 5.4},
+    "verdict": "primary (airgap < 7.05%) NEGATIVE -- lands inside the pre-registered 7.05-7.55 dead band, but only 0.088pp above threshold on a checkpoint 3 epochs short with val still descending; secondary (overall < 11.39%) POSITIVE; torque improved 5.400 -> 3.354pp-wise -2.05pp"
+  }
+}
