@@ -541,6 +541,15 @@ def main() -> int:
                              "output representation")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ckpt", type=str, default="results/mgn_curl_caseholdout.pt")
+    parser.add_argument("--resume", type=str, default=None,
+                        help="resume from a checkpoint written by this script: restores "
+                             "weights, optimizer moments, LR schedule position and the "
+                             "loss history, and continues at its epoch+1. Run-defining "
+                             "flags must match the original run or this aborts.")
+    parser.add_argument("--ckpt-every", type=int, default=5,
+                        help="also write <ckpt>.last every N epochs regardless of val "
+                             "improvement, so a host restart costs at most N epochs "
+                             "(the best-val checkpoint alone can be many epochs stale)")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -742,6 +751,54 @@ def main() -> int:
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
 
+    # ---- resume -------------------------------------------------------------
+    # A host restart mid-run (2026-08-06: R7-A died 2 min short of epoch 50) used to
+    # mean a full retrain, because the state was on disk but the code path to reload it
+    # was not. Restores weights + optimizer moments + LR position + loss history.
+    start_epoch, best_val = 1, float("inf")
+    resume_hist = ([], [])
+    if args.resume:
+        rck = torch.load(args.resume, map_location=device, weights_only=False)
+        prev = rck.get("args", {})
+        # Flags that change what is being learned. A mismatch means the resumed run
+        # would not be the run it claims to continue, so fail loudly rather than
+        # produce a checkpoint whose provenance is a blend of two configurations.
+        run_defining = ("data_dir", "split", "target", "model", "hidden_dim",
+                        "processor_size", "prior_features", "band_spectral_weight",
+                        "airgap_weight", "no_wrap_rotor", "no_anti_periodic_edges",
+                        "w_pbc", "lr", "weight_decay", "batch_size", "step_stride",
+                        "epochs", "seed")
+        drift = {k: (prev.get(k), getattr(args, k)) for k in run_defining
+                 if k in prev and str(prev.get(k)) != str(getattr(args, k, None))}
+        if drift:
+            for k, (was, now) in drift.items():
+                print(f"  RESUME MISMATCH  {k}: checkpoint={was!r}  now={now!r}")
+            raise SystemExit("--resume refused: run-defining flags differ from the checkpoint")
+
+        model.load_state_dict(rck["model_state_dict"])
+        optimizer.load_state_dict(rck["optimizer_state_dict"])
+        resume_hist = (list(rck.get("train_hist", [])), list(rck.get("val_hist", [])))
+        start_epoch = int(rck["epoch"]) + 1
+        best_val = min((float(v["b"]) for v in resume_hist[1]), default=float("inf"))
+
+        # Replay the LR schedule instead of trusting the restored param-group lr: the
+        # cosine is defined from the initial lr, and stepping it start_epoch-1 times
+        # from a fresh scheduler reproduces the original trajectory exactly.
+        for g in optimizer.param_groups:
+            g["lr"] = args.lr
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+            optimizer, T_max=args.epochs, eta_min=1e-6)
+        for _ in range(start_epoch - 1):
+            scheduler.step()
+
+        if start_epoch > args.epochs:
+            raise SystemExit(f"--resume: checkpoint is already at epoch {rck['epoch']} "
+                             f"of {args.epochs} -- nothing to do")
+        print(f"Resumed {args.resume} at epoch {rck['epoch']} -> continuing "
+              f"{start_epoch}..{args.epochs} | best val B {best_val:.6f} | "
+              f"lr {optimizer.param_groups[0]['lr']:.3e} | "
+              f"hist {len(resume_hist[0])} train / {len(resume_hist[1])} val")
+
     b_std_d = b_std.to(device)
     a_scale_d = a_scale.to(device)
     out_scale_d = out_scale.to(device)
@@ -822,20 +879,11 @@ def main() -> int:
             n_batch += 1
         return {k: v / max(n_batch, 1) for k, v in totals.items()}
 
-    best_val = float("inf")
-    train_hist, val_hist = [], []
+    train_hist, val_hist = resume_hist
     t0 = time.time()
 
-    for ep in range(1, args.epochs + 1):
-        tr = run_epoch(train_loader, True)
-        va = run_epoch(val_loader, False)
-        scheduler.step()
-        train_hist.append(tr)
-        val_hist.append(va)
-
-        if va["b"] < best_val:
-            best_val = va["b"]
-            torch.save(
+    def checkpoint_payload(ep: int) -> dict:
+        return (
                 {
                     "epoch": ep,
                     "model_state_dict": model.state_dict(),
@@ -873,18 +921,34 @@ def main() -> int:
                         "val_cases": list(split.val),
                         "test_cases": list(split.test),
                     },
-                },
-                args.ckpt,
-            )
+                }
+        )
+
+    last_ckpt = str(args.ckpt) + ".last"
+    for ep in range(start_epoch, args.epochs + 1):
+        tr = run_epoch(train_loader, True)
+        va = run_epoch(val_loader, False)
+        scheduler.step()
+        train_hist.append(tr)
+        val_hist.append(va)
+
+        if va["b"] < best_val:
+            best_val = va["b"]
+            torch.save(checkpoint_payload(ep), args.ckpt)
+
+        # Crash insurance: the best-val checkpoint can be many epochs stale by the time
+        # a host restart lands, and --resume from a stale epoch silently re-does work.
+        if args.ckpt_every > 0 and (ep % args.ckpt_every == 0 or ep == args.epochs):
+            torch.save(checkpoint_payload(ep), last_ckpt)
 
         if ep == 1 or ep % 5 == 0 or ep == args.epochs:
             spec_part = (f"spec {va['spec']:.2e} "
                          if args.band_spectral_weight > 0.0 else "")
             print(f"  ep {ep:04d}/{args.epochs} | train B {tr['b']:.6f} nRMSE {tr['nrmse']:6.2f}% "
                   f"| val B {va['b']:.6f} nRMSE {va['nrmse']:6.2f}% pbc {va['pbc']:.2e} {spec_part}"
-                  f"| best {best_val:.6f} | {time.time() - t0:.0f}s")
+                  f"| best {best_val:.6f} | {time.time() - t0:.0f}s", flush=True)
 
-    print(f"\nTraining complete: {args.epochs} epochs in {time.time() - t0:.1f}s")
+    print(f"\nTraining complete: epochs {start_epoch}..{args.epochs} in {time.time() - t0:.1f}s")
     print(f"Best val B MSE (normalized): {best_val:.6f}")
     print(f"Checkpoint: {args.ckpt}")
     print("Score it with:  python -m eval.benchmark --curl-ckpt " + str(args.ckpt))

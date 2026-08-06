@@ -1,9 +1,9 @@
 {
-  "experiment": "r7a-doe240-prior (physics-prior input features)",
+  "experiment": "r7a-doe240-prior RESUME ep48-50 (physics-prior input features)",
   "band_w": 30,
   "total_epochs": 50,
-  "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_prior.log",
-  "status_hint": "dead-rebooted",
-  "next_in_queue": "R7-A verdict (pre-registered: TEST airgap < 7.05% = positive) -> pilot ingest + split v2 (geometry x current holdout) + A-turns gate on all 80 -> retrain 320 cases (~32h, +prior features if R7-A positive) -> score legacy gate AND current-aware split -> section 27 verdict",
-  "gpu_note_extra": "R7-A attempt 2 training (prior features V3); ep15 val-best 0.0366 ~ 7 epochs ahead of champion trajectory. PARALLEL: R8 current-axis pilot generation running on CPU (80 Motor-CAD solves, ~4.5h, DOE_CurrentAxis) -- expect epoch-time inflation from CPU contention, not a fault. Wiring fix VERIFIED (mode-0 smoke 2/2). Champion unchanged: doe240_bw30_ep50 11.638/7.30 airgap/5.400."
+  "logfile": "D:/KDH/NvidiaNemo/results/logs/r7a_resume.log",
+  "status_hint": "running",
+  "next_in_queue": "R7-A final verdict on the completed 50 epochs (pre-registered: TEST airgap < 7.05% = positive; the ep47 interim scored 7.138%, inside the 7.05-7.55 dead band by 0.088pp) -> if positive, 320-case v2 training WITH prior features (current coupling now wired, PRIOR_CURRENT_GATE); if negative, 320-case v2 without them -> score BOTH the legacy fixed 6-test gate and the current-aware split v2 -> methodology section 27",
+  "gpu_note_extra": "Resumed run: epochs 48-50 only, ~29 min/epoch plus a ~20 min graph build, so expect ~1.7 h total. The original run died at ~ep49 when the host rebooted 2026-08-06 14:49:49 KST (NOT OOM, NOT a solver fault). Recovery is now cheap: the trainer has --resume and writes <ckpt>.last every epoch. NOTE: Docker Desktop does NOT auto-start after a Windows reboot -- start it before expecting any container job to survive. Champion unchanged: doe240_bw30_ep50 11.638 overall / 7.30 airgap / 5.400 torque."
 }

@@ -25,22 +25,36 @@ import shutil
 import sys
 from pathlib import Path
 
-sys.path.insert(0, "D:/KDH/NvidiaNemo")
-
-REPO = Path("D:/KDH/NvidiaNemo")
 ANCHOR_IPK = 650.538238691624          # section 26: template 460 A RMS -> peak
-BASE = REPO / "backup/doe_data_240"    # the 240-case fixed-excitation manifest
-PILOT = Path("D:/KDH/Sim_4SolverX/DOE_CurrentAxis")
-OUT = REPO / "backup/doe_data_v2"
+
+# Defaults are the host-native layout this was first run on. They are options rather
+# than constants so the assembly can be re-run inside the training container (which sees
+# the repo at /workspace/app and cannot see the solve host's DOE_CurrentAxis dir at all).
+# The pilot h5 are already ingested under the v2 dir, so a re-run only rewrites the
+# manifest; --pilot-manifest accepts the committed copy at
+# results/logs/doe_current_pilot_manifest.json.
+DEFAULT_REPO = Path("D:/KDH/NvidiaNemo")
+DEFAULT_PILOT_MANIFEST = Path("D:/KDH/Sim_4SolverX/DOE_CurrentAxis/doe_manifest.json")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--repo", type=Path, default=DEFAULT_REPO,
+                    help="repo root; stored h5 paths are made relative to it")
+    ap.add_argument("--pilot-manifest", type=Path, default=DEFAULT_PILOT_MANIFEST)
+    ap.add_argument("--skip-copy", action="store_true",
+                    help="manifest-only rebuild; the pilot h5 are already ingested")
     args = ap.parse_args()
 
+    global REPO, BASE, OUT
+    REPO = args.repo
+    BASE = REPO / "backup/doe_data_240"    # the 240-case fixed-excitation manifest
+    OUT = REPO / "backup/doe_data_v2"
+    sys.path.insert(0, str(REPO))
+
     base = json.loads((BASE / "doe_manifest.json").read_text(encoding="utf-8"))
-    pilot = json.loads((PILOT / "doe_manifest.json").read_text(encoding="utf-8"))
+    pilot = json.loads(args.pilot_manifest.read_text(encoding="utf-8"))
     OUT.mkdir(parents=True, exist_ok=True)
 
     # The 240-case manifest stores the SOLVE HOST's absolute paths
@@ -51,16 +65,29 @@ def main() -> int:
     # (cases 40-119 physically live under doe_data_120). So resolve here, once, and store
     # paths that actually exist. A case whose files cannot be found is a hard error: a
     # silently short dataset is exactly the failure class this campaign keeps auditing for.
+    #
+    # The stored path must be REPO-RELATIVE with forward slashes. The first version of
+    # this builder wrote host-absolute paths (D:\KDH\NvidiaNemo\backup\...), which the
+    # training container -- it sees the repo as /workspace/app and nothing else -- could
+    # not resolve for a single one of the 240 legacy cases (0/240; the pilot 80 resolved
+    # only because they physically live under the v2 dir). resolve_h5_path tries
+    # Path(recorded) first, and both the container and a host-native run have the repo
+    # root as cwd, so a relative path resolves on both. Regression-tested by
+    # results/logs/_v2_path_probe.py, which must report 320/320.
     from eval.doe_dataset import resolve_h5_path
 
     search_dirs = [REPO / "backup/doe_data_240", REPO / "backup/doe_data_120",
                    REPO / "backup/doe_data"]
 
+    def rel(p: Path) -> str:
+        """Repo-relative POSIX path, so it resolves under any repo mount point."""
+        return Path(p).resolve().relative_to(REPO.resolve()).as_posix()
+
     def resolve(recorded: str, case_index: int) -> str:
         for d in search_dirs:
             got = resolve_h5_path(recorded, d, case_index)
             if got is not None:
-                return str(got)
+                return rel(got)
         raise FileNotFoundError(f"case {case_index}: cannot locate {recorded}")
 
     cases = []
@@ -90,12 +117,17 @@ def main() -> int:
         h5_dst = []
         for src in c["h5_paths"]:
             src_p = Path(src)
-            dst = dst_pp / src_p.name
-            if not args.dry_run:
+            # The pilot manifest records Windows paths; Path(...).name does not split
+            # backslashes on Linux, so take the basename OS-agnostically.
+            dst = dst_pp / str(src).replace("\\", "/").split("/")[-1]
+            if not args.dry_run and not args.skip_copy:
                 dst_pp.mkdir(parents=True, exist_ok=True)
                 if not dst.exists():
                     shutil.copy2(src_p, dst)
-            h5_dst.append(str(dst).replace("/", "\\"))
+            if args.skip_copy and not dst.exists():
+                raise FileNotFoundError(
+                    f"case {k}: --skip-copy but {dst} is missing -- re-run without it")
+            h5_dst.append(rel(dst))
         entry = {
             "index": k,
             "source_geometry_index": int(c["source_geometry_index"]),

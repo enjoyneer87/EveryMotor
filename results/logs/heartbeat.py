@@ -102,6 +102,7 @@ def parse_log(logfile):
         pass
     best = None
     last = None
+    first_ep = None
     try:
         with open(logfile, "r", encoding="utf-8", errors="replace") as f:
             text = f.read()
@@ -113,13 +114,20 @@ def parse_log(logfile):
             continue
         # group(5) is CUMULATIVE elapsed seconds (log prints every ~5 epochs), not per-epoch.
         ep, tot, val, cum = int(m.group(1)), int(m.group(2)), float(m.group(3)), int(m.group(5))
+        if first_ep is None:
+            first_ep = ep
         last = (ep, tot, val, cum)
         if best is None or val < best:
             best = val
     if last:
         ep, tot, val, cum = last
         res["epoch"], res["total"], res["latest_val_nrmse"] = ep, tot, val
-        res["sec_per_epoch"] = round(cum / ep, 1) if ep else None
+        # The elapsed seconds are counted from THIS process's start, so on a resumed
+        # run (--resume, which begins at e.g. epoch 48) dividing by the absolute epoch
+        # number understates the pace by ~50x and the ETA lands in the past. Divide by
+        # the epochs this process has actually run.
+        done_here = ep - (first_ep - 1) if first_ep else ep
+        res["sec_per_epoch"] = round(cum / done_here, 1) if done_here > 0 else None
         res["best_val_nrmse"] = best
     if DONE_RE.search(text):
         res["log_status"] = "completed"

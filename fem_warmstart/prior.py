@@ -70,9 +70,47 @@ def _step_index(record, sample) -> int:
 # only this shape number matters. Measured 2026-08-04, validate_prior --sweep-mu.
 STEEL_MU_EFF_R = 20.0
 
+# Section 26: the template excitation is 460 A RMS = 650.538 A peak, and
+# winding_template.json's ampere_turns was calibrated against exactly that. The
+# synthetic J is therefore the template current unless it is scaled, so the prior
+# for a case solved at a different current must carry
+# current_scale = I_pk(case) / TEMPLATE_IPK_A.
+#
+# This matters from R8 on and not before. Every pre-R8 case truly ran at 650.538 A
+# whatever its nominal label said (that WAS the section-24 defect), so their scale is
+# 1.0 and their cached priors stay byte-identical -- which keeps R7-A comparable.
+# Leaving it unwired for the R8 set would reproduce the section-24 disease inside the
+# prior itself: the current axis would move while the prior the network sees did not.
+TEMPLATE_IPK_A = 650.538238691624
+
+
+def case_current_scale(record) -> float:
+    """I_pk(case) / template I_pk for cases whose current axis is real; else 1.0.
+
+    The gate is ``excitation_wired``, not the presence of a PeakCurrent value. Every
+    pre-R8 manifest carries a nominal PeakCurrent that the solve never consumed (the
+    section-24 defect: e.g. case_0000 is labelled 224.05 A but was solved at 650.538 A
+    like every other one). Scaling by that label would be worse than not scaling at
+    all -- it would drive the prior with a current the case never saw, and silently
+    invalidate the existing prior cache that R7-A was trained against. So: scale only
+    when the manifest asserts the excitation was actually wired (R8 onward, and the v2
+    manifest which flags the re-labelled 240 as wired=0 with the true 650.538 A).
+    """
+    cond = getattr(record, "condition", None) or {}
+    if not cond.get("excitation_wired"):
+        return 1.0
+    try:
+        val = float(cond.get("PeakCurrent"))
+    except (TypeError, ValueError):
+        return 1.0
+    if not np.isfinite(val) or val <= 0.0:
+        return 1.0
+    return val / TEMPLATE_IPK_A
+
 
 def compute_prior(record, step: int, bh_path: Optional[Path] = None,
-                  mu_eff_r: float = STEEL_MU_EFF_R) -> np.ndarray:
+                  mu_eff_r: float = STEEL_MU_EFF_R,
+                  current_scale: Optional[float] = None) -> np.ndarray:
     """(n_export_nodes, 3) float64: [prior_a, prior_bx, prior_by]."""
     from scipy.sparse.linalg import spsolve
 
@@ -80,9 +118,12 @@ def compute_prior(record, step: int, bh_path: Optional[Path] = None,
     from fem_warmstart.bh_curve import MU0
     from fem_warmstart.domain import STEEL, build_domain
 
+    if current_scale is None:
+        current_scale = case_current_scale(record)
     domain = build_domain(
         record, step, bh_path or default_bh_path(),
         j_source="synthetic", magnet_polarity="radial_outward",
+        current_scale=current_scale,
     )
 
     # Linear solve: fixed effective permeability in steel (or the curves'
@@ -133,6 +174,7 @@ def nodal_prior_features(record, sample, bh_path: Optional[Path] = None,
     build_prior_cache populates whatever keys the resolution produces.
     """
     step = _step_index(record, sample)
+    scale = case_current_scale(record)
     arr: Optional[np.ndarray] = None
     cache_file: Optional[Path] = None
     if cache and not os.environ.get("PRIOR_CACHE_DISABLE"):
@@ -141,12 +183,17 @@ def nodal_prior_features(record, sample, bh_path: Optional[Path] = None,
         if cache_file.exists():
             with np.load(cache_file) as z:
                 key = f"step_{step}"
-                if key in z:
+                # The current the entry was computed at. Entries written before the
+                # R8 current axis existed carry no scale and were, correctly, all at
+                # the template current -- so absent means 1.0. A mismatch must
+                # recompute rather than serve a prior for the wrong excitation.
+                cached_scale = float(z[f"cs_{step}"]) if f"cs_{step}" in z else 1.0
+                if key in z and abs(cached_scale - scale) <= 1e-9 * max(1.0, abs(scale)):
                     cand = np.asarray(z[key], dtype=np.float64)
                     if cand.shape == (record.mesh.n_nodes, 3):
                         arr = cand
     if arr is None:
-        arr = compute_prior(record, step, bh_path)
+        arr = compute_prior(record, step, bh_path, current_scale=scale)
         if cache_file is not None:
             cache_file.parent.mkdir(parents=True, exist_ok=True)
             existing = {}
@@ -154,6 +201,7 @@ def nodal_prior_features(record, sample, bh_path: Optional[Path] = None,
                 with np.load(cache_file) as z:
                     existing = {k: z[k] for k in z.files}
             existing[f"step_{step}"] = arr.astype(np.float32)
+            existing[f"cs_{step}"] = np.asarray(scale, dtype=np.float64)
             tmp = cache_file.with_suffix(".tmp.npz")
             np.savez_compressed(tmp, **existing)
             os.replace(tmp, cache_file)
