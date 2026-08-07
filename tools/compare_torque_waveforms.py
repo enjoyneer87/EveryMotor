@@ -121,13 +121,31 @@ def main() -> int:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
+    # Display-only band-limited interpolation (section 28): the 45 samples span one
+    # electrical cycle, and every order below ~18f is faithful, so the smooth curve is
+    # the waveform itself rather than a spline. Straight lines between samples are what
+    # made this figure look ragged — the dominant ripple is 12f at 3.75 samples/period.
+    # All three curves are upsampled from the SAME uniform 45-point grid so they stay
+    # comparable; markers keep the actual sample positions visible.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from make_field_gif import fourier_upsample
+
+    spacing = float(elec[1] - elec[0])
+    xd, mc_d = fourier_upsample(mc_aligned)
+    _, fem_d = fourier_upsample(fem)
+    _, sur_d = fourier_upsample(sur)
+    elec_d = elec[0] + xd * spacing
+
     fig, (ax, axe) = plt.subplots(2, 1, figsize=(10, 6.6), height_ratios=[2.3, 1], sharex=True)
-    ax.plot(elec, mc_aligned, "o-", color="#1f77b4", lw=2.0, ms=4,
+    ax.plot(elec_d, mc_d, "-", color="#1f77b4", lw=2.0,
             label="Motor-CAD  TorqueVW (virtual work)")
-    ax.plot(elec, fem, "s--", color="#2ca02c", lw=1.7, ms=4,
+    ax.plot(elec_d, fem_d, "--", color="#2ca02c", lw=1.7,
             label="Arkkio on FEM B  (harness \"FEM\")")
-    ax.plot(elec, sur, "^-.", color="#d62728", lw=1.7, ms=4,
+    ax.plot(elec_d, sur_d, "-.", color="#d62728", lw=1.7,
             label="Arkkio on surrogate B  (PhysicsNeMo MGN)")
+    ax.plot(elec, mc_aligned, "o", color="#1f77b4", ms=3.2, alpha=0.45)
+    ax.plot(elec, fem, "s", color="#2ca02c", ms=3.2, alpha=0.45)
+    ax.plot(elec, sur, "^", color="#d62728", ms=3.2, alpha=0.45)
     ax.set_ylabel("torque  [N·m]")
     ax.grid(alpha=0.3)
     ax.legend(fontsize=9, loc="lower right")
@@ -135,12 +153,13 @@ def main() -> int:
         f"DOE case_{args.case:04d} — torque waveform, three ways\n"
         f"{mc['PeakCurrent']:.1f} A, phase adv {mc['PhaseAdvance']:.2f}°, 8-pole 1/8 sector, "
         f"stack {axial * 1e3:.0f} mm   |   our curves negated to Motor-CAD's "
-        f"positive-motoring convention",
-        fontsize=10,
+        f"positive-motoring convention   |   smooth curves: band-limited interpolation "
+        f"of the 45-step grid (§28)",
+        fontsize=9.5,
     )
 
-    axe.plot(elec, fem - mc_aligned, color="#2ca02c", lw=1.6, label="FEM − Motor-CAD")
-    axe.plot(elec, sur - mc_aligned, color="#d62728", lw=1.6, label="surrogate − Motor-CAD")
+    axe.plot(elec_d, fem_d - mc_d, color="#2ca02c", lw=1.6, label="FEM − Motor-CAD")
+    axe.plot(elec_d, sur_d - mc_d, color="#d62728", lw=1.6, label="surrogate − Motor-CAD")
     axe.axhline(0, color="0.6", lw=0.8)
     axe.set_ylabel("error  [N·m]")
     axe.set_xlabel("rotor position  [electrical deg]")
