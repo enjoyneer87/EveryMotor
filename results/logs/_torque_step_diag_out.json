@@ -1,0 +1,238 @@
+{
+  "4": {
+    "n_steps": 45,
+    "torque_mean": -2462.729530887501,
+    "ripple_rms": 101.39150327866994,
+    "ripple_p2p": 362.10289398598616,
+    "ripple_pct_of_mean": 14.703315546611979,
+    "top_orders_amp": [
+      {
+        "order": 12,
+        "amp": 120.95702386982119,
+        "pts_per_period_45": 3.75,
+        "pts_per_period_120": 10.0
+      },
+      {
+        "order": 6,
+        "amp": 74.27144978039013,
+        "pts_per_period_45": 7.5,
+        "pts_per_period_120": 20.0
+      },
+      {
+        "order": 18,
+        "amp": 15.641973981255655,
+        "pts_per_period_45": 2.5,
+        "pts_per_period_120": 6.666666666666667
+      },
+      {
+        "order": 21,
+        "amp": 11.059793377084336,
+        "pts_per_period_45": 2.142857142857143,
+        "pts_per_period_120": 5.714285714285714
+      },
+      {
+        "order": 2,
+        "amp": 4.848826572068932,
+        "pts_per_period_45": 22.5,
+        "pts_per_period_120": 60.0
+      },
+      {
+        "order": 9,
+        "amp": 3.352976900284657,
+        "pts_per_period_45": 5.0,
+        "pts_per_period_120": 13.333333333333334
+      },
+      {
+        "order": 10,
+        "amp": 1.8010378075597266,
+        "pts_per_period_45": 4.5,
+        "pts_per_period_120": 12.0
+      },
+      {
+        "order": 15,
+        "amp": 1.6552674358972639,
+        "pts_per_period_45": 3.0,
+        "pts_per_period_120": 8.0
+      }
+    ],
+    "rms_at_or_above_order22": 0.39036945388372524,
+    "hi_order_share_pct": 0.38501199929032764
+  },
+  "7": {
+    "n_steps": 45,
+    "torque_mean": -3081.6078825084032,
+    "ripple_rms": 95.25710990003977,
+    "ripple_p2p": 324.92756988420933,
+    "ripple_pct_of_mean": 10.544091989397463,
+    "top_orders_amp": [
+      {
+        "order": 12,
+        "amp": 119.04750326445475,
+        "pts_per_period_45": 3.75,
+        "pts_per_period_120": 10.0
+      },
+      {
+        "order": 6,
+        "amp": 54.68749413113746,
+        "pts_per_period_45": 7.5,
+        "pts_per_period_120": 20.0
+      },
+      {
+        "order": 21,
+        "amp": 26.878860444872284,
+        "pts_per_period_45": 2.142857142857143,
+        "pts_per_period_120": 5.714285714285714
+      },
+      {
+        "order": 2,
+        "amp": 12.272098365433017,
+        "pts_per_period_45": 22.5,
+        "pts_per_period_120": 60.0
+      },
+      {
+        "order": 4,
+        "amp": 7.533233880971747,
+        "pts_per_period_45": 11.25,
+        "pts_per_period_120": 30.0
+      },
+      {
+        "order": 18,
+        "amp": 4.434805941020699,
+        "pts_per_period_45": 2.5,
+        "pts_per_period_120": 6.666666666666667
+      },
+      {
+        "order": 9,
+        "amp": 3.5668882341386,
+        "pts_per_period_45": 5.0,
+        "pts_per_period_120": 13.333333333333334
+      },
+      {
+        "order": 10,
+        "amp": 2.7919186734368533,
+        "pts_per_period_45": 4.5,
+        "pts_per_period_120": 12.0
+      }
+    ],
+    "rms_at_or_above_order22": 0.4046162722873903,
+    "hi_order_share_pct": 0.42476228043448266
+  },
+  "240": {
+    "n_steps": 45,
+    "torque_mean": -1626.2870099752142,
+    "ripple_rms": 70.05071185189063,
+    "ripple_p2p": 235.1418324857193,
+    "ripple_pct_of_mean": 14.458815144154846,
+    "top_orders_amp": [
+      {
+        "order": 12,
+        "amp": 88.14971362102476,
+        "pts_per_period_45": 3.75,
+        "pts_per_period_120": 10.0
+      },
+      {
+        "order": 6,
+        "amp": 43.18808098531515,
+        "pts_per_period_45": 7.5,
+        "pts_per_period_120": 20.0
+      },
+      {
+        "order": 21,
+        "amp": 9.301637523317945,
+        "pts_per_period_45": 2.142857142857143,
+        "pts_per_period_120": 5.714285714285714
+      },
+      {
+        "order": 18,
+        "amp": 7.237565020245087,
+        "pts_per_period_45": 2.5,
+        "pts_per_period_120": 6.666666666666667
+      },
+      {
+        "order": 9,
+        "amp": 5.870917345611858,
+        "pts_per_period_45": 5.0,
+        "pts_per_period_120": 13.333333333333334
+      },
+      {
+        "order": 3,
+        "amp": 1.7565833379192473,
+        "pts_per_period_45": 15.0,
+        "pts_per_period_120": 40.0
+      },
+      {
+        "order": 15,
+        "amp": 1.3024905063847574,
+        "pts_per_period_45": 3.0,
+        "pts_per_period_120": 8.0
+      },
+      {
+        "order": 2,
+        "amp": 0.505392030038208,
+        "pts_per_period_45": 22.5,
+        "pts_per_period_120": 60.0
+      }
+    ],
+    "rms_at_or_above_order22": 0.13091929915563216,
+    "hi_order_share_pct": 0.18689217524646573
+  },
+  "241": {
+    "n_steps": 45,
+    "torque_mean": -829.2690789342821,
+    "ripple_rms": 53.93115401847815,
+    "ripple_p2p": 180.02612251645007,
+    "ripple_pct_of_mean": 21.709011838209005,
+    "top_orders_amp": [
+      {
+        "order": 12,
+        "amp": 67.1234013639446,
+        "pts_per_period_45": 3.75,
+        "pts_per_period_120": 10.0
+      },
+      {
+        "order": 6,
+        "amp": 35.06424829030128,
+        "pts_per_period_45": 7.5,
+        "pts_per_period_120": 20.0
+      },
+      {
+        "order": 21,
+        "amp": 8.268949192711657,
+        "pts_per_period_45": 2.142857142857143,
+        "pts_per_period_120": 5.714285714285714
+      },
+      {
+        "order": 18,
+        "amp": 2.3544172437920787,
+        "pts_per_period_45": 2.5,
+        "pts_per_period_120": 6.666666666666667
+      },
+      {
+        "order": 9,
+        "amp": 2.3307445575292496,
+        "pts_per_period_45": 5.0,
+        "pts_per_period_120": 13.333333333333334
+      },
+      {
+        "order": 15,
+        "amp": 1.245204357596939,
+        "pts_per_period_45": 3.0,
+        "pts_per_period_120": 8.0
+      },
+      {
+        "order": 3,
+        "amp": 0.8481559305485511,
+        "pts_per_period_45": 15.0,
+        "pts_per_period_120": 40.0
+      },
+      {
+        "order": 2,
+        "amp": 0.4198213355830897,
+        "pts_per_period_45": 22.5,
+        "pts_per_period_120": 60.0
+      }
+    ],
+    "rms_at_or_above_order22": 0.06380102030180784,
+    "hi_order_share_pct": 0.11830086239198224
+  }
+}
