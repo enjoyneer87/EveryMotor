@@ -11,6 +11,27 @@
 > **cannot reach the 5% gate at any feasible dataset size**. That pair of statements,
 > not either one alone, is the honest headline. The Arkkio validation number is
 > **0.35%**, not 0.60% (§22).
+> **Updated 2026-08-09 (through §29):** the campaign now has three further measured
+> results. (i) **Physics-prior injection** (linear mu_r=20 solve as per-node input
+> features, §27): torque 5.400→**3.354%**, overall |B| 11.638→11.096% on the fixed
+> 6-geometry holdout — but the **pre-registered primary metric (airgap < 7.05%) landed
+> negative** at 7.138% (dead band 7.05–7.55), and both facts are reported. (ii) The
+> **excitation-wiring defect (§24/§26) is repaired and the current axis is live**:
+> mode-0 fix verified causally, an ampere-turns gate is permanent in the generation
+> pipeline (80/80 pilot cases within 0.01%), and a 320-case geometry×current dataset
+> (240 re-labelled fixed-excitation + 40 geometries × {0.5, 0.25}×I_ref) trained to a
+> **new campaign best**. (iii) **Current generalization holds** (§29): on 12 held-out
+> geometry×current cases, pooled |B| **10.856% / airgap 5.353% / torque 2.614%**;
+> per-case torque 1.29–6.14% excluding the near-zero-torque geometry-32 pair. The
+> legacy fixed-excitation gate did not regress (pooled 11.107/6.618/3.270 vs the prior
+> model's 11.096/7.138/3.354) — **current capability came at zero cost to the original
+> task**. G1' now stands 1.618 pp (airgap) and 0.270 pp (torque) away — the closest the
+> campaign has been. §29 also fixes an **aggregation trap**: mean-of-per-case-nRMSE is
+> not pooled nRMSE, and near-zero-torque cases explode the former (the "16.45%"
+> artifact); gates use pooled, per-operating-point claims use per-case with the
+> degenerate cases disclosed. R5c resolved (§21c): the 100-epoch 120-design run scored
+> 11.762%, inside the pre-registered 11.71–12.21 band — the published curve stands.
+> The waveform correlation figure is **0.9955** (§22), not 0.996.
 
 ## 1. Title + abstract skeletons
 
@@ -31,7 +52,7 @@ Alternates (register-consistent):
 > actually needs. We present (i) a torque-faithful, leakage-audited evaluation harness for
 > mesh-based graph-neural-network (GNN) surrogates of interior-permanent-magnet (IPM)
 > machines, built on an Arkkio air-gap operator validated against a commercial solver to
-> 0.35% in mean torque (0.54% pointwise RMSE, waveform correlation 0.996); (ii)
+> 0.35% in mean torque (0.54% pointwise RMSE, waveform correlation 0.9955); (ii)
 > representation floors that bound achievable error for two nodal-output
 > conventions; and (iii) a controlled single-axis elimination showing that model capacity,
 > supervision signal, receptive-field architecture, and output representation each fail to
@@ -73,7 +94,7 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
 3. **Arkkio air-gap operator validated against the commercial solver.** Torque from the
    surrogate's air-gap field via a segmented Arkkio operator, self-tested to FEM-identity
    0.000% and validated vs Motor-CAD virtual-work over a full electrical cycle to
-   **0.35%** in mean torque / 0.54% pointwise RMSE / 0.996 correlation (§8c, re-derived
+   **0.35%** in mean torque / 0.54% pointwise RMSE / 0.9955 correlation (§8c, re-derived
    and confirmed §22), making torque a first-class, trustworthy metric rather than a
    post-hoc estimate. The residual is a systematic mesh-faceting bias of the band area,
    same sign at every rotor position, and cancels in the relative metrics the gates read.
@@ -101,6 +122,44 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
    with the epoch budget scaled to the data reversed all of it (11.638%, torque excluding
    the degenerate case 4.01→3.94%). We report both runs, because the step-matched protocol
    is a plausible default that yields the opposite scientific conclusion (§21, §21b).
+   Closed loop: the pre-registered 100-epoch check at the 120-design point scored 11.762%,
+   inside its 11.71–12.21 "budget was adequate" band, so the published three-point curve
+   stands as-is (§21c).
+
+8. **DOE-integrity audit: an excitation axis that never reached the solver — found,
+   root-caused, repaired, and gated.** The nominal PeakCurrent axis (10–650 A) was written
+   to every case file but consumed by none: the template was in RMS current-definition
+   mode, where PeakCurrent is a derived display quantity, and the exported winding
+   excitation is a constant 325.3 ampere-turns across a 35× nominal range (0.03% spread,
+   three independent computations; causal confirmation by two counterfactual solves,
+   §24/§26). Repair: mode-0 per-case injection, verified to reproduce the RMS-mode physics
+   to 4–5 decimal places; a permanent post-generation ampere-turns gate now checks that
+   "the axis you varied actually reached the fields" (80/80 pilot cases within 0.01%,
+   §26/§29). Extends the leakage-audit framing of contribution 1 from model inputs to the
+   data-generation pipeline itself.
+
+9. **Physics-prior injection, pre-registered.** A licence-free linear magnetostatic solve
+   (fixed effective mu_r=20 steel, synthetic template winding, per-node A/Bx/By) added as
+   input features — the only physics-injection route not yet eliminated (loss-side and
+   post-hoc projection moved nothing, §16/§14b). Outcome against pre-registered criteria
+   (§27): primary metric (airgap < 7.05%) **negative** at 7.138%; secondary (overall
+   < 11.39%) positive at 11.096%; torque — unregistered but the adopted gate's failing
+   leg — improved 5.400→3.354%, the only lever that has ever moved it (data moves torque
+   −0.08 pp/doubling). Both the negative primary and the torque gain are reported; the
+   prior's current coupling (J scaled by I_pk/I_ref) was wired and verified exactly
+   (superposition to 1.6e-15) before any current-axis training used it (§27, commit-level
+   gates).
+
+10. **Current-axis generalization with an aggregation caveat.** Trained on 320 cases
+    (240 geometries at the true fixed excitation + 40 geometries × {0.5, 0.25}×I_ref),
+    evaluated on a geometry×current double holdout: pooled |B| 10.856% / airgap 5.353% /
+    torque 2.614% on 12 never-seen geometry×current cases, with the legacy
+    fixed-excitation gate unharmed (11.107/6.618/3.270 vs 11.096/7.138/3.354) — current
+    capability at zero cost to the original task, and the campaign's best airgap
+    (6.618%). Method caveat elevated to a result: mean-of-per-case nRMSE ≠ pooled nRMSE,
+    and near-zero-torque cases (FEM mean −5 to −54 N·m/m) explode the per-case form
+    (a "16.45%" headline that is really two degenerate denominators); we state which
+    statistic answers which question (§29).
 
 ## 3. Section-by-section outline
 
@@ -108,17 +167,23 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
   why leakage and evaluation rigor are underreported; contributions.
 - **II. Problem & Data.** 2D magnetostatic IPM (48-slot/8-pole, 1/8 anti-periodic sector);
   DOE design space as *sampled*: Ratio_Bore ±10%, Ratio_SlotDepth ±15%, PhaseAdvance
-  0–90°. **CORRECTION (2026-08-04, §24):** the nominal PeakCurrent axis (10–650 A) was
-  written to the .mot files but did **not** propagate into the electromagnetic solve — the
-  exported winding excitation is a constant 325.3 ampere-turns per slot region across the
-  entire DOE (verified to 0.03% over a 35× nominal-current range, three independent
-  computations). The effective operating-point axis is PhaseAdvance only, and every case
-  shares one saturation level. State this plainly in II; it does not affect the
-  geometry-scaling conclusions (§20–21b) but it bounds the deployment claim (no
-  current-dependence was ever trained) and it is itself a publishable data-audit point —
-  the leakage-audit framing of contribution 1 extends naturally to "DOE-integrity audit".
+  0–90°. **CORRECTION (2026-08-04, §24) + REPAIR (2026-08-05/06, §26, §29):** the nominal
+  PeakCurrent axis (10–650 A) was written to the .mot files but did **not** propagate into
+  the electromagnetic solve — the exported winding excitation is a constant 325.3
+  ampere-turns per slot region across the entire DOE (0.03% over a 35× nominal range,
+  three independent computations, two causal counterfactual solves). The pre-repair
+  dataset is therefore a single-excitation slice (all cases at 650.538 A peak =
+  460 A RMS), which does not affect the geometry-scaling conclusions (§20–21b) but
+  bounded the deployment claim. The repair (per-case CurrentDefinition=0) was verified to
+  reproduce the RMS-mode physics to 4–5 decimals; a permanent ampere-turns gate now
+  audits every generated batch; and the corrected 320-case geometry×current dataset
+  (240 re-labelled + 40 geometries × {325.3, 162.6} A, saturation |B| tooth p95
+  1.74/1.95/2.07 T at 163/325/650 A) trains the current axis for real. Present the
+  defect, the repair, and the gate together — the "DOE-integrity audit" is contribution 8.
   Motor-CAD solve; OnLoadTorque 45-step rotor sweep; mesh (~6–12k nodes / ~12–23k
-  elements).
+  elements). (45 points/cycle is spectrally clean below order 18; a 24f slot harmonic
+  folds to 21f — quantified by a 120-point re-solve, §28 — so waveform-level ripple
+  metrics carry that caveat while per-position field/torque metrics do not.)
 - **III. Mesh-GNN Surrogate.** MeshGraphNet backbone; 9-node/4-edge V2 feature contract;
   nodal-B (average) and nodal-A (P1 curl) output heads; element-support loss.
 - **IV. Torque-Faithful Evaluation Harness.** Case-level holdout; leakage taxonomy;
@@ -128,19 +193,26 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
   band spectral supervision (§14b,16), global-attention/long-range architecture
   (Transolver §17, Hybrid §18, attention-capacity footnote), representation (curl-A §19).
   Each: hypothesis, single-axis config, result, verdict.
-- **VI. What Does: Training-Geometry Data Scaling — and its range.** DOE expansion
-  pipeline; fixed test/val; the 40/120/240 curve; per-case and per-region breadth of both
-  gains; generalization-gap narrowing; **the step-matched vs epoch-matched protocol
-  comparison as a result in its own right** (§20, §21, §21b).
+- **VI. What Does: Data — geometry scaling, physics-prior injection, and the current
+  axis.** DOE expansion pipeline; fixed test/val; the 40/120/240 curve (+ the §21c
+  budget-adequacy check); per-case and per-region breadth; **the step-matched vs
+  epoch-matched protocol comparison as a result in its own right** (§20, §21, §21b);
+  the physics-prior experiment with its pre-registered split verdict (§27); the 320-case
+  geometry×current training and the double-holdout current-generalization scorecard,
+  including the pooled vs per-case aggregation statement (§29).
 - **VII. Discussion.** Data-limited generalization with a quantified ceiling; **no
-  extrapolation to G1(5%)** — the slope is real but ~22 doublings short, so the honest
-  statement is that the data lever alone does not reach the 5% gate at any tractable cost,
-  and the gate needs a different lever (label quality, mesh resolution, or redefining the
-  target); deployment candidate; and a **measured** bar for the surrogate-as-solver-
-  initialiser idea rather than a speculative one — reusing the curl-A model (§19) as a
-  Newton warm start cuts iterations 15% against a zero start but loses to the trivial
-  previous-rotor-angle warm start by 60%, so "seed the solver with the surrogate" is
-  quantitatively premature at 18.7% |B| (§23).
+  extrapolation to G1'(5%/3%)** — the geometry slope is real but the honest statement is
+  that data alone does not reach the gate at tractable cost (airgap −0.32 pp/doubling ≈
+  34k designs ≈ 62 days of solve); the one lever that moved torque is input-side physics
+  injection (5.400→3.354%), and the current standing is airgap 6.618% / torque 3.270%
+  against 5%/3% — 1.618 and 0.270 pp away. Current-axis deployment claim now measured
+  (unseen geometry×current pooled |B| 10.856 / torque 2.614%), with the near-zero-torque
+  normalization caveat stated. Screening claim (Spearman 1.000, n=6) as before. And a
+  **measured** bar for the surrogate-as-solver-initialiser idea rather than a speculative
+  one — reusing the curl-A model (§19) as a Newton warm start cuts iterations 15% against
+  a zero start but loses to the trivial previous-rotor-angle warm start by 60%, so "seed
+  the solver with the surrogate" is quantitatively premature at that checkpoint's 18.7%
+  |B| (§23).
 - **VIII. Limitations & IX. Reproducibility.** (see §5–6 below.)
 - **X. Conclusion.**
 
@@ -178,6 +250,30 @@ scored by `eval/benchmark.py`. Only the named axis differs from the row above it
 | **data** | **120 geometries** | 9,285,890 | 50 | **11.960** | 5.252 | §20 |
 | data | 240 geometries, step-matched | 9,285,890 | 25 | 12.106 | 6.349 | §21 |
 | **data** | **240 geometries, epoch-matched** | 9,285,890 | 50 | **11.638** | **5.400** | §21b |
+| data (check) | 120 geometries, 100 ep | 9,285,890 | 100 | 11.762 | 7.204 | §21c |
+| **physics prior** | + linear-solve node features (V3) | 9,286,658 | 50 | **11.096** | **3.354** | §27 |
+| **data** | **320 geometry×current (+prior)** | 9,286,658 | 50 | **11.107** | **3.270** | §29 |
+
+The last two rows continue the single-axis chain: the prior row changes only the input
+features on the 240-geometry recipe; the 320 row changes only the training data (adds the
+40×{0.5,0.25}·I_ref factorial) on the prior recipe. The 320 row's airgap is the campaign
+best, 6.618% (vs 7.138 prior, 7.30 champion); its current-axis scorecard is T5.
+
+### T5 — current-axis generalization (v2 320-case model, pooled per group; §29)
+
+| Group | n cases | pooled \|B\| % | pooled airgap % | pooled torque % |
+|---|---|---|---|---|
+| legacy 650.5 A (fixed-excitation gate) | 6 | 11.107 | 6.618 | 3.270 |
+| unseen geometry×current (all) | 12 | 10.856 | 5.353 | 2.614 |
+| — 325.3 A only | 6 | 10.690 | — | 2.404 |
+| — 162.6 A only | 6 | 11.058 | — | 3.479 |
+| — excluding geometry-32 pair | 10 | 10.646 | — | 2.263 |
+
+Aggregation statement (belongs in IV): gate comparisons use pooled nRMSE (error RMS over
+all samples / truth RMS over all samples); per-operating-point claims use per-case nRMSE,
+whose mean is a different statistic and is dominated by near-zero-torque cases when they
+exist (geometry 32: FEM mean torque −5 to −54 N·m/m → per-case 19.8–129.9%). The v2
+per-case torque range excluding that geometry is 1.29–6.14%.
 
 Run-to-run variation on this harness is ~0.25 pp in |B| (measured across repeats);
 nothing inside that band is claimed as an effect. The two 240-geometry rows differ only
@@ -253,9 +349,19 @@ both panels, and the epoch/step counts annotated per point.
   digest (`manifest_digest`) so a split provably matches its dataset; test/val held
   identical across scales for fair comparison.
 - **Data pipeline:** `results/logs/doe_gen.py` (Motor-CAD LHS), `doe_ingest.py`,
-  `doe_make_split.py`, `run_doe{120,240}_docker.sh`; NGC container
-  `nvcr.io/nvidia/physicsnemo/physicsnemo:26.03`, no custom install.
-- **Governing plan of record:** `.github/plans/methodology_review_20260720.md` §§7–21.
+  `doe_make_split.py`, `run_doe{120,240}_docker.sh`; current-axis pilot
+  `doe_current_pilot.py` (sharded/resumable), v2 assembly `doe_build_v2.py`
+  (repo-relative paths, container-verified), 480 expansion `doe_gen_480.py`; NGC
+  container `nvcr.io/nvidia/physicsnemo/physicsnemo:26.03`, no custom install.
+- **Post-generation gates:** ampere-turns excitation gate
+  (`results/logs/doe_verify_excitation.py`, artifact `results/r8_excitation_gate_80.json`),
+  path-resolution gate (`_v2_path_probe.py`), prior current-coupling gate
+  (`verify_prior_current.py`, exact superposition), prior scale-invariance check
+  (`_prior_scale_check.py`).
+- **Training resilience:** `--resume` with run-defining-flag drift guard + atomic
+  per-epoch `.last` checkpoints (`train_doe_curl_mgn.py`); the v2 run survived a host
+  reboot and a session teardown losing only in-flight epochs.
+- **Governing plan of record:** `.github/plans/methodology_review_20260720.md` §§7–29.
 
 ## 6b. Pending decisions surfaced by the 2026-08-04 audit (§24–25, r7 design doc)
 
@@ -286,9 +392,15 @@ both panels, and the epoch/step counts annotated per point.
   |B| 11.638%, clears the pre-registered 11.71% threshold. VI now reads as a three-point
   rising curve plus a measured ceiling, and the step-matched run is promoted from
   "confound to disclose" to contribution 7.
-- **A 100-epoch 120-design run is RUNNING (R5c, launched 2026-08-04, ~24 h wall)** — the
-  one experiment that could undercut our own ceiling claim; pre-registered decision rule
-  in methodology_review §21b.
+- ~~A 100-epoch 120-design run (R5c).~~ **Done 2026-08-05 (§21c)** — 11.762%, inside the
+  pre-registered 11.71–12.21 "budget was adequate" band. The published curve stands; the
+  abstract's under-training caveat can be softened to cite this check.
+- **480-case expansion generating (2026-08-09):** +120 new geometries at the legacy
+  excitation + 20 of them × {325.3, 162.6} A + a 6-case unseen-level (487.9 A)
+  interpolation probe (eval-only). Retrain will move only the data axis on the v2 recipe.
+- **G1'-closing experiments pre-registered before running** (methodology §30 when
+  written): candidates are airgap-weighted loss revisited on the prior+current stack and
+  longer training; decision rules to be fixed before GPU time is spent.
 - ~~Draw F5.~~ Done (`tools/make_campaign_figures.py` fig2). F6 is optional-but-available:
   the warm-start PoC landed
   negative, and a three-bar iteration-count chart (17.5 / 14.8 / 9.3) is the cleanest way
