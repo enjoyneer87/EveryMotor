@@ -1,0 +1,161 @@
+{
+ "model": "curl:mgn_nodeB_doe_v2_bw30_prior",
+ "note": "CORRECTED aggregation artifact (2026-08-08). The first groups file reported the MEAN OF PER-CASE nRMSE percentages, which is a different statistic from the pooled nRMSE the campaign scorecards (champion 11.638/5.400 etc.) use, and near-zero-torque cases (geometry 32: v2 cases 304/305, mean torque -54/-20 N*m/m) explode the per-case form. pooled = RMSE over all samples / RMS of truth over all samples, per group; verified against direct subset re-scoring (benchmark_..._legacy6.json: 11.107/3.270 identical). Use pooled for gate comparisons; use per-case (with the geom-32 caveat) for per-operating-point claims.",
+ "groups": {
+  "legacy_650A": {
+   "cases": [
+    4,
+    7,
+    18,
+    32,
+    37,
+    39
+   ],
+   "pooled": {
+    "bnorm_nrmse_pct": 11.107,
+    "torque_nrmse_pct": 3.27,
+    "airgap_bnorm_nrmse_pct": 6.618
+   },
+   "per_case_mean": {
+    "bnorm_nrmse_pct": 11.847,
+    "torque_nrmse_pct": 5.858
+   },
+   "per_case_torque_nrmse_pct": {
+    "4": 2.995,
+    "7": 3.039,
+    "18": 1.744,
+    "32": 19.808,
+    "37": 6.232,
+    "39": 1.329
+   }
+  },
+  "new_current": {
+   "cases": [
+    248,
+    249,
+    254,
+    255,
+    276,
+    277,
+    304,
+    305,
+    314,
+    315,
+    318,
+    319
+   ],
+   "pooled": {
+    "bnorm_nrmse_pct": 10.856,
+    "torque_nrmse_pct": 2.614,
+    "airgap_bnorm_nrmse_pct": 5.353
+   },
+   "per_case_mean": {
+    "bnorm_nrmse_pct": 11.142,
+    "torque_nrmse_pct": 16.45
+   },
+   "per_case_torque_nrmse_pct": {
+    "248": 1.943,
+    "249": 2.582,
+    "254": 2.181,
+    "255": 1.693,
+    "276": 1.95,
+    "277": 2.713,
+    "304": 40.594,
+    "305": 129.877,
+    "314": 4.382,
+    "315": 6.144,
+    "318": 1.291,
+    "319": 2.054
+   }
+  },
+  "new_325A": {
+   "cases": [
+    248,
+    254,
+    276,
+    304,
+    314,
+    318
+   ],
+   "pooled": {
+    "bnorm_nrmse_pct": 10.69,
+    "torque_nrmse_pct": 2.404,
+    "airgap_bnorm_nrmse_pct": null
+   },
+   "per_case_mean": {
+    "bnorm_nrmse_pct": 11.069,
+    "torque_nrmse_pct": 8.723
+   },
+   "per_case_torque_nrmse_pct": {
+    "248": 1.943,
+    "254": 2.181,
+    "276": 1.95,
+    "304": 40.594,
+    "314": 4.382,
+    "318": 1.291
+   }
+  },
+  "new_162A": {
+   "cases": [
+    249,
+    255,
+    277,
+    305,
+    315,
+    319
+   ],
+   "pooled": {
+    "bnorm_nrmse_pct": 11.058,
+    "torque_nrmse_pct": 3.479,
+    "airgap_bnorm_nrmse_pct": null
+   },
+   "per_case_mean": {
+    "bnorm_nrmse_pct": 11.214,
+    "torque_nrmse_pct": 24.177
+   },
+   "per_case_torque_nrmse_pct": {
+    "249": 2.582,
+    "255": 1.693,
+    "277": 2.713,
+    "305": 129.877,
+    "315": 6.144,
+    "319": 2.054
+   }
+  },
+  "new_current_excl_geom32": {
+   "cases": [
+    248,
+    249,
+    254,
+    255,
+    276,
+    277,
+    314,
+    315,
+    318,
+    319
+   ],
+   "pooled": {
+    "bnorm_nrmse_pct": 10.646,
+    "torque_nrmse_pct": 2.263,
+    "airgap_bnorm_nrmse_pct": null
+   },
+   "per_case_mean": {
+    "bnorm_nrmse_pct": 10.811,
+    "torque_nrmse_pct": 2.693
+   },
+   "per_case_torque_nrmse_pct": {
+    "248": 1.943,
+    "249": 2.582,
+    "254": 2.181,
+    "255": 1.693,
+    "276": 1.95,
+    "277": 2.713,
+    "314": 4.382,
+    "315": 6.144,
+    "318": 1.291,
+    "319": 2.054
+   }
+  }
+ }
+}

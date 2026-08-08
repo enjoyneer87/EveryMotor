@@ -144,17 +144,38 @@ model_key = "curl:mgn_nodeB_${TAG}"
 s = d["models"][model_key]["summary"]
 by_case = s["by_case"]
 out = {"model": model_key, "n_test_cases": len(by_case), "groups": {}}
+import math
+def pooled(rows):
+    # Pooled nRMSE = RMSE over all samples / RMS of truth over all samples -- the SAME
+    # statistic as the campaign scorecards (champion 11.638/5.400). The mean of per-case
+    # percentages is a different statistic and near-zero-torque cases (geometry 32) blow
+    # it up; section 29 documents the trap. Emit BOTH, clearly labelled.
+    nB = eB = rB = nT = eT = rT = 0.0
+    for v in rows.values():
+        b = v["channels"]["Bnorm"]
+        ref = b["rmse"] / (b["nrmse_pct"] / 100.0)
+        nB += b["n"]; eB += b["n"] * b["rmse"] ** 2; rB += b["n"] * ref ** 2
+        if "torque" in v:
+            t = v["torque"]
+            nT += t["n"]; eT += t["n"] * t["rmse_torque"] ** 2; rT += t["n"] * t["rms_torque_true"] ** 2
+    pb = 100 * math.sqrt(eB / nB) / math.sqrt(rB / nB) if nB else None
+    pt = 100 * math.sqrt(eT / nT) / math.sqrt(rT / nT) if nT else None
+    return pb, pt
+
 for gname, gcases in groups.items():
     rows = {int(ci): v for ci, v in by_case.items() if int(ci) in gcases}
     bs = [v["channels"]["Bnorm"]["nrmse_pct"] for v in rows.values()]
     # 'torque' is only present when a case produced torque samples -- guard, and
     # surface the anomaly instead of KeyError-ing the verdict artifact away.
     tq = [v["torque"]["nrmse_torque_pct"] for v in rows.values() if "torque" in v]
+    pb, pt = pooled(rows)
     out["groups"][gname] = {
         "cases": sorted(rows),
         "n_cases_missing_torque": sum(1 for v in rows.values() if "torque" not in v),
-        "bnorm_nrmse_pct_mean": sum(bs) / len(bs) if bs else None,
-        "torque_nrmse_pct_mean": sum(tq) / len(tq) if tq else None,
+        "pooled": {"bnorm_nrmse_pct": round(pb, 3) if pb else None,
+                   "torque_nrmse_pct": round(pt, 3) if pt else None},
+        "per_case_mean": {"bnorm_nrmse_pct": round(sum(bs) / len(bs), 3) if bs else None,
+                          "torque_nrmse_pct": round(sum(tq) / len(tq), 3) if tq else None},
         "bnorm_nrmse_pct_by_case": {str(k): round(rows[k]["channels"]["Bnorm"]["nrmse_pct"], 3)
                                     for k in sorted(rows)},
     }

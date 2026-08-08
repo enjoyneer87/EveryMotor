@@ -1,10 +1,10 @@
 {
-  "experiment": "r8-v2-320 (geometry x current, +prior current-coupled)",
+  "experiment": "r8-v2-320 COMPLETE -- verdict recorded (section 29)",
   "owner": "R7-A 정지 진단·판정 (session A)",
   "band_w": 30,
   "total_epochs": 50,
   "logfile": "D:/KDH/NvidiaNemo/results/logs/v2_320_resume.log",
-  "status_hint": "running",
-  "next_in_queue": "score BOTH gates on completion (the run script does this itself: legacy_650A group = fixed 6-test comparable to champion 11.638/7.30/5.400, plus new_current group = 12 held-out-geometry cases at 325.3/162.6 A) -> write the section-27 current-generalization verdict. R7-A final verdict already recorded: primary airgap 7.138% NEGATIVE (dead band), secondary overall 11.096% positive, torque 3.354%; prior features INCLUDED in this run per the section-27 decision record.",
-  "gpu_note_extra": "320-case v2 run RESUMED from ep24 (2026-08-07 16:3x KST) after the previous Claude session's teardown killed Docker Desktop (started via Start-Process = child of the session job object) and the container with it -- NOT a reboot, NOT OOM; only mid-ep25 work lost thanks to atomic ckpt-every-1 .last. Now session-independent: container is daemon-owned (docker run -d, name v2_320_resume) writing its own log in-container; heartbeat is a Windows scheduled task (EveryMotorHeartbeat, every 5 min, py -3.12 heartbeat.py --once) surviving session exits AND reboots. Remaining risk: Docker Desktop itself (user process, dies on logoff/reboot; does NOT auto-start). After a reboot: start Docker Desktop DETACHED (explorer.exe \"C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe\"), then RESUME=results/mgn_nodeB_doe_v2_bw30_prior.pt.last bash results/logs/run_v2_320_docker.sh with -d and in-container logging. Split geometry x current holdout train 290/val 12/test 18; ~2219 s/epoch, 26 epochs left ~ 16 h, ETA ~2026-08-08 08:3x KST."
+  "status_hint": "completed",
+  "next_in_queue": "Section 29 verdict recorded 2026-08-08: current generalization HOLDS (new12 pooled |B| 10.856 / airgap 5.353 / torque 2.614; per-case torque 1.29-6.14% excluding the near-zero-torque geometry-32 pair), legacy task unharmed (legacy6 pooled 11.107/6.618/3.270 vs R7-A 11.096/7.138/3.354) -> v2 = NEW CHAMPION. G1' still open on the legacy gate: airgap 6.618 (need <5, 1.618pp), torque 3.270 (need <3, 0.270pp) -- closest ever. Aggregation trap documented: pooled vs per-case-mean; use pooled for gates. No run in flight; heartbeat task can stay (5-min schtasks) or be deleted with: schtasks /delete /tn EveryMotorHeartbeat /f",
+  "gpu_note_extra": "No training in flight. v2 champion checkpoint: results/mgn_nodeB_doe_v2_bw30_prior.pt (best-val 0.014084, 50 epochs, resumed twice via --resume after host reboot + session teardown; total loss 2 in-flight epochs). Group scorecards: benchmark_v2_nodeB_doe_v2_bw30_prior{_legacy6,_new12,_groups}.json."
 }
