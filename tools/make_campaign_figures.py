@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 
 import matplotlib
@@ -41,6 +42,7 @@ AXIS_COLORS = {
     "architecture": "#dd8452",
     "representation": "#c44e52",
     "data": "#0f7b6c",
+    "physics": "#8172b3",
 }
 
 plt.rcParams.update({
@@ -96,6 +98,10 @@ CAMPAIGN = [
     ("DOE 120\ngeometries",      "benchmark_v2_nodeB_doe120_bw30.json",      "data",           "§20"),
     ("DOE 240\nstep-matched",    "benchmark_v2_nodeB_doe240_bw30.json",      "data",           "§21"),
     ("DOE 240\nepoch-matched",   "benchmark_v2_nodeB_doe240_bw30_ep50.json", "data",           "§21b"),
+    ("+physics\nprior 240",      "benchmark_v2_nodeB_doe240_bw30_prior_ep50.json", "physics",  "§27"),
+    # v2 is scored on the legacy 6-test subset so this bar stays apples-to-apples with
+    # every bar left of it; its current-axis scorecard is a separate table (outline T5).
+    ("v2 320\ngeom×current",     "benchmark_v2_nodeB_doe_v2_bw30_prior_legacy6.json", "data",  "§29"),
 ]
 
 
@@ -110,7 +116,8 @@ def fig1_elimination(out: Path) -> Path:
     x = np.arange(len(labels))
     colors = [AXIS_COLORS[g] for g in groups]
     ticklabels = [f"{lab}\n{sec}" for lab, sec in zip(labels, secs)]
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16.5, 10.6), sharex=True,
+    # 14 bars: the two-line tick labels collide at the old 16.5 in width.
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(19.5, 10.6), sharex=True,
                                    gridspec_kw={"height_ratios": [1, 1], "hspace": 0.10})
 
     # ---- |B| ----
@@ -129,7 +136,8 @@ def fig1_elimination(out: Path) -> Path:
     ax1.set_title(
         "Single-axis elimination on a fixed 6-geometry holdout — capacity, supervision, "
         "architecture and representation\nall leave the |B| floor standing; only training-"
-        "geometry count moves it, and only when the epoch budget scales with it",
+        "geometry count (with a matched epoch budget) and the physics prior move it, and "
+        "the prior alone moves torque",
         loc="left", pad=12)
     ax1.text(0.006, 0.965,
              f"dotted = h128 baseline ({bvals[0]:.2f}%)      "
@@ -146,13 +154,14 @@ def fig1_elimination(out: Path) -> Path:
     ax2.set_ylabel("held-out torque nRMSE  [%]")
     ax2.set_ylim(0, max(tvals) * 1.30)
     ax2.set_xticks(x)
-    ax2.set_xticklabels(ticklabels)
+    ax2.set_xticklabels(ticklabels, fontsize=11)
     ax2.annotate(f"node round-trip floor is {fl['node_resampling_floor'][1]:.1f}% — off-scale, "
                  f"and every trained model is far below it",
                  xy=(0.006, 0.93), xycoords="axes fraction", fontsize=10.5, color="#777777")
 
     handles = [Patch(facecolor=AXIS_COLORS[k], label=k) for k in
-               ("baseline", "capacity", "supervision", "architecture", "representation", "data")]
+               ("baseline", "capacity", "supervision", "architecture", "representation",
+                "data", "physics")]
     handles += [
         Line2D([], [], color="#333333", ls="--", lw=1.6, label="curl representation floor"),
         Line2D([], [], color="#999999", ls="-.", lw=1.4, label="node round-trip floor (|B| panel)"),
@@ -413,7 +422,11 @@ def fig5_percase(out: Path) -> Path:
     series = [
         ("40 geometries", "benchmark_v2_nodeB_spectral_bw30.json", "#c9d7d4"),
         ("120 geometries", "benchmark_v2_nodeB_doe120_bw30.json", "#6ba9a0"),
-        ("240 geometries (best)", "benchmark_v2_nodeB_doe240_bw30_ep50.json", "#0f7b6c"),
+        ("240 geometries (largest geometry set)", "benchmark_v2_nodeB_doe240_bw30_ep50.json", "#0f7b6c"),
+        # The champion is no longer the largest geometry set: v2 adds the current axis on
+        # top of the same 240 geometries. Scored on the identical legacy 6-test subset.
+        ("v2 320 geom×current + prior (champion)",
+         "benchmark_v2_nodeB_doe_v2_bw30_prior_legacy6.json", "#8172b3"),
     ]
     per = []
     for label, fname, color in series:
@@ -424,10 +437,10 @@ def fig5_percase(out: Path) -> Path:
     fig, (axb, axt) = plt.subplots(2, 1, figsize=(13.4, 9.2), sharex=True,
                                    gridspec_kw={"hspace": 0.16})
     x = np.arange(len(case_ids))
-    width = 0.26
+    width = 0.78 / len(per)
     bmax, tmax = 0.0, 0.0
     for i, (label, color, by_case) in enumerate(per):
-        off = (i - 1) * width
+        off = (i - (len(per) - 1) / 2) * width
         b = [by_case[c]["channels"]["Bnorm"]["nrmse_pct"] for c in case_ids]
         t = [by_case[c]["torque"]["nrmse_torque_pct"] for c in case_ids]
         bmax, tmax = max(bmax, max(b)), max(tmax, max(t))
@@ -442,7 +455,8 @@ def fig5_percase(out: Path) -> Path:
     axb.text(len(x) - 0.4, G1_B + 0.45, "G1 gate 5%", ha="right", fontsize=11, color="#c44e52")
     axb.set_ylabel("|B| nRMSE  [%]")
     axb.set_ylim(0, bmax * 1.22)
-    axb.set_title("Per-test-geometry breakdown — every geometry improves at every data scale "
+    axb.set_title("Per-test-geometry breakdown — |B| improves at every geometry on every "
+                  "geometry-scale step,\nand the champion adds the current axis on top "
                   "(all runs trained to convergence)", loc="left", pad=12)
     axb.legend(loc="upper left", ncol=3, framealpha=0.95, fontsize=11)
 
@@ -465,11 +479,25 @@ def fig5_percase(out: Path) -> Path:
                  "outlier (§13)",
                  transform=axt.transAxes, va="top", fontsize=10.5, color="#555555",
                  bbox=dict(boxstyle="round,pad=0.4", fc="#f7f7f7", ec="#cccccc", lw=1.0))
+    # Computed, not hard-coded: this line went stale once when a new series was added.
+    # Pooled (not mean-of-per-case) -- the section-29 aggregation trap, and exactly the
+    # statistic case_0032's near-zero denominator would otherwise dominate.
+    def pooled_torque_ex32(by_case) -> float:
+        n = e = r = 0.0
+        for ci, v in by_case.items():
+            if int(ci) == 32 or "torque" not in v:
+                continue
+            t = v["torque"]
+            n += t["n"]; e += t["n"] * t["rmse_torque"] ** 2
+            r += t["n"] * t["rms_torque_true"] ** 2
+        return 100 * math.sqrt(e / n) / math.sqrt(r / n)
+
+    ex32 = " / ".join(f"{pooled_torque_ex32(bc):.2f}" for _, _, bc in per)
+    names = " / ".join(lab.split(" (")[0] for lab, _, _ in per)
     fig.text(0.008, -0.015,
-             "Same six geometries in every campaign run, never trained on. Excluding case_0032 the "
-             "pooled torque is 4.15 / 4.01 / 3.94 % for 40 / 120 / 240 geometries —\n"
-             "the 240-geometry model is the campaign best on torque too, once the degenerate "
-             "normalisation of case_0032 is set aside.",
+             "Same six geometries in every campaign run, never trained on. Excluding case_0032 "
+             f"the pooled torque is {ex32} % for {names} —\nthe champion is the campaign best on "
+             "torque too, once the degenerate normalisation of case_0032 is set aside.",
              fontsize=10, color="#555555")
     fig.savefig(out)
     plt.close(fig)

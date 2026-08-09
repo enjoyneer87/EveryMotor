@@ -37,7 +37,21 @@ from tools.motorCAD.pyMCAD.doe_batch import (                   # noqa: E402
     doe_export_txt,
     doe_export_h5_from_txt,
 )
+from tools.motorCAD.pyMCAD.melec_req_check import set_mcad_variables   # noqa: E402
+from tools.motorCAD.pyMCAD.winding_auto import (                # noqa: E402
+    auto_resize_copper_after_geometry_update,
+)
 import ansys.motorcad.core as pmc                               # noqa: E402
+
+# PIPELINE REV 2 (2026-08-09): rev 1 applied geometry ratios with raw set_variable and
+# skipped auto_resize_copper_after_geometry_update -- the conductor-dimension recompute
+# the proven doe_batch pipeline runs after every geometry change. For 19 of 120 LHS
+# geometries the stale conductor layout became infeasible and Motor-CAD silently dropped
+# every Turn_* region: the case solved with j = 0 (magnet-only field) while exporting
+# cleanly. The ampere-turns gate caught it (23 NaN cases = those 19 geometries + their
+# factorial variants). The whole batch was regenerated under rev 2 so all 480 training
+# cases share ONE generation process (the 137 rev-1 survivors carried template conductor
+# dimensions, a different process from the auto-resized 240 base).
 
 BASE_MOT = r"D:/KDH/Sim_4SolverX/TestCAD1.mot"
 OUT = pathlib.Path(os.environ.get("GEN_OUT", r"D:/KDH/Sim_4SolverX/DOE_Ext3"))
@@ -146,11 +160,14 @@ def main():
                 case_mot = case_dir / "TestCAD1.mot"
                 mc.load_from_file(BASE_MOT)
                 mc.set_variable("MessageDisplayState", 2)
-                for name, val in p["geometry"].items():
-                    mc.set_variable(name, float(val))
-                mc.set_variable("CurrentDefinition", 0)          # section 26 fix
-                mc.set_variable("PeakCurrent", float(p["PeakCurrent"]))
-                mc.set_variable("PhaseAdvance", float(p["PhaseAdvance"]))
+                all_vars = {**{k: float(v) for k, v in p["geometry"].items()},
+                            "CurrentDefinition": 0,              # section 26 fix
+                            "PeakCurrent": float(p["PeakCurrent"]),
+                            "PhaseAdvance": float(p["PhaseAdvance"])}
+                set_mcad_variables(mc, all_vars, verbose=False)
+                # The step rev 1 fatally skipped: recompute conductor dimensions for
+                # the resized slot, exactly as the proven doe_batch pipeline does.
+                auto_resize_copper_after_geometry_update(mc, all_vars=all_vars, verbose=False)
                 mc.save_to_file(str(case_mot))
                 try:
                     mc.display_screen("E-Magnetics;FEA")

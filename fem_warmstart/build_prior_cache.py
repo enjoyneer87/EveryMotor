@@ -28,13 +28,21 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--data-dir", type=Path, default=Path("backup/doe_data_240"))
     ap.add_argument("--step-stride", type=int, default=1)
+    # An assembled dataset (v3 = v2's 320 verbatim + 160 new) reuses the caches of the
+    # dirs its h5 files physically live in -- prior.py keys the cache on the h5 path, not
+    # on --data-dir. Without a range, a v3 run re-parses 320 already-cached cases from
+    # disk for nothing (~30 min). Half-open [from, to), defaults to the whole manifest.
+    ap.add_argument("--cases-from", type=int, default=0)
+    ap.add_argument("--cases-to", type=int, default=None)
     args = ap.parse_args()
 
     manifest = json.loads((args.data_dir / "doe_manifest.json").read_text(encoding="utf-8"))
     n_cases = int(manifest["n_cases"])
+    lo = max(0, args.cases_from)
+    hi = n_cases if args.cases_to is None else min(n_cases, args.cases_to)
     t0 = time.time()
     done = 0
-    for ci in range(n_cases):
+    for ci in range(lo, hi):
         try:
             rec = load_doe_cases(manifest, args.data_dir, case_indices=[ci]).records[0]
         except Exception as exc:                            # noqa: BLE001

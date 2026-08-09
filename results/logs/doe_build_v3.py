@@ -107,13 +107,30 @@ def main() -> int:
         (repo / "eval/splits/doe_v3_case_split.json").write_text(
             json.dumps(split, indent=1), encoding="utf-8")
 
+    # Group-scoring variants. eval.benchmark enforces the manifest digest, so the v2
+    # legacy6/new12 splits CANNOT be reused against v3 -- scoring the G1' gate subset
+    # needs a v3-digest copy with test restricted to that group (train/val untouched).
+    subset_paths = []
+    for name, group_cases in (("legacy6", split["test_groups"]["legacy_650A"]),
+                              ("new12", split["test_groups"]["new_current"])):
+        var = dict(split)
+        var["test"] = sorted(int(c) for c in group_cases)
+        var["note"] = (f"group-scoring variant of doe_v3_case_split: test restricted to "
+                       f"{name}; train/val/digest identical")
+        p = repo / f"eval/splits/doe_v3_case_split_{name}.json"
+        if not args.dry_run:
+            p.write_text(json.dumps(var, indent=1), encoding="utf-8")
+        subset_paths.append(p.name)
+
     lv = {}
     for c in cases:
         lv[round(c["electrical"]["PeakCurrent"], 1)] = lv.get(round(c["electrical"]["PeakCurrent"], 1), 0) + 1
     print(f"v3 cases: {len(cases)}  levels: {lv}")
     print(f"split v3: train {len(split['train'])} / val {len(split['val'])} / test {len(split['test'])}  "
           f"digest {split['doe_digest']}")
-    print("DRY RUN, nothing written" if args.dry_run else f"wrote {out}/doe_manifest.json + eval/splits/doe_v3_case_split.json")
+    print("DRY RUN, nothing written" if args.dry_run else
+          f"wrote {out}/doe_manifest.json + eval/splits/doe_v3_case_split.json "
+          f"+ {', '.join(subset_paths)}")
     return 0
 
 
