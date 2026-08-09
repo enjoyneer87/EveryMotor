@@ -1,15 +1,15 @@
 {
-  "experiment": "r8-v2-320 COMPLETE -- verdict recorded (section 29)",
+  "experiment": "r9-v3-480 (geometry scaling on the current-aware stack)",
   "band_w": 30,
-  "epoch": 50,
+  "epoch": 0,
   "total_epochs": 50,
-  "latest_val_nrmse": 15.63,
-  "best_val_nrmse": 15.63,
-  "sec_per_epoch": 2548.3,
+  "latest_val_nrmse": null,
+  "best_val_nrmse": null,
+  "sec_per_epoch": null,
   "eta_iso": null,
-  "last_log_write_iso": "2026-08-08T02:37:39Z",
-  "gpu_note": "util 0% mem 842/24576MiB; No training in flight. v2 champion checkpoint: results/mgn_nodeB_doe_v2_bw30_prior.pt (best-val 0.014084, 50 epochs, resumed twice via --resume after host reboot + session teardown; total loss 2 in-flight epochs). Group scorecards: benchmark_v2_nodeB_doe_v2_bw30_prior{_legacy6,_new12,_groups}.json.",
-  "status": "completed",
-  "next_in_queue": "Section 29 verdict recorded 2026-08-08: current generalization HOLDS (new12 pooled |B| 10.856 / airgap 5.353 / torque 2.614; per-case torque 1.29-6.14% excluding the near-zero-torque geometry-32 pair), legacy task unharmed (legacy6 pooled 11.107/6.618/3.270 vs R7-A 11.096/7.138/3.354) -> v2 = NEW CHAMPION. G1' still open on the legacy gate: airgap 6.618 (need <5, 1.618pp), torque 3.270 (need <3, 0.270pp) -- closest ever. Aggregation trap documented: pooled vs per-case-mean; use pooled for gates. No run in flight; heartbeat task can stay (5-min schtasks) or be deleted with: schtasks /delete /tn EveryMotorHeartbeat /f",
-  "heartbeat_iso": "2026-08-08T09:50:39Z"
+  "last_log_write_iso": "2026-08-09T16:08:53Z",
+  "gpu_note": "util 0% mem 843/24576MiB; R9 = 480 cases (650.5 A x360 + 325.3 A x60 + 162.6 A x60), split v3 train 450 / val 12 / test 18 with val+test FROZEN identical to v2. Recipe byte-identical to the v2 run -- only --data-dir and --split differ (single-axis discipline). Expect ~3450 s/epoch x 50 ~ 48 h. Data provenance: generator rev 2 (rev 1 skipped auto_resize_copper_after_geometry_update; 19 geometries silently solved at ZERO current with all Turn regions dropped -- caught only by the ampere-turns gate, whole batch regenerated). Gates passed: A-turns 160/160 (max 0.01%), path 480/480, zero-current re-check, prior-cache-vs-recompute audit 5.7e-08. NOTE: split digest hashes design values only, so it does NOT detect a re-solve -- data identity comes from the gates, not the digest. Crash recovery: RESUME=results/mgn_nodeB_doe_v3_bw30_prior.pt.last bash results/logs/run_v3_480_docker.sh (start Docker Desktop first via explorer.exe; it does not auto-start on reboot).",
+  "status": "running",
+  "next_in_queue": "Pre-registered (section 30), read on the LEGACY 6-test group pooled vs v2 (11.107 / airgap 6.618 / torque 3.270): airgap < 6.368% -> data axis still live, R9 is the new champion; 6.368-6.868% -> inside the run-to-run band, slope flattening; > 6.868% -> regression, suspect the training budget first. Then E2 (extend 50->75 epochs, ~20h, budget adequacy) and E1 (--airgap-weight 5, ~48h) in that order. Also pending: score the eval-only 487.9 A interpolation probe (6 cases, gate-passed) -- reading, not a gate: pooled torque between the 325.3 A group (2.404%) and the 650.5 A legacy gate (3.270%) = interpolation holds.",
+  "heartbeat_iso": "2026-08-09T16:09:05Z"
 }
