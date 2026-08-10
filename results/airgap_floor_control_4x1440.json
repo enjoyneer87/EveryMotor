@@ -1,0 +1,28 @@
+{
+  "note": "pooled |B| nRMSE of an angular-harmonic reconstruction scored on the gate's own airgap element set; descriptive bound, not a hard floor",
+  "cases": [
+    0
+  ],
+  "pole_pairs": 4,
+  "n_elements_pooled": {
+    "admissible_4odd": 33480,
+    "all_n_le_200": 33480,
+    "all_n_le_350": 33480
+  },
+  "pooled_pct": {
+    "admissible_4odd": 7.254246534894013,
+    "all_n_le_200": 5.346895089566671,
+    "all_n_le_350": 4.309290263532517
+  },
+  "per_case_pct": {
+    "0": {
+      "admissible_4odd": 7.254246534894013,
+      "all_n_le_200": 5.346895089566671,
+      "all_n_le_350": 4.309290263532517
+    }
+  },
+  "reference": {
+    "champion_airgap_pct": 6.618,
+    "g1prime_airgap_target_pct": 5.0
+  }
+}

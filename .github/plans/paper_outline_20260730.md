@@ -239,10 +239,11 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
   against 5%/3% — 1.618 and 0.270 pp away. **That 1.618 pp is not one thing** (§31): the
   best purely angular description of the target sits at 5.396%, so 1.22 pp of the gap is
   still ordinary smooth-field error that data and loss levers can address, and only the
-  final 0.40 pp requires learning non-smooth, mesh-level structure. Whether that last
-  0.40 pp is physics (real radial variation across the gap) or discretisation (a band-mesh
-  artifact of the generator) is an open, cheaply testable question and should be stated as
-  such rather than resolved rhetorically. Current-axis deployment claim now measured
+  final 0.40 pp requires learning non-smooth, mesh-level structure. That last 0.40 pp was
+  then shown to be **physics, not discretisation** (§31a): doubling the air-gap mesh raises
+  the residual rather than lowering it, so the bound belongs to the field and no
+  gap-meshing improvement moves it — and, read the other way, the structure is a
+  deterministic function of geometry rather than noise, so it is learnable in principle. Current-axis deployment claim now measured
   (unseen geometry×current pooled |B| 10.856 / torque 2.614%), with the near-zero-torque
   normalization caveat stated. Screening claim (Spearman 1.000, n=6) as before. And a
   **measured** bar for the surrogate-as-solver-initialiser idea rather than a speculative
@@ -466,13 +467,18 @@ both panels, and the epoch/step counts annotated per point.
   label. The F3 wildcard in the figure table points at it. Delete or regenerate; the
   three-way plot from `tools/compare_torque_waveforms.py` is the asset §22 actually cites
   and carries the operator validation in the same axes.
-- **Open branch behind the last 0.40 pp of the air-gap gate** (§31): physics (real radial
-  variation across a 1 mm gap) or discretisation (band-mesh artifact of the generator)?
-  Decide with a half-day, GPU-free test — re-solve one or two cases with a denser
-  Motor-CAD air-gap mesh and repeat the §31 measurement. Only if it reads "discretisation"
-  does a continuum-style gap treatment in the generator become a live option, and that is
-  a new-campaign decision (it breaks the single generation process §13–§30 share), not an
-  incremental change.
+- ~~Open branch behind the last 0.40 pp of the air-gap gate: physics or discretisation?~~
+  **Settled 2026-08-11 (§31a) — physics.** Doubling the air-gap mesh (gap elements
+  2550→5100, everything else fixed) *raises* the residual, 7.254→7.593%; the coarse arms
+  read lower only because bigger elements average the structure away. Discretisation
+  predicted the opposite, so it is rejected. Consequences: (i) the §31 bound is a property
+  of the field, not of the generator, which strengthens it as a reported floor;
+  (ii) improving the gap mesh — Continuum-Air-style or otherwise — would not move it, so
+  that line of work is closed on evidence rather than on cost; (iii) encouragingly, the
+  structure is a deterministic function of geometry rather than noise, so the last 0.40 pp
+  is learnable in principle. Side finding worth a reproducibility footnote:
+  `AirgapMesh_NumLayers` is a no-op on this model (Motor-CAD reports
+  `AirgapMesh_NumLayers_Used = 4` however many are requested).
 - ~~Draw F5.~~ Done (`tools/make_campaign_figures.py` fig2). F6 is optional-but-available:
   the warm-start PoC landed
   negative, and a three-bar iteration-count chart (17.5 / 14.8 / 9.3) is the cleanest way
