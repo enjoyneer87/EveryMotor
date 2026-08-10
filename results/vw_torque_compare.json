@@ -1,0 +1,95 @@
+{
+  "case": 4,
+  "data_dir": "backup/doe_data_v3",
+  "axial_length_m": 1.0,
+  "band": {
+    "method": "arkkio_band_integral",
+    "n_elements": 744,
+    "region_codes": [
+      93
+    ],
+    "r_inner_m": 0.0686820334602915,
+    "r_outer_m": 0.06893328479068596,
+    "thickness_m": 0.0002512513303944558,
+    "sector_span_deg": 44.918374159415215,
+    "symmetry_multiplier": 8,
+    "area_m2": 1.3511698109769692e-05
+  },
+  "rows": [
+    {
+      "step": 5,
+      "arkkio_exported_B": -2402.590421538201,
+      "arkkio_from_nodal_A": -2403.23512684602,
+      "coulomb_vw": 2414.4201337321647,
+      "coulomb_profile_invariance_pct": 0.010532665248615724,
+      "coenergy_J_per_m": -73.49778172642048,
+      "newton": {
+        "newton_iterations": 22,
+        "newton_residual": 5.261563789369948e-09,
+        "converged": true
+      },
+      "arkkio_motoring": 2403.23512684602,
+      "coulomb_vs_arkkio_pct": 0.46541458890972415
+    },
+    {
+      "step": 12,
+      "arkkio_exported_B": -2428.756324826159,
+      "arkkio_from_nodal_A": -2443.9713814865863,
+      "coulomb_vw": 2455.7720241773495,
+      "coulomb_profile_invariance_pct": 0.00921119695582367,
+      "coenergy_J_per_m": -73.74970810805624,
+      "newton": {
+        "newton_iterations": 21,
+        "newton_residual": 7.041551539698254e-09,
+        "converged": true
+      },
+      "arkkio_motoring": 2443.9713814865863,
+      "coulomb_vs_arkkio_pct": 0.48284700795413
+    },
+    {
+      "step": 20,
+      "arkkio_exported_B": -2401.4079099742607,
+      "arkkio_from_nodal_A": -2401.9190115273436,
+      "coulomb_vw": 2413.15769699213,
+      "coulomb_profile_invariance_pct": 0.00865310885306316,
+      "coenergy_J_per_m": -73.59254751469079,
+      "newton": {
+        "newton_iterations": 21,
+        "newton_residual": 7.637821487915927e-09,
+        "converged": true
+      },
+      "arkkio_motoring": 2401.9190115273436,
+      "coulomb_vs_arkkio_pct": 0.46790443020140177
+    },
+    {
+      "step": 28,
+      "arkkio_exported_B": -2449.867159568442,
+      "arkkio_from_nodal_A": -2451.7114227055445,
+      "coulomb_vw": 2463.7179142814603,
+      "coulomb_profile_invariance_pct": 0.012971277616752914,
+      "coenergy_J_per_m": -73.09361306993141,
+      "newton": {
+        "newton_iterations": 22,
+        "newton_residual": 5.535489811137805e-09,
+        "converged": true
+      },
+      "arkkio_motoring": 2451.7114227055445,
+      "coulomb_vs_arkkio_pct": 0.48971879254313827
+    },
+    {
+      "step": 36,
+      "arkkio_exported_B": -2575.0613452973253,
+      "arkkio_from_nodal_A": -2577.70040698755,
+      "coulomb_vw": 2589.8428208961377,
+      "coulomb_profile_invariance_pct": 0.014129886222659689,
+      "coenergy_J_per_m": -72.66137892304312,
+      "newton": {
+        "newton_iterations": 22,
+        "newton_residual": 8.033719585655996e-09,
+        "converged": true
+      },
+      "arkkio_motoring": 2577.70040698755,
+      "coulomb_vs_arkkio_pct": 0.47105605739411127
+    }
+  ]
+}
