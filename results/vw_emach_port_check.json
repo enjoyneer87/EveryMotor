@@ -1,0 +1,51 @@
+{
+  "case": 4,
+  "rows": [
+    {
+      "step": 5,
+      "emach": -2414.4201337321647,
+      "in_repo": 2414.4201337321647,
+      "arkkio": -2403.23512684602,
+      "port_diff_pct": 0.0,
+      "vs_arkkio_pct": -0.46541458890972415,
+      "profile_invariance_pct": 0.010532665248615724
+    },
+    {
+      "step": 12,
+      "emach": -2455.7720241773495,
+      "in_repo": 2455.7720241773495,
+      "arkkio": -2443.9713814865863,
+      "port_diff_pct": 0.0,
+      "vs_arkkio_pct": -0.48284700795413,
+      "profile_invariance_pct": 0.00921119695582367
+    },
+    {
+      "step": 20,
+      "emach": -2413.15769699213,
+      "in_repo": 2413.15769699213,
+      "arkkio": -2401.9190115273436,
+      "port_diff_pct": 0.0,
+      "vs_arkkio_pct": -0.46790443020140177,
+      "profile_invariance_pct": 0.00865310885306316
+    },
+    {
+      "step": 28,
+      "emach": -2463.7179142814603,
+      "in_repo": 2463.7179142814603,
+      "arkkio": -2451.7114227055445,
+      "port_diff_pct": 0.0,
+      "vs_arkkio_pct": -0.48971879254313827,
+      "profile_invariance_pct": 0.012971277616752914
+    },
+    {
+      "step": 36,
+      "emach": -2589.8428208961377,
+      "in_repo": 2589.8428208961377,
+      "arkkio": -2577.70040698755,
+      "port_diff_pct": 0.0,
+      "vs_arkkio_pct": -0.47105605739411127,
+      "profile_invariance_pct": 0.014129886222659689
+    }
+  ],
+  "worst_port_diff_pct": 0.0
+}
