@@ -32,6 +32,18 @@
 > degenerate cases disclosed. R5c resolved (§21c): the 100-epoch 120-design run scored
 > 11.762%, inside the pre-registered 11.71–12.21 band — the published curve stands.
 > The waveform correlation figure is **0.9955** (§22), not 0.996.
+> **Updated 2026-08-11 (§31):** two evaluation-side results. (i) An **independent torque
+> operator** (Coulomb local virtual work, one solve) agrees with the annulus-averaged
+> Maxwell-stress operator to **0.475%, spread 0.024 pp** on the same field and mesh —
+> turning contribution 3's "the residual is a systematic band-discretisation bias" from an
+> assertion into a measurement. (ii) An **air-gap smoothness bound**: scored on the exact
+> elements the gate reads, with the gate's own pooled-|B|-nRMSE statistic, the best
+> angular-harmonic description of the target reaches 9.022% (admissible orders only),
+> 6.950% (all n ≤ 200) and **5.396%** (all n ≤ 350, ~interpolation in θ). The champion at
+> 6.618% therefore already beats every band-limited angular representation of the field —
+> which kills the "guide the network with a Fourier/AGE reconstruction of the prior" idea
+> on measurement rather than opinion — and the 1.618 pp remaining to G1' splits into
+> 1.22 pp of still-addressable smooth error plus 0.40 pp that needs non-smooth structure.
 
 ## 1. Title + abstract skeletons
 
@@ -87,10 +99,18 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
    cumulative rotor angle in a constant-speed DOE), entangled with the anti-periodic
    sector sign convention; removing it and moving to a case-level holdout changed the
    ranking of every model (§7–9).
-2. **Representation floors.** Two nodal-output conventions bounded by ground-truth
-   round-trips: node-resampling floor (|B| 17.13% / torque 59.54%) vs discrete-curl
-   floor (|B| 5.31% / torque 1.58%). Establishes the achievable ceiling per representation
-   and explains why torque and |B| errors decouple (§7, floors JSON).
+2. **Representation floors, and a second floor under the corrected gate.** Two
+   nodal-output conventions bounded by ground-truth round-trips: node-resampling floor
+   (|B| **16.98%** / torque 59.54%) vs discrete-curl floor (|B| 5.31% / torque 1.58%).
+   Establishes the achievable ceiling per representation and explains why torque and |B|
+   errors decouple (§7, floors JSON). The same instrument then retired our own *replacement*
+   gate's headroom: scored on the exact elements the air-gap gate reads, the best possible
+   *angular-harmonic* description of the target field reaches only **5.396%** pooled |B|
+   nRMSE (700 parameters on ~750 elements per step), against a 5% target — so the last
+   0.40 pp of that gate cannot be reached by any smooth-in-θ field model, only by learning
+   mesh-level structure (§31). Unlike the representation floors this is a descriptive
+   bound rather than a hard one, because the scatter is deterministic given the mesh and
+   the surrogate sees the mesh.
 3. **Arkkio air-gap operator validated against the commercial solver.** Torque from the
    surrogate's air-gap field via a segmented Arkkio operator, self-tested to FEM-identity
    0.000% and validated vs Motor-CAD virtual-work over a full electrical cycle to
@@ -188,7 +208,18 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
   nodal-B (average) and nodal-A (P1 curl) output heads; element-support loss.
 - **IV. Torque-Faithful Evaluation Harness.** Case-level holdout; leakage taxonomy;
   Arkkio operator + validation; representation floors; element-support nRMSE + torque
-  nRMSE (mean + ripple); determinism protocol.
+  nRMSE (mean + ripple); determinism protocol. Two additions from §31 and the
+  virtual-work cross-check: (i) **an independent torque operator** — Coulomb local
+  virtual work from a single solve — agrees with the annulus-averaged Maxwell stress
+  operator to **0.475% with a 0.024 pp spread** over five rotor positions on the same
+  field and mesh, so the residual is a systematic offset rather than operator
+  unreliability, which is the evidence contribution 3 previously asserted; (ii) **an
+  air-gap smoothness bound** measured the way the representation floors were, giving the
+  gate's own statistic for the best band-limited description of the target (§31, table
+  below). State plainly that Arkkio *is* MST — the annulus average of the single-contour
+  integral — rather than a competing principle, and likewise that Coulomb's local form
+  *is* virtual work, differing only in taking the derivative analytically on one solve
+  instead of numerically across two.
 - **V. What Does Not Move the |B| Floor (controlled elimination).** Capacity (§13,15),
   band spectral supervision (§14b,16), global-attention/long-range architecture
   (Transolver §17, Hybrid §18, attention-capacity footnote), representation (curl-A §19).
@@ -205,7 +236,13 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
   that data alone does not reach the gate at tractable cost (airgap −0.32 pp/doubling ≈
   34k designs ≈ 62 days of solve); the one lever that moved torque is input-side physics
   injection (5.400→3.354%), and the current standing is airgap 6.618% / torque 3.270%
-  against 5%/3% — 1.618 and 0.270 pp away. Current-axis deployment claim now measured
+  against 5%/3% — 1.618 and 0.270 pp away. **That 1.618 pp is not one thing** (§31): the
+  best purely angular description of the target sits at 5.396%, so 1.22 pp of the gap is
+  still ordinary smooth-field error that data and loss levers can address, and only the
+  final 0.40 pp requires learning non-smooth, mesh-level structure. Whether that last
+  0.40 pp is physics (real radial variation across the gap) or discretisation (a band-mesh
+  artifact of the generator) is an open, cheaply testable question and should be stated as
+  such rather than resolved rhetorically. Current-axis deployment claim now measured
   (unseen geometry×current pooled |B| 10.856 / torque 2.614%), with the near-zero-torque
   normalization caveat stated. Screening claim (Spearman 1.000, n=6) as before. And a
   **measured** bar for the surrogate-as-solver-initialiser idea rather than a speculative
@@ -274,6 +311,26 @@ all samples / truth RMS over all samples); per-operating-point claims use per-ca
 whose mean is a different statistic and is dominated by near-zero-torque cases when they
 exist (geometry 32: FEM mean torque −5 to −54 N·m/m → per-case 19.8–129.9%). The v2
 per-case torque range excluding that geometry is 1.29–6.14%.
+
+### T6 — air-gap smoothness bound (§31; belongs in IV beside the representation floors)
+
+Pooled |B| nRMSE of an angular-harmonic reconstruction of the ground-truth field, scored
+on the gate's own air-gap element set (region `a<k>`, sliding band and geometrically
+invalid elements excluded), legacy 6-test × 45 rotor steps.
+
+| Description of the target | params / step | pooled \|B\| nRMSE % |
+|---|---|---|
+| admissible orders only (4·odd, 24 orders) | 48 | 9.022 |
+| all integer orders n ≤ 200 | 400 | 6.950 |
+| all integer orders n ≤ 350 (≈ interpolation in θ) | 700 | **5.396** |
+| — v2 champion, for reference | — | 6.618 |
+| — G1′ air-gap target | — | 5.000 |
+
+Read two ways. The champion beats every band-limited angular description, so a
+Fourier-guided input cannot add information. And a hypothetical model that captured the
+smooth-in-θ field perfectly would still miss the gate by 0.40 pp. Unlike the representation
+floors this is descriptive, not a hard bound: the residual is radial variation across the
+band plus element-level scatter, both deterministic given a mesh the surrogate can see.
 
 Run-to-run variation on this harness is ~0.25 pp in |B| (measured across repeats);
 nothing inside that band is claimed as an effect. The two 240-geometry rows differ only
@@ -401,6 +458,21 @@ both panels, and the epoch/step counts annotated per point.
 - **G1'-closing experiments pre-registered before running** (methodology §30 when
   written): candidates are airgap-weighted loss revisited on the prior+current stack and
   longer training; decision rules to be fixed before GPU time is spent.
+- ~~Fix the node-resampling floor number in contribution 2.~~ **Done 2026-08-11** — the
+  committed artifact and the §7 scorecard both say 16.98%; the 17.131% figure came from
+  the FNO section's separately-computed variant and must not be cited in contribution 2.
+- **Stale figure asset, must not ship:** `results/viz/torque_validation_motorcad.png`
+  still renders the retracted −0.60% / corr 0.99971 and a pre-repair "224.05 A" case
+  label. The F3 wildcard in the figure table points at it. Delete or regenerate; the
+  three-way plot from `tools/compare_torque_waveforms.py` is the asset §22 actually cites
+  and carries the operator validation in the same axes.
+- **Open branch behind the last 0.40 pp of the air-gap gate** (§31): physics (real radial
+  variation across a 1 mm gap) or discretisation (band-mesh artifact of the generator)?
+  Decide with a half-day, GPU-free test — re-solve one or two cases with a denser
+  Motor-CAD air-gap mesh and repeat the §31 measurement. Only if it reads "discretisation"
+  does a continuum-style gap treatment in the generator become a live option, and that is
+  a new-campaign decision (it breaks the single generation process §13–§30 share), not an
+  incremental change.
 - ~~Draw F5.~~ Done (`tools/make_campaign_figures.py` fig2). F6 is optional-but-available:
   the warm-start PoC landed
   negative, and a three-bar iteration-count chart (17.5 / 14.8 / 9.3) is the cleanest way
