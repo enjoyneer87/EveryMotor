@@ -90,7 +90,8 @@ python -u train_doe_curl_mgn.py \
   --model mgn --hidden-dim 256 --processor-size 15 \
   --band-spectral-weight "${BAND_W}" \
   --epochs "${EPOCHS}" --batch-size 1 --step-stride 1 \
-  --ckpt "${CKPT}" --ckpt-every 1 ${RESUME:+--resume "${RESUME}"}
+  --ckpt "${CKPT}" --ckpt-every 1 ${RESUME:+--resume "${RESUME}"} \
+  ${EXTEND_TO:+--extend-to "${EXTEND_TO}"}
 TRAIN_EXIT=$?
 echo "TRAIN exit=${TRAIN_EXIT}"
 if [ "${TRAIN_EXIT}" -ne 0 ]; then

@@ -547,6 +547,18 @@ def main() -> int:
                              "weights, optimizer moments, LR schedule position and the "
                              "loss history, and continues at its epoch+1. Run-defining "
                              "flags must match the original run or this aborts.")
+    parser.add_argument("--extend-to", type=int, default=None,
+                        help="with --resume, continue an existing run PAST its original "
+                             "epoch count (methodology section 30, experiment E2). This is "
+                             "the only flag allowed to relax the run-defining guard, and "
+                             "it relaxes exactly one entry: `epochs`. Everything else "
+                             "still has to match. NOT equivalent to training this many "
+                             "epochs from scratch -- the cosine LR ran with T_max = the "
+                             "ORIGINAL epoch count, so the extension restarts the "
+                             "schedule with the new T_max and the learning rate steps "
+                             "back up rather than continuing from its annealed floor. "
+                             "Read the result as 'does more optimisation help', not as a "
+                             "clean campaign point at the new budget.")
     parser.add_argument("--ckpt-every", type=int, default=5,
                         help="also write <ckpt>.last every N epochs regardless of val "
                              "improvement, so a host restart costs at most N epochs "
@@ -764,11 +776,25 @@ def main() -> int:
         # Flags that change what is being learned. A mismatch means the resumed run
         # would not be the run it claims to continue, so fail loudly rather than
         # produce a checkpoint whose provenance is a blend of two configurations.
-        run_defining = ("data_dir", "split", "target", "model", "hidden_dim",
+        run_defining = ["data_dir", "split", "target", "model", "hidden_dim",
                         "processor_size", "prior_features", "band_spectral_weight",
                         "airgap_weight", "no_wrap_rotor", "no_anti_periodic_edges",
                         "w_pbc", "lr", "weight_decay", "batch_size", "step_stride",
-                        "epochs", "seed")
+                        "epochs", "seed"]
+        if args.extend_to is not None:
+            # E2 (section 30). Exempt exactly one entry, and only upward: extending a
+            # run is a deliberate budget change, shortening it would silently discard
+            # epochs the checkpoint already contains.
+            prev_epochs = int(prev.get("epochs", args.epochs))
+            if args.extend_to <= prev_epochs:
+                raise SystemExit(
+                    f"--extend-to {args.extend_to} must exceed the checkpoint's "
+                    f"epochs={prev_epochs}")
+            run_defining.remove("epochs")
+            args.epochs = args.extend_to
+            print(f"  EXTEND  epochs {prev_epochs} -> {args.epochs} "
+                  f"(cosine T_max changes with it; the LR steps back up rather than "
+                  f"continuing from its annealed floor -- not a from-scratch run)")
         drift = {k: (prev.get(k), getattr(args, k)) for k in run_defining
                  if k in prev and str(prev.get(k)) != str(getattr(args, k, None))}
         if drift:
