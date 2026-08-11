@@ -1,0 +1,50 @@
+{
+  "cases": [
+    4,
+    7,
+    18,
+    32,
+    37,
+    39
+  ],
+  "pole_pairs": 4,
+  "layers": [
+    {
+      "layer": "a2",
+      "r_mid_mm": 68.16858346145104,
+      "n_elem_case4": 366,
+      "in_sliding_band": true,
+      "scored_by_gate": false,
+      "admissible_4odd": 33.36679058409306,
+      "all_n_le_200": 26.81254194455231
+    },
+    {
+      "layer": "a4",
+      "r_mid_mm": 71.16218058386174,
+      "n_elem_case4": 720,
+      "in_sliding_band": true,
+      "scored_by_gate": false,
+      "admissible_4odd": 2.1946257860412763,
+      "all_n_le_200": 1.863720105095639
+    },
+    {
+      "layer": "a3",
+      "r_mid_mm": 71.4123015309829,
+      "n_elem_case4": 720,
+      "in_sliding_band": true,
+      "scored_by_gate": false,
+      "admissible_4odd": 2.214847533713844,
+      "all_n_le_200": 1.6826610458649582
+    },
+    {
+      "layer": "a1",
+      "r_mid_mm": 71.91230913521456,
+      "n_elem_case4": 744,
+      "in_sliding_band": false,
+      "scored_by_gate": true,
+      "admissible_4odd": 9.02156289734997,
+      "all_n_le_200": 6.949754006428866
+    }
+  ],
+  "note": "pooled |B| nRMSE of a per-layer angular-harmonic reconstruction; the gate scores only layers that survive the sliding-band mask"
+}
