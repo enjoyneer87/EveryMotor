@@ -1,15 +1,15 @@
 {
-  "experiment": "r9-v3-480 (geometry scaling on the current-aware stack)",
+  "experiment": "E2 -- R9(480) extended 50 -> 75 epochs (section 33)",
   "band_w": 30,
-  "epoch": 0,
-  "total_epochs": 50,
-  "latest_val_nrmse": null,
-  "best_val_nrmse": null,
-  "sec_per_epoch": null,
+  "epoch": 50,
+  "total_epochs": 75,
+  "latest_val_nrmse": 15.9,
+  "best_val_nrmse": 15.9,
+  "sec_per_epoch": 3700.5,
   "eta_iso": null,
-  "last_log_write_iso": "2026-08-09T16:08:53Z",
-  "gpu_note": "util 0% mem 843/24576MiB; R9 = 480 cases (650.5 A x360 + 325.3 A x60 + 162.6 A x60), split v3 train 450 / val 12 / test 18 with val+test FROZEN identical to v2. Recipe byte-identical to the v2 run -- only --data-dir and --split differ (single-axis discipline). Expect ~3450 s/epoch x 50 ~ 48 h. Data provenance: generator rev 2 (rev 1 skipped auto_resize_copper_after_geometry_update; 19 geometries silently solved at ZERO current with all Turn regions dropped -- caught only by the ampere-turns gate, whole batch regenerated). Gates passed: A-turns 160/160 (max 0.01%), path 480/480, zero-current re-check, prior-cache-vs-recompute audit 5.7e-08. NOTE: split digest hashes design values only, so it does NOT detect a re-solve -- data identity comes from the gates, not the digest. Crash recovery: RESUME=results/mgn_nodeB_doe_v3_bw30_prior.pt.last bash results/logs/run_v3_480_docker.sh (start Docker Desktop first via explorer.exe; it does not auto-start on reboot).",
+  "last_log_write_iso": "2026-08-11T20:37:46Z",
+  "gpu_note": "E2 resumed from mgn_nodeB_doe_v3_bw30_prior.pt.last with --extend-to 75, TAG SEPARATED to doe_v3_bw30_prior_ep75 so R9's checkpoint and 3 scorecards survive. Currently in dataset construction (21,600 graphs), GPU idle until epoch 1. R9 verdict recorded section 32: legacy6 pooled 11.302/6.925/3.799 vs v2 11.107/6.618/3.270 -> airgap 6.925 > 6.868 = REGRESSION by the pre-registered rule, but PROVISIONAL: v2 had converged at ep50 (val 0.014101 -> 0.014114, turned up) while R9's best landed on its FINAL epoch (0.014815, still descending). Campaign standard is each point trained to its own convergence, so R9@50 is not yet an admissible curve point. NOT the section-21 step-matched confound: at equal epochs every sample is seen 50 times either way and R9 took 1.55x MORE steps (1,012,500 vs 652,500).",
   "status": "running",
-  "next_in_queue": "Pre-registered (section 30), read on the LEGACY 6-test group pooled vs v2 (11.107 / airgap 6.618 / torque 3.270): airgap < 6.368% -> data axis still live, R9 is the new champion; 6.368-6.868% -> inside the run-to-run band, slope flattening; > 6.868% -> regression, suspect the training budget first. Then E2 (extend 50->75 epochs, ~20h, budget adequacy) and E1 (--airgap-weight 5, ~48h) in that order. Also pending: score the eval-only 487.9 A interpolation probe (6 cases, gate-passed) -- reading, not a gate: pooled torque between the 325.3 A group (2.404%) and the 650.5 A legacy gate (3.270%) = interpolation holds.",
-  "heartbeat_iso": "2026-08-09T16:09:05Z"
+  "next_in_queue": "E2 rule (section 33, on legacy6 pooled airgap, baseline R9@50 = 6.925%): <6.675% (>=0.25pp better) -> 480 was under-trained, R9@75 becomes the valid 480 point; >6.825% (<0.10pp) -> 50ep was adequate and the section-32 regression stands, v2 keeps the championship; 6.675-6.825% -> band, no conclusion. VALIDITY GUARD: if best-val again lands on the final epoch at 75, no reading is valid -- extend again or rerun from scratch. Caveat to report with any result: --extend-to changes cosine T_max so the LR steps back up; it answers 'does more optimisation help', not 'what would a from-scratch 75ep run give'. E2b (v2@75, ~9.2h) only if E2a improves AND lands within 0.25pp of v2. E1 (--airgap-weight 5) must NOT start before E2 finishes. Section 34 recorded: 487.9A interpolation probe is NEGATIVE -- torque 9.417 (v2) / 7.381 (R9) vs the pre-registered 2.404-3.270 bracket; not a g32 artifact (9.358/7.290 excluding it) and not a data defect (A-turns gate 6/6 at 0.00%). Current generalization holds at TRAINED levels only.",
+  "heartbeat_iso": "2026-08-12T00:08:00Z"
 }
