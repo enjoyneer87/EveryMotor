@@ -1,0 +1,26 @@
+{
+ "version": "case_split/probe487",
+ "seed": 42,
+ "doe_digest": "90c32602051bdf83",
+ "granularity": "case",
+ "holdout": "geometry x unseen current level",
+ "current_levels_A_peak": [
+  487.9
+ ],
+ "train": [],
+ "val": [],
+ "test": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "sizes": {
+  "train": 0,
+  "val": 0,
+  "test": 6
+ },
+ "note": "eval-only probe; train/val deliberately empty so this manifest can never be used for training"
+}

@@ -1,0 +1,3060 @@
+{
+  "version": "benchmark/v2",
+  "supersedes": [
+    "model_comparison_summary.json",
+    "comparison_results.json",
+    "mgn_fem_comparison/test_summary.json"
+  ],
+  "note": "Case-level holdout, element-support comparison, physical units. Numbers from the pre-R0 eval scripts used a record-level random split and are not comparable to these.",
+  "config": {
+    "data_dir": "backup/doe_data_probe487",
+    "split_path": "eval/splits/doe_probe487_case_split.json",
+    "subset": "test",
+    "source_types": [
+      "OnLoadTorque"
+    ],
+    "channels": [
+      "Bx",
+      "By"
+    ],
+    "max_steps_per_case": null,
+    "axial_length_m": 1.0,
+    "compute_torque": true,
+    "exclude_invalid_elements": true
+  },
+  "doe_digest": "90c32602051bdf83",
+  "split": {
+    "granularity": "case",
+    "seed": 42,
+    "sizes": {
+      "train": 0,
+      "val": 0,
+      "test": 6
+    },
+    "evaluated_subset": "test",
+    "evaluated_cases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "data": {
+    "n_records": 6,
+    "n_samples": 270,
+    "n_skipped": 0,
+    "skipped": []
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "numpy": "1.26.4",
+    "determinism": {
+      "seed": 0,
+      "numpy": "1.26.4",
+      "deterministic_algorithms": "warn_only",
+      "torch": "2.10.0a0+a36e1d39eb.nv26.01.42222806",
+      "cuda": "13.1",
+      "cuda_available": true,
+      "device": "NVIDIA GeForce RTX 3090",
+      "capability": "8.6",
+      "matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "float32_matmul_precision": "highest",
+      "cublas_workspace_config": null,
+      "bitwise_reproducible": true,
+      "reproducibility_scope": "same machine, same stack, same settings",
+      "reproducibility_evidence": "verified: 3 runs, byte-identical scorecards",
+      "note": "Settings are pinned and repeated runs were byte-identical on this machine. use_deterministic_algorithms runs with warn_only=True, so the guarantee is measured rather than enforced -- an op with no deterministic variant would warn, not fail. Across machines the contract is 3 decimals (13.324% |B| / 9.207% torque)."
+    }
+  },
+  "provenance": {
+    "recorded_at": "2026-08-12T00:01:48+00:00",
+    "git": {
+      "available": true,
+      "commit": "244798e76009ae4f2b3086880864fba0f83e3c3b",
+      "commit_short": "244798e7",
+      "branch": "codex/phase-1-static-1-8-model",
+      "describe": "244798e-dirty",
+      "committed_at": "2026-08-12T08:57:58+09:00",
+      "dirty": false,
+      "dirty_files": [],
+      "dirty_file_count": 0
+    },
+    "machine": {
+      "hostname": "29a4c6720692",
+      "ipv4": "172.19.0.4",
+      "user": "root",
+      "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "python": "3.12.3",
+      "python_executable": "/usr/bin/python",
+      "graph_ops": {
+        "packages": {
+          "torch_geometric": "2.7.0",
+          "torch_scatter": "2.1.2"
+        },
+        "torch": "2.10.0a0+a36e1d39eb.nv26.01.42222806",
+        "physicsnemo": "2.0.0",
+        "physicsnemo_accepts_stack": true,
+        "usable": true
+      }
+    },
+    "command": {
+      "argv": [
+        "/workspace/app/eval/benchmark.py",
+        "--data-dir",
+        "backup/doe_data_probe487",
+        "--split",
+        "eval/splits/doe_probe487_case_split.json",
+        "--subset",
+        "test",
+        "--skip-curl-floor",
+        "--skip-grid-floor",
+        "--curl-ckpt",
+        "results/mgn_nodeB_doe_v2_bw30_prior.pt",
+        "--out",
+        "results/benchmark_probe487_doe_v2_bw30_prior.json"
+      ],
+      "cwd": "/workspace/app"
+    }
+  },
+  "models": {
+    "fem_identity": {
+      "model": {
+        "kind": "harness_self_test",
+        "params": 0
+      },
+      "summary": {
+        "n_samples": 270,
+        "n_cases": 6,
+        "element_coverage": 0.907288877148253,
+        "overall": {
+          "Bx": {
+            "n": 4823010,
+            "rmse": 0.0,
+            "nrmse_pct": 0.0,
+            "nrmse_pct_median": 0.0,
+            "nrmse_pct_p95": 0.0
+          },
+          "By": {
+            "n": 4823010,
+            "rmse": 0.0,
+            "nrmse_pct": 0.0,
+            "nrmse_pct_median": 0.0,
+            "nrmse_pct_p95": 0.0
+          },
+          "Bnorm": {
+            "n": 4823010,
+            "rmse": 0.0,
+            "nrmse_pct": 0.0,
+            "nrmse_pct_median": 0.0,
+            "nrmse_pct_p95": 0.0
+          }
+        },
+        "by_region": {
+          "airgap": {
+            "Bx": {
+              "n": 200880,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 200880,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 200880,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "stator_teeth": {
+            "Bx": {
+              "n": 1057590,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 1057590,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 1057590,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "stator_yoke": {
+            "Bx": {
+              "n": 1001160,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 1001160,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 1001160,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "winding": {
+            "Bx": {
+              "n": 1320030,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 1320030,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 1320030,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "magnet": {
+            "Bx": {
+              "n": 220635,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 220635,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 220635,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "rotor_iron": {
+            "Bx": {
+              "n": 799785,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 799785,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 799785,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "rotor_air": {
+            "Bx": {
+              "n": 192150,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 192150,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 192150,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          },
+          "shaft": {
+            "Bx": {
+              "n": 30780,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "By": {
+              "n": 30780,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            },
+            "Bnorm": {
+              "n": 30780,
+              "rmse": 0.0,
+              "nrmse_pct": 0.0,
+              "nrmse_pct_median": 0.0,
+              "nrmse_pct_p95": 0.0
+            }
+          }
+        },
+        "by_case": {
+          "0": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 873000,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 873000,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 873000,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 1969.6434822086228,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -1968.006099068745,
+              "mean_torque_pred": -1968.006099068745,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 280.179357319003,
+              "ripple_pred": 280.179357319003,
+              "ripple_error_pct": 0.0
+            }
+          },
+          "1": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 957510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 957510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 957510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 2414.7511910348494,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -2413.317084347701,
+              "mean_torque_pred": -2413.317084347701,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 254.36886514260186,
+              "ripple_pred": 254.36886514260186,
+              "ripple_error_pct": 0.0
+            }
+          },
+          "2": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 759510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 759510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 759510,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 2091.9664933644663,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -2085.558008438759,
+              "mean_torque_pred": -2085.558008438759,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 550.3252047748429,
+              "ripple_pred": 550.3252047748429,
+              "ripple_error_pct": 0.0
+            }
+          },
+          "3": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 761220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 761220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 761220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 172.79662484590654,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -94.06889360065031,
+              "mean_torque_pred": -94.06889360065031,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 476.35199533907644,
+              "ripple_pred": 476.35199533907644,
+              "ripple_error_pct": 0.0
+            }
+          },
+          "4": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 692550,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 692550,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 692550,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 1618.2425054533974,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -1611.3322431619501,
+              "mean_torque_pred": -1611.3322431619501,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 475.0608654117141,
+              "ripple_pred": 475.0608654117141,
+              "ripple_error_pct": 0.0
+            }
+          },
+          "5": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 779220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "By": {
+                "n": 779220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              },
+              "Bnorm": {
+                "n": 779220,
+                "rmse": 0.0,
+                "nrmse_pct": 0.0,
+                "nrmse_pct_median": 0.0,
+                "nrmse_pct_p95": 0.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 0.0,
+              "rmse_torque": 0.0,
+              "rms_torque_true": 2644.701979018881,
+              "rel_error_pct_mean": 0.0,
+              "rel_error_pct_median": 0.0,
+              "rel_error_pct_max": 0.0,
+              "mean_torque_true": -2642.763727952835,
+              "mean_torque_pred": -2642.763727952835,
+              "mean_torque_abs_error": 0.0,
+              "mean_torque_error_pct": 0.0,
+              "mean_torque_error_norm_pct": 0.0,
+              "mean_torque_is_significant": true,
+              "ripple_true": 328.84756074669485,
+              "ripple_pred": 328.84756074669485,
+              "ripple_error_pct": 0.0
+            }
+          }
+        },
+        "torque": {
+          "n": 270,
+          "nrmse_torque_pct": 0.0,
+          "rmse_torque": 0.0,
+          "rms_torque_true": 1988.7122554059686,
+          "rel_error_pct_mean": 0.0,
+          "rel_error_pct_median": 0.0,
+          "rel_error_pct_max": 0.0,
+          "mean_torque_true": -1802.5076760951065,
+          "mean_torque_pred": -1802.5076760951065,
+          "mean_torque_abs_error": 0.0,
+          "mean_torque_error_pct": 0.0,
+          "mean_torque_error_norm_pct": 0.0,
+          "mean_torque_is_significant": true,
+          "ripple_true_case_mean": 394.18897478898884,
+          "ripple_pred_case_mean": 394.18897478898884,
+          "ripple_error_pct_case_mean": 0.0,
+          "note": "ripple aggregated per case, then averaged; rel_error pooled over samples"
+        }
+      },
+      "failures": []
+    },
+    "node_resampling_floor": {
+      "model": {
+        "kind": "pipeline_floor",
+        "params": 0,
+        "note": "irreducible error of the element->node->element support round trip"
+      },
+      "summary": {
+        "n_samples": 270,
+        "n_cases": 6,
+        "element_coverage": 0.907288877148253,
+        "overall": {
+          "Bx": {
+            "n": 4823010,
+            "rmse": 0.1521910697486455,
+            "nrmse_pct": 21.805734295157425,
+            "nrmse_pct_median": 22.38189622171754,
+            "nrmse_pct_p95": 26.193345652562396
+          },
+          "By": {
+            "n": 4823010,
+            "rmse": 0.12426475606441982,
+            "nrmse_pct": 18.154102997752414,
+            "nrmse_pct_median": 18.136191004822887,
+            "nrmse_pct_p95": 24.44765755276306
+          },
+          "Bnorm": {
+            "n": 4823010,
+            "rmse": 0.16523274162160617,
+            "nrmse_pct": 16.90223913509692,
+            "nrmse_pct_median": 16.815820605365005,
+            "nrmse_pct_p95": 21.614950964222157
+          }
+        },
+        "by_region": {
+          "airgap": {
+            "Bx": {
+              "n": 200880,
+              "rmse": 0.1224802655404429,
+              "nrmse_pct": 18.388611360951526,
+              "nrmse_pct_median": 19.188400112680473,
+              "nrmse_pct_p95": 26.83378011683365
+            },
+            "By": {
+              "n": 200880,
+              "rmse": 0.17604464718925145,
+              "nrmse_pct": 39.68214339073803,
+              "nrmse_pct_median": 39.66648513758109,
+              "nrmse_pct_p95": 61.4718268723356
+            },
+            "Bnorm": {
+              "n": 200880,
+              "rmse": 0.12967939742448384,
+              "nrmse_pct": 16.204134148937023,
+              "nrmse_pct_median": 16.774664225774373,
+              "nrmse_pct_p95": 25.21286669803995
+            }
+          },
+          "stator_teeth": {
+            "Bx": {
+              "n": 1057590,
+              "rmse": 0.17174606926798253,
+              "nrmse_pct": 16.029799664980985,
+              "nrmse_pct_median": 17.039661558105664,
+              "nrmse_pct_p95": 20.90698003354765
+            },
+            "By": {
+              "n": 1057590,
+              "rmse": 0.14246219960252476,
+              "nrmse_pct": 17.251322242705104,
+              "nrmse_pct_median": 17.53138251728869,
+              "nrmse_pct_p95": 22.40660864992551
+            },
+            "Bnorm": {
+              "n": 1057590,
+              "rmse": 0.20370307537402316,
+              "nrmse_pct": 15.058623617695032,
+              "nrmse_pct_median": 15.43367221282585,
+              "nrmse_pct_p95": 19.403433741961113
+            }
+          },
+          "stator_yoke": {
+            "Bx": {
+              "n": 1001160,
+              "rmse": 0.051557571043748515,
+              "nrmse_pct": 9.223430433439345,
+              "nrmse_pct_median": 9.64236398887381,
+              "nrmse_pct_p95": 15.592709077704747
+            },
+            "By": {
+              "n": 1001160,
+              "rmse": 0.06770640403469017,
+              "nrmse_pct": 7.94868126806762,
+              "nrmse_pct_median": 8.35388770121704,
+              "nrmse_pct_p95": 17.65415036982525
+            },
+            "Bnorm": {
+              "n": 1001160,
+              "rmse": 0.06784627274811149,
+              "nrmse_pct": 6.659225186535451,
+              "nrmse_pct_median": 6.998114360825338,
+              "nrmse_pct_p95": 13.987634311813009
+            }
+          },
+          "winding": {
+            "Bx": {
+              "n": 1320030,
+              "rmse": 0.14311959127080606,
+              "nrmse_pct": 135.997675170286,
+              "nrmse_pct_median": 139.9478293637519,
+              "nrmse_pct_p95": 203.10207827782233
+            },
+            "By": {
+              "n": 1320030,
+              "rmse": 0.09440174279062791,
+              "nrmse_pct": 44.71156907596115,
+              "nrmse_pct_median": 43.711525258576785,
+              "nrmse_pct_p95": 55.90866338475227
+            },
+            "Bnorm": {
+              "n": 1320030,
+              "rmse": 0.13850936005805597,
+              "nrmse_pct": 58.713211021268044,
+              "nrmse_pct_median": 54.34517253008957,
+              "nrmse_pct_p95": 81.2371801953331
+            }
+          },
+          "magnet": {
+            "Bx": {
+              "n": 220635,
+              "rmse": 0.1457709469457413,
+              "nrmse_pct": 34.911889757980255,
+              "nrmse_pct_median": 36.254910591356705,
+              "nrmse_pct_p95": 49.246053803971364
+            },
+            "By": {
+              "n": 220635,
+              "rmse": 0.12260750844787964,
+              "nrmse_pct": 19.07306543730145,
+              "nrmse_pct_median": 18.787577946158617,
+              "nrmse_pct_p95": 25.005256598011535
+            },
+            "Bnorm": {
+              "n": 220635,
+              "rmse": 0.11862996053648768,
+              "nrmse_pct": 15.476202098278753,
+              "nrmse_pct_median": 15.939030647649119,
+              "nrmse_pct_p95": 16.816328889062866
+            }
+          },
+          "rotor_iron": {
+            "Bx": {
+              "n": 799785,
+              "rmse": 0.20359857440362103,
+              "nrmse_pct": 22.398618458207263,
+              "nrmse_pct_median": 23.636124906045072,
+              "nrmse_pct_p95": 25.89519566212758
+            },
+            "By": {
+              "n": 799785,
+              "rmse": 0.15152063631806736,
+              "nrmse_pct": 17.7509693506391,
+              "nrmse_pct_median": 18.120190267838225,
+              "nrmse_pct_p95": 23.566492001913705
+            },
+            "Bnorm": {
+              "n": 799785,
+              "rmse": 0.22304981482712738,
+              "nrmse_pct": 17.887778274825063,
+              "nrmse_pct_median": 17.953659042045658,
+              "nrmse_pct_p95": 20.67655983385308
+            }
+          },
+          "rotor_air": {
+            "Bx": {
+              "n": 192150,
+              "rmse": 0.22768424763775452,
+              "nrmse_pct": 71.50921273296659,
+              "nrmse_pct_median": 73.70669481878488,
+              "nrmse_pct_p95": 91.32190838494962
+            },
+            "By": {
+              "n": 192150,
+              "rmse": 0.21344120439867356,
+              "nrmse_pct": 46.871604868320325,
+              "nrmse_pct_median": 46.1723470136553,
+              "nrmse_pct_p95": 55.348949005151354
+            },
+            "Bnorm": {
+              "n": 192150,
+              "rmse": 0.2455528125004694,
+              "nrmse_pct": 44.1922548604059,
+              "nrmse_pct_median": 44.83556303633061,
+              "nrmse_pct_p95": 48.400979406415765
+            }
+          },
+          "shaft": {
+            "Bx": {
+              "n": 30780,
+              "rmse": 0.0020078572914050885,
+              "nrmse_pct": 7.9584601910407,
+              "nrmse_pct_median": 7.876901820363892,
+              "nrmse_pct_p95": 16.405347259060402
+            },
+            "By": {
+              "n": 30780,
+              "rmse": 0.002155759903695246,
+              "nrmse_pct": 10.181321926526866,
+              "nrmse_pct_median": 9.92079584471223,
+              "nrmse_pct_p95": 11.967404732915213
+            },
+            "Bnorm": {
+              "n": 30780,
+              "rmse": 0.002032038353868154,
+              "nrmse_pct": 6.169492946947284,
+              "nrmse_pct_median": 6.16514937056548,
+              "nrmse_pct_p95": 8.530252480339296
+            }
+          }
+        },
+        "by_case": {
+          "0": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 873000,
+                "rmse": 0.17413948459671258,
+                "nrmse_pct": 20.065744718999518,
+                "nrmse_pct_median": 20.10428184855937,
+                "nrmse_pct_p95": 21.165495918797337
+              },
+              "By": {
+                "n": 873000,
+                "rmse": 0.13124593210927926,
+                "nrmse_pct": 16.49475516027287,
+                "nrmse_pct_median": 16.349166987513033,
+                "nrmse_pct_p95": 17.93934314925108
+              },
+              "Bnorm": {
+                "n": 873000,
+                "rmse": 0.1846354067297658,
+                "nrmse_pct": 15.681651330902675,
+                "nrmse_pct_median": 15.706919317190241,
+                "nrmse_pct_p95": 15.770848889622709
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 69.11256382458197,
+              "rmse_torque": 1361.2711087581533,
+              "rms_torque_true": 1969.6434822086228,
+              "rel_error_pct_mean": 66.39291488431178,
+              "rel_error_pct_median": 63.1618330889958,
+              "rel_error_pct_max": 112.29566066334785,
+              "mean_torque_true": -1968.006099068745,
+              "mean_torque_pred": -3271.951911739581,
+              "mean_torque_abs_error": 1303.9458126708362,
+              "mean_torque_error_pct": 66.2572038413834,
+              "mean_torque_error_norm_pct": 66.20212360506385,
+              "mean_torque_is_significant": true,
+              "ripple_true": 280.179357319003,
+              "ripple_pred": 1571.0324562083997,
+              "ripple_error_pct": 460.723841770996
+            }
+          },
+          "1": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 957510,
+                "rmse": 0.1686978460480643,
+                "nrmse_pct": 21.02293217947882,
+                "nrmse_pct_median": 21.05258697999292,
+                "nrmse_pct_p95": 22.28962853547386
+              },
+              "By": {
+                "n": 957510,
+                "rmse": 0.12688480342181263,
+                "nrmse_pct": 16.63814615569018,
+                "nrmse_pct_median": 16.401042401777776,
+                "nrmse_pct_p95": 18.154411007373366
+              },
+              "Bnorm": {
+                "n": 957510,
+                "rmse": 0.17587987593006904,
+                "nrmse_pct": 15.887639107658746,
+                "nrmse_pct_median": 15.90649859083165,
+                "nrmse_pct_p95": 15.974906648516871
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 69.68924588274412,
+              "rmse_torque": 1682.8218949767684,
+              "rms_torque_true": 2414.7511910348494,
+              "rel_error_pct_mean": 67.79713481894544,
+              "rel_error_pct_median": 69.78432039041455,
+              "rel_error_pct_max": 104.68515813965003,
+              "mean_torque_true": -2413.317084347701,
+              "mean_torque_pred": -4046.705411262216,
+              "mean_torque_abs_error": 1633.388326914515,
+              "mean_torque_error_pct": 67.68229245582147,
+              "mean_torque_error_norm_pct": 67.6420963360006,
+              "mean_torque_is_significant": true,
+              "ripple_true": 254.36886514260186,
+              "ripple_pred": 1688.9094230125447,
+              "ripple_error_pct": 563.9607493101502
+            }
+          },
+          "2": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 759510,
+                "rmse": 0.1414248262599119,
+                "nrmse_pct": 22.98614456729203,
+                "nrmse_pct_median": 23.129773611182816,
+                "nrmse_pct_p95": 24.814787919587957
+              },
+              "By": {
+                "n": 759510,
+                "rmse": 0.12210138878620294,
+                "nrmse_pct": 18.685305488999067,
+                "nrmse_pct_median": 18.468562511910875,
+                "nrmse_pct_p95": 20.799992975177485
+              },
+              "Bnorm": {
+                "n": 759510,
+                "rmse": 0.15621680341992117,
+                "nrmse_pct": 17.40520163791433,
+                "nrmse_pct_median": 17.40723709215052,
+                "nrmse_pct_p95": 17.658916120955528
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 80.60253267141253,
+              "rmse_torque": 1686.177976289097,
+              "rms_torque_true": 2091.9664933644663,
+              "rel_error_pct_mean": 80.14555902344888,
+              "rel_error_pct_median": 79.62038135179286,
+              "rel_error_pct_max": 125.43674039170256,
+              "mean_torque_true": -2085.558008438759,
+              "mean_torque_pred": -3742.843854815431,
+              "mean_torque_abs_error": 1657.285846376672,
+              "mean_torque_error_pct": 79.46486454324568,
+              "mean_torque_error_norm_pct": 79.22143359530074,
+              "mean_torque_is_significant": true,
+              "ripple_true": 550.3252047748429,
+              "ripple_pred": 1511.3390032991333,
+              "ripple_error_pct": 174.62652813030334
+            }
+          },
+          "3": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 761220,
+                "rmse": 0.11300017707883449,
+                "nrmse_pct": 25.546225245205196,
+                "nrmse_pct_median": 25.544337821561427,
+                "nrmse_pct_p95": 26.51451216006274
+              },
+              "By": {
+                "n": 761220,
+                "rmse": 0.11022507316503893,
+                "nrmse_pct": 24.304464771069973,
+                "nrmse_pct_median": 24.125958470144113,
+                "nrmse_pct_p95": 25.3170351462444
+              },
+              "Bnorm": {
+                "n": 761220,
+                "rmse": 0.13666255062674468,
+                "nrmse_pct": 21.57215363539991,
+                "nrmse_pct_median": 21.499336071061347,
+                "nrmse_pct_p95": 22.07580998632981
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 118.00410705675522,
+              "rmse_torque": 203.90711417362323,
+              "rms_torque_true": 172.79662484590654,
+              "rel_error_pct_mean": 680.0590333795408,
+              "rel_error_pct_median": 126.79206525806676,
+              "rel_error_pct_max": 6318.4922551025775,
+              "mean_torque_true": -94.06889360065031,
+              "mean_torque_pred": -203.95029501251537,
+              "mean_torque_abs_error": 109.88140141186506,
+              "mean_torque_error_pct": 116.80949696117764,
+              "mean_torque_error_norm_pct": 63.590016014406025,
+              "mean_torque_is_significant": true,
+              "ripple_true": 476.35199533907644,
+              "ripple_pred": 635.5551279617389,
+              "ripple_error_pct": 33.42132166557602
+            }
+          },
+          "4": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 692550,
+                "rmse": 0.13221609603472428,
+                "nrmse_pct": 24.77583230218552,
+                "nrmse_pct_median": 25.018279340063533,
+                "nrmse_pct_p95": 26.36191256891664
+              },
+              "By": {
+                "n": 692550,
+                "rmse": 0.12061309124574512,
+                "nrmse_pct": 20.861458161816874,
+                "nrmse_pct_median": 20.504528135512963,
+                "nrmse_pct_p95": 23.071608093937936
+              },
+              "Bnorm": {
+                "n": 692550,
+                "rmse": 0.15170812161756678,
+                "nrmse_pct": 19.281675377997075,
+                "nrmse_pct_median": 19.321961544938638,
+                "nrmse_pct_p95": 19.497569312287435
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 86.38236424165096,
+              "rmse_torque": 1397.8761353739721,
+              "rms_torque_true": 1618.2425054533974,
+              "rel_error_pct_mean": 86.81962240604028,
+              "rel_error_pct_median": 84.92063705237767,
+              "rel_error_pct_max": 138.93485313339212,
+              "mean_torque_true": -1611.3322431619501,
+              "mean_torque_pred": -2990.1508670297585,
+              "mean_torque_abs_error": 1378.8186238678084,
+              "mean_torque_error_pct": 85.57010074856595,
+              "mean_torque_error_norm_pct": 85.20469702292813,
+              "mean_torque_is_significant": true,
+              "ripple_true": 475.0608654117141,
+              "ripple_pred": 1143.7696432874377,
+              "ripple_error_pct": 140.76275832491137
+            }
+          },
+          "5": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 779220,
+                "rmse": 0.16404942237336248,
+                "nrmse_pct": 21.790450160419947,
+                "nrmse_pct_median": 21.933060715245965,
+                "nrmse_pct_p95": 23.314831213939094
+              },
+              "By": {
+                "n": 779220,
+                "rmse": 0.1310155238183558,
+                "nrmse_pct": 17.47873138804372,
+                "nrmse_pct_median": 17.18361325872521,
+                "nrmse_pct_p95": 19.477317913108166
+              },
+              "Bnorm": {
+                "n": 779220,
+                "rmse": 0.17405225488590922,
+                "nrmse_pct": 16.38331989820927,
+                "nrmse_pct_median": 16.402617903354393,
+                "nrmse_pct_p95": 16.489068820280167
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 70.1120110587604,
+              "rmse_torque": 1854.2537440009728,
+              "rms_torque_true": 2644.701979018881,
+              "rel_error_pct_mean": 68.18806335264692,
+              "rel_error_pct_median": 69.63655669268249,
+              "rel_error_pct_max": 107.57267804139606,
+              "mean_torque_true": -2642.763727952835,
+              "mean_torque_pred": -4440.434255670652,
+              "mean_torque_abs_error": 1797.6705277178175,
+              "mean_torque_error_pct": 68.0223702445904,
+              "mean_torque_error_norm_pct": 67.97251796154018,
+              "mean_torque_is_significant": true,
+              "ripple_true": 328.84756074669485,
+              "ripple_pred": 1890.0427498598478,
+              "ripple_error_pct": 474.74738312433846
+            }
+          }
+        },
+        "torque": {
+          "n": 270,
+          "nrmse_torque_pct": 73.90759344216407,
+          "rmse_torque": 1469.8093684599348,
+          "rms_torque_true": 1988.7122554059686,
+          "rel_error_pct_mean": 174.900387977489,
+          "rel_error_pct_median": 74.32035720546443,
+          "rel_error_pct_max": 6318.4922551025775,
+          "mean_torque_true": -1802.5076760951065,
+          "mean_torque_pred": -3116.006099255026,
+          "mean_torque_abs_error": 1313.4984231599196,
+          "mean_torque_error_pct": 72.87061467640679,
+          "mean_torque_error_norm_pct": 66.04768586251744,
+          "mean_torque_is_significant": true,
+          "ripple_true_case_mean": 394.18897478898884,
+          "ripple_pred_case_mean": 1406.7747339381838,
+          "ripple_error_pct_case_mean": 308.04043038771255,
+          "note": "ripple aggregated per case, then averaged; rel_error pooled over samples"
+        }
+      },
+      "failures": []
+    },
+    "zero_field": {
+      "model": {
+        "kind": "reference_floor",
+        "params": 0
+      },
+      "summary": {
+        "n_samples": 270,
+        "n_cases": 6,
+        "element_coverage": 0.907288877148253,
+        "overall": {
+          "Bx": {
+            "n": 4823010,
+            "rmse": 0.6979405861257503,
+            "nrmse_pct": 100.0,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.00000000000001
+          },
+          "By": {
+            "n": 4823010,
+            "rmse": 0.6844995650834665,
+            "nrmse_pct": 100.00000000000001,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.00000000000001
+          },
+          "Bnorm": {
+            "n": 4823010,
+            "rmse": 0.9775790077333958,
+            "nrmse_pct": 100.0,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.0
+          }
+        },
+        "by_region": {
+          "airgap": {
+            "Bx": {
+              "n": 200880,
+              "rmse": 0.6660658770598169,
+              "nrmse_pct": 100.00000000000001,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 200880,
+              "rmse": 0.44363694132091913,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "Bnorm": {
+              "n": 200880,
+              "rmse": 0.8002858791007398,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "stator_teeth": {
+            "Bx": {
+              "n": 1057590,
+              "rmse": 1.071417440376266,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1057590,
+              "rmse": 0.8258045244199549,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1057590,
+              "rmse": 1.3527336929694989,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "stator_yoke": {
+            "Bx": {
+              "n": 1001160,
+              "rmse": 0.558984766197484,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1001160,
+              "rmse": 0.8517941750499962,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1001160,
+              "rmse": 1.0188313331901213,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "winding": {
+            "Bx": {
+              "n": 1320030,
+              "rmse": 0.10523679253458013,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1320030,
+              "rmse": 0.21113493608387437,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1320030,
+              "rmse": 0.23590833757650026,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "magnet": {
+            "Bx": {
+              "n": 220635,
+              "rmse": 0.4175395487218522,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 220635,
+              "rmse": 0.6428306391068868,
+              "nrmse_pct": 100.00000000000001,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 220635,
+              "rmse": 0.7665314770584547,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "rotor_iron": {
+            "Bx": {
+              "n": 799785,
+              "rmse": 0.9089782692781161,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 799785,
+              "rmse": 0.8535907720026121,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 799785,
+              "rmse": 1.2469397339357882,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "rotor_air": {
+            "Bx": {
+              "n": 192150,
+              "rmse": 0.31839848172848,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 192150,
+              "rmse": 0.45537421856646226,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "Bnorm": {
+              "n": 192150,
+              "rmse": 0.5556467151905224,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "shaft": {
+            "Bx": {
+              "n": 30780,
+              "rmse": 0.02522921825588133,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "By": {
+              "n": 30780,
+              "rmse": 0.021173673902585614,
+              "nrmse_pct": 99.99999999999999,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 30780,
+              "rmse": 0.03293687781705988,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          }
+        },
+        "by_case": {
+          "0": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 873000,
+                "rmse": 0.8678446129728057,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 873000,
+                "rmse": 0.7956828145311378,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 873000,
+                "rmse": 1.1773977295740432,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 1969.6434822086228,
+              "rms_torque_true": 1969.6434822086228,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -1968.006099068745,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 1968.006099068745,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.91686906007773,
+              "mean_torque_is_significant": true,
+              "ripple_true": 280.179357319003,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "1": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 957510,
+                "rmse": 0.802446797658111,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 957510,
+                "rmse": 0.7626138286952031,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 957510,
+                "rmse": 1.1070233578334803,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2414.7511910348494,
+              "rms_torque_true": 2414.7511910348494,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -2413.317084347701,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2413.317084347701,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.94061058164199,
+              "mean_torque_is_significant": true,
+              "ripple_true": 254.36886514260186,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "2": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 759510,
+                "rmse": 0.6152611885211553,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 759510,
+                "rmse": 0.6534620954315672,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 759510,
+                "rmse": 0.89752940913726,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2091.9664933644663,
+              "rms_torque_true": 2091.9664933644663,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -2085.558008438759,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2085.558008438759,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.69366216208364,
+              "mean_torque_is_significant": true,
+              "ripple_true": 550.3252047748429,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "3": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 761220,
+                "rmse": 0.44233610247386207,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 761220,
+                "rmse": 0.45351779684628873,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "Bnorm": {
+                "n": 761220,
+                "rmse": 0.6335137090924542,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.00000000000001,
+              "rmse_torque": 172.79662484590654,
+              "rms_torque_true": 172.79662484590654,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -94.06889360065031,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 94.06889360065031,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 54.439080441841604,
+              "mean_torque_is_significant": true,
+              "ripple_true": 476.35199533907644,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "4": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 692550,
+                "rmse": 0.5336494630013349,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 692550,
+                "rmse": 0.5781623236026021,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "Bnorm": {
+                "n": 692550,
+                "rmse": 0.7867994800425158,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 1618.2425054533974,
+              "rms_torque_true": 1618.2425054533974,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -1611.3322431619501,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 1611.3322431619501,
+              "mean_torque_error_pct": 99.99999999999999,
+              "mean_torque_error_norm_pct": 99.57297733385694,
+              "mean_torque_is_significant": true,
+              "ripple_true": 475.0608654117141,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 99.99999999999999
+            }
+          },
+          "5": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 779220,
+                "rmse": 0.7528500841682515,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 779220,
+                "rmse": 0.7495711268151682,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 779220,
+                "rmse": 1.0623747565652644,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2644.701979018881,
+              "rms_torque_true": 2644.701979018881,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -2642.763727952835,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2642.763727952835,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.92671192892725,
+              "mean_torque_is_significant": true,
+              "ripple_true": 328.84756074669485,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          }
+        },
+        "torque": {
+          "n": 270,
+          "nrmse_torque_pct": 100.0,
+          "rmse_torque": 1988.7122554059686,
+          "rms_torque_true": 1988.7122554059686,
+          "rel_error_pct_mean": 100.0,
+          "rel_error_pct_median": 100.0,
+          "rel_error_pct_max": 100.00000000000001,
+          "mean_torque_true": -1802.5076760951065,
+          "mean_torque_pred": 0.0,
+          "mean_torque_abs_error": 1802.5076760951065,
+          "mean_torque_error_pct": 100.0,
+          "mean_torque_error_norm_pct": 90.63692704639914,
+          "mean_torque_is_significant": true,
+          "ripple_true_case_mean": 394.18897478898884,
+          "ripple_pred_case_mean": 0.0,
+          "ripple_error_pct_case_mean": 100.0,
+          "note": "ripple aggregated per case, then averaged; rel_error pooled over samples"
+        }
+      },
+      "failures": []
+    },
+    "train_region_mean": {
+      "model": {
+        "kind": "reference_baseline",
+        "params": 0
+      },
+      "summary": {
+        "n_samples": 270,
+        "n_cases": 6,
+        "element_coverage": 0.907288877148253,
+        "overall": {
+          "Bx": {
+            "n": 4823010,
+            "rmse": 0.6979405861257503,
+            "nrmse_pct": 100.0,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.00000000000001
+          },
+          "By": {
+            "n": 4823010,
+            "rmse": 0.6844995650834665,
+            "nrmse_pct": 100.00000000000001,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.00000000000001
+          },
+          "Bnorm": {
+            "n": 4823010,
+            "rmse": 0.9775790077333958,
+            "nrmse_pct": 100.0,
+            "nrmse_pct_median": 100.0,
+            "nrmse_pct_p95": 100.0
+          }
+        },
+        "by_region": {
+          "airgap": {
+            "Bx": {
+              "n": 200880,
+              "rmse": 0.6660658770598169,
+              "nrmse_pct": 100.00000000000001,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 200880,
+              "rmse": 0.44363694132091913,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "Bnorm": {
+              "n": 200880,
+              "rmse": 0.8002858791007398,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "stator_teeth": {
+            "Bx": {
+              "n": 1057590,
+              "rmse": 1.071417440376266,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1057590,
+              "rmse": 0.8258045244199549,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1057590,
+              "rmse": 1.3527336929694989,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "stator_yoke": {
+            "Bx": {
+              "n": 1001160,
+              "rmse": 0.558984766197484,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1001160,
+              "rmse": 0.8517941750499962,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1001160,
+              "rmse": 1.0188313331901213,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "winding": {
+            "Bx": {
+              "n": 1320030,
+              "rmse": 0.10523679253458013,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 1320030,
+              "rmse": 0.21113493608387437,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 1320030,
+              "rmse": 0.23590833757650026,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "magnet": {
+            "Bx": {
+              "n": 220635,
+              "rmse": 0.4175395487218522,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 220635,
+              "rmse": 0.6428306391068868,
+              "nrmse_pct": 100.00000000000001,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 220635,
+              "rmse": 0.7665314770584547,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "rotor_iron": {
+            "Bx": {
+              "n": 799785,
+              "rmse": 0.9089782692781161,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 799785,
+              "rmse": 0.8535907720026121,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 799785,
+              "rmse": 1.2469397339357882,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          },
+          "rotor_air": {
+            "Bx": {
+              "n": 192150,
+              "rmse": 0.31839848172848,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "By": {
+              "n": 192150,
+              "rmse": 0.45537421856646226,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "Bnorm": {
+              "n": 192150,
+              "rmse": 0.5556467151905224,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            }
+          },
+          "shaft": {
+            "Bx": {
+              "n": 30780,
+              "rmse": 0.02522921825588133,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.0
+            },
+            "By": {
+              "n": 30780,
+              "rmse": 0.021173673902585614,
+              "nrmse_pct": 99.99999999999999,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            },
+            "Bnorm": {
+              "n": 30780,
+              "rmse": 0.03293687781705988,
+              "nrmse_pct": 100.0,
+              "nrmse_pct_median": 100.0,
+              "nrmse_pct_p95": 100.00000000000001
+            }
+          }
+        },
+        "by_case": {
+          "0": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 873000,
+                "rmse": 0.8678446129728057,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 873000,
+                "rmse": 0.7956828145311378,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 873000,
+                "rmse": 1.1773977295740432,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 1969.6434822086228,
+              "rms_torque_true": 1969.6434822086228,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -1968.006099068745,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 1968.006099068745,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.91686906007773,
+              "mean_torque_is_significant": true,
+              "ripple_true": 280.179357319003,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "1": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 957510,
+                "rmse": 0.802446797658111,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 957510,
+                "rmse": 0.7626138286952031,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 957510,
+                "rmse": 1.1070233578334803,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2414.7511910348494,
+              "rms_torque_true": 2414.7511910348494,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -2413.317084347701,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2413.317084347701,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.94061058164199,
+              "mean_torque_is_significant": true,
+              "ripple_true": 254.36886514260186,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "2": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 759510,
+                "rmse": 0.6152611885211553,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 759510,
+                "rmse": 0.6534620954315672,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 759510,
+                "rmse": 0.89752940913726,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2091.9664933644663,
+              "rms_torque_true": 2091.9664933644663,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.0,
+              "mean_torque_true": -2085.558008438759,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2085.558008438759,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.69366216208364,
+              "mean_torque_is_significant": true,
+              "ripple_true": 550.3252047748429,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "3": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 761220,
+                "rmse": 0.44233610247386207,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 761220,
+                "rmse": 0.45351779684628873,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "Bnorm": {
+                "n": 761220,
+                "rmse": 0.6335137090924542,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.00000000000001,
+              "rmse_torque": 172.79662484590654,
+              "rms_torque_true": 172.79662484590654,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -94.06889360065031,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 94.06889360065031,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 54.439080441841604,
+              "mean_torque_is_significant": true,
+              "ripple_true": 476.35199533907644,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          },
+          "4": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 692550,
+                "rmse": 0.5336494630013349,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "By": {
+                "n": 692550,
+                "rmse": 0.5781623236026021,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              },
+              "Bnorm": {
+                "n": 692550,
+                "rmse": 0.7867994800425158,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 1618.2425054533974,
+              "rms_torque_true": 1618.2425054533974,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -1611.3322431619501,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 1611.3322431619501,
+              "mean_torque_error_pct": 99.99999999999999,
+              "mean_torque_error_norm_pct": 99.57297733385694,
+              "mean_torque_is_significant": true,
+              "ripple_true": 475.0608654117141,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 99.99999999999999
+            }
+          },
+          "5": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 779220,
+                "rmse": 0.7528500841682515,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "By": {
+                "n": 779220,
+                "rmse": 0.7495711268151682,
+                "nrmse_pct": 99.99999999999999,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.00000000000001
+              },
+              "Bnorm": {
+                "n": 779220,
+                "rmse": 1.0623747565652644,
+                "nrmse_pct": 100.0,
+                "nrmse_pct_median": 100.0,
+                "nrmse_pct_p95": 100.0
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 100.0,
+              "rmse_torque": 2644.701979018881,
+              "rms_torque_true": 2644.701979018881,
+              "rel_error_pct_mean": 100.0,
+              "rel_error_pct_median": 100.0,
+              "rel_error_pct_max": 100.00000000000001,
+              "mean_torque_true": -2642.763727952835,
+              "mean_torque_pred": 0.0,
+              "mean_torque_abs_error": 2642.763727952835,
+              "mean_torque_error_pct": 100.0,
+              "mean_torque_error_norm_pct": 99.92671192892725,
+              "mean_torque_is_significant": true,
+              "ripple_true": 328.84756074669485,
+              "ripple_pred": 0.0,
+              "ripple_error_pct": 100.0
+            }
+          }
+        },
+        "torque": {
+          "n": 270,
+          "nrmse_torque_pct": 100.0,
+          "rmse_torque": 1988.7122554059686,
+          "rms_torque_true": 1988.7122554059686,
+          "rel_error_pct_mean": 100.0,
+          "rel_error_pct_median": 100.0,
+          "rel_error_pct_max": 100.00000000000001,
+          "mean_torque_true": -1802.5076760951065,
+          "mean_torque_pred": 0.0,
+          "mean_torque_abs_error": 1802.5076760951065,
+          "mean_torque_error_pct": 100.0,
+          "mean_torque_error_norm_pct": 90.63692704639914,
+          "mean_torque_is_significant": true,
+          "ripple_true_case_mean": 394.18897478898884,
+          "ripple_pred_case_mean": 0.0,
+          "ripple_error_pct_case_mean": 100.0,
+          "note": "ripple aggregated per case, then averaged; rel_error pooled over samples"
+        }
+      },
+      "failures": []
+    },
+    "curl:mgn_nodeB_doe_v2_bw30_prior": {
+      "model": {
+        "kind": "MeshGraphNet + P1 curl",
+        "checkpoint": "results/mgn_nodeB_doe_v2_bw30_prior.pt",
+        "params": 9286658,
+        "node_features": [
+          "pos_x",
+          "pos_y",
+          "region_code",
+          "rotor_angle_sin",
+          "rotor_angle_cos",
+          "Ratio_Bore",
+          "Ratio_SlotDepth_ParallelSlot",
+          "PeakCurrent",
+          "PhaseAdvance",
+          "prior_a",
+          "prior_bx",
+          "prior_by"
+        ],
+        "edge_features": [
+          "edge_sign",
+          "dx",
+          "dy",
+          "dist"
+        ],
+        "sector_symmetry": {
+          "sector_deg": 45.0,
+          "wrap_rotor": false,
+          "anti_periodic_edges": false,
+          "w_pbc": 0.01
+        },
+        "predicts": "nodal Bx, By",
+        "derives": "element B = mean of nodal B (round trip)",
+        "output_support": "element",
+        "a_scale": 0.7330834269523621,
+        "train_args": {
+          "data_dir": "backup/doe_data_v2",
+          "split": "eval/splits/doe_v2_case_split.json",
+          "epochs": 50,
+          "batch_size": 1,
+          "lr": 0.001,
+          "weight_decay": 1e-06,
+          "processor_size": 15,
+          "hidden_dim": 256,
+          "model": "mgn",
+          "n_layers": 12,
+          "n_head": 8,
+          "slice_num": 32,
+          "emb_dim": 64,
+          "step_stride": 1,
+          "max_steps_per_case": null,
+          "w_b": 1.0,
+          "w_gauge": 0.001,
+          "w_a": 0.0,
+          "airgap_weight": 1.0,
+          "band_spectral_weight": 30.0,
+          "w_pbc": 0.01,
+          "sector_deg": 45.0,
+          "no_wrap_rotor": true,
+          "no_anti_periodic_edges": true,
+          "prior_features": true,
+          "target": "B",
+          "seed": 42,
+          "resume": "results/mgn_nodeB_doe_v2_bw30_prior.pt.last",
+          "ckpt_every": 1
+        },
+        "split_provenance": {
+          "granularity": "case",
+          "contaminated": false,
+          "train_cases": [
+            0,
+            1,
+            2,
+            3,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            26,
+            27,
+            29,
+            30,
+            31,
+            33,
+            34,
+            35,
+            36,
+            38,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240,
+            241,
+            242,
+            243,
+            244,
+            245,
+            246,
+            247,
+            252,
+            253,
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267,
+            268,
+            269,
+            270,
+            271,
+            274,
+            275,
+            278,
+            279,
+            280,
+            281,
+            282,
+            283,
+            284,
+            285,
+            286,
+            287,
+            288,
+            289,
+            292,
+            293,
+            294,
+            295,
+            298,
+            299,
+            300,
+            301,
+            302,
+            303,
+            306,
+            307,
+            308,
+            309,
+            310,
+            311,
+            312,
+            313,
+            316,
+            317
+          ],
+          "val_cases": [
+            5,
+            16,
+            25,
+            28,
+            250,
+            251,
+            272,
+            273,
+            290,
+            291,
+            296,
+            297
+          ],
+          "test_cases": [
+            4,
+            7,
+            18,
+            32,
+            37,
+            39,
+            248,
+            249,
+            254,
+            255,
+            276,
+            277,
+            304,
+            305,
+            314,
+            315,
+            318,
+            319
+          ],
+          "seed": 42,
+          "doe_digest": "8d671fe715482266"
+        },
+        "identity": {
+          "sha256": "d55c76b4ab44c42629e632d0f705e00c17e427d1d89c9d9cdaea87d60116c102",
+          "bytes": 111824005,
+          "epoch": 46,
+          "filename": "mgn_nodeB_doe_v2_bw30_prior.pt",
+          "registered": false
+        }
+      },
+      "summary": {
+        "n_samples": 270,
+        "n_cases": 6,
+        "element_coverage": 0.907288877148253,
+        "overall": {
+          "Bx": {
+            "n": 4823010,
+            "rmse": 0.1030515711000471,
+            "nrmse_pct": 14.765092208218418,
+            "nrmse_pct_median": 14.987288962819468,
+            "nrmse_pct_p95": 18.756110159323732
+          },
+          "By": {
+            "n": 4823010,
+            "rmse": 0.088311709589653,
+            "nrmse_pct": 12.901645829224806,
+            "nrmse_pct_median": 12.867785184365601,
+            "nrmse_pct_p95": 18.15213538386213
+          },
+          "Bnorm": {
+            "n": 4823010,
+            "rmse": 0.10769778874306431,
+            "nrmse_pct": 11.016786151410027,
+            "nrmse_pct_median": 10.791514194698294,
+            "nrmse_pct_p95": 14.50406774119001
+          }
+        },
+        "by_region": {
+          "airgap": {
+            "Bx": {
+              "n": 200880,
+              "rmse": 0.05131084934938002,
+              "nrmse_pct": 7.703569739359578,
+              "nrmse_pct_median": 7.147599231276246,
+              "nrmse_pct_p95": 15.193354628603393
+            },
+            "By": {
+              "n": 200880,
+              "rmse": 0.05055387913524107,
+              "nrmse_pct": 11.395326769839775,
+              "nrmse_pct_median": 11.729418935997476,
+              "nrmse_pct_p95": 18.54185204141587
+            },
+            "Bnorm": {
+              "n": 200880,
+              "rmse": 0.05710324080400727,
+              "nrmse_pct": 7.135355289308951,
+              "nrmse_pct_median": 7.007421237239441,
+              "nrmse_pct_p95": 12.545341625731238
+            }
+          },
+          "stator_teeth": {
+            "Bx": {
+              "n": 1057590,
+              "rmse": 0.12901496302301002,
+              "nrmse_pct": 12.04152164796775,
+              "nrmse_pct_median": 12.403698239126195,
+              "nrmse_pct_p95": 20.091785151334346
+            },
+            "By": {
+              "n": 1057590,
+              "rmse": 0.09112956088393966,
+              "nrmse_pct": 11.035246016355877,
+              "nrmse_pct_median": 11.25360276598855,
+              "nrmse_pct_p95": 13.993885480585917
+            },
+            "Bnorm": {
+              "n": 1057590,
+              "rmse": 0.1404592217233459,
+              "nrmse_pct": 10.383360927087734,
+              "nrmse_pct_median": 10.503572406388432,
+              "nrmse_pct_p95": 13.997895406980303
+            }
+          },
+          "stator_yoke": {
+            "Bx": {
+              "n": 1001160,
+              "rmse": 0.06209187045148158,
+              "nrmse_pct": 11.107971845791788,
+              "nrmse_pct_median": 11.329898708726065,
+              "nrmse_pct_p95": 37.05515946944534
+            },
+            "By": {
+              "n": 1001160,
+              "rmse": 0.08435590261060376,
+              "nrmse_pct": 9.9033199664288,
+              "nrmse_pct_median": 9.731339201613855,
+              "nrmse_pct_p95": 46.26299406488759
+            },
+            "Bnorm": {
+              "n": 1001160,
+              "rmse": 0.07899694906233933,
+              "nrmse_pct": 7.753682723418747,
+              "nrmse_pct_median": 7.68240907190313,
+              "nrmse_pct_p95": 31.793266570453273
+            }
+          },
+          "winding": {
+            "Bx": {
+              "n": 1320030,
+              "rmse": 0.09743976257613052,
+              "nrmse_pct": 92.59096579184742,
+              "nrmse_pct_median": 95.52228478363857,
+              "nrmse_pct_p95": 133.43540982981455
+            },
+            "By": {
+              "n": 1320030,
+              "rmse": 0.06979786046212991,
+              "nrmse_pct": 33.058413617726615,
+              "nrmse_pct_median": 33.04491831692807,
+              "nrmse_pct_p95": 39.23314259243481
+            },
+            "Bnorm": {
+              "n": 1320030,
+              "rmse": 0.08735577514750871,
+              "nrmse_pct": 37.02954123831296,
+              "nrmse_pct_median": 36.05720592237836,
+              "nrmse_pct_p95": 48.76774855073752
+            }
+          },
+          "magnet": {
+            "Bx": {
+              "n": 220635,
+              "rmse": 0.10668268796905347,
+              "nrmse_pct": 25.550319316008345,
+              "nrmse_pct_median": 25.873911379217372,
+              "nrmse_pct_p95": 36.15224444719829
+            },
+            "By": {
+              "n": 220635,
+              "rmse": 0.0960284673194494,
+              "nrmse_pct": 14.93837746328738,
+              "nrmse_pct_median": 14.962719184791498,
+              "nrmse_pct_p95": 18.95043315866251
+            },
+            "Bnorm": {
+              "n": 220635,
+              "rmse": 0.08728861549537903,
+              "nrmse_pct": 11.387479589272303,
+              "nrmse_pct_median": 11.784773279719367,
+              "nrmse_pct_p95": 12.693483721383634
+            }
+          },
+          "rotor_iron": {
+            "Bx": {
+              "n": 799785,
+              "rmse": 0.11155681174983745,
+              "nrmse_pct": 12.272769935240872,
+              "nrmse_pct_median": 12.581988694925116,
+              "nrmse_pct_p95": 14.808895756630651
+            },
+            "By": {
+              "n": 799785,
+              "rmse": 0.10291005860238638,
+              "nrmse_pct": 12.056135325941815,
+              "nrmse_pct_median": 12.60906815049606,
+              "nrmse_pct_p95": 15.24376869877441
+            },
+            "Bnorm": {
+              "n": 799785,
+              "rmse": 0.12084078747627898,
+              "nrmse_pct": 9.690988600937608,
+              "nrmse_pct_median": 9.730629085540016,
+              "nrmse_pct_p95": 10.992055895068866
+            }
+          },
+          "rotor_air": {
+            "Bx": {
+              "n": 192150,
+              "rmse": 0.14834403720150724,
+              "nrmse_pct": 46.59068611012105,
+              "nrmse_pct_median": 47.56516954396453,
+              "nrmse_pct_p95": 58.20295120284234
+            },
+            "By": {
+              "n": 192150,
+              "rmse": 0.1488588908530851,
+              "nrmse_pct": 32.689354114446644,
+              "nrmse_pct_median": 32.79318478270169,
+              "nrmse_pct_p95": 37.684160168893385
+            },
+            "Bnorm": {
+              "n": 192150,
+              "rmse": 0.15705636272043463,
+              "nrmse_pct": 28.265507277692176,
+              "nrmse_pct_median": 28.631030610670827,
+              "nrmse_pct_p95": 31.70889571333451
+            }
+          },
+          "shaft": {
+            "Bx": {
+              "n": 30780,
+              "rmse": 0.0042069128881131275,
+              "nrmse_pct": 16.674765129246243,
+              "nrmse_pct_median": 18.297356878329264,
+              "nrmse_pct_p95": 120.8592711850529
+            },
+            "By": {
+              "n": 30780,
+              "rmse": 0.004620885343167711,
+              "nrmse_pct": 21.823729620221616,
+              "nrmse_pct_median": 23.42766713797016,
+              "nrmse_pct_p95": 114.83682282229834
+            },
+            "Bnorm": {
+              "n": 30780,
+              "rmse": 0.004410689723016926,
+              "nrmse_pct": 13.391341302946385,
+              "nrmse_pct_median": 14.292951012261408,
+              "nrmse_pct_p95": 65.69751687256765
+            }
+          }
+        },
+        "by_case": {
+          "0": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 873000,
+                "rmse": 0.11695063631155812,
+                "nrmse_pct": 13.475988047093269,
+                "nrmse_pct_median": 13.549391897267459,
+                "nrmse_pct_p95": 14.197827656024993
+              },
+              "By": {
+                "n": 873000,
+                "rmse": 0.09028174006007296,
+                "nrmse_pct": 11.346448410259077,
+                "nrmse_pct_median": 11.274356110773676,
+                "nrmse_pct_p95": 12.508350799431538
+              },
+              "Bnorm": {
+                "n": 873000,
+                "rmse": 0.11804927642640342,
+                "nrmse_pct": 10.026287078803104,
+                "nrmse_pct_median": 10.02551203267667,
+                "nrmse_pct_p95": 10.224126927198153
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 6.466496543944774,
+              "rmse_torque": 127.3669277050541,
+              "rms_torque_true": 1969.6434822086228,
+              "rel_error_pct_mean": 5.281727271617171,
+              "rel_error_pct_median": 4.082449185746176,
+              "rel_error_pct_max": 12.252827352235148,
+              "mean_torque_true": -1968.006099068745,
+              "mean_torque_pred": -2054.71580528902,
+              "mean_torque_abs_error": 86.70970622027494,
+              "mean_torque_error_pct": 4.40596735250494,
+              "mean_torque_error_norm_pct": 4.402304630432134,
+              "mean_torque_is_significant": true,
+              "ripple_true": 280.179357319003,
+              "ripple_pred": 493.1813500591918,
+              "ripple_error_pct": 76.02344254707951
+            }
+          },
+          "1": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 957510,
+                "rmse": 0.11323478426089181,
+                "nrmse_pct": 14.111189002356317,
+                "nrmse_pct_median": 14.02270699303767,
+                "nrmse_pct_p95": 14.992251896730682
+              },
+              "By": {
+                "n": 957510,
+                "rmse": 0.09048030201352468,
+                "nrmse_pct": 11.86449794233764,
+                "nrmse_pct_median": 11.93583625153837,
+                "nrmse_pct_p95": 12.736900575238643
+              },
+              "Bnorm": {
+                "n": 957510,
+                "rmse": 0.1145250753987968,
+                "nrmse_pct": 10.345316978941632,
+                "nrmse_pct_median": 10.326176500879612,
+                "nrmse_pct_p95": 10.663170291572522
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 5.532783758886445,
+              "rmse_torque": 133.60296171509313,
+              "rms_torque_true": 2414.7511910348494,
+              "rel_error_pct_mean": 4.882375741774562,
+              "rel_error_pct_median": 4.677465733207957,
+              "rel_error_pct_max": 11.690797169811363,
+              "mean_torque_true": -2413.317084347701,
+              "mean_torque_pred": -2527.4541762615327,
+              "mean_torque_abs_error": 114.13709191383168,
+              "mean_torque_error_pct": 4.729469353782906,
+              "mean_torque_error_norm_pct": 4.726660549442275,
+              "mean_torque_is_significant": true,
+              "ripple_true": 254.36886514260186,
+              "ripple_pred": 487.15569714198637,
+              "ripple_error_pct": 91.51545802151603
+            }
+          },
+          "2": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 759510,
+                "rmse": 0.09687359949904906,
+                "nrmse_pct": 15.745117895685066,
+                "nrmse_pct_median": 15.579785350774443,
+                "nrmse_pct_p95": 17.241938062330238
+              },
+              "By": {
+                "n": 759510,
+                "rmse": 0.08851672722471722,
+                "nrmse_pct": 13.545808983190977,
+                "nrmse_pct_median": 13.491750734051873,
+                "nrmse_pct_p95": 14.878724598773655
+              },
+              "Bnorm": {
+                "n": 759510,
+                "rmse": 0.10490555584576627,
+                "nrmse_pct": 11.688258320872801,
+                "nrmse_pct_median": 11.621335530407192,
+                "nrmse_pct_p95": 12.627843299394213
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 12.094084342683237,
+              "rmse_torque": 253.00419212817147,
+              "rms_torque_true": 2091.9664933644663,
+              "rel_error_pct_mean": 11.600126574803204,
+              "rel_error_pct_median": 10.52216185448713,
+              "rel_error_pct_max": 22.284016530280578,
+              "mean_torque_true": -2085.558008438759,
+              "mean_torque_pred": -2327.4017951408555,
+              "mean_torque_abs_error": 241.84378670209662,
+              "mean_torque_error_pct": 11.596118915107041,
+              "mean_torque_error_norm_pct": 11.560595615140292,
+              "mean_torque_is_significant": true,
+              "ripple_true": 550.3252047748429,
+              "ripple_pred": 743.6579265726341,
+              "ripple_error_pct": 35.130631873728255
+            }
+          },
+          "3": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 761220,
+                "rmse": 0.07993356041589647,
+                "nrmse_pct": 18.070774682159207,
+                "nrmse_pct_median": 18.038925373758985,
+                "nrmse_pct_p95": 19.441313079876036
+              },
+              "By": {
+                "n": 761220,
+                "rmse": 0.08062999581465297,
+                "nrmse_pct": 17.778794211681394,
+                "nrmse_pct_median": 17.605820221966177,
+                "nrmse_pct_p95": 19.170145813271827
+              },
+              "Bnorm": {
+                "n": 761220,
+                "rmse": 0.08959565421531124,
+                "nrmse_pct": 14.142654362391353,
+                "nrmse_pct_median": 13.974924144003817,
+                "nrmse_pct_p95": 14.996815317193464
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 31.296091202112976,
+              "rmse_torque": 54.078589305947915,
+              "rms_torque_true": 172.79662484590654,
+              "rel_error_pct_mean": 134.76045206493572,
+              "rel_error_pct_median": 32.170098924929455,
+              "rel_error_pct_max": 1596.929990527102,
+              "mean_torque_true": -94.06889360065031,
+              "mean_torque_pred": -112.92955511788931,
+              "mean_torque_abs_error": 18.860661517238995,
+              "mean_torque_error_pct": 20.049838788694554,
+              "mean_torque_error_norm_pct": 10.914947866636988,
+              "mean_torque_is_significant": true,
+              "ripple_true": 476.35199533907644,
+              "ripple_pred": 620.4386131044357,
+              "ripple_error_pct": 30.247929928958452
+            }
+          },
+          "4": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 692550,
+                "rmse": 0.0912428113151269,
+                "nrmse_pct": 17.09789246333387,
+                "nrmse_pct_median": 16.82720412190517,
+                "nrmse_pct_p95": 20.00728939260224
+              },
+              "By": {
+                "n": 692550,
+                "rmse": 0.08680905801332615,
+                "nrmse_pct": 15.014651503475356,
+                "nrmse_pct_median": 14.784487219291613,
+                "nrmse_pct_p95": 16.43632423573376
+              },
+              "Bnorm": {
+                "n": 692550,
+                "rmse": 0.10119171770296252,
+                "nrmse_pct": 12.861182584601414,
+                "nrmse_pct_median": 12.644234939205074,
+                "nrmse_pct_p95": 14.299722197114038
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 14.963818461499573,
+              "rmse_torque": 242.15087078286868,
+              "rms_torque_true": 1618.2425054533974,
+              "rel_error_pct_mean": 14.185483749580223,
+              "rel_error_pct_median": 14.405573813635698,
+              "rel_error_pct_max": 23.136597710269207,
+              "mean_torque_true": -1611.3322431619501,
+              "mean_torque_pred": -1840.7377167058307,
+              "mean_torque_abs_error": 229.4054735438806,
+              "mean_torque_error_pct": 14.237006335435424,
+              "mean_torque_error_norm_pct": 14.176211091402893,
+              "mean_torque_is_significant": true,
+              "ripple_true": 475.0608654117141,
+              "ripple_pred": 720.6919596713224,
+              "ripple_error_pct": 51.70518393400618
+            }
+          },
+          "5": {
+            "n_samples": 45,
+            "channels": {
+              "Bx": {
+                "n": 779220,
+                "rmse": 0.10891721403386131,
+                "nrmse_pct": 14.467317773390837,
+                "nrmse_pct_median": 14.488091043534045,
+                "nrmse_pct_p95": 15.456378612483027
+              },
+              "By": {
+                "n": 779220,
+                "rmse": 0.09162239320902155,
+                "nrmse_pct": 12.223308760345848,
+                "nrmse_pct_median": 12.176232905982149,
+                "nrmse_pct_p95": 13.42559911907639
+              },
+              "Bnorm": {
+                "n": 779220,
+                "rmse": 0.1113188239650659,
+                "nrmse_pct": 10.478300926969297,
+                "nrmse_pct_median": 10.507680911858838,
+                "nrmse_pct_p95": 10.700743182385777
+              }
+            },
+            "torque": {
+              "n": 45,
+              "nrmse_torque_pct": 8.52278011915384,
+              "rmse_torque": 225.40213447868933,
+              "rms_torque_true": 2644.701979018881,
+              "rel_error_pct_mean": 8.10540409530947,
+              "rel_error_pct_median": 8.860139792177884,
+              "rel_error_pct_max": 12.966949814095974,
+              "mean_torque_true": -2642.763727952835,
+              "mean_torque_pred": -2856.977532647646,
+              "mean_torque_abs_error": 214.2138046948112,
+              "mean_torque_error_pct": 8.10567370927055,
+              "mean_torque_error_norm_pct": 8.099733217361573,
+              "mean_torque_is_significant": true,
+              "ripple_true": 328.84756074669485,
+              "ripple_pred": 562.793945053003,
+              "ripple_error_pct": 71.14128618594579
+            }
+          }
+        },
+        "torque": {
+          "n": 270,
+          "nrmse_torque_pct": 9.417329899923905,
+          "rmse_torque": 187.28359385179735,
+          "rms_torque_true": 1988.7122554059686,
+          "rel_error_pct_mean": 29.802594916336727,
+          "rel_error_pct_median": 9.20896990751493,
+          "rel_error_pct_max": 1596.929990527102,
+          "mean_torque_true": -1802.5076760951065,
+          "mean_torque_pred": -1953.3694301937958,
+          "mean_torque_abs_error": 150.8617540986893,
+          "mean_torque_error_pct": 8.369548496210083,
+          "mean_torque_error_norm_pct": 7.585901564622928,
+          "mean_torque_is_significant": true,
+          "ripple_true_case_mean": 394.18897478898884,
+          "ripple_pred_case_mean": 604.6532486004289,
+          "ripple_error_pct_case_mean": 59.29398874853903,
+          "note": "ripple aggregated per case, then averaged; rel_error pooled over samples"
+        }
+      },
+      "failures": []
+    }
+  }
+}

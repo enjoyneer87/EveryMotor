@@ -170,6 +170,24 @@ against our own "data cannot reach the gate" claim, so it is worth closing. Pre-
    (superposition to 1.6e-15) before any current-axis training used it (§27, commit-level
    gates).
 
+11. **A scaling point that is a budget artifact until proven otherwise, and a
+    current-axis claim with a measured boundary.** Expanding to 480 cases (+120 new
+    geometries) *regressed* the legacy fixed-excitation gate — air-gap 6.618→6.925%,
+    torque 3.270→3.799% — which the pre-registered rule reads as a regression. But the
+    two runs were not in the same state at the shared 50-epoch budget: the 320-case run
+    had converged (validation flat, then up) while the 480-case run's best validation
+    landed on its final epoch and was still descending. The campaign's own standard is
+    each point trained to its own convergence, so the 480 point is not yet admissible
+    and the verdict is provisional pending the extension experiment (§32, §33). Note
+    this is *not* the §21 step-matched confound — at equal epochs every sample is seen
+    equally often, and the 480 run took 1.55× **more** gradient steps. Meanwhile the
+    same model improved on both current-axis measures, and an eval-only probe at an
+    **untrained** excitation level (487.9 A) shows the current claim's boundary:
+    torque 9.4% (v2) / 7.4% (R9) against 2.4–3.3% at trained levels, with |B|
+    essentially unchanged (§34). The honest composite claim is that a single champion
+    is starting to split by task, and that current generalization holds *at trained
+    levels* rather than continuously.
+
 10. **Current-axis generalization with an aggregation caveat.** Trained on 320 cases
     (240 geometries at the true fixed excitation + 40 geometries × {0.5, 0.25}×I_ref),
     evaluated on a geometry×current double holdout: pooled |B| 10.856% / airgap 5.353% /
@@ -306,6 +324,19 @@ best, 6.618% (vs 7.138 prior, 7.30 champion); its current-axis scorecard is T5.
 | — 325.3 A only | 6 | 10.690 | — | 2.404 |
 | — 162.6 A only | 6 | 11.058 | — | 3.479 |
 | — excluding geometry-32 pair | 10 | 10.646 | — | 2.263 |
+| **unseen CURRENT LEVEL — 487.9 A probe** | **6** | **11.017** | **7.135** | **9.417** |
+
+**The last row is the boundary of the claim, and it must be reported with the rest**
+(§34). Every group above it sits at a current level the model trained on; the probe
+does not. Structurally it is the same double holdout as `new12` — six never-trained
+geometries — and the single variable that changes is whether the excitation level was
+in the training set. Torque goes from 2.4–3.3% to **9.4%** while |B| (11.017 vs 11.107)
+and air-gap (7.135 vs 6.618) barely move. Not an artifact of the near-zero-torque
+geometry (excluding it: 9.358%) and not a data defect (ampere-turns gate 6/6 at 0.00%).
+So the model learned **the discrete excitation levels it was shown, not a continuous
+current response**, and this is simultaneously the sharpest instance of the
+field-versus-torque decoupling the paper is named for: the field is essentially
+unchanged while the quantity a designer ships degrades threefold.
 
 Aggregation statement (belongs in IV): gate comparisons use pooled nRMSE (error RMS over
 all samples / truth RMS over all samples); per-operating-point claims use per-case nRMSE,
