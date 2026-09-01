@@ -6,6 +6,7 @@ import argparse
 import collections
 import logging
 import random
+import warnings
 from pathlib import Path
 from typing import Dict, Iterator, List, Optional, Sequence, Tuple
 
@@ -20,6 +21,9 @@ except ImportError:  # tensorboard optional
     _SummaryWriter = None
 
 from .contracts import (
+    ChannelZScoreStats,
+    apply_channel_zscore,
+    build_channel_zscore_stats,
     normalize_channels_to_bx_by_a_je,
     resolve_loss_routing_from_codes,
     validate_batch_fidelity_policy,
@@ -30,6 +34,13 @@ from .motor_dataset import StaticMotorDataset, build_samples_from_doe_manifest, 
 from .physics_operators import PhysicsOperator, build_physics_operator
 
 LOG = logging.getLogger(__name__)
+
+# PhysicsNeMo emits DGL backend warnings even when the PyG execution path is used.
+warnings.filterwarnings(
+    "ignore",
+    message=r"MeshGraphNet \(DGL version\) requires the DGL library\.",
+    category=UserWarning,
+)
 
 
 class StepAwareBatchSampler(Sampler[List[int]]):
@@ -209,6 +220,30 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--weight-a", type=float, default=1.0, help="Supervised A loss weight")
     p.add_argument("--weight-b", type=float, default=1.0, help="Supervised Bx/By loss weight")
     p.add_argument("--weight-current", type=float, default=1.0, help="Supervised J/Je loss weight")
+    p.add_argument(
+        "--current-focus-alpha",
+        type=float,
+        default=2.0,
+        help="Magnitude-aware Je loss focus strength (0 disables sparse-focus weighting)",
+    )
+    p.add_argument(
+        "--current-focus-gamma",
+        type=float,
+        default=1.0,
+        help="Exponent for Je magnitude-aware loss weighting",
+    )
+    p.add_argument(
+        "--target-normalization",
+        choices=("none", "zscore"),
+        default="zscore",
+        help="Channel-wise normalization for [Bx, By, A, Je] at loss boundary",
+    )
+    p.add_argument(
+        "--target-normalization-eps",
+        type=float,
+        default=1e-6,
+        help="Numerical floor for channel std during z-score normalization",
+    )
     p.add_argument("--overfit-single", action="store_true", help="Repeat the first batch to check overfitting")
     p.add_argument("--overfit-target", type=float, default=1e-4, help="Pass threshold for overfit-single train loss")
     p.add_argument(
@@ -262,6 +297,34 @@ def _normalize_target_channels(y: torch.Tensor) -> Tuple[torch.Tensor, str]:
 def _normalize_prediction_channels(pred: torch.Tensor) -> torch.Tensor:
     norm, _ = normalize_channels_to_bx_by_a_je(pred)
     return norm
+
+
+def _compute_channel_zscore_stats(
+    samples: Sequence[dict],
+    *,
+    eps: float,
+) -> ChannelZScoreStats:
+    """Compute canonical [Bx, By, A, Je] channel statistics from sample targets."""
+    channel_sum = torch.zeros((4,), dtype=torch.float64)
+    channel_sq_sum = torch.zeros((4,), dtype=torch.float64)
+    sample_count = 0
+
+    for sample in samples:
+        y_raw = torch.as_tensor(sample["y"], dtype=torch.float32)
+        y, _ = normalize_channels_to_bx_by_a_je(y_raw)
+        if y.numel() == 0:
+            continue
+        y64 = y.to(dtype=torch.float64)
+        channel_sum += y64.sum(dim=0)
+        channel_sq_sum += (y64 ** 2).sum(dim=0)
+        sample_count += int(y64.shape[0])
+
+    return build_channel_zscore_stats(
+        channel_sum=channel_sum,
+        channel_sq_sum=channel_sq_sum,
+        sample_count=sample_count,
+        eps=eps,
+    )
 
 
 def _resolve_sample_weight(batch) -> float:
@@ -354,6 +417,9 @@ def train_epoch(
     w_a: float,
     w_b: float,
     w_current: float,
+    current_focus_alpha: float,
+    current_focus_gamma: float,
+    target_stats: Optional[ChannelZScoreStats],
 ) -> Dict[str, float]:
     model.train()
     sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "current_loss": 0.0}
@@ -362,8 +428,10 @@ def train_epoch(
         batch = batch.to(device)
         _attach_pos_to_x(batch)
 
-        pred = _normalize_prediction_channels(forward_model(model, batch))
-        target, schema = _normalize_target_channels(batch.y)
+        pred_raw = _normalize_prediction_channels(forward_model(model, batch))
+        target_raw, schema = _normalize_target_channels(batch.y)
+        pred = apply_channel_zscore(pred_raw, target_stats)
+        target = apply_channel_zscore(target_raw, target_stats)
         w_a_eff, w_b_eff, w_current_eff, sample_weight = _resolve_loss_routing_from_batch(
             batch=batch,
             schema=schema,
@@ -380,6 +448,8 @@ def train_epoch(
             w_a=w_a_eff,
             w_b=w_b_eff,
             w_current=w_current_eff,
+            current_focus_alpha=current_focus_alpha,
+            current_focus_gamma=current_focus_gamma,
         )
         total_loss = total_loss * sample_weight
 
@@ -405,6 +475,9 @@ def eval_epoch(
     w_a: float,
     w_b: float,
     w_current: float,
+    current_focus_alpha: float,
+    current_focus_gamma: float,
+    target_stats: Optional[ChannelZScoreStats],
 ) -> Dict[str, float]:
     model.eval()
     sums = {"total_loss": 0.0, "a_loss": 0.0, "b_loss": 0.0, "current_loss": 0.0}
@@ -414,8 +487,10 @@ def eval_epoch(
         _attach_pos_to_x(batch)
 
         with torch.no_grad():
-            pred = _normalize_prediction_channels(forward_model(model, batch))
-            target, schema = _normalize_target_channels(batch.y)
+            pred_raw = _normalize_prediction_channels(forward_model(model, batch))
+            target_raw, schema = _normalize_target_channels(batch.y)
+            pred = apply_channel_zscore(pred_raw, target_stats)
+            target = apply_channel_zscore(target_raw, target_stats)
             w_a_eff, w_b_eff, w_current_eff, sample_weight = _resolve_loss_routing_from_batch(
                 batch=batch,
                 schema=schema,
@@ -431,6 +506,8 @@ def eval_epoch(
                 w_a=w_a_eff,
                 w_b=w_b_eff,
                 w_current=w_current_eff,
+                current_focus_alpha=current_focus_alpha,
+                current_focus_gamma=current_focus_gamma,
             )
         sums["total_loss"] += float(metrics["total_loss"].item() * sample_weight)
         sums["a_loss"] += float(metrics["a_loss"].item())
@@ -505,6 +582,20 @@ def main() -> None:
         operator.name,
     )
 
+    target_stats: Optional[ChannelZScoreStats] = None
+    if args.target_normalization == "zscore":
+        target_stats = _compute_channel_zscore_stats(
+            samples,
+            eps=float(args.target_normalization_eps),
+        )
+        LOG.info(
+            "Target z-score stats enabled: mean=%s std=%s",
+            [round(float(v), 6) for v in target_stats.mean.tolist()],
+            [round(float(v), 6) for v in target_stats.std.tolist()],
+        )
+    else:
+        LOG.info("Target normalization disabled")
+
     input_dim = dataset[0].x.shape[1]
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(
@@ -563,6 +654,9 @@ def main() -> None:
             w_a=args.weight_a,
             w_b=args.weight_b,
             w_current=args.weight_current,
+            current_focus_alpha=args.current_focus_alpha,
+            current_focus_gamma=args.current_focus_gamma,
+            target_stats=target_stats,
         )
         best_train_total = min(best_train_total, train_metrics["total_loss"])
         val_metrics = eval_epoch(
@@ -573,6 +667,9 @@ def main() -> None:
             w_a=args.weight_a,
             w_b=args.weight_b,
             w_current=args.weight_current,
+            current_focus_alpha=args.current_focus_alpha,
+            current_focus_gamma=args.current_focus_gamma,
+            target_stats=target_stats,
         )
         if scheduler is not None:
             scheduler.step(val_metrics["total_loss"])
@@ -615,7 +712,22 @@ def main() -> None:
             _ep_path = Path(args.ckpt_out).with_suffix("") / f"ep{epoch:04d}.pt"
             _ep_path.parent.mkdir(parents=True, exist_ok=True)
             _sc(path=_ep_path, model=model, epoch=epoch, best_loss=best_val_total,
-                args_dict={"hidden_dim": args.hidden_dim, "output_dim": 4})
+                args_dict={
+                    "hidden_dim": args.hidden_dim,
+                    "output_dim": 4,
+                    "target_normalization": args.target_normalization,
+                    "target_normalization_eps": args.target_normalization_eps,
+                    "current_focus_alpha": args.current_focus_alpha,
+                    "current_focus_gamma": args.current_focus_gamma,
+                    "target_norm_mean": (
+                        [float(v) for v in target_stats.mean.tolist()]
+                        if target_stats is not None else None
+                    ),
+                    "target_norm_std": (
+                        [float(v) for v in target_stats.std.tolist()]
+                        if target_stats is not None else None
+                    ),
+                })
             LOG.info("Intermediate checkpoint saved: %s", _ep_path)
 
         # TensorBoard: 매 epoch 기록
@@ -670,6 +782,18 @@ def main() -> None:
                 "step_index": args.step_index,
                 "step_aware_batching": bool(args.step_aware_batching),
                 "pbc_rotation_deg": -45.0,
+                "target_normalization": args.target_normalization,
+                "target_normalization_eps": args.target_normalization_eps,
+                "current_focus_alpha": args.current_focus_alpha,
+                "current_focus_gamma": args.current_focus_gamma,
+                "target_norm_mean": (
+                    [float(v) for v in target_stats.mean.tolist()]
+                    if target_stats is not None else None
+                ),
+                "target_norm_std": (
+                    [float(v) for v in target_stats.std.tolist()]
+                    if target_stats is not None else None
+                ),
             },
         )
         LOG.info("SymMGN checkpoint saved: %s", ckpt_path)
