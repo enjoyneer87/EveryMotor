@@ -26,7 +26,7 @@ def hybrid_physics_loss(
     w_a: float = 1.0,
     w_b: float = 1.0,
     w_current: float = 1.0,
-    current_focus_alpha: float = 2.0,
+    current_focus_alpha: float = 0.0,
     current_focus_gamma: float = 1.0,
 ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
     """Compute weighted A + B supervision loss.

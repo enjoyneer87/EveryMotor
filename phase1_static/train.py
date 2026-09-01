@@ -223,8 +223,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--current-focus-alpha",
         type=float,
-        default=2.0,
-        help="Magnitude-aware Je loss focus strength (0 disables sparse-focus weighting)",
+        default=0.0,
+        help="Magnitude-aware Je loss focus strength (0 disables sparse-focus "
+        "weighting). Conservative default: opt in explicitly, so the training "
+        "process that produced the Phase 1 measurement series is unchanged "
+        "unless asked for.",
     )
     p.add_argument(
         "--current-focus-gamma",
@@ -235,8 +238,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--target-normalization",
         choices=("none", "zscore"),
-        default="zscore",
-        help="Channel-wise normalization for [Bx, By, A, Je] at loss boundary",
+        default="none",
+        help="Channel-wise normalization for [Bx, By, A, Je] at loss boundary. "
+        "Conservative default: opt in explicitly (see --current-focus-alpha).",
     )
     p.add_argument(
         "--target-normalization-eps",
