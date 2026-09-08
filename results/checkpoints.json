@@ -3,6 +3,146 @@
   "naming": "<arch>_<variant>_ep<NN>_<machine>.pt",
   "checkpoints": [
     {
+      "sha256": "7edee4f0e2dbeaa0c71d15cf50df12458f1f2485470f303199f8689285fb481f",
+      "bytes": 111792849,
+      "epoch": 39,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe120_bw30_ep39_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe120_bw30.pt"
+      ],
+      "variant": "nodeB doe120 h256 p15 spectral bw30 (120 training geometries)",
+      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30.json",
+      "metrics": {
+        "B_nrmse_pct": 11.96,
+        "torque_nrmse_pct": 5.252
+      },
+      "note": "R4(a): DOE geometry expansion 40->120 (80 new Motor-CAD LHS geometries), same bw30 recipe, test/val held identical to doe40. First |B| plateau break: 12.748%->11.960% (-0.79pp, broad across all 6 test cases). Data is the |B| bottleneck; model axes (capacity/supervision/architecture/representation) exhausted §13-19. Current best on |B|. See methodology_review §20."
+    },
+    {
+      "sha256": "b329e8233b84883b8f3893618b770616e849975378ec44ba587426c87a20c34b",
+      "bytes": 111804841,
+      "epoch": 60,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe120_ep100budget_ep60_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe120_bw30_ep100.pt"
+      ],
+      "variant": "nodeB doe120 h256 p15 spectral bw30, 100-epoch budget control (R5c)",
+      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30_ep100.json",
+      "metrics": {
+        "B_nrmse_pct": 11.762,
+        "torque_nrmse_pct": 7.204
+      },
+      "note": "R5c: same data/split/config as doe120_bw30, epochs 50->100 as the only variable -- the budget control for the scaling curve. Pre-registered outcome B: 11.762% is inside [11.71, 12.21], so the 50-epoch budget was adequate and the published 40/120/240 curve stands (delta -0.198pp = 0.79x the run band; threshold missed by 0.05pp). Torque regressed 5.25->7.20 (excl-32 4.01->6.29) -- with section 21b this brackets torque as budget-fragile (+/-2pp on single runs). NOT a deployment candidate. See methodology review section 21c."
+    },
+    {
+      "sha256": "df01435d7dcbd32bcb609bec549958335401abd9fccb2684b6b013ebedb25a12",
+      "bytes": 111790289,
+      "epoch": 21,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe240_bw30_ep21_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe240_bw30.pt"
+      ],
+      "variant": "nodeB doe240 h256 p15 spectral bw30 (240 training geometries, 25 epochs)",
+      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30.json",
+      "metrics": {
+        "B_nrmse_pct": 12.106,
+        "torque_nrmse_pct": 6.349
+      },
+      "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review 21."
+    },
+    {
+      "sha256": "4cdf9d56a73e18c249f19a1e74d659dd85cec6f86bbae8e457349a2af7903726",
+      "bytes": 111800037,
+      "epoch": 35,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe240_ep50budget_ep35_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe240_bw30_ep50.pt"
+      ],
+      "variant": "nodeB doe240 h256 p15 spectral bw30, 50-epoch budget (240 training geometries)",
+      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30_ep50.json",
+      "metrics": {
+        "B_nrmse_pct": 11.638,
+        "torque_nrmse_pct": 5.4
+      },
+      "note": "R5b: same data/split/config as the 25-epoch run, epochs 25->50 as the ONLY variable. Settles the section-21 confound in favour of H2 (training budget), not data saturation: |B| 12.106 -> 11.638%, beating the previous best doe120 (11.960%) and clearing the pre-registered 11.71% threshold by 0.07pp. All 6 test geometries improve. Torque excluding the near-zero-mean case 32 is 3.938%, the campaign best. CURRENT DEPLOYMENT CANDIDATE, replaces doe120_bw30. Caveat recorded in section 21b: the per-doubling slope (-0.30pp) cannot reach the 5% gate at any feasible dataset size."
+    },
+    {
+      "sha256": "d55c76b4ab44c42629e632d0f705e00c17e427d1d89c9d9cdaea87d60116c102",
+      "bytes": 111824005,
+      "epoch": 46,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe_v2_bw30_prior_ep46_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe_v2_bw30_prior.pt"
+      ],
+      "variant": "nodeB prior V2 (12 feat) h256/p15, 320-case",
+      "scorecard": "results/benchmark_v2_nodeB_doe_v2_bw30_prior_new12.json",
+      "metrics": {
+        "B_nrmse_pct": 10.856,
+        "torque_nrmse_pct": 2.614,
+        "airgap_nrmse_pct": 5.353
+      },
+      "note": "Prior V2, current-generalization line. On the department share as _ep46_RTX3090.pt."
+    },
+    {
+      "sha256": "1882dda49288a85824d6e51f9f0ea23cd4a9d36c49fcec4dcba7c0425d459138",
+      "bytes": 111836845,
+      "epoch": 55,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe_v3_bw30_prior_e2ep55_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe_v3_bw30_prior_ep75.pt.last"
+      ],
+      "variant": "nodeB prior V3, E2 extension resume (ep51->), STOPPED at ep55",
+      "scorecard": "results/benchmark_v2_nodeB_doe_v3_bw30_prior_e2ep55.json",
+      "metrics": {
+        "B_nrmse_pct": 11.106,
+        "torque_nrmse_pct": 4.762,
+        "airgap_nrmse_pct": 6.123
+      },
+      "note": "E2 extension with 250x LR warm-restart (methodology_review 35e/33a); regressed torque, NOT adopted; superseded by v3 ep50. Scratch checkpoint, not on the share."
+    },
+    {
+      "sha256": "6e89b49d48a18a1f46eb82728e3cd620184e53fb92c266e7537b8107a54bca5e",
+      "bytes": 111821317,
+      "epoch": 50,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe_v3_bw30_prior_ep50_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe_v3_bw30_prior.pt"
+      ],
+      "variant": "nodeB prior V3 (12 feat: +prior_a/bx/by) h256/p15, 480-case (R9)",
+      "scorecard": "results/benchmark_v2_nodeB_doe_v3_bw30_prior_new12.json",
+      "metrics": {
+        "B_nrmse_pct": 10.934,
+        "torque_nrmse_pct": 2.336,
+        "airgap_nrmse_pct": 5.301
+      },
+      "note": "R9 champion (2026-08-12). Metrics = new12 pooled; 18-test pooled 11.059/3.510. Data axis saturated vs v2. On the department share as _ep50_RTX3090.pt (MANIFEST_addendum_20260908)."
+    },
+    {
+      "sha256": "d65f1c23d996ab69954d2b4b189f015012d88ee3a4ec85c258f571aff1197107",
+      "bytes": 111780789,
+      "epoch": 79,
+      "machine": "HPC134",
+      "canonical_name": "mgn_nodeB_h256_ep79_HPC134.pt",
+      "seen_as": [
+        "mgn_nodeB_h256.pt",
+        "mgn_nodeB_h256_ep79_HPC134.pt"
+      ],
+      "variant": "nodeB_notime h256 (9 node features, hidden_dim 256, processor_size 15)",
+      "scorecard": "results/benchmark_v2_nodeB_h256.json",
+      "metrics": {
+        "B_nrmse_pct": 12.682,
+        "torque_nrmse_pct": 6.804
+      },
+      "note": "Experiment 1 (capacity, width x2). 9.29M params. Width doubling did not move the TRAIN |B| floor (~10.3%); gain concentrated in torque. See methodology_review §13."
+    },
+    {
       "sha256": "a55b77623f8176daaa02b087e3a03cdc8daad4694667e952eecda8849a3e32b2",
       "bytes": 28347381,
       "epoch": 51,
@@ -54,24 +194,6 @@
       "note": "Completed 60-epoch run, best at 55. Already on the share under the canonical name; the repo copy still carried the ambiguous short name."
     },
     {
-      "sha256": "d65f1c23d996ab69954d2b4b189f015012d88ee3a4ec85c258f571aff1197107",
-      "bytes": 111780789,
-      "epoch": 79,
-      "machine": "HPC134",
-      "canonical_name": "mgn_nodeB_h256_ep79_HPC134.pt",
-      "seen_as": [
-        "mgn_nodeB_h256.pt",
-        "mgn_nodeB_h256_ep79_HPC134.pt"
-      ],
-      "variant": "nodeB_notime h256 (9 node features, hidden_dim 256, processor_size 15)",
-      "scorecard": "results/benchmark_v2_nodeB_h256.json",
-      "metrics": {
-        "B_nrmse_pct": 12.682,
-        "torque_nrmse_pct": 6.804
-      },
-      "note": "Experiment 1 (capacity, width x2). 9.29M params. Width doubling did not move the TRAIN |B| floor (~10.3%); gain concentrated in torque. See methodology_review §13."
-    },
-    {
       "sha256": "6645c6c44b741ed0e0ecc150948fe1b294c4743d87ffd52f05f62d025826769b",
       "bytes": 175946685,
       "epoch": 67,
@@ -88,74 +210,6 @@
         "torque_nrmse_pct": 6.557
       },
       "note": "Experiment 2 (capacity, depth x1.6). 14.62M params, early-stopped ep67/100 on GPU return. Depth bought nothing over exp1; capacity axis declared exhausted. See methodology_review §15."
-    },
-    {
-      "sha256": "7edee4f0e2dbeaa0c71d15cf50df12458f1f2485470f303199f8689285fb481f",
-      "bytes": 111792849,
-      "epoch": 39,
-      "machine": "RTX3090-WDDM",
-      "canonical_name": "mgn_nodeB_doe120_bw30_ep39_RTX3090.pt",
-      "seen_as": [
-        "mgn_nodeB_doe120_bw30.pt"
-      ],
-      "variant": "nodeB doe120 h256 p15 spectral bw30 (120 training geometries)",
-      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30.json",
-      "metrics": {
-        "B_nrmse_pct": 11.96,
-        "torque_nrmse_pct": 5.252
-      },
-      "note": "R4(a): DOE geometry expansion 40->120 (80 new Motor-CAD LHS geometries), same bw30 recipe, test/val held identical to doe40. First |B| plateau break: 12.748%->11.960% (-0.79pp, broad across all 6 test cases). Data is the |B| bottleneck; model axes (capacity/supervision/architecture/representation) exhausted §13-19. Current best on |B|. See methodology_review §20."
-    },
-    {
-      "sha256": "df01435d7dcbd32bcb609bec549958335401abd9fccb2684b6b013ebedb25a12",
-      "bytes": 111790289,
-      "epoch": 21,
-      "machine": "RTX3090-WDDM",
-      "canonical_name": "mgn_nodeB_doe240_bw30_ep21_RTX3090.pt",
-      "seen_as": [
-        "mgn_nodeB_doe240_bw30.pt"
-      ],
-      "variant": "nodeB doe240 h256 p15 spectral bw30 (240 training geometries, 25 epochs)",
-      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30.json",
-      "metrics": {
-        "B_nrmse_pct": 12.106,
-        "torque_nrmse_pct": 6.349
-      },
-      "note": "R5: DOE geometry expansion 120->240, same bw30 recipe, test/val held identical to doe40/doe120. 25 epochs chosen for gradient-step parity with the 120-case 50-epoch run (258,750 vs 247,500 steps), so each sample is seen half as often. |B| 11.960->12.106 (+0.15pp, inside the ~0.25pp run-to-run band) = flat; torque 5.252->6.349 = real regression, driven by ripple (mean torque is the campaign best at 0.709%). NOT the deployment candidate -- doe120_bw30 remains best. Whether this is data saturation or training budget is unresolved; see methodology_review 21."
-    },
-    {
-      "sha256": "4cdf9d56a73e18c249f19a1e74d659dd85cec6f86bbae8e457349a2af7903726",
-      "bytes": 111800037,
-      "epoch": 35,
-      "machine": "RTX3090-WDDM",
-      "canonical_name": "mgn_nodeB_doe240_ep50budget_ep35_RTX3090.pt",
-      "seen_as": [
-        "mgn_nodeB_doe240_bw30_ep50.pt"
-      ],
-      "variant": "nodeB doe240 h256 p15 spectral bw30, 50-epoch budget (240 training geometries)",
-      "scorecard": "results/benchmark_v2_nodeB_doe240_bw30_ep50.json",
-      "metrics": {
-        "B_nrmse_pct": 11.638,
-        "torque_nrmse_pct": 5.4
-      },
-      "note": "R5b: same data/split/config as the 25-epoch run, epochs 25->50 as the ONLY variable. Settles the section-21 confound in favour of H2 (training budget), not data saturation: |B| 12.106 -> 11.638%, beating the previous best doe120 (11.960%) and clearing the pre-registered 11.71% threshold by 0.07pp. All 6 test geometries improve. Torque excluding the near-zero-mean case 32 is 3.938%, the campaign best. CURRENT DEPLOYMENT CANDIDATE, replaces doe120_bw30. Caveat recorded in section 21b: the per-doubling slope (-0.30pp) cannot reach the 5% gate at any feasible dataset size."
-    },
-    {
-      "sha256": "b329e8233b84883b8f3893618b770616e849975378ec44ba587426c87a20c34b",
-      "bytes": 111804841,
-      "epoch": 60,
-      "machine": "RTX3090-WDDM",
-      "canonical_name": "mgn_nodeB_doe120_ep100budget_ep60_RTX3090.pt",
-      "seen_as": [
-        "mgn_nodeB_doe120_bw30_ep100.pt"
-      ],
-      "variant": "nodeB doe120 h256 p15 spectral bw30, 100-epoch budget control (R5c)",
-      "scorecard": "results/benchmark_v2_nodeB_doe120_bw30_ep100.json",
-      "metrics": {
-        "B_nrmse_pct": 11.762,
-        "torque_nrmse_pct": 7.204
-      },
-      "note": "R5c: same data/split/config as doe120_bw30, epochs 50->100 as the only variable -- the budget control for the scaling curve. Pre-registered outcome B: 11.762% is inside [11.71, 12.21], so the 50-epoch budget was adequate and the published 40/120/240 curve stands (delta -0.198pp = 0.79x the run band; threshold missed by 0.05pp). Torque regressed 5.25->7.20 (excl-32 4.01->6.29) -- with section 21b this brackets torque as budget-fragile (+/-2pp on single runs). NOT a deployment candidate. See methodology review section 21c."
     }
   ],
   "ambiguous_names": {
