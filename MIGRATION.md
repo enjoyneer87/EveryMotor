@@ -459,3 +459,24 @@ Short version: the torque metric is validated against Motor-CAD's virtual work t
 0.35% on the mean, the current best surrogate is 13.32% |B| / 9.20% torque
 against a 1.58% representation floor, and the open item is whether removing the
 `time_s` shortcut feature (section 9) clears the early-cycle error.
+
+---
+
+## Addendum — 2026-09-08 (isolated PC `192.168.0.234`, RTX 3090)
+
+The "current best" framing above (`mgn_nodeB_long.pt`, 13.32/9.20) is the **portable acceptance
+contract**, not the champion. As of 2026-09-08 the champion is the prior-feature v3 line, and the
+share now carries the v2/v3 checkpoints that used to live only on the isolated PC
+(`D:\KDH\NvidiaNemo\results`):
+
+| file on share `checkpoints/` | bytes | sha256 | scorecard |
+|---|---:|---|---|
+| `mgn_nodeB_doe_v3_bw30_prior_ep50_RTX3090.pt` | 111,821,317 | `6e89b49d48a18a1f46eb82728e3cd620184e53fb92c266e7537b8107a54bca5e` | v3 new12: \|B\| 10.934 / airgap 5.301 / torque 2.336 — **champion** |
+| `mgn_nodeB_doe_v2_bw30_prior_ep46_RTX3090.pt` | 111,824,005 | `d55c76b4ab44c42629e632d0f705e00c17e427d1d89c9d9cdaea87d60116c102` | v2 new12: \|B\| 10.856 / airgap 5.353 / torque 2.614 |
+
+Both need `backup/doe_data_v3` (or `_v2`) AND `results/prior_cache/<dataset>` to score — the
+prior-feature models read a per-case prior cache (`fem_warmstart/prior.py`, ~800 MB for v3), which
+is also only on the isolated PC. Registry of record is `results/checkpoints.json` in git; match the
+sha256 there before use, and never overwrite a `.pt` on the share (append a new `_ep<NN>_<machine>`
+name). See `.github/plans/handoff_20260908.md` and `methodology_review §35` for the full picture;
+NAS `MANIFEST.md` is a 2026-07-24 snapshot and its "next lever = spectral loss" is already done.

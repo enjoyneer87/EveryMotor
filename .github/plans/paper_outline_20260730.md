@@ -3,6 +3,14 @@
 > Target register: **IEEE Trans. Energy Conversion / Trans. Magnetics** (sober IEEE).
 > Status: living outline; numbers cite the methodology review `.github/plans/
 > methodology_review_20260720.md` (§ refs).
+> **Updated 2026-09-08** (see `methodology_review §35`, `handoff_20260908.md`): the campaign best is
+> now the 480-case **v3** run, not doe240 — new12 pooled **|B| 10.934 / airgap 5.301 / torque 2.336**.
+> Two headline shifts for the paper: (1) the **torque gate (<3%) is now passed** (2.336), so the
+> honest story is "torque solved, |B|/airgap is the residual"; (2) the 240→480 point **confirms** the
+> "data axis cannot reach the |B| gate at feasible dataset size" claim — |B| overall went 10.856→10.934
+> (flat/worse), so the scaling curve has saturated, strengthening (not weakening) the §5 limitation.
+> All numbers below still cite frozen scorecards and remain valid as history; the abstract/§2/§3
+> "current standing" prose should be refreshed to the v3 numbers before submission.
 > **Updated 2026-08-04**: the 240-geometry scale has now been run twice. Under a
 > matched *gradient-step* budget it looked like a plateau (§21); under a matched
 > *epoch* budget it is the campaign best, **11.638% |B| / 5.400% torque** (§21b).
