@@ -418,14 +418,45 @@ def average_nodes_to_elements(batch, b_nodal: torch.Tensor) -> torch.Tensor:
 BAND_SPECTRAL_ORDERS: Tuple[int, ...] = tuple(4 * (2 * m + 1) for m in range(24))
 
 
-def band_spectral_operator(mesh) -> Optional[Dict[str, np.ndarray]]:
+def parse_extra_spectral_orders(spec: str) -> Tuple[int, ...]:
+    """Validate ``--extra-spectral-orders`` into a sorted tuple of new orders.
+
+    Slot harmonics (48/96/144 on this 48-slot machine) are *not* odd multiples of
+    4, so they are absent from ``BAND_SPECTRAL_ORDERS`` — yet §31d measured them
+    to be physically present in the a1 layer (a1-only basis study: 48 params
+    9.034%, +48/96/144 -> 54 params 8.291%; six parameters recover 36% of the
+    total achievable improvement). This flag admits such orders so the spectral
+    loss can supervise them, without touching the default basis.
+    """
+    if not spec.strip():
+        return ()
+    try:
+        vals = [int(tok) for tok in spec.replace(",", " ").split()]
+    except ValueError as exc:                                       # noqa: BLE001
+        raise SystemExit(f"--extra-spectral-orders: not an integer list ({spec!r}): {exc}")
+    bad = [v for v in vals if v <= 0]
+    if bad:
+        raise SystemExit(f"--extra-spectral-orders: orders must be positive, got {bad}")
+    dup = sorted(set(vals) & set(BAND_SPECTRAL_ORDERS))
+    if dup:
+        raise SystemExit(
+            f"--extra-spectral-orders: {dup} already in the default basis "
+            "(odd multiples of 4); passing them again would make the design "
+            "matrix rank-deficient")
+    return tuple(sorted(set(vals)))
+
+
+def band_spectral_operator(
+    mesh, orders: Tuple[int, ...] = BAND_SPECTRAL_ORDERS
+) -> Optional[Dict[str, np.ndarray]]:
     """Coefficient-extraction operator for the stationary Arkkio band.
 
     Returns the band element ids, the radial unit vectors and the extraction
     matrix ``ext`` with ``ext.T @ values = coefficients`` — i.e. rows of
     ``pinv(design)`` transposed so batching can concatenate along elements.
     ``None`` when the mesh has no usable band (the graph then trains without
-    the spectral term rather than failing).
+    the spectral term rather than failing). ``orders`` defaults to the
+    admissible set; callers widen it via ``--extra-spectral-orders``.
     """
     from eval.torque import AirgapBandError, build_airgap_band
 
@@ -438,7 +469,7 @@ def band_spectral_operator(mesh) -> Optional[Dict[str, np.ndarray]]:
         return None
     phi = np.arctan2(band.sin_theta, band.cos_theta)
     cols = []
-    for k in BAND_SPECTRAL_ORDERS:
+    for k in orders:
         cols.append(np.cos(k * phi))
         cols.append(np.sin(k * phi))
     design = np.column_stack(cols)
@@ -517,6 +548,14 @@ def main() -> int:
                              "those coefficients directly (Br/Btheta of the Arkkio band "
                              "projected on the anti-periodic orders). 0 disables (default; "
                              "the winning recipes were trained without it)")
+    parser.add_argument("--extra-spectral-orders", type=str, default="",
+                        help="Comma-separated extra harmonic orders for the band "
+                             "spectral loss, e.g. '48,96,144'. The default basis is "
+                             "the anti-periodic admissible set (odd multiples of 4), "
+                             "which excludes the 48-slot slotting harmonics — yet "
+                             "§31d measured those to be physically present in a1 "
+                             "(six parameters recover 36%% of the achievable "
+                             "improvement). Empty (default) keeps the basis untouched")
     parser.add_argument("--w-pbc", type=float, default=1e-2,
                         help="Weight on the anti-periodicity penalty "
                              "MSE(A(theta=0) + A(theta=-sector)) at the cut planes")
@@ -581,6 +620,12 @@ def main() -> int:
         print(f"  [WARN] {len(report.skipped)} file(s) skipped; first: {report.skipped[0]}")
 
     stride = max(1, int(args.step_stride))
+    # Effective spectral basis: the admissible set, optionally widened by
+    # --extra-spectral-orders. Computed once so the operator, the empty-band
+    # placeholder, the survivor recomputation and the checkpoint payload can
+    # never disagree about what the coefficients mean.
+    spectral_orders = tuple(sorted(
+        set(BAND_SPECTRAL_ORDERS) | set(parse_extra_spectral_orders(args.extra_spectral_orders))))
     graphs: List[CurlData] = []
     graph_case: List[int] = []
     n_wrapped = 0
@@ -594,7 +639,8 @@ def main() -> int:
         )
         # The spectral operator is a property of the mesh (the Arkkio band is
         # stationary), so it is built once per case and shared by every step.
-        spec = band_spectral_operator(mesh) if args.band_spectral_weight > 0.0 else None
+        spec = (band_spectral_operator(mesh, spectral_orders)
+                if args.band_spectral_weight > 0.0 else None)
         # rotate_step is the per-step increment, so the absolute rotor angle has
         # to be accumulated over the sweep.
         cum_deg = cumulative_rotor_angle([s.rotate_step for s in record.samples])
@@ -623,7 +669,7 @@ def main() -> int:
                         g.band_row_index = torch.zeros(0, dtype=torch.long)
                         g.band_cos = torch.zeros(0)
                         g.band_sin = torch.zeros(0)
-                        g.band_ext = torch.zeros((0, 2 * len(BAND_SPECTRAL_ORDERS)))
+                        g.band_ext = torch.zeros((0, 2 * len(spectral_orders)))
                         g.band_count = torch.zeros(1, dtype=torch.long)
                     else:
                         # Map full-array band element ids onto this step's
@@ -641,7 +687,7 @@ def main() -> int:
                         else:
                             phi = np.arctan2(spec["sin"][keep], spec["cos"][keep])
                             cols = []
-                            for k in BAND_SPECTRAL_ORDERS:
+                            for k in spectral_orders:
                                 cols.append(np.cos(k * phi))
                                 cols.append(np.sin(k * phi))
                             ext = np.linalg.pinv(np.column_stack(cols)).T.astype(np.float32)
@@ -682,8 +728,9 @@ def main() -> int:
     if args.band_spectral_weight > 0.0:
         nb = int(graphs[0].band_count)
         print(f"Band spectral loss: weight {args.band_spectral_weight:g}, "
-              f"{nb} band elements, {len(BAND_SPECTRAL_ORDERS)} orders "
-              f"-> {4 * len(BAND_SPECTRAL_ORDERS)} coefficients (Br+Btheta, cos+sin)"
+              f"{nb} band elements, {len(spectral_orders)} orders "
+              f"-> {4 * len(spectral_orders)} coefficients (Br+Btheta, cos+sin)"
+              + (f"  [+extra {args.extra_spectral_orders}]" if args.extra_spectral_orders.strip() else "")
               + (f"  [WARN: {n_band_missing} graphs without a band]" if n_band_missing else ""))
 
     split = resolve_case_split(manifest, sorted(set(graph_case)), Path(args.split), seed=args.seed)
@@ -937,7 +984,7 @@ def main() -> int:
                     "airgap_weight": args.airgap_weight,
                     "band_spectral": {
                         "weight": args.band_spectral_weight,
-                        "orders": list(BAND_SPECTRAL_ORDERS),
+                        "orders": list(spectral_orders),
                     },
                     "split": {
                         "granularity": "case",

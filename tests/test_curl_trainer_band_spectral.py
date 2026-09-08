@@ -101,3 +101,54 @@ def test_graph_without_band_contributes_empty_rows():
     out = band_coefficients(batch, values)
     assert out.shape == (2, ncoef)
     assert torch.all(out[1] == 0)  # the bandless graph stays zero, no bleed-over
+
+
+# --- --extra-spectral-orders (methodology review §31d slotting harmonics) ---------
+
+
+def test_extra_orders_parser_rejects_bad_input():
+    from train_doe_curl_mgn import parse_extra_spectral_orders as parse
+
+    assert parse("") == ()
+    assert parse("   ") == ()
+    assert parse("48,96,144") == (48, 96, 144)
+    assert parse("144 48, 96") == (48, 96, 144)      # order- and separator-insensitive
+    assert parse("48,48,96") == (48, 96)             # de-duplicated
+
+    with pytest.raises(SystemExit):
+        parse("48,abc")                              # not integers
+    with pytest.raises(SystemExit):
+        parse("0")                                   # non-positive
+    with pytest.raises(SystemExit):
+        parse("-4")
+    # An order already in the admissible basis would make the design matrix
+    # rank-deficient, so it is refused rather than silently duplicated.
+    with pytest.raises(SystemExit):
+        parse(str(BAND_SPECTRAL_ORDERS[0]))
+
+
+def test_slot_harmonics_are_absent_from_the_default_basis():
+    """The premise of §31d: 48/96/144 are not odd multiples of 4."""
+    for slot in (48, 96, 144):
+        assert slot not in BAND_SPECTRAL_ORDERS
+
+
+def test_extra_orders_widen_the_extraction_matrix_and_still_round_trip():
+    """Widening the basis must add exactly 2 columns per order and stay exact."""
+    from train_doe_curl_mgn import parse_extra_spectral_orders as parse
+
+    orders = tuple(sorted(set(BAND_SPECTRAL_ORDERS) | set(parse("48,96,144"))))
+    assert len(orders) == len(BAND_SPECTRAL_ORDERS) + 3
+
+    rng = np.random.default_rng(2)
+    phi = np.deg2rad(np.linspace(-44.0, -1.0, 600))
+    cols = []
+    for k in orders:
+        cols.append(np.cos(k * phi))
+        cols.append(np.sin(k * phi))
+    design = np.column_stack(cols)
+    assert design.shape[1] == 2 * len(BAND_SPECTRAL_ORDERS) + 6
+
+    ext = np.linalg.pinv(design).T
+    c = rng.standard_normal(design.shape[1])
+    np.testing.assert_allclose(ext.T @ (design @ c), c, atol=1e-6)
