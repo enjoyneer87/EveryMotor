@@ -72,3 +72,6 @@ results/_share_pending/
 # Fluent 전사로그 -> Google Drive
 fluent-*.trn
 *.trn
+
+# _smoke_chain2.sh resume checkpoints -- *.pt does not match these
+*.pt.last
