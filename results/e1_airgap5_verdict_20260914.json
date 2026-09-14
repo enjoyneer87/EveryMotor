@@ -1,0 +1,111 @@
+{
+  "version": "e1-verdict/v1",
+  "recorded_date": "2026-09-14",
+  "machine": {
+    "hostname": "DESKTOP-513NQ4P",
+    "ip": "192.168.0.234",
+    "gpu": "RTX 3090 24GB",
+    "runtime": "PhysicsNeMo 26.03 Docker"
+  },
+  "checkpoint": {
+    "sha256": "f58636620d5601f202d0203bff06d3f29c601e2885811c271edded28123bcba7",
+    "bytes": 111835629,
+    "epoch": 47,
+    "filename": "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt",
+    "registered": false
+  },
+  "last_checkpoint": {
+    "filename": "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last",
+    "epoch": 50,
+    "bytes": 111841601,
+    "sha256": "862189d71fdbe923323f138a69e20d13f0a71315d935dd19fe7afbac7eb2bf24",
+    "scored": false
+  },
+  "training_budget": 50,
+  "payload_checked_on_iso": true,
+  "groups": {
+    "legacy6": {
+      "b": 11.096697204373037,
+      "airgap": 4.956319411118414,
+      "torque": 3.2145727245913602,
+      "cases": [
+        4,
+        7,
+        18,
+        32,
+        37,
+        39
+      ],
+      "n_samples": 270,
+      "n_skipped": 0,
+      "source_sha256": "74cfb960df989da640e6104d501ac19dc9f549a434c7e7b610296962e87ccfa8"
+    },
+    "new12": {
+      "b": 10.73705161766581,
+      "airgap": 3.30300266825471,
+      "torque": 2.049694849885955,
+      "cases": [
+        248,
+        249,
+        254,
+        255,
+        276,
+        277,
+        304,
+        305,
+        314,
+        315,
+        318,
+        319
+      ],
+      "n_samples": 540,
+      "n_skipped": 0,
+      "source_sha256": "29c7edb203f2c86650bd5659923cdeb90f0f77e10237ae0ca3c349684003747c"
+    },
+    "all18": {
+      "b": 10.859253780544757,
+      "airgap": 4.071293866946792,
+      "torque": 2.981896272142939,
+      "cases": [
+        4,
+        7,
+        18,
+        32,
+        37,
+        39,
+        248,
+        249,
+        254,
+        255,
+        276,
+        277,
+        304,
+        305,
+        314,
+        315,
+        318,
+        319
+      ],
+      "n_samples": 810,
+      "n_skipped": 0,
+      "source_sha256": "b84c1e4653a96085a4a7c2982688a2458a77624121feb24ce74ee18baa4bc8e3"
+    }
+  },
+  "primary_group": "legacy6",
+  "improvement_rule": {
+    "airgap_lt": 6.675,
+    "reject_b_gt": 11.552,
+    "reject_torque_gt": 4.049,
+    "outcome": "success"
+  },
+  "g1_prime": {
+    "airgap_lt": 5,
+    "torque_lt": 3,
+    "airgap_pass": true,
+    "torque_pass": false,
+    "outcome": "not_passed"
+  },
+  "checkpoint_archive_sha256_verified": true,
+  "next_experiment": "SPEC, independent R9 ep50 control; not stacked on E1",
+  "evaluation_provenance_unchanged": true
+}

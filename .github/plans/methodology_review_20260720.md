@@ -2928,3 +2928,65 @@ LR 250배 점프(사실상 warm restart)가 모델을 흔들었고 ep55까지 �
 (h256/p15, 9.29M)으로 학습한다. **480케이스에서 h256 초과는 프로브된 적이 없다.** 다만
 §25 발견 2가 지적한 대로 풀드 지표의 22.7%가 표현 무관 고오차 영역이라 선험 확률은 셋 중
 가장 낮다. E1/SPEC 결과를 보고 착수 여부를 판단한다 — 지금은 사전등록하지 않는다.
+
+---
+
+## 37. E1 완료와 SPEC 착수 — 고정 legacy6 판정 (2026-09-14)
+
+> **결과 생산 머신: DESKTOP-513NQ4P / 192.168.0.234**, RTX 3090 24GB,
+> PhysicsNeMo 26.03 Docker. 평가 JSON의 컨테이너 호스트는 `ca1d3570cd8b`다.
+> 평가 provenance commit은 `61ffd1bf040176116ec18536bd1805221514fc3f`이며,
+> 당시 dirty 항목은 backup 바인드와 미추적 평가 결과였다. 원본 provenance를 보존한다.
+
+E1은 `--airgap-weight 5`만 바꾼 R9 v3 480케이스 실험이다. 50 epoch 학습과
+all18/legacy6/new12 평가가 2026-09-13 04:37 KST까지 완료됐다.
+`e1_airgap_resume_20260910`은 exit 0, `TRAIN exit=0`, `E1 AIRGAP5 DONE`을 기록했다.
+평가 대상은 **best epoch 47**이며, 마지막 학습 상태는 `.last`의 **epoch 50**이다.
+2026-09-14에 컨테이너 CPU에서 두 payload를 직접 읽어 epoch, epochs=50,
+airgap_weight=5, h256/p15, band_spectral_weight=30, extra_spectral_orders="",
+extend_to=None을 확인했다. 재학습·재평가를 실행한 것은 아니다.
+
+| split | 전체 B nRMSE (%) | 공극 B nRMSE (%) | 토크 nRMSE (%) | 사례/샘플/누락 |
+|---|---:|---:|---:|---|
+| legacy6 — 판정 집단 | 11.096697 | 4.956319 | 3.214573 | 6 / 270 / 0 |
+| new12 — 참고 | 10.737052 | 3.303003 | 2.049695 | 12 / 540 / 0 |
+| all18 — 참고 | 10.859254 | 4.071294 | 2.981896 | 18 / 810 / 0 |
+
+**§36의 개선 판정은 성공**이다. legacy6 공극은 R9 6.925%에서 4.956%로 약
+1.969pp 개선돼 <6.675%를 충족한다. 해악 가드(전체 B >11.552% 또는 토크
+>4.049%면 기각)도 초과하지 않는다. **G1′는 미달**이다. §25/29의 고정
+legacy6 pooled 기준에서 공극 <5%는 충족하지만 토크 3.214573%가 <3%를
+충족하지 못한다. all18/new12의 두 숫자가 모두 목표 아래여도 판정 집단을 바꾸지 않는다.
+
+해석 정정: §35/36의 "토크는 이미 통과, 공극만 남음"이라는 표현은 new12와
+legacy6를 혼합하므로 G1′의 현재 판정으로 사용하지 않는다. 원래 G2의 전체 B 기준과
+G1′의 공극 기준도 구분한다. §35의 new12 기반 챔피언 표현은 고정 legacy6 판정과
+동일한 의미가 아니다. **E1은 개선 후보로 등록하고, 승인된 E1→SPEC→CAP의 공통
+대조군은 R9 ep50으로 유지**한다. E2 ep55 중단 결과는 ep75 완주의 효과나 50 epoch
+예산의 충분함을 확정하지 못한다. 과거 날짜의 본문·측정 수치는 수정하지 않았다.
+
+보관 신원:
+
+| 파일 | epoch | bytes | SHA-256 |
+|---|---:|---:|---|
+| mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt | 47 | 111835629 | f58636620d5601f202d0203bff06d3f29c601e2885811c271edded28123bcba7 |
+| mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last | 50 | 111841601 | 862189d71fdbe923323f138a69e20d13f0a71315d935dd19fe7afbac7eb2bf24 |
+
+경유 PC를 통해 NAS `EveryMotor_migration/checkpoints/`에 best를
+`mgn_nodeB_doe_v3_bw30_prior_e1airgap5_ep47_RTX3090.pt`로 보관했다.
+last는 `recovery/e1_airgap5_20260914/`의
+`mgn_nodeB_doe_v3_bw30_prior_e1airgap5_last_ep50_RTX3090.pt`에 보관했다.
+두 파일 모두 원격→경유→NAS SHA-256이 일치한다. 기존 파일은 덮어쓰지 않았다.
+평가 JSON 3개, `results/e1_airgap5_verdict_20260914.json`,
+`results/logs/e1_airgap_resume_20260910.log`를 결과 근거로 보존한다.
+
+SPEC은 2026-09-14 22:14:35 KST에 `spec_slotharm_20260914`로 착수했다.
+450/12/18 분할 및 480개 prior 캐시 검사를 통과했고 22:41 KST에는 CPU와 메모리를
+사용해 데이터·그래프를 준비 중이었다. epoch 완료는 아직 확인하지 않았다.
+E1 가중치를 누적하지 않고 R9에 `--extra-spectral-orders 48,96,144`만 추가한다.
+§36의 24→27차수 손실 가중치 교란을 유지해 해석한다. CAP은 SPEC 다음에
+한 축의 설정 사전등록과 메모리 적합성을 확인한 뒤 진행한다.
+
+운영: 최근 E1 25 epoch 재개분은 188,605.6초(약 126분/epoch)였다. 로그가
+5 epoch 간격이므로 약 10.5시간의 epoch 로그 공백만으로 중단을 판정하지 않는다.
+모든 계산은 234에서 수행하며 로컬 `E:\PJT\EveryMotor`는 경유·HTML 보고서 작성용이다.

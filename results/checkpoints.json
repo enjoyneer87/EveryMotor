@@ -3,6 +3,24 @@
   "naming": "<arch>_<variant>_ep<NN>_<machine>.pt",
   "checkpoints": [
     {
+      "sha256": "f58636620d5601f202d0203bff06d3f29c601e2885811c271edded28123bcba7",
+      "bytes": 111835629,
+      "epoch": 47,
+      "machine": "RTX3090-WDDM",
+      "canonical_name": "mgn_nodeB_doe_v3_bw30_prior_e1airgap5_ep47_RTX3090.pt",
+      "seen_as": [
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt"
+      ],
+      "variant": "E1: nodeB prior V3 h256/p15, 480-case, airgap weight 5, 50-epoch budget",
+      "scorecard": "results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5_legacy6.json",
+      "metrics": {
+        "B_nrmse_pct": 11.096697204373037,
+        "torque_nrmse_pct": 3.2145727245913602,
+        "airgap_nrmse_pct": 4.956319411118414
+      },
+      "note": "2026-09-14, DESKTOP-513NQ4P / 192.168.0.234. Metrics are FIXED legacy6 pooled, not new12. Section 36 improvement criterion passes with no harm guard violation; G1-prime fails torque (<3%). Best epoch47; last epoch50 is unscored and archived separately. Improvement candidate; R9 ep50 remains the common E1/SPEC/CAP control. NAS hash verified. See methodology_review section 37."
+    },
+    {
       "sha256": "7edee4f0e2dbeaa0c71d15cf50df12458f1f2485470f303199f8689285fb481f",
       "bytes": 111792849,
       "epoch": 39,

@@ -1,0 +1,141 @@
+﻿
+========================
+== NVIDIA PhysicsNeMo ==
+========================
+
+NVIDIA Release 26.03 (build 45151331)
+PhysicsNeMo PyPi Version 2.0.0 (Git Commit: 6194f04)
+PhysicsNeMo Sym PyPi Version 2.4.0 (Git Commit: acaeb6d)
+Container image Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+=== E1 pre-flight 1: split digest + sizes ===
+digest e249eb764ebf8865; train/val/test = 450/12/18
+val/test identical to v2: OK
+=== E1 pre-flight 2: prior cache complete for every case ===
+prior cache: complete for all 480 cases across ['doe_data_240', 'doe_data_v2', 'doe_data_v3']
+PREFLIGHT OK
+=== E1 train (airgap-weight 5)  480 cases  BAND_W=30  epochs=50 ===
+Manifest: 480 cases
+Total graphs: 21600  (built in 2603s)
+Curl loss covers 90.6% of elements (min 84.3%, max 92.8%)
+Airgap weighting: 5x on 764/10289 elements (7.4% of elements -> 28.6% of the loss)
+Sector symmetry: wrap_rotor=False (10560 of 21600 samples past one sector), anti_periodic_edges=False (49 cut-plane pairs)
+Band spectral loss: weight 30, 764 band elements, 24 orders -> 96 coefficients (Br+Btheta, cos+sin)
+Split manifest: eval/splits/doe_v3_case_split.json
+Train: 20250 graphs / 450 cases, Val: 540 graphs / 12 cases (test 18 cases held back)
+Node features: 12, Edge features: 4, Output: 2 (nodal Bx,By -> average)
+b_std = 0.7297 T, a_scale = 1.2098e-02 Wb/m
+Curl elements per graph: 10289 (sliding band and inverted elements excluded)
+Device: cuda
+Warp DeprecationWarning: The namespace `warp.context` will soon be removed from the public API. It can still be accessed from `warp._src.context` but might be changed or removed without notice.
+Warp DeprecationWarning: The symbol `warp.context.Device` will soon be removed from the public API. Use `warp.Device` instead.
+/usr/local/lib/python3.12/dist-packages/physicsnemo/nn/functional/interpolation/_torch_impl.py:69: SyntaxWarning: invalid escape sequence '\('
+Model[mgn] params: 9,286,658
+Resumed results/mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last at epoch 25 -> continuing 26..50 | best val B 0.014133 | lr 5.005e-04 | hist 25 train / 25 val
+  """
+/usr/local/lib/python3.12/dist-packages/physicsnemo/nn/functional/interpolation/_torch_impl.py:92: SyntaxWarning: invalid escape sequence '\('
+  """
+/usr/local/lib/python3.12/dist-packages/physicsnemo/utils/logging/launch.py:327: SyntaxWarning: invalid escape sequence '\.'
+  key = re.sub("[^a-zA-Z0-9\.\-\s\/\_]+", "", key)
+/usr/local/lib/python3.12/dist-packages/torch/library.py:357: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: flash_attn::_flash_attn_backward(Tensor dout, Tensor q, Tensor k, Tensor v, Tensor out, Tensor softmax_lse, Tensor(a6!)? dq, Tensor(a7!)? dk, Tensor(a8!)? dv, float dropout_p, float softmax_scale, bool causal, SymInt window_size_left, SymInt window_size_right, float softcap, Tensor? alibi_slopes, bool deterministic, Tensor? rng_state=None) -> Tensor
+    registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926
+  dispatch key: ADInplaceOrView
+  previous kernel: no debug info
+       new kernel: registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926 (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+/workspace/app/train_doe_curl_mgn.py:866: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  scheduler.step()
+/workspace/app/train_doe_curl_mgn.py:949: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /opt/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  totals["loss"] += float(loss)
+  ep 0030/50 | train B 0.014771 nRMSE  13.25% | val B 0.013496 nRMSE  16.38% pbc 0.00e+00 spec 4.66e-05 | best 0.013496 | 37976s
+/usr/local/lib/python3.12/dist-packages/torch/library.py:357: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: flash_attn::_flash_attn_backward(Tensor dout, Tensor q, Tensor k, Tensor v, Tensor out, Tensor softmax_lse, Tensor(a6!)? dq, Tensor(a7!)? dk, Tensor(a8!)? dv, float dropout_p, float softmax_scale, bool causal, SymInt window_size_left, SymInt window_size_right, float softcap, Tensor? alibi_slopes, bool deterministic, Tensor? rng_state=None) -> Tensor
+    registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926
+  ep 0035/50 | train B 0.014310 nRMSE  13.04% | val B 0.012504 nRMSE  15.84% pbc 0.00e+00 spec 3.05e-05 | best 0.012504 | 75670s
+  ep 0040/50 | train B 0.014009 nRMSE  12.89% | val B 0.012074 nRMSE  15.59% pbc 0.00e+00 spec 2.72e-05 | best 0.012074 | 113329s
+  ep 0045/50 | train B 0.013860 nRMSE  12.82% | val B 0.012029 nRMSE  15.54% pbc 0.00e+00 spec 2.64e-05 | best 0.011976 | 150975s
+  ep 0050/50 | train B 0.013813 nRMSE  12.79% | val B 0.011943 nRMSE  15.49% pbc 0.00e+00 spec 2.54e-05 | best 0.011924 | 188606s
+
+Training complete: epochs 26..50 in 188605.6s
+Best val B MSE (normalized): 0.011924
+Checkpoint: results/mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt
+Score it with:  python -m eval.benchmark --curl-ckpt results/mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt
+TRAIN exit=0
+=== E1 scoring: all 18 test cases, then each group with its own v3-digest split ===
+Warp DeprecationWarning: The namespace `warp.context` will soon be removed from the public API. It can still be accessed from `warp._src.context` but might be changed or removed without notice.
+Warp DeprecationWarning: The symbol `warp.context.Device` will soon be removed from the public API. Use `warp.Device` instead.
+Benchmark written to results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5.json
+  split: test cases [4, 7, 18, 32, 37, 39, 248, 249, 254, 255, 276, 277, 304, 305, 314, 315, 318, 319]
+  samples scored: 810 (skipped 0)
+  fem_identity           |B| nRMSE   0.000%   torque nRMSE    0.000%
+  node_resampling_floor  |B| nRMSE  17.337%   torque nRMSE   72.488%
+  zero_field             |B| nRMSE 100.000%   torque nRMSE  100.000%
+  train_region_mean      |B| nRMSE  89.425%   torque nRMSE  105.407%
+  curl:mgn_nodeB_doe_v3_bw30_prior_e1airgap5 |B| nRMSE  10.859%   torque nRMSE    2.982%
+SCORE results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5.json exit=0
+Warp DeprecationWarning: The namespace `warp.context` will soon be removed from the public API. It can still be accessed from `warp._src.context` but might be changed or removed without notice.
+Warp DeprecationWarning: The symbol `warp.context.Device` will soon be removed from the public API. Use `warp.Device` instead.
+  dispatch key: ADInplaceOrView
+  previous kernel: no debug info
+       new kernel: registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926 (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+Benchmark written to results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5_legacy6.json
+/usr/local/lib/python3.12/dist-packages/torch/library.py:357: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: flash_attn::_flash_attn_backward(Tensor dout, Tensor q, Tensor k, Tensor v, Tensor out, Tensor softmax_lse, Tensor(a6!)? dq, Tensor(a7!)? dk, Tensor(a8!)? dv, float dropout_p, float softmax_scale, bool causal, SymInt window_size_left, SymInt window_size_right, float softcap, Tensor? alibi_slopes, bool deterministic, Tensor? rng_state=None) -> Tensor
+    registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926
+  dispatch key: ADInplaceOrView
+  previous kernel: no debug info
+  split: test cases [4, 7, 18, 32, 37, 39]
+  samples scored: 270 (skipped 0)
+  fem_identity           |B| nRMSE   0.000%   torque nRMSE    0.000%
+  node_resampling_floor  |B| nRMSE  17.131%   torque nRMSE   59.542%
+  zero_field             |B| nRMSE 100.000%   torque nRMSE  100.000%
+  train_region_mean      |B| nRMSE  89.064%   torque nRMSE  104.027%
+  curl:mgn_nodeB_doe_v3_bw30_prior_e1airgap5 |B| nRMSE  11.097%   torque nRMSE    3.215%
+SCORE results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5_legacy6.json exit=0
+Warp DeprecationWarning: The namespace `warp.context` will soon be removed from the public API. It can still be accessed from `warp._src.context` but might be changed or removed without notice.
+Warp DeprecationWarning: The symbol `warp.context.Device` will soon be removed from the public API. Use `warp.Device` instead.
+Benchmark written to results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5_new12.json
+  split: test cases [248, 249, 254, 255, 276, 277, 304, 305, 314, 315, 318, 319]
+  samples scored: 540 (skipped 0)
+  fem_identity           |B| nRMSE   0.000%   torque nRMSE    0.000%
+  node_resampling_floor  |B| nRMSE  17.441%   torque nRMSE  103.997%
+  zero_field             |B| nRMSE 100.000%   torque nRMSE  100.000%
+  train_region_mean      |B| nRMSE  89.607%   torque nRMSE  109.774%
+       new kernel: registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926 (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+  curl:mgn_nodeB_doe_v3_bw30_prior_e1airgap5 |B| nRMSE  10.737%   torque nRMSE    2.050%
+SCORE results/benchmark_v2_nodeB_doe_v3_bw30_prior_e1airgap5_new12.json exit=0
+E1 AIRGAP5 DONE
+/usr/local/lib/python3.12/dist-packages/torch/library.py:357: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: flash_attn::_flash_attn_backward(Tensor dout, Tensor q, Tensor k, Tensor v, Tensor out, Tensor softmax_lse, Tensor(a6!)? dq, Tensor(a7!)? dk, Tensor(a8!)? dv, float dropout_p, float softmax_scale, bool causal, SymInt window_size_left, SymInt window_size_right, float softcap, Tensor? alibi_slopes, bool deterministic, Tensor? rng_state=None) -> Tensor
+    registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926
+  dispatch key: ADInplaceOrView
+  previous kernel: no debug info
+       new kernel: registered at /usr/local/lib/python3.12/dist-packages/torch/_library/custom_ops.py:926 (Triggered internally at /opt/pytorch/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(

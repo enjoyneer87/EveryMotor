@@ -101,7 +101,8 @@ Real sample file: `data/MagTransient_20260130_152245.txt`
 ## Active Work Plans
 
 See `.github/plans/` for ongoing refactoring tasks:
-- [`handoff_20260908.md`](.github/plans/handoff_20260908.md) — **latest session handoff (2026-09-08). Start here to resume.** Machine topology (134 unreachable; all GPU on the isolated PC), current champion (v3, |B| 10.934 / torque 2.336, torque-G2 passed), data-axis saturation, and the open 2군 decisions. Supersedes the 07-22 status below.
+- [`handoff_20260914.md`](.github/plans/handoff_20260914.md) — **latest verified handoff (2026-09-14).** E1 complete (fixed legacy6 airgap 4.956 / torque 3.215; G1-prime NOT passed), SPEC running, CAP next; machine DESKTOP-513NQ4P / 192.168.0.234. See methodology section 37 for the gate interpretation.
+- [`handoff_20260908.md`](.github/plans/handoff_20260908.md) — historical 09-08 snapshot; its new12-based champion/torque-pass framing is superseded by the fixed-legacy6 interpretation in the 09-14 handoff and methodology section 37.
 - [`handoff_20260722.md`](.github/plans/handoff_20260722.md) — historical session handoff (2026-07-22). The 07-22 commits and the then-current gate status (champion `mgn_nodeB_long`, "both 2–3× off G2"); superseded by the 09-08 handoff and `methodology_review §35`.
 - [`methodology_review_20260720.md`](.github/plans/methodology_review_20260720.md) — **amends the roadmap below; read first.** Critical findings (split leak, target design, eval protocol) and the R0–R4 priority order
 - [`postproc_interop_refactor.md`](.github/plans/postproc_interop_refactor.md) — pyleecan-style MeshSolution architecture (in progress, checklist inside)
