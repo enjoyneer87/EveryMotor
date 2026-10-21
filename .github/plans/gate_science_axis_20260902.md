@@ -37,6 +37,10 @@ arm B (처리)  --target-normalization zscore --current-focus-alpha 2.0 --curren
 
 ### Je 채널에 대한 주의 — 두 arm 모두 무효다
 
+> **정정 (2026-10-21, methodology_review §39).** 아래 "이 DOE의 내보내기에는 `fields/je`가 없다"는 일부 틀렸다.
+> doe_data_120의 index 40~119는 Je가 있고, 없는 것은 초기 40케이스(0~39)뿐이다(없는 케이스는 로더가 0으로 채움).
+> 판정(z-score 미채택)은 유지된다. Je focal 가중이 미판정인 이유는 평가 케이스 legacy6에 Je가 없기 때문이다.
+
 이 DOE 의 Motor-CAD 내보내기에는 `fields/je` 가 없어 로더가 0 으로 채운다. 그래서
 `--weight-current 0` 을 **`COMMON` 에 두어 양쪽 arm 에서 Je 항을 손실에서 제거**했다.
 arm B 의 `--current-focus-alpha 2.0` 은 그 제거된 항 안쪽의 가중이라 **무연산**이다.

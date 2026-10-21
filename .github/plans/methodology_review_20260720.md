@@ -3072,3 +3072,56 @@ E1 legacy6 풀드 토크 3.215%를 케이스별 RMSE²로 분해하면(같은 �
   이 커밋에서 현재 상태(GPU 유휴, 소유자, 큐)로 갱신한다. 병렬 작업자가 Codex 스레드(§37 작성)라
   세션 메시지가 닿지 않으므로 **이 문서와 hb_control.json이 유일한 조율 채널**이다.
 - HPC_134 인계(`handoff_20260908_to_HPC134/`)에 대한 회신은 2026-09-16 현재 없다.
+
+
+---
+
+## 39. DOE의 해석 방식과 Je 보유 현황 정정 (2026-10-21)
+
+> **실행 머신: 격리 PC `DESKTOP-513NQ4P` / `192.168.0.234`.** h5 검사는 `physicsnemo:26.03` 컨테이너(CPU),
+> `.mot` 설정은 호스트에서 읽었다. 학습 데이터는 변경하지 않았다.
+
+### 39a. 해석 방식 — 회전자가 도는 과도해석, 도체·자석 와전류 포함
+
+격리 PC `D:\KDH\Sim_4SolverX` 아래 DOE 폴더(.mot 920개, 2026-04 ~ 2026-08)의 전자기 설정은 전부 같다:
+`TransientCalculationType=1`, `ProximityLossModel=3` + `ProximityLossModel_FullFEA_CurrentPlacement=1`
+(도체 개별 메시), `MagnetLossCalc_Lab=3`, `TorquePointsPerCycle=45`. OnLoadTorque h5의 형식은
+`pyMCAD.magnetic.timeseries.moving_mesh`(이동 메시 45스텝)다. **Phase 1 데이터는 정자장 스냅샷이 아니라
+과도해석의 시계열이다.** Je가 있는 파일에서 영역별로 보면 Je는 권선 도체 영역(요소 40개짜리 도체 수십 개,
+최대 |Je| 50~112)에 크고 자석 영역에 작다(1~5). 정적 부하점·무부하 파일(`Mag_StaticLoad/OC`)의 Je는 0이다.
+
+### 39b. Je 보유 현황 — 없는 것은 초기 40케이스뿐
+
+`fields/je` 정확한 이름으로 전수 집계(OnLoadTorque):
+
+    doe_data            0 / 40      (0~39 전부 없음)
+    doe_data_120       80 / 120     (40~119 있음, 0~39 없음)
+    doe_data_240      200 / 240     (40~239 있음, 0~39 없음)
+    doe_data_v2        80 / 80      doe_data_v3  160 / 160      probe487  6 / 6
+    v3 학습 매니페스트 440 / 480     → 없는 것: index 0~39
+
+DOE_Ext·DOE_Ext2(=120·240의 신규분)를 원시 txt에서 현재 변환기로 다시 만든 시험 2건은 기존 h5와
+**모든 데이터셋이 비트 단위로 일치**했고 기존 h5에 이미 Je가 있었다(재변환 불필요). 모든 원본 케이스 폴더의
+`Mag_OnLoadTorque_result_1.txt`에는 `J`·`Je` 열이 있다.
+
+**Je가 없는 초기 40케이스는 legacy6(4·7·18·32·37·39) 전부를 포함한다.** 매니페스트가 가리키는 원본 폴더
+`D:/KDH/Sim_4SolverX/DOE_TrainingData`는 격리 PC에 없고, NAS의 HPC_134 이관본(`EveryMotor_migration/doe_data`,
+요소 12,100)에도 Je가 없다. 같은 40형상을 04월에 다시 푼 `DOE4TrainingData`(요소 17,528, Je 있음,
+NAS `108 backup/KDH/DOE4TrainingData`에 백업)는 메시가 달라 대체할 수 없다. HPC_134에 원시 txt 보유 여부를
+NAS 인계(`handoff_20261021_to_HPC134/`)로 문의했다.
+
+### 39c. 앞선 서술의 정정
+
+- **게이트 문서(`gate_science_axis_20260902.md`)의 "이 DOE의 내보내기에는 fields/je가 없다"는 일부 틀렸다.**
+  학습 110케이스 중 index 40 이상은 Je가 있었고, 없는 케이스는 로더가 0으로 채웠다. 두 arm 모두
+  `--weight-current 0`이었으므로 **z-score 미채택 판정은 유지**한다. Je focal 가중이 미판정인 이유는
+  "데이터에 Je가 없어서"가 아니라 "**평가 케이스(legacy6)에 Je가 없어서**"다.
+- 이 세션이 외부망 PC에서 한 구두 보고 중 "정적(magnetostatic) FEA"라는 판단은 틀렸다(`MagneticSolver=0`만 보고
+  단정). 위 39a가 맞다.
+
+### 39d. 영향
+
+- 현행 B 기반 학습·판정(G1′, §36~38)에는 영향 없다. 트레이너는 Je를 읽지 않는다.
+- Je를 감독·평가에 쓰려면(Je focal 가중 재판정, 권선 AC 손실 감독) 초기 40케이스의 Je가 먼저 필요하다.
+  경로: HPC_134 원시 txt(재해석 불필요) > 격리 PC 재해석(03월 메시 12,100 요소 재현 여부 확인이 선행돼야 하고,
+  다르면 B도 바뀌어 기존 성적과 비교 불가).
