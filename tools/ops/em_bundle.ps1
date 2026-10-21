@@ -12,7 +12,7 @@ if ($LASTEXITCODE -ne 0) { Write-Output "ERROR base $Base is not in the isolated
 $tip = git rev-parse $Branch
 if ($tip -eq (git rev-parse $Base)) { Write-Output ('NOTHING tip == base (' + $tip.Substring(0, 7) + ')'); exit 3 }
 git merge-base --is-ancestor $Base $Branch
-if ($LASTEXITCODE -ne 0) { Write-Output "ERROR $Base is not an ancestor of $Branch: the push would not be a fast-forward."; exit 4 }
+if ($LASTEXITCODE -ne 0) { Write-Output "ERROR ${Base} is not an ancestor of ${Branch} -- the push would not be a fast-forward."; exit 4 }
 
 $out = 'C:\work\sync\em_push.bundle'
 if (Test-Path $out) { Remove-Item $out -Force }
