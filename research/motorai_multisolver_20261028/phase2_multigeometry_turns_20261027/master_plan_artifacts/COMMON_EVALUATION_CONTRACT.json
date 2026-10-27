@@ -1,0 +1,60 @@
+{
+  "id": "W07-COMMON-EVAL",
+  "version": "1.0",
+  "status": "FROZEN_BEFORE_L12_RESULTS",
+  "authority": "Claude acting as Astra (D07); registered before any L12 run exists",
+  "applies_to": "L12 field-model comparisons on the SCALE360 split (A0 phase9, A1 phase45, A2 electrical-angle encoding). Imported historical scores stay scoped diagnostics.",
+  "evaluation_set": {
+    "split": "SCALE360_SELECTION_FROZEN.json development: 32 groups / 32 conditions, all 460 Arms",
+    "phases": "all 45 native steps per condition (1440 snapshots)",
+    "role": "inner development set; exposed to E1 oldTRAIN; not an independent final test",
+    "excluded_everywhere": "R1_0199, R1_0076 and conservative aliases; original old val/test payloads are not opened",
+    "fixed_IDs": "native case index and native element IDs from the frozen diagnostic bundle (bundle manifest sha256 5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186)"
+  },
+  "quantity": "native element Bx/By in T; area weights from native triangles; a2 excluded (existing reader contract)",
+  "evaluator": {
+    "code": "evaluate_frozen_field_diagnostic.py",
+    "sha256": "94ccc9c752eee02ce123a6900c697d44647c4fee9b8fe7ee16b2ec2f23987d08",
+    "change_policy": "any evaluator change requires a new contract version and re-evaluation of every arm"
+  },
+  "metrics": {
+    "primary": [
+      "all45/all pooled area-weighted B-vector nRMSE percent",
+      "all45/all pooled area-weighted |B| nRMSE percent"
+    ],
+    "secondary": [
+      "seen9 / unused36 split of the primary metrics (seen = 0,5,...,40)",
+      "phase regions: seen9, interior unused, after last seen (41-44)",
+      "material regions: copper and air (air includes the airgap)",
+      "copper per-region spatial mean B2 area-weighted relative MAE and signed bias",
+      "per-case pooled B-vector nRMSE; groups PhaseAdvance >= 70 deg (7 cases) and < 70 deg (25 cases)",
+      "worst-case and median per-case nRMSE"
+    ],
+    "formulas": {
+      "vector": "100*sqrt(sum(area*||Bpred-Btrue||^2)/sum(area*||Btrue||^2))",
+      "magnitude": "100*sqrt(sum(area*(|Bpred|-|Btrue|)^2)/sum(area*|Btrue|^2))",
+      "spatial_mean_B2": "Q=sum(area*|B|^2)/sum(area) per native conductor region",
+      "pooling": "area weights and uniform snapshot pooling; not a time-integrated loss"
+    },
+    "absolute_companion": "report vector RMSE in T next to every percentage"
+  },
+  "failure_handling": "NaN, missing snapshot or failed case counts as a failure for that arm and is reported; no per-arm removal of hard cases",
+  "decision_rule_L12": {
+    "improvement_claim": "an arm improves on A0 only if all45/all B-vector nRMSE falls by at least 1.0 pp, and by more than twice the observed seed spread when two seeds per arm exist",
+    "no_harm": [
+      "seen9/all B-vector nRMSE worse by no more than 0.5 pp",
+      "all45/copper B-vector nRMSE worse by no more than 1.0 pp",
+      "PhaseAdvance >= 70 deg group mean per-case nRMSE worse by no more than 1.0 pp"
+    ],
+    "rationale": "Pilot seeds 17/29 differed by 2.1 pp at about 59 percent nRMSE (3.6 percent relative), about 0.7 pp at the 20 percent level, so 1.0 pp is the smallest change we call real for a single-seed comparison.",
+    "single_seed_limit": "with one seed per arm, a pass is reported as a single-seed development result, not a causal conclusion",
+    "not_claimed": "AC loss accuracy, independent geometry generalisation, comparison with E1 legacy scores"
+  },
+  "comparability_requirements": [
+    "same model code sha256 ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed unless the arm declares a single changed axis",
+    "same train328 groups and dev32 groups (selection sha256 21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d)",
+    "same optimizer, batch of 1 graph, width 32, depth 3, gradient clip 10",
+    "same optimizer update count 88565 and the same learning rate as a function of update index",
+    "final checkpoint only; no checkpoint selection on dev"
+  ]
+}

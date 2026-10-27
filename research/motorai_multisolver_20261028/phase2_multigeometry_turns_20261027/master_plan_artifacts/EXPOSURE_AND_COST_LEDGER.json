@@ -1,0 +1,52 @@
+{
+  "id": "W07-EXPOSURE-COST",
+  "version": "1.0",
+  "scope": "Field (B) models on the EveryMotor DOE source; costs separate historical label generation, sunk training and incremental work",
+  "source_dataset": {
+    "rows": 480,
+    "declared_geometry_groups": 360,
+    "solver_mode": "45-step moving transient per condition (ProximityLossModel 3, individual conductor mesh)",
+    "original_copy_HDF5_SHA256_matches": 440,
+    "initial40": "native source missing; quarantined",
+    "CurrentAxis80": "native/manifest geometry mismatch; quarantined",
+    "eligible_for_SCALE360": "360 conditions / 320 groups",
+    "evidence": "NATIVE_DOE_CATALOG.json, DATA_REUSE_KO.md"
+  },
+  "historical_E1_exposure": {
+    "split": "legacy 450 train / 12 val / 18 test",
+    "current_dev32": "all 32 dev groups were in E1 oldTRAIN, so dev32 is not E1-unseen",
+    "weights_release": "HOLD (TRANSFER_ADMISSION.json: prior-native binding, donor reserved exclusion and normalizer compatibility UNKNOWN)"
+  },
+  "current_models": [
+    {
+      "id": "pilot20",
+      "train": "16 groups, 9 phases, 144 graphs",
+      "dev": "4 groups",
+      "updates": "1445 per seed, seeds 17 and 29",
+      "hosts": "133 L40S and 234 RTX3090"
+    },
+    {
+      "id": "SCALE360-A0",
+      "train": "288 groups / 328 conditions, phases 0,5,...,40, 2952 graphs",
+      "dev": "32 groups / 32 conditions",
+      "updates": 88565,
+      "seed": 17,
+      "wall_seconds": 3270.3,
+      "host": "133 L40S",
+      "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e"
+    },
+    {
+      "id": "frozen-diagnostic",
+      "inference_graphs": 1440,
+      "updates": 0,
+      "wall_seconds": 85
+    }
+  ],
+  "label_cost_accounting": {
+    "Full_transient_solves_used_by_SCALE360": "328 train + 32 dev historical conditions; new FEA 0",
+    "phase45_note": "Each historical transient already contains all 45 steps, so A1 adds no Full solve cost. It does read 5x more label snapshots (14760 versus 2952 train graphs). Reports must list both: solves unchanged, snapshots accessed x5.",
+    "sunk_costs": "E1 historical training and the earlier DOE generation are sunk; record them, do not count them as L12 incremental cost",
+    "incremental_per_arm": "graph preparation wall, transfer bytes, GPU training wall, evaluation wall"
+  },
+  "deduplication": "Cost and exposure are counted by native source key and geometry group; overlapping DOE subsets (pilot20 inside SCALE360) are counted once"
+}

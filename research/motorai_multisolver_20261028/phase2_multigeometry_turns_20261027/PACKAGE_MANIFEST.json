@@ -2,6 +2,11 @@
   "scope": "small source/return package only",
   "files": [
     {
+      "path": "analyze_frozen_diagnostic_phase.py",
+      "sha256": "69f9ba8e1a0be27de1a7069e0e59769ca2e412af47dbafde25aec8cc99dcb713",
+      "bytes": 3171
+    },
+    {
       "path": "ASTRA_REVIEW_KO.md",
       "sha256": "53147bd20ca56f28bcab48a1bdef0382868b662bafcc7f40a76a85738545c2f7",
       "bytes": 2750
@@ -178,13 +183,13 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "f72c32c4009d6243a746febf47948ff496ca2365abc9ecaf7d0fb036ff7da998",
-      "bytes": 16138
+      "sha256": "b8cd31a43498d363c879b3a69fc343a0192762639fd05ef97c7dec5fc2923f3c",
+      "bytes": 16709
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "e8e26dce901d84e7c4a53ee8ec9510bef631bfd8ff078a32327fdc0b21da6c44",
-      "bytes": 18551
+      "sha256": "e7a9bbf0e6127e9b4457fe5b287d16222efcde22f3041c985adbafefac3c21e5",
+      "bytes": 19197
     },
     {
       "path": "MASTER_DEVELOPMENT_PLAN.json",
@@ -195,6 +200,46 @@
       "path": "MASTER_DEVELOPMENT_PLAN_KO.md",
       "sha256": "85d7d08f1495949e78186d508b848c9aad4cb9b7b60834298a2ad281f8a5770f",
       "bytes": 76108
+    },
+    {
+      "path": "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
+      "sha256": "9ae115fd7a437e6876a62933f5b5f1cd5660c6ee2b6b4d81c2f26ca3c1dcea3e",
+      "bytes": 4005
+    },
+    {
+      "path": "master_plan_artifacts/COMMON_EVALUATION_PLAN_KO.md",
+      "sha256": "cdfd9654f1761d073db202348252da24ddf5e38ef2a6180957a3b22b205ac082",
+      "bytes": 2526
+    },
+    {
+      "path": "master_plan_artifacts/DECISION_D01_FIELD_DIRECTION.json",
+      "sha256": "f93e30e810db5bc48a90e04a89de9161fe0492fd6b3b3fee97ce0bd27af33426",
+      "bytes": 2326
+    },
+    {
+      "path": "master_plan_artifacts/EXPOSURE_AND_COST_LEDGER.json",
+      "sha256": "6de7bc7cad436a5bca076634136ca1fbf360aa6d841c16c3242e474668c933a2",
+      "bytes": 2484
+    },
+    {
+      "path": "master_plan_artifacts/FROZEN_DIAGNOSTIC_PHASE_ANALYSIS.json",
+      "sha256": "22cbf0d9025047aa9857387a4c62181614be78fd82d774df3932f1f99fece3e0",
+      "bytes": 5149
+    },
+    {
+      "path": "master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md",
+      "sha256": "302159b105135d7e502f88949a87a5a654c75c8a34187da8d282e4344e2e0fb9",
+      "bytes": 4281
+    },
+    {
+      "path": "master_plan_artifacts/FROZEN_NEWOP_FINAL_SCOPE_KO.md",
+      "sha256": "edd75ae15a29c5f17ca8a0d296e14372f6edcc252bd3a0c1c31e4299f694c3b6",
+      "bytes": 3749
+    },
+    {
+      "path": "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json",
+      "sha256": "6b863aa20583ff4e5e79b3d7531d19db2663fedf1d765828281aeb9c3fc6c734",
+      "bytes": 4422
     },
     {
       "path": "motorcad_geometry_probe.py",
@@ -328,8 +373,8 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "604e406ce313d335c93603fa27ada2ad5b56474dcf16bd3324d8fa72f3c8c148",
-      "bytes": 4328
+      "sha256": "06a2e102e0922ab1a6c718bbbdccdf9d2f7ba617e02da1b8eae100cca8e8cddc",
+      "bytes": 9097
     },
     {
       "path": "source_manifest.json",
@@ -348,7 +393,7 @@
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "dc2badc167bedf85fcf2dd46a69c50c38b528532ee77f2fe0da49528d109f927",
+      "sha256": "769d9560633240a452fa254eee8f1189a20030193dcd8b361e9566346ab22177",
       "bytes": 10305
     },
     {

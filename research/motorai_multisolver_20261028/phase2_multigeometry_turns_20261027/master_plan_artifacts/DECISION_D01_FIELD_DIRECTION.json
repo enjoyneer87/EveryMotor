@@ -1,0 +1,39 @@
+{
+  "id": "D01",
+  "version": "v2",
+  "supersedes": "D01-v1 in MASTER_DEVELOPMENT_PLAN.json (direction kept, made concrete)",
+  "authority": "Claude acting as Astra (user decision D07, 2026-10-28 KST)",
+  "evidence": [
+    "FROZEN_FIELD_DIAGNOSTIC_RESULT.json",
+    "FROZEN_DIAGNOSTIC_snapshot_errors.csv",
+    "FROZEN_DIAGNOSTIC_conductor_B2.csv",
+    "SCALE360_SELECTION_FROZEN.json",
+    "master_plan_artifacts/FROZEN_DIAGNOSTIC_PHASE_ANALYSIS.json",
+    "native_element_graph.py"
+  ],
+  "findings": [
+    "Unused-phase penalty concentrates after the last trained step 40 (steps 41-44: 19.6, 24.1, 29.0, 34.1 percent mean snapshot nRMSE for PA<70 cases); interior unused steps add about +1.0 pp.",
+    "Phase input is sin/cos of cumulative mechanical angle; electrical periodicity is not encoded.",
+    "All 7 hard dev geometries have PhaseAdvance 74.5-86.4 deg (pooled all45 vector 28.7-39.0 percent) versus 16.8-23.4 percent for PA<=69.1 deg; 72 of 328 train conditions have PA>=70.",
+    "Copper meanB2 bias is -9.97 percent at seen9 and -9.33 percent at unused36, so it is not a phase-coverage effect."
+  ],
+  "decision": {
+    "first_experiment": "L12 arm A1: same architecture, same train328 split, same optimizer updates, training phases 9 -> 45. Compared against A0 (phase9).",
+    "second_single_axis_candidate": "L12 arm A2: phase9 data, phase input replaced by electrical-angle periodic sin/cos. Requires native confirmation of the electrical-cycle angle span before launch. Compared against A0 only.",
+    "deferred": "High phase-advance regime improvement (capacity, region-balanced loss, global context) and B2 loss are later single-axis steps.",
+    "release": "Contract only. Any GPU run needs the user's approval of the concrete bounded contract."
+  },
+  "preregistered_predictions": {
+    "P1": "A1 improvement concentrates at steps 41-44 and 1-3.",
+    "P2": "seen9 and interior unused steps change by about 1 pp or less.",
+    "P3": "Copper meanB2 signed bias stays in -9 to -10 percent.",
+    "P4": "The PA>=70 group gap persists.",
+    "use": "interpretation aid only; not pass/fail thresholds"
+  },
+  "claims_not_allowed": [
+    "causal proof from a single seed",
+    "time-integrated AC loss accuracy",
+    "comparison with E1 legacy scores",
+    "independent final-test performance on dev32"
+  ]
+}

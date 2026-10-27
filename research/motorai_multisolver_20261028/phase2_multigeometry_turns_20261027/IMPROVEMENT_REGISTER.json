@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_KST": "2026-10-28 08:35",
+  "updated_KST": "2026-10-28 09:00",
   "purpose": "User requests, research ideas, scientific decisions and execution evidence for MotorAI/JEET method development",
   "decision_policy": "A proposal is not an approved experiment. Scientific choices go to the user-requested Astra review chat; every new computation still requires a concrete bounded plan and source/split admission.",
   "Astra_review_thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
@@ -158,16 +158,18 @@
       "priority": "P1",
       "title": "미사용 위상36개에서 시간 일반화 진단",
       "origin": "Astra 제안",
-      "status": "동결 평가 완료·Astra 후속 판정",
+      "status": "W03 해석 완료·L12 계약 대기",
       "request": "45개저장시각중학습에쓴9개외36개에서위상오차를확인한다.",
       "evidence": [
         "SCALE360_PLAN.json",
         "native_element_graph.py",
-        "FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md"
+        "FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md",
+        "master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md",
+        "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json"
       ],
       "confirmed": "동일dev32×45phase1440graph평가완료. 미사용36 Bvector20.9153%/|B|13.9440%,전체45 Bvector20.3790%/|B|13.5041%. 기존9위상성적산술재현. 학습/FEA0.",
-      "next_action": "전체개발계획의다음decision checkpoint에서위상·표현·학습개선우선순위를Astra가판정한다.",
-      "Astra_decision": "45시각전수학습에앞서진단을권고."
+      "next_action": "L12_PHASE45_RUN_CONTRACT.json 사용자 승인 후 준비→전송→학습→평가.",
+      "Astra_decision": "D01-v2(Claude 대행): unused 위상 오차는 마지막 학습 위상 뒤 41–44에 집중된다(기계각 인코딩 외삽). phase9 대 phase45 equal-update 비교(A1)를 먼저 하고, 전기각 인코딩(A2)은 별도 단일축으로 둔다."
     },
     {
       "id": "MI-011",
@@ -210,11 +212,12 @@
       "request": "동결8방법을새Ref/SC속도8조건에서평가하고원시A/회로파형으로재적분한다.",
       "evidence": [
         "../new_op_validation_20261027/EVALUATION.json",
-        "../new_op_validation_20261027/quality_summary.json"
+        "../new_op_validation_20261027/quality_summary.json",
+        "master_plan_artifacts/FROZEN_NEWOP_FINAL_SCOPE_KO.md"
       ],
       "confirmed": "6완료중current/nonlinear PASS5,whole-current FAIL1,SC후속2미실행.6건포함wMAE AF3.2645%,scalar1.7820%,MS-MGN3seed평균0.9658%.2MSgroup의known-template시험이며formal수렴UNKNOWN,완전한8조건최종시험으로주장하지않는다.",
       "next_action": "실패·미실행을포함한보고서와hash/품질층을게시한다.라벨로모델을재튜닝하지않는다.",
-      "Astra_decision": "P2 current PASS가whole-history FAIL을덮지않도록보존."
+      "Astra_decision": "W04(Claude 대행): 품질 PASS 5건만 보면 AF 0.748%로 순위가 뒤집힌다. 6건 결과는 품질 FAIL인 SC_I460.1_N12000(Full 가중 51.4%)이 좌우하므로 어느 쪽 우월도 주장하지 않는다. L18 benchmark의 동결 reference로만 보존한다."
     },
     {
       "id": "MI-014",

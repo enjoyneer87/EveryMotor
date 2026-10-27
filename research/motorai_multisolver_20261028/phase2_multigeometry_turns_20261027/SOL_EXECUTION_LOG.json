@@ -21,6 +21,18 @@
       "authority": "user",
       "recorded_UTC": "2026-10-27T23:30Z",
       "decision": "Window continues after 08:00 KST with no deadline and step-by-step reports. Claude takes the Astra role. New GPU runs only after the user approves a concrete bounded contract."
+    },
+    {
+      "id": "D01",
+      "version": "v2",
+      "authority": "Claude acting as Astra",
+      "record": "master_plan_artifacts/DECISION_D01_FIELD_DIRECTION.json"
+    },
+    {
+      "id": "D06",
+      "authority": "Claude acting as Astra",
+      "record": "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
+      "decision": "L12 decision rule and no-harm margins registered before results."
     }
   ],
   "entries": [
@@ -119,12 +131,107 @@
       },
       "result": "Previous window closed with no post-deadline compute. A new window opened by user decision D07.",
       "decision_request": null
+    },
+    {
+      "stepid": "W04",
+      "title": "동결 새OP6/8 반환과 품질층 보존",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "plan_status_at_freeze": "EVIDENCE_COMPLETE_REPORT_ONLY",
+      "dependencies": [
+        "W00"
+      ],
+      "gates": [
+        "G07",
+        "G10"
+      ],
+      "execution_status": "COMPLETED",
+      "receipt": {
+        "new_compute": "none (saved files only)",
+        "outputs": {
+          "master_plan_artifacts/FROZEN_NEWOP_FINAL_SCOPE_KO.md": "edd75ae15a29c5f17ca8a0d296e14372f6edcc252bd3a0c1c31e4299f694c3b6"
+        }
+      },
+      "result": "Six collected cases kept; ranking flips by quality layer: all-6 wMAE AF 3.264 vs learned 0.77-1.26 percent, quality-PASS-5 AF 0.748 vs learned 1.42-2.26 percent. SC_I460.1_N12000 (whole-current FAIL) carries 51.4 percent of the Full weight. No superiority claim either way.",
+      "decision_request": null
+    },
+    {
+      "stepid": "W03",
+      "title": "진단 해석·전체 자계 개선 축 결정",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "plan_status_at_freeze": "READY_REPORT_AND_NEXT_RUN_CONTRACT",
+      "dependencies": [
+        "W02"
+      ],
+      "gates": [
+        "G03",
+        "G10"
+      ],
+      "execution_status": "COMPLETED",
+      "receipt": {
+        "new_compute": "none (saved files only)",
+        "outputs": {
+          "master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md": "302159b105135d7e502f88949a87a5a654c75c8a34187da8d282e4344e2e0fb9",
+          "master_plan_artifacts/DECISION_D01_FIELD_DIRECTION.json": "f93e30e810db5bc48a90e04a89de9161fe0492fd6b3b3fee97ce0bd27af33426",
+          "master_plan_artifacts/FROZEN_DIAGNOSTIC_PHASE_ANALYSIS.json": "22cbf0d9025047aa9857387a4c62181614be78fd82d774df3932f1f99fece3e0"
+        }
+      },
+      "result": "Unused-phase penalty sits at steps 41-44 (mechanical-angle encoding, outside trained range); 7 hard dev geometries are all PhaseAdvance 74.5-86.4 deg; copper B2 bias is phase-independent. D01-v2 keeps phase9 vs phase45 first and registers A2 electrical-angle encoding as a separate axis.",
+      "decision_request": null
+    },
+    {
+      "stepid": "W07",
+      "title": "공통 평가·노출 감사·비용 ledger 계약",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "plan_status_at_freeze": "CONTRACT_TO_FREEZE",
+      "dependencies": [
+        "W00"
+      ],
+      "gates": [
+        "G02",
+        "G03",
+        "G07",
+        "G10"
+      ],
+      "execution_status": "COMPLETED",
+      "receipt": {
+        "new_compute": "none (saved files only)",
+        "outputs": {
+          "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json": "9ae115fd7a437e6876a62933f5b5f1cd5660c6ee2b6b4d81c2f26ca3c1dcea3e",
+          "master_plan_artifacts/EXPOSURE_AND_COST_LEDGER.json": "6de7bc7cad436a5bca076634136ca1fbf360aa6d841c16c3242e474668c933a2",
+          "master_plan_artifacts/COMMON_EVALUATION_PLAN_KO.md": "cdfd9654f1761d073db202348252da24ddf5e38ef2a6180957a3b22b205ac082"
+        }
+      },
+      "result": "Common evaluation, L12 decision rule (1.0 pp improvement, no-harm margins) and exposure/cost ledger frozen before any L12 result.",
+      "decision_request": null
+    },
+    {
+      "stepid": "L12",
+      "title": "field 표현·용량·위상 개선의 단일축 실험",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "plan_status_at_freeze": "PHASE_COVERAGE_CONTRACT_FIRST_NO_RUN_RELEASED",
+      "dependencies": [
+        "W03",
+        "W07"
+      ],
+      "gates": [
+        "G02",
+        "G03",
+        "G09",
+        "G10"
+      ],
+      "execution_status": "CONTRACT_DRAFT_AWAITING_USER",
+      "receipt": {
+        "new_compute": "none (saved files only)",
+        "outputs": {
+          "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json": "6b863aa20583ff4e5e79b3d7531d19db2663fedf1d765828281aeb9c3fc6c734"
+        }
+      },
+      "result": "A1 phase45 equal-update contract drafted; A0 reused as reference. Preflight: 133 L40S idle with 1438 GiB free; 234 D: 232 GiB free.",
+      "decision_request": "User approval of option minimal (A1 seed17) or with_seed_check (A1 seed17, A0 seed29, A1 seed29) before any preparation or GPU run."
     }
   ],
   "next": [
-    "W04",
-    "W03",
-    "W07",
+    "L12 (on user approval)",
     "W05",
     "W06"
   ]

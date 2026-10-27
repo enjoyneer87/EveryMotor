@@ -1,0 +1,89 @@
+{
+  "id": "L12-PHASE45",
+  "version": "1.0-draft",
+  "status": "AWAITING_USER_APPROVAL",
+  "plan_step": "L12 (MASTER_DEVELOPMENT_PLAN v1.0), decision D01-v2",
+  "single_changed_axis": "training phases: 9 (0,5,...,40) -> 45 (0..44)",
+  "evaluation_contract": "COMMON_EVALUATION_CONTRACT.json v1.0",
+  "arms": {
+    "A0": {
+      "status": "EXISTING_REFERENCE",
+      "run": "SCALE360 seed17",
+      "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+      "all45_dev_metrics_source": "FROZEN_FIELD_DIAGNOSTIC_RESULT.json",
+      "reuse_basis": "same model, trainer logic, seed, update count and per-update learning rate; deterministic algorithms were on"
+    },
+    "A1": {
+      "status": "PROPOSED",
+      "train_graphs": 14760,
+      "seed": 17,
+      "updates": 88565,
+      "update_schedule": "5 smoke updates + 6 passes x 14760 graphs = 88565 (identical to A0)",
+      "learning_rate": "lr(u) equals A0's per-update value: epoch_equiv = clip(ceil((u-5)/2952),1,30); lr = 1e-5 + 0.5*(1e-3 - 1e-5)*(1+cos(pi*(epoch_equiv-1)/29))",
+      "order": "random.Random(17) shuffle per 14760-graph pass"
+    }
+  },
+  "options": {
+    "minimal": "A1 seed17 only (one GPU run).",
+    "with_seed_check": "A1 seed17, then A0 seed29 and A1 seed29 sequentially on 133 (three GPU runs) so the seed spread enters the decision rule."
+  },
+  "stages": [
+    {
+      "id": "S1-prepare",
+      "host": "234 (iso), CPU only",
+      "work": "read the 36 unused native steps of the 328 train conditions with the unchanged reader native_element_graph.py; 11808 new graphs",
+      "determinism_check": "re-read 1 train case at its 9 seen steps and require byte-identical npz sha256 against the existing SCALE360 bundle before the full read",
+      "processes": 4,
+      "wall_seconds_max": 1800,
+      "expected_seconds": 600,
+      "disk_GiB": 14.1,
+      "gate": "328 PASS / 0 FAIL, exactly 11808 new files, per-file sha256 manifest",
+      "untouched": "234 GPU and other user sessions (no GPU use in this stage)"
+    },
+    {
+      "id": "S2-transfer",
+      "route": "234 -> relay -> 133",
+      "bytes_GiB": 14.1,
+      "gate": "per-file sha256 equal on 133; existing 2952 phase9 graphs reused by hash"
+    },
+    {
+      "id": "S3-train",
+      "host": "133 NVIDIA L40S, single GPU job",
+      "code": "train_field_l12.py = train_field_scale360.py with four declared changes: plan path, 45 files per train case, per-update learning rate, train-set evaluation restricted to the 2952 phase9 graphs",
+      "smoke": "5 updates then epoch-0 evaluation, as in A0",
+      "in_run_evaluation": "dev 9-phase and train phase9 subset at updates 5, 2957, 14765, 29525, 59045, 88565 (A0 epochs 0,1,5,10,20,30)",
+      "wall_seconds_max": 10800,
+      "expected_seconds": 3600,
+      "torch_allocated_soft_limit_GiB": 10,
+      "disk_GiB": 1,
+      "checkpoint": "last only, kept on 133; sha256 recorded"
+    },
+    {
+      "id": "S4-evaluate",
+      "host": "133",
+      "work": "evaluate_frozen_field_diagnostic.py on the A1 checkpoint over the existing 1440 dev graphs (bundle 5bf699ac...)",
+      "wall_seconds_max": 1800,
+      "expected_seconds": 90
+    }
+  ],
+  "controls": {
+    "retries": 0,
+    "STOP": "STOP file in stage root or research root stops the owned process; partial files preserved",
+    "identity": "owner PID + process create time recorded in OWNER.json; guard receipt; only verified owned processes are stopped",
+    "duplicate_guard": "refuse to start if any owned L12 stage directory or live owned process exists",
+    "new_FEA": 0,
+    "reserved_and_old_val_test": "not read",
+    "stop_between_stages": "each stage gate must PASS before the next starts; a failure stops the chain"
+  },
+  "outputs_to_publish": [
+    "L12_PHASE45_RESULT.json (metrics per COMMON_EVALUATION_CONTRACT, hashes, wall times)",
+    "L12 snapshot and conductor CSVs (same schema as FROZEN_DIAGNOSTIC_*.csv)",
+    "L12_PHASE45_REPORT_KO.md with the decision against the preregistered rule and predictions P1-P4"
+  ],
+  "not_published": "graphs, checkpoints, raw HDF5, private host mappings",
+  "estimated_total": {
+    "minimal": "about 1.5 h wall (prepare 10 min, transfer about 15 min, train about 60 min, evaluate 2 min)",
+    "with_seed_check": "about 3.5 h wall"
+  },
+  "follow_up_not_in_this_contract": "A2 electrical-angle encoding; needs native confirmation of the electrical-cycle angle span first"
+}

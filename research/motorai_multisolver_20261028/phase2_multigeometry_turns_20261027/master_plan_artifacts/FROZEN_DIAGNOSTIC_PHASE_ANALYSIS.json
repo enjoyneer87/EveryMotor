@@ -1,0 +1,192 @@
+{
+  "scope": "Secondary analysis of completed frozen SCALE360 diagnostic. Means of per-snapshot nRMSE are descriptive and are not the pooled area-weighted metric. No new inference, training or FEA.",
+  "inputs": {
+    "FROZEN_DIAGNOSTIC_snapshot_errors.csv": "d8162a97531e842270cc6768c16e7ac0e1b36935220a5acfb47740ad2ca4a19f",
+    "FROZEN_DIAGNOSTIC_conductor_B2.csv": "922d2b512faa5a5e81cdf7dd5c7a8c7d9785843260a553925030a491858bf650",
+    "FROZEN_FIELD_DIAGNOSTIC_RESULT.json": "6c739483b5aec20669bad65d9a646e42df98715d77d912c5a9b17a2571b7e567",
+    "SCALE360_SELECTION_FROZEN.json": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d"
+  },
+  "seen_steps": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40
+  ],
+  "phase_encoding": "design_op uses sin/cos of cumulative native mechanical angle (native_element_graph.py); electrical periodicity over the 45-step cycle is not encoded",
+  "high_phase_advance_threshold_deg": 70.0,
+  "dev_cases": {
+    "PA_ge_70": [
+      48,
+      49,
+      115,
+      143,
+      171,
+      202,
+      223
+    ],
+    "PA_lt_70": [
+      44,
+      59,
+      79,
+      82,
+      116,
+      122,
+      127,
+      155,
+      183,
+      193,
+      195,
+      203,
+      208,
+      212,
+      226,
+      238,
+      322,
+      360,
+      382,
+      390,
+      401,
+      402,
+      408,
+      414,
+      432
+    ]
+  },
+  "dev_all45_pooled_vector_nRMSE_percent_range": {
+    "PA_ge_70": [
+      28.703344454196444,
+      38.958329757643234
+    ],
+    "PA_lt_70": [
+      16.753622830164296,
+      23.43071959276836
+    ]
+  },
+  "train_condition_PhaseAdvance_ge_70": 72,
+  "train_conditions": 328,
+  "by_seen_distance": {
+    "PA_ge_70/d0": {
+      "n": 63,
+      "mean_snapshot_vector_nRMSE_percent": 28.609500092305634
+    },
+    "PA_ge_70/d1": {
+      "n": 119,
+      "mean_snapshot_vector_nRMSE_percent": 31.497526540117757
+    },
+    "PA_ge_70/d2": {
+      "n": 119,
+      "mean_snapshot_vector_nRMSE_percent": 35.66055741105228
+    },
+    "PA_ge_70/d3": {
+      "n": 7,
+      "mean_snapshot_vector_nRMSE_percent": 54.17631183470844
+    },
+    "PA_ge_70/d4": {
+      "n": 7,
+      "mean_snapshot_vector_nRMSE_percent": 65.20634260541377
+    },
+    "PA_lt_70/d0": {
+      "n": 225,
+      "mean_snapshot_vector_nRMSE_percent": 16.811772289507353
+    },
+    "PA_lt_70/d1": {
+      "n": 425,
+      "mean_snapshot_vector_nRMSE_percent": 17.45722581347088
+    },
+    "PA_lt_70/d2": {
+      "n": 425,
+      "mean_snapshot_vector_nRMSE_percent": 18.651408520334193
+    },
+    "PA_lt_70/d3": {
+      "n": 25,
+      "mean_snapshot_vector_nRMSE_percent": 29.02524287353814
+    },
+    "PA_lt_70/d4": {
+      "n": 25,
+      "mean_snapshot_vector_nRMSE_percent": 34.10711194225973
+    }
+  },
+  "by_phase_region": {
+    "PA_ge_70/after_last_seen": {
+      "n": 28,
+      "mean_snapshot_vector_nRMSE_percent": 49.088370758804885
+    },
+    "PA_ge_70/interior_unused": {
+      "n": 224,
+      "mean_snapshot_vector_nRMSE_percent": 33.27239370546229
+    },
+    "PA_ge_70/seen9": {
+      "n": 63,
+      "mean_snapshot_vector_nRMSE_percent": 28.609500092305634
+    },
+    "PA_lt_70/after_last_seen": {
+      "n": 100,
+      "mean_snapshot_vector_nRMSE_percent": 26.6987780289761
+    },
+    "PA_lt_70/interior_unused": {
+      "n": 800,
+      "mean_snapshot_vector_nRMSE_percent": 17.818250824205617
+    },
+    "PA_lt_70/seen9": {
+      "n": 225,
+      "mean_snapshot_vector_nRMSE_percent": 16.811772289507353
+    }
+  },
+  "by_step_PA_lt_70": {
+    "0": 16.900533840930326,
+    "1": 18.104965880247235,
+    "2": 20.407313144554585,
+    "3": 20.369191184353486,
+    "4": 17.86038531721413,
+    "5": 16.461141885049457,
+    "6": 17.112651899764053,
+    "7": 17.81487109126755,
+    "8": 17.53637414476477,
+    "9": 16.758703489391806,
+    "10": 16.894797602962953,
+    "11": 17.45257383161836,
+    "12": 17.694941698692666,
+    "13": 17.76524966388096,
+    "14": 17.55999914298335,
+    "15": 16.885819183880024,
+    "16": 16.7374605734815,
+    "17": 17.77372177895536,
+    "18": 18.189127490540276,
+    "19": 17.08752999771437,
+    "20": 16.684791288006945,
+    "21": 17.375881131694133,
+    "22": 17.74070561813234,
+    "23": 17.648065858398738,
+    "24": 17.233183304230042,
+    "25": 16.88591892566685,
+    "26": 17.101679087006044,
+    "27": 17.784525644330635,
+    "28": 18.06651234899517,
+    "29": 17.54835215998551,
+    "30": 16.705013872671838,
+    "31": 16.90817774486848,
+    "32": 18.526204435933042,
+    "33": 19.173396990664777,
+    "34": 17.609972930643046,
+    "35": 16.663031772075033,
+    "36": 17.64602951496853,
+    "37": 18.525951878571178,
+    "38": 17.985301276542252,
+    "39": 17.085026120191344,
+    "40": 17.224902234322762,
+    "41": 19.590266703003035,
+    "42": 24.072490597103503,
+    "43": 29.02524287353814,
+    "44": 34.10711194225973
+  },
+  "copper_B2_signed_bias_percent": {
+    "seen9": -9.96556305256128,
+    "unused36": -9.33103600871501,
+    "all45": -9.458019134575801
+  }
+}
