@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_KST": "2026-10-28 01:47",
+  "updated_KST": "2026-10-28 08:35",
   "purpose": "User requests, research ideas, scientific decisions and execution evidence for MotorAI/JEET method development",
   "decision_policy": "A proposal is not an approved experiment. Scientific choices go to the user-requested Astra review chat; every new computation still requires a concrete bounded plan and source/split admission.",
   "Astra_review_thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
@@ -236,15 +236,18 @@
       "priority": "P0",
       "title": "Astra 전체계획·주요판정 / Sol 구현·실행 운영",
       "origin": "사용자 명시 요청",
-      "status": "전체 계획 수립 중",
+      "status": "Astra 계획 v1 복원·Claude 대행 실행 중",
       "request": "Astra가전체개발계획을수립하고Sol은그계획에따라실행한다.판단필요사항은Astra에게되돌린다.",
       "evidence": [
         "ASTRA_TRANSFER_MULTIMODAL_KO.md",
-        "CONTINUATION_KO.md"
+        "CONTINUATION_KO.md",
+        "MASTER_DEVELOPMENT_PLAN_KO.md",
+        "SOL_EXECUTION_LOG.json",
+        "SESSION_CLOSURE_20261028_KO.md"
       ],
-      "confirmed": "사용자지시를Astra검토채팅에전달했고계획2파일을작성중이다.계산/코드/결과검증/게시와판정책임을분리한다.",
-      "next_action": "MASTER_DEVELOPMENT_PLAN의WBS·gates·decision checkpoints를읽고Sol의실행로그를연결한다.",
-      "Astra_decision": "작성중. 기존승인된동결진단을첫단계로우선한다."
+      "confirmed": "Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다.",
+      "next_action": "SOL_EXECUTION_LOG.json에 단계별 receipt를 기록한다. W04→W03→W07 순으로 문서·계약을 작성하고, W05/W06은 읽기전용 감사로 진행한다.",
+      "Astra_decision": "v1 D01: phase9 대 phase45 equal-update 비교 계약을 먼저 작성한다. 학습은 계약 승인 전 HOLD. E1 weights는 HOLD."
     }
   ]
 }

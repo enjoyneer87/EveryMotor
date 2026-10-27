@@ -1,6 +1,6 @@
 # MotorAI 개선 요청·아이디어 통합 대장
 
-갱신일: 2026-10-28 01:47 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
+갱신일: 2026-10-28 08:35 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
 
 사용자 요청, Astra 판정, 실행 계획과 실제 결과를 같은 항목 ID로 추적한다. 제안·판정·실행 완료는 서로 다른 상태다. 새 계산은 이 대장만으로 시작하지 않고 별도 bounded 실행 계약과 원자료/분할 gate를 통과해야 한다.
 
@@ -22,7 +22,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
-| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | 전체 계획 수립 중 |
+| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra 계획 v1 복원·Claude 대행 실행 중 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -275,19 +275,19 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-015"></a>
 ## MI-015 · Astra 전체계획·주요판정 / Sol 구현·실행 운영
 
-**P0 · 전체 계획 수립 중**
+**P0 · Astra 계획 v1 복원·Claude 대행 실행 중**
 
 **요청 출처:** 사용자 명시 요청
 
 **요청과 목표:** Astra가전체개발계획을수립하고Sol은그계획에따라실행한다.판단필요사항은Astra에게되돌린다.
 
-**확인된 근거와 현재 결과:** 사용자지시를Astra검토채팅에전달했고계획2파일을작성중이다.계산/코드/결과검증/게시와판정책임을분리한다.
+**확인된 근거와 현재 결과:** Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다.
 
-**Astra 판정:** 작성중. 기존승인된동결진단을첫단계로우선한다.
+**Astra 판정:** v1 D01: phase9 대 phase45 equal-update 비교 계약을 먼저 작성한다. 학습은 계약 승인 전 HOLD. E1 weights는 HOLD.
 
-**다음 행동:** MASTER_DEVELOPMENT_PLAN의WBS·gates·decision checkpoints를읽고Sol의실행로그를연결한다.
+**다음 행동:** SOL_EXECUTION_LOG.json에 단계별 receipt를 기록한다. W04→W03→W07 순으로 문서·계약을 작성하고, W05/W06은 읽기전용 감사로 진행한다.
 
-근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md)
+근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md) · [MASTER_DEVELOPMENT_PLAN_KO.md](MASTER_DEVELOPMENT_PLAN_KO.md) · [SOL_EXECUTION_LOG.json](SOL_EXECUTION_LOG.json) · [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md)
 
 ## 갱신 규칙
 

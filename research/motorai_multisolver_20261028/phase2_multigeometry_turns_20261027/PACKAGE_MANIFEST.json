@@ -178,13 +178,23 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "2d2b805dee1a498362bd7ddfbfbc0e7ad80076498ac4824f2a020d7db03c91a3",
-      "bytes": 15704
+      "sha256": "f72c32c4009d6243a746febf47948ff496ca2365abc9ecaf7d0fb036ff7da998",
+      "bytes": 16138
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "89906b4616bbd562fd71ae67647a4f97c7afcf61d5dd199bf7bd349c7a0548f2",
-      "bytes": 18027
+      "sha256": "e8e26dce901d84e7c4a53ee8ec9510bef631bfd8ff078a32327fdc0b21da6c44",
+      "bytes": 18551
+    },
+    {
+      "path": "MASTER_DEVELOPMENT_PLAN.json",
+      "sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "bytes": 98849
+    },
+    {
+      "path": "MASTER_DEVELOPMENT_PLAN_KO.md",
+      "sha256": "85d7d08f1495949e78186d508b848c9aad4cb9b7b60834298a2ad281f8a5770f",
+      "bytes": 76108
     },
     {
       "path": "motorcad_geometry_probe.py",
@@ -317,6 +327,11 @@
       "bytes": 1521
     },
     {
+      "path": "SOL_EXECUTION_LOG.json",
+      "sha256": "604e406ce313d335c93603fa27ada2ad5b56474dcf16bd3324d8fa72f3c8c148",
+      "bytes": 4328
+    },
+    {
       "path": "source_manifest.json",
       "sha256": "e267b95d202f45c9afeaf0ff7db430542696bebc13455a5d4e414541b2d342d0",
       "bytes": 663
@@ -333,8 +348,8 @@
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "77c037612becd4507ce1b0ee99e3086bf2c2a7676598f2dc865b4901125af8d6",
-      "bytes": 10353
+      "sha256": "dc2badc167bedf85fcf2dd46a69c50c38b528532ee77f2fe0da49528d109f927",
+      "bytes": 10305
     },
     {
       "path": "STEP128_COMPARISON.json",
