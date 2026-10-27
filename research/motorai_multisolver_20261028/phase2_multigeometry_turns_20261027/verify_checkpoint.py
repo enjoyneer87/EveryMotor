@@ -4,10 +4,10 @@ import argparse,hashlib,json,csv,ast
 ROOT=Path(__file__).resolve().parent
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--write-manifests',action='store_true');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--write-manifests',action='store_true');ap.add_argument('--exclude',action='append',default=[]);a=ap.parse_args()
  folders=[ROOT,ROOT.parent/'new_op_validation_20261027'];counts={}
  for r in folders:
-  candidates=[p for p in r.rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc' and p.name not in ['PACKAGE_MANIFEST.json','CHECKPOINT_VERIFICATION.json']]
+  candidates=[p for p in r.rglob('*') if p.is_file() and '__pycache__' not in p.parts and p.suffix!='.pyc' and p.name not in ['PACKAGE_MANIFEST.json','CHECKPOINT_VERIFICATION.json',*a.exclude]]
   for p in candidates:
    if p.suffix=='.py':ast.parse(p.read_text(encoding='utf-8'))
   if a.write_manifests:

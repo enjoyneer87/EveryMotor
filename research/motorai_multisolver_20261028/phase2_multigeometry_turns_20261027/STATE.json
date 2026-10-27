@@ -1,5 +1,5 @@
 {
-  "checked_UTC": "2026-10-27T16:11:01.017870+00:00",
+  "checked_UTC": "2026-10-27T16:51:50.715871+00:00",
   "configuration_count": 816,
   "geometries": 272,
   "transient_step_cap_total": 128,
@@ -101,5 +101,25 @@
     "train_conditions": 328,
     "development_conditions": 32,
     "prepared_graphs": 3240
+  },
+  "frozen_field_diagnostic": {
+    "status": "COMPLETED",
+    "graphs_processed": 1440,
+    "error": null
+  },
+  "canonical_repository": "enjoyneer87/EveryMotor",
+  "canonical_branch": "codex/motorai-multisolver-20261028",
+  "planning_owner": "Astra",
+  "execution_owner": "Sol",
+  "field_model_counts": {
+    "pilot20_geometry": 2,
+    "expanded320_groups": 1,
+    "total_completed": 3
+  },
+  "optimizer_update_ledger": {
+    "pilot_two_seeds": 2890,
+    "expanded133_seed17": 88565,
+    "total": 91455,
+    "frozen_diagnostic": 0
   }
 }

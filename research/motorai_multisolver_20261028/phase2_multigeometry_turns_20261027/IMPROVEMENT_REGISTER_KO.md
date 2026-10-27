@@ -1,6 +1,6 @@
 # MotorAI 개선 요청·아이디어 통합 대장
 
-갱신일: 2026-10-28 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
+갱신일: 2026-10-28 01:47 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
 
 사용자 요청, Astra 판정, 실행 계획과 실제 결과를 같은 항목 ID로 추적한다. 제안·판정·실행 완료는 서로 다른 상태다. 새 계산은 이 대장만으로 시작하지 않고 별도 bounded 실행 계약과 원자료/분할 gate를 통과해야 한다.
 
@@ -17,11 +17,12 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-007](#mi-007) | P0 | 슬롯당 4·6·8도체 Field 데이터 확보 | 기하 완료·Field 확보 전 |
 | [MI-008](#mi-008) | P1 | 추가 형상 수 확대와 보류 원자료 복구 | 계보 복구 필요 |
 | [MI-009](#mi-009) | P0 | 구리 B²·전류·AC 손실 연결 | 물리량 정의·적분 검증 필요 |
-| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | 제안·미실행 |
+| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | 동결 평가 완료·Astra 후속 판정 |
 | [MI-011](#mi-011) | P1 | 국소3-hop 한계와 global context/모델 용량 | 제안·우선순위 재검토 |
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
+| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | 전체 계획 수립 중 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -100,7 +101,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **요청과 목표:** 검증된 이전 모델의 가중치·물리 표현을 활용해 새 솔버/형상/권선 모델로 전이한다.
 
-**확인된 근거와 현재 결과:** 기존 h256/p15 구조와 recipe/점수 원본을 source commit/hash로 확보했다. 실제 checkpoint target/head,정규화,입력feature 및 shape 호환성 감사가 선행된다.
+**확인된 근거와 현재 결과:** E1checkpoint f5863662...와r3/priorcode를발견/해시확인했다. prior-native binding/전체donorreserved제외/normalizer호환은UNKNOWN이라weights/teacher는HOLD.
 
 **Astra 판정:** 원 nodal branch/normalizer를 보존한 frozen backbone+작은 residual head 우선. 현재element모델에직접삽입FAIL. 준비30분/조건통과후133비교60분제안,아직새실행계약은아니다.
 
@@ -108,7 +109,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **다음 행동:** Astra가 재사용 모듈,freeze/unfreeze,adapter/새head,학습예산을정한다. 이전모델이현재dev32를pretrain에서보았는지감사한다.
 
-근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md)
+근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [TRANSFER_ADMISSION.json](TRANSFER_ADMISSION.json)
 
 <a id="mi-006"></a>
 ## MI-006 · 두 솔버·다중 정밀도·멀티모달 네트워크
@@ -174,7 +175,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **요청과 목표:** Field예측을전체모터의AC권선손실로연결해최신AF보다정확하고효율적인모델을만든다.
 
-**확인된 근거와 현재 결과:** Motor-CAD J/Je의total/source/induced의미는UNKNOWN. element A를임의nodalA로curl하지않는다. 평균B제곱과B제곱평균을구분한다.
+**확인된 근거와 현재 결과:** Motor-CAD J/Je의total/source/induced의미는UNKNOWN. element A를임의nodalA로curl하지않는다. 평균B제곱과B제곱평균을구분한다. 추가동결B²진단의전체45위상상대MAE14.4803%/bias-9.4580%,truth9/45차이0.2619%.이값은AC손실이아니다.
 
 **Astra 판정:** 멀티모달손실/최소물리검증전략검토중.
 
@@ -182,24 +183,24 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **다음 행동:** 재료경계·도체/circuit ID·단위·공간가중치·평균구간을확인하고저장손실/전류와재적분대조한다.
 
-근거 파일: [BASELINE_CONTRACT_KO.md](../BASELINE_CONTRACT_KO.md) · [DATA_REUSE_KO.md](DATA_REUSE_KO.md) · [quality_summary.json](../new_op_validation_20261027/quality_summary.json)
+근거 파일: [BASELINE_CONTRACT_KO.md](../BASELINE_CONTRACT_KO.md) · [DATA_REUSE_KO.md](DATA_REUSE_KO.md) · [quality_summary.json](../new_op_validation_20261027/quality_summary.json) · [FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md](FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md)
 
 <a id="mi-010"></a>
 ## MI-010 · 미사용 위상36개에서 시간 일반화 진단
 
-**P1 · 제안·미실행**
+**P1 · 동결 평가 완료·Astra 후속 판정**
 
 **요청 출처:** Astra 제안
 
 **요청과 목표:** 45개저장시각중학습에쓴9개외36개에서위상오차를확인한다.
 
-**확인된 근거와 현재 결과:** 45시각reader검사와9시각학습은완료.9시각이AC적분을보존한다는증거는없다.
+**확인된 근거와 현재 결과:** 동일dev32×45phase1440graph평가완료. 미사용36 Bvector20.9153%/|B|13.9440%,전체45 Bvector20.3790%/|B|13.5041%. 기존9위상성적산술재현. 학습/FEA0.
 
 **Astra 판정:** 45시각전수학습에앞서진단을권고.
 
-**다음 행동:** 같은dev그룹의추가시각을독립형상시험과구분해bounded진단계획을작성한다.
+**다음 행동:** 전체개발계획의다음decision checkpoint에서위상·표현·학습개선우선순위를Astra가판정한다.
 
-근거 파일: [SCALE360_PLAN.json](SCALE360_PLAN.json) · [native_element_graph.py](native_element_graph.py)
+근거 파일: [SCALE360_PLAN.json](SCALE360_PLAN.json) · [native_element_graph.py](native_element_graph.py) · [FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md](FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md)
 
 <a id="mi-011"></a>
 ## MI-011 · 국소3-hop 한계와 global context/모델 용량
@@ -270,6 +271,23 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 **다음 행동:** Astra판정후구체적새실험만사전선언하고deadline/STOP/소유신원guard를적용한다.원본·사용자앱·이전PAUSED캠페인을보존한다.
 
 근거 파일: [CONTINUATION_KO.md](CONTINUATION_KO.md) · [SCALE360_PLAN.json](SCALE360_PLAN.json)
+
+<a id="mi-015"></a>
+## MI-015 · Astra 전체계획·주요판정 / Sol 구현·실행 운영
+
+**P0 · 전체 계획 수립 중**
+
+**요청 출처:** 사용자 명시 요청
+
+**요청과 목표:** Astra가전체개발계획을수립하고Sol은그계획에따라실행한다.판단필요사항은Astra에게되돌린다.
+
+**확인된 근거와 현재 결과:** 사용자지시를Astra검토채팅에전달했고계획2파일을작성중이다.계산/코드/결과검증/게시와판정책임을분리한다.
+
+**Astra 판정:** 작성중. 기존승인된동결진단을첫단계로우선한다.
+
+**다음 행동:** MASTER_DEVELOPMENT_PLAN의WBS·gates·decision checkpoints를읽고Sol의실행로그를연결한다.
+
+근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md)
 
 ## 갱신 규칙
 

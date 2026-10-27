@@ -1,0 +1,43 @@
+{
+  "checked_UTC": "2026-10-27T16:45:25.188843+00:00",
+  "DEPLOY_RECEIPT.json": {
+    "code_hashes": {
+      "evaluate_frozen_field_diagnostic.py": "94ccc9c752eee02ce123a6900c697d44647c4fee9b8fe7ee16b2ec2f23987d08",
+      "guard_field_diagnostic.py": "87b2124c8f1262fce96feb3db1f66f6c1a06ade9fc6940a29404abc411d723c9",
+      "dual_solver_mgn.py": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "FROZEN_FIELD_DIAGNOSTIC_PLAN.json": "8eafa8ccafbdb575b93eccaf6c52098764d4591725a7bcbe139b0eec1038cfb8",
+      "SCALE360_SELECTION_FROZEN.json": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "SCALE360_TRAIN_RESULT.json": "620e544cfbc84c4f3a8f0f79bcce859b9da74feb7dd5f01a2664d19706d05025"
+    },
+    "source_zip_sha256": "f1c77bedd6ebdb2eac588f403391b5978b21b7b8b6469e7c842fe88b0bf7fa83",
+    "compute_processes": "",
+    "new_FEA": 0,
+    "training_updates": 0
+  },
+  "OWNER.json": {
+    "pid": 12828,
+    "process_started_epoch": 1793119410.8036857,
+    "guard_pid": 4356,
+    "guard_started_epoch": 1793119410.7381887,
+    "started_UTC": "2026-10-27T16:43:30.797514+00:00",
+    "operation": "inference"
+  },
+  "GUARD_RECEIPT.json": {
+    "pid": 12828,
+    "process_started_epoch": 1793119410.8036857,
+    "guard_pid": 4356,
+    "guard_started_epoch": 1793119410.7381887,
+    "started_UTC": "2026-10-27T16:43:30.797514+00:00",
+    "operation": "inference",
+    "returncode": 0,
+    "stop_reason": null,
+    "finished_UTC": "2026-10-27T16:44:55.817339+00:00",
+    "elapsed_seconds": 85.01600000000326,
+    "automatic_retries": 0
+  },
+  "owned_process_live": false,
+  "frozen_checkpoint_sha256_now": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+  "status": "COMPLETED",
+  "graphs_processed": 1440,
+  "error": null
+}

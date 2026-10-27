@@ -1,0 +1,34 @@
+{
+  "source_checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+  "source_bundle_manifest_sha256": "5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186",
+  "files": [
+    {
+      "path": "FROZEN_DIAGNOSTIC_conductor_B2.csv",
+      "rows": 3456,
+      "bytes": 491296,
+      "sha256": "922d2b512faa5a5e81cdf7dd5c7a8c7d9785843260a553925030a491858bf650"
+    },
+    {
+      "path": "FROZEN_DIAGNOSTIC_snapshot_errors.csv",
+      "rows": 1440,
+      "bytes": 76545,
+      "sha256": "d8162a97531e842270cc6768c16e7ac0e1b36935220a5acfb47740ad2ca4a19f"
+    }
+  ],
+  "units": {
+    "B": "T",
+    "B2": "T2",
+    "area": "m2",
+    "relative_error": "percent"
+  },
+  "ID_mapping": "native case and native_reg_code; explicit native element graph IDs preserved upstream",
+  "sampling": "same innerdev32 groups,45uniform snapshots,9seen/36unused. Not time integration.",
+  "quality": {
+    "source_hash_and_frozen_model": "PASS",
+    "seen9_arithmetic_reproduction": "PASS",
+    "accuracy_target": "UNKNOWN_no_new_gate",
+    "AC_loss_accuracy": "UNKNOWN_not_evaluated"
+  },
+  "new_FEA": 0,
+  "training_updates": 0
+}

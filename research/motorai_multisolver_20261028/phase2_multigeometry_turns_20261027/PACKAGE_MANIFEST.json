@@ -22,6 +22,11 @@
       "bytes": 6943
     },
     {
+      "path": "audit_transfer_admission.py",
+      "sha256": "edc25803b9b73b26a5c2a3dd11f09281bd25bbcf03cc20445f9ebaa40941ee9e",
+      "bytes": 4420
+    },
+    {
       "path": "B_FIELD_BUNDLE_MANIFEST.json",
       "sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3",
       "bytes": 309215
@@ -102,14 +107,64 @@
       "bytes": 9311
     },
     {
+      "path": "evaluate_frozen_field_diagnostic.py",
+      "sha256": "94ccc9c752eee02ce123a6900c697d44647c4fee9b8fe7ee16b2ec2f23987d08",
+      "bytes": 8658
+    },
+    {
       "path": "freeze_scale360_split.py",
       "sha256": "5c01f585e385abdf9090287de3d56202c7321add0ff883e00d82f608f6c0701a",
       "bytes": 2101
     },
     {
+      "path": "FROZEN_DIAGNOSTIC_conductor_B2.csv",
+      "sha256": "922d2b512faa5a5e81cdf7dd5c7a8c7d9785843260a553925030a491858bf650",
+      "bytes": 491296
+    },
+    {
+      "path": "FROZEN_DIAGNOSTIC_PHASE_PROFILE.json",
+      "sha256": "b1fccd28618bad4765d65a70d7c63e8df59d70cbe8cddee3ae48dffb8e299ec2",
+      "bytes": 7105
+    },
+    {
+      "path": "FROZEN_DIAGNOSTIC_snapshot_errors.csv",
+      "sha256": "d8162a97531e842270cc6768c16e7ac0e1b36935220a5acfb47740ad2ca4a19f",
+      "bytes": 76545
+    },
+    {
+      "path": "FROZEN_FIELD_DIAGNOSTIC_ARTIFACTS.json",
+      "sha256": "069047df4d91f6150f3f7a6d6f5a1644b5c025ffb1732217035b4ae5ad539c62",
+      "bytes": 1184
+    },
+    {
+      "path": "FROZEN_FIELD_DIAGNOSTIC_PLAN.json",
+      "sha256": "8eafa8ccafbdb575b93eccaf6c52098764d4591725a7bcbe139b0eec1038cfb8",
+      "bytes": 1729
+    },
+    {
+      "path": "FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md",
+      "sha256": "dc0084211621b7a190c69569c0f85cccc620b239bc069e8597b4f97715c21f08",
+      "bytes": 2352
+    },
+    {
+      "path": "FROZEN_FIELD_DIAGNOSTIC_RESULT.json",
+      "sha256": "6c739483b5aec20669bad65d9a646e42df98715d77d912c5a9b17a2571b7e567",
+      "bytes": 23417
+    },
+    {
+      "path": "FROZEN_FIELD_DIAGNOSTIC_STATUS.json",
+      "sha256": "3179ff9f66de5290bec622a894a2463c78e8027c9ee7cc176f37c0d94ab48294",
+      "bytes": 1830
+    },
+    {
       "path": "GEOMETRY_QA.json",
       "sha256": "46af4599d3b991757e3e03ec2fd1e35610c415ddf089f118e47e0204245b2fe3",
       "bytes": 1111385
+    },
+    {
+      "path": "guard_field_diagnostic.py",
+      "sha256": "87b2124c8f1262fce96feb3db1f66f6c1a06ade9fc6940a29404abc411d723c9",
+      "bytes": 2303
     },
     {
       "path": "guard_field_pilot.py",
@@ -123,13 +178,13 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "91fae6d9a3cbba210ca7cef21a3078794b24f73546eb811fad03906c4f64c07a",
-      "bytes": 13424
+      "sha256": "2d2b805dee1a498362bd7ddfbfbc0e7ad80076498ac4824f2a020d7db03c91a3",
+      "bytes": 15704
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "d084ccdaaff55e8d11917f255ccf32221531c50ebe7468ec7c2679d1aaac1bb7",
-      "bytes": 16583
+      "sha256": "89906b4616bbd562fd71ae67647a4f97c7afcf61d5dd199bf7bd349c7a0548f2",
+      "bytes": 18027
     },
     {
       "path": "motorcad_geometry_probe.py",
@@ -197,6 +252,11 @@
       "bytes": 3091
     },
     {
+      "path": "prepare_frozen_field_diagnostic.py",
+      "sha256": "eb443621b940d894c88b4d854181b75242993b712152c1383f04c2fd10085cfe",
+      "bytes": 2219
+    },
+    {
       "path": "PRIOR_MOTORAI_COMPARISON_KO.md",
       "sha256": "2b05d6779b9f53ec1bd3daa960bef43fad36febca7f3529bd47ac2099a127864",
       "bytes": 2430
@@ -248,7 +308,7 @@
     },
     {
       "path": "SCALE360_TRAIN_STATUS.json",
-      "sha256": "e2c27597400af87e02995849fbb44afb3008e1f74aaf7afcd07953a3f4b5b45c",
+      "sha256": "59b74c75da8b732c1d42f74c93e21cdec6be7aef5b741f89f72a2cdc0cb62d55",
       "bytes": 2158
     },
     {
@@ -263,13 +323,13 @@
     },
     {
       "path": "STATE.json",
-      "sha256": "4cd98f55babac6cdd492cad248893d810ce5ded16938f4506d46c829c83147db",
-      "bytes": 3510
+      "sha256": "3ecdf770288acbead311858abe56632e8ac3cfc3bb6ab63eafe2bb3adefce794",
+      "bytes": 4067
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "3fae70736363aec02894489e334d8e4afe49956a4388d1414747795c72c53ac1",
-      "bytes": 9257
+      "sha256": "68d58d52ef250d7f1269ae03dab2a0cde334d763e191e7c7021c64053342208e",
+      "bytes": 10272
     },
     {
       "path": "STEP128_COMPARISON.json",
@@ -342,9 +402,19 @@
       "bytes": 8330
     },
     {
+      "path": "TRANSFER_ADMISSION.json",
+      "sha256": "53ed76465e275385781525360a3e69509669526aee15c6b8dd78e5e41564f4ea",
+      "bytes": 31754
+    },
+    {
+      "path": "TRANSFER_ADMISSION_PLAN.json",
+      "sha256": "9434681ac9d7cf00a27a2df36e6c1a9190e4bbcd19abda74ff12c9efaa91f421",
+      "bytes": 1331
+    },
+    {
       "path": "update_dashboard.py",
-      "sha256": "4a252c158d220af6c7b64bef76f6f70e7cfcb9df3a1258dfbcdff45342b32e26",
-      "bytes": 11196
+      "sha256": "ee0a3beba402c97723bb908012bc72d2d943e69e487f3fc9e0d8a01a9373c542",
+      "bytes": 12902
     },
     {
       "path": "update_improvement_register.py",
@@ -353,8 +423,8 @@
     },
     {
       "path": "verify_checkpoint.py",
-      "sha256": "c1f4e16b6e077d4ef86eccc4eef16b9940fc3b735ed5637015c20f1df40e0dac",
-      "bytes": 6351
+      "sha256": "68ccea4e3f0ba2b8c061e5a206ced545c044ebe97fe0c645becf1e55dcf15db3",
+      "bytes": 6418
     }
   ]
 }

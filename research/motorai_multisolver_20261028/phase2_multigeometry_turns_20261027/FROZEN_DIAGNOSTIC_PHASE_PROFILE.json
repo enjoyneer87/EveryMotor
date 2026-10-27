@@ -1,0 +1,275 @@
+{
+  "metric": "Descriptive arithmetic mean of per-case relative nRMSE; not pooled acceptance metric",
+  "by_step": [
+    {
+      "step": 0,
+      "cases": 32,
+      "vector_mean_percent": 19.35046274069967,
+      "magnitude_mean_percent": 12.47247416577311
+    },
+    {
+      "step": 1,
+      "cases": 32,
+      "vector_mean_percent": 20.575121961805205,
+      "magnitude_mean_percent": 13.21922971567831
+    },
+    {
+      "step": 2,
+      "cases": 32,
+      "vector_mean_percent": 23.72438681261829,
+      "magnitude_mean_percent": 15.604676922208986
+    },
+    {
+      "step": 3,
+      "cases": 32,
+      "vector_mean_percent": 23.731967982878068,
+      "magnitude_mean_percent": 15.594634661875258
+    },
+    {
+      "step": 4,
+      "cases": 32,
+      "vector_mean_percent": 20.66477136671073,
+      "magnitude_mean_percent": 13.70383677606484
+    },
+    {
+      "step": 5,
+      "cases": 32,
+      "vector_mean_percent": 19.03639560015951,
+      "magnitude_mean_percent": 12.564369378359709
+    },
+    {
+      "step": 6,
+      "cases": 32,
+      "vector_mean_percent": 21.121817363542988,
+      "magnitude_mean_percent": 13.995890436695461
+    },
+    {
+      "step": 7,
+      "cases": 32,
+      "vector_mean_percent": 22.27088731766938,
+      "magnitude_mean_percent": 14.638851942582603
+    },
+    {
+      "step": 8,
+      "cases": 32,
+      "vector_mean_percent": 21.161277471285935,
+      "magnitude_mean_percent": 14.232562755153836
+    },
+    {
+      "step": 9,
+      "cases": 32,
+      "vector_mean_percent": 19.43102236491816,
+      "magnitude_mean_percent": 12.976555665378788
+    },
+    {
+      "step": 10,
+      "cases": 32,
+      "vector_mean_percent": 19.48427109830041,
+      "magnitude_mean_percent": 12.76015816653251
+    },
+    {
+      "step": 11,
+      "cases": 32,
+      "vector_mean_percent": 20.52173478591282,
+      "magnitude_mean_percent": 13.663718747845778
+    },
+    {
+      "step": 12,
+      "cases": 32,
+      "vector_mean_percent": 21.400838363821794,
+      "magnitude_mean_percent": 14.568366999956769
+    },
+    {
+      "step": 13,
+      "cases": 32,
+      "vector_mean_percent": 21.295112739796174,
+      "magnitude_mean_percent": 14.483233162659081
+    },
+    {
+      "step": 14,
+      "cases": 32,
+      "vector_mean_percent": 21.04835431053641,
+      "magnitude_mean_percent": 13.771947505928297
+    },
+    {
+      "step": 15,
+      "cases": 32,
+      "vector_mean_percent": 19.384724714155162,
+      "magnitude_mean_percent": 12.466899781143871
+    },
+    {
+      "step": 16,
+      "cases": 32,
+      "vector_mean_percent": 19.166673492528357,
+      "magnitude_mean_percent": 12.598387747785493
+    },
+    {
+      "step": 17,
+      "cases": 32,
+      "vector_mean_percent": 21.195782995221368,
+      "magnitude_mean_percent": 14.182785419540105
+    },
+    {
+      "step": 18,
+      "cases": 32,
+      "vector_mean_percent": 21.722398732894632,
+      "magnitude_mean_percent": 14.048115700133156
+    },
+    {
+      "step": 19,
+      "cases": 32,
+      "vector_mean_percent": 20.053458352043467,
+      "magnitude_mean_percent": 13.027575218866337
+    },
+    {
+      "step": 20,
+      "cases": 32,
+      "vector_mean_percent": 19.324201991226655,
+      "magnitude_mean_percent": 12.69908095022318
+    },
+    {
+      "step": 21,
+      "cases": 32,
+      "vector_mean_percent": 20.9855038704339,
+      "magnitude_mean_percent": 14.017151964896875
+    },
+    {
+      "step": 22,
+      "cases": 32,
+      "vector_mean_percent": 21.686219307163537,
+      "magnitude_mean_percent": 14.188334660575354
+    },
+    {
+      "step": 23,
+      "cases": 32,
+      "vector_mean_percent": 20.960313054237975,
+      "magnitude_mean_percent": 13.844513155435035
+    },
+    {
+      "step": 24,
+      "cases": 32,
+      "vector_mean_percent": 19.823642298107217,
+      "magnitude_mean_percent": 12.962273713421292
+    },
+    {
+      "step": 25,
+      "cases": 32,
+      "vector_mean_percent": 19.42956512177081,
+      "magnitude_mean_percent": 12.482238777261477
+    },
+    {
+      "step": 26,
+      "cases": 32,
+      "vector_mean_percent": 20.26566828277039,
+      "magnitude_mean_percent": 13.32612613937411
+    },
+    {
+      "step": 27,
+      "cases": 32,
+      "vector_mean_percent": 21.920443360451557,
+      "magnitude_mean_percent": 14.951654185061521
+    },
+    {
+      "step": 28,
+      "cases": 32,
+      "vector_mean_percent": 22.147302065817193,
+      "magnitude_mean_percent": 15.21535357623122
+    },
+    {
+      "step": 29,
+      "cases": 32,
+      "vector_mean_percent": 21.185819293042115,
+      "magnitude_mean_percent": 14.081017372124538
+    },
+    {
+      "step": 30,
+      "cases": 32,
+      "vector_mean_percent": 19.359914732324878,
+      "magnitude_mean_percent": 12.56438684858587
+    },
+    {
+      "step": 31,
+      "cases": 32,
+      "vector_mean_percent": 19.615002807394642,
+      "magnitude_mean_percent": 13.074972080064668
+    },
+    {
+      "step": 32,
+      "cases": 32,
+      "vector_mean_percent": 22.03437335770845,
+      "magnitude_mean_percent": 14.94725694317958
+    },
+    {
+      "step": 33,
+      "cases": 32,
+      "vector_mean_percent": 22.685857812645384,
+      "magnitude_mean_percent": 14.831671712647106
+    },
+    {
+      "step": 34,
+      "cases": 32,
+      "vector_mean_percent": 20.4178961449734,
+      "magnitude_mean_percent": 13.362935116970268
+    },
+    {
+      "step": 35,
+      "cases": 32,
+      "vector_mean_percent": 19.155900904256917,
+      "magnitude_mean_percent": 12.534394234563813
+    },
+    {
+      "step": 36,
+      "cases": 32,
+      "vector_mean_percent": 21.34043867639887,
+      "magnitude_mean_percent": 13.868532141739028
+    },
+    {
+      "step": 37,
+      "cases": 32,
+      "vector_mean_percent": 22.695312909317416,
+      "magnitude_mean_percent": 14.524494092449766
+    },
+    {
+      "step": 38,
+      "cases": 32,
+      "vector_mean_percent": 21.578403485114677,
+      "magnitude_mean_percent": 14.251178817134075
+    },
+    {
+      "step": 39,
+      "cases": 32,
+      "vector_mean_percent": 19.93522340361593,
+      "magnitude_mean_percent": 13.040453521962394
+    },
+    {
+      "step": 40,
+      "cases": 32,
+      "vector_mean_percent": 20.007290314431298,
+      "magnitude_mean_percent": 12.724631015350893
+    },
+    {
+      "step": 41,
+      "cases": 32,
+      "vector_mean_percent": 22.83305838148844,
+      "magnitude_mean_percent": 15.476010466504892
+    },
+    {
+      "step": 42,
+      "cases": 32,
+      "vector_mean_percent": 28.115839514397337,
+      "magnitude_mean_percent": 20.28602981053129
+    },
+    {
+      "step": 43,
+      "cases": 32,
+      "vector_mean_percent": 34.52703920879414,
+      "magnitude_mean_percent": 25.278380709047315
+    },
+    {
+      "step": 44,
+      "cases": 32,
+      "vector_mean_percent": 40.91006864982467,
+      "magnitude_mean_percent": 29.34320088220643
+    }
+  ]
+}
