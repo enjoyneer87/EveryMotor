@@ -11,7 +11,7 @@ def main():
  large=s.get('expanded_training',{})
  diagnostic=json.loads((R/'FROZEN_FIELD_DIAGNOSTIC_RESULT.json').read_text()) if (R/'FROZEN_FIELD_DIAGNOSTIC_RESULT.json').exists() else {}
  phase_rows=''.join(f'<tr><td>{label}</td><td>{diagnostic["metrics"][key+"/all"]["B_vector_nRMSE_percent"]:.2f}%</td><td>{diagnostic["metrics"][key+"/all"]["B_magnitude_nRMSE_percent"]:.2f}%</td><td>{diagnostic["metrics"][key+"/copper"]["B_vector_nRMSE_percent"]:.2f}%</td></tr>' for key,label in [('seen9','기존9위상'),('unused36','미사용36위상'),('all45','전체45위상')] if key+'/all' in diagnostic.get('metrics',{}))
- master_link='<a href="MASTER_DEVELOPMENT_PLAN_KO.md">Astra 전체 개발계획</a>' if (R/'MASTER_DEVELOPMENT_PLAN_KO.md').exists() else 'Astra 전체 개발계획 작성 중'
+ master_link='<a href="MASTER_DEVELOPMENT_PLAN_KO.md">Astra 전체 개발계획</a>' if (R/'MASTER_DEVELOPMENT_PLAN_KO.md').exists() else ('Astra 전체 개발계획 마감 시 미완성·미기록(<a href="'+s['session_closure']['record']+'">종료 기록</a>)' if s.get('session_closure') else 'Astra 전체 개발계획 작성 중')
  rows=[]
  for name,d in s['execution'].items():
   e=d.get('execution',{});p=d.get('progress') or {};state='완료' if e.get('returncode')==0 and not e.get('stop_reason') else ('실행 중' if d['owned_live_processes'] else '확인 필요')

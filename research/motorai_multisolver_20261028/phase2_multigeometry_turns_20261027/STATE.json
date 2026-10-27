@@ -121,5 +121,18 @@
     "expanded133_seed17": 88565,
     "total": 91455,
     "frozen_diagnostic": 0
+  },
+  "session_closure": {
+    "checked_UTC": "2026-10-27T23:18:22Z",
+    "deadline_UTC": "2026-10-27T23:00:00Z",
+    "new_compute_after_8903d3d": 0,
+    "owned_133_processes_live": 0,
+    "ownership_check_UTC": "2026-10-27T23:20:55Z",
+    "astra_master_plan_turn": "01a17e3d-3b2c-7390-9dc4-b85c0647d967",
+    "astra_master_plan_status": "INCOMPLETE_NOT_WRITTEN",
+    "master_plan_files_published": 0,
+    "sol_plan_execution_steps_started": 0,
+    "stop_cause": "Codex usage_limit_exceeded",
+    "record": "SESSION_CLOSURE_20261028_KO.md"
   }
 }

@@ -2,7 +2,7 @@
   "status": "PASS",
   "scope": "package integrity/split/caps/frozen-model invariants only",
   "files": {
-    "phase2_multigeometry_turns_20261027": 85,
+    "phase2_multigeometry_turns_20261027": 86,
     "new_op_validation_20261027": 62
   },
   "configurations": 816,
