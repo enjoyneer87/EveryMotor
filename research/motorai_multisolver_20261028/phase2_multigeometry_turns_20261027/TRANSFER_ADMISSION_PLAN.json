@@ -1,0 +1,16 @@
+{
+  "scope":"Read-only E1 transfer admission audit; no checkpoint inference/training or solver",
+  "basis":"MI-005, MI-006 and ASTRA_TRANSFER_MULTIMODAL_KO.md",
+  "host":"234",
+  "source_repo_commit":"65dda206e28770b242fa0dd888fd394f7a155ca0",
+  "checkpoint_tag":"doe_v3_bw30_prior_e1airgap5",
+  "train_only_candidate_cases":[74,98],
+  "steps_if_later_admitted":[0,5,10,15,20,25,30,35,40],
+  "targets":["checkpoint identity/hash/metadata", "r3_models and fem_warmstart code identity", "prior cache keys/hash/native binding", "donor split and reserved-exposure evidence", "native support and normalizer compatibility"],
+  "new_FEA":0,"GPU_jobs":0,"training_updates":0,
+  "resource_limits":{"processes":1,"wall_seconds_max":1800,"subcommand_seconds_max":30,"estimated_memory_GiB":2,"estimated_output_GiB":1,"automatic_retries":0},
+  "deadline_UTC":"2026-10-27T22:59:00Z",
+  "gate":"Each criterion PASS/FAIL/UNKNOWN separately; weights/teacher/distillation remain disabled until reserved and provenance admission. File existence is not admission.",
+  "stop":"Bounded foreground read-only helper under remote timeout; STOP and wall/deadline checked between reads; no processes or environments modified",
+  "fallback":"If gate not satisfied, freeze weights experiment and predeclare SCALE360 magnitude/B2/remaining36phase diagnostic"
+}

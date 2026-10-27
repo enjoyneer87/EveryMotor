@@ -1,0 +1,23 @@
+{
+  "stage1_freeze_sha256": "3b9da48995c87040b613dd1ae032d8289bc2be057fc56372e7a323781346478b",
+  "amendment_sha256": "d18369fc737487ccff0c27880c167f28531ca5764d2bf5f89d856762f90da8a1",
+  "code": {
+    "audit_convergence.py": "41e1e2c1b64aac25c5e2077eda5d55bebc344faa2758669a69b57c81675c17f6",
+    "field_reader.py": "e61559ee0820cd14a46ac65ac94ae7dab85eacf39417ed78e102dc24b42e699c",
+    "model.py": "1e3833305c3745373f9cac4bc58cc09b72a00dff7493afc09b32d947d99980f3",
+    "refine.py": "9e6d74b6e0c04e99b64ef3c0260c0994cd659b5d3250f626fcc3b7c109013604",
+    "residual.py": "38ac63de9fdff7259c225e9dde6400f8a758d1190f2dc7a00db19fb7b2a55a98",
+    "run_fea.py": "1ba255f2ff0b781c895e519755b2f3642faa7dfbce1542be78eaf609b05cfdb4",
+    "test_contracts.py": "84294192a2d35dcc8ca29546753b4e2214fc692b6a654e153f82a28912ff2bb8",
+    "train.py": "79c41aba5e0d1ff72baff2aee4eb8902c6e79b3d672fc8c014b6337598401345"
+  },
+  "eval_truth_loaded": false,
+  "Full_budget": 63,
+  "MS_sources": 24,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "updates_additional": 16200
+}

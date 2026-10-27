@@ -1,0 +1,106 @@
+{
+  "original_sha256": "2d80757a350344db7099fc9d63b168d5345f16b29a89463252fd4de5d81f25c9",
+  "selected_fields": {
+    "case_id": "HOMOMS_Ref_P112_coarse_N128_M03_R07",
+    "profile": "homogenized-slot-MS-v1",
+    "model": "Ref",
+    "radial_factor": 1.0,
+    "current_rms_A": 345.025,
+    "beta_deg": 54.0,
+    "rpm": 16000,
+    "frequency_Hz": 1066.6666666666667,
+    "samples_per_period": 128,
+    "total_steps": 128,
+    "dt_s": 7.32421875e-06,
+    "omega_m_rad_s": -1675.5160819145563,
+    "logical_body_to_physical": {
+      "1": 1000,
+      "2": 1001,
+      "3": 1002,
+      "4": 1003,
+      "5": 1010,
+      "6": 1011,
+      "7": 1012,
+      "8": 1013,
+      "9": 2000,
+      "10": 2002,
+      "11": 2401,
+      "12": 2402,
+      "13": 2403,
+      "14": 2404,
+      "15": 2405,
+      "16": 2406
+    },
+    "rotating_physical": [
+      1000,
+      1001,
+      1002,
+      1003,
+      1010,
+      1011,
+      1012,
+      1013
+    ],
+    "winding_source_rows": [
+      {
+        "physical": 2401,
+        "slot": 1,
+        "current_peak_A": 2927.6342061466626,
+        "phase_deg": -68.81249999999999,
+        "J_peak_Am2": 48474581.171856575,
+        "area_m2": 6.039524499999995e-05,
+        "series_turns": 6
+      },
+      {
+        "physical": 2402,
+        "slot": 2,
+        "current_peak_A": 2927.6342061466626,
+        "phase_deg": -68.81249999999999,
+        "J_peak_Am2": 48475300.33226556,
+        "area_m2": 6.0394349e-05,
+        "series_turns": 6
+      },
+      {
+        "physical": 2403,
+        "slot": 3,
+        "current_peak_A": 2927.634206146663,
+        "phase_deg": -128.8125,
+        "J_peak_Am2": 48475982.99255115,
+        "area_m2": 6.0393498499999996e-05,
+        "series_turns": 6
+      },
+      {
+        "physical": 2404,
+        "slot": 4,
+        "current_peak_A": 2927.634206146663,
+        "phase_deg": -128.8125,
+        "J_peak_Am2": 48474890.18348025,
+        "area_m2": 6.0394859999999984e-05,
+        "series_turns": 6
+      },
+      {
+        "physical": 2405,
+        "slot": 5,
+        "current_peak_A": 2927.6342061466626,
+        "phase_deg": 171.18750000000003,
+        "J_peak_Am2": 48474560.30368113,
+        "area_m2": 6.039527099999997e-05,
+        "series_turns": 6
+      },
+      {
+        "physical": 2406,
+        "slot": 6,
+        "current_peak_A": 2927.6342061466626,
+        "phase_deg": 171.18750000000003,
+        "J_peak_Am2": 48474196.31743407,
+        "area_m2": 6.03957245e-05,
+        "series_turns": 6
+      }
+    ],
+    "diffusion_all_regions_off": true,
+    "circuit_ODE_present": false,
+    "individual_Cu_interfaces_removed": true,
+    "source_mesh_grade": "coarse",
+    "source_original_contract_sha256": "a89976fa5be141ac4beb9b039b6050846969e602e55756be79804caff385e933"
+  }
+}

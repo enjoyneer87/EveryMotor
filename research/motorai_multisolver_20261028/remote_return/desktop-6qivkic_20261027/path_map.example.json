@@ -1,0 +1,7 @@
+{
+  "workspace": "<local original VeryMCAD folder>",
+  "source_repo": "<read-only checkout containing object 0034d7c>",
+  "nas_root": "<existing VeryMCAD archive root>",
+  "local_root": "<separate local output folder outside Git>",
+  "host_id": "<local identifier>"
+}

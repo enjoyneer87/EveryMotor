@@ -1,0 +1,173 @@
+{
+  "source_provenance": {
+    "status": "PASS",
+    "MS_source_count": 24,
+    "comparison_rows": 228,
+    "original_results_modified": false,
+    "frozen_source_return_commit": "4c6ef9325dd0539b0220fb2817782562b9932fb7",
+    "hashes": "source_manifest.json and ARTIFACT_MANIFEST.json"
+  },
+  "quantity_unit_contract": {
+    "status": "PASS",
+    "target": "full motor active AC excess W, prescribed DC subtracted",
+    "canonical_denominator_preserved": true,
+    "source_current_bounded_mapping_preserved": true,
+    "temperature_not_newly_measured": true
+  },
+  "old_raw_reader_regression": {
+    "status": "PASS",
+    "max_abs_error_W": 2.9103830456733704e-11
+  },
+  "new_numerical_variants": {
+    "status": "PASS",
+    "requested": 3,
+    "completed": 3,
+    "pending": 0,
+    "status_scope": "execution and raw readback completion only",
+    "unique_physical_conditions": 1,
+    "new_independent_training_conditions": 0
+  },
+  "formal_period_mesh_time_convergence": {
+    "status": "UNKNOWN",
+    "reason": "No separately approved qualification gate; proposed development diagnostics and measured errors are in CONVERGENCE_RESULTS.json"
+  },
+  "baseline_masks": {
+    "status": "PASS",
+    "Ref_calibration": 36,
+    "Ref_excluded": 60,
+    "SC_calibration": 27,
+    "SC_excluded": 69,
+    "SC_strict_excluded": 57,
+    "HalfSC_predeclared": 32,
+    "HalfSC_exploratory": 4,
+    "Full_unique_budget": 63
+  },
+  "leakage_controls": {
+    "status": "PASS",
+    "reserved_count": 0,
+    "HalfSC_training_count": 0,
+    "global_alias_closure": true,
+    "final_model_frozen_before_evaluation": true,
+    "after_evaluation_retraining": false,
+    "globally_never_opened_claim": false
+  },
+  "MGN_execution": {
+    "status": "PASS",
+    "trained_seeds": [
+      17,
+      29,
+      43
+    ],
+    "updates_per_seed": 18000,
+    "original_FE_edges": true,
+    "parameters": 74018,
+    "scope": "conditional stationary homogenized-slot vector-B model and pooled-feature RBF residual; not Full J or complete moving-mesh temporal model"
+  },
+  "checkpoint_replay": {
+    "status": "PASS",
+    "models": 3
+  },
+  "head_replay": {
+    "status": "PASS",
+    "models": 10,
+    "rows_each": 228
+  },
+  "outperform_latest_AF": {
+    "status": "FAIL",
+    "scope": "observed fixed-set AC wMAE; not a population-wide theorem",
+    "values": [
+      {
+        "group": "Ref_excluded60",
+        "method": "MS_MGN_primary",
+        "n": 60,
+        "wMAE_mean_percent": 6.444998277161261,
+        "wMAE_seed_sd_percent": 0.2681234200269012,
+        "seed_values": [
+          6.132004988853628,
+          6.786863887585498,
+          6.416125955044658
+        ]
+      },
+      {
+        "group": "Ref_excluded60",
+        "method": "latest_frozen_AF",
+        "n": 60,
+        "wMAE_mean_percent": 2.38050273617963,
+        "wMAE_seed_sd_percent": 0
+      },
+      {
+        "group": "Ref_excluded60",
+        "method": "scalar",
+        "n": 60,
+        "wMAE_mean_percent": 4.609038700980696,
+        "wMAE_seed_sd_percent": 0
+      },
+      {
+        "group": "SC_strict57",
+        "method": "MS_MGN_primary",
+        "n": 57,
+        "wMAE_mean_percent": 5.470973038116994,
+        "wMAE_seed_sd_percent": 0.04075389769971823,
+        "seed_values": [
+          5.528454638918271,
+          5.438596382442757,
+          5.445868092989952
+        ]
+      },
+      {
+        "group": "SC_strict57",
+        "method": "latest_frozen_AF",
+        "n": 57,
+        "wMAE_mean_percent": 2.6429784113333525,
+        "wMAE_seed_sd_percent": 0
+      },
+      {
+        "group": "SC_strict57",
+        "method": "scalar",
+        "n": 57,
+        "wMAE_mean_percent": 4.731940255619827,
+        "wMAE_seed_sd_percent": 0
+      },
+      {
+        "group": "HalfSC_predeclared32",
+        "method": "MS_MGN_primary",
+        "n": 32,
+        "wMAE_mean_percent": 4.680693981805898,
+        "wMAE_seed_sd_percent": 0.021696034032215455,
+        "seed_values": [
+          4.653043308714807,
+          4.706037002463182,
+          4.6830016342397025
+        ]
+      },
+      {
+        "group": "HalfSC_predeclared32",
+        "method": "latest_frozen_AF",
+        "n": 32,
+        "wMAE_mean_percent": 3.149279580498456,
+        "wMAE_seed_sd_percent": 0
+      },
+      {
+        "group": "HalfSC_predeclared32",
+        "method": "scalar",
+        "n": 32,
+        "wMAE_mean_percent": 4.25856142725805,
+        "wMAE_seed_sd_percent": 0
+      }
+    ]
+  },
+  "end_to_end_efficiency_advantage": {
+    "status": "UNKNOWN",
+    "reason": "No end-to-end advantage demonstrated; cached CPU head timing excludes MS/Hybrid/encoding, AF historical fit cost not rerun"
+  },
+  "new_template_generalization": {
+    "status": "UNKNOWN",
+    "independent_reference_templates": 1,
+    "scale_variants": 3,
+    "exact_cross_solver_bridges": 0
+  },
+  "historical_data_qualification": {
+    "status": "UNKNOWN",
+    "reason": "Ref one-anchor sensitivity does not qualify whole192loaded/36HalfSC; low-current failures remain quarantined"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "local_id": "desktop-6qivkic",
+  "date_kst": "2026-10-27",
+  "research_handoff_commit": "3b14d149cbcba7c0aff5bf77f90f7c2043814d58",
+  "remote_branch_at_start": "3b14d149cbcba7c0aff5bf77f90f7c2043814d58",
+  "changes_after_handoff_at_start": [],
+  "existing_checkout": {
+    "logical_key": "original_jeet_checkout",
+    "branch": "codex/elmer-local-postprocess-20261018",
+    "HEAD": "1e73446c47300afa692c1fa9613c3776c8ad515c",
+    "modified_files": [
+      "jeet_acloss_rbf/saved_elmer_batch.py",
+      "tests/test_saved_elmer_batch.py"
+    ],
+    "application_thread_owner": "UNKNOWN; not claimed or modified"
+  },
+  "new_worktree": {
+    "logical_key": "this_return_checkout",
+    "branch": "codex/elmer-return-desktop-6qivkic-20261027",
+    "base": "3b14d149cbcba7c0aff5bf77f90f7c2043814d58",
+    "ownership": "newly created for this chat; only remote_return/desktop-6qivkic_20261027 modified"
+  },
+  "source_checkout": {
+    "logical_key": "pinned_r8_source",
+    "HEAD": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+    "status_at_start": "clean; read-only"
+  },
+  "process_check": {
+    "scope": "local host Win32_Process name and command evidence",
+    "Elmer_GetDP_gmsh_MotorCAD_related_solver_count_at_start": 0,
+    "other_sessions_processes_untouched": true,
+    "remote_solver_process_state": "not queried; no remote command sent"
+  },
+  "git_actions": {
+    "reset": false,
+    "stash": false,
+    "pull": false,
+    "forced_push": false,
+    "fetch": "requested research branch only",
+    "writes": "new return folder only"
+  },
+  "automation": {
+    "old_two_automations_reactivated": false,
+    "old_stopped_campaigns_resumed": false,
+    "previous_deadline_superseded_for_this_readonly_return": "explicit new user instruction"
+  },
+  "new_solver_calls": 0,
+  "new_training_calls": 0,
+  "source_hashes_verified": "source_manifest.json",
+  "absolute_paths": "private local_path_map.json outside Git"
+}

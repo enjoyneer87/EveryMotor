@@ -1,0 +1,35 @@
+{
+  "purpose": "MGN and scalar/multisource method development; no new model trained in this return",
+  "strict_physical_truth_cohort": "none newly qualified by period+mesh convergence",
+  "development_cohorts": {
+    "latest192": "P2 development targets with frozen masks; MS raw24 now verified for all192; target raw5 re-integrated",
+    "HalfSC32": "Raw36 recovered and reintegrated; these32 remain protected historical transfer evaluation, including their fields; never pretrain/tune on them",
+    "HalfSC4": "Exploratory only; raw loss/current verified; high-speed whole-history current FAIL retained",
+    "original240_other48": "P2 current FAIL; quarantine from quality-gated target learning",
+    "low48": "archive inventory only; 24 SC nominal repeats; do not create new scalar truth rows from ACK",
+    "six_field_shards": "five loaded development cases; Ref_P001 is current-failed diagnostic only",
+    "MS24": "Raw A and stationary homogenized-slot FE graph available; MS teacher only, no Full-FEA J/loss truth"
+  },
+  "label_selector": [
+    "quantity=AC_excess",
+    "observation_role=solver_target",
+    "unit=W",
+    "scope=whole_motor_active_stack_2D_no_end_winding",
+    "explicit quality/cohort selector required"
+  ],
+  "split_group": "geometry_group inherited from federated catalog across all solver/fidelity/derived labels",
+  "reserved_all_sources": [
+    "R1_0199",
+    "R1_0076"
+  ],
+  "globally_never_opened_claim": false,
+  "ms_teacher_0_84_percent_is_Full_error": false,
+  "point36_knn_is_MeshGraphNet": false,
+  "present_graph": "4212-node copper FE submesh with original triangles; spatial reader validated, full-machine/transient MGN training not performed",
+  "exact_MS_Full_raw_pairs": 0,
+  "exact_cross_solver_bridges": 0,
+  "comparison_requirement": "same Full-FEA budget and evaluation cases; compare frozen AF x canonical mean-square Hybrid, scalar residual, multisource, MS-pretrained/Field models separately from raw Hybrid",
+  "raw_MS_Full_lineage_pairs": 41,
+  "exact_pair_semantics": "exact means same physical geometry and OP; 41 verified evaluator-lineage pairs include homogenization and similarity/speed transfers",
+  "shared_source_history_policy": "Inductive geometry/template splits must close over shared MS source hash; a known-template/transductive study must be labeled separately"
+}

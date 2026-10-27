@@ -1,0 +1,135 @@
+{
+  "case": "SC_I460.1_B36_N6000",
+  "condition_case": "SC_I460.1_B36_N6000",
+  "returncode": 0,
+  "stop_reason": null,
+  "wall_seconds": 3946.284168669954,
+  "peak_RSS_bytes": 117366784,
+  "source_hashes": {
+    "case.sif": "b554effc0e264da194abdd90671d4792f064c315cd9a3d47469f3c3ae0edaba2",
+    "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+    "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+    "INPUT_CONTRACT.json": "5a08cb05993567f54c085aedb35f16c377c9549087b9db1c8f10a7226104775b",
+    "lamination_hb.dat": "9275b8f27038198dd77705d7b0492aea65f07549949bc152b34903047337a741",
+    "MODEL.json": "55cd9f5519dd84eeeb7eb0ae200e3b788ef33bf35e66e7f2c06bf7fe1f0cfdbb",
+    "PARAMETERS.json": "0151fb26e7d5c27242aebd04d6093a2d1fcbdfe3eb72b1dba82d4d85facbab36",
+    "shaft_hb.dat": "56fc55f0716f8701ddefff1cd554c9a355a2d4af6a9522284a9c8bac01be95d0",
+    "mesh/mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+    "mesh/mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+    "mesh/mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad",
+    "mesh/mesh.nodes": "93c98b063a01a3e2f94014129017d286666c5edf25fc3a93d1fdfde7b8ed3133"
+  },
+  "solver_binary_sha256": "a2a953b877b9472380186f3e30cf43cd523bb038e1badc69b0ec365a1d3fbb84",
+  "audit": {
+    "steps": 768,
+    "steps_per_period": 256,
+    "periods": [
+      {
+        "period": 1,
+        "steps": [
+          1,
+          256
+        ],
+        "Joule_W": 37240.51885876917,
+        "DC_W": 7856.633285480507,
+        "AC_W": 29383.88557328865,
+        "current_max_percent": 0.0005150811159572734
+      },
+      {
+        "period": 2,
+        "steps": [
+          257,
+          512
+        ],
+        "Joule_W": 32353.67441067141,
+        "DC_W": 7856.633285480508,
+        "AC_W": 24497.041125190903,
+        "current_max_percent": 4.258169895297726e-05
+      },
+      {
+        "period": 3,
+        "steps": [
+          513,
+          768
+        ],
+        "Joule_W": 32353.694499100344,
+        "DC_W": 7856.633285480507,
+        "AC_W": 24497.06121361984,
+        "current_max_percent": 4.2580229102373746e-05
+      }
+    ],
+    "solver_nonlinear_max": 8.9855408e-11,
+    "nonlinear_status": "PASS",
+    "whole_current_max_percent": 0.0005150811159572734,
+    "whole_current_status": "PASS",
+    "current_gate_percent": 0.001,
+    "area_m2_by_bar": [
+      2.4719552000000117e-05,
+      2.471689200000005e-05,
+      2.4718587999999967e-05,
+      2.471691599999999e-05,
+      2.471648000000003e-05,
+      2.4719552000000097e-05,
+      2.4715862000000028e-05,
+      2.4713346000000046e-05,
+      2.4712726000000003e-05,
+      2.4717030000000027e-05,
+      2.4719972000000048e-05,
+      2.4722683999999986e-05,
+      2.4717078000000045e-05,
+      2.471658400000006e-05,
+      2.4717076000000002e-05,
+      2.4715923999999953e-05,
+      2.471592400000002e-05,
+      2.4716527999999993e-05,
+      2.4716331999999966e-05,
+      2.4717984000000046e-05,
+      2.4717985999999978e-05,
+      2.4716330000000032e-05,
+      2.471872600000005e-05,
+      2.4718725999999992e-05,
+      2.4717616000000002e-05,
+      2.4718913999999966e-05,
+      2.4719148e-05,
+      2.4718008000000008e-05,
+      2.4717522000000063e-05,
+      2.4718544000000018e-05,
+      2.4717782000000057e-05,
+      2.4708960000000004e-05,
+      2.4722905999999956e-05,
+      2.472166800000009e-05,
+      2.4714054000000005e-05,
+      2.4712802000000065e-05
+    ],
+    "nodes": 27179,
+    "elements": 53034,
+    "copper_elements": 6912,
+    "sigma_S_m": 47092391.429245,
+    "active_length_m": 0.15,
+    "average": "uniform post-step arithmetic mean",
+    "initial_A": 0,
+    "BDF": "BE step1, BDF2 thereafter",
+    "period_status": "PASS",
+    "mesh_status": "UNKNOWN",
+    "time_step_status": "UNKNOWN",
+    "period_status_scope": "proposed development threshold only; see QUALIFICATION_POLICY.json",
+    "formal_period_mesh_time_qualification": "UNKNOWN",
+    "input_sha256": {
+      "case.sif": "b554effc0e264da194abdd90671d4792f064c315cd9a3d47469f3c3ae0edaba2",
+      "PARAMETERS.json": "0151fb26e7d5c27242aebd04d6093a2d1fcbdfe3eb72b1dba82d4d85facbab36",
+      "MODEL.json": "55cd9f5519dd84eeeb7eb0ae200e3b788ef33bf35e66e7f2c06bf7fe1f0cfdbb",
+      "INPUT_CONTRACT.json": "5a08cb05993567f54c085aedb35f16c377c9549087b9db1c8f10a7226104775b",
+      "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+      "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+      "mesh/mesh.nodes": "93c98b063a01a3e2f94014129017d286666c5edf25fc3a93d1fdfde7b8ed3133",
+      "mesh/mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f"
+    },
+    "P2_P3_mean_percent": 8.200342384680163e-05,
+    "P2_P3_wave_L2_percent": 0.00016045163177110793,
+    "P3_current_status": "PASS",
+    "period_gate": {
+      "mean_percent": 0.1,
+      "wave_L2_percent": 0.5
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+  "requested": 8,
+  "collected": 6,
+  "not_collected": 2,
+  "unique_geometry_variants": 2,
+  "template_families": 1,
+  "duplicate_case_ids": 0,
+  "sources": [
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/Ref_I230.05_B36_N6000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/Ref_I230.05_B36_N6000/raw_source_manifest.json",
+      "raw_manifest_sha256": "c72489f2f5c84179892aa74bf016522130ec5c2551487be42cb9fe7b5df0edac",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728450402,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    },
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/Ref_I230.05_B36_N12000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/Ref_I230.05_B36_N12000/raw_source_manifest.json",
+      "raw_manifest_sha256": "d958dff5c0328b485fa238aee912146162c90c1c0180a5a3396b413943d2ed12",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728450401,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    },
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/Ref_I460_B36_N6000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/Ref_I460_B36_N6000/raw_source_manifest.json",
+      "raw_manifest_sha256": "d157b2563bc9051946625e46fd65ca09f3c23f863c63b48cbdfe96f06c268366",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728450342,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    },
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/Ref_I460_B36_N12000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/Ref_I460_B36_N12000/raw_source_manifest.json",
+      "raw_manifest_sha256": "63bdd93f0916c361407a7b86309cbb7af675f118b54426a2672e4a350d578610",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728450341,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    },
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/SC_I460.1_B36_N6000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/SC_I460.1_B36_N6000/raw_source_manifest.json",
+      "raw_manifest_sha256": "a867090460a37bdfd79a54c18d4aa508dcb8cb6d6ce78abe66f73ede7dac48d1",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728548060,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    },
+    {
+      "logical_source_key": "Elmer/new_OP_20261027/SC_I460.1_B36_N12000",
+      "source_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+      "raw_manifest": "results/SC_I460.1_B36_N12000/raw_source_manifest.json",
+      "raw_manifest_sha256": "e7041dcf11e7cb0d93c1dc644a36e6decc8c650426f9cda31fec903e469ca8fb",
+      "source_status": "PASS",
+      "raw_files": 784,
+      "raw_bytes": 2728547891,
+      "provenance": "Native source host read-only A/circuit integration and local transfer SHA readback"
+    }
+  ]
+}

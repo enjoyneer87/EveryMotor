@@ -1,0 +1,48 @@
+{
+  "133": {
+    "status": "PASS",
+    "checks": [
+      "separate_solver_parameters",
+      "AF_identity_at_initialization",
+      "gradient_domain_isolation",
+      "missing_modality_mask",
+      "no_exact_bridge_rejected",
+      "nominal_pair_rejected",
+      "denominator_mismatch_rejected",
+      "cross_graph_edge_rejected",
+      "missing_baseline_provenance_rejected",
+      "cross_domain_baseline_rejected",
+      "field_responds_to_OP",
+      "field_responds_to_fidelity",
+      "field_pretraining_without_scalar_baseline"
+    ],
+    "framework": "2.5.1+cu124",
+    "device": "CPU",
+    "training_updates": 0,
+    "physical_validation": false,
+    "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed"
+  },
+  "234": {
+    "status": "PASS",
+    "checks": [
+      "separate_solver_parameters",
+      "AF_identity_at_initialization",
+      "gradient_domain_isolation",
+      "missing_modality_mask",
+      "no_exact_bridge_rejected",
+      "nominal_pair_rejected",
+      "denominator_mismatch_rejected",
+      "cross_graph_edge_rejected",
+      "missing_baseline_provenance_rejected",
+      "cross_domain_baseline_rejected",
+      "field_responds_to_OP",
+      "field_responds_to_fidelity",
+      "field_pretraining_without_scalar_baseline"
+    ],
+    "framework": "2.5.1+cu124",
+    "device": "CPU",
+    "training_updates": 0,
+    "physical_validation": false,
+    "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed"
+  }
+}

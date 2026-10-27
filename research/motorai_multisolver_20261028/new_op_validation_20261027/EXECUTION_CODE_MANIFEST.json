@@ -1,0 +1,31 @@
+{
+  "files": [
+    {
+      "path": "new_op_validation_20261027/run_queue.py",
+      "bytes": 5687,
+      "sha256": "d8f079663f78ec72a8a284185ce00a7b0f2d7811ff59cc7a257f604516dfdb46"
+    },
+    {
+      "path": "new_op_validation_20261027/build_inputs.py",
+      "bytes": 4078,
+      "sha256": "aabf8276cb9471ed3e6c75bcc8fd0aad5d797d3678996444af905d95076dd93b"
+    },
+    {
+      "path": "new_op_validation_20261027/freeze_test.py",
+      "bytes": 5439,
+      "sha256": "3b697934f67a32c8e4c77cde274a41a15ce1bb9f92219066385fbfa86e9ab8d5"
+    },
+    {
+      "path": "mgn_development_20261027/audit_convergence.py",
+      "bytes": 4902,
+      "sha256": "c36b16d4650ed733c3935c591aae565fbcdcbc563088b10dcddb6e118184918f"
+    },
+    {
+      "path": "remote_return/desktop-6qivkic_20261027/field_reader.py",
+      "bytes": 18908,
+      "sha256": "e61559ee0820cd14a46ac65ac94ae7dab85eacf39417ed78e102dc24b42e699c"
+    }
+  ],
+  "inputs_sha256": "68acbab2097610dc5c3f844729a2e3d8b830aedcedbe5aab58365855e012b5b8",
+  "frozen_predictions_sha256": "c238ac8b61242d2c804a8e03639df7c1ccb4aa510ba88afa42b96e58afa7f459"
+}

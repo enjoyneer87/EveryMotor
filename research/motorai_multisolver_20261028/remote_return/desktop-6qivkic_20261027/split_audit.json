@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "scope": "return membership, identity duplicates and pre-existing global group propagation; no model fit or scoring",
+  "reserved_ids": [
+    "R1_0076",
+    "R1_0199"
+  ],
+  "reserved_observation_count": 0,
+  "reserved_raw_opened_this_run": 0,
+  "globally_never_opened_claim": false,
+  "historical_reserved_QC_known": true,
+  "geometry_groups": {
+    "jeet_elmer:Ref": "component:ae12ca85ea69417971d883c0",
+    "jeet_elmer:SC": "component:25135a20414c4a317ccc11a8",
+    "jeet_elmer:HalfSC": "component:9e709ddfc649484b7c243de6"
+  },
+  "template_group": "jeet_e10_ideal_radial_same_template",
+  "global_catalog_sha256": "4455cef13ce5fea190b4abd5d94728d8dd87b401976ebff51dd0ebc8218a7a9f",
+  "global_component_count": 277,
+  "conditions": 324,
+  "unique_nominal_condition_count": 300,
+  "duplicate_nominal_condition_groups": [
+    [
+      "SC",
+      2000.0,
+      0.1,
+      0.0
+    ],
+    [
+      "SC",
+      2000.0,
+      0.1,
+      18.0
+    ],
+    [
+      "SC",
+      2000.0,
+      0.1,
+      36.0
+    ],
+    [
+      "SC",
+      2000.0,
+      0.1,
+      54.0
+    ],
+    [
+      "SC",
+      2000.0,
+      0.1,
+      72.0
+    ],
+    [
+      "SC",
+      2000.0,
+      0.1,
+      90.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      0.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      18.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      36.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      54.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      72.0
+    ],
+    [
+      "SC",
+      4000.0,
+      0.1,
+      90.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      0.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      18.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      36.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      54.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      72.0
+    ],
+    [
+      "SC",
+      8000.0,
+      0.1,
+      90.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      0.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      18.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      36.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      54.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      72.0
+    ],
+    [
+      "SC",
+      16000.0,
+      0.1,
+      90.0
+    ]
+  ],
+  "overlap_semantics": "same model/current/speed/beta; distinct acquisition revisions retained; no automatic independent-label increment",
+  "unique_geometry_count": 3,
+  "independent_reference_template_count": 1,
+  "original240_latest192_overlap": 192,
+  "original240_low48_overlap": 24,
+  "latest192_low48_overlap": 0,
+  "prohibition": "No random per-observation split; all source/fidelity/derived labels of a geometry and conservative alias group stay together",
+  "exact_cross_source_bridge_count": 0,
+  "raw_MS_to_Full_pairs_validated_here": 41,
+  "logical_AF_source_to_target_rows": 228,
+  "source_current_exact_rows": 120,
+  "source_current_bounded_rows": 72,
+  "max_abs_current_delta_ref_A": 0.037499999999994316,
+  "HalfSC_predeclared32_protected": true,
+  "HalfSC_exploratory4_separate": true,
+  "new_final_test_count": 0,
+  "masks": {
+    "Ref": {
+      "own_AF_calibration": 36,
+      "transferred_probe_coordinate": 0,
+      "paper_own_calibration_excluded": 60,
+      "paper_own_and_transfer_coordinates_excluded": 60,
+      "HalfSC_predeclared32": 0,
+      "HalfSC_exploratory4": 0
+    },
+    "SC": {
+      "own_AF_calibration": 27,
+      "transferred_probe_coordinate": 12,
+      "paper_own_calibration_excluded": 69,
+      "paper_own_and_transfer_coordinates_excluded": 57,
+      "HalfSC_predeclared32": 0,
+      "HalfSC_exploratory4": 0
+    },
+    "HalfSC": {
+      "own_AF_calibration": 0,
+      "transferred_probe_coordinate": 0,
+      "paper_own_calibration_excluded": 0,
+      "paper_own_and_transfer_coordinates_excluded": 0,
+      "HalfSC_predeclared32": 32,
+      "HalfSC_exploratory4": 4
+    }
+  },
+  "raw_pair_scope": "5 loaded192 + HalfSC36; source/target numerical replay, not exact same-geometry-and-OP bridge",
+  "recovered_case_additions": 0,
+  "MS_history_reuse": "Ref MS24 already shared by Ref/SC/HalfSC; group source hash for inductive pretraining splits",
+  "shared_MS_sources_allowed_across_target_geometries_only_with_explicit_transductive_protocol": true
+}

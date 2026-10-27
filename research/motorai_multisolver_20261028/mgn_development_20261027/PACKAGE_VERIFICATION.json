@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "artifact_hashes": 138,
+  "head_models": 10,
+  "predictions_per_model": 228,
+  "unique_Full_calibration": 63,
+  "protected_sets_disjoint": true,
+  "reserved_count": 0,
+  "model_prediction_rows": 2280,
+  "scope": "package integrity, exclusion masks and frozen arithmetic replay; physical/model superiority gates separate"
+}

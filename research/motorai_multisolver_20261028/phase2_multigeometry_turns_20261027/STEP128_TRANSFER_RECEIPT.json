@@ -1,0 +1,52 @@
+[
+  {
+    "case": "N128_P1",
+    "files": [
+      {
+        "path": "audit.json",
+        "bytes": 2720,
+        "sha256": "c0c984f7ee1359923f2314ebbe894240dd1d061f84c4d5786f4f88f89fa3f2a3"
+      },
+      {
+        "path": "execution.json",
+        "bytes": 4306,
+        "sha256": "b4e4d4f7e0c81f6220e5c8a6f97a8cb359f707a725f4d768b075770d05ddc0f2"
+      },
+      {
+        "path": "raw_source_manifest.json",
+        "bytes": 22728,
+        "sha256": "573aca3cf0f393f90e94fc0ce614d93340efe2e95a13438b89204a36c80968ad"
+      },
+      {
+        "path": "waveforms.npz",
+        "bytes": 29880,
+        "sha256": "17c11c17a7d89250c1ccf5a013b31e050b6699c4b2dbefb9de6ca877159fb6db"
+      }
+    ]
+  },
+  {
+    "case": "N64_P2",
+    "files": [
+      {
+        "path": "audit.json",
+        "bytes": 2950,
+        "sha256": "e425bb0845e4f0008a2158bb8666db6befe51db87f4176df02af253dffa3af22"
+      },
+      {
+        "path": "execution.json",
+        "bytes": 4556,
+        "sha256": "391c2eeb5c3f7be92b99636bcb83743381e2a66d14398acedcfb43d8ae749349"
+      },
+      {
+        "path": "raw_source_manifest.json",
+        "bytes": 22727,
+        "sha256": "0262fad4322cd26334b33363d011618617618a837aa7a6c03ff573c23cc622a2"
+      },
+      {
+        "path": "waveforms.npz",
+        "bytes": 28736,
+        "sha256": "739a5188ebc203a49980d01d6c71395bbe341e3cf3d199818df5b376bb3371d5"
+      }
+    ]
+  }
+]

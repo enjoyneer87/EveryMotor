@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "old_case": "ISO64_ACQ_Ref_P117_N256_P2_Q01",
+  "steps": 512,
+  "P2_errors_W": {
+    "Joule_W": 2.9103830456733704e-11,
+    "DC_W": 0.0,
+    "AC_W": 1.4551915228366852e-11
+  },
+  "current_max_percent": 1.6589946072063955e-05,
+  "saved_current_max_percent": 1.6589764679691793e-05,
+  "gate_W": 1e-06,
+  "scope": "new generalized reader against previously accepted frozen512step P2; no new solver or changed target"
+}

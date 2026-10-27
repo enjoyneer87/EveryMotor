@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "primary_MGN": true,
+  "Full_budget": 63,
+  "MS_sources": 24,
+  "protected_eval_truth_seen": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "total_updates_per_seed": 18000,
+  "training_receipts": [
+    {
+      "seed": 17,
+      "total_updates": 18000,
+      "additional_updates": 16200,
+      "pretrain_seconds": 218.85999999940395,
+      "wall_seconds": 221.296999999322,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.032650668382799675,
+        "held_phase_vector_B_relative_L2_percent": 11.694413071103389,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "extract24_embeddings_seconds": 1.8900000005960464,
+      "peak_VRAM_bytes": 431625216,
+      "RAM_bytes": 1202515968
+    },
+    {
+      "seed": 29,
+      "total_updates": 18000,
+      "additional_updates": 16200,
+      "pretrain_seconds": 218.01600000075996,
+      "wall_seconds": 220.51600000075996,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.031481624185034675,
+        "held_phase_vector_B_relative_L2_percent": 11.275699261427057,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "extract24_embeddings_seconds": 1.8909999998286366,
+      "peak_VRAM_bytes": 430798848,
+      "RAM_bytes": 1203580928
+    },
+    {
+      "seed": 43,
+      "total_updates": 18000,
+      "additional_updates": 16200,
+      "pretrain_seconds": 217.93699999991804,
+      "wall_seconds": 220.38999999966472,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.03101981495574611,
+        "held_phase_vector_B_relative_L2_percent": 11.110294136360968,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "extract24_embeddings_seconds": 1.8909999998286366,
+      "peak_VRAM_bytes": 430798848,
+      "RAM_bytes": 1203904512
+    }
+  ],
+  "automatic_resume": false,
+  "frozen_files": {
+    "embeddings_seed17.npz": "e9f7bae12c9848dd4f7189c29f00fac6d576bff266a5a9184398fc5a5bce1cf2",
+    "embeddings_seed29.npz": "55b5c82aa26274e555327d0be44b67fc8edc7c6191057eeccc0da59e68fa96a9",
+    "embeddings_seed43.npz": "c6604f297515d427e7fb18adfbf1a9393ea4aa06f104ab0d55fdb399c1fd4713",
+    "INPUT_FREEZE.json": "6c464e4573583fa9afbd3ba33b9bd3c5f10d63a3924ce06160888aa5206f25cf",
+    "MS_MGN_seed17.pt": "e29262fcdfe0752e9ac48e3265d2fa55ef90388630dd2e7a1232f781865dc214",
+    "MS_MGN_seed17_CV.json": "8fc686c7963cb22808b8da27b58dbd0a5e50440706c51c757063c5a7f9d61c4b",
+    "MS_MGN_seed17_head.npz": "c01ce9e2a4569a10dec9f706efaf9427ac4b92a973b630d39437fba737d29ae1",
+    "MS_MGN_seed29.pt": "29f50e58da18f2caa40e6fd0602e21bfb96df29432f54502ba68817a160fdcf0",
+    "MS_MGN_seed29_CV.json": "083be9d16cb31a52091d7acefbaf46438cf7b353c528c066c3de4dde1f45f49f",
+    "MS_MGN_seed29_head.npz": "01dec1e4774ae3607016fc721ce1251c28992f420096d12b3d8fb433fda3f92c",
+    "MS_MGN_seed43.pt": "3840ced572efc8b3e5c7ab44199d5ea7c34eebe169e09ba9059a11df698bfae6",
+    "MS_MGN_seed43_CV.json": "7ef86b42644fc19235f5c4e1660609f3a66dd78a60a52755b40ecf48f0675d3f",
+    "MS_MGN_seed43_head.npz": "e8823cd77ebb057d3e8fbf8e65e44e645df422e2bfa7ee3c9c5f412c171de312",
+    "predictions_frozen.json": "a06fb0302ba24078c98715e4e873ecd2b0eacaf84aff2b03eed397ab69615e4b",
+    "training_seed17.json": "bab3a6ae477eb5a29877edc7b8a69b477383cd3ed0c485d7fad6a4b577f965b3",
+    "training_seed29.json": "f4f7efd027fb9ed9c1a3a2ca7cf64b5ee54378a210a2896b029b1ce1eeab8fc1",
+    "training_seed43.json": "9733f3603e87b811e3782b6a2a5b591998ae1d4732bc9e59f54770c7a3a30403"
+  }
+}

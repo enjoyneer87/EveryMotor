@@ -1,0 +1,24 @@
+{
+  "start_boundary": "2026-10-28T07:59:00+09:00",
+  "scope": "only owned NewOP groups; native runner remains frozen",
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "task_name": "Codex-JEET-NewOP-20261028-0800-Cutoff",
+  "guard_UTC": "2026-10-27T22:59:00Z",
+  "state": "Ready",
+  "checked_UTC": "2026-10-27T12:05:01.703976+00:00",
+  "observed_remote_windows_lag_seconds_interval": [
+    17.3,
+    18.8
+  ],
+  "early_margin_seconds": 60,
+  "system_clock_changed": false,
+  "original_cutoff_script_sha256": "4f5a593f5ce72582109536fcf7b4294547f40a8f7c8d9a46fe710db5650eb314",
+  "current_cutoff_script_sha256": "13d32fef81492ad0f43a89424680beb2d05a6ccaffc8900790215ef255675374",
+  "remote_hash_match": true,
+  "early_refusal_check": {
+    "sha256": "13d32fef81492ad0f43a89424680beb2d05a6ccaffc8900790215ef255675374",
+    "early_refusal": "PASS",
+    "no_stop_executed": true
+  },
+  "clock_reference": "Controller local UTC bracket, not an external NTP qualification"
+}

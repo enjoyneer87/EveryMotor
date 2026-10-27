@@ -1,0 +1,62 @@
+{
+  "scope": "Existing Motor-CAD multigeometry transient B-field preparation and bounded pretraining; no new FEA",
+  "authorization": "User explicitly requested reuse of MES/NPZ/TXT/HDF5 fields, data acquisition and relevant eMach continuation",
+  "source_catalog": "NATIVE_DOE_CATALOG.json",
+  "eligibility": "Native HDF5 source/copy hash match; exclude initial40 and80 native/manifest geometry mismatches; preserve all source/native alias groups and old holdouts; reserved aliases excluded before numeric payload",
+  "selected_train_geometries_max": 16,
+  "selected_validation_geometries_max": 4,
+  "test_geometries_used": 0,
+  "selection": "Native-input-only farthest selection of20 old TRAIN groups, then fixedseed17 inner development4/train16. Original val/test remain untouched because all eligible old val8 are in the80 quarantined CurrentAxis cases.",
+  "field_target": "Native element-reported Bx/By, tesla, no J/Je loss labels or nodal A curl",
+  "graph": "Native triangle adjacency from shared native node IDs; moving coordinates restored each step; a2 excluded explicitly",
+  "stored_steps": 45,
+  "training_steps_selected": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40
+  ],
+  "sampling_validation": "All45 fields checked for finite B and vector/magnitude roundtrip; no claim of preserved AC/time-integrated loss",
+  "new_FEA_runs": 0,
+  "exact_cross_solver_pairs": 0,
+  "paired_alignment_enabled": false,
+  "prepare_wall_seconds_max": 1200,
+  "prepare_memory_estimate_GiB": 2,
+  "prepare_disk_estimate_GiB": 1,
+  "automatic_retry": 0,
+  "training_launch_gate": "Reader/native ID/region/units/alias/source checks and small CPU/GPU contract smoke must pass first; no training launched by preparation script",
+  "training_proposal": {
+    "133_seed": 17,
+    "234_seed": 29,
+    "model_width": 32,
+    "message_passing_depth": 3,
+    "batch_graphs": 1,
+    "epochs_max": 10,
+    "wall_seconds_per_host_max": 3600,
+    "GPU_jobs_per_host_max": 1,
+    "GPU_memory_limit_GiB": 10,
+    "training_seed_selection": false
+  },
+  "cost_accounting": "Existing transient Full-FEA donor geometry count is reported; zero new solver calls does not mean zero historical donor cost. This pilot is not the equal-budget AF/scalar/AC benchmark.",
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "guard_target_UTC": "2026-10-27T22:59:00Z",
+  "stop": "Own process/start time only; STOP file, wall cap, deadline; preserve partial data and receipts",
+  "qualification": "Reader arithmetic and field learning diagnostic; formal mesh/period qualification UNKNOWN",
+  "preparation_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAILED_before_field_payload",
+      "reason": "No original val remains after native mismatch exclusion; zero-size metadata selection"
+    },
+    {
+      "attempt": 2,
+      "status": "DECLARED",
+      "change": "Explicit nested development subset within old train, fixed before numeric fields"
+    }
+  ]
+}

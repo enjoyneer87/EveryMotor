@@ -1,0 +1,6 @@
+# Training runtime used on the isolated GPU host; install into a separate venv.
+# Official CUDA wheel index: https://download.pytorch.org/whl/cu124
+torch==2.5.1+cu124
+numpy==1.26.4
+scipy==1.13.1
+psutil==6.1.1

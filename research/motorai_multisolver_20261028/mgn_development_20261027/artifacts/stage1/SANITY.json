@@ -1,0 +1,9 @@
+{
+  "updates": 20,
+  "first_loss": 0.3396757245063782,
+  "final_loss": 0.2217487096786499,
+  "finite": true,
+  "wall_seconds": 0.5310000004246831,
+  "peak_VRAM_bytes": 431712768,
+  "passed": true
+}

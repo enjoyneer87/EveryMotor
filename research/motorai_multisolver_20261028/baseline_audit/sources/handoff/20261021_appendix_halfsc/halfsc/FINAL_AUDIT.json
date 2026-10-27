@@ -1,0 +1,551 @@
+{
+  "status": "PASS",
+  "new_points": 32,
+  "existing_exploratory_points": 4,
+  "total_points": 36,
+  "AF_refitted": false,
+  "new_target_labels_in_fit": 0,
+  "predictions_predeclared_and_unchanged": true,
+  "metrics": {
+    "new32": {
+      "uncorrected": {
+        "count": 32,
+        "wMAE_percent": 47.03837378098337,
+        "MARE_percent": 47.286916829231764,
+        "max_absolute_error_percent": 80.25275354323492
+      },
+      "normalized_current_same_speed": {
+        "count": 32,
+        "wMAE_percent": 12.156730084006094,
+        "MARE_percent": 11.435443594541095,
+        "max_absolute_error_percent": 20.592446183419067
+      },
+      "normalized_current_similarity_speed": {
+        "count": 32,
+        "wMAE_percent": 3.149279580498456,
+        "MARE_percent": 4.520612282358533,
+        "max_absolute_error_percent": 11.897013867250605
+      }
+    },
+    "new_in_domain24": {
+      "uncorrected": {
+        "count": 24,
+        "wMAE_percent": 46.71502898916821,
+        "MARE_percent": 44.3745567365811,
+        "max_absolute_error_percent": 77.88315293745596
+      },
+      "normalized_current_same_speed": {
+        "count": 24,
+        "wMAE_percent": 12.204746223621264,
+        "MARE_percent": 11.933828408439974,
+        "max_absolute_error_percent": 20.592446183419067
+      },
+      "normalized_current_similarity_speed": {
+        "count": 24,
+        "wMAE_percent": 3.0814433256504694,
+        "MARE_percent": 3.8758071909639416,
+        "max_absolute_error_percent": 11.432921043257682
+      }
+    },
+    "new_extrapolation8": {
+      "uncorrected": {
+        "count": 8,
+        "wMAE_percent": 63.927947186165014,
+        "MARE_percent": 56.023997107183746,
+        "max_absolute_error_percent": 80.25275354323492
+      },
+      "normalized_current_same_speed": {
+        "count": 8,
+        "wMAE_percent": 9.648657787213082,
+        "MARE_percent": 9.940289152844453,
+        "max_absolute_error_percent": 17.306996597239667
+      },
+      "normalized_current_similarity_speed": {
+        "count": 8,
+        "wMAE_percent": 6.69263464539973,
+        "MARE_percent": 6.455027556542307,
+        "max_absolute_error_percent": 11.897013867250605
+      }
+    },
+    "existing4": {
+      "uncorrected": {
+        "count": 4,
+        "wMAE_percent": 57.96330148586657,
+        "MARE_percent": 64.70765768690123,
+        "max_absolute_error_percent": 72.2013567296997
+      },
+      "normalized_current_same_speed": {
+        "count": 4,
+        "wMAE_percent": 12.783783722429895,
+        "MARE_percent": 12.801556979620251,
+        "max_absolute_error_percent": 17.037969137090847
+      },
+      "normalized_current_similarity_speed": {
+        "count": 4,
+        "wMAE_percent": 2.0101547791343197,
+        "MARE_percent": 1.3459425335620057,
+        "max_absolute_error_percent": 2.764294849305049
+      }
+    },
+    "speed_2000": {
+      "uncorrected": {
+        "count": 8,
+        "wMAE_percent": 63.927947186165014,
+        "MARE_percent": 56.023997107183746,
+        "max_absolute_error_percent": 80.25275354323492
+      },
+      "normalized_current_same_speed": {
+        "count": 8,
+        "wMAE_percent": 9.648657787213082,
+        "MARE_percent": 9.940289152844453,
+        "max_absolute_error_percent": 17.306996597239667
+      },
+      "normalized_current_similarity_speed": {
+        "count": 8,
+        "wMAE_percent": 6.69263464539973,
+        "MARE_percent": 6.455027556542307,
+        "max_absolute_error_percent": 11.897013867250605
+      }
+    },
+    "speed_4000": {
+      "uncorrected": {
+        "count": 8,
+        "wMAE_percent": 59.465106599533755,
+        "MARE_percent": 51.14208388409151,
+        "max_absolute_error_percent": 77.88315293745596
+      },
+      "normalized_current_same_speed": {
+        "count": 8,
+        "wMAE_percent": 12.490575784056157,
+        "MARE_percent": 11.841106166170631,
+        "max_absolute_error_percent": 18.77816189371212
+      },
+      "normalized_current_similarity_speed": {
+        "count": 8,
+        "wMAE_percent": 4.510622085691369,
+        "MARE_percent": 4.7721088529279925,
+        "max_absolute_error_percent": 11.432921043257682
+      }
+    },
+    "speed_8000": {
+      "uncorrected": {
+        "count": 8,
+        "wMAE_percent": 51.68455558734454,
+        "MARE_percent": 43.5742215671651,
+        "max_absolute_error_percent": 73.39430201158474
+      },
+      "normalized_current_same_speed": {
+        "count": 8,
+        "wMAE_percent": 14.140123138625663,
+        "MARE_percent": 12.437185718456345,
+        "max_absolute_error_percent": 18.655187867712296
+      },
+      "normalized_current_similarity_speed": {
+        "count": 8,
+        "wMAE_percent": 3.587440332625476,
+        "MARE_percent": 3.8080290464615585,
+        "max_absolute_error_percent": 8.051264617764975
+      }
+    },
+    "speed_16000": {
+      "uncorrected": {
+        "count": 8,
+        "wMAE_percent": 43.86307829908312,
+        "MARE_percent": 38.40736475848669,
+        "max_absolute_error_percent": 66.24289742369555
+      },
+      "normalized_current_same_speed": {
+        "count": 8,
+        "wMAE_percent": 11.54759167050054,
+        "MARE_percent": 11.523193340692952,
+        "max_absolute_error_percent": 20.592446183419067
+      },
+      "normalized_current_similarity_speed": {
+        "count": 8,
+        "wMAE_percent": 2.7783651014535207,
+        "MARE_percent": 3.047283673502274,
+        "max_absolute_error_percent": 6.681451026345975
+      }
+    }
+  },
+  "primary": "normalized_current_similarity_speed",
+  "mapping": "AF_SC(0.5625*n_H,4/3*I_H,beta)",
+  "max_error_case": {
+    "case_id": "HALFVAL_N2000_L3_B54_N256_P2_A01",
+    "speed_rpm": 2000,
+    "current_Arms": 517.5375,
+    "beta_deg": 54,
+    "errors_percent": {
+      "uncorrected": -56.95616465065463,
+      "normalized_current_same_speed": -17.306996597239667,
+      "normalized_current_similarity_speed": -11.897013867250605
+    }
+  },
+  "P2_current_failures": 0,
+  "whole_history_flags_retained": 3,
+  "period_convergence_qualified": false,
+  "mesh_convergence_qualified": false,
+  "scope": "Second-period saved-field comparison at predeclared coordinates, not full-map or continuous-speed validation.",
+  "relaxation_per_case": {
+    "HALFVAL_N2000_L4_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L4_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L4_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L4_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L1_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L1_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L1_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L1_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L4_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L4_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L4_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L4_B00_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L1_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L1_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L1_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L1_B90_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L2_B18_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L2_B18_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L2_B18_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L2_B18_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L2_B72_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L2_B72_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L2_B72_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L2_B72_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L3_B36_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L3_B36_N256_P2_A01": 0.7,
+    "HALFVAL_N8000_L3_B36_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L3_B36_N256_P2_A01": 0.7,
+    "HALFVAL_N2000_L3_B54_N256_P2_A01": 0.7,
+    "HALFVAL_N4000_L3_B54_N256_P2_A01": 0.5,
+    "HALFVAL_N8000_L3_B54_N256_P2_A01": 0.7,
+    "HALFVAL_N16000_L3_B54_N256_P2_A01": 0.7
+  },
+  "receipts": [
+    {
+      "case_id": "HALFVAL_N2000_L4_B90_N256_P2_A01",
+      "receipt_sha256": "8c71464c7b27c42cabc4e6d0ab682c5dd9c2fe479cc24b44a655374e6c319fea",
+      "manifest_sha256": "a77ae77c26201ba76beb9c8a7e779a6d66685ee955ed7d2ec687a6f2a4c0dc88",
+      "summary_sha256": "a91cfa809c8e5a2fc5e110ae1296f38ee0c8fd7ea1888dd91cdbae5c3df16155",
+      "files": 536,
+      "bytes": 1823526283,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B90_N256_P2_A01",
+      "receipt_sha256": "0ce47e24b50680c22773d2dda105010bfdf1ae203b48eff359db37077066a3fe",
+      "manifest_sha256": "53f360c4f3ff845f9114a2bebe4a2326e5314c82a357d77e977c8ff2bdf66c85",
+      "summary_sha256": "7ed6dff66a03f6572d070566484024a78a8ba7042e0ddb6eefb41e7c06916609",
+      "files": 536,
+      "bytes": 1823523968,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B90_N256_P2_A01",
+      "receipt_sha256": "007f92976d48ae19f5bf9feee3acbf66a81c361ca7d35f3bfee28dde0f7abf61",
+      "manifest_sha256": "6377db59e0b942832e2060266023de0185ebc07c0c9c515f700a537f1f640828",
+      "summary_sha256": "d0275aa77f31e3397ac9e5f4d67707fb5da8b0e56c5069f0d67961a66d79e7bc",
+      "files": 536,
+      "bytes": 1823519580,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B90_N256_P2_A01",
+      "receipt_sha256": "23ea4066759909bd7bd9547c4f015cd3c98913feb5def25ec78f60c462660087",
+      "manifest_sha256": "c5c75da0fc6ce9e26a30159f3a65346254a06653a1e8e9e27da66a24635051cb",
+      "summary_sha256": "3439aae3c997fd6077148ad0cf32d3c53029f1081288da8b86ee82cbb9fb5117",
+      "files": 536,
+      "bytes": 1823527189,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B00_N256_P2_A01",
+      "receipt_sha256": "ecbe07a4062694b56020e9a31754ba62d40a75786f9c4be5ba7541da6a73f63e",
+      "manifest_sha256": "8badb9c022c955e8b3b784d57217a284bfd11da3b649d3634d8ce6e6e2474d5a",
+      "summary_sha256": "38eca55c2d798113fa8da50be164269acb8fcf047da9aadb7b87a52cd14703f9",
+      "files": 536,
+      "bytes": 1823504660,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B00_N256_P2_A01",
+      "receipt_sha256": "865faf1be73a288c99a759821cb54a6f248140e7a41e9b19e09a97f4b5cee6e1",
+      "manifest_sha256": "7fa3be479f9f9401b9d7bede9399c154f14a2be36eaa0bec93be695d55691a3c",
+      "summary_sha256": "e04512320556b49c8c055c8404ad9012050bddd7a90aa088bfa3d41f87f7940b",
+      "files": 536,
+      "bytes": 1823490687,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B00_N256_P2_A01",
+      "receipt_sha256": "80db62407bb0b2e0c0e669afe4c5c76de1d1a0b59102d63db9f17f30f61612bc",
+      "manifest_sha256": "1479a5741e897049d9c1fd45a89bdc9e6e835bdd0614cfbc4a7ebf90e77939a4",
+      "summary_sha256": "a043fb3bfd4ce925e9c39c04affe06f906d283081ab75b5bca32d07b4ec28d6c",
+      "files": 536,
+      "bytes": 1823506545,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B00_N256_P2_A01",
+      "receipt_sha256": "7650aac95900c696c834b39e71c63fb0c1cb4f62af002ae49d4c534979861e10",
+      "manifest_sha256": "f3121c2d62366856d019522560c8f57246a959d3139a4be07e3b6c9deb21e2c9",
+      "summary_sha256": "76b982258979e084bccf04861da6305483c259004022058b76e80d9e7f5eba4c",
+      "files": 536,
+      "bytes": 1823506266,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L4_B00_N256_P2_A01",
+      "receipt_sha256": "327f305dce94288c0a484aee80332c2baf5b17778ae03b2f1c753e17397ff54f",
+      "manifest_sha256": "c18a813efc793b11b18f9aae5c58f5f6d4c4e458f58389359bf89f6d6e335b87",
+      "summary_sha256": "a61c05fa54a99032415b24e42797fd9064e7bd9b03411ed0ec64f776bf810778",
+      "files": 536,
+      "bytes": 1823500692,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B00_N256_P2_A01",
+      "receipt_sha256": "cea18dee413f72b5e15e8489054c6df0110556311cdaa954a3e93d7f09092790",
+      "manifest_sha256": "c8df98e8b3dffa331639440720ba5ddd3b23e966ead0ab0b8b597a82139cbdee",
+      "summary_sha256": "64b32dd0fd96fb02562cb47d758687f3acbfc79d52584bf3a61236819e3432e2",
+      "files": 536,
+      "bytes": 1823489041,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B00_N256_P2_A01",
+      "receipt_sha256": "953668b385e23a013f054e89d189adc18940aeff1a1d9b5c10554fe97c4397b0",
+      "manifest_sha256": "ac3cc3ee5d271840dbe0f78d910b050bd4b9ee060e368a9dc289b9c3d82e61e6",
+      "summary_sha256": "0197614c4663c219a90970d6bc7ae8b3640db8d74fa6ad017249702bbc8a3b2a",
+      "files": 536,
+      "bytes": 1823510358,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B00_N256_P2_A01",
+      "receipt_sha256": "6932834104d45654579337baca94920dce4950d94316477903841332be8ea138",
+      "manifest_sha256": "3649eb559c627ce76c07174dad4eb212e21d35feaaf96373a87360bac9e18e7f",
+      "summary_sha256": "021b5833422b7faf1fa1f09d5a057e1e3e81c3cbb8f0348f0f35f12b1bbafd16",
+      "files": 536,
+      "bytes": 1823504858,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B90_N256_P2_A01",
+      "receipt_sha256": "cd5adce4c56d83263102686de82dd96201b4460b828a19a0e6eb2a80c499b2e5",
+      "manifest_sha256": "84b990b34132bbf53806df2fbe68db4ca3faace53946be01da8b0a4a5e894077",
+      "summary_sha256": "7c3587173085c8a956df0c99fe04e57e7f1d9583c93a57668e22d23a7ca89fea",
+      "files": 536,
+      "bytes": 1823512700,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B90_N256_P2_A01",
+      "receipt_sha256": "06ba7e52d4af2140b655c0abf4726fe41ae4eac8f451038a7e41b678337e0254",
+      "manifest_sha256": "290db598bd266f9dab4679a54549fd9ac6b0635407cbf8bbe92269fcc74db637",
+      "summary_sha256": "c921ac1cc9ff9157473981894a832d45d87b7b955800d4ca55c867a5cabda0c9",
+      "files": 536,
+      "bytes": 1823509245,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B90_N256_P2_A01",
+      "receipt_sha256": "69beb9475fc3846362f174b0a823b6f2d4cccbd95dc5528b4141de1a37927bfd",
+      "manifest_sha256": "5a9c5aa3c327d16c09cdcd52c575a0e051d823342be1c9dc2abd1c7b8609bb5a",
+      "summary_sha256": "804d5160a7ec1d919be45272f6c452cc02a6fc6da8c544edb84c417d06e4f2f7",
+      "files": 536,
+      "bytes": 1823505259,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B90_N256_P2_A01",
+      "receipt_sha256": "e0f43743815e054a2904e22a75d151e6b305f5c65297a0bae279eebdcaa1256a",
+      "manifest_sha256": "441308e3385dfd7f0befc5c077f1465ed6c7858fc498bd465ac21b84ee4ecf88",
+      "summary_sha256": "208bd598a888b733080a39f7c9dc5c6f85132962860cd8b8f45b918f47654e5c",
+      "files": 536,
+      "bytes": 1823501476,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B18_N256_P2_A01",
+      "receipt_sha256": "92af0526520bbd4d12e4b401484fe9a8e3478dd6ad7ef8965fb9c284fb6e1817",
+      "manifest_sha256": "110979facb9750588784c4c097bdf998cd9d0b39deed6a5cceea8822bdc6a295",
+      "summary_sha256": "e4081e923208f252fd91ba3ee0894ac40cb38a10f33ccb2542725bbb4c983c67",
+      "files": 536,
+      "bytes": 1823499103,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B18_N256_P2_A01",
+      "receipt_sha256": "0ddc8f899a2722c374c916d56066bbbf5bba36d3527298f7545226b6f7fd913e",
+      "manifest_sha256": "09e91cdd890ddb385da9da38d076bd969b281c7386957dfd60d8e4ed8f1b7780",
+      "summary_sha256": "f8d9cca8050c62af513e43c1efd4a6cc52466cd5ab77b2fefb44eb9a0e4971f9",
+      "files": 536,
+      "bytes": 1823487915,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B18_N256_P2_A01",
+      "receipt_sha256": "25916ba90371ceab0efd07f41b6fad6c780645df23c08e27e318c0c88bf8a856",
+      "manifest_sha256": "a1b979127ab139c81a035d8305316ddea71b66ff0b366c717829fc9ab0794a95",
+      "summary_sha256": "dec6d94f0fe9663e85e777ed69ad4252fa9eac337e02958672cad32ee34d0eb7",
+      "files": 536,
+      "bytes": 1823507532,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B18_N256_P2_A01",
+      "receipt_sha256": "f143190da7f879c557f8e835ce483badbd738902e3b721378b27a0e59bd2b9bc",
+      "manifest_sha256": "57b8e5975d5fbb2ac2621457dbe91e10159afa41e7821aad6cb63dd8c07791ba",
+      "summary_sha256": "dc01b9ef6c16f9c79c0e2620caa065aad1a2d9d249ad026a3d2db2ae4dbe46bc",
+      "files": 536,
+      "bytes": 1823501465,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B72_N256_P2_A01",
+      "receipt_sha256": "8d7fbf6e129e51e76a210d8d3d297e775faad196ffd5a45f9d0eb2fe3654fdfc",
+      "manifest_sha256": "ebba22b9678839ff84fe03fb06c42fb1b8ef1a6b88982d278965652f28b2beb9",
+      "summary_sha256": "d632ab4b18c6ab25affe48a2d6ea504d39e7feec19914e62b11518f77e64561d",
+      "files": 536,
+      "bytes": 1823513130,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B72_N256_P2_A01",
+      "receipt_sha256": "cda3e8f414b2f393cb7609fac16b2f02ee57b74ab1f3ce790cd53e1517e0294f",
+      "manifest_sha256": "51da8e1423a554bc151cba89a325cb3c6b95bb425efa4bf23b415a42ff54ad19",
+      "summary_sha256": "adc487b665c0b007d6994711b5255dd4b6dc61a0effe72ff14c1b6f86ce9005c",
+      "files": 536,
+      "bytes": 1823512586,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B72_N256_P2_A01",
+      "receipt_sha256": "a079a02102e7e5d26a5d098343054ad1925490938c839e55ddcf4f02172b4e89",
+      "manifest_sha256": "50417ec537866f9f59f4274567b5b4bc0777a66450568b0730c5ac9c4a652f77",
+      "summary_sha256": "bddc23eaf8dd69c90b8cc6254f7453b1c59249e5736102a39658f5288ba00d5f",
+      "files": 536,
+      "bytes": 1823507234,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B72_N256_P2_A01",
+      "receipt_sha256": "ba388cb281e5d042dd1e92c5ec1519fe643ea8beaee46a7d380fead23fb18cef",
+      "manifest_sha256": "231dfb367b3c9eb7892d5cfa76ca47d6cf86f54a1198a3b022e448c9cb30718b",
+      "summary_sha256": "3006e0ad7555aeb2e8536a0dffebf9cbd5b0c54fb95eece109e7742c2b0aa846",
+      "files": 536,
+      "bytes": 1823508694,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B36_N256_P2_A01",
+      "receipt_sha256": "c457ed2d6fd7c6ec6ef4667af2d44c4d2f908b7d68484722d0081ce3a9f578e3",
+      "manifest_sha256": "1eed96e525dcdf289d9e4a7c560b4450db595678786d06247445c57276f003c5",
+      "summary_sha256": "e248b4c9e54eaadf114aab43c5e69b7e75905e434c784f202d5de59b4ef14b85",
+      "files": 536,
+      "bytes": 1823491972,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B36_N256_P2_A01",
+      "receipt_sha256": "3a0870998c4ffeedb963b81ee6f28c140f0936b9d7e43d843f0ce7581d838cb5",
+      "manifest_sha256": "531823fd382da44710900a49937cf03ddb1a720524fbac9cc6e98ff51ede7ac0",
+      "summary_sha256": "6516cf5dbdb070fc57be027c57f87f8a12a0be78e3efeecba59a07e37cbfeb18",
+      "files": 536,
+      "bytes": 1823484749,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B36_N256_P2_A01",
+      "receipt_sha256": "d29631756bf65a39bdcbb04be76f37d9dc9dcb1493a284a995fc7bee8cc4b03e",
+      "manifest_sha256": "1d941a1de75672d73e197661e35819194ea081467fb65009154e5ab33bff1bab",
+      "summary_sha256": "c2226b40f61767a170778edd87ed9b9d57b2ff03de90271470e8b13e1754be25",
+      "files": 536,
+      "bytes": 1823505189,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B36_N256_P2_A01",
+      "receipt_sha256": "d197ecab5cef093e05f36a3e182b855054028da3640ed20248ec62821cc94b74",
+      "manifest_sha256": "c23016950757292b486c9e98ad850ca1bb661f14c1f6158a62692687610f7703",
+      "summary_sha256": "9db5a837d76de05410cd1acd2ae0d895f89364bed97e3d0c990353b15da76c0c",
+      "files": 536,
+      "bytes": 1823500577,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B54_N256_P2_A01",
+      "receipt_sha256": "cbdcd2302b2217ed69f2910f03c93f2cadfd6577b02cb2fbb553c8d8022d724e",
+      "manifest_sha256": "25b3dd3ddf8a32ed194d0e11053be678cb6bef0f87efbe9371008e3c9a5c0421",
+      "summary_sha256": "6021b708eac60ea357235c75d0d359d2c4fa74ca4c58438652bafae4586715c9",
+      "files": 536,
+      "bytes": 1823495547,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B54_N256_P2_A01",
+      "receipt_sha256": "76316bd47c1ccf657fffba77d07105d49a4361048909fdeea7d21657215d4852",
+      "manifest_sha256": "76e1bd3ed1b28977dab05705ab2828b294e9c09cb02dc0125bc5df5cc6d502a9",
+      "summary_sha256": "f3cff9eb4dfab55a3d502824ff77e85aa3dc6dec48882c6343dbb9dbaa1277d6",
+      "files": 536,
+      "bytes": 1823958542,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B54_N256_P2_A01",
+      "receipt_sha256": "f0e28dbce2105c47a6b38852a0768722d56dc58088fc6ad807f8256da6d6eb7a",
+      "manifest_sha256": "752c675c83b41dc40a90ceea839bcafb4bdd69cdd84e0a243bcc8cd2ff00854a",
+      "summary_sha256": "9ac705ae40b7f5601462b43fe9a40ff15e92673869e5ca1efade9039fdee2a74",
+      "files": 536,
+      "bytes": 1823497209,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B54_N256_P2_A01",
+      "receipt_sha256": "e582c0353613de8d567c597589a7999a3b8c3aef4e8a2791585ebb258d4f360c",
+      "manifest_sha256": "b785e1bde9373331c21bd505ee4612b4be08f4f44e0510875caaf7cfe3a97d94",
+      "summary_sha256": "990bdb6e199d8ca45455fe6bebe61f35ba9eac7460b16e1373f0f1f948dbaa6a",
+      "files": 536,
+      "bytes": 1823502289,
+      "all_files_SHA_readback_verified_at_preservation": true,
+      "metadata_rechecked_now": true
+    }
+  ],
+  "pinned_source_sha256": {
+    "PLAN.json": "23478b8ef085ec9724c07566553c2b859b8830551b76eb404707a38810f258f0",
+    "COMPARISON.json": "0c20ff7eaf576beeb600f72fc649af33626a6f4b5796ced7823601a49a604a8f",
+    "REF_ROUTE_COMPARISON.json": "7a3bb718bec678129aba5b89892b2e0a6ef7750c63f98b728c479a8926a07924",
+    "RELAXATION05_EXCEPTION.json": "c4b43e69c90bf3434fe4562e5e6e69fe241f8e4bad916209317a0cb7e61e5ded"
+  }
+}

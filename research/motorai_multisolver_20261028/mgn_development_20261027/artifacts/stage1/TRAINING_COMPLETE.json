@@ -1,0 +1,97 @@
+{
+  "status": "complete",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "Full_budget": 63,
+  "MS_sources": 24,
+  "fixed_final_updates": 1800,
+  "training_receipts": [
+    {
+      "seed": 17,
+      "updates": 1800,
+      "checkpoint_selection": "fixed final",
+      "pretrain_seconds": 25.109000000171363,
+      "extract24_embeddings_seconds": 1.9220000002533197,
+      "wall_seconds": 29.82799999974668,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.1008671328253184,
+        "held_phase_vector_B_relative_L2_percent": 36.12734363436576,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "peak_VRAM_bytes": 431054336,
+      "RAM_bytes": 1208061952,
+      "parameters": 74018
+    },
+    {
+      "seed": 29,
+      "updates": 1800,
+      "checkpoint_selection": "fixed final",
+      "pretrain_seconds": 24.859000000171363,
+      "extract24_embeddings_seconds": 1.875,
+      "wall_seconds": 29.563000000081956,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.0986630404307138,
+        "held_phase_vector_B_relative_L2_percent": 35.33790904738615,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "peak_VRAM_bytes": 430887424,
+      "RAM_bytes": 1208229888,
+      "parameters": 74018
+    },
+    {
+      "seed": 43,
+      "updates": 1800,
+      "checkpoint_selection": "fixed final",
+      "pretrain_seconds": 24.468999999575317,
+      "extract24_embeddings_seconds": 1.906000000424683,
+      "wall_seconds": 29.109000000171363,
+      "monitor": {
+        "held_phase_vector_B_area_RMSE_T": 0.11641653119885234,
+        "held_phase_vector_B_relative_L2_percent": 41.69663506372721,
+        "scope": "auxiliary projected MS nodal B, not Full AC error",
+        "frames": 384
+      },
+      "peak_VRAM_bytes": 430887424,
+      "RAM_bytes": 1208315904,
+      "parameters": 74018
+    }
+  ],
+  "frozen_files": {
+    "embeddings_seed17.npz": "fa003bd045e4206c6d82c6c385c98c8578c5668e3defb7c6e86041c94946fb64",
+    "embeddings_seed29.npz": "c8119fad68a039d024608ce7503d2640df4e27b55cab990000613a065bc0c9ce",
+    "embeddings_seed43.npz": "cecf27b5d1cfad466309ae7cf43935ee0ee3b03749ec71cdff759e870d9e581d",
+    "INPUT_FREEZE.json": "c34a890d207e13640991227372118c87a17197fbb41b94c76d5fc3d2fca05e2e",
+    "MS_MGN_seed17.pt": "8415f772632c9688298429afb560a4a633dc8b762f6d7c16c527e35da8ff17a7",
+    "MS_MGN_seed17_CV.json": "e94ffd126f9fbc9abc88f113ac4d8044de07d8f69de26d65ee6512559a8974c0",
+    "MS_MGN_seed17_head.npz": "65a6e8653e538114df0c4bf5cdcaaf3aa01bac8504eb486915f2245765069cbb",
+    "MS_MGN_seed29.pt": "e2dd792b800efedd0d8bd4819b85bea9275e4ce10d94770c28c7a97395da5030",
+    "MS_MGN_seed29_CV.json": "b7add9ece01e8b61a6eae52ea3bd8ad7ebe4dd92ddd0c9791660c9af05675754",
+    "MS_MGN_seed29_head.npz": "efcb4331e80a3f1fae848a7fb6fefa96af0d6428fe2a29ad33911a4c01d306a5",
+    "MS_MGN_seed43.pt": "4a9adac4d4e0c7fed38706e35bc114d018e3988835314750079c0d66e9a3d68d",
+    "MS_MGN_seed43_CV.json": "17bec23a756b4d492d2a361f9730165a51ecab136ce01f2b3cfa6aa5b749be4d",
+    "MS_MGN_seed43_head.npz": "3699bfaddf386f662d861a61c4c2b31b6213693c84309acbc6a29d0029718f1e",
+    "predictions_frozen.json": "e677ca936f57bcc31663a74a2002a2129375316c1364d21122dc0c1ba506527a",
+    "random_graph_seed17.pt": "722ae9b47184bcc5d74085713ec7b671db2cbd7936adb60420edfa7ace2638bd",
+    "random_graph_seed17_CV.json": "bb78dada1a991b363b47b142111a9285dad026d56bcdd6afaf461ed56933a6d8",
+    "random_graph_seed17_head.npz": "e198128bac0cbfe542fa7a8ce01594e213e908b9c0ac76fa2d9fe3c0182194c0",
+    "random_graph_seed29.pt": "fb9be354e688bb67ac0bf6ab575a708077de8e32e1a98886e99dff88b280d978",
+    "random_graph_seed29_CV.json": "54aae7d934cd49692e59bb31191f2b5ba0996beb4bf6ec140483a67fcd155d59",
+    "random_graph_seed29_head.npz": "f367fd4c9381878ede7ed36d8524d14844c266a1e6b19cbede4dbb1f15777fe7",
+    "random_graph_seed43.pt": "7efb7f9d11e88d9906a6bc9f035cda3c9c3e6529a361af5c2361eaf3aed0f358",
+    "random_graph_seed43_CV.json": "9e76eda0a92a7b778583f1412e63b9c39e07a7b1211acb017f1ebf7f40d2b372",
+    "random_graph_seed43_head.npz": "7e89a156225245abd616d140ba7275d43586b35c7cb1c42a5aed7a536b85584a",
+    "SANITY.json": "aa1f77b6b1a67890004177a86d1f06e40c03e036b7d1c21086f5dd0733c53e66",
+    "scalar_CV.json": "53918007386958eaa3002b34e9ad7e97d5e31901e8fbc85d6df1ca229e10347b",
+    "scalar_head.npz": "97d7d954624cf9205112371a717e73e0dc6886d2306d6790704d25957b7594f6",
+    "training_seed17.json": "38846f536bfc4941889c215444cad63a700f72e5c88b9016b15cf11358083e90",
+    "training_seed29.json": "3615f5737b7e651c4c89f9f22da57cf3d86ba06e3b869e805956800a412fee27",
+    "training_seed43.json": "27d792151d25398840b9b9e67af86084ffa17a1c3d474a34bdb6f9d841fab4d8"
+  },
+  "protected_eval_truth_seen": false,
+  "automatic_resume": false
+}

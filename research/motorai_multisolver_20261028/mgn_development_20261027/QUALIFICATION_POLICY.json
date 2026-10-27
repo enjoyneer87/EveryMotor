@@ -1,0 +1,21 @@
+{
+  "purpose":"Distinguish measured numerical sensitivity and proposed development thresholds from approved scientific qualification",
+  "approved_reused_gates":{
+    "loss_reader_reconstruction":{"absolute_W":0.000001,"source":"pinned saved_elmer_fields.py main and prior return Ref_P117_audit.json"},
+    "current":{"max_percent_of_prescribed_phase_peak":0.001,"source":"existing current receipt gate; preserved percent/ratio conversion"},
+    "nonlinear":{"relative_change":1e-10,"source":"original adopted Ref_P117 case.sif; same tolerance in new cases"}
+  },
+  "proposed_development_thresholds":{
+    "period_mean_percent":0.1,
+    "period_wave_L2_percent":0.5,
+    "time_mean_percent":1.0,
+    "mesh_mean_percent":1.0,
+    "source":"PROTOCOL.json defined before new solver runs; engineering screening thresholds, not a historically approved qualification contract",
+    "interpretation":"PASS/FAIL of these thresholds is a diagnostic only. If no separately approved period/mesh/time qualification gate exists, formal qualification remains UNKNOWN. Do not mark historical HalfSC receipts qualified."
+  },
+  "formal_period_mesh_time_qualification":"UNKNOWN absent an approved gate; always report measured errors and numeric threshold checks separately",
+  "scope":"Only Ref_P117 at16000rpm460Armsbeta36 is investigated. No propagation to192 loaded points or36 HalfSC points.",
+  "original_receipts":"unchanged",
+  "model_accuracy":"Reported against frozen accepted P2 scalars, not experimentally established physical truth",
+  "new_final_test":false
+}

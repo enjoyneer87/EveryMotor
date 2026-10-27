@@ -1,0 +1,14 @@
+{
+  "operation": "preparation",
+  "pid": 170548,
+  "process_started_epoch": 1793112225.355739,
+  "guard_pid": 189836,
+  "guard_started_epoch": 1793112225.1920345,
+  "started_UTC": "2026-10-27T14:43:45.500625+00:00",
+  "wall_seconds_max": 1800,
+  "finished_UTC": "2026-10-27T14:46:25.526069+00:00",
+  "elapsed_seconds": 160.18699999991804,
+  "returncode": 0,
+  "stop_reason": null,
+  "retries": 0
+}

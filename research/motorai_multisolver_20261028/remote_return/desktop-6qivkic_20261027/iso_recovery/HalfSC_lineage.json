@@ -1,0 +1,331 @@
+{
+  "rows": [
+    {
+      "case_id": "HALFSC_FIG14_N2000_I690_B36_N256_P2_A01",
+      "role": "existing_exploratory",
+      "canonical_archive_manifest_sha256": null,
+      "observed_archive_manifest_sha256": "a761a0b40b78f1fc6c0b2fe34ebce3465aa2c23a7eb92e9c34f17a9d6996f008",
+      "canonical_hash_root_status": "UNKNOWN",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": false
+    },
+    {
+      "case_id": "HALFSC_FIG14_N4000_I690_B36_N256_P2_A01",
+      "role": "existing_exploratory",
+      "canonical_archive_manifest_sha256": null,
+      "observed_archive_manifest_sha256": "d7a3d9a9f19fcde55d7c5fd35ba91ce163788033775118b9e9acc97e57051fc8",
+      "canonical_hash_root_status": "UNKNOWN",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": false
+    },
+    {
+      "case_id": "HALFSC_FIG14_N8000_I690_B36_N256_P2_A01",
+      "role": "existing_exploratory",
+      "canonical_archive_manifest_sha256": null,
+      "observed_archive_manifest_sha256": "03ea0edce2edac1b98e4f4167df5fb2ad34a910288e3274304f1151917baa2ab",
+      "canonical_hash_root_status": "UNKNOWN",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": false
+    },
+    {
+      "case_id": "HALFSC_FIG14_N16000_I690_B36_N256_P2_A02",
+      "role": "existing_exploratory",
+      "canonical_archive_manifest_sha256": null,
+      "observed_archive_manifest_sha256": "b8f93a56833bf7371988478ec9ce8b7b62f562c4a317f176324f668f2664dc14",
+      "canonical_hash_root_status": "UNKNOWN",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": false
+    },
+    {
+      "case_id": "HALFVAL_N2000_L4_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "ad5e63e0fa27f8a7ee2c58855cc9ba8677bab763cc9d4e4cabfa1b2fb03a9000",
+      "observed_archive_manifest_sha256": "ad5e63e0fa27f8a7ee2c58855cc9ba8677bab763cc9d4e4cabfa1b2fb03a9000",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "30e52517305bbb201b4d0087ff93b6f4664749c9766b206e3cd3c2d5d65ad25e",
+      "observed_archive_manifest_sha256": "30e52517305bbb201b4d0087ff93b6f4664749c9766b206e3cd3c2d5d65ad25e",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "fb2ac592a5e21bc8c5aa753d73087e090fa1073c22233138472132eac14dfc9c",
+      "observed_archive_manifest_sha256": "fb2ac592a5e21bc8c5aa753d73087e090fa1073c22233138472132eac14dfc9c",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "a8e1b00fc6752484c34d3377c8039e629b0b06f19f6d946a563c267ce4078ae4",
+      "observed_archive_manifest_sha256": "a8e1b00fc6752484c34d3377c8039e629b0b06f19f6d946a563c267ce4078ae4",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "623d2ed65f9050e76b70abfd50823de3479b1a867c328316c3c0fcbf17291ac4",
+      "observed_archive_manifest_sha256": "623d2ed65f9050e76b70abfd50823de3479b1a867c328316c3c0fcbf17291ac4",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "7f666a338e38852890b7eced5cfd22b226fe7031f2cc37e1fc40681a24735b32",
+      "observed_archive_manifest_sha256": "7f666a338e38852890b7eced5cfd22b226fe7031f2cc37e1fc40681a24735b32",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "41073c0e5dfdafa74ebaa8b6ba12a017fae62302263f2ebbf1eb3f050816ffe8",
+      "observed_archive_manifest_sha256": "41073c0e5dfdafa74ebaa8b6ba12a017fae62302263f2ebbf1eb3f050816ffe8",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "62478b7d618a5add28227014a4ca58847bc8d343dc1ab644924c2d4739e21ff2",
+      "observed_archive_manifest_sha256": "62478b7d618a5add28227014a4ca58847bc8d343dc1ab644924c2d4739e21ff2",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L4_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "1959928dec95449a6c074f610a198e73d729702408554a123cc919f7d5833f0a",
+      "observed_archive_manifest_sha256": "1959928dec95449a6c074f610a198e73d729702408554a123cc919f7d5833f0a",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "f9a488e01406607b42b01eae13371f2b1ae1cbec001e9c411c633b74010aad1d",
+      "observed_archive_manifest_sha256": "f9a488e01406607b42b01eae13371f2b1ae1cbec001e9c411c633b74010aad1d",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "59daf7d2a1e751e060eb6fb35aeb90a8bac33b995c49b33c82f3199a3211d201",
+      "observed_archive_manifest_sha256": "59daf7d2a1e751e060eb6fb35aeb90a8bac33b995c49b33c82f3199a3211d201",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B00_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "7ac8ecb1b80286a08f500feaa7b11897d21f70277d0539dd5b4c1fbb6ca89ba7",
+      "observed_archive_manifest_sha256": "7ac8ecb1b80286a08f500feaa7b11897d21f70277d0539dd5b4c1fbb6ca89ba7",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "d08da158f254d20d91f24b7d5127cac975bb0b14157a567aca6f9c4be4a7ba57",
+      "observed_archive_manifest_sha256": "d08da158f254d20d91f24b7d5127cac975bb0b14157a567aca6f9c4be4a7ba57",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "dcfecb27f22b2380273fdfdfe2d512df0f5a6c3f70fbeea42d6fd2a1ac516523",
+      "observed_archive_manifest_sha256": "dcfecb27f22b2380273fdfdfe2d512df0f5a6c3f70fbeea42d6fd2a1ac516523",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "0c15ba8a74c7126ecca41bea33aa325e76ba05b42552f7391e402f1347498542",
+      "observed_archive_manifest_sha256": "0c15ba8a74c7126ecca41bea33aa325e76ba05b42552f7391e402f1347498542",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B90_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "56b464464d4d40eb9a8dc3327aeccf5329a7e94186f08b02e602e2352670d01b",
+      "observed_archive_manifest_sha256": "56b464464d4d40eb9a8dc3327aeccf5329a7e94186f08b02e602e2352670d01b",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B18_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "1b5222b8ab419df481ad8b800c1b8c5b89cbd9ec0f5150e0afd42d315a30a08c",
+      "observed_archive_manifest_sha256": "1b5222b8ab419df481ad8b800c1b8c5b89cbd9ec0f5150e0afd42d315a30a08c",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B18_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "1cb2ac45a6ee958218fc2dced071dee7817ffac1df4e7823fa63de6e3fb51568",
+      "observed_archive_manifest_sha256": "1cb2ac45a6ee958218fc2dced071dee7817ffac1df4e7823fa63de6e3fb51568",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B18_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "4db55bba421136dec03d80986d334908b858fe9483776056b50fa17d76d4a54d",
+      "observed_archive_manifest_sha256": "4db55bba421136dec03d80986d334908b858fe9483776056b50fa17d76d4a54d",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B18_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "5001e470918ab24a0dd5d1feb93e8f4d231e03c410c134484784ad38f4b9a4bf",
+      "observed_archive_manifest_sha256": "5001e470918ab24a0dd5d1feb93e8f4d231e03c410c134484784ad38f4b9a4bf",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B72_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "7e293a5d73ae7fbafb96cabc518377635feddaa9a218994375bd0199404b778c",
+      "observed_archive_manifest_sha256": "7e293a5d73ae7fbafb96cabc518377635feddaa9a218994375bd0199404b778c",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B72_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "c44d20f2a7b1f9f0b6d9a47705e7aab59e6e65b88b74e9b4a2ffa1993a3b56ec",
+      "observed_archive_manifest_sha256": "c44d20f2a7b1f9f0b6d9a47705e7aab59e6e65b88b74e9b4a2ffa1993a3b56ec",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B72_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "e7a55da946239e5120fd9529ea4c3682d9942d6abb3375b497b3401219912022",
+      "observed_archive_manifest_sha256": "e7a55da946239e5120fd9529ea4c3682d9942d6abb3375b497b3401219912022",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B72_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "86c5c2a91c9333d3601fc0e327a2b971ea1fd3464453a7f6120e3a44e86d0493",
+      "observed_archive_manifest_sha256": "86c5c2a91c9333d3601fc0e327a2b971ea1fd3464453a7f6120e3a44e86d0493",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B36_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "0114b9e6ee496e5497a7aa56c870c9b892fc6c2fedc5e0b91d95404a71411c15",
+      "observed_archive_manifest_sha256": "0114b9e6ee496e5497a7aa56c870c9b892fc6c2fedc5e0b91d95404a71411c15",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B36_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "10e62e5d0fb574cfdc47d08a9f5b086c8192d421701ce20a25831d9f9ed9a3d8",
+      "observed_archive_manifest_sha256": "10e62e5d0fb574cfdc47d08a9f5b086c8192d421701ce20a25831d9f9ed9a3d8",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B36_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "59a86509393358ee77086a8e5e8efb3d77db671efb8e336a19e1c10752d05fb1",
+      "observed_archive_manifest_sha256": "59a86509393358ee77086a8e5e8efb3d77db671efb8e336a19e1c10752d05fb1",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B36_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "44ab3349cb04aa5e4e17813364e73bb9817bb25cb2de99241b8828046906f6db",
+      "observed_archive_manifest_sha256": "44ab3349cb04aa5e4e17813364e73bb9817bb25cb2de99241b8828046906f6db",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B54_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "2398be323974a6b0055292c4e2d135205d70e615cd47570297818f430f6bbdd1",
+      "observed_archive_manifest_sha256": "2398be323974a6b0055292c4e2d135205d70e615cd47570297818f430f6bbdd1",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B54_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "26cdee1722206b2d91217b176e38e6ee7fc83b74d76f778f12bc585a35a9729c",
+      "observed_archive_manifest_sha256": "26cdee1722206b2d91217b176e38e6ee7fc83b74d76f778f12bc585a35a9729c",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B54_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "89ff3c8360a2fd7a4858b8ac6429526094e3661a04aaf575aff55ebf2976bbf9",
+      "observed_archive_manifest_sha256": "89ff3c8360a2fd7a4858b8ac6429526094e3661a04aaf575aff55ebf2976bbf9",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B54_N256_P2_A01",
+      "role": "new_validation",
+      "canonical_archive_manifest_sha256": "4242bede23d800d5f6e49f9519fcb163dff3ef90a6d2000eb1f96e5d209ef037",
+      "observed_archive_manifest_sha256": "4242bede23d800d5f6e49f9519fcb163dff3ef90a6d2000eb1f96e5d209ef037",
+      "canonical_hash_root_status": "PASS",
+      "canonical_scalar_delta_W": 0.0,
+      "preservation_receipt_available": true
+    }
+  ],
+  "canonical_hash_root_pass": 32,
+  "canonical_hash_root_unknown": 4,
+  "unknown_reason": "exploratory4 handoff has scalar/case linkage but no frozen archive-manifest hash or standalone preservation receipt"
+}

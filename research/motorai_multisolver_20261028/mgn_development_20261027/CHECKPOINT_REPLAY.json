@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "models": 3,
+  "sources_per_model": 24,
+  "tolerance": {
+    "rtol": 1e-05,
+    "atol": 1e-05
+  },
+  "checks": [
+    {
+      "seed": 17,
+      "max_abs_embedding_error": 3.5762786865234375e-07,
+      "status": "PASS"
+    },
+    {
+      "seed": 29,
+      "max_abs_embedding_error": 4.76837158203125e-07,
+      "status": "PASS"
+    },
+    {
+      "seed": 43,
+      "max_abs_embedding_error": 4.76837158203125e-07,
+      "status": "PASS"
+    }
+  ],
+  "scope": "CUDA saved checkpoint to latent embedding replay; nondeterministic scatter rounding allowed"
+}

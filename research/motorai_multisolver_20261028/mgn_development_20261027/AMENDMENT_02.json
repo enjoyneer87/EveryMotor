@@ -1,0 +1,13 @@
+{
+  "scope": "One additional bounded MS-only refinement stage, before any Full evaluation labels or HalfSC metrics are opened",
+  "evidence": "Stage1 fixed1800-update auxiliary held-phase B relative L2 errors: seed17 36.1273%, seed29 35.3379%, seed43 41.6966%. Runtime24-25s per seed. These are MS field errors, not Full AC errors.",
+  "decision": "Preserve all stage1 files and hashes. Continue each of the same3 pretrained networks for16200 more MS updates; total18000. Restart Adam at0.0003 with cosine decay to0.00001. Fixed final checkpoint, no early stopping or checkpoint selection.",
+  "architecture_and_features": "unchanged",
+  "labels_and_split": "unchanged63 Full labels and24 Ref MS histories; no HalfSC field/label training or tuning",
+  "maximum_additional_training_runs": 3,
+  "automatic_retries": 0,
+  "bounds_per_seed": {"wall_seconds":3600,"VRAM_GiB":12,"RAM_GiB":16,"output_GiB":2},
+  "estimate_per_seed": {"wall_seconds":250,"VRAM_GiB":0.5,"RAM_GiB":1.3},
+  "evaluation_rule": "Stage2 is the declared primary MGN result. Stage1 remains a secondary fixed-checkpoint diagnostic. Both freeze before one evaluation pass; do not choose a stage or seed using Full evaluation results.",
+  "cost_accounting": "Include both stages, all3 seeds, all63 unique Full labels; no new independent target labels"
+}

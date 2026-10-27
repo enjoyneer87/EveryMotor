@@ -1,0 +1,36 @@
+{
+  "schema": "rea-elmer-offline-v1",
+  "source_case_id": "HOMOMS_Ref_P097_coarse_N128_M03_R07",
+  "field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815",
+  "manifest_sha256": "03a46bdfc25d70dbcfcb210f2a91bd4812f9237395a70923bd15f8524cfee3c3",
+  "contract_sha256": "bb93a8cd322f83f6f4879dd90dcd73d484700b10edc0037ebb1899b98cbeef07",
+  "samples_shape": [
+    128,
+    600
+  ],
+  "line_counts": [
+    2,
+    3,
+    3,
+    4,
+    5,
+    13
+  ],
+  "source_solver": "Elmer",
+  "field_scope": "MS A to exact P1 curl magnitude, 600 samples in slot 1",
+  "window": "One full cycle of distinct post-step phases; arithmetic mean",
+  "loss_scope": "Active-stack AC excess, no transport DC or end winding",
+  "sigma_S_m": 47092391.429245,
+  "active_length_m": 0.15,
+  "fitted_parameters": 0,
+  "new_solver_calls": 0,
+  "AF_refit": false,
+  "comparison_scope": "Standalone Hybrid estimate, not a Full-FEA accuracy claim",
+  "code_sha256": {
+    "e10_sampling.py": "0ff46fddba59860c785519e8ec4adadd068640cf26b98c64860448cd28e9356a",
+    "hybrid_kernel.py": "1e0f9a07a19500a21ca935ee351205daa6c515c57097de96124e701ece8df2d0",
+    "postprocess_elmer.py": "286ba02186182b2df75ab4e54c44afaee0e0ecc5e4a59eccd64fcbdf0824e4df",
+    "verify_kernel.py": "88ac06ab23ba4266846061aa34cd459cf4c3bb44f2dbbe24b8ab2ed8ee2f991a",
+    "__init__.py": "fade124cf62ec8ef7f71ff7495b8d0c53ffe4ae002b55be4c1f9cd5d2e5b1080"
+  }
+}

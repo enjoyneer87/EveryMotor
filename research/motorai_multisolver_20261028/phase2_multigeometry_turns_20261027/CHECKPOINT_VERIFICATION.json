@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "scope": "package integrity/split/caps/frozen-model invariants only",
+  "files": {
+    "phase2_multigeometry_turns_20261027": 71,
+    "new_op_validation_20261027": 62
+  },
+  "configurations": 816,
+  "source_geometries": 272,
+  "reserved_rows": 0,
+  "total_step_cap": 128,
+  "dual_network_contract_hosts": 2,
+  "real_dual_network_training_updates": 2890,
+  "completed_newOP_native_reintegration": 6,
+  "exact_cross_solver_bridges": 0,
+  "expanded_reader_cases": 360,
+  "expanded_geometry_groups": 320,
+  "expanded_graphs": 3240,
+  "expanded_training_status": "COMPLETED",
+  "expanded_training_updates": 88565,
+  "improvement_items": 14,
+  "formal_physical_qualification": "UNKNOWN"
+}

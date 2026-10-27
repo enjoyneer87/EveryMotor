@@ -1,0 +1,105 @@
+{
+  "checked_UTC": "2026-10-27T16:11:01.017870+00:00",
+  "configuration_count": 816,
+  "geometries": 272,
+  "transient_step_cap_total": 128,
+  "execution": {
+    "N128_P1": {
+      "progress": {
+        "case": "N128_P1",
+        "pid": 279964,
+        "steps_started": 128,
+        "steps_limit": 128,
+        "elapsed_seconds": 725.2947184978984,
+        "output_bytes": 453977715
+      },
+      "execution": {
+        "case": "N128_P1",
+        "returncode": 0,
+        "stop_reason": null,
+        "wall_seconds": 730.2975100991316,
+        "peak_RSS_bytes": 119742464,
+        "steps_limit": 128,
+        "steps_per_period": 128,
+        "formal_qualification": "UNKNOWN",
+        "automatic_retries": 0,
+        "source_unchanged": true
+      },
+      "owned_live_processes": 0
+    },
+    "N64_P2": {
+      "progress": {
+        "case": "N64_P2",
+        "pid": 279968,
+        "steps_started": 128,
+        "steps_limit": 128,
+        "elapsed_seconds": 740.2962306272238,
+        "output_bytes": 453982169
+      },
+      "execution": {
+        "case": "N64_P2",
+        "returncode": 0,
+        "stop_reason": null,
+        "wall_seconds": 745.2990857781842,
+        "peak_RSS_bytes": 120131584,
+        "steps_limit": 128,
+        "steps_per_period": 64,
+        "formal_qualification": "UNKNOWN",
+        "automatic_retries": 0,
+        "source_unchanged": true
+      },
+      "owned_live_processes": 0
+    }
+  },
+  "new_R1_MS_cases": 0,
+  "new_R1_transient_cases": 0,
+  "new_multigeometry_MGN_models": 2,
+  "training_status": "133:COMPLETED;234:COMPLETED",
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "MotorCAD_native_probe": "experiment01_startup_failure;experiment02_API_started_readback_timeout",
+  "MotorCAD_FEA_runs": 0,
+  "MGN_architecture": "Two domain encoders conditioned by design/OP/fidelity; Motor-CAD B-only pretraining; paired alignment inactive",
+  "geometry_generated_directories_including_parity": 1088,
+  "geometry_generation_status": "COMPLETED",
+  "geometry_owner_start_time_matches": false,
+  "geometry_scope": "Analytic geometry only, not mesh/solver validation",
+  "MotorCAD_next_launch_allowed": false,
+  "MotorCAD_partial_saved_settings": "4 and6 conductor configuration text; actual drawn counts/solver steps UNKNOWN;8 not completed",
+  "geometry_QA": {
+    "requested": 816,
+    "generated_pass": 816,
+    "failed": 0,
+    "source_commit": "a46e5d8bc0e5621c455915e627279356c1a1269e",
+    "mesh_quality": "UNKNOWN",
+    "manufacturing_qualification": "UNKNOWN",
+    "transient_cases_solved": 0,
+    "MGN_models_trained": 0,
+    "packing_policy": "fixed stack envelope; copper area changes with insulation gaps"
+  },
+  "real_multigeometry_training_updates": 2890,
+  "existing_field_reuse": {
+    "original_manifest_rows": 480,
+    "declared_geometry_groups": 360,
+    "original_copy_HDF5_SHA256_matches": 440,
+    "native_manifest_geometry_mismatch_quarantined": 80,
+    "prepared_cases": 20,
+    "train_geometries": 16,
+    "inner_development_geometries": 4,
+    "graphs": 180
+  },
+  "expanded_training": {
+    "training_status": "COMPLETED",
+    "training_updates": 88565,
+    "epochs_completed": 30,
+    "GPU_smoke": "PASS",
+    "error": null,
+    "host": "133",
+    "conditions": 360,
+    "geometry_groups": 320,
+    "train_groups": 288,
+    "development_groups": 32,
+    "train_conditions": 328,
+    "development_conditions": 32,
+    "prepared_graphs": 3240
+  }
+}

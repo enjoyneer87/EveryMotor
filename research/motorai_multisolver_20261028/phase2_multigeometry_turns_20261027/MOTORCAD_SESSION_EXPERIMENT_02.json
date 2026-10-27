@@ -1,0 +1,17 @@
+{
+  "experiment": "Native readback with interactive user token instead of S4U",
+  "reason": "S4U probe's newly launched MotorCAD process exited before RPC startup. Existing user MotorCAD remains in session2. These observations motivate a session-isolation experiment; the cause is not yet established.",
+  "changed_factor": "ScheduledTask LogonType Interactive instead of S4U; no executable/model/settings change",
+  "unchanged": "same pinned template hash, same API, separate new hidden instance, no attachment to existing process, same4/6/8 settings, no automatic conductor fitting",
+  "max_new_launches": 1,
+  "automatic_retries": 0,
+  "solver_runs": 0,
+  "wall_seconds_max": 180,
+  "RAM_estimate_GiB": 2,
+  "disk_estimate_GiB": 0.5,
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "stop": "watchdog checks only new API PID/create_time; existing user PID154024 excluded",
+  "success_gate": "native new-instance ownership established; exact requested conductor count and128x1 setting readback; source hash unchanged",
+  "failure_policy": "preserve experiment01 and02 separately; do not attempt another launch if experiment02 fails",
+  "qualification": "Even success is not FEA/field/period qualification"
+}

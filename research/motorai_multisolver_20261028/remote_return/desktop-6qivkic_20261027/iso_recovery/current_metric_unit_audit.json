@@ -1,0 +1,259 @@
+{
+  "status": "PASS",
+  "cases": 36,
+  "rows": [
+    {
+      "case_id": "HALFSC_FIG14_N2000_I690_B36_N256_P2_A01",
+      "saved_history_max_fraction": 4.736287733426747e-08,
+      "saved_P2_max_percent": 4.736287733426747e-06,
+      "raw_reintegrated_max_percent": 4.736287733426747e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFSC_FIG14_N4000_I690_B36_N256_P2_A01",
+      "saved_history_max_fraction": 9.409863044670727e-08,
+      "saved_P2_max_percent": 9.409863044670727e-06,
+      "raw_reintegrated_max_percent": 9.409863044670727e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFSC_FIG14_N8000_I690_B36_N256_P2_A01",
+      "saved_history_max_fraction": 1.8637297416107587e-07,
+      "saved_P2_max_percent": 1.863729741610759e-05,
+      "raw_reintegrated_max_percent": 1.8637297416107585e-05,
+      "delta_percent": -3.3881317890172014e-21
+    },
+    {
+      "case_id": "HALFSC_FIG14_N16000_I690_B36_N256_P2_A02",
+      "saved_history_max_fraction": 3.701573299206807e-07,
+      "saved_P2_max_percent": 3.701573299206807e-05,
+      "raw_reintegrated_max_percent": 3.701573299206807e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L4_B90_N256_P2_A01",
+      "saved_history_max_fraction": 5.190227584473627e-08,
+      "saved_P2_max_percent": 5.190227584473627e-06,
+      "raw_reintegrated_max_percent": 5.190227584473628e-06,
+      "delta_percent": 8.470329472543003e-22
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B90_N256_P2_A01",
+      "saved_history_max_fraction": 1.027043046423524e-07,
+      "saved_P2_max_percent": 1.027043046423524e-05,
+      "raw_reintegrated_max_percent": 1.027043046423524e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B90_N256_P2_A01",
+      "saved_history_max_fraction": 2.0376581980852517e-07,
+      "saved_P2_max_percent": 2.0376581980852517e-05,
+      "raw_reintegrated_max_percent": 2.0376581980852517e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B90_N256_P2_A01",
+      "saved_history_max_fraction": 4.105484776485316e-07,
+      "saved_P2_max_percent": 4.105484776485316e-05,
+      "raw_reintegrated_max_percent": 4.1054847764853154e-05,
+      "delta_percent": -6.776263578034403e-21
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B00_N256_P2_A01",
+      "saved_history_max_fraction": 1.4515009041819428e-07,
+      "saved_P2_max_percent": 1.4515009041819428e-05,
+      "raw_reintegrated_max_percent": 1.4515009041819428e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B00_N256_P2_A01",
+      "saved_history_max_fraction": 2.9092713547687013e-07,
+      "saved_P2_max_percent": 2.9092713547687013e-05,
+      "raw_reintegrated_max_percent": 2.9092713547687013e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B00_N256_P2_A01",
+      "saved_history_max_fraction": 5.824336924734566e-07,
+      "saved_P2_max_percent": 5.824336924734566e-05,
+      "raw_reintegrated_max_percent": 5.824336924734566e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B00_N256_P2_A01",
+      "saved_history_max_fraction": 1.1620227160505567e-06,
+      "saved_P2_max_percent": 0.00011620227160505568,
+      "raw_reintegrated_max_percent": 0.00011620227160505568,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L4_B00_N256_P2_A01",
+      "saved_history_max_fraction": 4.836779318770775e-08,
+      "saved_P2_max_percent": 4.836779318770775e-06,
+      "raw_reintegrated_max_percent": 4.836779318770775e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N4000_L4_B00_N256_P2_A01",
+      "saved_history_max_fraction": 9.531775408164045e-08,
+      "saved_P2_max_percent": 9.531775408164045e-06,
+      "raw_reintegrated_max_percent": 9.531775408164046e-06,
+      "delta_percent": 1.6940658945086007e-21
+    },
+    {
+      "case_id": "HALFVAL_N8000_L4_B00_N256_P2_A01",
+      "saved_history_max_fraction": 1.9022979606807255e-07,
+      "saved_P2_max_percent": 1.9022979606807254e-05,
+      "raw_reintegrated_max_percent": 1.9022979606807254e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N16000_L4_B00_N256_P2_A01",
+      "saved_history_max_fraction": 3.7590562296377525e-07,
+      "saved_P2_max_percent": 3.759056229637753e-05,
+      "raw_reintegrated_max_percent": 3.759056229637753e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L1_B90_N256_P2_A01",
+      "saved_history_max_fraction": 9.220508686019492e-08,
+      "saved_P2_max_percent": 9.220508686019492e-06,
+      "raw_reintegrated_max_percent": 9.220508686019492e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N4000_L1_B90_N256_P2_A01",
+      "saved_history_max_fraction": 1.853498947918198e-07,
+      "saved_P2_max_percent": 1.853498947918198e-05,
+      "raw_reintegrated_max_percent": 1.8534989479181983e-05,
+      "delta_percent": 3.3881317890172014e-21
+    },
+    {
+      "case_id": "HALFVAL_N8000_L1_B90_N256_P2_A01",
+      "saved_history_max_fraction": 3.7191868549305354e-07,
+      "saved_P2_max_percent": 3.719186854930536e-05,
+      "raw_reintegrated_max_percent": 3.719186854930535e-05,
+      "delta_percent": -6.776263578034403e-21
+    },
+    {
+      "case_id": "HALFVAL_N16000_L1_B90_N256_P2_A01",
+      "saved_history_max_fraction": 7.412566444007615e-07,
+      "saved_P2_max_percent": 7.412566444007615e-05,
+      "raw_reintegrated_max_percent": 7.412566444007615e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B18_N256_P2_A01",
+      "saved_history_max_fraction": 8.119270136175707e-08,
+      "saved_P2_max_percent": 8.119270136175706e-06,
+      "raw_reintegrated_max_percent": 8.119270136175706e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B18_N256_P2_A01",
+      "saved_history_max_fraction": 1.615763469301293e-07,
+      "saved_P2_max_percent": 1.615763469301293e-05,
+      "raw_reintegrated_max_percent": 1.6157634693012927e-05,
+      "delta_percent": -3.3881317890172014e-21
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B18_N256_P2_A01",
+      "saved_history_max_fraction": 3.19927099028981e-07,
+      "saved_P2_max_percent": 3.19927099028981e-05,
+      "raw_reintegrated_max_percent": 3.19927099028981e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B18_N256_P2_A01",
+      "saved_history_max_fraction": 6.298227670455264e-07,
+      "saved_P2_max_percent": 6.298227670455264e-05,
+      "raw_reintegrated_max_percent": 6.298227670455265e-05,
+      "delta_percent": 1.3552527156068805e-20
+    },
+    {
+      "case_id": "HALFVAL_N2000_L2_B72_N256_P2_A01",
+      "saved_history_max_fraction": 9.419691410414036e-08,
+      "saved_P2_max_percent": 9.419691410414035e-06,
+      "raw_reintegrated_max_percent": 9.419691410414035e-06,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N4000_L2_B72_N256_P2_A01",
+      "saved_history_max_fraction": 2.0854461523429794e-07,
+      "saved_P2_max_percent": 2.0854461523429795e-05,
+      "raw_reintegrated_max_percent": 2.0854461523429795e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N8000_L2_B72_N256_P2_A01",
+      "saved_history_max_fraction": 4.1170005501239733e-07,
+      "saved_P2_max_percent": 4.117000550123974e-05,
+      "raw_reintegrated_max_percent": 4.117000550123973e-05,
+      "delta_percent": -6.776263578034403e-21
+    },
+    {
+      "case_id": "HALFVAL_N16000_L2_B72_N256_P2_A01",
+      "saved_history_max_fraction": 7.546910965784721e-07,
+      "saved_P2_max_percent": 7.546910965784721e-05,
+      "raw_reintegrated_max_percent": 7.546910965784721e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B36_N256_P2_A01",
+      "saved_history_max_fraction": 6.074739777437459e-08,
+      "saved_P2_max_percent": 6.074739777437459e-06,
+      "raw_reintegrated_max_percent": 6.074739777437458e-06,
+      "delta_percent": -8.470329472543003e-22
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B36_N256_P2_A01",
+      "saved_history_max_fraction": 1.213045528907778e-07,
+      "saved_P2_max_percent": 1.2130455289077781e-05,
+      "raw_reintegrated_max_percent": 1.213045528907778e-05,
+      "delta_percent": -1.6940658945086007e-21
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B36_N256_P2_A01",
+      "saved_history_max_fraction": 2.4035934395291505e-07,
+      "saved_P2_max_percent": 2.4035934395291504e-05,
+      "raw_reintegrated_max_percent": 2.4035934395291507e-05,
+      "delta_percent": 3.3881317890172014e-21
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B36_N256_P2_A01",
+      "saved_history_max_fraction": 4.7205526012828374e-07,
+      "saved_P2_max_percent": 4.720552601282837e-05,
+      "raw_reintegrated_max_percent": 4.720552601282837e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N2000_L3_B54_N256_P2_A01",
+      "saved_history_max_fraction": 5.841040348087229e-08,
+      "saved_P2_max_percent": 5.841040348087229e-06,
+      "raw_reintegrated_max_percent": 5.841040348087228e-06,
+      "delta_percent": -8.470329472543003e-22
+    },
+    {
+      "case_id": "HALFVAL_N4000_L3_B54_N256_P2_A01",
+      "saved_history_max_fraction": 3.3344684305834897e-07,
+      "saved_P2_max_percent": 3.3344684305834895e-05,
+      "raw_reintegrated_max_percent": 3.3344684305834895e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N8000_L3_B54_N256_P2_A01",
+      "saved_history_max_fraction": 2.3109477006604097e-07,
+      "saved_P2_max_percent": 2.3109477006604096e-05,
+      "raw_reintegrated_max_percent": 2.3109477006604096e-05,
+      "delta_percent": 0.0
+    },
+    {
+      "case_id": "HALFVAL_N16000_L3_B54_N256_P2_A01",
+      "saved_history_max_fraction": 4.5330165313862385e-07,
+      "saved_P2_max_percent": 4.5330165313862386e-05,
+      "raw_reintegrated_max_percent": 4.5330165313862386e-05,
+      "delta_percent": 0.0
+    }
+  ],
+  "correction": "expected comparison metric converted ratio to percent; raw integration/current gate unchanged; original audit files unchanged"
+}

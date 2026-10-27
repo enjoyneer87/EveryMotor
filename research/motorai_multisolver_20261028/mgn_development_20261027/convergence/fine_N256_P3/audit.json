@@ -1,0 +1,115 @@
+{
+  "steps": 768,
+  "steps_per_period": 256,
+  "periods": [
+    {
+      "period": 1,
+      "steps": [
+        1,
+        256
+      ],
+      "Joule_W": 81988.40027520606,
+      "DC_W": 31412.873886126836,
+      "AC_W": 50575.52638907923,
+      "current_max_percent": 0.00021720138923371488
+    },
+    {
+      "period": 2,
+      "steps": [
+        257,
+        512
+      ],
+      "Joule_W": 72987.83517453223,
+      "DC_W": 31412.873886126836,
+      "AC_W": 41574.96128840538,
+      "current_max_percent": 1.6606708606338415e-05
+    },
+    {
+      "period": 3,
+      "steps": [
+        513,
+        768
+      ],
+      "Joule_W": 72987.83578566002,
+      "DC_W": 31412.873886126836,
+      "AC_W": 41574.96189953318,
+      "current_max_percent": 1.6606412111716873e-05
+    }
+  ],
+  "solver_nonlinear_max": 8.3224617e-11,
+  "nonlinear_status": "PASS",
+  "whole_current_max_percent": 0.00021720138923371488,
+  "whole_current_status": "PASS",
+  "current_gate_percent": 0.001,
+  "area_m2_by_bar": [
+    6.1798880000000275e-06,
+    6.179223000000011e-06,
+    6.179646999999988e-06,
+    6.179228999999991e-06,
+    6.179120000000007e-06,
+    6.179888000000026e-06,
+    6.1789655000000045e-06,
+    6.17833650000001e-06,
+    6.178181499999993e-06,
+    6.179257500000009e-06,
+    6.179993000000015e-06,
+    6.180671000000005e-06,
+    6.1792695000000095e-06,
+    6.179146000000008e-06,
+    6.179268999999997e-06,
+    6.178980999999994e-06,
+    6.178981000000014e-06,
+    6.179132000000003e-06,
+    6.179082999999998e-06,
+    6.1794960000000065e-06,
+    6.179496500000002e-06,
+    6.179082499999994e-06,
+    6.1796815000000065e-06,
+    6.179681499999988e-06,
+    6.179403999999999e-06,
+    6.179728499999995e-06,
+    6.179787000000004e-06,
+    6.179501999999999e-06,
+    6.17938050000001e-06,
+    6.179636000000003e-06,
+    6.179445500000015e-06,
+    6.17724e-06,
+    6.1807264999999915e-06,
+    6.180417000000021e-06,
+    6.17851349999999e-06,
+    6.178200500000013e-06
+  ],
+  "nodes": 33710,
+  "elements": 65674,
+  "copper_elements": 13824,
+  "sigma_S_m": 47092391.429245,
+  "active_length_m": 0.15,
+  "average": "uniform post-step arithmetic mean",
+  "initial_A": 0,
+  "BDF": "BE step1, BDF2 thereafter",
+  "mesh_status": "UNKNOWN",
+  "time_step_status": "UNKNOWN",
+  "input_sha256": {
+    "case.sif": "592ed6b3ba4c5bc668262a12cfe7eda6e6b272526775f5b55dea0a50ad85ef93",
+    "PARAMETERS.json": "97c1365a035030d7db15a8cdbc5f08b2c2ecf2fa2f60e4fe1ca85d5fcf4c0649",
+    "MODEL.json": "6820e8c81a8dc55c5fd7dad1d72b90a1d87f08358d3d916254aa77e449122e2b",
+    "INPUT_CONTRACT.json": "7e0e8983fa5db12b8a34e2cdfeebc47222d0fa31ee8c5b4a13f49f1d1af45e79",
+    "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+    "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+    "mesh/mesh.nodes": "4a31e37b12d5527063307c28eae026ec6f815eafd1ee914eb6638b942fa71023",
+    "mesh/mesh.elements": "945ec3c349fdcda280bc5fe13eb111f95093f95b007ed1b231b3adb26f73a3c8"
+  },
+  "P2_P3_mean_percent": 1.4699419316724165e-06,
+  "P2_P3_wave_L2_percent": 2.044849801720666e-06,
+  "P3_current_status": "PASS",
+  "period_gate": {
+    "mean_percent": 0.1,
+    "wave_L2_percent": 0.5
+  },
+  "period_development_threshold_status": "PASS",
+  "formal_period_qualification": "UNKNOWN",
+  "formal_mesh_qualification": "UNKNOWN",
+  "formal_time_step_qualification": "UNKNOWN",
+  "threshold_scope": "See QUALIFICATION_POLICY.json: period/mesh/time thresholds are proposed development checks, not an approved qualification contract",
+  "source_derived_audit_sha256": "c6362792f31995d5a53437af1994419d218571612e2272d4fb7ca05208c80f4e"
+}

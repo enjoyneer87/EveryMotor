@@ -1,0 +1,11 @@
+{
+  "source":"same immutable Ref MS24 as primary experiment; original node/element IDs and triangle topology",
+  "input":{"node":"x,y in m divided by0.1; sin/cos slot index","global":"Irms/460,beta/90,sin/cos electrical phase","A_B_J_as_input":false},
+  "target_A":{"definition":"Elmer axial magnetic vector potential A_z","support":"node","unit":"Wb/m","gauge":"subtract area-weighted mean independently in each of6disconnected stationary slots","dtype":"float32 training, original float64 preserved"},
+  "target_B":{"definition":"Bx=dA/dy, By=-dA/dx with exact P1 triangle gradient","support":"element","unit":"T","training_weight":"element area divided by total slot area","dtype":"float32 training"},
+  "projection_audit":{"node_B_roundtrip":"primary area-projected nodal B averaged over three triangle nodes","scope":"representation error on original stationary MS slots; no torque estimate and no canonical Hybrid substitution","curl_identity":"original float64 A curl agrees with reader to <1e-10 T; numerical identity gate, not physical accuracy"},
+  "Full_head":{"target":"log accepted Full active AC excess / canonical mean-square-field Hybrid","budget":63,"calibration_only":true,"group_CV":"same MS source key, fold-fit normalization","units":"Full/Hybrid ratio dimensionless; source losses W","definition":"same conductivity47092391.429245 S/m, active length0.15m and source-specific scaling contract as immutable primary inputs"},
+  "not_available":{"individual_copper_J":true,"moving_rotor_interface":true,"new_template_holdout":true,"new_unopened_Full_test":true},
+  "MotorCAD":{"fields_je_presence":"440 of v3 manifest480 verified by metadata read only","units_and_total_source_induced_identity":"UNKNOWN from empty dataset attributes; additional native documentation/integral validation required","labels_imported":0,"checkpoint_weights_imported":0,"exact_cross_solver_bridges":0},
+  "safety_of_interpretation":"MS B monitor is not AC loss accuracy. Calibration group-CV used for hyperparameter selection is not an unbiased final test. Primary frozen Full comparison remains unchanged."
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "operator_tests": {
+    "orientation_reversal_max_abs_T": 2.6645352591003757e-15,
+    "constant_gauge_max_abs_T": 2.5490720645393594e-13,
+    "float64_gradient_check": true
+  },
+  "same_support_comparison": [
+    {
+      "method": "primary_node_B",
+      "seed": 17,
+      "element_B_held_phase_relative_L2_percent": 15.81651176804889,
+      "element_B_held_phase_RMSE_T": 0.04467371997381988
+    },
+    {
+      "method": "primary_node_B",
+      "seed": 29,
+      "element_B_held_phase_relative_L2_percent": 15.528424505803168,
+      "element_B_held_phase_RMSE_T": 0.04386001782063156
+    },
+    {
+      "method": "primary_node_B",
+      "seed": 43,
+      "element_B_held_phase_relative_L2_percent": 15.288056077317231,
+      "element_B_held_phase_RMSE_T": 0.04318109746055442
+    },
+    {
+      "method": "followup_A_curl",
+      "seed": 17,
+      "element_B_held_phase_relative_L2_percent": 12.603744762334232,
+      "element_B_held_phase_RMSE_T": 0.03559926312396229
+    },
+    {
+      "method": "followup_A_curl",
+      "seed": 29,
+      "element_B_held_phase_relative_L2_percent": 12.565996729837881,
+      "element_B_held_phase_RMSE_T": 0.03549264384797811
+    },
+    {
+      "method": "followup_A_curl",
+      "seed": 43,
+      "element_B_held_phase_relative_L2_percent": 11.862551815354442,
+      "element_B_held_phase_RMSE_T": 0.033505764466006935
+    }
+  ],
+  "scope": "MS24 same-source held phases on original elements; no Full AC evaluation. Seeds not selected by this result."
+}

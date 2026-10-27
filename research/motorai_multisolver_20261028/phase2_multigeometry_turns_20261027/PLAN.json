@@ -1,0 +1,122 @@
+{
+  "schema": "motorai-phase2-turns-v1",
+  "created_UTC": "2026-10-27T13:00:05.081930+00:00",
+  "user_confirmed": {
+    "conductors_per_slot": [
+      4,
+      6,
+      8
+    ],
+    "transient_total_steps_max": 128,
+    "deadline_KST": "2026-10-28T08:00:00+09:00"
+  },
+  "configurations": 816,
+  "geometries": 272,
+  "templates": 1,
+  "train_configurations": 768,
+  "development_configurations": 48,
+  "reserved_excluded": [
+    "R1_0076",
+    "R1_0199"
+  ],
+  "historical_reserved_initial_QC": true,
+  "packing": {
+    "policy": "Keep original R1 stack envelope, width rule, bottom offset, corner chamfer and 0.35mm bare-to-bare gap; recompute bare radial height.",
+    "heights_mm": {
+      "4": 2.7039999999999997,
+      "6": 1.686,
+      "8": 1.177
+    },
+    "six_conductor_baseline_must_reproduce": true,
+    "copper_area_not_constant": true,
+    "manufacturing_qualification": "UNKNOWN"
+  },
+  "excitation": {
+    "pilot": "equal slot ampere-turns to original 6x250 Arms; sinusoidal gamma46.7 deg",
+    "Arms_by_conductors": {
+      "4": 375,
+      "6": 250,
+      "8": 187.5
+    },
+    "phase_series_turns_formula": "48*n/(3*2*parallel); circuit audit required before use"
+  },
+  "solver_scope": {
+    "R1_source": "ipmfea a46e5d8bc0e5621c455915e627279356c1a1269e",
+    "available": "GetDP nonlinear MS source + parameterized geometry; native transient R1 implementation not yet qualified",
+    "do_not_count": "geometry generation, scalar caches or synthetic graphs are not Full-FEA or MGN training"
+  },
+  "pilot_selection": {
+    "geometry_IDs": [
+      "R1_0274",
+      "R1_0207"
+    ],
+    "uses": "ID order only, no held-out labels",
+    "turns": [
+      4,
+      6,
+      8
+    ],
+    "max_MS_cases": 6,
+    "MS_phase_samples_max": 30,
+    "max_transient_cases": 6,
+    "each_transient_steps_max": 128,
+    "launch_gate": "mesh/current/region mapping and solver identity must pass; no blind bulk execution"
+  },
+  "step128_validation": {
+    "known_Ref_anchor": {
+      "Irms": 460,
+      "beta_deg": 36,
+      "rpm": 16000
+    },
+    "max_new_runs": 2,
+    "variants": [
+      "128 samples x 1 period",
+      "64 samples x 2 periods"
+    ],
+    "total_steps_each": 128,
+    "initialization": "cold A=0; initialization sensitivity explicitly diagnosed",
+    "reference": "already completed Ref117 N256P3 and N512P3; compare full P1 and P2 means as separately defined",
+    "automatic_extension": false,
+    "automatic_retry": 0,
+    "production_accuracy_gate": "UNKNOWN until numerical evidence; no invented PASS"
+  },
+  "resources": {
+    "234": "Existing 2x8-thread frozen new-OP runs preserved. Two additional diagnostic workers at8 threads, disjoint affinity, only after preflight.",
+    "133": "L40S CUDA training environment verified; Linux/GetDP/Elmer availability not verified; no assumed FEA readiness.",
+    "training_dispatch": "Independent fixed seeds/ablations, one GPU job per host. Actual FE graph+physical targets required before dispatch; no DDP claim.",
+    "128step_run_estimate_seconds": 700,
+    "128step_case_cap_seconds": 1800,
+    "128step_runs_max": 2,
+    "aggregate_128step_cap_seconds": 3600,
+    "RAM_GiB_each": 16,
+    "disk_GiB_each": 3,
+    "minimum_disk_free_GiB": 32,
+    "max_retries": 0
+  },
+  "fair_comparison": {
+    "existing_newOP8": "Frozen predictions and63 Full calibration unchanged; never reuse these test labels to tune Phase2.",
+    "new_R1_campaign": "Same nested independent Full-label IDs for AF-form recalibration, scalar residual and MS-pretrained MGN; proposed budgets12/24/63 are not yet acquired labels.",
+    "AF_denominator": "canonical mean-square-field Hybrid must be reconstructed for the new geometry before fitting/applying AF. Frozen Ref coefficients must not multiply GetDP proximity labels.",
+    "reference_baseline": "latest frozen JEET AF remains mandatory in existing Ref/SC evaluation",
+    "cross_solver_exact_bridges": 0,
+    "split": "all turns, OPs, solvers and derived labels inherit base geometry/alias group"
+  },
+  "strategy": {
+    "Thesis_SKKU_commit": "6a597523d0ebcc9d9cd367565d4d2a76d41418e2",
+    "document": "mainmatter_v2/CODESIGN_CH07_SCOPE_20260920.md",
+    "application": "Assess geometry/OP-dependent AC-loss and sparse-FEA correction on design-selection decisions, with equal solver budgets and total pipeline time. Energy/mass system study is downstream, not completed here."
+  },
+  "stop": {
+    "deadline_UTC": "2026-10-27T23:00:00Z",
+    "guard_target_UTC": "2026-10-27T22:59:00Z",
+    "scope": "owned process group only after PID start-time verification; preserve partial outputs; never restart other campaigns"
+  },
+  "multisolver_amendment": {
+    "user_direction": "separate Motor-CAD and Elmer networks connected as multi-fidelity/multi-modal model",
+    "primary_new_R1_solver": "Motor-CAD under native geometry/128-total-step pilot; Elmer retained as separate domain",
+    "exact_bridge_count": 0,
+    "paired_alignment_enabled": false,
+    "architecture": "dual_solver_mgn.py",
+    "stage": "implemented_not_trained"
+  }
+}

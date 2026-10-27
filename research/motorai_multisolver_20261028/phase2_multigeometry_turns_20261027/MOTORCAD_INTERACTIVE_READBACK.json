@@ -1,0 +1,52 @@
+{
+  "experiment": "02_interactive_token",
+  "status": "TIMEOUT",
+  "checked_UTC": "2026-10-27T13:40:06.390499+00:00",
+  "wall_cap_seconds": 180,
+  "solver_runs": 0,
+  "automatic_retries": 0,
+  "API_new_instance_PID_recorded": true,
+  "geometry_readback": "UNKNOWN_no_result_receipt",
+  "actual_conductor_counts": "UNKNOWN",
+  "actual_solver_steps": "UNKNOWN",
+  "existing_user_process_preserved": true,
+  "guard": {
+    "pid": 173052,
+    "create_time": 1793107949.6943564,
+    "finished": true,
+    "returncode": "timeout",
+    "solver_runs": 0
+  },
+  "owned_processes": [
+    {
+      "record": "GUARD_RECEIPT.json",
+      "pid": 173052,
+      "alive": true,
+      "same_start_time": false
+    },
+    {
+      "record": "MC_OWNER.json",
+      "pid": 191788,
+      "alive": false,
+      "same_start_time": false
+    }
+  ],
+  "saved_mot_files": [
+    {
+      "name": "probe_slot4.mot",
+      "bytes": 677430,
+      "sha256": "ee385430e406493bd161501961aedac7c4653404c1ccd51a6048a4850e14a068"
+    },
+    {
+      "name": "probe_slot6.mot",
+      "bytes": 677748,
+      "sha256": "be1a03d3640b5ea18bdd0851cededc7fbf39b02ad9fe75b3eb63d909aab34eb0"
+    },
+    {
+      "name": "source.mot",
+      "bytes": 676613,
+      "sha256": "e6877908c323373f63a6e29464382f2c286aeca87ce46ef650df6e22838c28c5"
+    }
+  ],
+  "interpretation": "New API instance PID was recorded, but the bounded native geometry/readback trial did not complete. Not a solver or license qualification. No third launch."
+}

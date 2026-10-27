@@ -1,0 +1,74 @@
+{
+  "checked_UTC": "2026-10-27T14:35:01.688461+00:00",
+  "scope": "Motor-CAD native element Bx/By pretraining diagnostic; not AC loss or equal-Full-budget comparison",
+  "original_manifest_rows": 480,
+  "declared_geometry_groups": 360,
+  "original_copy_HDF5_SHA256_matches": 440,
+  "initial_source_unlinked": 40,
+  "native_manifest_geometry_mismatch_quarantined": 80,
+  "eligible_old_train_cases": 360,
+  "prepared_cases": 20,
+  "train_geometries": 16,
+  "inner_development_geometries": 4,
+  "graphs": 180,
+  "original_test_cases_used": 0,
+  "new_FEA_runs": 0,
+  "historical_Full_donor_training_cases": 16,
+  "historical_Full_donor_development_cases": 4,
+  "MS_teacher_cases": 0,
+  "exact_cross_solver_pairs": 0,
+  "field_reader_arithmetic": "PASS_all20_cases_all45_steps",
+  "formal_mesh_period_convergence": "UNKNOWN",
+  "AC_loss_accuracy": "NOT_EVALUATED",
+  "paired_alignment": false,
+  "metric_definition": "100*sqrt(sum(area*||Bpred-B||^2)/sum(area*||B||^2)); pooled geometry snapshots; a2 excluded",
+  "memory_contract": "10GiB checks PyTorch peak allocated between graphs; not a hard whole-device limit",
+  "seed_comparison": "Fixed final epochs, no seed selection. Host/Torch and seed differ together; not pure seed variance.",
+  "runs": [
+    {
+      "host": "133",
+      "seed": 17,
+      "status": "COMPLETED",
+      "epochs": 10,
+      "updates": 1445,
+      "inner_development_vector_nRMSE_percent": 58.18633012204968,
+      "train_vector_nRMSE_percent": 62.07407167432735,
+      "peak_torch_allocated_MiB": 311.1484375,
+      "elapsed_seconds": 90.25,
+      "torch": "2.5.1+cu124",
+      "checkpoint": {
+        "bytes": 318193,
+        "sha256": "84da8edcca0ebdf3a1e9a1429bd41d1fe1f7856948e96797271b0746fe16f1d9",
+        "logical_key": "host133/B_FIELD_PILOT/result/last.pt"
+      },
+      "guard_exitcode": 0,
+      "native_process_live": false,
+      "container_state": null
+    },
+    {
+      "host": "234",
+      "seed": 29,
+      "status": "COMPLETED",
+      "epochs": 10,
+      "updates": 1445,
+      "inner_development_vector_nRMSE_percent": 60.31689220403892,
+      "train_vector_nRMSE_percent": 63.069688588514815,
+      "peak_torch_allocated_MiB": 311.1484375,
+      "elapsed_seconds": 209.2292770827189,
+      "torch": "2.10.0a0+a36e1d39eb.nv26.01.42222806",
+      "checkpoint": {
+        "bytes": 318648,
+        "sha256": "e0444a7df99355679fa0186e691482bfcc007bf1c1cd44ca116566c22f44481e",
+        "logical_key": "host234/B_FIELD_PILOT/result/last.pt"
+      },
+      "guard_exitcode": 0,
+      "native_process_live": null,
+      "container_state": {
+        "Running": false,
+        "ExitCode": 0,
+        "StartedAt": "2026-10-27T14:24:06.139623126Z",
+        "FinishedAt": "2026-10-27T14:27:44.754406783Z"
+      }
+    }
+  ]
+}

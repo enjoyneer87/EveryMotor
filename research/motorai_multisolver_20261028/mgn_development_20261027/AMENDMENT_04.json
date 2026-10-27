@@ -1,0 +1,12 @@
+{
+  "scope":"Final small aggregate compute-bound correction based on observed step rates; no new cases, retries, solver physics, labels or model training",
+  "observed":{"N256_P3":{"steps_started":577,"elapsed_seconds":2832.88},"N512_P3":{"steps_started":279,"elapsed_seconds":1425.86},"fine_N256_P3":{"steps_started":220,"elapsed_seconds":1425.80}},
+  "projected_aggregate_case_seconds":16600,
+  "old_aggregate_case_elapsed_limit_seconds":16200,
+  "final_aggregate_case_elapsed_limit_seconds":17000,
+  "change_percent":4.9382716,
+  "per_case_limits":"unchanged5400/8400/5400seconds; maximum3 production cases, no retries",
+  "reason":"Avoid an artificial timeout near the final period solely from the initial coarse-case runtime estimate; new bound is fixed before numerical sensitivity outcomes are known",
+  "implementation":"Replace only the owned coordinator after PID/start-tick verification, preserve its last receipt and original source. All3 native solver processes continue unchanged. The replacement retains the duplicate-prevention STOP after the first native process exits.",
+  "further_automatic_extension":false
+}

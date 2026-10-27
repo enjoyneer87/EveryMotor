@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "tests": 12,
+  "command": "python -m unittest -v test_return.py",
+  "native_reintegrations_total": 42,
+  "new_native_reintegrations": 36,
+  "MS_raw_cases": 24,
+  "MS_local_original_member_hashes_checked": 312,
+  "HalfSC_local_metadata_hashes_checked": 244,
+  "HalfSC_native_consumed_member_hashes_checked": 576,
+  "source_hash_mismatches": 0,
+  "source_byte_modifications": 0,
+  "new_solver_calls": 0,
+  "new_training_calls": 0,
+  "independent_HalfSC_shard_quadrature_cases": 3,
+  "expected_current_metric_unit": "original step rows dimensionless; percent=100*ratio",
+  "max_current_metric_delta_percent": 1.3552527156068805e-20,
+  "scientific_scope": "numerical reproduction and source lineage only; period/mesh convergence UNKNOWN; exploratory4 frozen archive root UNKNOWN",
+  "transport_bundles": {
+    "MS24_sha256": "61e52de401af7e4eb4ef824b08b78f2a7113efb49baac0da21c0907808927694",
+    "HalfSC_return_sha256": "d48642c234f822305a9306baf2e05c0fa86d8280f94f80844bfcb63e01e33d12"
+  }
+}

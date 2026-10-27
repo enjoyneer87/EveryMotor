@@ -1,0 +1,20 @@
+{
+  "python": "3.12.12",
+  "numpy": "2.3.5",
+  "dependencies": [
+    "Python >=3.10",
+    "NumPy"
+  ],
+  "solver_invocations": 0,
+  "training_invocations": 0,
+  "third_party_installs": 0,
+  "iso_recovery_runtime": {
+    "python": "3.13.7",
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  },
+  "canonical_MS_dependencies": [
+    "NumPy",
+    "matplotlib"
+  ]
+}

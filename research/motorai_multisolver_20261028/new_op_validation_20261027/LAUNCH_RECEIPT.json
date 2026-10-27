@@ -1,0 +1,55 @@
+{
+  "checked_UTC": "2026-10-27T11:10:33.912890+00:00",
+  "freeze_commit": "7f041786053e6fdc5c824f003c55af7a5f96076d",
+  "host": "iso",
+  "tasks": [
+    "Codex-JEET-NewOP-20261027-Ref",
+    "Codex-JEET-NewOP-20261027-SC"
+  ],
+  "pilots_PASS": 2,
+  "production_running": 2,
+  "production_completed": 0,
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "automatic_retries": 0,
+  "worker_progress": {
+    "Ref": {
+      "case": "Ref_I230.05_B36_N6000",
+      "condition_case": "Ref_I230.05_B36_N6000",
+      "steps_started": 15,
+      "expected_steps": 768,
+      "elapsed_seconds": 80.05345774581656,
+      "pid": 279402,
+      "peak_RSS_bytes": 115167232,
+      "output_bytes": 84731703,
+      "completed": [
+        {
+          "case": "pilot8",
+          "condition_case": "Ref_I230.05_B36_N6000",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        }
+      ]
+    },
+    "SC": {
+      "case": "SC_I460.1_B36_N6000",
+      "condition_case": "SC_I460.1_B36_N6000",
+      "steps_started": 15,
+      "expected_steps": 768,
+      "elapsed_seconds": 80.0525378799066,
+      "pid": 279403,
+      "peak_RSS_bytes": 116318208,
+      "output_bytes": 84927167,
+      "completed": [
+        {
+          "case": "pilot8",
+          "condition_case": "SC_I460.1_B36_N6000",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        }
+      ]
+    }
+  },
+  "stop_scope": "owned Linux process groups after PID start-tick match; native worker checks deadline every5seconds"
+}

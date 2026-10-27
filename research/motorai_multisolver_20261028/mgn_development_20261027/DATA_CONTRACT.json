@@ -1,0 +1,82 @@
+{
+  "source_commit": "4c6ef9325dd0539b0220fb2817782562b9932fb7",
+  "latest_AF_source_commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+  "target": {
+    "quantity": "active winding AC excess = total Joule minus prescribed transport DC",
+    "unit": "W",
+    "scope": "full motor, active length only; eight sectors, 0.15m active length",
+    "average": "P2 uniform post-step mean, original steps257..512",
+    "sigma_S_m": 47092391.429245,
+    "qualification": "historical P2 current gates retained; whole-history, period and mesh qualities remain separate. New Ref_P117 numerical experiments do not replace the frozen target set.",
+    "denominator": "canonical mean-square-field Hybrid, original 128phase x600 spatial |B| samples plus skin-excess; no new evaluator substitution"
+  },
+  "graph": {
+    "source": "Ref24 recovered ALL_A_HISTORY.npz and original mesh topology",
+    "nodes": 1377,
+    "triangular_elements": 2191,
+    "directed_edges": 7124,
+    "edge_definition": "unique undirected pairs from each original FE triangle, duplicated both directions; no kNN",
+    "physical_domains": [
+      2401,
+      2402,
+      2403,
+      2404,
+      2405,
+      2406
+    ],
+    "domain_scope": "six stationary homogenized slots, disconnected across slots; no discrete copper boundary, moving rotor or periodic boundary graph",
+    "node_coordinate_units": "m in original stationary global Cartesian frame",
+    "node_static": "x/0.1m,y/0.1m,sin(slot_index*pi/3),cos(slot_index*pi/3)",
+    "global_inputs": "Ref source Irms/460A,beta/90deg,sin(electrical_phase),cos(electrical_phase)",
+    "B_input_or_supervision": "B is supervision only, not a forward-input feature. The learned encoder maps geometry/condition/phase to latent and B. The Full residual head uses that frozen conditional latent.",
+    "edge_features": "destination minus source normalized xy, Euclidean norm",
+    "B_target": "element P1 curl of A, then incident-element area-weighted projection to nodes; float32 T",
+    "B_definition": "Bx=dAz/dy,By=-dAz/dx",
+    "node_weight": "sum incident element area/3, normalized by total selected domain area",
+    "phase": "128 post-step phases, 2pi*(1..128)/128",
+    "phase_monitor": "indices7,15,...,127 excluded from optimizer batches; MS only",
+    "disposable_GPU_sanity": "The discarded20-update sanity net uses first8source/phase pairs, including phase index7 once. No sanity weights, optimizer state or seed stream enter any final net. Phase exclusion refers to the3 final networks; no globally-never-opened claim is made for MS phases.",
+    "interface_policy": "original node IDs retained; slot domains are disconnected. No coordinate-based ID merging. Copper J or Motor-CAD Je terminology is not introduced.",
+    "projection_limit": "This projection and vector-B MSE do not preserve mean(B squared) automatically. Canonical loss always uses the separately audited original spatial sample evaluator.",
+    "training_tensor": "MS_graph_data.npz remains in private raw storage; source SHA256 values and deterministic builder provided"
+  },
+  "residual_head": {
+    "target": "log(Full_AC_excess_W/canonical_Hybrid_W)",
+    "geometry_scales": {
+      "Ref": 1.0,
+      "SC": 2.0,
+      "HalfSC": 1.5
+    },
+    "base_features": "current/(scale*460),beta/90,log(speed/16000),log(scale)",
+    "learned_features": "96 values: area-weighted48-dimensional node latent pooled over128phases by phase mean and standard deviation",
+    "normalization": "fit-subset mean and standard deviation, then block dimension normalization; no eval rows used to fit preprocessing",
+    "hyperparameters": "9 Gaussian ridge candidates, leave-one-MS-source-group-out CV on63 calibration rows only",
+    "prediction": "positive Hybrid*exp(predicted log residual)",
+    "cost": "3 frozen neural seeds reported separately; no best-seed selection. MS solves and graph encoding are extra LF costs, not extra Full labels. Existing AF also requires canonical MS/Hybrid inputs."
+  },
+  "split": {
+    "Full_calibration": {
+      "Ref": 36,
+      "SC": 27,
+      "HalfSC": 0
+    },
+    "evaluation": {
+      "Ref_own_excluded": 60,
+      "SC_own_excluded": 69,
+      "SC_own_and_transfer_coordinate_excluded": 57,
+      "HalfSC_predeclared": 32,
+      "HalfSC_exploratory": 4
+    },
+    "excluded_every_stage": [
+      "R1_0199",
+      "R1_0076"
+    ],
+    "geometry_zero_shot": false,
+    "reference_template_zero_shot": false,
+    "new_never_opened_final_test": false,
+    "HalfSC_statement": "No HalfSC labels or fields used in this run's training/pretraining/tuning. Historical QC and prior AF evaluation exist; do not call it globally never-opened.",
+    "MS_mapping": "existing exact/bounded mapping retained; maximum source current difference0.0375A in Ref-normalized units",
+    "cross_solver_exact_bridges": 0
+  },
+  "new_FEA_readback_scope": "Full-time scalar/current reconstructed from native A plus circuit voltage using BE/BDF2. Sparse-J reintegration agreement checks reader/shard consistency, not an independent second solver loss output. Historical adoptedP2 and prescribed currents are independent comparison references."
+}

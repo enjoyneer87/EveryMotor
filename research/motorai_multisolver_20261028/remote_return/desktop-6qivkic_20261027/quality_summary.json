@@ -1,0 +1,151 @@
+{
+  "schema": "elmer-lineup-return-quality-v1",
+  "new_solver_runs": 0,
+  "new_training_runs": 0,
+  "canonical_AF_refit": false,
+  "authorization": "New direct user follow-up after 2026-10-27 09:00 KST; old automation remains paused",
+  "scope": "MGN/scalar/multisource method development data handoff, not manuscript or reviewer response",
+  "counts": {
+    "requested_latest_Full_conditions": 192,
+    "found_latest_field_derived_histories": 192,
+    "verified_latest_history_hashes": 192,
+    "original240_conditions": 240,
+    "full240_histories_reaggregated": 240,
+    "raw_Full_conditions_reintegrated": 42,
+    "raw_latest_Full_reintegrated": 5,
+    "raw_low_current_control_reintegrated": 1,
+    "MS_requested_raw_histories": 24,
+    "MS_raw_histories_found": 24,
+    "MS_manifests_verified": 24,
+    "HalfSC_scalar_conditions": 36,
+    "HalfSC_raw_found": 36,
+    "HalfSC_predeclared": 32,
+    "HalfSC_exploratory": 4,
+    "low48_archive_files_present": 48,
+    "source_unique_geometries": 3,
+    "independent_reference_templates": 1,
+    "exact_cross_source_bridges": 0,
+    "observations": 1668,
+    "new_independent_Full_FEA_labels": 0,
+    "MS_raw_histories_missing": 0,
+    "HalfSC_raw_reintegrated": 36,
+    "HalfSC_raw_missing": 0,
+    "raw_MS_to_Full_pairs": 41,
+    "logical_MS_to_Full_pairs": 228
+  },
+  "A_provenance": {
+    "status": "UNKNOWN",
+    "latest192_integral_source_hash": "PASS",
+    "frozen46_hashes": "PASS",
+    "missing": "No MS24 or HalfSC36 raw case missing. Exploratory4 standalone preservation receipts/frozen archive-root hashes absent; other nonselected Full native files not reread.",
+    "MS24_original_hashes": "PASS",
+    "HalfSC32_frozen_archive_manifest_hash": "PASS",
+    "HalfSC36_consumed_raw_member_hash": "PASS",
+    "HalfSC4_independent_archive_hash_root": "UNKNOWN"
+  },
+  "B_quantities": {
+    "status": "PASS",
+    "scope": "selected Elmer P1/transport decomposition and fixed canonical Hybrid contract only; other solvers not homogenized",
+    "conductivity_S_m": 47092391.429245,
+    "active_length_m": 0.15,
+    "reference_bare_copper_mm": [
+      3.711,
+      1.686
+    ],
+    "geometry_rule": "each raw case uses its own model/area/radial factor; reference dimensions are not assigned to unrelated R1 geometries",
+    "temperature_direct_readback": "UNKNOWN",
+    "skin_proximity_decomposition_of_Full": "not uniquely defined; no fabricated split"
+  },
+  "C_reintegration": {
+    "status": "UNKNOWN",
+    "field_derived_reaggregation_status": "PASS",
+    "field_derived_loss_error_W": {
+      "count": 240,
+      "max_abs": 5.238689482212067e-10,
+      "mean_abs": 2.192907487541529e-11
+    },
+    "latest192_AC_error_W": {
+      "count": 192,
+      "max_abs": 3.4924596548080444e-10,
+      "mean_abs": 1.2000215636002546e-11
+    },
+    "raw_reintegration_status": "PASS",
+    "raw_AC_error_W": {
+      "count": 42,
+      "max_abs": 3.4924596548080444e-10,
+      "mean_abs": 2.3525394595343602e-11
+    },
+    "raw_current_P2_counts": {
+      "FAIL": 1,
+      "PASS": 41
+    },
+    "full240_current_P2_counts": {
+      "FAIL": 48,
+      "PASS": 192
+    },
+    "full240_current_whole_counts": {
+      "FAIL": 71,
+      "PASS": 169
+    },
+    "latest192_current_P2_counts": {
+      "PASS": 192
+    },
+    "latest192_current_whole_counts": {
+      "PASS": 169,
+      "FAIL": 23
+    },
+    "raw_MS_A_B_Hybrid_status": "PASS",
+    "period_convergence": "UNKNOWN",
+    "mesh_convergence": "UNKNOWN",
+    "numerical_replay_tolerance_W": 1e-06,
+    "current_gate_percent": 0.001,
+    "current_gate_source": "SCIENTIFIC_GATES.json physical_current and original CURRENT_LOSS_AUDIT physical_gate_pct",
+    "no_overall_physical_PASS": true,
+    "HalfSC36_current_P2_counts": {
+      "PASS": 36
+    },
+    "HalfSC36_current_whole_counts": {
+      "PASS": 33,
+      "FAIL": 3
+    },
+    "HalfSC36_max_abs_AC_delta_W": 2.6193447411060333e-10,
+    "MS24_B_cache_bitwise_equal": 24,
+    "raw_MS_Hybrid_max_abs_delta_W": 3.637978807091713e-12
+  },
+  "D_masks": {
+    "status": "PASS",
+    "masks": {
+      "Ref": {
+        "own_AF_calibration": 36,
+        "transferred_probe_coordinate": 0,
+        "paper_own_calibration_excluded": 60,
+        "paper_own_and_transfer_coordinates_excluded": 60,
+        "HalfSC_predeclared32": 0,
+        "HalfSC_exploratory4": 0
+      },
+      "SC": {
+        "own_AF_calibration": 27,
+        "transferred_probe_coordinate": 12,
+        "paper_own_calibration_excluded": 69,
+        "paper_own_and_transfer_coordinates_excluded": 57,
+        "HalfSC_predeclared32": 0,
+        "HalfSC_exploratory4": 0
+      },
+      "HalfSC": {
+        "own_AF_calibration": 0,
+        "transferred_probe_coordinate": 0,
+        "paper_own_calibration_excluded": 0,
+        "paper_own_and_transfer_coordinates_excluded": 0,
+        "HalfSC_predeclared32": 32,
+        "HalfSC_exploratory4": 4
+      }
+    },
+    "pseudo_label_new_truth": 0
+  },
+  "E_split": {
+    "status": "PASS",
+    "reserved_return_records": 0,
+    "template_generalization": "not demonstrated",
+    "global_group_count_preserved": 277
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "phase": "COMPUTATION_COMPLETE",
+  "model_comparison_complete": true,
+  "numerical_variants_complete": 3,
+  "numerical_variants_requested": 3,
+  "new_physical_training_labels": 0,
+  "automatic_resume": false,
+  "source_automations_unchanged": true,
+  "model_changes_after_evaluation": false,
+  "formal_period_mesh_time_qualification": "UNKNOWN",
+  "overall_AF_improvement_goal_achieved": false
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "native geometry/settings readback only; no magnetic calculation",
+  "solver_runs": 0,
+  "cases": [],
+  "status": "FAILED",
+  "error": "psutil.NoSuchProcess(pid=187736, msg='process no longer exists')",
+  "guard_finished": true,
+  "existing_user_process_154024_preserved": true,
+  "matching_application_error_events_found": 0
+}

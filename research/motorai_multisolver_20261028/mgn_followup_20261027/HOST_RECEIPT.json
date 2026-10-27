@@ -1,0 +1,35 @@
+{
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "torch": "2.5.1+cu124",
+  "cuda": "12.4",
+  "GPU": "NVIDIA L40S",
+  "wheels": {
+    "filelock-3.32.3-py3-none-any.whl": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09",
+    "fsspec-2026.7.0-py3-none-any.whl": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279",
+    "jinja2-3.1.6-py3-none-any.whl": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+    "markupsafe-3.0.3-cp312-cp312-win_amd64.whl": "26a5784ded40c9e318cfc2bdb30fe164bdb8665ded9cd64d500a34fb42067b1c",
+    "mpmath-1.3.0-py3-none-any.whl": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+    "networkx-3.6.1-py3-none-any.whl": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762",
+    "numpy-1.26.4-cp312-cp312-win_amd64.whl": "08beddf13648eb95f8d867350f6a018a4be2e5ad54c8d8caed89ebca558b2818",
+    "psutil-6.1.1-cp37-abi3-win_amd64.whl": "f35cfccb065fff93529d2afb4a2e89e363fe63ca1e4a5da22b603a85833c2649",
+    "scipy-1.13.1-cp312-cp312-win_amd64.whl": "cdd7dacfb95fea358916410ec61bbc20440f7860333aee6d882bb8046264e949",
+    "setuptools-78.1.0-py3-none-any.whl": "3e386e96793c8702ae83d17b853fb93d3e09ef82ec62722e61da5cd22376dcd8",
+    "sympy-1.13.1-py3-none-any.whl": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8",
+    "torch-2.5.1+cu124-cp312-cp312-win_amd64.whl": "3c3f705fb125edbd77f9579fa11a138c56af8968a10fc95834cdd9fdf4f1f1a6",
+    "typing_extensions-4.16.0-py3-none-any.whl": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+  },
+  "sanity": {
+    "status": "PASS",
+    "first_loss": 0.7265602946281433,
+    "last_loss": 0.5645671486854553,
+    "updates": 20,
+    "discarded": true,
+    "analytic_curl_max_abs_T": 6.103515625e-05,
+    "float32_raw_replay_max_abs_T": 1.0728836059570312e-06,
+    "seconds": 0.375
+  },
+  "host_logical_id": "hpc133",
+  "public_key_login_verified": true,
+  "SSH_host_fingerprint_verified_from_user_console": true,
+  "task_scope": "new isolated directory and venv; existing AEDT process preserved"
+}

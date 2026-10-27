@@ -1,0 +1,632 @@
+[
+  {
+    "case_id": "ISO64_ACQ_Ref_P010_N256_P2_A01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 54.0,
+    "speed": 2000.0,
+    "source_key": "Ref_Ref_P100",
+    "hybrid": 26.39144183490035,
+    "truth": 54.430779216983225
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P012_N256_P2_R01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 90.0,
+    "speed": 2000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 27.8319506344752,
+    "truth": 35.34792274857357
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P021_N256_P2_A01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 36.0,
+    "speed": 2000.0,
+    "source_key": "Ref_Ref_P111",
+    "hybrid": 159.5658448131942,
+    "truth": 551.8601626384383
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P025_N256_P2_A01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 0.0,
+    "speed": 2000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 182.89495254287158,
+    "truth": 1002.0166044729931
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P040_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 54.0,
+    "speed": 4000.0,
+    "source_key": "Ref_Ref_P100",
+    "hybrid": 105.5657673396014,
+    "truth": 203.40641606739104
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P042_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 90.0,
+    "speed": 4000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 111.3278025379008,
+    "truth": 133.25104036064516
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P051_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 36.0,
+    "speed": 4000.0,
+    "source_key": "Ref_Ref_P111",
+    "hybrid": 638.2633792527768,
+    "truth": 2111.394155872743
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P055_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 0.0,
+    "speed": 4000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 731.5798101714863,
+    "truth": 3760.168657627558
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P070_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 54.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P100",
+    "hybrid": 422.2630693584056,
+    "truth": 722.2972174257764
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P072_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 90.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 445.3112101516032,
+    "truth": 495.203705425575
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P081_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 36.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P111",
+    "hybrid": 2553.053517011107,
+    "truth": 7640.92897149435
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P085_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 0.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 2926.3192406859453,
+    "truth": 13537.854588861677
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P097_N256_P2_R01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P097",
+    "hybrid": 1319.4168578956956,
+    "truth": 3572.1855985947705
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P098_N256_P2_R01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P098",
+    "hybrid": 1489.5342643042354,
+    "truth": 3508.808832746727
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P099_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P099",
+    "hybrid": 1633.9823020080012,
+    "truth": 3127.094144177049
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P100_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P100",
+    "hybrid": 1689.0522774336223,
+    "truth": 2464.9059376108617
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P101_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P101",
+    "hybrid": 1718.1971914209926,
+    "truth": 2076.971277559712
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P102_N256_P2_Q01",
+    "model": "Ref",
+    "current": 115.07499999999999,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 1781.2448406064127,
+    "truth": 1849.7780821581384
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P103_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P103",
+    "hybrid": 4079.274562786973,
+    "truth": 14119.861216694275
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P104_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P104",
+    "hybrid": 4753.1427190175755,
+    "truth": 13181.813022784234
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P105_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P105",
+    "hybrid": 5629.130078961042,
+    "truth": 12527.305795960025
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P106_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P106",
+    "hybrid": 6523.762696546439,
+    "truth": 10973.6192209356
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P107_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P107",
+    "hybrid": 6753.704200809571,
+    "truth": 8432.750507795547
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P108_N256_P2_Q01",
+    "model": "Ref",
+    "current": 230.04999999999998,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P108",
+    "hybrid": 6667.937133501539,
+    "truth": 8631.215522389668
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P109_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P109",
+    "hybrid": 7516.546466005472,
+    "truth": 28200.76423296584
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P110_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P110",
+    "hybrid": 8530.327517255155,
+    "truth": 26447.07551811584
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P111_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P111",
+    "hybrid": 10212.214068044428,
+    "truth": 25617.61359293765
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P112_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P112",
+    "hybrid": 12668.737974555903,
+    "truth": 23102.591043927627
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P113_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P113",
+    "hybrid": 14283.210556263684,
+    "truth": 18755.618145902896
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P114_N256_P2_Q01",
+    "model": "Ref",
+    "current": 345.025,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P114",
+    "hybrid": 13857.097822900494,
+    "truth": 18672.956113921777
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P115_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 11705.276962743781,
+    "truth": 45759.550834357666
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P116_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P116",
+    "hybrid": 12825.33912674371,
+    "truth": 43648.224363083675
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P117_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P117",
+    "hybrid": 14910.85871973965,
+    "truth": 41600.73326340252
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P118_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P118",
+    "hybrid": 18264.342100437538,
+    "truth": 37039.94237561167
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P119_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P119",
+    "hybrid": 22683.02407743719,
+    "truth": 31919.957830248553
+  },
+  {
+    "case_id": "ISO64_ACQ_Ref_P120_N256_P2_Q01",
+    "model": "Ref",
+    "current": 460.0,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P120",
+    "hybrid": 22839.66877407453,
+    "truth": 32827.05237723023
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P072_N256_P2_Q01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 90.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 6723.066673319788,
+    "truth": 6914.886919284889
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P085_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 0.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 44302.46693602529,
+    "truth": 134212.74841395556
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P088_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 54.0,
+    "speed": 8000.0,
+    "source_key": "Ref_Ref_P118",
+    "hybrid": 69011.7283645678,
+    "truth": 116615.4099880369
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P097_N256_P2_R01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P097",
+    "hybrid": 14354.704068556339,
+    "truth": 27348.001080046015
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P098_N256_P2_R01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P098",
+    "hybrid": 16167.344099369426,
+    "truth": 28520.92820429588
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P099_N256_P2_Q01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P099",
+    "hybrid": 17706.4711119542,
+    "truth": 28246.01207592431
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P100_N256_P2_Q01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P100",
+    "hybrid": 18293.25434630853,
+    "truth": 26287.87484215533
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P101_N256_P2_Q01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P101",
+    "hybrid": 18603.800097642415,
+    "truth": 25163.108128734617
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P102_N256_P2_Q01",
+    "model": "SC",
+    "current": 230.075,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P102",
+    "hybrid": 19275.587277889575,
+    "truth": 24564.332365497437
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P103_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P103",
+    "hybrid": 44650.1774525231,
+    "truth": 99525.98182226719
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P104_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P104",
+    "hybrid": 51830.39740332808,
+    "truth": 102172.24180435587
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P105_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P105",
+    "hybrid": 61164.24388407299,
+    "truth": 106012.13452164625
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P106_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P106",
+    "hybrid": 70696.75986666429,
+    "truth": 105427.07880966019
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P107_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P107",
+    "hybrid": 73146.83939804263,
+    "truth": 98908.46469646104
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P108_N256_P2_Q01",
+    "model": "SC",
+    "current": 460.05,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P108",
+    "hybrid": 72232.97160044272,
+    "truth": 98614.05073972672
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P109_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P109",
+    "hybrid": 82756.19571104585,
+    "truth": 191954.08534905076
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P110_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P110",
+    "hybrid": 93558.26561541455,
+    "truth": 194422.5199204821
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P111_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P111",
+    "hybrid": 111479.15304021686,
+    "truth": 205816.21714846237
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P112_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P112",
+    "hybrid": 137653.97937690924,
+    "truth": 213070.23826376395
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P113_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P113",
+    "hybrid": 154856.55548029597,
+    "truth": 206528.15690707328
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P114_N256_P2_Q01",
+    "model": "SC",
+    "current": 690.025,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P114",
+    "hybrid": 150316.226454362,
+    "truth": 210084.94992504947
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P115_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 0.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P115",
+    "hybrid": 129461.71887835595,
+    "truth": 304535.5889675503
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P116_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 18.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P116",
+    "hybrid": 141396.23844532887,
+    "truth": 307405.87119949854
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P117_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 36.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P117",
+    "hybrid": 163617.92862458667,
+    "truth": 320897.4520996694
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P118_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 54.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P118",
+    "hybrid": 199350.06413529033,
+    "truth": 327705.18830589135
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P119_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 72.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P119",
+    "hybrid": 246432.13530034787,
+    "truth": 334085.5153142638
+  },
+  {
+    "case_id": "ISO64_ACQ_SC_P120_N256_P2_Q01",
+    "model": "SC",
+    "current": 920.0,
+    "beta": 90.0,
+    "speed": 16000.0,
+    "source_key": "Ref_Ref_P120",
+    "hybrid": 248101.22051469414,
+    "truth": 359743.080266575
+  }
+]

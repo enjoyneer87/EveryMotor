@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "cases": 3,
+  "scope": "NPZ/ID/FE connectivity/phase quadrature validation only",
+  "rows": [
+    {
+      "point_id": "HALFSC_FIG14_N16000_I690_B36_N256_P2_A02",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 8.731149137020111e-11,
+      "max_current_delta_A": 3.410605131648481e-13,
+      "max_A_curl_B_delta_T": 6.106226635438361e-16,
+      "min_B_variance_T2": 1.513177965016477e-05,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "HALFVAL_N16000_L4_B90_N256_P2_A01",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 4.3655745685100555e-11,
+      "max_current_delta_A": 4.547473508864641e-13,
+      "max_A_curl_B_delta_T": 8.881784197001252e-16,
+      "min_B_variance_T2": 1.019234560590421e-05,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "HALFVAL_N2000_L1_B00_N256_P2_A01",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 9.094947017729282e-13,
+      "max_current_delta_A": 5.684341886080802e-14,
+      "max_A_curl_B_delta_T": 1.942890293094024e-16,
+      "min_B_variance_T2": 3.093326758034427e-07,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    }
+  ]
+}

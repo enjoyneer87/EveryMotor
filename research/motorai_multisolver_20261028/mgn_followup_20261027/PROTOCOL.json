@@ -1,0 +1,15 @@
+{
+  "schema":"jeet-mgn-curl-followup-v1",
+  "status":"preregistered_before_followup_training",
+  "deadline_UTC":"2026-10-27T23:00:00Z",
+  "deadline_KST":"2026-10-28T08:00:00+09:00",
+  "scope":"Followup development after primary Full evaluation was opened. No claim of a new unopened Full test.",
+  "frozen_primary":"../mgn_development_20261027",
+  "data":{"MS_sources":24,"calibration_Full_unique":63,"Ref":36,"SC":27,"HalfSC_training":0,"reserved_all_sources":["R1_0199","R1_0076"],"source_current_mapping":"unchanged including bounded matches","Full_evaluation_truth_loaded":false},
+  "model":{"hidden":48,"message_passes":4,"output":"scalar nodal A; exact P1 element curl gives B","nodes":1377,"elements":2191,"directed_edges":7124,"graph":"same six disconnected stationary homogenized slots and original FE adjacency as primary study","gauge":"independent area-weighted nodal A mean removed per slot","loss":"area-weighted element vector-B MSE normalized by training B RMS plus 0.1 times gauge-centered nodal-A MSE normalized by training A RMS","training_target":"original Elmer nodal A and its element B; Motor-CAD element-averaged A is not imported","B_or_A_input":false},
+  "training":{"seeds":[17,29,43],"batch":8,"updates":18000,"phase_train":"index modulo8 !=7","phase_monitor":"index modulo8 ==7; auxiliary known-source monitor, not a globally unopened test","phase_sanity":"first20 updates discarded; no weights reused","schedule":"Adam lr0.001 for1800updates; new Adam at1801 with cosine0.0003 to0.00001 for16200updates, matching primary two-stage optimization","checkpoint":"fixed final update, no best-stage/seed selection"},
+  "downstream":{"head":"same Gaussian ridge log Full/Hybrid residual","selection":"same9 hyperparameters using grouped inner CV on calibration63 only","reported":"calibration group-CV and MS field monitor only; no HalfSC or primary Full evaluation reranking","input_features":"same normalized scalar features and96 pooled latent features"},
+  "bounds":{"production_runs":3,"automatic_retries":0,"wall_seconds_per_seed":3600,"aggregate_training_seconds":10800,"GPU_tensor_GiB":12,"RAM_GiB":16,"CPU_threads":4,"disk_GiB":20,"sanity_updates":20,"stop":"UTC deadline and owned STOP checked each update; outer supervisor verifies process creation time and terminates only owned process tree","expected_training_minutes_total":20},
+  "reused_idea":"EveryMotor exact P1 nodal-A to element-B supervision; actual E1 checkpoint representation must be checked separately, filename/trainer name does not establish it.",
+  "formal_physical_qualification":"UNKNOWN; auxiliary MS accuracy is not Full AC accuracy"
+}

@@ -1,0 +1,20 @@
+{
+  "source_files": [
+    {
+      "logical_key": "ms_coverage_audit\\SPLIT_PREDECLARED.json",
+      "sha256": "d491b6c7e350049f5f1f8485286f3eacec47a60eabbf8a0bb97d68af979ba0cc",
+      "bytes": 14041
+    },
+    {
+      "logical_key": "inventory\\r1_design_metadata.csv",
+      "sha256": "524c08eea29eb804da735bfa00da57bd5e9281b593fee68719da2e3d4f11e7f3",
+      "bytes": 75394
+    }
+  ],
+  "source_revisions": {
+    "ipmfea": "a46e5d8bc0e5621c455915e627279356c1a1269e",
+    "Thesis_SKKU": "6a597523d0ebcc9d9cd367565d4d2a76d41418e2"
+  },
+  "raw_geometry_location": "private source-key path map; not GitHub",
+  "absolute_paths_published": false
+}

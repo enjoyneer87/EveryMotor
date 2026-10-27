@@ -1,0 +1,43 @@
+{
+  "checked_UTC": "2026-10-27T16:11:01.017870+00:00",
+  "phase": "동결 새OP 검증 + 별도133 다형상 자계 학습",
+  "completed_cases": 6,
+  "running_cases": 0,
+  "cases": {
+    "Ref_I230.05_B36_N6000": "완료",
+    "Ref_I230.05_B36_N12000": "완료",
+    "Ref_I460_B36_N6000": "완료",
+    "Ref_I460_B36_N12000": "완료",
+    "SC_I460.1_B36_N6000": "완료",
+    "SC_I460.1_B36_N12000": "완료·품질FAIL",
+    "SC_I920_B36_N6000": "중단·미실행(선행 gate FAIL)",
+    "SC_I920_B36_N12000": "중단·미실행(선행 gate FAIL)"
+  },
+  "publication": "반환 패키지08d366b 게시됨 · 이후 계산 상태 추적 중",
+  "worker_progress": {
+    "Ref": {
+      "phase": "finished",
+      "source_unchanged": true,
+      "total_wall_seconds": 15858.726835622918,
+      "stopped_on_failure": false,
+      "deadline_UTC": "2026-10-27T23:00:00Z",
+      "automatic_retry": false
+    },
+    "SC": {
+      "phase": "finished",
+      "source_unchanged": true,
+      "total_wall_seconds": 8012.608711855952,
+      "stopped_on_failure": true,
+      "deadline_UTC": "2026-10-27T23:00:00Z",
+      "automatic_retry": false
+    }
+  },
+  "owned_PID_start_ticks_match": true,
+  "failed_cases": 1,
+  "execution_failed_cases": 0,
+  "quality_fail_cases": 1,
+  "quality_pass_cases": 5,
+  "blocked_unrun_cases": 2,
+  "pending_cases": 0,
+  "completed_count_includes_quality_fail": true
+}

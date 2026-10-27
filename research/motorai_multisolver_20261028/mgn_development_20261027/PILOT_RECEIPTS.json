@@ -1,0 +1,143 @@
+{
+  "records": [
+    {
+      "attempt": "fea",
+      "execution": {
+        "case": "sanity8",
+        "returncode": 1,
+        "stop_reason": null,
+        "wall_seconds": 5.0057213651016355,
+        "peak_RSS_bytes": 1822720,
+        "source_hashes": {
+          "case.sif": "7bd0698d2dc03645930eddcc90b5ee7dd9f9b3f12a96fcafc512ad37d500e857",
+          "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+          "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+          "INPUT_CONTRACT.json": "7e0e8983fa5db12b8a34e2cdfeebc47222d0fa31ee8c5b4a13f49f1d1af45e79",
+          "lamination_hb.dat": "9275b8f27038198dd77705d7b0492aea65f07549949bc152b34903047337a741",
+          "MODEL.json": "6820e8c81a8dc55c5fd7dad1d72b90a1d87f08358d3d916254aa77e449122e2b",
+          "PARAMETERS.json": "51b7391400485a148b3eeda1e32bd3359f01f930d632cc0bc9d5b0a87c0842ab",
+          "shaft_hb.dat": "56fc55f0716f8701ddefff1cd554c9a355a2d4af6a9522284a9c8bac01be95d0",
+          "mesh/mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+          "mesh/mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+          "mesh/mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad",
+          "mesh/mesh.nodes": "7c34563044aa013fe8decc042cc69268055547b33854b17a21b6aa31fd09a7c0"
+        },
+        "solver_binary_sha256": "a2a953b877b9472380186f3e30cf43cd523bb038e1badc69b0ec365a1d3fbb84"
+      },
+      "execution_sha256": "e4dc6db86646cefae0cfa422d31a272546de2ed3086d5732c9add23d1bd87293",
+      "logs": [
+        {
+          "logical_name": "raw/solver.log",
+          "bytes": 2336,
+          "sha256": "6296780b91bd6ef8c84a122055b657757f6670e91b9319824f6b18099f342903"
+        }
+      ]
+    },
+    {
+      "attempt": "fea_a02",
+      "execution": {
+        "case": "sanity8",
+        "returncode": 0,
+        "stop_reason": null,
+        "wall_seconds": 45.01677409885451,
+        "peak_RSS_bytes": 118480896,
+        "source_hashes": {
+          "case.sif": "7bd0698d2dc03645930eddcc90b5ee7dd9f9b3f12a96fcafc512ad37d500e857",
+          "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+          "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+          "INPUT_CONTRACT.json": "7e0e8983fa5db12b8a34e2cdfeebc47222d0fa31ee8c5b4a13f49f1d1af45e79",
+          "lamination_hb.dat": "9275b8f27038198dd77705d7b0492aea65f07549949bc152b34903047337a741",
+          "MODEL.json": "6820e8c81a8dc55c5fd7dad1d72b90a1d87f08358d3d916254aa77e449122e2b",
+          "PARAMETERS.json": "51b7391400485a148b3eeda1e32bd3359f01f930d632cc0bc9d5b0a87c0842ab",
+          "shaft_hb.dat": "56fc55f0716f8701ddefff1cd554c9a355a2d4af6a9522284a9c8bac01be95d0",
+          "mesh/mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+          "mesh/mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+          "mesh/mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad",
+          "mesh/mesh.nodes": "7c34563044aa013fe8decc042cc69268055547b33854b17a21b6aa31fd09a7c0"
+        },
+        "solver_binary_sha256": "a2a953b877b9472380186f3e30cf43cd523bb038e1badc69b0ec365a1d3fbb84",
+        "audit": {
+          "steps": 8,
+          "steps_per_period": 256,
+          "periods": [],
+          "solver_nonlinear_max": 7.8559851e-11,
+          "nonlinear_status": "PASS",
+          "whole_current_max_percent": 0.00021710380908947604,
+          "whole_current_status": "PASS",
+          "current_gate_percent": 0.001,
+          "area_m2_by_bar": [
+            6.179888000000029e-06,
+            6.179223000000012e-06,
+            6.179646999999992e-06,
+            6.179228999999998e-06,
+            6.179120000000007e-06,
+            6.179888000000024e-06,
+            6.178965500000007e-06,
+            6.1783365000000115e-06,
+            6.178181500000001e-06,
+            6.179257500000007e-06,
+            6.179993000000012e-06,
+            6.180670999999996e-06,
+            6.179269500000011e-06,
+            6.179146000000015e-06,
+            6.1792690000000005e-06,
+            6.178980999999988e-06,
+            6.178981000000005e-06,
+            6.179131999999998e-06,
+            6.1790829999999915e-06,
+            6.179496000000012e-06,
+            6.179496499999994e-06,
+            6.179082500000008e-06,
+            6.179681500000012e-06,
+            6.179681499999998e-06,
+            6.179404000000001e-06,
+            6.1797284999999915e-06,
+            6.179787e-06,
+            6.179502000000002e-06,
+            6.179380500000016e-06,
+            6.1796360000000045e-06,
+            6.179445500000014e-06,
+            6.177240000000001e-06,
+            6.180726499999989e-06,
+            6.180417000000023e-06,
+            6.178513500000001e-06,
+            6.178200500000016e-06
+          ],
+          "nodes": 27179,
+          "elements": 53034,
+          "copper_elements": 6912,
+          "sigma_S_m": 47092391.429245,
+          "active_length_m": 0.15,
+          "average": "uniform post-step arithmetic mean",
+          "initial_A": 0,
+          "BDF": "BE step1, BDF2 thereafter",
+          "period_status": "UNKNOWN",
+          "mesh_status": "UNKNOWN",
+          "time_step_status": "UNKNOWN",
+          "input_sha256": {
+            "case.sif": "9eb7e2a3d4b91d05df722f332c5d2c2387daf56356d4ec105eb7f7c0339d42ec",
+            "PARAMETERS.json": "71a95115e6aca23ff12b7017da076380b7353f33bb3f2607c3fa1a9224b6f7ce",
+            "MODEL.json": "6820e8c81a8dc55c5fd7dad1d72b90a1d87f08358d3d916254aa77e449122e2b",
+            "INPUT_CONTRACT.json": "7e0e8983fa5db12b8a34e2cdfeebc47222d0fa31ee8c5b4a13f49f1d1af45e79",
+            "circuits.definitions": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+            "CircuitsBDF2Consistent.so": "3c6c227967e31b2f901331211029130cca5ce9d5f43f37fdb078cccf4918e4c6",
+            "mesh/mesh.nodes": "7c34563044aa013fe8decc042cc69268055547b33854b17a21b6aa31fd09a7c0",
+            "mesh/mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f"
+          }
+        }
+      },
+      "execution_sha256": "5b2b9291d6c27cfba23c7a7ae98efe2a7d8bb38018608dc463678f3f87a16217",
+      "logs": [
+        {
+          "logical_name": "raw/solver.log",
+          "bytes": 50533,
+          "sha256": "349b161b8fe5eb8a91e0848cf93232b4b8a56f87aeb10b82ce35c6df34c3df88"
+        }
+      ]
+    }
+  ],
+  "first_failure": "MPI singleton launcher failed before first physics time step; orted unavailable",
+  "repair": "scoped OMPI_MCA_ess_singleton_isolated=1; single-rank verification before new pilot",
+  "production_retries": 0,
+  "original_failure_retained": true
+}

@@ -1,0 +1,13 @@
+{
+  "training_freezes": {
+    "stage1": "3b9da48995c87040b613dd1ae032d8289bc2be057fc56372e7a323781346478b",
+    "stage2": "690918fddcecde8b7da4323ceedcb8f18cac7e9f7ec0c493d3a2363548f20914"
+  },
+  "split_sha256": "230ad3c7b86402eae277b2cf1111716ec6bca18fbc036eb086ad72c88f1fbec1",
+  "eval_code_sha256": "dd45decf52377816bcc86a9d58be874b7933f8194dc41a7261e1547cfaa663ef",
+  "source_sha256": "dd6c704161d82131b0672b8b574ee81bf73ab5074ed16f5189aa9da9c90a6851",
+  "metrics_sha256": "1b293373a89b485686ed2bbdf422efa890c08841822115e011f199c3e0c44fcb",
+  "predictions_sha256": "2daf3e83f0a2d17f6dfad035dc36a1210b058f401d628649c8f4b0e2b6a7d623",
+  "no_model_changes_after_evaluation": true,
+  "random_seed_selection": false
+}

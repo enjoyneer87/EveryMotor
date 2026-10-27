@@ -1,0 +1,12 @@
+{
+  "checked_UTC": "2026-10-27T11:06:44.951024+00:00",
+  "host": "iso",
+  "input_files_verified": 96,
+  "input_hashes_match": true,
+  "code_hashes_match": true,
+  "syntax_check": "PASS",
+  "no_active_Elmer_at_check": true,
+  "cpu_affinity_available": true,
+  "production_launched": false,
+  "scope": "deployment integrity only; solver pilot pending"
+}

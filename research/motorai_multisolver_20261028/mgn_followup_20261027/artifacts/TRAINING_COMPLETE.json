@@ -1,0 +1,217 @@
+{
+  "status": "COMPLETE",
+  "receipts": [
+    {
+      "seed": 17,
+      "updates": 18000,
+      "training_seconds": 176.98500000000058,
+      "wall_seconds": 178.5470000000023,
+      "parameters": 73969,
+      "element_B_held_phase_relative_L2_percent": 12.603744919117545,
+      "element_B_held_phase_RMSE_T": 0.03559926356679659,
+      "monitor_frames": 384,
+      "calibration_group_CV": [
+        {
+          "multiplier": 0.5,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 3.0367844523730496
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 3.130297609713762
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 4.005497358649984
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.987003438736255
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 2.321339963639781
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 4.543520077302836
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 3.2493432477919715
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 3.4917246418659893
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 8.063806499758005
+        }
+      ],
+      "selected_head": {
+        "multiplier": 1.0,
+        "regularization": 0.001
+      },
+      "Full_eval_performed": false,
+      "peak_VRAM_bytes": 468295680,
+      "RAM_bytes": 1249681408
+    },
+    {
+      "seed": 29,
+      "updates": 18000,
+      "training_seconds": 176.56299999999828,
+      "wall_seconds": 178.11000000000058,
+      "parameters": 73969,
+      "element_B_held_phase_relative_L2_percent": 12.565996669355462,
+      "element_B_held_phase_RMSE_T": 0.03549264367714559,
+      "monitor_frames": 384,
+      "calibration_group_CV": [
+        {
+          "multiplier": 0.5,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.747974321242014
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 2.8197576967069353
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 3.740331457397703
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.442321114948096
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 2.2824489539553725
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 4.237137510923127
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.7220415290368636
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 2.979473255540292
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 8.124223089259315
+        }
+      ],
+      "selected_head": {
+        "multiplier": 1.0,
+        "regularization": 0.001
+      },
+      "Full_eval_performed": false,
+      "peak_VRAM_bytes": 469929984,
+      "RAM_bytes": 1250217984
+    },
+    {
+      "seed": 43,
+      "updates": 18000,
+      "training_seconds": 176.35900000000038,
+      "wall_seconds": 177.90599999999904,
+      "parameters": 73969,
+      "element_B_held_phase_relative_L2_percent": 11.862551706437134,
+      "element_B_held_phase_RMSE_T": 0.033505764158370116,
+      "monitor_frames": 384,
+      "calibration_group_CV": [
+        {
+          "multiplier": 0.5,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.948747831874081
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 3.094737794858294
+        },
+        {
+          "multiplier": 0.5,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 3.942606645203064
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.6423479796207534
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 2.1452294894461366
+        },
+        {
+          "multiplier": 1.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 4.669516776875351
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 1e-06,
+          "calibration_group_CV_wMAE_percent": 2.4731341484053684
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.001,
+          "calibration_group_CV_wMAE_percent": 3.166661631002662
+        },
+        {
+          "multiplier": 2.0,
+          "regularization": 0.1,
+          "calibration_group_CV_wMAE_percent": 8.085147894879464
+        }
+      ],
+      "selected_head": {
+        "multiplier": 1.0,
+        "regularization": 0.001
+      },
+      "Full_eval_performed": false,
+      "peak_VRAM_bytes": 469929984,
+      "RAM_bytes": 1250852864
+    }
+  ],
+  "Full_budget": 63,
+  "Full_eval_performed": false,
+  "protected_HalfSC_training": false,
+  "frozen_files": {
+    "A_curl_seed17.pt": "ebbbca2d00f5eda5e7fbcf6f2fdf30fa0d63ec0597dc0e990e281e0c3842792c",
+    "A_curl_seed17_head.npz": "3d74661280439fd807a88c36e776dfac8dbbe13bd60a8302f296a791f4c2d333",
+    "A_curl_seed29.pt": "c6071bc8ab10346e318210509855911bf3e9af9b8218741fc523fb367d38dd5e",
+    "A_curl_seed29_head.npz": "a0fa0f49ba1825fabe173080fb6097bf885e05e9f9769f6d73b2218c24314f31",
+    "A_curl_seed43.pt": "9b988f3ccf5ce115038c63102d5ac73295f33420a0842de1f6d3804c9b74978d",
+    "A_curl_seed43_head.npz": "b1943a4d810efdf1cace515ffad1a5267b0f0098b969c1ee4901ae2289a6e358",
+    "embeddings_seed17.npz": "bbf14381a8cc64818bb7bd4b58878e03677bf84af7b2d33e612a1d58db2b5565",
+    "embeddings_seed29.npz": "ba7546978d457bb8258d3fb6892b6cdeb6d5cc65dd728c8282c28cca1604789e",
+    "embeddings_seed43.npz": "ce0cde3acea8e84a8654ff5701c63861a75f153ac98be0476601f99e9bdbd903",
+    "INPUT_FREEZE.json": "e602f428cb2dfba3fdb7825a032aab38c1850970f614eed46cc8166752b3a9cd",
+    "SANITY.json": "d7903c52e7670b1ce16a2eeb7063c97fa37ae467b33e51520744a822f1def6f2",
+    "training_seed17.json": "e4829066eefd181b1cd276d526d0e54c8f044fec3a966635a27c5ea787645a5e",
+    "training_seed29.json": "2a56805cf7cdc97bc436d2d93ca092e95f86b844511729cfa549d46c66aadf33",
+    "training_seed43.json": "c693e3584da2eaca8611388397896a886fcefd8b1fa1044d1a3bff5646074d51"
+  },
+  "automatic_resume": false
+}

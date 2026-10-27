@@ -1,0 +1,52 @@
+{
+  "scope": "implementation-dependent CPU evaluator timing on precomputed inputs, not end-to-end solver replacement or equal total compute",
+  "python": "3.12.12",
+  "numpy": "2.3.5",
+  "AF_pure_function_source_sha256": "9612953ddfb77f18b8a3a064bb11a170316e75c89ca61e74aba8f116a2cd63d9",
+  "timings": {
+    "latest_AF_pure_frozen_evaluator": {
+      "batch_rows": 228,
+      "median_ms": 7.198299979791045,
+      "p95_ms": 11.192715007928198,
+      "repetitions": 100
+    },
+    "latest_AF_batched_NumPy": {
+      "batch_rows": 228,
+      "median_ms": 0.33720003557391465,
+      "p95_ms": 0.9550949791446326,
+      "repetitions": 100
+    },
+    "scalar_cached_features": {
+      "batch_rows": 228,
+      "median_ms": 0.5400999798439443,
+      "p95_ms": 1.3887150125810874,
+      "repetitions": 100
+    },
+    "MS_MGN_seed17_cached_features": {
+      "batch_rows": 228,
+      "median_ms": 1.0002499911934137,
+      "p95_ms": 2.7988600486423816,
+      "repetitions": 100
+    },
+    "MS_MGN_seed29_cached_features": {
+      "batch_rows": 228,
+      "median_ms": 1.0209000029135495,
+      "p95_ms": 2.017540001543237,
+      "repetitions": 100
+    },
+    "MS_MGN_seed43_cached_features": {
+      "batch_rows": 228,
+      "median_ms": 0.9686499834060669,
+      "p95_ms": 2.7056799910496916,
+      "repetitions": 100
+    }
+  },
+  "exclusions": [
+    "MS FEA",
+    "canonical Hybrid sample evaluation",
+    "GPU graph encoding",
+    "disk reads",
+    "feature assembly"
+  ],
+  "graph_encoding_cost": "See stage2 training receipts: approximately1.9s GPU for24 sources x128 phases; cacheable only for those sources"
+}

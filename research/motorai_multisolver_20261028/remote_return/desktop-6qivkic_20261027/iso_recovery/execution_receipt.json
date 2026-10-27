@@ -1,0 +1,23 @@
+{
+  "python": "3.13.7",
+  "numpy": "2.5.3",
+  "matplotlib": "3.11.2",
+  "executed_code_sha256": {
+    "field_reader.py": "e61559ee0820cd14a46ac65ac94ae7dab85eacf39417ed78e102dc24b42e699c",
+    "recover_existing.py": "bfc20f7595a602482b6c5326d4cab4e8a1b747e139d946b497759affc76967e4",
+    "validate_ms.py": "fae4fb08f0d06a1e1d906112fbf8ca1b1f9313d431f7975e66fd634f38498ea1"
+  },
+  "read_only_process": {
+    "pid": 172024,
+    "purpose": "existing-data read-only recovery",
+    "new_solver_calls": 0,
+    "training_calls": 0,
+    "maximum_cases": 60,
+    "max_retries": 0,
+    "wall_limit_seconds": 5400,
+    "estimated_memory_MiB": 1024,
+    "estimated_output_MiB": 800,
+    "stop": "create STOP for between-case stop; terminate this PID for immediate stop; originals are read only"
+  },
+  "published_code_note": "After execution: parent-import portability and expected-current ratio-to-percent adapter corrected. Raw integration and gates unchanged. merge_recovery revalidates all36 expected metrics against preserved histories/summaries; see current_metric_unit_audit.json. Executed bytes retained privately."
+}

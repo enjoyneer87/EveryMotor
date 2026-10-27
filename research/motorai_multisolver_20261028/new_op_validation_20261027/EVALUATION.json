@@ -1,0 +1,348 @@
+{
+  "generated_UTC": "2026-10-27T15:55:07.270630+00:00",
+  "frozen_predictions_sha256": "c238ac8b61242d2c804a8e03639df7c1ccb4aa510ba88afa42b96e58afa7f459",
+  "Full_calibration_budget": 63,
+  "new_evaluation_budget": 8,
+  "completed": 6,
+  "not_collected": 2,
+  "case_status": {
+    "Ref_I230.05_B36_N6000": "COLLECTED",
+    "Ref_I230.05_B36_N12000": "COLLECTED",
+    "Ref_I460_B36_N6000": "COLLECTED",
+    "Ref_I460_B36_N12000": "COLLECTED",
+    "SC_I460.1_B36_N6000": "COLLECTED",
+    "SC_I460.1_B36_N12000": "COLLECTED",
+    "SC_I920_B36_N6000": "NOT_COLLECTED",
+    "SC_I920_B36_N12000": "NOT_COLLECTED"
+  },
+  "metrics": [
+    {
+      "group": "Ref",
+      "method": "latest_AF",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 1.05237611122516,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "scalar",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 0.795213813096282,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "MS_MGN_seed17",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.108803895693944,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "MS_MGN_seed29",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.3950025947908093,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "MS_MGN_seed43",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.3081310616173627,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "A_curl_seed17",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.139899274784566,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "A_curl_seed29",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.142940945454582,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "Ref",
+      "method": "A_curl_seed43",
+      "completed_n": 4,
+      "requested_n": 4,
+      "wMAE_percent": 2.601713870879569,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 4
+    },
+    {
+      "group": "SC",
+      "method": "latest_AF",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 4.25127055695346,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "scalar",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 2.22215803702736,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "MS_MGN_seed17",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.5120837402199262,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "MS_MGN_seed29",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.3879149906951745,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "MS_MGN_seed43",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.2510548404712273,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "A_curl_seed17",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.6219330089001297,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "A_curl_seed29",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.15396945162821066,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "SC",
+      "method": "A_curl_seed43",
+      "completed_n": 2,
+      "requested_n": 4,
+      "wMAE_percent": 0.6561861276724842,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 1
+    },
+    {
+      "group": "ALL",
+      "method": "latest_AF",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 3.2644678234949795,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "scalar",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 1.7819708146736106,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "MS_MGN_seed17",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 1.004643854572583,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "MS_MGN_seed29",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 1.007066252987381,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "MS_MGN_seed43",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 0.8856267128473693,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "A_curl_seed17",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 1.0901989319826546,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "A_curl_seed29",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 0.7675322121937606,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    },
+    {
+      "group": "ALL",
+      "method": "A_curl_seed43",
+      "completed_n": 6,
+      "requested_n": 8,
+      "wMAE_percent": 1.2563472544579486,
+      "metric_scope": "all collected targets, including flagged numerical quality; no failed-quality exclusion",
+      "current_nonlinear_pass_n": 5
+    }
+  ],
+  "quality": {
+    "Ref_I230.05_B36_N6000": {
+      "current": "PASS",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    },
+    "Ref_I230.05_B36_N12000": {
+      "current": "PASS",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    },
+    "Ref_I460_B36_N6000": {
+      "current": "PASS",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    },
+    "Ref_I460_B36_N12000": {
+      "current": "PASS",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    },
+    "SC_I460.1_B36_N6000": {
+      "current": "PASS",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    },
+    "SC_I460.1_B36_N12000": {
+      "current": "FAIL",
+      "nonlinear": "PASS",
+      "formal": "UNKNOWN"
+    }
+  },
+  "seed_summary": [
+    {
+      "group": "Ref",
+      "family": "MS_MGN",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 2.270645850700705,
+      "population_SD_percent": 0.11980895798251552,
+      "best_seed_selected": false
+    },
+    {
+      "group": "Ref",
+      "family": "A_curl",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 2.2948513637062393,
+      "population_SD_percent": 0.2169881128412994,
+      "best_seed_selected": false
+    },
+    {
+      "group": "SC",
+      "family": "MS_MGN",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 0.3836845237954427,
+      "population_SD_percent": 0.10660657973329281,
+      "best_seed_selected": false
+    },
+    {
+      "group": "SC",
+      "family": "A_curl",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 0.4773628627336082,
+      "population_SD_percent": 0.22910084067384934,
+      "best_seed_selected": false
+    },
+    {
+      "group": "ALL",
+      "family": "MS_MGN",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 0.9657789401357779,
+      "population_SD_percent": 0.056684810769667575,
+      "best_seed_selected": false
+    },
+    {
+      "group": "ALL",
+      "family": "A_curl",
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "mean_wMAE_percent": 1.0380261328781213,
+      "population_SD_percent": 0.2029392965244147,
+      "best_seed_selected": false
+    }
+  ],
+  "formal_qualification": "UNKNOWN",
+  "missing_does_not_mean_failed": true,
+  "models_retrained": false,
+  "seed_selection": false,
+  "statistical_scope": "8 new OP targets,2 existing MS groups,known Ref/SC variants; not new-template generalization",
+  "exact_cross_solver_bridge": 0
+}

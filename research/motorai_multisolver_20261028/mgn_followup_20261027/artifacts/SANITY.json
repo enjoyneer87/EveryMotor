@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "first_loss": 0.7265602946281433,
+  "last_loss": 0.5645671486854553,
+  "updates": 20,
+  "discarded": true,
+  "analytic_curl_max_abs_T": 6.103515625e-05,
+  "float32_raw_replay_max_abs_T": 1.0728836059570312e-06,
+  "seconds": 0.375
+}

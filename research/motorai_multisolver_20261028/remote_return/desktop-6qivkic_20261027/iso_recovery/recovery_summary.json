@@ -1,0 +1,36 @@
+{
+  "host": "iso DESKTOP-513NQ4P",
+  "receiving_local": "desktop-6qivkic",
+  "MS_requested": 24,
+  "MS_found": 24,
+  "HalfSC_requested": 36,
+  "HalfSC_found": 36,
+  "requested_unique_existing_cases": 60,
+  "missing_cases": 0,
+  "duplicate_physical_acquisitions": 0,
+  "source_geometries": 3,
+  "source_geometries_scope": "cumulative return package Ref/SC/HalfSC",
+  "requested_raw_geometry_variants": 2,
+  "reference_templates": 1,
+  "raw_target_reintegrations_new": 36,
+  "raw_target_reintegrations_total": 42,
+  "both_raw_lineage_pairs": 41,
+  "logical_MS_Full_pairs": 228,
+  "canonical_Hybrid_max_abs_delta_W": 3.637978807091713e-12,
+  "HalfSC_max_abs_AC_delta_W": 2.6193447411060333e-10,
+  "HalfSC_P2_current": {
+    "PASS": 36
+  },
+  "HalfSC_whole_current": {
+    "PASS": 33,
+    "FAIL": 3
+  },
+  "period_convergence": "UNKNOWN",
+  "mesh_convergence": "UNKNOWN",
+  "exact_cross_solver_bridges": 0,
+  "solver_calls": 0,
+  "training_calls": 0,
+  "AF_refit": false,
+  "elapsed_read_only_recovery_seconds": 1060.6191437002271,
+  "source_files_modified": false
+}

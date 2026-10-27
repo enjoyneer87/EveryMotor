@@ -1,0 +1,113 @@
+{
+  "prior_raw_return_commit": "4c6ef9325dd0539b0220fb2817782562b9932fb7",
+  "latest_AF_commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+  "MS_sources": [
+    {
+      "source_key": "Ref_Ref_P097",
+      "field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815"
+    },
+    {
+      "source_key": "Ref_Ref_P098",
+      "field_sha256": "cb4526557559afade2eca7153a6e7aef1f8f5e9a4ed3e8067688dd8991ed96b9"
+    },
+    {
+      "source_key": "Ref_Ref_P099",
+      "field_sha256": "87682e1c1765dba2f1e397ebd2cafe599269a7600f30373dcd7abeccffddb9b5"
+    },
+    {
+      "source_key": "Ref_Ref_P100",
+      "field_sha256": "641ccb86ecf8edbec2f69188189b98f25656c1189ca713c5f32b88b0b4a824e0"
+    },
+    {
+      "source_key": "Ref_Ref_P101",
+      "field_sha256": "d097b335ec0cbb7b6ad950ba155feec63f17d6daa0b8bf817fcdec4c16283518"
+    },
+    {
+      "source_key": "Ref_Ref_P102",
+      "field_sha256": "f01efd0d368660b10b7388ff8fa91eb72b6dcdb41874411e60092b0945fa34ee"
+    },
+    {
+      "source_key": "Ref_Ref_P103",
+      "field_sha256": "8f79c34b93401fbdc652ceb93c610c72b8c90a28d6e361a48ee9a41cc02fd0d3"
+    },
+    {
+      "source_key": "Ref_Ref_P104",
+      "field_sha256": "ca48b593c1321484f97acc803bf63f737832477f9fbfa36e46a9ca0cd4d8c80f"
+    },
+    {
+      "source_key": "Ref_Ref_P105",
+      "field_sha256": "0259d821c551c6a75e898185b69ff28ea6fc2a33175228b3999962121fcfd78a"
+    },
+    {
+      "source_key": "Ref_Ref_P106",
+      "field_sha256": "4403a6137bb5eef8b55e7207d4e62d71bbc59dedec1036de540d56bcbf366bb7"
+    },
+    {
+      "source_key": "Ref_Ref_P107",
+      "field_sha256": "1b303437b61d967db69cbd69542ba9ed6223aedd61b91cd7440953afc16e7ad5"
+    },
+    {
+      "source_key": "Ref_Ref_P108",
+      "field_sha256": "4ca630f5864be04a498db8b04cd77ab36ba7086e44eb93b9f97b3fe4d813398a"
+    },
+    {
+      "source_key": "Ref_Ref_P109",
+      "field_sha256": "fbae5c6b0d49b8d6a3bb154c94f93a41493610d1d03b4734294cb4fe8c9a5b2b"
+    },
+    {
+      "source_key": "Ref_Ref_P110",
+      "field_sha256": "bb4d2469bbe0e7d702fcb2356d9c6667d4af71da188885e7b61f108726b7d50e"
+    },
+    {
+      "source_key": "Ref_Ref_P111",
+      "field_sha256": "a11ded76f79bdecef3a2160f1e7f7432ddcd7f773148c933450d38aee6a5f758"
+    },
+    {
+      "source_key": "Ref_Ref_P112",
+      "field_sha256": "d550fa11063f69436db62079b42bcd22415fe1d71475b947be1524e37762a4b8"
+    },
+    {
+      "source_key": "Ref_Ref_P113",
+      "field_sha256": "4d178776b928b81dfa83bf9ffdb4e9c4c8832c9ae945fdbda6eecfb7feea7679"
+    },
+    {
+      "source_key": "Ref_Ref_P114",
+      "field_sha256": "a026a252049aea31a2cf0f89edba78d3c59fd24e34b1e8fd2ce6bc42a06bd837"
+    },
+    {
+      "source_key": "Ref_Ref_P115",
+      "field_sha256": "8f8721bef6dabfe90f5e770f823b1cea38f3b9c2e59b4b0ac9d57f19366dd24f"
+    },
+    {
+      "source_key": "Ref_Ref_P116",
+      "field_sha256": "e5e745b1a47be0c72df1beb96f7a5044fc90988ed5c7b4717d2b820ad213da1c"
+    },
+    {
+      "source_key": "Ref_Ref_P117",
+      "field_sha256": "70a78f5ca9a426607c2da5283a1c2bdf5d9a7b00a2d6b90f0065039a5502ad2f"
+    },
+    {
+      "source_key": "Ref_Ref_P118",
+      "field_sha256": "f06c07cbade73a637821edbc4b889ae728eb6626f878681f70dc09ba71ed3f24"
+    },
+    {
+      "source_key": "Ref_Ref_P119",
+      "field_sha256": "d671c9d12b0744159d8e0f9b4a3b949674562317fbd790a89af15b56b2c07f83"
+    },
+    {
+      "source_key": "Ref_Ref_P120",
+      "field_sha256": "ce2ac17aef6a5c6a09ef823be3e1c2c5a0a728fed592492e8fdc2276bf11b185"
+    }
+  ],
+  "training_tensor": {
+    "logical_source_key": "jeet_mgn_followup_20261027:MS24_A_curl",
+    "sha256": "c640cee8e9b803389f370c2df8d2f615e49c65d95c69aa8e39ecdb4c9b46d72e",
+    "location": "private_source_storage",
+    "reader": "prepare_curl_data.py",
+    "large_originals_modified": false
+  },
+  "same_calibration_source": "mgn_development_20261027/artifacts/inputs/calibration63.json",
+  "same_calibration_sha256": "d863fd184e8d79e84503482f77e520a35581b240e32149f221ed6bc7fa7a4585",
+  "MotorCAD_reuse_audit": "EVERYMOTOR_REUSE_AUDIT.json",
+  "local_paths": "private path maps only; no SSH keys or credentials published"
+}

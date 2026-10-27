@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "case": "Ref_I230.05_B36_N12000",
+      "whole_current_status": "PASS",
+      "whole_current_max_percent": 0.0002558023588788776,
+      "peak_step": 2,
+      "peak_period": 1,
+      "peak_time_s": 9.765625e-06,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 2.1591208981470465e-05,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    },
+    {
+      "case": "Ref_I230.05_B36_N6000",
+      "whole_current_status": "PASS",
+      "whole_current_max_percent": 0.00012622381904366635,
+      "peak_step": 2,
+      "peak_period": 1,
+      "peak_time_s": 1.953125e-05,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 1.0865438328878506e-05,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    },
+    {
+      "case": "Ref_I460_B36_N12000",
+      "whole_current_status": "PASS",
+      "whole_current_max_percent": 0.00016385816035746978,
+      "peak_step": 3,
+      "peak_period": 1,
+      "peak_time_s": 1.46484375e-05,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 1.2492975223859883e-05,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    },
+    {
+      "case": "Ref_I460_B36_N6000",
+      "whole_current_status": "PASS",
+      "whole_current_max_percent": 8.302890865395078e-05,
+      "peak_step": 3,
+      "peak_period": 1,
+      "peak_time_s": 2.9296875e-05,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 6.300715393180238e-06,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    },
+    {
+      "case": "SC_I460.1_B36_N12000",
+      "whole_current_status": "FAIL",
+      "whole_current_max_percent": 0.001101196735168287,
+      "peak_step": 3,
+      "peak_period": 1,
+      "peak_time_s": 1.46484375e-05,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [
+        2,
+        3
+      ],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 8.337712550467577e-05,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    },
+    {
+      "case": "SC_I460.1_B36_N6000",
+      "whole_current_status": "PASS",
+      "whole_current_max_percent": 0.0005150811159572734,
+      "peak_step": 2,
+      "peak_period": 1,
+      "peak_time_s": 1.953125e-05,
+      "gate_percent_of_phase_peak": 0.001,
+      "violating_steps_1based": [],
+      "P2_current_status": "PASS",
+      "P2_current_max_percent": 4.258169895297726e-05,
+      "status_scope": "whole-history launch guard and accepted-P2 current check are separate; P2 PASS does not override whole-history FAIL"
+    }
+  ],
+  "threshold_changed": false,
+  "new_solver_runs": 0
+}

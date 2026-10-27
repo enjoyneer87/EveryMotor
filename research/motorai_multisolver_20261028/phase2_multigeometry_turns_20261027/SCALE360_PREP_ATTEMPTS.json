@@ -1,0 +1,7 @@
+{
+  "attempts": [
+    {"attempt":1,"status":"ENVIRONMENT_FAILURE_BEFORE_FIELD_READ","reason":"Selected JEET PyTorch venv lacks h5py;360imports failed,0native field payloads read,0graphs created,0solver,0training","exitcode":2,"guard_seconds":5.062,"original_directory_preserved":true},
+    {"attempt":2,"status":"PREDECLARED","change":"Keep the same selection/reader/4workers, explicitly use the already successful native Python3.13 reader environment: h5py3.16.0,numpy2.4.2,psutil7.0.0. Subprocess import verified. No package/global environment modification.","wall_seconds_max":1800,"deadline_UTC":"2026-10-27T22:59:00Z","retry":0,"Docker_required":false,"owner":"new dedicated R2 task and PID/start-time receipt","stop":"STOP or external wall/deadline, own process descendants only"}
+  ],
+  "authorization":"User explicitly asked for an HDF5-capable execution environment; bounded corrected environment, no blind retry"
+}

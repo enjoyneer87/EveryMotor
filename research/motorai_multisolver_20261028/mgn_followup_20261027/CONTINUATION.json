@@ -1,0 +1,11 @@
+{
+  "status": "CURL_COMPLETE_VERIFIED;PRIMARY_NUMERICS_COMPLETE;NEW_OP_INPUTS_FROZEN",
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "deadline_KST": "2026-10-28T08:00:00+09:00",
+  "heartbeat_id": "jeet-mgn-10-28-08",
+  "original_PAUSED_automations_unchanged": true,
+  "training_runs_max": 3,
+  "automatic_retries": 0,
+  "production_checkpoint_rule": "fixed18000updates",
+  "next": "Read ../new_op_validation_20261027/CONTINUATION_KO.md. New8OP validation is declared and predictions frozen before targets; do not retrain. Continue within08:00cutoff."
+}

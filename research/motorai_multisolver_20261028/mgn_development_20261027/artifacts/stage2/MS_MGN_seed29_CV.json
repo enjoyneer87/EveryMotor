@@ -1,0 +1,57 @@
+{
+  "scores": [
+    {
+      "multiplier": 0.5,
+      "regularization": 1e-06,
+      "calibration_group_CV_wMAE_percent": 2.9576561496068297
+    },
+    {
+      "multiplier": 0.5,
+      "regularization": 0.001,
+      "calibration_group_CV_wMAE_percent": 3.1154527006051556
+    },
+    {
+      "multiplier": 0.5,
+      "regularization": 0.1,
+      "calibration_group_CV_wMAE_percent": 3.5323646095182495
+    },
+    {
+      "multiplier": 1.0,
+      "regularization": 1e-06,
+      "calibration_group_CV_wMAE_percent": 3.0815822500714263
+    },
+    {
+      "multiplier": 1.0,
+      "regularization": 0.001,
+      "calibration_group_CV_wMAE_percent": 2.3173711648221595
+    },
+    {
+      "multiplier": 1.0,
+      "regularization": 0.1,
+      "calibration_group_CV_wMAE_percent": 4.292835099289812
+    },
+    {
+      "multiplier": 2.0,
+      "regularization": 1e-06,
+      "calibration_group_CV_wMAE_percent": 3.240883036916606
+    },
+    {
+      "multiplier": 2.0,
+      "regularization": 0.001,
+      "calibration_group_CV_wMAE_percent": 2.8748620088485364
+    },
+    {
+      "multiplier": 2.0,
+      "regularization": 0.1,
+      "calibration_group_CV_wMAE_percent": 8.176281249589428
+    }
+  ],
+  "selected": {
+    "multiplier": 1.0,
+    "regularization": 0.001
+  },
+  "calibration_count": 63,
+  "unique_MS_groups": 24,
+  "group_CV_fit_seconds": 0.32834949996322393,
+  "predict228_seconds": 0.004951200447976589
+}

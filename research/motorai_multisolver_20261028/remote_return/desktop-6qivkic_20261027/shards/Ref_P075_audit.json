@@ -1,0 +1,230 @@
+{
+  "case_id": "ISO64_ACQ_Ref_P075_N256_P2_Q01",
+  "point_id": "Ref_P075",
+  "model": "Ref",
+  "steps": 512,
+  "periods": 2,
+  "dt_s": 7.32421875e-06,
+  "P2_window_steps": [
+    257,
+    512
+  ],
+  "P2_time_s": [
+    0.00188232421875,
+    0.00375
+  ],
+  "P2_electrical_phase_unwrapped_deg": [
+    361.40625,
+    720.0
+  ],
+  "P2_average": "uniform post-step arithmetic mean",
+  "sigma_S_m": 47092391.429245,
+  "active_length_m": 0.15,
+  "radial_factor": 1.0,
+  "symmetry_sectors": 8,
+  "solver_version": "26.2",
+  "solver_revision": "11c118114",
+  "copper_nodes": 4212,
+  "copper_elements": 6912,
+  "source_contract_sha256": "f38fc6f796156821eb19e69037834804ab33e622c655d43f0d3dbd45fd017115",
+  "source_model_sha256": "ed23bf9761aaeb0ea5c9422a151edc48d9bb5ba5d4377e03a8cad04816a1c646",
+  "quantities": [
+    "Joule_total_active_W",
+    "prescribed_transport_DC_W",
+    "AC_excess_W"
+  ],
+  "P2_reintegrated_W": [
+    11613.36308813309,
+    7856.63328548051,
+    3756.7298026525823
+  ],
+  "P2_saved_W": [
+    11613.363088133083,
+    7856.633285480505,
+    3756.7298026525796
+  ],
+  "delta_W": [
+    7.275957614183426e-12,
+    4.547473508864641e-12,
+    2.7284841053187847e-12
+  ],
+  "relative_delta_percent": [
+    6.265159849878662e-14,
+    5.788068939489164e-14,
+    7.262923469748175e-14
+  ],
+  "reconstruction_gate_W": 1e-06,
+  "reconstruction_gate_source": "pinned saved_elmer_fields.py main: abs(reintegrated_minus_summary_W) <= 1e-6",
+  "raw_loss_reintegration": "PASS",
+  "current_gate_percent": 0.001,
+  "current_gate_denominator": "prescribed phase peak sqrt(2)*Irms, not instantaneous current",
+  "P2_max_current_error_percent": 1.4461029887801805e-05,
+  "whole_max_current_error_percent": 0.00016937768719499718,
+  "P2_current_status": "PASS",
+  "whole_current_status": "PASS",
+  "current_absolute_error_A": {
+    "max": 0.0005510530796186686,
+    "mean": 3.088329396099474e-05,
+    "P2max": 4.704749005668418e-05
+  },
+  "field_vs_circuit_max_A": 0.0005510529708203649,
+  "scalar_current_error_delta_percent": 1.6940658945086007e-21,
+  "nonlinear_status": "PASS",
+  "nonlinear_max": 9.6674748e-11,
+  "period_convergence_status": "UNKNOWN",
+  "mesh_convergence_status": "UNKNOWN",
+  "period_convergence_qualified": false,
+  "mesh_convergence_qualified": false,
+  "period_reason": "Only P1 startup and P2 stored; P1/P2 is not approved P2/P3 convergence",
+  "P1_vs_P2_AC_percent": 46.00387896419647,
+  "P1_P2_wave_L2_percent": 490.3164262268807,
+  "max_decomposition_residual_W_per_bar": 4.1343708942483054e-11,
+  "max_dt_relative_error": 3.7969627442180354e-14,
+  "native_time_rounding_max_abs_s": 5.000000413701855e-12,
+  "node_mapping_checks": [
+    {
+      "step": 1,
+      "native_A_vs_VTU_max_abs": 0.0,
+      "copper_coordinate_max_abs_m": 0.0,
+      "copper_element_connectivity_equal": true,
+      "method": "native explicit node IDs + exact element connectivity; no nearest-neighbor mapping"
+    },
+    {
+      "step": 256,
+      "native_A_vs_VTU_max_abs": 0.0,
+      "copper_coordinate_max_abs_m": 0.0,
+      "copper_element_connectivity_equal": true,
+      "method": "native explicit node IDs + exact element connectivity; no nearest-neighbor mapping"
+    },
+    {
+      "step": 512,
+      "native_A_vs_VTU_max_abs": 0.0,
+      "copper_coordinate_max_abs_m": 0.0,
+      "copper_element_connectivity_equal": true,
+      "method": "native explicit node IDs + exact element connectivity; no nearest-neighbor mapping"
+    }
+  ],
+  "saved_snapshot_phase_count": 8,
+  "snapshot_loss_vs_fullP2_percent": [
+    -0.17693077887906972,
+    -6.661338147750939e-14,
+    -0.5469547943367292
+  ],
+  "snapshot_use": "Spatial reader/development examples only. Use full 256-sample P2 integral history for scalar labels.",
+  "inputs": [
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/PARAMETERS.json",
+      "bytes": 414,
+      "sha256": "c17a77458d6d38b03617f0b8196caedf7eddec853dc5abc8e7e6ad1bb31f3966",
+      "expected_sha256": "c17a77458d6d38b03617f0b8196caedf7eddec853dc5abc8e7e6ad1bb31f3966",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/MODEL.json",
+      "bytes": 9280,
+      "sha256": "ed23bf9761aaeb0ea5c9422a151edc48d9bb5ba5d4377e03a8cad04816a1c646",
+      "expected_sha256": "ed23bf9761aaeb0ea5c9422a151edc48d9bb5ba5d4377e03a8cad04816a1c646",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/INPUT_CONTRACT.json",
+      "bytes": 34133,
+      "sha256": "f38fc6f796156821eb19e69037834804ab33e622c655d43f0d3dbd45fd017115",
+      "expected_sha256": "f38fc6f796156821eb19e69037834804ab33e622c655d43f0d3dbd45fd017115",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/case.sif",
+      "bytes": 20344,
+      "sha256": "c33173eeba0d72255abaf350bce01fc1cd52c07e6112eeecdd4a5f7cec60aae7",
+      "expected_sha256": "c33173eeba0d72255abaf350bce01fc1cd52c07e6112eeecdd4a5f7cec60aae7",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/circuits.dat",
+      "bytes": 2816512,
+      "sha256": "b083bc862b402be3dee299f3898d02738942d7e75ddd5bf0bb5682c945875d1d",
+      "expected_sha256": "b083bc862b402be3dee299f3898d02738942d7e75ddd5bf0bb5682c945875d1d",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/circuits.dat.names",
+      "bytes": 6706,
+      "sha256": "9dbe4d79e3b257b276808a9b8a375b6105a3f673a2a70e303b2c5dbb7f3e71ce",
+      "expected_sha256": "9dbe4d79e3b257b276808a9b8a375b6105a3f673a2a70e303b2c5dbb7f3e71ce",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/circuits.definitions",
+      "bytes": 19513,
+      "sha256": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+      "expected_sha256": "5dd90b51c1823c8555ed7d9d409abcb92709e039bb70339bba9cd79138d1ad02",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/solver.log",
+      "bytes": 1356158,
+      "sha256": "e80d1ac8e7519fefb27e6a31cc2d6b694f1fdc2c48d50de10fb8271d3f3862c0",
+      "expected_sha256": "e80d1ac8e7519fefb27e6a31cc2d6b694f1fdc2c48d50de10fb8271d3f3862c0",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/mesh.nodes",
+      "bytes": 1335020,
+      "sha256": "7c34563044aa013fe8decc042cc69268055547b33854b17a21b6aa31fd09a7c0",
+      "expected_sha256": "7c34563044aa013fe8decc042cc69268055547b33854b17a21b6aa31fd09a7c0",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/mesh.elements",
+      "bytes": 1674657,
+      "sha256": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "expected_sha256": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/mesh.boundary",
+      "bytes": 41433,
+      "sha256": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "expected_sha256": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/mesh.header",
+      "bytes": 70,
+      "sha256": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad",
+      "expected_sha256": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/native.result",
+      "bytes": 701615850,
+      "sha256": "e4ea082a8e5050239ded6338b5424738b86fc53a8082a388a80344370a83f09a",
+      "expected_sha256": "e4ea082a8e5050239ded6338b5424738b86fc53a8082a388a80344370a83f09a",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/field_t0001.vtu",
+      "bytes": 2170091,
+      "sha256": "4fec78c51d1717285973225176d29e99a90d4e796fc1479d78f5681ae07eeafe",
+      "expected_sha256": "4fec78c51d1717285973225176d29e99a90d4e796fc1479d78f5681ae07eeafe",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/field_t0256.vtu",
+      "bytes": 2169900,
+      "sha256": "6917998aed7f9684ccb1cbeee69e5578ffcaba3b44ae61ffbe321b3e6ce845de",
+      "expected_sha256": "6917998aed7f9684ccb1cbeee69e5578ffcaba3b44ae61ffbe321b3e6ce845de",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "full/ISO64_ACQ_Ref_P075_N256_P2_Q01/raw/mesh/field_t0512.vtu",
+      "bytes": 2169900,
+      "sha256": "0ae0cdbe3fa3ab62c6d26caa7a74857e2b8092ef2e63e003684ed3f7c6d9a034",
+      "expected_sha256": "0ae0cdbe3fa3ab62c6d26caa7a74857e2b8092ef2e63e003684ed3f7c6d9a034",
+      "status": "PASS"
+    }
+  ],
+  "source_unchanged_during_read": true,
+  "new_solver_calls": 0
+}

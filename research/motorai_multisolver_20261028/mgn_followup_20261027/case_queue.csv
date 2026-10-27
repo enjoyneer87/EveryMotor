@@ -1,0 +1,4 @@
+case,purpose,status,new_independent_Full_labels,missing,estimated_seconds,max_runs,max_retries,memory_GiB,disk_GiB,owner,cutoff_KST,stop
+A_curl_seeds17_29_43,MS representation and calibration63 development,COMPLETE,0,New unopened Full test remains,10800,3,0,16,20,hpc133 isolated one-shot job; identity retained privately,2026-10-28T08:00:00+09:00,owned STOP plus PID creation-time check
+calibration63_Cu_J_reader,loss-aware Full-field transfer,FUTURE_CANDIDATE_NOT_LAUNCHED,0,Complete native wave/field linkage and per-case units/current/gates,UNKNOWN until source inventory,0,0,TBD,TBD,unassigned,requires new bounded plan,no job launched
+unopened_new_OP_or_template_test,compare frozen A/curl residual against latest AF under same calibration budget,FUTURE_CANDIDATE_NOT_LAUNCHED,TBD independent evaluation only,New predeclared sources and accepted current/period/mesh/time contracts,TBD after qualified pilot,0,0,TBD,TBD,unassigned,requires new bounded plan,no job launched

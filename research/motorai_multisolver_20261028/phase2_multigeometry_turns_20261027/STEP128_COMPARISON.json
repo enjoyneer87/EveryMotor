@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "case": "N128_P1",
+      "total_steps": 128,
+      "steps_per_period": 128,
+      "adopted_diagnostic_window": "P1",
+      "AC_W": 49543.25896055128,
+      "reference_N512_same_period_AC_W": 51733.492148377074,
+      "difference_same_period_percent": -4.233685175444911,
+      "reference_N512P3_AC_W": 41492.40690565034,
+      "difference_vs_N512P3_percent": 19.403193633012854,
+      "current_status": "PASS",
+      "current_max_percent": 0.00010840512547302684,
+      "nonlinear_status": "PASS",
+      "geometry_material_contract": "same input mesh/model/material/initial condition hashes verified",
+      "formal_period_time_mesh": "UNKNOWN",
+      "eligible_as_converged_Full_training_truth": false
+    },
+    {
+      "case": "N64_P2",
+      "total_steps": 128,
+      "steps_per_period": 64,
+      "adopted_diagnostic_window": "P2",
+      "AC_W": 43049.09589009026,
+      "reference_N512_same_period_AC_W": 41492.40617648765,
+      "difference_same_period_percent": 3.751746059221633,
+      "reference_N512P3_AC_W": 41492.40690565034,
+      "difference_vs_N512P3_percent": 3.751744235950633,
+      "current_status": "PASS",
+      "current_max_percent": 5.203243630786117e-05,
+      "nonlinear_status": "PASS",
+      "geometry_material_contract": "same input mesh/model/material/initial condition hashes verified",
+      "formal_period_time_mesh": "UNKNOWN",
+      "eligible_as_converged_Full_training_truth": false
+    }
+  ],
+  "reference": "existing Ref117 N512P3",
+  "new_extra_steps_above128": 0,
+  "interpretation": "Same-period difference diagnoses timestep plus within-period transient resolution. Difference vs P3 also includes startup/settling. Neither is an approved accuracy PASS.",
+  "decision": "Keep128 cap. Use as low-fidelity/diagnostic until initialization or validated averaging resolves error; no automatic longer solve."
+}

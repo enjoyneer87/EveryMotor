@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "newOP_labels_used_for_training": 0,
+  "unique_Full_calibration": 63,
+  "independent_new_evaluation_labels": 6,
+  "numerical_gate_pass_evaluation_labels": 5,
+  "quality_flagged_evaluation_labels": 1,
+  "formal_qualified_labels": 0,
+  "new_template_count": 0,
+  "reserved_present": [],
+  "reserved": [
+    "R1_0199",
+    "R1_0076"
+  ],
+  "historical_initial_QC_preserved": true,
+  "HalfSC_predeclared": 32,
+  "HalfSC_exploratory": 4,
+  "HalfSC_reevaluated": false,
+  "predictions_frozen_sha256": "c238ac8b61242d2c804a8e03639df7c1ccb4aa510ba88afa42b96e58afa7f459",
+  "native_same_geometry_MS_pairs": 4,
+  "scaled_MS_denominator_associations": 2,
+  "exact_cross_solver_bridges": 0,
+  "pairs": [
+    {
+      "case": "Ref_I230.05_B36_N6000",
+      "MS_source": "Ref_Ref_P105",
+      "Full_source": "Elmer/new_OP_20261027/Ref_I230.05_B36_N6000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": true,
+      "relation": "native_Ref_MS_frequency_reuse",
+      "exact_cross_solver_bridge": false
+    },
+    {
+      "case": "Ref_I230.05_B36_N12000",
+      "MS_source": "Ref_Ref_P105",
+      "Full_source": "Elmer/new_OP_20261027/Ref_I230.05_B36_N12000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": true,
+      "relation": "native_Ref_MS_frequency_reuse",
+      "exact_cross_solver_bridge": false
+    },
+    {
+      "case": "Ref_I460_B36_N6000",
+      "MS_source": "Ref_Ref_P117",
+      "Full_source": "Elmer/new_OP_20261027/Ref_I460_B36_N6000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": true,
+      "relation": "native_Ref_MS_frequency_reuse",
+      "exact_cross_solver_bridge": false
+    },
+    {
+      "case": "Ref_I460_B36_N12000",
+      "MS_source": "Ref_Ref_P117",
+      "Full_source": "Elmer/new_OP_20261027/Ref_I460_B36_N12000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": true,
+      "relation": "native_Ref_MS_frequency_reuse",
+      "exact_cross_solver_bridge": false
+    },
+    {
+      "case": "SC_I460.1_B36_N6000",
+      "MS_source": "Ref_Ref_P105",
+      "Full_source": "Elmer/new_OP_20261027/SC_I460.1_B36_N6000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": false,
+      "relation": "scaled_Ref_MS_to_SC_prediction_not_native_SC_MS",
+      "exact_cross_solver_bridge": false
+    },
+    {
+      "case": "SC_I460.1_B36_N12000",
+      "MS_source": "Ref_Ref_P105",
+      "Full_source": "Elmer/new_OP_20261027/SC_I460.1_B36_N12000",
+      "denominator_lineage": "linked",
+      "native_same_geometry_MS_pair": false,
+      "relation": "scaled_Ref_MS_to_SC_prediction_not_native_SC_MS",
+      "exact_cross_solver_bridge": false
+    }
+  ],
+  "note": "Do not add scaled MS associations to historical41 native pairs. Cross-source geometry aliases remain governed by prior registry."
+}

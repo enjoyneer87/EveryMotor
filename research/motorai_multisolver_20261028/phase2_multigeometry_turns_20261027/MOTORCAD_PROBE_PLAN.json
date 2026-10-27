@@ -1,0 +1,19 @@
+{
+  "scope": "one separate native instance, private template copies, no FEA",
+  "host": "234",
+  "launch_count_max": 1,
+  "automatic_retry": 0,
+  "wall_seconds_max": 180,
+  "geometry_variants": [
+    6,
+    4,
+    8
+  ],
+  "total_steps_setting": 128,
+  "cycles_setting": 1,
+  "existing_user_process_preserved": true,
+  "source_sha256": "e6877908c323373f63a6e29464382f2c286aeca87ce46ef650df6e22838c28c5",
+  "RAM_estimate_GiB": 2,
+  "disk_estimate_GiB": 0.5,
+  "stop": "new API-owned PID and create_time only"
+}

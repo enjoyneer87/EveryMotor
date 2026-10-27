@@ -1,0 +1,40 @@
+{
+  "field_same_support": [
+    {
+      "method": "primary_node_B",
+      "mean": 15.544330783723096,
+      "SD": 0.21603412002832387,
+      "values": [
+        15.81651176804889,
+        15.528424505803168,
+        15.288056077317231
+      ]
+    },
+    {
+      "method": "followup_A_curl",
+      "mean": 12.34409776917552,
+      "SD": 0.3408529572708484,
+      "values": [
+        12.603744762334232,
+        12.565996729837881,
+        11.862551815354442
+      ]
+    }
+  ],
+  "calibrationCV": [
+    {
+      "seed": 17,
+      "selected_group_CV_wMAE_percent": 2.321339963639781
+    },
+    {
+      "seed": 29,
+      "selected_group_CV_wMAE_percent": 2.2824489539553725
+    },
+    {
+      "seed": 43,
+      "selected_group_CV_wMAE_percent": 2.1452294894461366
+    }
+  ],
+  "Full_budget": 63,
+  "Full_evaluation_performed": false
+}

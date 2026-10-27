@@ -1,0 +1,479 @@
+{
+  "shards": [
+    {
+      "case": "Ref_I230.05_B36_N6000",
+      "path": "results/Ref_I230.05_B36_N6000/waveforms.npz",
+      "sha256": "8ac2512014b4f77aa278f4ce73b7c3873c9f3d3d77d481059980e88bfbe0f19f",
+      "bytes": 174100,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    },
+    {
+      "case": "Ref_I230.05_B36_N12000",
+      "path": "results/Ref_I230.05_B36_N12000/waveforms.npz",
+      "sha256": "b1a6718db32a746bb56d270faa8ffba1dcff74a08bef4e8a05f43dd62cfeab92",
+      "bytes": 178430,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    },
+    {
+      "case": "Ref_I460_B36_N6000",
+      "path": "results/Ref_I460_B36_N6000/waveforms.npz",
+      "sha256": "eba75ac18311cc3438d4c801ed78209c5735f1bf375fb5b4247dfe4a53234e86",
+      "bytes": 173206,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    },
+    {
+      "case": "Ref_I460_B36_N12000",
+      "path": "results/Ref_I460_B36_N12000/waveforms.npz",
+      "sha256": "dc8b7acc00c72cbf238454107857b2c052177748fdd01c065b29389eee794287",
+      "bytes": 177354,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    },
+    {
+      "case": "SC_I460.1_B36_N6000",
+      "path": "results/SC_I460.1_B36_N6000/waveforms.npz",
+      "sha256": "47d3f41e8fd4ca91a90f873ff10ed83502c275b0f7cee2ca9a37c036a80f5c1a",
+      "bytes": 181861,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    },
+    {
+      "case": "SC_I460.1_B36_N12000",
+      "path": "results/SC_I460.1_B36_N12000/waveforms.npz",
+      "sha256": "9b8e21dc7730b17e31f51847842e5bc8cc661c89622121b98fdd7c10f41a4d70",
+      "bytes": 185091,
+      "arrays": {
+        "scalar": {
+          "shape": [
+            768,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "current_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        },
+        "prescribed_A": {
+          "shape": [
+            768,
+            36
+          ],
+          "dtype": "float64"
+        }
+      },
+      "scalar_columns": [
+        "time_s",
+        "Joule_W",
+        "DC_W",
+        "AC_W",
+        "current_error_percent_of_phase_peak"
+      ],
+      "current_unit": "A",
+      "conductor_IDs": [
+        2301,
+        2302,
+        2303,
+        2304,
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2311,
+        2312,
+        2313,
+        2314,
+        2315,
+        2316,
+        2317,
+        2318,
+        2319,
+        2320,
+        2321,
+        2322,
+        2323,
+        2324,
+        2325,
+        2326,
+        2327,
+        2328,
+        2329,
+        2330,
+        2331,
+        2332,
+        2333,
+        2334,
+        2335,
+        2336
+      ],
+      "conductor_order": "ascending physical ID",
+      "time_downsampled": false,
+      "field_arrays_included": false,
+      "raw_field_location": "source-key mapping on private iso storage"
+    }
+  ],
+  "scope": "loss/current waveforms; raw field remains on source host"
+}

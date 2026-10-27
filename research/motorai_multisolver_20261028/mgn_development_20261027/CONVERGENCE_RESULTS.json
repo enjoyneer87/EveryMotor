@@ -1,0 +1,75 @@
+{
+  "status": "COMPLETE",
+  "requested_numerical_variants": 3,
+  "completed_numerical_variants": 3,
+  "unique_physical_conditions": 1,
+  "new_independent_training_labels": 0,
+  "Full_calibration_budget_unchanged": 63,
+  "comparisons": {
+    "repeat_original_P2": {
+      "errors_W": [
+        1.1816155165433884e-08,
+        0.0,
+        1.1801603250205517e-08
+      ],
+      "max_abs_error_W": 1.1816155165433884e-08,
+      "gate_W": 1e-06,
+      "status": "PASS",
+      "scope": "same physical/time/mesh inputs, extended total history only; old target unchanged"
+    },
+    "time_step": {
+      "reference_case": "N512_P3",
+      "coarse_case": "N256_P3",
+      "P3_mean_difference_percent": 0.26107660007422984,
+      "P3_phase_aligned_wave_L2_percent": 0.280138445481189,
+      "proposed_mean_threshold_percent": 1.0,
+      "development_threshold_status": "PASS",
+      "formal_qualification": "UNKNOWN",
+      "reason": "No separately approved time/mesh qualification contract; measured sensitivity and predeclared engineering threshold reported only",
+      "period_development_checks_met": true
+    },
+    "mesh": {
+      "reference_case": "fine_N256_P3",
+      "coarse_case": "N256_P3",
+      "P3_mean_difference_percent": 0.06198916409756889,
+      "P3_phase_aligned_wave_L2_percent": 0.09728260775284797,
+      "proposed_mean_threshold_percent": 1.0,
+      "development_threshold_status": "PASS",
+      "formal_qualification": "UNKNOWN",
+      "reason": "No separately approved time/mesh qualification contract; measured sensitivity and predeclared engineering threshold reported only",
+      "period_development_checks_met": true
+    }
+  },
+  "period_diagnostics": {
+    "N256_P3": {
+      "P2_P3_mean_percent": 1.4602488933079613e-06,
+      "P2_P3_wave_L2_percent": 1.8828209143051776e-06,
+      "period_development_threshold_status": "PASS",
+      "P3_current_status": "PASS",
+      "whole_current_status": "PASS",
+      "nonlinear_status": "PASS"
+    },
+    "N512_P3": {
+      "P2_P3_mean_percent": 1.7573400634007678e-06,
+      "P2_P3_wave_L2_percent": 3.596751257894332e-06,
+      "period_development_threshold_status": "PASS",
+      "P3_current_status": "PASS",
+      "whole_current_status": "PASS",
+      "nonlinear_status": "PASS"
+    },
+    "fine_N256_P3": {
+      "P2_P3_mean_percent": 1.4699419316724165e-06,
+      "P2_P3_wave_L2_percent": 2.044849801720666e-06,
+      "period_development_threshold_status": "PASS",
+      "P3_current_status": "PASS",
+      "whole_current_status": "PASS",
+      "nonlinear_status": "PASS"
+    }
+  },
+  "formal_period_mesh_time_qualification": "UNKNOWN",
+  "qualification_policy": "QUALIFICATION_POLICY.json",
+  "historical_HalfSC_receipts_modified": false,
+  "original_results_modified": false,
+  "actual_solver_seconds": 16553.347854720894,
+  "whole_dataset_qualification": "UNKNOWN; one Ref anchor does not qualify192loaded or36HalfSC conditions"
+}

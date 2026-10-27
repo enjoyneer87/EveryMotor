@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "checks": [
+    "UTC_deadline_refuses_update",
+    "owned_STOP_refuses_update"
+  ],
+  "scope": "bounded runner refusal checks; no production rerun"
+}

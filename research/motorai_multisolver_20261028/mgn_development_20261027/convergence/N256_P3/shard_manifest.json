@@ -1,0 +1,192 @@
+{
+  "source_native_sha256": "38676bd83784edbc8372958d55f0099f588e8a811d9b2a3bd9dea94c7fe71b53",
+  "source_mesh_sha256": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+  "shard_sha256": "2fdf99489c45b6cdd2223cb8ed1fb547628a4f6ce4dd2ad9ed065a92dc4d8a9d",
+  "shard_bytes": 1926387,
+  "arrays": {
+    "node_ids": {
+      "shape": [
+        4212
+      ],
+      "dtype": "int64"
+    },
+    "node_xy_m": {
+      "shape": [
+        4212,
+        2
+      ],
+      "dtype": "float64"
+    },
+    "element_ids": {
+      "shape": [
+        6912
+      ],
+      "dtype": "int64"
+    },
+    "connectivity_local": {
+      "shape": [
+        6912,
+        3
+      ],
+      "dtype": "int64"
+    },
+    "connectivity_node_ids": {
+      "shape": [
+        6912,
+        3
+      ],
+      "dtype": "int64"
+    },
+    "edge_index": {
+      "shape": [
+        2,
+        22176
+      ],
+      "dtype": "int64"
+    },
+    "physical_ids": {
+      "shape": [
+        6912
+      ],
+      "dtype": "int64"
+    },
+    "slot_ids": {
+      "shape": [
+        6912
+      ],
+      "dtype": "int64"
+    },
+    "conductor_ids": {
+      "shape": [
+        6912
+      ],
+      "dtype": "int64"
+    },
+    "circuit_component_ids": {
+      "shape": [
+        36
+      ],
+      "dtype": "int64"
+    },
+    "element_area_m2": {
+      "shape": [
+        6912
+      ],
+      "dtype": "float64"
+    },
+    "full_motor_element_volume_m3": {
+      "shape": [
+        6912
+      ],
+      "dtype": "float64"
+    },
+    "source_steps": {
+      "shape": [
+        8
+      ],
+      "dtype": "int64"
+    },
+    "time_s": {
+      "shape": [
+        8
+      ],
+      "dtype": "float64"
+    },
+    "phase_deg": {
+      "shape": [
+        8
+      ],
+      "dtype": "float64"
+    },
+    "A_node_Wb_m": {
+      "shape": [
+        8,
+        4212
+      ],
+      "dtype": "float64"
+    },
+    "B_element_T": {
+      "shape": [
+        8,
+        6912,
+        2
+      ],
+      "dtype": "float64"
+    },
+    "J_total_element_node_A_m2": {
+      "shape": [
+        8,
+        6912,
+        3
+      ],
+      "dtype": "float64"
+    },
+    "current_bar_A": {
+      "shape": [
+        8,
+        36
+      ],
+      "dtype": "float64"
+    },
+    "full_history_scalar": {
+      "shape": [
+        768,
+        5
+      ],
+      "dtype": "float64"
+    },
+    "full_history_current_A": {
+      "shape": [
+        768,
+        36
+      ],
+      "dtype": "float64"
+    },
+    "full_history_prescribed_A": {
+      "shape": [
+        768,
+        36
+      ],
+      "dtype": "float64"
+    }
+  },
+  "snapshot_steps": [
+    544,
+    576,
+    608,
+    640,
+    672,
+    704,
+    736,
+    768
+  ],
+  "period": 3,
+  "source_steps_per_period": 256,
+  "sparse_phase_count": 8,
+  "Joule_snapshot_reintegration_max_error_W": 0.0,
+  "current_snapshot_reintegration_max_error_A": 0.0,
+  "sparse8_AC_mean_W": 42351.180894068886,
+  "full_P3_AC_mean_W": 41600.73387088858,
+  "sparse8_vs_full_AC_mean_difference_percent": 1.8039273670252607,
+  "full_scalar_history_preserved_losslessly": true,
+  "float_precision": "float64, lossless NPZ; no quantization",
+  "sparse_field_warning": "8 snapshots do not supply a validated period average; use included full-time scalar curve for loss labels. Quantified sparse mean error is diagnostic, no new acceptance gate.",
+  "units": {
+    "A": "Wb/m nodal Az",
+    "B": "T element P1curl",
+    "J": "A/m2 total conduction at element nodes",
+    "current": "A,bar signed instantaneous",
+    "scalar_columns": [
+      "time_s",
+      "Joule_active_fullmotor_W",
+      "prescribed_DC_fullmotor_W",
+      "AC_excess_fullmotor_W",
+      "current_max_percent_phase_peak"
+    ]
+  },
+  "integration": "P1 exact square integral, sigma47092391.429245 S/m,8sectors,active length0.15m; no end winding",
+  "J_definition": "sigma*(circuit_component_voltage/active_length-BE_or_BDF2_dA_dt); total conduction, not Motor-CAD Je; no artificial skin/proximity decomposition",
+  "mapping": "original IDs from native permutation and mesh; no coordinate matching; B and J keep element/material-side values",
+  "geometry_group": "same Ref_P117 original geometry; numerical mesh/time variant, not independent training condition",
+  "training_use": "No fields from this new numerical study entered the frozen models"
+}

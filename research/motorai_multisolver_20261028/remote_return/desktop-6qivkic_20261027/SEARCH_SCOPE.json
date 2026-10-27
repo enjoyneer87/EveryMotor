@@ -1,0 +1,19 @@
+{
+  "purpose": "Bounded local source discovery, not a scan of every disk or user document",
+  "logical_roots_searched": [
+    "primary_VeryMCAD_workspace",
+    "engineering_projects_root",
+    "local_code_repository_root",
+    "local_Codex_work_root",
+    "known_NAS_VeryMCAD_archive_root",
+    "exact_original_path_candidates_from_INPUT_INDEX_60"
+  ],
+  "raw_patterns": ["ALL_A_HISTORY.npz", "PRESERVATION_MANIFEST.json", "PRESERVATION_RECEIPT.json"],
+  "MS_A_histories_found_in_scope": 0,
+  "HalfSC_preservation_records_found_in_scope": 0,
+  "other_machine_SSH_access": false,
+  "entire_disk_scan": false,
+  "originals_modified": false,
+  "remaining_search_action": "Resolve logical source keys and expected hashes on the original acquisition host; no new solver run is implied",
+  "private_absolute_root_mapping": "stored outside Git with the local path map"
+}

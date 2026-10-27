@@ -1,0 +1,273 @@
+{
+  "requested": 8,
+  "collected": 6,
+  "not_collected": 2,
+  "quality": [
+    {
+      "case": "Ref_I230.05_B36_N6000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 5.4569682106375694e-12,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "PASS",
+        "max_percent": 0.00012622381904366635,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 1.0865438328878506e-05,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 9.8578777e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 3.0637142226266804e-06,
+        "wave_L2_percent": 3.1524748751191724e-06
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    },
+    {
+      "case": "Ref_I230.05_B36_N12000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 7.275957614183426e-12,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "PASS",
+        "max_percent": 0.0002558023588788776,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 2.1591208981470465e-05,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 8.8130229e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 2.2485237236069706e-06,
+        "wave_L2_percent": 2.318497799181154e-06
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    },
+    {
+      "case": "Ref_I460_B36_N6000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 4.3655745685100555e-11,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "PASS",
+        "max_percent": 8.302890865395078e-05,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 6.300715393180238e-06,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 8.009207e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 1.3482869938969505e-06,
+        "wave_L2_percent": 1.3894883057263344e-06
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    },
+    {
+      "case": "Ref_I460_B36_N12000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 2.1827872842550278e-11,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "PASS",
+        "max_percent": 0.00016385816035746978,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 1.2492975223859883e-05,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 8.2691523e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 1.022712936931216e-06,
+        "wave_L2_percent": 1.0502402077738569e-06
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    },
+    {
+      "case": "SC_I460.1_B36_N6000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 2.9103830456733704e-11,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "PASS",
+        "max_percent": 0.0005150811159572734,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 4.258169895297726e-05,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 8.9855408e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 8.200342384680163e-05,
+        "wave_L2_percent": 0.00016045163177110793
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    },
+    {
+      "case": "SC_I460.1_B36_N12000",
+      "provenance": "PASS",
+      "units_scope": "PASS",
+      "temperature": "UNKNOWN",
+      "raw_A_circuit_reintegration": {
+        "status": "PASS",
+        "scope": "completed768 native steps read and integrated; independent solver loss unavailable"
+      },
+      "waveform_arithmetic": {
+        "status": "PASS",
+        "max_error_W": 2.9103830456733704e-11,
+        "gate": {
+          "rtol": 1e-12,
+          "atol_W": 1e-09,
+          "scope": "float64 saved-waveform arithmetic consistency only"
+        }
+      },
+      "current": {
+        "status": "FAIL",
+        "max_percent": 0.001101196735168287,
+        "gate_percent": 0.001
+      },
+      "P2_current": {
+        "status": "PASS",
+        "max_percent": 8.337712550467577e-05,
+        "gate_percent": 0.001
+      },
+      "nonlinear": {
+        "status": "PASS",
+        "max_relative_change": 9.7618661e-11,
+        "gate": 1e-10
+      },
+      "period_development": {
+        "status": "PASS",
+        "mean_percent": 0.011790920539806739,
+        "wave_L2_percent": 0.021278533491259452
+      },
+      "formal_period": "UNKNOWN",
+      "formal_mesh": "UNKNOWN",
+      "formal_timestep": "UNKNOWN",
+      "independent_loss_channel": "UNKNOWN_not_available"
+    }
+  ],
+  "blanket_physical_PASS": false,
+  "quality_fail_collected": 1,
+  "unrun_blocked_by_predecessor": 2,
+  "execution_failed": 0,
+  "running": 0,
+  "pending": 0,
+  "past_receipt_vs_current": "This return contains new source-host integration and local hash/arithmetic checks, not just copied historical PASS.",
+  "formal_qualification": "UNKNOWN"
+}

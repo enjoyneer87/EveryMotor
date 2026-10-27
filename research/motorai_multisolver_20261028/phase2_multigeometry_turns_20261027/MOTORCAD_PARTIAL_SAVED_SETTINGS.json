@@ -1,0 +1,128 @@
+{
+  "scope": "read-only saved .mot text; not recovered API readback or native drawn-count validation",
+  "files": [
+    {
+      "logical_file": "probe_slot4.mot",
+      "bytes": 677430,
+      "sha256": "ee385430e406493bd161501961aedac7c4653404c1ccd51a6048a4850e14a068",
+      "selected_saved_settings": {
+        "ConductorsPerSlot": [
+          "ConductorsPerSlot=4"
+        ],
+        "Copper_Height": [
+          "Copper_Height=2.704"
+        ],
+        "Copper_Width": [
+          "Copper_Width=3.711"
+        ],
+        "Insulation_Thickness": [
+          "Insulation_Thickness=0.1"
+        ],
+        "ConductorSeparation": [
+          "ConductorSeparation=0.15"
+        ],
+        "Liner_Thickness": [
+          "Liner_Thickness=0.2"
+        ],
+        "Slot_Depth": [
+          "Slot_Depth=13.83"
+        ],
+        "TorquePointsPerCycle": [
+          "TorquePointsPerCycle=128"
+        ],
+        "TorqueNumberCycles": [
+          "TorqueNumberCycles=1"
+        ],
+        "RMSCurrent": [
+          "RMSCurrent=375"
+        ],
+        "ProximityLossModel": [
+          "ProximityLossModel=3"
+        ]
+      }
+    },
+    {
+      "logical_file": "probe_slot6.mot",
+      "bytes": 677748,
+      "sha256": "be1a03d3640b5ea18bdd0851cededc7fbf39b02ad9fe75b3eb63d909aab34eb0",
+      "selected_saved_settings": {
+        "ConductorsPerSlot": [
+          "ConductorsPerSlot=6"
+        ],
+        "Copper_Height": [
+          "Copper_Height=1.686"
+        ],
+        "Copper_Width": [
+          "Copper_Width=3.711"
+        ],
+        "Insulation_Thickness": [
+          "Insulation_Thickness=0.1"
+        ],
+        "ConductorSeparation": [
+          "ConductorSeparation=0.15"
+        ],
+        "Liner_Thickness": [
+          "Liner_Thickness=0.2"
+        ],
+        "Slot_Depth": [
+          "Slot_Depth=13.83"
+        ],
+        "TorquePointsPerCycle": [
+          "TorquePointsPerCycle=128"
+        ],
+        "TorqueNumberCycles": [
+          "TorqueNumberCycles=1"
+        ],
+        "RMSCurrent": [
+          "RMSCurrent=250"
+        ],
+        "ProximityLossModel": [
+          "ProximityLossModel=3"
+        ]
+      }
+    },
+    {
+      "logical_file": "source.mot",
+      "bytes": 676613,
+      "sha256": "e6877908c323373f63a6e29464382f2c286aeca87ce46ef650df6e22838c28c5",
+      "selected_saved_settings": {
+        "ConductorsPerSlot": [
+          "ConductorsPerSlot=6"
+        ],
+        "Copper_Height": [
+          "Copper_Height=1.686"
+        ],
+        "Copper_Width": [
+          "Copper_Width=3.711"
+        ],
+        "Insulation_Thickness": [
+          "Insulation_Thickness=0.1"
+        ],
+        "ConductorSeparation": [
+          "ConductorSeparation=0.15"
+        ],
+        "Liner_Thickness": [
+          "Liner_Thickness=0.2"
+        ],
+        "Slot_Depth": [
+          "Slot_Depth=13.83"
+        ],
+        "TorquePointsPerCycle": [
+          "TorquePointsPerCycle=128"
+        ],
+        "TorqueNumberCycles": [
+          "TorqueNumberCycles=1"
+        ],
+        "RMSCurrent": [
+          "RMSCurrent=460"
+        ],
+        "ProximityLossModel": [
+          "ProximityLossModel=3"
+        ]
+      }
+    }
+  ],
+  "solver_runs": 0,
+  "geometry_qualification": "UNKNOWN",
+  "actual_solver_steps": "UNKNOWN"
+}

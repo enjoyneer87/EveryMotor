@@ -1,0 +1,40 @@
+{
+  "source_hashes_and_frozen_code": {
+    "status": "PASS"
+  },
+  "operator_invariants": {
+    "status": "PASS",
+    "scope": "numerical implementation only"
+  },
+  "same_support_MS_field": {
+    "status": "PASS",
+    "scope": "observed fixed-seed field improvement, not Full AC"
+  },
+  "Full63_budget_and_exclusions": {
+    "status": "PASS",
+    "reserved": 0,
+    "HalfSC_training": 0
+  },
+  "latest_AF_AC_superiority": {
+    "status": "UNKNOWN",
+    "reason": "No followup Full evaluation performed; primary MGN failed to outperformAF"
+  },
+  "new_template_generalization": {
+    "status": "UNKNOWN"
+  },
+  "MotorCAD_current_definition_and_exact_bridge": {
+    "status": "UNKNOWN",
+    "Je_present": 440,
+    "manifest_cases": 480,
+    "exact_bridges": 0
+  },
+  "execution": {
+    "status": "PASS",
+    "host": "hpc133",
+    "retry": 0,
+    "owned_training_completed": true,
+    "one_shot_task_disabled": true,
+    "original_AEDT_processes_preserved": true,
+    "deadline_KST": "2026-10-28T08:00:00+09:00"
+  }
+}

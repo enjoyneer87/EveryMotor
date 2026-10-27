@@ -1,0 +1,18 @@
+{
+  "schema":"jeet-new-OP-validation-v1",
+  "authorization":"User requested continued MotorAI development, necessary FEA, GitHub publication, and execution only until2026-10-28 08:00KST.",
+  "deadline_UTC":"2026-10-27T23:00:00Z",
+  "deadline_KST":"2026-10-28T08:00:00+09:00",
+  "reason":"Primary comparison and three numerical sensitivity runs completed. A/curl field improvement alone does not establish AC-loss improvement. Acquire new common OP validation labels without retraining or reusing HalfSC for selection.",
+  "amends_prior_overnight_queue":"The earlier no-additional-FEA decision applied while the3sensitivity cases were pending. All3finished; this separate queue is declared before new target results exist.",
+  "test":{"models":["Ref","SC"],"normalized_Ref_current_Arms":[230.05,460.0],"beta_deg":36.0,"speed_rpm":[6000,12000],"conditions":8,"known_MS_source_keys":["Ref_Ref_P105","Ref_Ref_P117"],"new_MS_solves":0,"new_independent_calibration_labels":0,"new_evaluation_conditions":8,"condition_scope":"new Full labels at interpolated speeds on known geometries and known MS source groups; not new-template generalization","source_groups":2,"HalfSC":0,"reserved_aliases_excluded":["R1_0199","R1_0076"]},
+  "models_frozen":["latest AF times canonical mean-square Hybrid","primary scalar residual","primary MS-node-B MGN seeds17/29/43","followup A-curl MGN seeds17/29/43"],
+  "Full_calibration_budget":{"Ref":36,"SC":27,"total_unique":63,"additional_evaluation_budget_shared_by_all_methods":8},
+  "freeze_rule":"All8input conditions and all method predictions with source/model hashes must be saved before production solves. No refit, retraining, best-seed selection or threshold reselection after observing results.",
+  "numerics":{"steps_per_period":256,"periods":3,"accepted_loss_window":"P2 arithmetic mean of post-step samples257..512, matching historical contract","P3":"period check only; never silently replace P2","sigma_S_m":47092391.429245,"active_length_m":0.15,"scope":"8sector full-motor active Joule minus prescribed transport DC; no end-winding loss"},
+  "bounds":{"workers":2,"CPU_threads_per_worker":8,"production_cases_max":8,"small_pilots":2,"pilot_steps":8,"pilot_wall_seconds":180,"case_wall_seconds":5400,"aggregate_case_seconds":43560,"automatic_retries":0,"RAM_GiB_per_worker":16,"disk_GiB_total":40,"minimum_disk_reserve_GiB":32,"stop":"UTC cutoff checked every5seconds, owned STOP file, process-group termination after PID start-tick match; no unrelated process changes","no_new_case_after":"deadline minus5400seconds"},
+  "gates":{"current_max_percent_of_phase_peak":0.001,"nonlinear_relative_change":1e-10,"period_mean_percent_development_only":0.1,"period_wave_L2_percent_development_only":0.5,"formal_mesh_time_period_qualification":"UNKNOWN; Ref anchor sensitivity does not qualify all new conditions"},
+  "cost_estimate":{"basis":"Observed N256P3 original-mesh anchor3789.83sec, fine4986.23sec; SC current/frequency can change runtime","expected_parallel_wall_hours":"4-6.5","confidence":"estimate, not guaranteed completion; partial results retained at deadline"},
+  "evaluation":"Report every completed case, missing/failed count, wMAE and per-case relative error by machine plus three fixed seed results. Only2MS groups; no broad statistical or new-geometry claim. Numerical failure cases remain flagged, not dropped to improve score.",
+  "publication":"Update this folder, primary/followup completion evidence and HTML; nonforce GitHub research-branch push and issue1. Pause only this new heartbeat at completion or cutoff."
+}

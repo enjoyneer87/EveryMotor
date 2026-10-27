@@ -1,0 +1,28 @@
+{
+  "case_id": "Ref_I460_B36_N12000",
+  "collected_UTC": "2026-10-27T15:51:54.421765+00:00",
+  "source_status": "PASS",
+  "input_files": 12,
+  "native_steps": 768,
+  "waveform_scalar_roundtrip_max_W": 2.1827872842550278e-11,
+  "roundtrip_tolerance": {
+    "rtol": 1e-12,
+    "atol_W": 1e-09,
+    "scope": "float64 saved-waveform arithmetic consistency only"
+  },
+  "current_status": "PASS",
+  "nonlinear_status": "PASS",
+  "formal_period_mesh_time": "UNKNOWN",
+  "native_method": "BE first step then BDF2 from native A plus circuit voltage; P1 triangle J integration; prescribed transport DC",
+  "independent_solver_loss_channel": false,
+  "accepted_average": "P2 post-step arithmetic mean steps257..512",
+  "P3_role": "period diagnostic only",
+  "quantity": "AC excess = full-motor active Joule minus prescribed transport DC",
+  "unit": "W",
+  "symmetry_factor": 8,
+  "active_length_m": 0.15,
+  "sigma_S_m": 47092391.429245,
+  "temperature_C": null,
+  "waveforms_sha256": "dc8b7acc00c72cbf238454107857b2c052177748fdd01c065b29389eee794287",
+  "raw_manifest_sha256": "63bdd93f0916c361407a7b86309cbb7af675f118b54426a2672e4a350d578610"
+}

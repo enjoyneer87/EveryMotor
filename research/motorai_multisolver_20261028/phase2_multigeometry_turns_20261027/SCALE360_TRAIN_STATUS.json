@@ -1,0 +1,54 @@
+{
+  "checked_UTC": "2026-10-27T16:10:59.109573+00:00",
+  "stage_exists": true,
+  "DEPLOY_RECEIPT.json": {
+    "source_zip_sha256": "54600bf85fb85998370fe02e1f8592ffe603e0f60eaaa9f8f5be41800e803d75",
+    "code_hashes": {
+      "dual_solver_mgn.py": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "train_field_scale360.py": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+      "guard_scale360.py": "7aa098d4d5fb22f480a99b6b8db6e484eab25f095239998dfb5dc76acbbcda91",
+      "SCALE360_PLAN.json": "e6773d8b4f66de674a3e0a28805a9018eaea751bd3175c99b7b76d2047ba5e14",
+      "SCALE360_SELECTION_FROZEN.json": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "B_FIELD_BUNDLE_MANIFEST.json": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3"
+    },
+    "bundle_manifest_sha256": "4f1a415b2b054e8e06543da992be44aacf2f916089539f04630fb5578d28f7b7",
+    "cases": 360,
+    "graphs": 3240,
+    "gpu": "NVIDIA L40S, 10 MiB, 0 %",
+    "compute_processes": ""
+  },
+  "OWNER.json": {
+    "operation": "training",
+    "pid": 15688,
+    "process_started_epoch": 1793112746.2601388,
+    "guard_pid": 16012,
+    "guard_started_epoch": 1793112746.1786292,
+    "started_UTC": "2026-10-27T14:52:26.260800+00:00",
+    "wall_seconds_max": 10800
+  },
+  "GUARD_RECEIPT.json": {
+    "operation": "training",
+    "pid": 15688,
+    "process_started_epoch": 1793112746.2601388,
+    "guard_pid": 16012,
+    "guard_started_epoch": 1793112746.1786292,
+    "started_UTC": "2026-10-27T14:52:26.260800+00:00",
+    "wall_seconds_max": 10800,
+    "finished_UTC": "2026-10-27T15:46:56.607868+00:00",
+    "elapsed_seconds": 3270.3280000000013,
+    "returncode": 0,
+    "stop_reason": null,
+    "retries": 0
+  },
+  "owned_process_live": false,
+  "checkpoint": {
+    "bytes": 810545,
+    "sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+    "logical_source_key": "host133/SCALE360/result/last.pt"
+  },
+  "training_status": "COMPLETED",
+  "training_updates": 88565,
+  "epochs_completed": 30,
+  "GPU_smoke": "PASS",
+  "error": null
+}

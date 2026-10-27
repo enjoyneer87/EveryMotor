@@ -1,0 +1,2390 @@
+[
+  {
+    "case_id": "HALFSC_FIG14_N2000_I690_B36_N256_P2_A01",
+    "role": "existing_exploratory",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 690.0,
+    "beta_deg": 36,
+    "hybrid_W": 1179.4722229481558,
+    "hybrid_source_ref_point_id": "Ref_P117",
+    "MS_field_sha256": "70a78f5ca9a426607c2da5283a1c2bdf5d9a7b00a2d6b90f0065039a5502ad2f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 1179.4722229481558
+      },
+      "normalized_current_same_speed": {
+        "AF": 3.2728482605873985,
+        "prediction_W": 3860.233613287024,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.5421480348931227,
+        "prediction_W": 4177.865216726833,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 4242.912905783025,
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "period_convergence_qualified": false,
+    "errors_percent": {
+      "uncorrected": -72.2013567296997,
+      "normalized_current_same_speed": -9.01925872610807,
+      "normalized_current_similarity_speed": -1.533090367410872
+    }
+  },
+  {
+    "case_id": "HALFSC_FIG14_N4000_I690_B36_N256_P2_A01",
+    "role": "existing_exploratory",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 690.0,
+    "beta_deg": 36,
+    "hybrid_W": 4717.888891792623,
+    "hybrid_source_ref_point_id": "Ref_P117",
+    "MS_field_sha256": "70a78f5ca9a426607c2da5283a1c2bdf5d9a7b00a2d6b90f0065039a5502ad2f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 4717.888891792623
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.786552131901023,
+        "prediction_W": 13146.64334949689,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.2026285431791175,
+        "prediction_W": 15109.64562840275,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 15252.382698796084,
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "period_convergence_qualified": false,
+    "errors_percent": {
+      "uncorrected": -69.06785657715618,
+      "normalized_current_same_speed": -13.805969800806317,
+      "normalized_current_similarity_speed": -0.9358345722901396
+    }
+  },
+  {
+    "case_id": "HALFSC_FIG14_N8000_I690_B36_N256_P2_A01",
+    "role": "existing_exploratory",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 690.0,
+    "beta_deg": 36,
+    "hybrid_W": 18871.555567170493,
+    "hybrid_source_ref_point_id": "Ref_P117",
+    "MS_field_sha256": "70a78f5ca9a426607c2da5283a1c2bdf5d9a7b00a2d6b90f0065039a5502ad2f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 18871.555567170493
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.228094874227524,
+        "prediction_W": 42047.61622791248,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.689723546474359,
+        "prediction_W": 50759.26736761775,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 50682.96399035142,
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "period_convergence_qualified": false,
+    "errors_percent": {
+      "uncorrected": -62.76548551745494,
+      "normalized_current_same_speed": -17.037969137090847,
+      "normalized_current_similarity_speed": 0.1505503452419621
+    }
+  },
+  {
+    "case_id": "HALFSC_FIG14_N16000_I690_B36_N256_P2_A02",
+    "role": "existing_exploratory",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 690.0,
+    "beta_deg": 36,
+    "hybrid_W": 67529.97677002667,
+    "hybrid_source_ref_point_id": "Ref_P117",
+    "MS_field_sha256": "70a78f5ca9a426607c2da5283a1c2bdf5d9a7b00a2d6b90f0065039a5502ad2f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 67529.97677002667
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.9612608669441858,
+        "prediction_W": 132443.90078470323,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.1510388176944066,
+        "prediction_W": 145259.6013903289,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 149389.1581957543,
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": false,
+    "period_convergence_qualified": false,
+    "errors_percent": {
+      "uncorrected": -54.795931923294084,
+      "normalized_current_same_speed": -11.343030254475773,
+      "normalized_current_similarity_speed": -2.764294849305049
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L4_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 690.0,
+    "beta_deg": 90,
+    "hybrid_W": 1806.653487011755,
+    "hybrid_source_ref_point_id": "Ref_P120",
+    "MS_field_sha256": "ce2ac17aef6a5c6a09ef823be3e1c2c5a0a728fed592492e8fdc2276bf11b185",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 1806.653487011755
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.6584274983913678,
+        "prediction_W": 2996.2038229249465,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.7592850257131654,
+        "prediction_W": 3178.418426352255,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 3414.1390845900423,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 5.190227584473627e-06,
+      "max_field_vs_circuit_per_phasepeak": 5.193426668701742e-06,
+      "max_constraint_current_error_per_phasepeak": 5.190227584473627e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 1.1736247731134567e-05,
+    "P1_to_P2_AC_mean_difference_percent": -98.37619679690158,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 1317.7702747846647,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2914.666172548197,
+    "audit_wall_seconds": 19.35935656307265,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "ad5e63e0fa27f8a7ee2c58855cc9ba8677bab763cc9d4e4cabfa1b2fb03a9000",
+    "errors_percent": {
+      "uncorrected": -47.08319016157798,
+      "normalized_current_same_speed": -12.241307436814042,
+      "normalized_current_similarity_speed": -6.904248842753036
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L4_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 690.0,
+    "beta_deg": 90,
+    "hybrid_W": 7226.61394804702,
+    "hybrid_source_ref_point_id": "Ref_P120",
+    "MS_field_sha256": "ce2ac17aef6a5c6a09ef823be3e1c2c5a0a728fed592492e8fdc2276bf11b185",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 7226.61394804702
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.4805119373237026,
+        "prediction_W": 10699.088216513584,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.6322879362961158,
+        "prediction_W": 11795.914767666396,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 11912.379292777825,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.027043046423524e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.027362938389946e-05,
+      "max_constraint_current_error_per_phasepeak": 1.027043046423524e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 2.3607492309683725e-05,
+    "P1_to_P2_AC_mean_difference_percent": -67.59223252930151,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 735.4899173512895,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2835.6880646371283,
+    "audit_wall_seconds": 18.97904236940667,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "30e52517305bbb201b4d0087ff93b6f4664749c9766b206e3cd3c2d5d65ad25e",
+    "errors_percent": {
+      "uncorrected": -39.3352598130557,
+      "normalized_current_same_speed": -10.185127978588026,
+      "normalized_current_similarity_speed": -0.9776764343126465
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L4_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 690.0,
+    "beta_deg": 90,
+    "hybrid_W": 28906.45579218808,
+    "hybrid_source_ref_point_id": "Ref_P120",
+    "MS_field_sha256": "ce2ac17aef6a5c6a09ef823be3e1c2c5a0a728fed592492e8fdc2276bf11b185",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 28906.45579218808
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.3100543716053576,
+        "prediction_W": 37869.02877817301,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.4465885158724807,
+        "prediction_W": 41815.74698355483,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 40368.330524957346,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 2.0376581980852517e-05,
+      "max_field_vs_circuit_per_phasepeak": 2.037978106508063e-05,
+      "max_constraint_current_error_per_phasepeak": 2.0376581980852517e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 4.67961483177178e-05,
+    "P1_to_P2_AC_mean_difference_percent": -44.02627391194582,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 375.8939736267731,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2828.536501727067,
+    "audit_wall_seconds": 19.48841568036005,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "fb2ac592a5e21bc8c5aa753d73087e090fa1073c22233138472132eac14dfc9c",
+    "errors_percent": {
+      "uncorrected": -28.393234458093495,
+      "normalized_current_same_speed": -6.191243765305499,
+      "normalized_current_similarity_speed": 3.585524691695219
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L4_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 690.0,
+    "beta_deg": 90,
+    "hybrid_W": 103171.36553616574,
+    "hybrid_source_ref_point_id": "Ref_P120",
+    "MS_field_sha256": "ce2ac17aef6a5c6a09ef823be3e1c2c5a0a728fed592492e8fdc2276bf11b185",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 103171.36553616574
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.449984747572639,
+        "prediction_W": 149596.90641368175,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.2989816045852267,
+        "prediction_W": 134017.70595141753,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 135713.5207078386,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 4.105484776485316e-05,
+      "max_field_vs_circuit_per_phasepeak": 4.1058046684517375e-05,
+      "max_constraint_current_error_per_phasepeak": 4.105484776485316e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 9.243582467093837e-05,
+    "P1_to_P2_AC_mean_difference_percent": -24.656442331815672,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 175.56740455781218,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2863.1877105799504,
+    "audit_wall_seconds": 18.30095061659813,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "a8e1b00fc6752484c34d3377c8039e629b0b06f19f6d946a563c267ce4078ae4",
+    "errors_percent": {
+      "uncorrected": -23.978565291021336,
+      "normalized_current_same_speed": 10.229920816608274,
+      "normalized_current_similarity_speed": -1.24955475885985
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L1_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 172.6125,
+    "beta_deg": 0,
+    "hybrid_W": 104.36793504838997,
+    "hybrid_source_ref_point_id": "Ref_P097",
+    "MS_field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 104.36793504838997
+      },
+      "normalized_current_same_speed": {
+        "AF": 3.0666186842638234,
+        "prediction_W": 320.0566596574258,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.3125889168574605,
+        "prediction_W": 345.7280649165959,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 367.1511817355445,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.4515009041819428e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.4518096801089226e-05,
+      "max_constraint_current_error_per_phasepeak": 1.4515009041819428e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 6.457943335338419e-05,
+    "P1_to_P2_AC_mean_difference_percent": -63.491248074890294,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 729.9697878021742,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2709.2136642020196,
+    "audit_wall_seconds": 19.238516923971474,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "623d2ed65f9050e76b70abfd50823de3479b1a867c328316c3c0fcbf17291ac4",
+    "errors_percent": {
+      "uncorrected": -71.57358051932809,
+      "normalized_current_same_speed": -12.827010893850376,
+      "normalized_current_similarity_speed": -5.834957882385217
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L1_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 172.6125,
+    "beta_deg": 0,
+    "hybrid_W": 417.47174019355987,
+    "hybrid_source_ref_point_id": "Ref_P097",
+    "MS_field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 417.47174019355987
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.622834596993666,
+        "prediction_W": 1094.95932344682,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.002490961063162,
+        "prediction_W": 1253.455126430472,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 1313.5613585561011,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 2.9092713547687013e-05,
+      "max_field_vs_circuit_per_phasepeak": 2.9095801382635973e-05,
+      "max_constraint_current_error_per_phasepeak": 2.9092713547687013e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00012250017620253433,
+    "P1_to_P2_AC_mean_difference_percent": -40.376093177519614,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 395.5603919823561,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2716.4211872462183,
+    "audit_wall_seconds": 18.26989419804886,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "7f666a338e38852890b7eced5cfd22b226fe7031f2cc37e1fc40681a24735b32",
+    "errors_percent": {
+      "uncorrected": -68.21832969778777,
+      "normalized_current_same_speed": -16.641935581111632,
+      "normalized_current_similarity_speed": -4.575822190118261
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L1_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 172.6125,
+    "beta_deg": 0,
+    "hybrid_W": 1669.8869607742395,
+    "hybrid_source_ref_point_id": "Ref_P097",
+    "MS_field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 1669.8869607742395
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.117635156617538,
+        "prediction_W": 3536.211335712741,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.5346506386754544,
+        "prediction_W": 4232.58005164224,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 4347.187291995889,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 5.824336924734566e-05,
+      "max_field_vs_circuit_per_phasepeak": 5.8246457082294626e-05,
+      "max_constraint_current_error_per_phasepeak": 5.824336924734566e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0007005202647711443,
+    "P1_to_P2_AC_mean_difference_percent": -23.418477596002877,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 205.18933627475963,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2715.433962449897,
+    "audit_wall_seconds": 18.397193756885827,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "41073c0e5dfdafa74ebaa8b6ba12a017fae62302263f2ebbf1eb3f050816ffe8",
+    "errors_percent": {
+      "uncorrected": -61.58695614866049,
+      "normalized_current_same_speed": -18.655187867712296,
+      "normalized_current_similarity_speed": -2.636353868734065
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L1_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 172.6125,
+    "beta_deg": 0,
+    "hybrid_W": 5962.491788181393,
+    "hybrid_source_ref_point_id": "Ref_P097",
+    "MS_field_sha256": "221181bb4a20372df26dea98bbb7803ed85e0c99f8e58c827c4c27bdf2bf8815",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 5962.491788181393
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.905358021459782,
+        "prediction_W": 11360.681556499496,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.0496336302212943,
+        "prediction_W": 12220.923688974884,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 12701.990959268634,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 0.00011620227160505568,
+      "max_field_vs_circuit_per_phasepeak": 0.00011620535936432548,
+      "max_constraint_current_error_per_phasepeak": 0.00011620227160505568,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": false,
+    "whole_history_max_current_error_percent": 0.0013776761736311355,
+    "P1_to_P2_AC_mean_difference_percent": -11.214430746665213,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 109.15286263382127,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2728.6514735217206,
+    "audit_wall_seconds": 17.743219560943544,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "62478b7d618a5add28227014a4ca58847bc8d343dc1ab644924c2d4739e21ff2",
+    "errors_percent": {
+      "uncorrected": -53.05860469196314,
+      "normalized_current_same_speed": -10.559835911317395,
+      "normalized_current_similarity_speed": -3.7873375271355814
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L4_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 690.0,
+    "beta_deg": 0,
+    "hybrid_W": 925.9056972482872,
+    "hybrid_source_ref_point_id": "Ref_P115",
+    "MS_field_sha256": "8f8721bef6dabfe90f5e770f823b1cea38f3b9c2e59b4b0ac9d57f19366dd24f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 925.9056972482872
+      },
+      "normalized_current_same_speed": {
+        "AF": 4.9277025193796415,
+        "prediction_W": 4562.587837038349,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 5.397878619116302,
+        "prediction_W": 4997.9265664945015,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 4688.783822471041,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 4.836779318770775e-06,
+      "max_field_vs_circuit_per_phasepeak": 4.839793296288579e-06,
+      "max_constraint_current_error_per_phasepeak": 4.836779318770775e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 6.402854920190129e-05,
+    "P1_to_P2_AC_mean_difference_percent": -49.62152118015315,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 487.30852281332335,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4767.860274976119,
+    "audit_wall_seconds": 17.131046331953257,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "1959928dec95449a6c074f610a198e73d729702408554a123cc919f7d5833f0a",
+    "errors_percent": {
+      "uncorrected": -80.25275354323492,
+      "normalized_current_same_speed": -2.691443884187983,
+      "normalized_current_similarity_speed": 6.593239435392406
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L4_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 690.0,
+    "beta_deg": 0,
+    "hybrid_W": 3703.622788993149,
+    "hybrid_source_ref_point_id": "Ref_P115",
+    "MS_field_sha256": "8f8721bef6dabfe90f5e770f823b1cea38f3b9c2e59b4b0ac9d57f19366dd24f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 3703.622788993149
+      },
+      "normalized_current_same_speed": {
+        "AF": 4.077564346116774,
+        "prediction_W": 15101.760235864032,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 4.8051668726735075,
+        "prediction_W": 17796.525534548542,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 16745.708728372112,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 9.531775408164045e-06,
+      "max_field_vs_circuit_per_phasepeak": 9.53478938568185e-06,
+      "max_constraint_current_error_per_phasepeak": 9.531775408164045e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00011819126979063221,
+    "P1_to_P2_AC_mean_difference_percent": -28.40590823618807,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 242.21902634757944,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4702.338876822032,
+    "audit_wall_seconds": 17.587189694400877,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "f9a488e01406607b42b01eae13371f2b1ae1cbec001e9c411c633b74010aad1d",
+    "errors_percent": {
+      "uncorrected": -77.88315293745596,
+      "normalized_current_same_speed": -9.817132969252906,
+      "normalized_current_similarity_speed": 6.2751408329229985
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L4_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 690.0,
+    "beta_deg": 0,
+    "hybrid_W": 14814.491155972595,
+    "hybrid_source_ref_point_id": "Ref_P115",
+    "MS_field_sha256": "8f8721bef6dabfe90f5e770f823b1cea38f3b9c2e59b4b0ac9d57f19366dd24f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 14814.491155972595
+      },
+      "normalized_current_same_speed": {
+        "AF": 3.067426611221486,
+        "prediction_W": 45442.36440353569,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.907106991382529,
+        "prediction_W": 57881.80196927517,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 55681.64820341556,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.9022979606807254e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.9025824494196185e-05,
+      "max_constraint_current_error_per_phasepeak": 1.9022979606807254e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00023349119499544764,
+    "P1_to_P2_AC_mean_difference_percent": -12.652622368987776,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 115.9146888450091,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4659.5985236968845,
+    "audit_wall_seconds": 18.140797554980963,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "59daf7d2a1e751e060eb6fb35aeb90a8bac33b995c49b33c82f3199a3211d201",
+    "errors_percent": {
+      "uncorrected": -73.39430201158474,
+      "normalized_current_same_speed": -18.388973980213073,
+      "normalized_current_similarity_speed": 3.951308621149341
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L4_B00_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 690.0,
+    "beta_deg": 0,
+    "hybrid_W": 53120.32578333557,
+    "hybrid_source_ref_point_id": "Ref_P115",
+    "MS_field_sha256": "8f8721bef6dabfe90f5e770f823b1cea38f3b9c2e59b4b0ac9d57f19366dd24f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 53120.32578333557
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.3523213710977813,
+        "prediction_W": 124956.07757981675,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.914113454277453,
+        "prediction_W": 154798.65606081966,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 920.0,
+        "SC_beta_deg": 0,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 157360.44189000683,
+    "P2_DC_transport_W": 31412.873886126825,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 3.759056229637753e-05,
+      "max_field_vs_circuit_per_phasepeak": 3.759339947110822e-05,
+      "max_constraint_current_error_per_phasepeak": 3.759056229637753e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0004802507542049608,
+    "P1_to_P2_AC_mean_difference_percent": -2.0576220081473586,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 59.165695319488684,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4672.266071350779,
+    "audit_wall_seconds": 17.54651005193591,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "7ac8ecb1b80286a08f500feaa7b11897d21f70277d0539dd5b4c1fbb6ca89ba7",
+    "errors_percent": {
+      "uncorrected": -66.24289742369555,
+      "normalized_current_same_speed": -20.592446183419067,
+      "normalized_current_similarity_speed": -1.6279732049671258
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L1_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 172.6125,
+    "beta_deg": 90,
+    "hybrid_W": 140.8992500870307,
+    "hybrid_source_ref_point_id": "Ref_P102",
+    "MS_field_sha256": "f01efd0d368660b10b7388ff8fa91eb72b6dcdb41874411e60092b0945fa34ee",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 140.8992500870307
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.2405644629027128,
+        "prediction_W": 174.79460250761227,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.3047979174079698,
+        "prediction_W": 183.84504807790236,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 166.6097883533139,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 9.220508686019492e-06,
+      "max_field_vs_circuit_per_phasepeak": 9.218249581549494e-06,
+      "max_constraint_current_error_per_phasepeak": 9.220508686019492e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 1.1198235344215106e-05,
+    "P1_to_P2_AC_mean_difference_percent": -153.76579507550895,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 2073.6855149532676,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4654.339498760644,
+    "audit_wall_seconds": 18.173526435159147,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "d08da158f254d20d91f24b7d5127cac975bb0b14157a567aca6f9c4be4a7ba57",
+    "errors_percent": {
+      "uncorrected": -15.431589296399096,
+      "normalized_current_same_speed": 4.912565003048686,
+      "normalized_current_similarity_speed": 10.3446861645603
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L1_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 172.6125,
+    "beta_deg": 90,
+    "hybrid_W": 563.5970003481228,
+    "hybrid_source_ref_point_id": "Ref_P102",
+    "MS_field_sha256": "f01efd0d368660b10b7388ff8fa91eb72b6dcdb41874411e60092b0945fa34ee",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 563.5970003481228
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.130110472621107,
+        "prediction_W": 636.9268724312553,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.2240399696896318,
+        "prediction_W": 689.8652552232837,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 619.0856784194696,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.853498947918198e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.8532395628316455e-05,
+      "max_constraint_current_error_per_phasepeak": 1.853498947918198e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 2.3235575045627557e-05,
+    "P1_to_P2_AC_mean_difference_percent": -100.079277712229,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 1085.256751128225,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4616.8231661701575,
+    "audit_wall_seconds": 18.915151954162866,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "dcfecb27f22b2380273fdfdfe2d512df0f5a6c3f70fbeea42d6fd2a1ac516523",
+    "errors_percent": {
+      "uncorrected": -8.96300463822871,
+      "normalized_current_same_speed": 2.8818618542968855,
+      "normalized_current_similarity_speed": 11.432921043257682
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L1_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 172.6125,
+    "beta_deg": 90,
+    "hybrid_W": 2254.3880013924913,
+    "hybrid_source_ref_point_id": "Ref_P102",
+    "MS_field_sha256": "f01efd0d368660b10b7388ff8fa91eb72b6dcdb41874411e60092b0945fa34ee",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 2254.3880013924913
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.0442225780279542,
+        "prediction_W": 2354.0828506893545,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.1099775769987794,
+        "prediction_W": 2502.3201314007583,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 2315.863808029273,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 3.719186854930536e-05,
+      "max_field_vs_circuit_per_phasepeak": 3.7189274779940466e-05,
+      "max_constraint_current_error_per_phasepeak": 3.719186854930536e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 3.719186854930536e-05,
+    "P1_to_P2_AC_mean_difference_percent": -59.53949020074309,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 502.3327604396603,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4689.1339787459,
+    "audit_wall_seconds": 16.456277220044285,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "0c15ba8a74c7126ecca41bea33aa325e76ba05b42552f7391e402f1347498542",
+    "errors_percent": {
+      "uncorrected": -2.654551896516566,
+      "normalized_current_same_speed": 1.6503147779058924,
+      "normalized_current_similarity_speed": 8.051264617764975
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L1_B90_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 172.6125,
+    "beta_deg": 90,
+    "hybrid_W": 8038.4893921188495,
+    "hybrid_source_ref_point_id": "Ref_P102",
+    "MS_field_sha256": "f01efd0d368660b10b7388ff8fa91eb72b6dcdb41874411e60092b0945fa34ee",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 8038.4893921188495
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.2745201537713386,
+        "prediction_W": 10245.21673613259,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.047273558133263,
+        "prediction_W": 8418.497387700798,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 230.15,
+        "SC_beta_deg": 90,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 8636.630088661954,
+    "P2_DC_transport_W": 1965.866285047158,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 7.412566444007615e-05,
+      "max_field_vs_circuit_per_phasepeak": 7.41232514158347e-05,
+      "max_constraint_current_error_per_phasepeak": 7.412566444007615e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 8.369990936760345e-05,
+    "P1_to_P2_AC_mean_difference_percent": -30.07884939827875,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 212.17333960567188,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4668.4789674459025,
+    "audit_wall_seconds": 17.57570271193981,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "56b464464d4d40eb9a8dc3327aeccf5329a7e94186f08b02e602e2352670d01b",
+    "errors_percent": {
+      "uncorrected": -6.925625972198746,
+      "normalized_current_same_speed": 18.62516549808433,
+      "normalized_current_similarity_speed": -2.525669140878428
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L2_B18_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 345.075,
+    "beta_deg": 18,
+    "hybrid_W": 375.98101585978867,
+    "hybrid_source_ref_point_id": "Ref_P104",
+    "MS_field_sha256": "ca48b593c1321484f97acc803bf63f737832477f9fbfa36e46a9ca0cd4d8c80f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 375.98101585978867
+      },
+      "normalized_current_same_speed": {
+        "AF": 3.3106799501028386,
+        "prediction_W": 1244.7528108262998,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.5843065184829284,
+        "prediction_W": 1347.6312059720738,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 1370.6099544371516,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 8.119270136175706e-06,
+      "max_field_vs_circuit_per_phasepeak": 8.121668356389897e-06,
+      "max_constraint_current_error_per_phasepeak": 8.119270136175706e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00012168326135409213,
+    "P1_to_P2_AC_mean_difference_percent": -60.78842737109565,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 687.2723958143139,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4650.726411794778,
+    "audit_wall_seconds": 16.523120926693082,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "1b5222b8ab419df481ad8b800c1b8c5b89cbd9ec0f5150e0afd42d315a30a08c",
+    "errors_percent": {
+      "uncorrected": -72.56834341217176,
+      "normalized_current_same_speed": -9.18256453657056,
+      "normalized_current_similarity_speed": -1.676534479462044
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L2_B18_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 345.075,
+    "beta_deg": 18,
+    "hybrid_W": 1503.9240634391547,
+    "hybrid_source_ref_point_id": "Ref_P104",
+    "MS_field_sha256": "ca48b593c1321484f97acc803bf63f737832477f9fbfa36e46a9ca0cd4d8c80f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 1503.9240634391547
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.8165058778418888,
+        "prediction_W": 4235.810964504237,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.2393308011392214,
+        "prediction_W": 4871.70754127291,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 4864.026511910974,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.615763469301293e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.616003287828309e-05,
+      "max_constraint_current_error_per_phasepeak": 1.615763469301293e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00020093350372316735,
+    "P1_to_P2_AC_mean_difference_percent": -37.73934815733965,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 365.2994077710321,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4681.522787795868,
+    "audit_wall_seconds": 17.4513098616153,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "1cb2ac45a6ee958218fc2dced071dee7817ffac1df4e7823fa63de6e3fb51568",
+    "errors_percent": {
+      "uncorrected": -69.0806770942477,
+      "normalized_current_same_speed": -12.915545297057275,
+      "normalized_current_similarity_speed": 0.15791503897291115
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L2_B18_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 345.075,
+    "beta_deg": 18,
+    "hybrid_W": 6015.696253756619,
+    "hybrid_source_ref_point_id": "Ref_P104",
+    "MS_field_sha256": "ca48b593c1321484f97acc803bf63f737832477f9fbfa36e46a9ca0cd4d8c80f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 6015.696253756619
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.2481904252672633,
+        "prediction_W": 13524.430719011776,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.7180763640066496,
+        "prediction_W": 16351.121800379215,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 16050.904139159922,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 3.19927099028981e-05,
+      "max_field_vs_circuit_per_phasepeak": 3.199500372200792e-05,
+      "max_constraint_current_error_per_phasepeak": 3.19927099028981e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0003927120263348032,
+    "P1_to_P2_AC_mean_difference_percent": -21.05543091909724,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 186.09708735534602,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4627.324407448992,
+    "audit_wall_seconds": 16.9406372141093,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "4db55bba421136dec03d80986d334908b858fe9483776056b50fa17d76d4a54d",
+    "errors_percent": {
+      "uncorrected": -62.52113774027268,
+      "normalized_current_same_speed": -15.740380717770442,
+      "normalized_current_similarity_speed": 1.8704096580256957
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L2_B18_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 345.075,
+    "beta_deg": 18,
+    "hybrid_W": 21492.027368080784,
+    "hybrid_source_ref_point_id": "Ref_P104",
+    "MS_field_sha256": "ca48b593c1321484f97acc803bf63f737832477f9fbfa36e46a9ca0cd4d8c80f",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 21492.027368080784
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.9713014241179616,
+        "prediction_W": 42367.26415787986,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.1694595669315304,
+        "prediction_W": 46626.084386437135,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 18,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 47397.67904489554,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 6.298227670455264e-05,
+      "max_field_vs_circuit_per_phasepeak": 6.298545715545402e-05,
+      "max_constraint_current_error_per_phasepeak": 6.298227670455264e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0007770311406810485,
+    "P1_to_P2_AC_mean_difference_percent": -9.199362508141077,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 95.55044538970027,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4651.791099564172,
+    "audit_wall_seconds": 17.54672868968919,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "5001e470918ab24a0dd5d1feb93e8f4d231e03c410c134484784ad38f4b9a4bf",
+    "errors_percent": {
+      "uncorrected": -54.65594982462469,
+      "normalized_current_same_speed": -10.613209314006344,
+      "normalized_current_similarity_speed": -1.6279165436086984
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L2_B72_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 345.075,
+    "beta_deg": 72,
+    "hybrid_W": 534.2285549468509,
+    "hybrid_source_ref_point_id": "Ref_P107",
+    "MS_field_sha256": "1b303437b61d967db69cbd69542ba9ed6223aedd61b91cd7440953afc16e7ad5",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 534.2285549468509
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.4171958540657912,
+        "prediction_W": 757.1064931942358,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.496434139279346,
+        "prediction_W": 799.4378478003396,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 820.998241908256,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 9.419691410414035e-06,
+      "max_field_vs_circuit_per_phasepeak": 9.421302015557906e-06,
+      "max_constraint_current_error_per_phasepeak": 9.419691410414035e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 2.3851229354872445e-05,
+    "P1_to_P2_AC_mean_difference_percent": -117.16580888111264,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 1561.4324714867357,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4717.900976781268,
+    "audit_wall_seconds": 17.528252634219825,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "7e293a5d73ae7fbafb96cabc518377635feddaa9a218994375bd0199404b778c",
+    "errors_percent": {
+      "uncorrected": -34.92939111475597,
+      "normalized_current_same_speed": -7.782202866295529,
+      "normalized_current_similarity_speed": -2.626119400426896
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L2_B72_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 345.075,
+    "beta_deg": 72,
+    "hybrid_W": 2136.9142197874035,
+    "hybrid_source_ref_point_id": "Ref_P107",
+    "MS_field_sha256": "1b303437b61d967db69cbd69542ba9ed6223aedd61b91cd7440953afc16e7ad5",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 2136.9142197874035
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.27909470523482,
+        "prediction_W": 2733.3156640710645,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.3967309697573012,
+        "prediction_W": 2984.6942704918265,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 2957.227025839157,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 2.0854461523429795e-05,
+      "max_field_vs_circuit_per_phasepeak": 2.0856265438930477e-05,
+      "max_constraint_current_error_per_phasepeak": 2.0854461523429795e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 4.773226302939275e-05,
+    "P1_to_P2_AC_mean_difference_percent": -78.18089902873702,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 839.7466570674222,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4709.104471473023,
+    "audit_wall_seconds": 17.55193376261741,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "c44d20f2a7b1f9f0b6d9a47705e7aab59e6e65b88b74e9b4a2ffa1993a3b56ec",
+    "errors_percent": {
+      "uncorrected": -27.73925704330994,
+      "normalized_current_same_speed": -7.571666287763423,
+      "normalized_current_similarity_speed": 0.9288175852807834
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L2_B72_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 345.075,
+    "beta_deg": 72,
+    "hybrid_W": 8547.656879149614,
+    "hybrid_source_ref_point_id": "Ref_P107",
+    "MS_field_sha256": "1b303437b61d967db69cbd69542ba9ed6223aedd61b91cd7440953afc16e7ad5",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 8547.656879149614
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.158662249282798,
+        "prediction_W": 9903.847345693073,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.2533132411073624,
+        "prediction_W": 10712.891547080644,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 10444.38105923589,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 4.117000550123974e-05,
+      "max_field_vs_circuit_per_phasepeak": 4.1171809370148386e-05,
+      "max_constraint_current_error_per_phasepeak": 4.117000550123974e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 9.275930962733607e-05,
+    "P1_to_P2_AC_mean_difference_percent": -48.53197602556626,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 409.36846710019694,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4687.124600715935,
+    "audit_wall_seconds": 17.599775629118085,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "e7a55da946239e5120fd9529ea4c3682d9942d6abb3375b497b3401219912022",
+    "errors_percent": {
+      "uncorrected": -18.160235339259444,
+      "normalized_current_same_speed": -5.175354197411497,
+      "normalized_current_similarity_speed": 2.5708606984165217
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L2_B72_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 345.075,
+    "beta_deg": 72,
+    "hybrid_W": 30484.90133460099,
+    "hybrid_source_ref_point_id": "Ref_P107",
+    "MS_field_sha256": "1b303437b61d967db69cbd69542ba9ed6223aedd61b91cd7440953afc16e7ad5",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 30484.90133460099
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.3521728935383643,
+        "prediction_W": 41220.85724683896,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.1559861446185244,
+        "prediction_W": 35240.12356286151,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 460.09999999999997,
+        "SC_beta_deg": 72,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 36495.02836536104,
+    "P2_DC_transport_W": 7856.633285480504,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 7.546910965784721e-05,
+      "max_field_vs_circuit_per_phasepeak": 7.547073009391064e-05,
+      "max_constraint_current_error_per_phasepeak": 7.546910965784721e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0005561974541657432,
+    "P1_to_P2_AC_mean_difference_percent": -25.350580030019003,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 183.02823432682246,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 4734.694622531999,
+    "audit_wall_seconds": 16.144359031226486,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "86c5c2a91c9333d3601fc0e327a2b971ea1fd3464453a7f6120e3a44e86d0493",
+    "errors_percent": {
+      "uncorrected": -16.468344593655704,
+      "normalized_current_same_speed": 12.949240192846112,
+      "normalized_current_similarity_speed": -3.4385637132169244
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L3_B36_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 517.5375,
+    "beta_deg": 36,
+    "hybrid_W": 807.8020893667955,
+    "hybrid_source_ref_point_id": "Ref_P111",
+    "MS_field_sha256": "a11ded76f79bdecef3a2160f1e7f7432ddcd7f773148c933450d38aee6a5f758",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 807.8020893667955
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.8566374411496027,
+        "prediction_W": 2307.5976935240656,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 3.079321284024701,
+        "prediction_W": 2487.4821670667966,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 2639.614231649939,
+    "P2_DC_transport_W": 17672.302485840395,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 6.074739777437459e-06,
+      "max_field_vs_circuit_per_phasepeak": 6.076498477822521e-06,
+      "max_constraint_current_error_per_phasepeak": 6.074739777437459e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 8.116820409547363e-05,
+    "P1_to_P2_AC_mean_difference_percent": -61.06159208793426,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 738.9390220920487,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2723.119873606134,
+    "audit_wall_seconds": 15.635504953097552,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "0114b9e6ee496e5497a7aa56c870c9b892fc6c2fedc5e0b91d95404a71411c15",
+    "errors_percent": {
+      "uncorrected": -69.39696415934749,
+      "normalized_current_same_speed": -12.578222004748795,
+      "normalized_current_similarity_speed": -5.763420380107953
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L3_B36_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 517.5375,
+    "beta_deg": 36,
+    "hybrid_W": 3231.208357467182,
+    "hybrid_source_ref_point_id": "Ref_P111",
+    "MS_field_sha256": "a11ded76f79bdecef3a2160f1e7f7432ddcd7f773148c933450d38aee6a5f758",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 3231.208357467182
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.455347600921018,
+        "prediction_W": 7933.7396885829885,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.7985943434681344,
+        "prediction_W": 9042.841431774617,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 9437.89668313305,
+    "P2_DC_transport_W": 17672.302485840395,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 1.2130455289077781e-05,
+      "max_field_vs_circuit_per_phasepeak": 1.2132213989462845e-05,
+      "max_constraint_current_error_per_phasepeak": 1.2130455289077781e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00015968576829843124,
+    "P1_to_P2_AC_mean_difference_percent": -37.85093647101714,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 389.35089967580365,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 3990.7790063717403,
+    "audit_wall_seconds": 14.612651448696852,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "10e62e5d0fb574cfdc47d08a9f5b086c8192d421701ce20a25831d9f9ed9a3d8",
+    "errors_percent": {
+      "uncorrected": -65.76346970144482,
+      "normalized_current_same_speed": -15.937417467582781,
+      "normalized_current_similarity_speed": -4.1858399664880475
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L3_B36_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 517.5375,
+    "beta_deg": 36,
+    "hybrid_W": 12924.833429868728,
+    "hybrid_source_ref_point_id": "Ref_P111",
+    "MS_field_sha256": "a11ded76f79bdecef3a2160f1e7f7432ddcd7f773148c933450d38aee6a5f758",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 12924.833429868728
+      },
+      "normalized_current_same_speed": {
+        "AF": 2.0034816915910896,
+        "prediction_W": 25894.667143606464,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.3758139452724327,
+        "prediction_W": 30706.99950300545,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 31201.50317374082,
+    "P2_DC_transport_W": 17672.302485840395,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 2.4035934395291504e-05,
+      "max_field_vs_circuit_per_phasepeak": 2.4037693095676572e-05,
+      "max_constraint_current_error_per_phasepeak": 2.4035934395291504e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.00030930691914982247,
+    "P1_to_P2_AC_mean_difference_percent": -21.867781815406424,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 198.55469145493564,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2751.4589833710343,
+    "audit_wall_seconds": 16.10226225713268,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "59a86509393358ee77086a8e5e8efb3d77db671efb8e336a19e1c10752d05fb1",
+    "errors_percent": {
+      "uncorrected": -58.57624756762916,
+      "normalized_current_same_speed": -17.008270404743154,
+      "normalized_current_similarity_speed": -1.5848713056605068
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L3_B36_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 517.5375,
+    "beta_deg": 36,
+    "hybrid_W": 46188.7001931499,
+    "hybrid_source_ref_point_id": "Ref_P111",
+    "MS_field_sha256": "a11ded76f79bdecef3a2160f1e7f7432ddcd7f773148c933450d38aee6a5f758",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 46188.7001931499
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.8462475291022478,
+        "prediction_W": 85275.77360404753,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.9445573037498032,
+        "prediction_W": 89816.57431129958,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 36,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 93016.14696505971,
+    "P2_DC_transport_W": 17672.302485840395,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 4.720552601282837e-05,
+      "max_field_vs_circuit_per_phasepeak": 4.720728471321344e-05,
+      "max_constraint_current_error_per_phasepeak": 4.720552601282837e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0006073973677832323,
+    "P1_to_P2_AC_mean_difference_percent": -10.649352723053402,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 102.16972332380365,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2736.360967996996,
+    "audit_wall_seconds": 15.971255213022232,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "44ab3349cb04aa5e4e17813364e73bb9817bb25cb2de99241b8828046906f6db",
+    "errors_percent": {
+      "uncorrected": -50.34335252512655,
+      "normalized_current_same_speed": -8.321537296013515,
+      "normalized_current_similarity_speed": -3.4398034730056093
+    }
+  },
+  {
+    "case_id": "HALFVAL_N2000_L3_B54_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 2000,
+    "current_Arms": 517.5375,
+    "beta_deg": 54,
+    "hybrid_W": 1002.116968690457,
+    "hybrid_source_ref_point_id": "Ref_P112",
+    "MS_field_sha256": "d550fa11063f69436db62079b42bcd22415fe1d71475b947be1524e37762a4b8",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": true,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 1002.116968690457
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.9211346463813184,
+        "prediction_W": 1925.20162827786,
+        "SC_speed_rpm": 2000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 2.046820071160069,
+        "prediction_W": 2051.153125165714,
+        "SC_speed_rpm": 1125.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": true
+      }
+    },
+    "P2_AC_excess_W": 2328.1312191565603,
+    "P2_DC_transport_W": 17672.3024858404,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 5.841040348087229e-06,
+      "max_field_vs_circuit_per_phasepeak": 5.842027838533424e-06,
+      "max_constraint_current_error_per_phasepeak": 5.841040348087229e-06,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 7.507980077679296e-05,
+    "P1_to_P2_AC_mean_difference_percent": -77.86425331313245,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 1005.4923550092982,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2751.710998510942,
+    "audit_wall_seconds": 15.520108197350055,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "2398be323974a6b0055292c4e2d135205d70e615cd47570297818f430f6bbdd1",
+    "errors_percent": {
+      "uncorrected": -56.95616465065463,
+      "normalized_current_same_speed": -17.306996597239667,
+      "normalized_current_similarity_speed": -11.897013867250605
+    }
+  },
+  {
+    "case_id": "HALFVAL_N4000_L3_B54_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 4000,
+    "current_Arms": 517.5375,
+    "beta_deg": 54,
+    "hybrid_W": 4008.467874761828,
+    "hybrid_source_ref_point_id": "Ref_P112",
+    "MS_field_sha256": "d550fa11063f69436db62079b42bcd22415fe1d71475b947be1524e37762a4b8",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 4008.467874761828
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.6975509662606305,
+        "prediction_W": 6804.578514026637,
+        "SC_speed_rpm": 4000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.8884829677317312,
+        "prediction_W": 7569.923308187523,
+        "SC_speed_rpm": 2250.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 8377.769664757012,
+    "P2_DC_transport_W": 17672.3024858404,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 3.3344684305834895e-05,
+      "max_field_vs_circuit_per_phasepeak": 3.334469980769832e-05,
+      "max_constraint_current_error_per_phasepeak": 3.3344684305834895e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 3.3346729262573705e-05,
+    "P1_to_P2_AC_mean_difference_percent": -50.27117910861187,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 536.9463795301922,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 3958.3187042810023,
+    "audit_wall_seconds": 13.820365569088608,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "26cdee1722206b2d91217b176e38e6ee7fc83b74d76f778f12bc585a35a9729c",
+    "errors_percent": {
+      "uncorrected": -52.15352014720149,
+      "normalized_current_same_speed": -18.77816189371212,
+      "normalized_current_similarity_speed": -9.642737732070605
+    }
+  },
+  {
+    "case_id": "HALFVAL_N8000_L3_B54_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 8000,
+    "current_Arms": 517.5375,
+    "beta_deg": 54,
+    "hybrid_W": 16033.871499047313,
+    "hybrid_source_ref_point_id": "Ref_P112",
+    "MS_field_sha256": "d550fa11063f69436db62079b42bcd22415fe1d71475b947be1524e37762a4b8",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 16033.871499047313
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.4695358819479205,
+        "prediction_W": 23562.349494392118,
+        "SC_speed_rpm": 8000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.654287808361006,
+        "prediction_W": 26524.638141700976,
+        "SC_speed_rpm": 4500.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 28281.978139995015,
+    "P2_DC_transport_W": 17672.3024858404,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 2.3109477006604096e-05,
+      "max_field_vs_circuit_per_phasepeak": 2.311030370016636e-05,
+      "max_constraint_current_error_per_phasepeak": 2.3109477006604096e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": true,
+    "whole_history_max_current_error_percent": 0.0002894104161855265,
+    "P1_to_P2_AC_mean_difference_percent": -30.985281277008358,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 272.1984798105381,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 2742.203985325061,
+    "audit_wall_seconds": 15.019146686885506,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "89ff3c8360a2fd7a4858b8ac6429526094e3661a04aaf575aff55ebf2976bbf9",
+    "errors_percent": {
+      "uncorrected": -43.3071073753042,
+      "normalized_current_same_speed": -16.687760036588905,
+      "normalized_current_similarity_speed": -6.213638910246145
+    }
+  },
+  {
+    "case_id": "HALFVAL_N16000_L3_B54_N256_P2_A01",
+    "role": "new_validation",
+    "model": "HalfSC",
+    "radial_factor": 1.5,
+    "speed_rpm": 16000,
+    "current_Arms": 517.5375,
+    "beta_deg": 54,
+    "hybrid_W": 57231.20505394199,
+    "hybrid_source_ref_point_id": "Ref_P112",
+    "MS_field_sha256": "d550fa11063f69436db62079b42bcd22415fe1d71475b947be1524e37762a4b8",
+    "MS_field_current_matches_target_exactly": true,
+    "primary_AF_speed_extrapolated": false,
+    "predictions": {
+      "uncorrected": {
+        "AF": 1.0,
+        "prediction_W": 57231.20505394199
+      },
+      "normalized_current_same_speed": {
+        "AF": 1.5478801951057295,
+        "prediction_W": 88587.04884503174,
+        "SC_speed_rpm": 16000,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      },
+      "normalized_current_similarity_speed": {
+        "AF": 1.4487213531949514,
+        "prediction_W": 82912.06883072457,
+        "SC_speed_rpm": 9000.0,
+        "SC_current_Arms": 690.0500000000001,
+        "SC_beta_deg": 54,
+        "AF_speed_extrapolated": false
+      }
+    },
+    "P2_AC_excess_W": 88848.43339573631,
+    "P2_DC_transport_W": 17672.3024858404,
+    "P2_current_metrics_percent": {
+      "max_field_current_error_per_phasepeak": 4.5330165313862386e-05,
+      "max_field_vs_circuit_per_phasepeak": 4.533105545944077e-05,
+      "max_constraint_current_error_per_phasepeak": 4.5330165313862386e-05,
+      "max_field_vs_constraint_per_phasepeak": 0.0
+    },
+    "P2_current_pass": true,
+    "original_whole_history_current_pass": false,
+    "whole_history_max_current_error_percent": 0.001829444182331748,
+    "P1_to_P2_AC_mean_difference_percent": -16.704704439981317,
+    "P1_to_P2_AC_waveform_relative_L2_percent": 134.25344815727888,
+    "period_convergence_qualified": false,
+    "time_step_convergence_qualified": false,
+    "steps_per_period": 256,
+    "periods": 2,
+    "nonlinear_all_512_passed": true,
+    "solver_wall_seconds": 3998.0725175589323,
+    "audit_wall_seconds": 14.726409050170332,
+    "mesh_sha256": {
+      "mesh.nodes": "47df54eafa3f20e3618344dc6541cd4cde75d0ab12bb63c6bb80595f1817b490",
+      "mesh.elements": "0b2ca71dc4fe196f0fac0962e8ff2af6805745250b2f57f84502c50b177eac6f",
+      "mesh.boundary": "6508b8b2444e5cb581125659870b9afedc0e1e5149f0be9dadacd7283406c169",
+      "mesh.header": "6fac62b016dbd7f9ab80aa2afcb389166b7bfc7ecaab9c8c1ce252dab069f5ad"
+    },
+    "AF_fit_used": false,
+    "source_raw_manifest_sha256": "4242bede23d800d5f6e49f9519fcb163dff3ef90a6d2000eb1f96e5d209ef037",
+    "errors_percent": {
+      "uncorrected": -35.58557774560782,
+      "normalized_current_same_speed": -0.2941915132485873,
+      "normalized_current_similarity_speed": -6.681451026345975
+    }
+  }
+]

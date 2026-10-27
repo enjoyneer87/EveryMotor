@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "artifact_hashes": 41,
+  "frozen_models": 3,
+  "Full_budget": 63,
+  "HalfSC_training": 0,
+  "reserved_training": 0,
+  "head_readback": [
+    {
+      "seed": 17,
+      "calibration_rows": 63,
+      "finite_positive": true,
+      "fit_feature_normalization_reproduced": true
+    },
+    {
+      "seed": 29,
+      "calibration_rows": 63,
+      "finite_positive": true,
+      "fit_feature_normalization_reproduced": true
+    },
+    {
+      "seed": 43,
+      "calibration_rows": 63,
+      "finite_positive": true,
+      "fit_feature_normalization_reproduced": true
+    }
+  ],
+  "scope": "integrity and arithmetic contract only; Full AC superiority remains UNKNOWN for this followup"
+}

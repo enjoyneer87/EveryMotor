@@ -1,0 +1,1460 @@
+{
+  "source_repo_commit": "65dda206e28770b242fa0dd888fd394f7a155ca0",
+  "new_FEA": 0,
+  "training_updates": 0,
+  "GPU_jobs": 0,
+  "model_imports": 0,
+  "weight_deserialization": 0,
+  "modules": [
+    {
+      "source_key": "eval/doe_dataset.py",
+      "bytes": 14885,
+      "sha256": "69f65fa8ebc88aeb8f305dcd92b6cc153982b313c81461cd9a30676f8dd78462"
+    },
+    {
+      "source_key": "eval/feature_guard.py",
+      "bytes": 8336,
+      "sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb"
+    },
+    {
+      "source_key": "eval/predictors.py",
+      "bytes": 23868,
+      "sha256": "240051e8130a8d59c9d0cc2690116985c54b9b8d31b94bc2c16a9ce603a27f75"
+    },
+    {
+      "source_key": "fem_warmstart/assemble.py",
+      "bytes": 5352,
+      "sha256": "b07e5f0532d1fc6cf0f42cb0c999e2d111accdc6e2a7187963ff9d1717a0e51e"
+    },
+    {
+      "source_key": "fem_warmstart/band_remesh.py",
+      "bytes": 7336,
+      "sha256": "4c32aa9abd2623c22ebc0e140b118ff36ee21cc0e853113d651535d7422d698c"
+    },
+    {
+      "source_key": "fem_warmstart/bh_curve.py",
+      "bytes": 6361,
+      "sha256": "f032b488bbad54a88f79d65441d51d4ca1ab51767903309b9c4abaf98dfbc2f9"
+    },
+    {
+      "source_key": "fem_warmstart/build_prior_cache.py",
+      "bytes": 2681,
+      "sha256": "4d43a639ff56e047b2f182f537ae9fbf28bf32e261f4da98f5209f6a3a97eac5"
+    },
+    {
+      "source_key": "fem_warmstart/domain.py",
+      "bytes": 28902,
+      "sha256": "e0c1b86dea23306e1e8bf3d870b8aa63b7f65f0995ba8ea376b872936de1725e"
+    },
+    {
+      "source_key": "fem_warmstart/dump_ai_init.py",
+      "bytes": 4700,
+      "sha256": "045c5969a72950aefe14aea7ea56b3fb553f77d5420d741eaec27485925a315b"
+    },
+    {
+      "source_key": "fem_warmstart/dump_b_fit_init.py",
+      "bytes": 10857,
+      "sha256": "07ef877066433b8eaad8094ac7a907d7b1588098cdd3785d2e3ea053f6ae4814"
+    },
+    {
+      "source_key": "fem_warmstart/newton.py",
+      "bytes": 4166,
+      "sha256": "e59606dc49309e67ad0d67b01c2ca80c08af0f4d56634e44d949b22e36910477"
+    },
+    {
+      "source_key": "fem_warmstart/prior.py",
+      "bytes": 11067,
+      "sha256": "b45135e1dc0345ea96e27986922a71f529cb4251355827adf8fa8958bb298b92"
+    },
+    {
+      "source_key": "fem_warmstart/run_sweep.py",
+      "bytes": 6457,
+      "sha256": "c9c6258446564061bbd6f53c795a6cf57481b38973aada47cf328e5e34ddccfb"
+    },
+    {
+      "source_key": "fem_warmstart/torque_vw.py",
+      "bytes": 18734,
+      "sha256": "301e7e9311f0c3a380aa586fe8fb977d568b0d825269d3096dc23f9d2abd76f3"
+    },
+    {
+      "source_key": "fem_warmstart/validate_prior.py",
+      "bytes": 7912,
+      "sha256": "230e4cf704120efbbcec257883c8f596aa60f7469a902c7d9691da0ca13945fc"
+    },
+    {
+      "source_key": "fem_warmstart/winding.py",
+      "bytes": 7422,
+      "sha256": "4f365d5b77b182d141c1c3db620718d8312ba3b92fc4b9e7cb60cc6cd1ea6574"
+    },
+    {
+      "source_key": "r3_models.py",
+      "bytes": 7873,
+      "sha256": "7aa771fd50a8816b39083696ffcfd8deccc2b3b65d012a65e25712c64cd3683c"
+    },
+    {
+      "source_key": "train_doe_curl_mgn.py",
+      "bytes": 54271,
+      "sha256": "fdc37bf1662100636c184e1f948b896a480d4e25f7d7d68f2ba54d507fbf5a19"
+    }
+  ],
+  "checkpoints": [
+    {
+      "source_key": "EveryMotor/results/mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt",
+      "bytes": 111835629,
+      "sha256": "f58636620d5601f202d0203bff06d3f29c601e2885811c271edded28123bcba7",
+      "archive_members": [
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data.pkl",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/.format_version",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/.storage_alignment",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/byteorder",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/0",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/1",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/2",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/3",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/4",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/5",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/6",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.290/data/7"
+      ]
+    },
+    {
+      "source_key": "EveryMotor/results/mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last",
+      "bytes": 111841601,
+      "sha256": "862189d71fdbe923323f138a69e20d13f0a71315d935dd19fe7afbac7eb2bf24",
+      "archive_members": [
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data.pkl",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/.format_version",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/.storage_alignment",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/byteorder",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/0",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/1",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/2",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/3",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/4",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/5",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/6",
+        "mgn_nodeB_doe_v3_bw30_prior_e1airgap5.pt.last.290/data/7"
+      ]
+    }
+  ],
+  "prior_cache": [
+    {
+      "source_key": "NvidiaNemo/results/prior_cache/doe_data_120/case_0074.npz",
+      "sha256": "3365e00af5a3290580428db9a93402426f4aa33ee310de3d81aeef4a8e8e5960",
+      "bytes": 5969809,
+      "arrays": {
+        "step_0": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_1": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_2": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_3": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_4": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_5": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_6": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_7": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_8": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_9": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_10": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_11": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_12": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_13": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_14": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_15": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_16": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_17": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_18": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_19": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_20": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_21": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_22": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_23": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_24": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_25": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_26": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_27": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_28": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_29": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_30": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_31": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_32": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_33": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_34": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_35": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_36": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_37": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_38": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_39": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_40": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_41": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_42": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_43": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_44": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        }
+      },
+      "native_hash_binding": "UNKNOWN_not_inferred_from_filename"
+    },
+    {
+      "source_key": "NvidiaNemo/results/prior_cache/doe_data_120/case_0098.npz",
+      "sha256": "84d82d550732dae5089b8aa51215a80ce81bfc1701cf6c41ce0eb5e62999914e",
+      "bytes": 4710243,
+      "arrays": {
+        "step_0": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_1": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_2": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_3": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_4": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_5": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_6": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_7": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_8": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_9": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_10": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_11": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_12": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_13": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_14": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_15": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_16": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_17": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_18": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_19": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_20": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_21": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_22": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_23": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_24": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_25": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_26": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_27": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_28": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_29": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_30": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_31": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_32": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_33": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_34": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_35": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_36": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_37": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_38": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_39": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_40": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_41": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_42": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_43": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_44": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        }
+      },
+      "native_hash_binding": "UNKNOWN_not_inferred_from_filename"
+    },
+    {
+      "source_key": "NvidiaNemo/results/prior_cache/doe_data_240/case_0074.npz",
+      "sha256": "3365e00af5a3290580428db9a93402426f4aa33ee310de3d81aeef4a8e8e5960",
+      "bytes": 5969809,
+      "arrays": {
+        "step_0": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_1": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_2": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_3": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_4": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_5": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_6": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_7": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_8": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_9": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_10": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_11": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_12": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_13": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_14": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_15": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_16": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_17": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_18": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_19": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_20": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_21": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_22": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_23": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_24": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_25": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_26": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_27": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_28": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_29": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_30": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_31": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_32": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_33": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_34": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_35": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_36": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_37": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_38": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_39": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_40": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_41": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_42": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_43": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_44": {
+          "shape": [
+            11833,
+            3
+          ],
+          "dtype": "float32"
+        }
+      },
+      "native_hash_binding": "UNKNOWN_not_inferred_from_filename"
+    },
+    {
+      "source_key": "NvidiaNemo/results/prior_cache/doe_data_240/case_0098.npz",
+      "sha256": "84d82d550732dae5089b8aa51215a80ce81bfc1701cf6c41ce0eb5e62999914e",
+      "bytes": 4710243,
+      "arrays": {
+        "step_0": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_1": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_2": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_3": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_4": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_5": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_6": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_7": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_8": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_9": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_10": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_11": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_12": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_13": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_14": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_15": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_16": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_17": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_18": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_19": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_20": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_21": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_22": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_23": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_24": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_25": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_26": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_27": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_28": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_29": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_30": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_31": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_32": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_33": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_34": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_35": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_36": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_37": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_38": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_39": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_40": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_41": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_42": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_43": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "step_44": {
+          "shape": [
+            9355,
+            3
+          ],
+          "dtype": "float32"
+        }
+      },
+      "native_hash_binding": "UNKNOWN_not_inferred_from_filename"
+    }
+  ],
+  "source_split_sizes": {
+    "train": 450,
+    "val": 12,
+    "test": 18
+  },
+  "candidate_cases_old_role": {
+    "74": [
+      "train"
+    ],
+    "98": [
+      "train"
+    ]
+  },
+  "gates": {
+    "checkpoint_file_identity": "PASS",
+    "architecture_source_present": "PASS",
+    "prior_code_present": "PASS",
+    "prior_native_geometry_OP_mesh_binding": "UNKNOWN",
+    "all_donor_reserved_exclusion": "UNKNOWN_initial40_native_source_unlinked",
+    "checkpoint_normalizer_feature_compatibility": "UNKNOWN_not_imported",
+    "independent_geometry_holdout_for_E1_warmstart": "FAIL_current_dev32_oldTRAIN",
+    "weights_teacher_distillation_admitted": "UNKNOWN_no_execution_authorized_by_file_existence"
+  },
+  "decision": "HOLD_weights_until_provenance_and_reserved_gates",
+  "elapsed_seconds": 1.6578096998855472,
+  "checked_UTC": "2026-10-27T16:10:35.028640+00:00"
+}

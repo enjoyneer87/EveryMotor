@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "cases": 6,
+  "scope": "NPZ/ID/FE connectivity/phase quadrature validation only",
+  "rows": [
+    {
+      "point_id": "Ref_P001",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 8.326672684688674e-17,
+      "max_current_delta_A": 2.220446049250313e-16,
+      "max_A_curl_B_delta_T": 2.42861286636753e-17,
+      "min_B_variance_T2": 1.9005573738097672e-11,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "Ref_P007",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 8.242295734817162e-13,
+      "max_current_delta_A": 5.684341886080802e-14,
+      "max_A_curl_B_delta_T": 2.220446049250313e-16,
+      "min_B_variance_T2": 1.8857835315038723e-07,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "Ref_P075",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 3.637978807091713e-12,
+      "max_current_delta_A": 1.1368683772161603e-13,
+      "max_A_curl_B_delta_T": 5.898059818321144e-16,
+      "min_B_variance_T2": 7.885636902440714e-07,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "Ref_P117",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 4.3655745685100555e-11,
+      "max_current_delta_A": 2.2737367544323206e-13,
+      "max_A_curl_B_delta_T": 8.604228440844963e-16,
+      "min_B_variance_T2": 1.7561161993493872e-05,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "SC_P117",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 1.1641532182693481e-10,
+      "max_current_delta_A": 5.684341886080801e-13,
+      "max_A_curl_B_delta_T": 5.551115123125783e-16,
+      "min_B_variance_T2": 2.0585065886020083e-05,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    },
+    {
+      "point_id": "SC_P120",
+      "status": "PASS",
+      "phase_count": 8,
+      "FE_node_count": 4212,
+      "FE_element_count": 6912,
+      "directed_FE_edges": 22176,
+      "max_quadrature_loss_delta_W": 1.1641532182693481e-10,
+      "max_current_delta_A": 9.094947017729282e-13,
+      "max_A_curl_B_delta_T": 8.326672684688674e-16,
+      "min_B_variance_T2": 8.267880304091863e-06,
+      "compression": "float64 NPZ lossless; roundtrip and independent quadrature verified",
+      "temporal_snapshot_note": "8 phases do not preserve P2 loss to a specified tolerance; full 256-sample P2 integrals retained"
+    }
+  ]
+}

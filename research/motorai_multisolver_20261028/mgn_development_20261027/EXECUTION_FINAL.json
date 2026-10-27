@@ -1,0 +1,64 @@
+{
+  "coordinator": {
+    "states": [
+      "completed",
+      "completed",
+      "completed"
+    ],
+    "completed": 3,
+    "aggregate_case_elapsed_seconds": 16660.46098654531,
+    "stop_reason": null,
+    "duplicate_prevention_applied": true,
+    "wall_seconds": 6291.751677544322,
+    "aggregate_case_limit": 17000
+  },
+  "roots": {
+    "fea_a02": {
+      "phase": "completed",
+      "outcomes": [
+        {
+          "case": "sanity8",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        },
+        {
+          "case": "N256_P3",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        }
+      ],
+      "source_unchanged": true,
+      "total_wall_seconds": 3850.0770942461677
+    },
+    "fea_mesh": {
+      "phase": "completed",
+      "outcomes": [
+        {
+          "case": "fine_N256_P3",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        }
+      ],
+      "source_unchanged": true,
+      "total_wall_seconds": 5004.940319446847
+    },
+    "fea_time": {
+      "phase": "completed",
+      "outcomes": [
+        {
+          "case": "N512_P3",
+          "returncode": 0,
+          "stop_reason": null,
+          "audit_error": null
+        }
+      ],
+      "source_unchanged": true,
+      "total_wall_seconds": 7805.443572852295
+    }
+  },
+  "owned_native_processes_completed": true,
+  "scope": "Prior three numerical qualification cases only"
+}

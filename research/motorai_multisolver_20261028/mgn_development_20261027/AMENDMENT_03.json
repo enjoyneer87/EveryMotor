@@ -1,0 +1,17 @@
+{
+  "scope":"Compute scheduling only; all3 previously declared numerical variants, physical inputs, tolerances and averaging unchanged",
+  "evidence":{"measured_first_case_seconds_per_step":4.9,"measured_solver_RSS_GiB":0.112,"host_logical_CPUs":64,"host_CPU_percent":7.3,"available_RAM_GiB":204.4,"free_source_disk_GiB":943.4},
+  "decision":"Keep current N256_P3 solve running on CPUs0..7. After its native process exits, owned coordinator sets its STOP marker before any automatic second case. Launch exactly the previously declared N512_P3 and fine_N256_P3 in separate roots on CPUs8..15 and16..23, respectively.",
+  "maximum_production_cases_total":3,
+  "maximum_simultaneous_cases":3,
+  "maximum_CPU_threads_total":24,
+  "per_case_CPU_threads":8,
+  "wall_seconds":{"N256_P3":5400,"N512_P3":8400,"fine_N256_P3":5400},
+  "aggregate_case_elapsed_seconds_limit":16200,
+  "additional_pilot":"Reuse passed8-step sanity audit with same original solver/library/material/circuit inputs; no new physical parameter",
+  "runtime_setting":"OMP_WAIT_POLICY=PASSIVE for the two new roots, affecting idle thread scheduling only",
+  "automatic_retries":0,
+  "memory_disk_limits":"Original16GiB RAM percase,40GiB outputs percase,minimum32GiB disk reserve retained",
+  "ownership_and_stop":"Each root records its native PID and creation ticks. Coordinator checks original PID identity, prevents duplicate cases, monitors aggregate elapsed budget and owned global STOP. No existing campaign or other native application is targeted.",
+  "evaluation_labels":"No new independent fitting labels. Frozen P2 comparison values and AF coefficients stay unchanged. Model training is already complete and will not be repeated using the post-freeze evaluation."
+}

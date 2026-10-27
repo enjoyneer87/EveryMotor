@@ -1,0 +1,12 @@
+{
+  "before_model_training": true,
+  "scope": "Environment repair and implementation details only; scientific selectors, labels, evaluation, budgets and final-update rule unchanged",
+  "FEA_first_attempt": "8-step sanity stopped before step1: packaged OpenMPI has no orted executable. Original failed attempt retained. No production solve launched.",
+  "repair": "Scoped OMPI_MCA_ess_singleton_isolated=1 for this single MPI rank/OpenMP process. MPI_Init_thread independently returned0, world_size1. One explicit environment-repair attempt in a new directory; no automatic retry loop.",
+  "FEA_attempt_limit_after_repair": 1,
+  "MS_phase_monitor": "Every eighth saved phase is excluded from optimizer batches and monitored only; fixed final1800-update checkpoint, no monitor-driven selection. All128 phases used for frozen embedding extraction.",
+  "features": "base: source-normalized current,current angle,log speed,log radial scale. Graph: original FE-edge message passing, area-weighted latent node mean, then phase mean/std. Each block standardized on fit subset only and divided by square root of block dimension.",
+  "inner_CV": "Leave-one-MS-source-group-out among63 calibration rows; features and kernel distance scale refit in each fold. No Full evaluation targets are available to the learner.",
+  "field_scope": "Vector B projected to nodes is an auxiliary MS target, not the canonical mean-square-B Hybrid evaluation and not a Full J target.",
+  "torch_runtime": "Separate Python3.12 venv, official offline torch2.5.1+cu124 wheels; shared applications unchanged"
+}

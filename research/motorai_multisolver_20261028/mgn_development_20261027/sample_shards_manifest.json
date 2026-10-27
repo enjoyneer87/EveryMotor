@@ -1,0 +1,201 @@
+{
+  "FEA_validation_shards": [
+    {
+      "case": "fine_N256_P3",
+      "manifest": "convergence/fine_N256_P3/shard_manifest.json",
+      "location": "convergence/fine_N256_P3/copper_graph_8phases.npz",
+      "sha256": "a2e7849b616de3e82fc74d9571d3c2ced4fe0fbedd58b9bab6e380854bcec626",
+      "bytes": 3578719,
+      "full_time_scalar_loss_current_preserved": true,
+      "sparse_field_snapshots_are_not_period_loss_labels": true
+    },
+    {
+      "case": "N256_P3",
+      "manifest": "convergence/N256_P3/shard_manifest.json",
+      "location": "convergence/N256_P3/copper_graph_8phases.npz",
+      "sha256": "2fdf99489c45b6cdd2223cb8ed1fb547628a4f6ce4dd2ad9ed065a92dc4d8a9d",
+      "bytes": 1926387,
+      "full_time_scalar_loss_current_preserved": true,
+      "sparse_field_snapshots_are_not_period_loss_labels": true
+    },
+    {
+      "case": "N512_P3",
+      "manifest": "convergence/N512_P3/shard_manifest.json",
+      "location": "convergence/N512_P3/copper_graph_8phases.npz",
+      "sha256": "59774e100b613dd06e8d774195c4e65e3a0826399bf4efa76e0baef8c5a87847",
+      "bytes": 2108336,
+      "full_time_scalar_loss_current_preserved": true,
+      "sparse_field_snapshots_are_not_period_loss_labels": true
+    }
+  ],
+  "graph_topology": {
+    "location": "artifacts/graph_topology.npz",
+    "sha256": "a5c2d05c9aee45349065dda58f6f2886306755f4930635fcce3e0b1bd3a3fbc9",
+    "bytes": 107566,
+    "scope": "topology and source OP features only; no full B tensor",
+    "arrays": {
+      "node_xy_m": {
+        "shape": [
+          1377,
+          2
+        ],
+        "dtype": "float64"
+      },
+      "node_ids": {
+        "shape": [
+          1377
+        ],
+        "dtype": "int64"
+      },
+      "element_ids": {
+        "shape": [
+          2191
+        ],
+        "dtype": "int64"
+      },
+      "connectivity_local": {
+        "shape": [
+          2191,
+          3
+        ],
+        "dtype": "int64"
+      },
+      "edge_index": {
+        "shape": [
+          2,
+          7124
+        ],
+        "dtype": "int64"
+      },
+      "element_area_m2": {
+        "shape": [
+          2191
+        ],
+        "dtype": "float64"
+      },
+      "node_area_weights": {
+        "shape": [
+          1377
+        ],
+        "dtype": "float64"
+      },
+      "node_static": {
+        "shape": [
+          1377,
+          4
+        ],
+        "dtype": "float64"
+      },
+      "source_features": {
+        "shape": [
+          24,
+          2
+        ],
+        "dtype": "float64"
+      },
+      "source_keys": {
+        "shape": [
+          24
+        ],
+        "dtype": "<U12"
+      },
+      "phases_rad": {
+        "shape": [
+          128
+        ],
+        "dtype": "float64"
+      }
+    }
+  },
+  "training_tensor": {
+    "logical_source_key": "jeet_mgn_20261027:MS24_projected_B",
+    "location": "private_source_storage",
+    "sha256": "2697c5138a6bc3a1e2b7e1035c9e8f76e498fb441cf3f91774e8f3455c237582",
+    "bytes": 31730645,
+    "arrays": {
+      "node_xy_m": {
+        "shape": [
+          1377,
+          2
+        ],
+        "dtype": "float64"
+      },
+      "node_ids": {
+        "shape": [
+          1377
+        ],
+        "dtype": "int64"
+      },
+      "element_ids": {
+        "shape": [
+          2191
+        ],
+        "dtype": "int64"
+      },
+      "connectivity_local": {
+        "shape": [
+          2191,
+          3
+        ],
+        "dtype": "int64"
+      },
+      "edge_index": {
+        "shape": [
+          2,
+          7124
+        ],
+        "dtype": "int64"
+      },
+      "element_area_m2": {
+        "shape": [
+          2191
+        ],
+        "dtype": "float64"
+      },
+      "node_area_weights": {
+        "shape": [
+          1377
+        ],
+        "dtype": "float64"
+      },
+      "node_static": {
+        "shape": [
+          1377,
+          4
+        ],
+        "dtype": "float64"
+      },
+      "B_node_area_projected_T": {
+        "shape": [
+          24,
+          128,
+          1377,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "source_features": {
+        "shape": [
+          24,
+          2
+        ],
+        "dtype": "float64"
+      },
+      "source_keys": {
+        "shape": [
+          24
+        ],
+        "dtype": "<U12"
+      },
+      "phases_rad": {
+        "shape": [
+          128
+        ],
+        "dtype": "float64"
+      }
+    },
+    "units": "node xy m; area m2; B T; phase rad; features normalized as DATA_CONTRACT.json",
+    "reader": "prepare_data.py and immutable prior return iso_recovery/load_ms_graph.py",
+    "original_ID_linkage": "original Elmer node/element IDs retained, triangle adjacency; no coordinate matching"
+  }
+}

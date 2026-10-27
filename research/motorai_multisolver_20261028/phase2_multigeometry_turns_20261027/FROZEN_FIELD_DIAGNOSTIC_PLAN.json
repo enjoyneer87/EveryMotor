@@ -1,0 +1,19 @@
+{
+  "scope":"Frozen SCALE360 field diagnostics, no retraining, no E1 weights",
+  "basis":"Astra fallback after transfer admission remains incomplete; MI-004/009/010",
+  "selection":"Same32 inner-development cases/groups in SCALE360_SELECTION_FROZEN.json, all oldTRAIN; original val/test excluded",
+  "cases":32,"source_steps":45,"graphs":1440,
+  "seen_phase_steps":[0,5,10,15,20,25,30,35,40],
+  "unused_phase_steps_count":36,
+  "checkpoint_source_key":"host133/SCALE360/result/last.pt",
+  "checkpoint_sha256":"f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+  "model_sha256":"ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+  "metrics":["area-weighted B vector nRMSE", "area-weighted B magnitude nRMSE", "copper-region errors", "per-native-conductor spatial mean B2 vs square of mean B", "truth9phase vs truth45phase spatial-B2 sampling diagnostic"],
+  "physical_scope":"native element B in T, a2 excluded. B2 in T2; area and uniform snapshot pooling. Not time-integrated AC loss or canonical Hybrid denominator.",
+  "preparation":{"host":"234","CPU_workers":4,"threads_per_worker":1,"wall_seconds_max":1200,"estimated_RAM_GiB":4,"estimated_disk_GiB":6},
+  "inference":{"host":"133","GPU_jobs":1,"wall_seconds_max":1800,"torch_allocated_soft_limit_GiB":10,"estimated_RAM_GiB":4,"estimated_disk_GiB":6},
+  "new_FEA":0,"training_updates":0,"seed_selection":false,"automatic_retry":0,
+  "guard_deadline_UTC":"2026-10-27T22:59:00Z",
+  "stop":"STOP/wall/deadline, owned PID/create-time and descendants only, preserve partial output",
+  "reporting":"Known development geometries, unused phase diagnostic; not independent final geometry test. Numeric accuracy errors have no new PASS threshold."
+}

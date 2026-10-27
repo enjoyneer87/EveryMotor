@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "stop_reason": null,
+  "elapsed_seconds": 540.0469999999987,
+  "deadline_UTC": "2026-10-27T23:00:00Z",
+  "completed": true,
+  "retry": 0
+}

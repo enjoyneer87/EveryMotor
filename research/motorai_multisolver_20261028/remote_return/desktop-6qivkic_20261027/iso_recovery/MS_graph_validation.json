@@ -1,0 +1,42 @@
+{
+  "records": [
+    {
+      "source_key": "Ref_Ref_P097",
+      "stationary_original_node_coordinate_status": "PASS",
+      "physical_regions": [
+        2401,
+        2402,
+        2403,
+        2404,
+        2405,
+        2406
+      ],
+      "nodes": 1377,
+      "elements": 2191,
+      "directed_edges": 7124,
+      "phases": 128,
+      "new_loss_label": false,
+      "scope": "six stationary homogenized slots; no individual copper interfaces; no circuit or J labels"
+    },
+    {
+      "source_key": "Ref_Ref_P117",
+      "stationary_original_node_coordinate_status": "PASS",
+      "physical_regions": [
+        2401,
+        2402,
+        2403,
+        2404,
+        2405,
+        2406
+      ],
+      "nodes": 1377,
+      "elements": 2191,
+      "directed_edges": 7124,
+      "phases": 128,
+      "new_loss_label": false,
+      "scope": "six stationary homogenized slots; no individual copper interfaces; no circuit or J labels"
+    }
+  ],
+  "selection": "same-beta low-load beta0 and high-load beta36 source cases from existing sample selection; no error-based selection",
+  "status": "PASS"
+}

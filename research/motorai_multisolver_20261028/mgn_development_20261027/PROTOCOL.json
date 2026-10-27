@@ -1,0 +1,22 @@
+{
+  "schema": "jeet-mgn-equal-budget-v1",
+  "frozen_before_model_training": true,
+  "authorization": "Direct user continuation on 2026-10-27: build/train MGN, equal-Full-budget comparison, necessary new FEA and convergence validation, GitHub publication. Supersedes old 09:00 cutoff for this isolated task only.",
+  "source_return_commit": "4c6ef9325dd0539b0220fb2817782562b9932fb7",
+  "task": "known-template operating-condition prediction and protected HalfSC transfer; not new-template generalization",
+  "Full_budget": {"Ref": 36, "SC": 27, "total_unique": 63, "HalfSC": 0, "donor_Ref_counted_for_SC": true},
+  "training_selector": "existing own_AF_calibration mask, Ref36 plus SC27 only",
+  "primary_development_evaluation": "Ref own-excluded60; SC own-and-transfer-coordinate-excluded57",
+  "secondary_evaluation": "SC own-excluded69, transfer12 distinguished; HalfSC predeclared32 once after model/hyperparameter freeze; exploratory4 separate",
+  "reserved_all_sources": ["R1_0199", "R1_0076"],
+  "HalfSC_fields_in_pretraining_or_tuning": false,
+  "MS_pretraining": "Ref24 canonical histories only; known-template low-fidelity-assisted study, shared history identity explicit; no inductive geometry claim",
+  "methods": ["frozen_latest_AF_times_canonical_Hybrid", "scalar_log_Full_over_Hybrid_RBF", "random_FE_graph_embedding_RBF_control", "MS_pretrained_FE_graph_embedding_RBF"],
+  "MGN": {"scope": "stationary six homogenized slots; original FE triangle adjacency", "hidden": 48, "message_passing_steps": 4, "pretrain_target": "area-weighted vector B at FE nodes derived from incident elements; no Full field inputs", "updates": 1800, "batch_phases": 8, "learning_rate": 0.001, "seeds": [17, 29, 43], "checkpoint_rule": "fixed final update, no evaluation-driven selection", "embedding": "area-weighted node latent mean, phase mean and standard deviation over128 phases; log speed and log scale supplied to residual head"},
+  "scalar_head": {"kernel": "Gaussian ridge log residual", "length_scale_multipliers": [0.5, 1.0, 2.0], "regularization": [0.000001, 0.001, 0.1], "selection": "grouped inner CV on63 calibration rows only, groups by normalized current/beta MS source; feature scaling from calibration rows only", "objective": "held-calibration sum absolute W error / sum target W", "no_test_reselection": true},
+  "compute_bounds": {"training_runs": 3, "sanity_updates": 20, "automatic_training_retries": 0, "training_wall_seconds_per_seed": 3600, "GPU_memory_limit_GiB": 12, "RAM_limit_GiB": 16, "new_environment_disk_GiB": 10, "outputs_disk_GiB": 2, "CPU_threads": 4, "stop": "owned STOP file checked every update; terminate only recorded process identity"},
+  "FEA_plan": {"target": "existing calibration Ref_P117,16000rpm,460Arms,beta36; numerical qualification only, no additional independent fit label", "gap": "P2/P3 periodicity, temporal and spatial sensitivity not qualified", "sanity_steps": 8, "candidate_runs": ["N256_P3_existing_mesh", "N512_P3_existing_mesh", "N256_P3_verified_finer_mesh"], "maximum_production_runs": 3, "maximum_retries": 0, "wall_seconds_per_run": 5400, "aggregate_wall_seconds": 16200, "CPU_threads_per_case": 8, "parallel_solver_cases": 1, "estimated_RAM_GiB": 4, "RAM_limit_GiB": 16, "estimated_disk_GiB": 20, "disk_limit_GiB": 40, "minimum_disk_reserve_GiB": 32, "gate": "nonlinear<=1e-10; current<=0.001% phase peak; P2/P3 mean<=0.1%,waveL2<=0.5%; time/mesh mean<=1% only if period-qualified; preserve FAIL/UNKNOWN", "small_pilot_first": true, "stop": "owned STOP file and deadline; terminate only new process group, never shared solver/campaign; all partial output retained"},
+  "automatic_resume": false,
+  "new_simulations_replace_frozen_P2_targets": false,
+  "sources": ["https://arxiv.org/abs/2010.03409", "https://pytorch.org/get-started/previous-versions/"]
+}

@@ -1,0 +1,443 @@
+{
+  "schema": "jeet-calibrated-baseline-audit-v1",
+  "created_utc": "2026-10-26T15:44:58.455872+00:00",
+  "canonical_manuscript": {
+    "path": "C:\\Users\\user\\.codex\\worktrees\\jeet-r7-final-integration\\JEET-2024_rev1\\manuscript\\JEET_KDH_10p_EN_revision_20261017.tex",
+    "commit": "73a1e2aff57bc5e2570dfb0c77a78c4452f027bb",
+    "sha256": "f3e6c1a69cf372c107b1e374bad74f158509bfb7ead5c686db2061d4fdf2d1a2"
+  },
+  "reproduction_code_repository": "enjoyneer87/JEET-repro",
+  "source_object_commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+  "sources": [
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/AF_POINTS_192.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\AF_POINTS_192.json",
+      "bytes": 381380,
+      "sha256": "bf5ff66257ff10f8cc29a1681e54b3247c44db28759ee3b935e22fe668878531"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/AF_model_Ref_loaded96.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\AF_model_Ref_loaded96.json",
+      "bytes": 4919,
+      "sha256": "815185505174da3cbeb0744e719f4af40a6ab4c0a0663e9c07d788a2b00b4d37"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/AF_model_SC_loaded96.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\AF_model_SC_loaded96.json",
+      "bytes": 4019,
+      "sha256": "3499e77e5789549446cf2a0486e18ea708d1754b535f3076f0210cde369a2212"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/MODEL_REPORT.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\MODEL_REPORT.json",
+      "bytes": 30810,
+      "sha256": "5c1f98e23ad3a519c7ff9cbe284a803f5eff0309ca2b59fe31d0b70b547101eb"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/SAMPLING_PLAN.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\SAMPLING_PLAN.json",
+      "bytes": 18307,
+      "sha256": "046bc8642cc6fbd7a6509921df81cdcb06cee6a139053f8a6411b1e800b251a4"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_AF_loaded96/REGRESSION_INPUTS.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_AF_loaded96\\REGRESSION_INPUTS.json",
+      "bytes": 12168,
+      "sha256": "2a6c9d57281eecf3adcdb780e00a47e0f5749bc5b1d4a1d33ed286aae443bd9f"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261021_appendix_halfsc/halfsc/HALFSC_POINTS_36.csv",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261021_appendix_halfsc\\halfsc\\HALFSC_POINTS_36.csv",
+      "bytes": 5966,
+      "sha256": "60fe983f88001216879227f5fb91289db72ca327b6014fabf8c0fc031d1fb97b"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261021_appendix_halfsc/halfsc/HALFSC_POINTS_36.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261021_appendix_halfsc\\halfsc\\HALFSC_POINTS_36.json",
+      "bytes": 97368,
+      "sha256": "fd08b4192509df311372e6c12742fbdb82ba317043611dbe04cabb40b5d4461b"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261021_appendix_halfsc/halfsc/FINAL_AUDIT.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261021_appendix_halfsc\\halfsc\\FINAL_AUDIT.json",
+      "bytes": 24334,
+      "sha256": "de4b88899fbe683d193588696da3785d7d72cb84a3351e27203732bdbab0a161"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261020_halfsc_direct_af/PLAN.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261020_halfsc_direct_af\\PLAN.json",
+      "bytes": 47096,
+      "sha256": "23478b8ef085ec9724c07566553c2b859b8830551b76eb404707a38810f258f0"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261020_halfsc_direct_af/COMPARISON.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261020_halfsc_direct_af\\COMPARISON.json",
+      "bytes": 104976,
+      "sha256": "0c20ff7eaf576beeb600f72fc649af33626a6f4b5796ced7823601a49a604a8f"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "scripts/figure_interview_20261019/adopt_loaded96.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\scripts\\figure_interview_20261019\\adopt_loaded96.py",
+      "bytes": 9548,
+      "sha256": "38d87881a217834bddf20177761ebc99edead6886d42522d933071b7984a5cdb"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "scripts/halfsc_validation_20261021/build_validation.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\scripts\\halfsc_validation_20261021\\build_validation.py",
+      "bytes": 9174,
+      "sha256": "20be75e93551212e835d66f783be8791fd79a8062d7003025f389dcc315f3add"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/SeparableRbfModel.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\SeparableRbfModel.py",
+      "bytes": 4359,
+      "sha256": "cad0441de0801f662dbcdef3d1553308383ca75fa1440784e73cd2054de03bad"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/RbfModelBuilder.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\RbfModelBuilder.py",
+      "bytes": 29820,
+      "sha256": "70f43a1e879c3b9b52749d360ea1467e47d179e80a6050c794ecebe17ca25cd3"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/RbfModel3D.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\RbfModel3D.py",
+      "bytes": 1922,
+      "sha256": "1481e839d567f99d2b48df10924311a31cb5c93df4af6fdcb02f4396eef52ba3"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/rea_hybrid/hybrid_kernel.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\rea_hybrid\\hybrid_kernel.py",
+      "bytes": 9198,
+      "sha256": "1e0f9a07a19500a21ca935ee351205daa6c515c57097de96124e701ece8df2d0"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/rea_hybrid/e10_sampling.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\rea_hybrid\\e10_sampling.py",
+      "bytes": 5146,
+      "sha256": "0ff46fddba59860c785519e8ec4adadd068640cf26b98c64860448cd28e9356a"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/rea_hybrid/postprocess_elmer.py",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\rea_hybrid\\postprocess_elmer.py",
+      "bytes": 5989,
+      "sha256": "286ba02186182b2df75ab4e54c44afaee0e0ecc5e4a59eccd64fcbdf0824e4df"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "jeet_acloss_rbf/rea_hybrid/examples/e10_ref_input.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\jeet_acloss_rbf\\rea_hybrid\\examples\\e10_ref_input.json",
+      "bytes": 4300,
+      "sha256": "bb93a8cd322f83f6f4879dd90dcd73d484700b10edc0037ebb1899b98cbeef07"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/INPUT_INDEX_60.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\INPUT_INDEX_60.json",
+      "bytes": 108978,
+      "sha256": "39326143162fd224c5244b5323e63c6fb3a389e54387741b3d89a61103c4bcf2"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/evidence/Ref_Ref_P097/RECEIPT.json",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\evidence\\Ref_Ref_P097\\RECEIPT.json",
+      "bytes": 1455,
+      "sha256": "6b59c75e85294f128883e06e10e7b1002a0427780a212f0b4a44ca06b7fb95cf"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P097.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P097.npz",
+      "bytes": 220522,
+      "sha256": "02668211cf66b8af3517b04328e0159283ef19975e465bc3eab01c5a33cb6283"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P098.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P098.npz",
+      "bytes": 219890,
+      "sha256": "492bf66f810c3e3ae761dd4a7112b9f4e51414161464426c0df194d8fedd732c"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P099.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P099.npz",
+      "bytes": 219218,
+      "sha256": "89d592936dfea44060182c7bebddd8c86f9d55264e12a8d0cc8950a757b5b7e8"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P100.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P100.npz",
+      "bytes": 218572,
+      "sha256": "26664edf6f718c74e41df1074b949cf56b58f2ae20faba00b31c3bddf64762fa"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P101.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P101.npz",
+      "bytes": 218470,
+      "sha256": "2fccc866c19fad0e677ec7fbffe9357b2015fbfef9068986fb1f38e5181c1a59"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P102.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P102.npz",
+      "bytes": 218301,
+      "sha256": "6a65d41f43ce3e16ba5854731c08281cd16bfc3f01a2f1066f17a464b29489a4"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P103.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P103.npz",
+      "bytes": 220872,
+      "sha256": "b3d47ce58db9fd543ef190174fdd2f0491abf9355999a539aec02e6c74a1fbf8"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P104.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P104.npz",
+      "bytes": 220590,
+      "sha256": "7750d4419a8b0f5214d72f37a7dc7951eb6334fb5271fbc0bd984a03286a1b37"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P105.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P105.npz",
+      "bytes": 219985,
+      "sha256": "21f76e66a88b53682a3babad93a4665295b8fa2018853e4b3f362295c2b9e24e"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P106.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P106.npz",
+      "bytes": 219190,
+      "sha256": "3c11eac823a34e2a592141e2776614e5c1c3a030e9631f379503c1370fb5af6d"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P107.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P107.npz",
+      "bytes": 218438,
+      "sha256": "790f9a38c5e097bf91ebd9e76e04d9e87d0e07cc6a6876d6bb8835f353eaa5ca"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P108.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P108.npz",
+      "bytes": 218148,
+      "sha256": "95124b05b46e5952d43acabfa5eb0a00afc501247744f1ea5924101c1bd8cf5b"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P109.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P109.npz",
+      "bytes": 220918,
+      "sha256": "eda6fbdd582c6eead4e17c763c34d96383c27c94ac787d7476a26e582fc44bbd"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P110.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P110.npz",
+      "bytes": 220740,
+      "sha256": "2f74240e7eec7a3c454a25581b8f5fa20a85aa63f31ebaad5fd6fa1b40f1f8c9"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P111.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P111.npz",
+      "bytes": 220376,
+      "sha256": "3a969ec4ae426326b29d2955dc2ee20334448efbe754674eb1f6717a8680d611"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P112.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P112.npz",
+      "bytes": 219684,
+      "sha256": "c6b325f82b4560cff3d015c847bcf8680610298ef88eae6580a2f820c8dbf53c"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P113.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P113.npz",
+      "bytes": 218772,
+      "sha256": "31ecd47322ebc43719ba03e4903d8b87be858409b2ed9c0955f1d1c77226e860"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P114.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P114.npz",
+      "bytes": 217993,
+      "sha256": "fbf5eeb3aff323b1f889e64ae53643801d0c9b7fad9a8b506cb06d1df797df36"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P115.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P115.npz",
+      "bytes": 220770,
+      "sha256": "2b8f396ca3553e8807883b30cef9ff3401cf6163b5a5e2a2476ce765f6cdf674"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P116.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P116.npz",
+      "bytes": 220859,
+      "sha256": "81b9b7efbf4a3b6c495b98535a408c3c8e1da4dce57cee1e85bdc31c280e8bda"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P117.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P117.npz",
+      "bytes": 220695,
+      "sha256": "031f1e1f2ea7ff2e15f2734af47384961dbe3035d32f5b0f76ed9b7a009987a8"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P118.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P118.npz",
+      "bytes": 219964,
+      "sha256": "7909b5544a26a25ed97100f58505039443a8becfa99ad2fd4565b2e6fe9e233c"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P119.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P119.npz",
+      "bytes": 219063,
+      "sha256": "40ebd26f6c5c719fb8982e5a7be31acbab874ffe919c9588481b7522707a4e26"
+    },
+    {
+      "repo": "D:\\KangDH\\JEET-repro-appendix-review-22add80",
+      "commit": "0034d7c24b1cc0cf41499d028733792b14815bc7",
+      "git_path": "handoff/20261019_rea_hybrid_remote_results/samples/Ref_Ref_P120.npz",
+      "local_path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\sources\\handoff\\20261019_rea_hybrid_remote_results\\samples\\Ref_Ref_P120.npz",
+      "bytes": 218647,
+      "sha256": "ec09e7607472e3a03eac19192479fb4919dfc1d5d03c9cd2f54e73c0dbf037a7"
+    }
+  ],
+  "evidence_levels": {
+    "independent_frozen_coefficient_replay": true,
+    "independent_scalar_metric_replay": true,
+    "canonical_denominator_on_saved_scalar_B_replay": true,
+    "raw_MS_A_to_B_recomputed": false,
+    "raw_Full_FEA_loss_reintegrated": false,
+    "new_FEA_runs": 0,
+    "canonical_AF_refit": false,
+    "manuscript_modified": false
+  },
+  "remaining_inputs": [
+    "24 Ref raw MS A histories and matching acquisition manifests/receipts for curl re-extraction",
+    "192 Ref/SC saved Full-FEA Joule/DC/current integration sources and raw-audit receipts",
+    "32 HalfSC preserved raw/result/receipt/manifest sources for fresh readback verification"
+  ],
+  "artifacts": [
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\BASELINE_AUDIT_KO.md",
+      "bytes": 12665,
+      "sha256": "f263679de560e9452c24630c6e10c87b704c3b82231d7cf89c1c3bc8200d5dea"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\baseline_rows_192.csv",
+      "bytes": 32492,
+      "sha256": "51d2fec1efe3c183dbb03cbf09e02ed8c098b10fd981cb6b3de43e933510c941"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\denominator_replay_results.json",
+      "bytes": 680,
+      "sha256": "9ff2c392849e3af32a02dc859a650f871f642dce38b2fbaea16edc802f3a1a39"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\extract_sources.py",
+      "bytes": 2267,
+      "sha256": "3244d163d7e78e6a4a302626e16d56c6f8a6bf9c3d864ab0b46dde5d8e100272"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\finalize_manifest.py",
+      "bytes": 1989,
+      "sha256": "81a89ec4969918057f415e7708c237f3542f26595652ca01ebc24001ea7f8eed"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\replay_baseline.py",
+      "bytes": 5289,
+      "sha256": "9612953ddfb77f18b8a3a064bb11a170316e75c89ca61e74aba8f116a2cd63d9"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\replay_denominator.py",
+      "bytes": 2615,
+      "sha256": "9ecbf7298a1ad644a1f60447143865429cb2c60cceca9b6d75c4055c123e2aca"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\replay_results.json",
+      "bytes": 7381,
+      "sha256": "9b751e0695994c04eb76f2ff662c62771f79f0169e14f2edbe542a2033cc7992"
+    },
+    {
+      "path": "D:\\KangDH\\lineup-surrogate-20261027\\baseline_audit\\source_manifest.json",
+      "bytes": 21373,
+      "sha256": "d671679cfbd1d473b4ad4c60dea27fcbae036d58631841d66670e013180a074b"
+    }
+  ]
+}

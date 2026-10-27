@@ -1,0 +1,507 @@
+{
+  "133": {
+    "checked_UTC": "2026-10-27T14:30:16.204387+00:00",
+    "DEPLOY_RECEIPT.json": {
+      "host": "133",
+      "code_hashes": {
+        "dual_solver_mgn.py": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "train_existing_field_pilot.py": "cd4da389ce03fdc29fd0f24211b3a0afe0b01796ed64ad6b2943447d2be28362",
+        "guard_field_pilot.py": "88f90ca64282d5f1ecb46fe45a3175a47cba4e4f67bb9575052a1487e8757237",
+        "B_FIELD_PILOT_PLAN.json": "489173d531f17e771e4741687024092d7037290fc2af6c29bdb4f3b8c0824292"
+      },
+      "graph_files": 180,
+      "train_geometries": 16,
+      "inner_development_geometries": 4,
+      "hash_verified": true,
+      "bundle_manifest_sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3"
+    },
+    "OWNER.json": {
+      "host": "133",
+      "seed": 17,
+      "started_UTC": "2026-10-27T14:24:18.489360+00:00",
+      "guard_pid": 16028,
+      "guard_started_epoch": 1793111058.099533,
+      "mode": "native",
+      "pid": 13056,
+      "process_started_epoch": 1793111058.499209
+    },
+    "GUARD_RECEIPT.json": {
+      "host": "133",
+      "seed": 17,
+      "started_UTC": "2026-10-27T14:24:18.489360+00:00",
+      "guard_pid": 16028,
+      "guard_started_epoch": 1793111058.099533,
+      "mode": "native",
+      "pid": 13056,
+      "process_started_epoch": 1793111058.499209,
+      "finished_UTC": "2026-10-27T14:25:58.515303+00:00",
+      "elapsed_seconds": 100.03199999999924,
+      "returncode": 0,
+      "stop_reason": null,
+      "automatic_retries": 0
+    },
+    "result/RESULT.json": {
+      "started_UTC": "2026-10-27T14:24:30.965700+00:00",
+      "seed": 17,
+      "device": "NVIDIA L40S",
+      "torch": "2.5.1+cu124",
+      "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "trainer_sha256": "cd4da389ce03fdc29fd0f24211b3a0afe0b01796ed64ad6b2943447d2be28362",
+      "bundle_manifest_sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3",
+      "train_groups": [
+        "EveryMotor_DOE_group_107",
+        "EveryMotor_DOE_group_113",
+        "EveryMotor_DOE_group_136",
+        "EveryMotor_DOE_group_146",
+        "EveryMotor_DOE_group_169",
+        "EveryMotor_DOE_group_219",
+        "EveryMotor_DOE_group_236",
+        "EveryMotor_DOE_group_239",
+        "EveryMotor_DOE_group_321",
+        "EveryMotor_DOE_group_330",
+        "EveryMotor_DOE_group_331",
+        "EveryMotor_DOE_group_349",
+        "EveryMotor_DOE_group_367",
+        "EveryMotor_DOE_group_413",
+        "EveryMotor_DOE_group_74",
+        "EveryMotor_DOE_group_98"
+      ],
+      "inner_development_groups": [
+        "EveryMotor_DOE_group_195",
+        "EveryMotor_DOE_group_432",
+        "EveryMotor_DOE_group_59",
+        "EveryMotor_DOE_group_79"
+      ],
+      "original_test_used": 0,
+      "existing_checkpoint_reused": false,
+      "new_FEA": 0,
+      "historical_Full_donor_train_geometries": 16,
+      "AC_loss_training": false,
+      "MS_teacher_used": false,
+      "paired_alignment": false,
+      "epochs_requested": 10,
+      "seed_selection": false,
+      "training_updates": 1445,
+      "scope": "Motor-CAD element B field pretraining, a2 excluded; not AC-loss/equal-Full-budget benchmark",
+      "metrics": [
+        {
+          "epoch": 1,
+          "train": {
+            "vector_nRMSE_percent": 96.95924172863567,
+            "vector_RMSE_T": 0.927170190925827,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 96.89459738097119,
+            "vector_RMSE_T": 1.0259975163496398,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "vector_nRMSE_percent": 95.72651576891977,
+            "vector_RMSE_T": 0.9153822814594158,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 95.66278469351752,
+            "vector_RMSE_T": 1.0129540981189382,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "vector_nRMSE_percent": 94.24804159622249,
+            "vector_RMSE_T": 0.9012444111900181,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 94.18479228567588,
+            "vector_RMSE_T": 0.997303932055841,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "vector_nRMSE_percent": 77.48138628087115,
+            "vector_RMSE_T": 0.7409137120965796,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 75.76384864979015,
+            "vector_RMSE_T": 0.802248243399384,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "vector_nRMSE_percent": 73.01003728152567,
+            "vector_RMSE_T": 0.6981565552592569,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 71.20553039936183,
+            "vector_RMSE_T": 0.7539811229397952,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 6,
+          "train": {
+            "vector_nRMSE_percent": 73.77030186943041,
+            "vector_RMSE_T": 0.7054265653228114,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 71.73403812821553,
+            "vector_RMSE_T": 0.7595773855987283,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 7,
+          "train": {
+            "vector_nRMSE_percent": 69.71426257650425,
+            "vector_RMSE_T": 0.6666407965958852,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 68.06615871409294,
+            "vector_RMSE_T": 0.7207389439221155,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 8,
+          "train": {
+            "vector_nRMSE_percent": 65.49826162458172,
+            "vector_RMSE_T": 0.6263253987251217,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 61.17910412587217,
+            "vector_RMSE_T": 0.6478133000423403,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 9,
+          "train": {
+            "vector_nRMSE_percent": 57.14004346142831,
+            "vector_RMSE_T": 0.5464001580573004,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 52.32847686489575,
+            "vector_RMSE_T": 0.5540957777722951,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 10,
+          "train": {
+            "vector_nRMSE_percent": 62.07407167432735,
+            "vector_RMSE_T": 0.5935816726672268,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 58.18633012204968,
+            "vector_RMSE_T": 0.6161234145594097,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        }
+      ],
+      "status": "COMPLETED",
+      "elapsed_seconds": 90.25,
+      "peak_GPU_allocated_bytes": 326262784,
+      "checked_UTC": "2026-10-27T14:25:55.291689+00:00",
+      "GPU_smoke": "PASS_finite_gradients_native_graphs_and_memory",
+      "completed_UTC": "2026-10-27T14:25:55.291689+00:00"
+    },
+    "owned_process_live": false,
+    "checkpoint": {
+      "bytes": 318193,
+      "sha256": "84da8edcca0ebdf3a1e9a1429bd41d1fe1f7856948e96797271b0746fe16f1d9",
+      "logical_key": "host133/B_FIELD_PILOT/result/last.pt"
+    }
+  },
+  "234": {
+    "checked_UTC": "2026-10-27T14:29:57.918926+00:00",
+    "DEPLOY_RECEIPT.json": {
+      "host": "234",
+      "code_hashes": {
+        "dual_solver_mgn.py": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "train_existing_field_pilot.py": "cd4da389ce03fdc29fd0f24211b3a0afe0b01796ed64ad6b2943447d2be28362",
+        "guard_field_pilot.py": "88f90ca64282d5f1ecb46fe45a3175a47cba4e4f67bb9575052a1487e8757237",
+        "B_FIELD_PILOT_PLAN.json": "489173d531f17e771e4741687024092d7037290fc2af6c29bdb4f3b8c0824292"
+      },
+      "graph_files": 180,
+      "train_geometries": 16,
+      "inner_development_geometries": 4,
+      "hash_verified": true,
+      "bundle_manifest_sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3"
+    },
+    "OWNER.json": {
+      "host": "234",
+      "seed": 29,
+      "started_UTC": "2026-10-27T14:24:05.598256+00:00",
+      "guard_pid": 180172,
+      "guard_started_epoch": 1793111045.4209013,
+      "mode": "docker",
+      "container_id": "5cb73ae0b9b7402b1fb0f7e5445399c724ad8d6df7277496e626715fda943b2d",
+      "container_name": "jeet-b-field-seed29-20261027"
+    },
+    "GUARD_RECEIPT.json": {
+      "host": "234",
+      "seed": 29,
+      "started_UTC": "2026-10-27T14:24:05.598256+00:00",
+      "guard_pid": 180172,
+      "guard_started_epoch": 1793111045.4209013,
+      "mode": "docker",
+      "container_id": "5cb73ae0b9b7402b1fb0f7e5445399c724ad8d6df7277496e626715fda943b2d",
+      "container_name": "jeet-b-field-seed29-20261027",
+      "finished_UTC": "2026-10-27T14:27:48.785498+00:00",
+      "elapsed_seconds": 223.18800000008196,
+      "returncode": 0,
+      "stop_reason": null,
+      "automatic_retries": 0
+    },
+    "result/RESULT.json": {
+      "started_UTC": "2026-10-27T14:24:18.117548+00:00",
+      "seed": 29,
+      "device": "NVIDIA GeForce RTX 3090",
+      "torch": "2.10.0a0+a36e1d39eb.nv26.01.42222806",
+      "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "trainer_sha256": "cd4da389ce03fdc29fd0f24211b3a0afe0b01796ed64ad6b2943447d2be28362",
+      "bundle_manifest_sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3",
+      "train_groups": [
+        "EveryMotor_DOE_group_107",
+        "EveryMotor_DOE_group_113",
+        "EveryMotor_DOE_group_136",
+        "EveryMotor_DOE_group_146",
+        "EveryMotor_DOE_group_169",
+        "EveryMotor_DOE_group_219",
+        "EveryMotor_DOE_group_236",
+        "EveryMotor_DOE_group_239",
+        "EveryMotor_DOE_group_321",
+        "EveryMotor_DOE_group_330",
+        "EveryMotor_DOE_group_331",
+        "EveryMotor_DOE_group_349",
+        "EveryMotor_DOE_group_367",
+        "EveryMotor_DOE_group_413",
+        "EveryMotor_DOE_group_74",
+        "EveryMotor_DOE_group_98"
+      ],
+      "inner_development_groups": [
+        "EveryMotor_DOE_group_195",
+        "EveryMotor_DOE_group_432",
+        "EveryMotor_DOE_group_59",
+        "EveryMotor_DOE_group_79"
+      ],
+      "original_test_used": 0,
+      "existing_checkpoint_reused": false,
+      "new_FEA": 0,
+      "historical_Full_donor_train_geometries": 16,
+      "AC_loss_training": false,
+      "MS_teacher_used": false,
+      "paired_alignment": false,
+      "epochs_requested": 10,
+      "seed_selection": false,
+      "training_updates": 1445,
+      "scope": "Motor-CAD element B field pretraining, a2 excluded; not AC-loss/equal-Full-budget benchmark",
+      "metrics": [
+        {
+          "epoch": 1,
+          "train": {
+            "vector_nRMSE_percent": 96.0719096854053,
+            "vector_RMSE_T": 0.9186851031515259,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 95.87144559170122,
+            "vector_RMSE_T": 1.0151635703470718,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 2,
+          "train": {
+            "vector_nRMSE_percent": 95.10825787759772,
+            "vector_RMSE_T": 0.909470208148847,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 94.757240386497,
+            "vector_RMSE_T": 1.003365474185765,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 3,
+          "train": {
+            "vector_nRMSE_percent": 89.68346912846475,
+            "vector_RMSE_T": 0.8575958087755873,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 88.4227752883539,
+            "vector_RMSE_T": 0.9362910896744866,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 4,
+          "train": {
+            "vector_nRMSE_percent": 74.19797922114417,
+            "vector_RMSE_T": 0.709516219856789,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 72.85656565040699,
+            "vector_RMSE_T": 0.7714636078805012,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 5,
+          "train": {
+            "vector_nRMSE_percent": 68.94309301863224,
+            "vector_RMSE_T": 0.6592665091056185,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 67.2868153195644,
+            "vector_RMSE_T": 0.7124866351551687,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 6,
+          "train": {
+            "vector_nRMSE_percent": 67.77605751963807,
+            "vector_RMSE_T": 0.64810676291877,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 65.76714315421064,
+            "vector_RMSE_T": 0.6963951304155019,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 7,
+          "train": {
+            "vector_nRMSE_percent": 61.45921424101216,
+            "vector_RMSE_T": 0.5877021156288447,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 58.60615221996752,
+            "vector_RMSE_T": 0.620568829068289,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 8,
+          "train": {
+            "vector_nRMSE_percent": 69.9068818275018,
+            "vector_RMSE_T": 0.6684827141773403,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 66.51705875036549,
+            "vector_RMSE_T": 0.704335836736899,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 9,
+          "train": {
+            "vector_nRMSE_percent": 57.95803333166308,
+            "vector_RMSE_T": 0.5542221655020062,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 53.82916759779084,
+            "vector_RMSE_T": 0.5699862939389584,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        },
+        {
+          "epoch": 10,
+          "train": {
+            "vector_nRMSE_percent": 63.069688588514815,
+            "vector_RMSE_T": 0.6031022341120014,
+            "graphs": 144,
+            "area_weighted": true
+          },
+          "inner_development": {
+            "vector_nRMSE_percent": 60.31689220403892,
+            "vector_RMSE_T": 0.6386835127412736,
+            "graphs": 36,
+            "area_weighted": true
+          }
+        }
+      ],
+      "status": "COMPLETED",
+      "elapsed_seconds": 209.2292770827189,
+      "peak_GPU_allocated_bytes": 326262784,
+      "checked_UTC": "2026-10-27T14:27:43.574761+00:00",
+      "GPU_smoke": "PASS_finite_gradients_native_graphs_and_memory",
+      "completed_UTC": "2026-10-27T14:27:43.574547+00:00"
+    },
+    "owned_container_state": {
+      "Running": false,
+      "ExitCode": 0,
+      "StartedAt": "2026-10-27T14:24:06.139623126Z",
+      "FinishedAt": "2026-10-27T14:27:44.754406783Z"
+    },
+    "checkpoint": {
+      "bytes": 318648,
+      "sha256": "e0444a7df99355679fa0186e691482bfcc007bf1c1cd44ca116566c22f44481e",
+      "logical_key": "host234/B_FIELD_PILOT/result/last.pt"
+    }
+  }
+}
