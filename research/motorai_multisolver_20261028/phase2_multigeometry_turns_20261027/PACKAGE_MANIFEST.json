@@ -17,6 +17,11 @@
       "bytes": 5667
     },
     {
+      "path": "audit_electrical_period.py",
+      "sha256": "d9671c2e36b83ba8755eeb058ed621ba29b27b31294d6de19b093c79968356cf",
+      "bytes": 2264
+    },
+    {
       "path": "audit_existing_multigeometry_fields.py",
       "sha256": "c7d2012587d13af812d9e28d896fc42c01b3e2421eac630a4100de8db160ac7c",
       "bytes": 4169
@@ -198,13 +203,13 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "04a7a69d2f3568907d31c2ecea6adf774b5f5d311be1cd877d7f335ae43afdd7",
-      "bytes": 16822
+      "sha256": "9644610c30be50c913bf50e663cf4bcd8f3d570732d267b35dc6463d7bc681c5",
+      "bytes": 16999
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "515d892044620dd8c55ae61144f27acb0768a7e77585ba66788a0c7281cdc970",
-      "bytes": 19354
+      "sha256": "777c4e3197d0d1b7ee5e66d9cc75237fc614737264d4ea0294bcf09b8119fc91",
+      "bytes": 19581
     },
     {
       "path": "judge_l12_phase45.py",
@@ -225,6 +230,16 @@
       "path": "MASTER_DEVELOPMENT_PLAN_KO.md",
       "sha256": "85d7d08f1495949e78186d508b848c9aad4cb9b7b60834298a2ad281f8a5770f",
       "bytes": 76108
+    },
+    {
+      "path": "master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json",
+      "sha256": "ed3e6c02e5e0e31db11c64d54fcfa332ee5fbd00b1b4a81a39cd46eec63ef827",
+      "bytes": 4740
+    },
+    {
+      "path": "master_plan_artifacts/A2_ELECTRICAL_PERIOD_AUDIT.json",
+      "sha256": "456876bac76f4269d0eb59febdd29d6d5c0851dd092415cd8ac51de77a238e64",
+      "bytes": 5110
     },
     {
       "path": "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
@@ -543,8 +558,8 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "faec2e8b25656d2a2116d9449c4fec4b527193ebc866ebe5ec23411f4642aba0",
-      "bytes": 11614
+      "sha256": "948aa4b5e6fa4e68daf7f39f6120e08f550ce28bd078debb09907eb5b149eadb",
+      "bytes": 12814
     },
     {
       "path": "source_manifest.json",
@@ -563,7 +578,7 @@
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "23f03253f155484665df37bd0ed55e785ea6bea185b0d568c2b0c00df379320d",
+      "sha256": "20f9c0009fbb386c9073d7cef30b3dada208f901d8871581fcb306326bb95a48",
       "bytes": 10305
     },
     {

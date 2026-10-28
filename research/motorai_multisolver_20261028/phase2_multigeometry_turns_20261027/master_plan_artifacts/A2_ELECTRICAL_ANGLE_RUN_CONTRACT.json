@@ -1,0 +1,61 @@
+{
+  "id": "L12-A2-ELECTRICAL",
+  "version": "1.0-draft",
+  "status": "AWAITING_USER_APPROVAL",
+  "plan_step": "L12 second single axis (D01-v2 item 3, D01-v3)",
+  "single_changed_axis": "phase input encoding: design_op columns 10-11 sin/cos(mechanical angle) -> sin/cos(electrical angle = 4 x mechanical angle). Training data stay phase9 (2952 graphs), identical to A0.",
+  "native_evidence": {
+    "record": "A2_ELECTRICAL_PERIOD_AUDIT.json (script audit_electrical_period.py, train graphs only, read-only)",
+    "mechanical_step_deg": -2.0,
+    "electrical_cycle_span_mech_deg": -90.0,
+    "pole_pairs": 4,
+    "cases_consistent": "328/328",
+    "start_angle_mod_span_deg": 0.0,
+    "field_periodicity": "stator B change step44->step0 median 19.13% vs adjacent-step 18.75% vs half-cycle 199.8% (24-case sample): gate PASS, step 45 == step 0",
+    "consequence": "trained electrical angles 0,40,...,320 deg cover the full cycle every 40 deg; step 44 (8 deg) becomes interpolation between 0 and 40 deg instead of extrapolation beyond -80 deg mechanical"
+  },
+  "comparison": {
+    "reference_arm": "A0 seeds 17 and 29 already trained and evaluated (L12); reused, not retrained",
+    "new_runs": ["A2_s17", "A2_s29"],
+    "optional": "A2_s43 and A0_s43 for a third seed per arm (four processes in parallel)",
+    "kept_identical": "model code ae1966b5..., selection 21e78f73..., phase9 train graphs, optimizer, batch 1, width 32, depth 3, clip 10, 88565 updates, per-update learning rate, evaluation update points, final checkpoint only"
+  },
+  "code_changes_declared": [
+    "train_field_l12.py: --phase-encoding {mechanical,electrical}; electrical rewrites design_op[10:12] from the graph's mechanical_angle_deg with pole_pairs=4 at load time; stored in RESULT/checkpoint metadata",
+    "train_field_l12.py: --prefetch N background reader thread that decodes the next npz files in the same order (queue of N); tensors identical, only CPU/GPU overlap changes",
+    "train_field_l12.py: --max-updates for the prefetch equivalence smoke only",
+    "evaluate_field_l12.py: applies the same input rewrite when checkpoint metadata says phase_encoding=electrical; metric code unchanged",
+    "guard: A2 chain (gates then parallel runs)"
+  ],
+  "gates_before_training": [
+    {"id": "G-EVAL", "check": "A0_s17 reference evaluation with the changed evaluator equals FROZEN_FIELD_DIAGNOSTIC_RESULT within 1e-9 pp"},
+    {"id": "G-PREFETCH", "check": "A0 seed17 with --prefetch 8 and --max-updates 2957 reproduces SCALE360 epoch-1 dev 9-phase B-vector nRMSE 47.803460632172296 exactly (|diff| < 1e-9 pp)", "expected_seconds": 200},
+    {"id": "G-TRANSFORM", "check": "electrical feature equals sin/cos(4*theta_m) on every train/dev graph read; dev graphs show the same -2 deg step"}
+  ],
+  "execution": {
+    "host": "133 L40S",
+    "bundle": "L12 R1 stage bundle (read-only, manifest 0ab3743b...) for training; frozen dev45 bundle for evaluation",
+    "parallel": "after all gates PASS, A2_s17 and A2_s29 start together (separate processes, one CPU core each, about 1 GiB GPU each); each evaluates itself when training completes",
+    "prefetch": "queue depth 8 in every training process",
+    "wall_seconds_max_per_training": 10800,
+    "evaluation_wall_seconds_max": 1800,
+    "guard_deadline_UTC": "set at launch to launch time + 6 h",
+    "expected_total": "about 70 min (gates 5 min, parallel training 55-65 min, evaluation 2 min); 90 min with the optional third seed",
+    "retries": 0,
+    "STOP": "STOP file in stage or run dir; owned PID tree only",
+    "status_polling": "read-only; result writes use replace_retry",
+    "new_FEA": 0,
+    "label_snapshots": "same 2952 train graphs as A0 (no new label access)"
+  },
+  "decision_rule": "COMMON_EVALUATION_CONTRACT.json v1.0 decision_rule_L12 unchanged: A2 improves on A0 only if all45 B-vector nRMSE falls by >= 1.0 pp and by more than twice the seed spread; no-harm: seen9 <= +0.5 pp, copper <= +1.0 pp, PhaseAdvance >= 70 group <= +1.0 pp",
+  "preregistered_predictions": {
+    "Q1": "steps 41-44 mean snapshot error falls by at least 5 pp from A0 (31.3 percent)",
+    "Q2": "seen9 B-vector changes by 0.5 pp or less (no dilution, unlike A1)",
+    "Q3": "interior unused steps change by 1 pp or less",
+    "Q4": "the PhaseAdvance >= 70 group gap persists (above 5 pp)",
+    "use": "interpretation aid only, not pass/fail thresholds"
+  },
+  "claims_not_allowed": ["independent test performance", "AC loss accuracy", "comparison with E1 legacy scores", "causal claim beyond the encoding axis"],
+  "outputs_to_publish": ["l12a2/<run>/ eval and train results, receipts", "A2 result JSON and report", "prefetch smoke receipt"],
+  "not_published": "graphs, checkpoints, private host mappings"
+}

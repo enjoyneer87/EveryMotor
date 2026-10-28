@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_KST": "2026-10-28 14:55",
+  "updated_KST": "2026-10-28 15:20",
   "purpose": "User requests, research ideas, scientific decisions and execution evidence for MotorAI/JEET method development",
   "decision_policy": "A proposal is not an approved experiment. Scientific choices go to the user-requested Astra review chat; every new computation still requires a concrete bounded plan and source/split admission.",
   "Astra_review_thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
@@ -158,7 +158,7 @@
       "priority": "P1",
       "title": "미사용 위상36개에서 시간 일반화 진단",
       "origin": "Astra 제안",
-      "status": "L12 완료·개선 주장 불가·A2 후보",
+      "status": "L12 완료·A2 계약 승인 대기",
       "request": "45개저장시각중학습에쓴9개외36개에서위상오차를확인한다.",
       "evidence": [
         "SCALE360_PLAN.json",
@@ -167,10 +167,12 @@
         "master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md",
         "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json",
         "master_plan_artifacts/L12_PHASE45_REPORT_KO.md",
-        "master_plan_artifacts/l12/L12_PHASE45_RESULT.json"
+        "master_plan_artifacts/l12/L12_PHASE45_RESULT.json",
+        "master_plan_artifacts/A2_ELECTRICAL_PERIOD_AUDIT.json",
+        "master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json"
       ],
       "confirmed": "L12 phase45 equal-update(2 seed): 전체 B벡터 +0.81 pp 개선(seed 일치)이나 1.0 pp 기준 미달, seen9 +1.54 pp 악화로 NO_IMPROVEMENT_CLAIM. 41–44 외삽 오차는 −8.8 pp로 해소되어 위상 범위 기제는 확인됨.",
-      "next_action": "native rotate_step으로 전기 주기 폭 확인 → A2 실행계약 작성.",
+      "next_action": "A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json 사용자 승인 후 게이트(평가기·prefetch·변환) → A2 seed 병렬 실행.",
       "Astra_decision": "D01-v3(Claude 대행): 다음 단일축은 phase9 데이터의 전기각 주기 인코딩(A2). 전기 주기 각도 폭 확인 후 계약, 사용자 승인 후 실행."
     },
     {

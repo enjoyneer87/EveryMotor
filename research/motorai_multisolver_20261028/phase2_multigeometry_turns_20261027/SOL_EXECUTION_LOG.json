@@ -271,10 +271,35 @@
           "decision": "user, 2026-10-28"
         }
       ]
+    },
+    {
+      "stepid": "L12-A2",
+      "title": "electrical-angle phase encoding (second L12 single axis)",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "plan_status_at_freeze": "derived from L12 / D01-v2",
+      "dependencies": [
+        "L12"
+      ],
+      "gates": [
+        "G02",
+        "G03",
+        "G09",
+        "G10"
+      ],
+      "execution_status": "CONTRACT_DRAFT_AWAITING_USER",
+      "receipt": {
+        "new_compute": "read-only CPU audit of train graphs on 133 (no GPU, no training)",
+        "outputs": {
+          "master_plan_artifacts/A2_ELECTRICAL_PERIOD_AUDIT.json": "456876bac76f4269d0eb59febdd29d6d5c0851dd092415cd8ac51de77a238e64",
+          "master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json": "ed3e6c02e5e0e31db11c64d54fcfa332ee5fbd00b1b4a81a39cd46eec63ef827"
+        }
+      },
+      "result": "mechanical step -2.0 deg in 328/328 train cases, electrical cycle = 90 deg mechanical (4 pole pairs); field periodicity gate PASS (step44->0 change 19.1% vs adjacent 18.8%, half-cycle 199.8%)",
+      "decision_request": "User approval of the A2 contract (2 or 3 seeds, prefetch, parallel) before any GPU run."
     }
   ],
   "next": [
-    "A2 contract (user approval)",
+    "L12-A2 (user approval)",
     "W05",
     "W06"
   ]
