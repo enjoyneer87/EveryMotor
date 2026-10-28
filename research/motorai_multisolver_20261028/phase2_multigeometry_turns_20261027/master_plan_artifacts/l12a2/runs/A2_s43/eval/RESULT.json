@@ -1,0 +1,656 @@
+{
+  "status": "COMPLETED",
+  "checkpoint_sha256": "eacb843f20ff5013c01fa5ed3942cecf342841843ffde33f320c4b1d7777ae55",
+  "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+  "evaluator_sha256": "14c39449559aa3495c160a70feeda0a6bba9441d29161d2dbb7239a20b63ce72",
+  "arm": "A2",
+  "phase_encoding": "electrical",
+  "seed": 43,
+  "bundle_manifest_sha256": "5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186",
+  "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+  "plan_sha256": "8eafa8ccafbdb575b93eccaf6c52098764d4591725a7bcbe139b0eec1038cfb8",
+  "new_FEA": 0,
+  "training_updates": 0,
+  "cases": 32,
+  "geometry_role": "same inner development, not independent final test",
+  "scope": "native element B in T, a2 excluded. B2 in T2; area and uniform snapshot pooling. Not time-integrated AC loss or canonical Hybrid denominator.",
+  "graphs_processed": 1440,
+  "elapsed_seconds": 73.375,
+  "peak_torch_allocated_bytes": 108437504,
+  "metrics": {
+    "all45/all": {
+      "B_vector_nRMSE_percent": 21.564573843053743,
+      "B_magnitude_nRMSE_percent": 13.906166618375776,
+      "B_vector_RMSE_T": 0.2122163388709062,
+      "snapshots": 1440
+    },
+    "all45/copper": {
+      "B_vector_nRMSE_percent": 33.245218270375645,
+      "B_magnitude_nRMSE_percent": 26.11424266470725,
+      "B_vector_RMSE_T": 0.0655589032833311,
+      "snapshots": 1440
+    },
+    "all45/case:44": {
+      "B_vector_nRMSE_percent": 21.14592952965526,
+      "B_magnitude_nRMSE_percent": 12.819987651996485,
+      "B_vector_RMSE_T": 0.23209725187124491,
+      "snapshots": 45
+    },
+    "seen9/all": {
+      "B_vector_nRMSE_percent": 18.002619523847194,
+      "B_magnitude_nRMSE_percent": 11.499239091616074,
+      "B_vector_RMSE_T": 0.17720600216986993,
+      "snapshots": 288
+    },
+    "seen9/copper": {
+      "B_vector_nRMSE_percent": 33.09911960882713,
+      "B_magnitude_nRMSE_percent": 25.937413387173603,
+      "B_vector_RMSE_T": 0.06529078257088666,
+      "snapshots": 288
+    },
+    "seen9/case:44": {
+      "B_vector_nRMSE_percent": 18.321374856704058,
+      "B_magnitude_nRMSE_percent": 11.096533799228157,
+      "B_vector_RMSE_T": 0.2012344119320188,
+      "snapshots": 9
+    },
+    "unused36/all": {
+      "B_vector_nRMSE_percent": 22.367079351344607,
+      "B_magnitude_nRMSE_percent": 14.445689209507053,
+      "B_vector_RMSE_T": 0.22010049111651647,
+      "snapshots": 1152
+    },
+    "unused36/copper": {
+      "B_vector_nRMSE_percent": 33.281670598676214,
+      "B_magnitude_nRMSE_percent": 26.158296884049214,
+      "B_vector_RMSE_T": 0.06562576230004309,
+      "snapshots": 1152
+    },
+    "unused36/case:44": {
+      "B_vector_nRMSE_percent": 21.796056137492315,
+      "B_magnitude_nRMSE_percent": 13.216456091260593,
+      "B_vector_RMSE_T": 0.23919154695076003,
+      "snapshots": 36
+    },
+    "all45/case:48": {
+      "B_vector_nRMSE_percent": 36.00690070045419,
+      "B_magnitude_nRMSE_percent": 25.050956300727854,
+      "B_vector_RMSE_T": 0.22060223023333989,
+      "snapshots": 45
+    },
+    "seen9/case:48": {
+      "B_vector_nRMSE_percent": 27.498915812555367,
+      "B_magnitude_nRMSE_percent": 18.416160491570146,
+      "B_vector_RMSE_T": 0.16880951827591775,
+      "snapshots": 9
+    },
+    "unused36/case:48": {
+      "B_vector_nRMSE_percent": 37.84497305212685,
+      "B_magnitude_nRMSE_percent": 26.45762780798215,
+      "B_vector_RMSE_T": 0.2317488181285671,
+      "snapshots": 36
+    },
+    "all45/case:49": {
+      "B_vector_nRMSE_percent": 40.35103666122579,
+      "B_magnitude_nRMSE_percent": 27.642816637366973,
+      "B_vector_RMSE_T": 0.22670476938685455,
+      "snapshots": 45
+    },
+    "seen9/case:49": {
+      "B_vector_nRMSE_percent": 32.16983228284597,
+      "B_magnitude_nRMSE_percent": 22.49438237475702,
+      "B_vector_RMSE_T": 0.18063707246506513,
+      "snapshots": 9
+    },
+    "unused36/case:49": {
+      "B_vector_nRMSE_percent": 42.14643100300522,
+      "B_magnitude_nRMSE_percent": 28.784810269026405,
+      "B_vector_RMSE_T": 0.23682562260170972,
+      "snapshots": 36
+    },
+    "all45/case:59": {
+      "B_vector_nRMSE_percent": 19.3354192058247,
+      "B_magnitude_nRMSE_percent": 12.867395687762565,
+      "B_vector_RMSE_T": 0.19640546460045688,
+      "snapshots": 45
+    },
+    "seen9/case:59": {
+      "B_vector_nRMSE_percent": 16.3584824077219,
+      "B_magnitude_nRMSE_percent": 10.781883703233348,
+      "B_vector_RMSE_T": 0.16633148791518013,
+      "snapshots": 9
+    },
+    "unused36/case:59": {
+      "B_vector_nRMSE_percent": 20.012225165529664,
+      "B_magnitude_nRMSE_percent": 13.33906914443737,
+      "B_vector_RMSE_T": 0.20322978117803375,
+      "snapshots": 36
+    },
+    "all45/case:79": {
+      "B_vector_nRMSE_percent": 19.506534533390376,
+      "B_magnitude_nRMSE_percent": 12.221162794270825,
+      "B_vector_RMSE_T": 0.21260060035609718,
+      "snapshots": 45
+    },
+    "seen9/case:79": {
+      "B_vector_nRMSE_percent": 16.667444055579768,
+      "B_magnitude_nRMSE_percent": 10.379317216569918,
+      "B_vector_RMSE_T": 0.18168947771753396,
+      "snapshots": 9
+    },
+    "unused36/case:79": {
+      "B_vector_nRMSE_percent": 20.154192772869433,
+      "B_magnitude_nRMSE_percent": 12.639938590507354,
+      "B_vector_RMSE_T": 0.21964972734032762,
+      "snapshots": 36
+    },
+    "all45/case:82": {
+      "B_vector_nRMSE_percent": 18.393281394668108,
+      "B_magnitude_nRMSE_percent": 11.289719079320276,
+      "B_vector_RMSE_T": 0.2006521332046864,
+      "snapshots": 45
+    },
+    "seen9/case:82": {
+      "B_vector_nRMSE_percent": 15.64271432488233,
+      "B_magnitude_nRMSE_percent": 9.632714886658505,
+      "B_vector_RMSE_T": 0.1705415202863076,
+      "snapshots": 9
+    },
+    "unused36/case:82": {
+      "B_vector_nRMSE_percent": 19.017925633237375,
+      "B_magnitude_nRMSE_percent": 11.666688093122938,
+      "B_vector_RMSE_T": 0.2074981826829479,
+      "snapshots": 36
+    },
+    "all45/case:115": {
+      "B_vector_nRMSE_percent": 30.474859886585886,
+      "B_magnitude_nRMSE_percent": 21.720294112063428,
+      "B_vector_RMSE_T": 0.226692775612651,
+      "snapshots": 45
+    },
+    "seen9/case:115": {
+      "B_vector_nRMSE_percent": 24.034142780172843,
+      "B_magnitude_nRMSE_percent": 16.928026795466003,
+      "B_vector_RMSE_T": 0.1795772074076524,
+      "snapshots": 9
+    },
+    "unused36/case:115": {
+      "B_vector_nRMSE_percent": 31.897747217014444,
+      "B_magnitude_nRMSE_percent": 22.772602270303093,
+      "B_vector_RMSE_T": 0.23701271110389688,
+      "snapshots": 36
+    },
+    "all45/case:116": {
+      "B_vector_nRMSE_percent": 18.67274930450212,
+      "B_magnitude_nRMSE_percent": 10.81151317569577,
+      "B_vector_RMSE_T": 0.214988223794136,
+      "snapshots": 45
+    },
+    "seen9/case:116": {
+      "B_vector_nRMSE_percent": 15.917427274089357,
+      "B_magnitude_nRMSE_percent": 9.178846847231833,
+      "B_vector_RMSE_T": 0.18321613006818954,
+      "snapshots": 9
+    },
+    "unused36/case:116": {
+      "B_vector_nRMSE_percent": 19.299805060365525,
+      "B_magnitude_nRMSE_percent": 11.182253030236337,
+      "B_vector_RMSE_T": 0.22222259323886676,
+      "snapshots": 36
+    },
+    "all45/case:122": {
+      "B_vector_nRMSE_percent": 18.40082813685539,
+      "B_magnitude_nRMSE_percent": 10.82184226929938,
+      "B_vector_RMSE_T": 0.2149257444311286,
+      "snapshots": 45
+    },
+    "seen9/case:122": {
+      "B_vector_nRMSE_percent": 16.305426266282634,
+      "B_magnitude_nRMSE_percent": 9.718671373431452,
+      "B_vector_RMSE_T": 0.19041064534538116,
+      "snapshots": 9
+    },
+    "unused36/case:122": {
+      "B_vector_nRMSE_percent": 18.888137251670443,
+      "B_magnitude_nRMSE_percent": 11.080351628379214,
+      "B_vector_RMSE_T": 0.22062930404645498,
+      "snapshots": 36
+    },
+    "all45/case:127": {
+      "B_vector_nRMSE_percent": 19.113627113545974,
+      "B_magnitude_nRMSE_percent": 12.142168385922234,
+      "B_vector_RMSE_T": 0.2000925079052678,
+      "snapshots": 45
+    },
+    "seen9/case:127": {
+      "B_vector_nRMSE_percent": 16.044171235562438,
+      "B_magnitude_nRMSE_percent": 10.211035455026712,
+      "B_vector_RMSE_T": 0.16796849942155384,
+      "snapshots": 9
+    },
+    "unused36/case:127": {
+      "B_vector_nRMSE_percent": 19.80689535345866,
+      "B_magnitude_nRMSE_percent": 12.578768577091004,
+      "B_vector_RMSE_T": 0.20734731516206822,
+      "snapshots": 36
+    },
+    "all45/case:143": {
+      "B_vector_nRMSE_percent": 37.65934366808094,
+      "B_magnitude_nRMSE_percent": 26.10030405117402,
+      "B_vector_RMSE_T": 0.22186260042205816,
+      "snapshots": 45
+    },
+    "seen9/case:143": {
+      "B_vector_nRMSE_percent": 28.849279309793967,
+      "B_magnitude_nRMSE_percent": 19.376168086208718,
+      "B_vector_RMSE_T": 0.16995521402279054,
+      "snapshots": 9
+    },
+    "unused36/case:143": {
+      "B_vector_nRMSE_percent": 39.55632090218589,
+      "B_magnitude_nRMSE_percent": 27.52577286980859,
+      "B_vector_RMSE_T": 0.23303985452438958,
+      "snapshots": 36
+    },
+    "all45/case:155": {
+      "B_vector_nRMSE_percent": 18.048463322599552,
+      "B_magnitude_nRMSE_percent": 11.097510618037532,
+      "B_vector_RMSE_T": 0.2022615032219839,
+      "snapshots": 45
+    },
+    "seen9/case:155": {
+      "B_vector_nRMSE_percent": 15.292124220052417,
+      "B_magnitude_nRMSE_percent": 9.338168670080513,
+      "B_vector_RMSE_T": 0.1713577966618898,
+      "snapshots": 9
+    },
+    "unused36/case:155": {
+      "B_vector_nRMSE_percent": 18.67395586885852,
+      "B_magnitude_nRMSE_percent": 11.495267071446476,
+      "B_vector_RMSE_T": 0.20927558439414579,
+      "snapshots": 36
+    },
+    "all45/case:171": {
+      "B_vector_nRMSE_percent": 36.49150884444896,
+      "B_magnitude_nRMSE_percent": 25.45901200743318,
+      "B_vector_RMSE_T": 0.21724589731842914,
+      "snapshots": 45
+    },
+    "seen9/case:171": {
+      "B_vector_nRMSE_percent": 28.668448464253725,
+      "B_magnitude_nRMSE_percent": 19.634887013183512,
+      "B_vector_RMSE_T": 0.17070965221457815,
+      "snapshots": 9
+    },
+    "unused36/case:171": {
+      "B_vector_nRMSE_percent": 38.19864962493547,
+      "B_magnitude_nRMSE_percent": 26.718064897747222,
+      "B_vector_RMSE_T": 0.22739674052326816,
+      "snapshots": 36
+    },
+    "all45/case:183": {
+      "B_vector_nRMSE_percent": 19.401859967737494,
+      "B_magnitude_nRMSE_percent": 12.033070578715984,
+      "B_vector_RMSE_T": 0.20988744715466306,
+      "snapshots": 45
+    },
+    "seen9/case:183": {
+      "B_vector_nRMSE_percent": 16.328926572073783,
+      "B_magnitude_nRMSE_percent": 10.13121823094767,
+      "B_vector_RMSE_T": 0.17662411419359855,
+      "snapshots": 9
+    },
+    "unused36/case:183": {
+      "B_vector_nRMSE_percent": 20.096610153475964,
+      "B_magnitude_nRMSE_percent": 12.463146178629128,
+      "B_vector_RMSE_T": 0.21740953655834452,
+      "snapshots": 36
+    },
+    "all45/case:193": {
+      "B_vector_nRMSE_percent": 19.498773120408785,
+      "B_magnitude_nRMSE_percent": 12.65857907834469,
+      "B_vector_RMSE_T": 0.19231861425199123,
+      "snapshots": 45
+    },
+    "seen9/case:193": {
+      "B_vector_nRMSE_percent": 16.18087329588847,
+      "B_magnitude_nRMSE_percent": 10.450115133571828,
+      "B_vector_RMSE_T": 0.15972549192925334,
+      "snapshots": 9
+    },
+    "unused36/case:193": {
+      "B_vector_nRMSE_percent": 20.244966071473712,
+      "B_magnitude_nRMSE_percent": 13.153883645224921,
+      "B_vector_RMSE_T": 0.199637183990722,
+      "snapshots": 36
+    },
+    "all45/case:195": {
+      "B_vector_nRMSE_percent": 20.219450232658197,
+      "B_magnitude_nRMSE_percent": 13.695705103790463,
+      "B_vector_RMSE_T": 0.19965718800329912,
+      "snapshots": 45
+    },
+    "seen9/case:195": {
+      "B_vector_nRMSE_percent": 17.359183640664018,
+      "B_magnitude_nRMSE_percent": 11.75334014575187,
+      "B_vector_RMSE_T": 0.1715975471099947,
+      "snapshots": 9
+    },
+    "unused36/case:195": {
+      "B_vector_nRMSE_percent": 20.87509575153865,
+      "B_magnitude_nRMSE_percent": 14.140841146611816,
+      "B_vector_RMSE_T": 0.2060759849209447,
+      "snapshots": 36
+    },
+    "all45/case:202": {
+      "B_vector_nRMSE_percent": 34.3530183472953,
+      "B_magnitude_nRMSE_percent": 24.28747826978296,
+      "B_vector_RMSE_T": 0.22140110320384648,
+      "snapshots": 45
+    },
+    "seen9/case:202": {
+      "B_vector_nRMSE_percent": 27.069700867359114,
+      "B_magnitude_nRMSE_percent": 18.76895387044757,
+      "B_vector_RMSE_T": 0.17457135553234018,
+      "snapshots": 9
+    },
+    "unused36/case:202": {
+      "B_vector_nRMSE_percent": 35.946447882583584,
+      "B_magnitude_nRMSE_percent": 25.482887981550416,
+      "B_vector_RMSE_T": 0.2316339131393248,
+      "snapshots": 36
+    },
+    "all45/case:203": {
+      "B_vector_nRMSE_percent": 21.75643221989226,
+      "B_magnitude_nRMSE_percent": 13.01449630427999,
+      "B_vector_RMSE_T": 0.24230632590891665,
+      "snapshots": 45
+    },
+    "seen9/case:203": {
+      "B_vector_nRMSE_percent": 19.234800013542745,
+      "B_magnitude_nRMSE_percent": 11.67281822520938,
+      "B_vector_RMSE_T": 0.21422394343121717,
+      "snapshots": 9
+    },
+    "unused36/case:203": {
+      "B_vector_nRMSE_percent": 22.34242666079363,
+      "B_magnitude_nRMSE_percent": 13.328836262431054,
+      "B_vector_RMSE_T": 0.24883221211081444,
+      "snapshots": 36
+    },
+    "all45/case:208": {
+      "B_vector_nRMSE_percent": 18.667631872522865,
+      "B_magnitude_nRMSE_percent": 10.83204994159616,
+      "B_vector_RMSE_T": 0.21899528145916397,
+      "snapshots": 45
+    },
+    "seen9/case:208": {
+      "B_vector_nRMSE_percent": 16.239758497850826,
+      "B_magnitude_nRMSE_percent": 9.507653510504907,
+      "B_vector_RMSE_T": 0.19048323318626478,
+      "snapshots": 9
+    },
+    "unused36/case:208": {
+      "B_vector_nRMSE_percent": 19.22653989325547,
+      "B_magnitude_nRMSE_percent": 11.138452213752146,
+      "B_vector_RMSE_T": 0.2255608617331277,
+      "snapshots": 36
+    },
+    "all45/case:212": {
+      "B_vector_nRMSE_percent": 18.129208650886714,
+      "B_magnitude_nRMSE_percent": 10.772091748002822,
+      "B_vector_RMSE_T": 0.2046926814028995,
+      "snapshots": 45
+    },
+    "seen9/case:212": {
+      "B_vector_nRMSE_percent": 15.940668048638983,
+      "B_magnitude_nRMSE_percent": 9.71209809604394,
+      "B_vector_RMSE_T": 0.17998570959747967,
+      "snapshots": 9
+    },
+    "unused36/case:212": {
+      "B_vector_nRMSE_percent": 18.636252081368223,
+      "B_magnitude_nRMSE_percent": 11.021183618056227,
+      "B_vector_RMSE_T": 0.21041661721010502,
+      "snapshots": 36
+    },
+    "all45/case:223": {
+      "B_vector_nRMSE_percent": 35.03187025363887,
+      "B_magnitude_nRMSE_percent": 24.750982099424586,
+      "B_vector_RMSE_T": 0.22529461787150404,
+      "snapshots": 45
+    },
+    "seen9/case:223": {
+      "B_vector_nRMSE_percent": 26.985186121114058,
+      "B_magnitude_nRMSE_percent": 18.708220079540304,
+      "B_vector_RMSE_T": 0.17426407745366101,
+      "snapshots": 9
+    },
+    "unused36/case:223": {
+      "B_vector_nRMSE_percent": 36.78704918301785,
+      "B_magnitude_nRMSE_percent": 26.056614003151847,
+      "B_vector_RMSE_T": 0.2363368147185396,
+      "snapshots": 36
+    },
+    "all45/case:226": {
+      "B_vector_nRMSE_percent": 20.901814851644456,
+      "B_magnitude_nRMSE_percent": 14.280246929648197,
+      "B_vector_RMSE_T": 0.19742588668887914,
+      "snapshots": 45
+    },
+    "seen9/case:226": {
+      "B_vector_nRMSE_percent": 17.365741243334806,
+      "B_magnitude_nRMSE_percent": 11.732704861163633,
+      "B_vector_RMSE_T": 0.16421748254289173,
+      "snapshots": 9
+    },
+    "unused36/case:226": {
+      "B_vector_nRMSE_percent": 21.698243797321513,
+      "B_magnitude_nRMSE_percent": 14.850624878157726,
+      "B_vector_RMSE_T": 0.20488870145322693,
+      "snapshots": 36
+    },
+    "all45/case:238": {
+      "B_vector_nRMSE_percent": 24.96263802787787,
+      "B_magnitude_nRMSE_percent": 17.257861802921585,
+      "B_vector_RMSE_T": 0.19975018215272414,
+      "snapshots": 45
+    },
+    "seen9/case:238": {
+      "B_vector_nRMSE_percent": 19.643190279191316,
+      "B_magnitude_nRMSE_percent": 13.107933787339634,
+      "B_vector_RMSE_T": 0.15724978778834628,
+      "snapshots": 9
+    },
+    "unused36/case:238": {
+      "B_vector_nRMSE_percent": 26.124985491428713,
+      "B_magnitude_nRMSE_percent": 18.14857226948799,
+      "B_vector_RMSE_T": 0.2090294144996384,
+      "snapshots": 36
+    },
+    "all45/case:322": {
+      "B_vector_nRMSE_percent": 19.040188320502523,
+      "B_magnitude_nRMSE_percent": 11.881683727381969,
+      "B_vector_RMSE_T": 0.20654911738871723,
+      "snapshots": 45
+    },
+    "seen9/case:322": {
+      "B_vector_nRMSE_percent": 16.067054275624905,
+      "B_magnitude_nRMSE_percent": 9.975310069542681,
+      "B_vector_RMSE_T": 0.17430979173920338,
+      "snapshots": 9
+    },
+    "unused36/case:322": {
+      "B_vector_nRMSE_percent": 19.71366092796399,
+      "B_magnitude_nRMSE_percent": 12.312323582954107,
+      "B_vector_RMSE_T": 0.2138508746413004,
+      "snapshots": 36
+    },
+    "all45/case:360": {
+      "B_vector_nRMSE_percent": 24.381619665508953,
+      "B_magnitude_nRMSE_percent": 16.992316323291277,
+      "B_vector_RMSE_T": 0.21550813080905237,
+      "snapshots": 45
+    },
+    "seen9/case:360": {
+      "B_vector_nRMSE_percent": 19.66581962461692,
+      "B_magnitude_nRMSE_percent": 13.526197445489995,
+      "B_vector_RMSE_T": 0.17351342014898416,
+      "snapshots": 9
+    },
+    "unused36/case:360": {
+      "B_vector_nRMSE_percent": 25.419687984588123,
+      "B_magnitude_nRMSE_percent": 17.750086686185483,
+      "B_vector_RMSE_T": 0.22478426564224624,
+      "snapshots": 36
+    },
+    "all45/case:382": {
+      "B_vector_nRMSE_percent": 19.890512930452434,
+      "B_magnitude_nRMSE_percent": 12.94254483837304,
+      "B_vector_RMSE_T": 0.19591492909155983,
+      "snapshots": 45
+    },
+    "seen9/case:382": {
+      "B_vector_nRMSE_percent": 16.916831999614487,
+      "B_magnitude_nRMSE_percent": 10.907332554456701,
+      "B_vector_RMSE_T": 0.1667978674580743,
+      "snapshots": 9
+    },
+    "unused36/case:382": {
+      "B_vector_nRMSE_percent": 20.568587666406593,
+      "B_magnitude_nRMSE_percent": 13.404321339963825,
+      "B_vector_RMSE_T": 0.202541208847933,
+      "snapshots": 36
+    },
+    "all45/case:390": {
+      "B_vector_nRMSE_percent": 19.81003326014731,
+      "B_magnitude_nRMSE_percent": 12.868504498066457,
+      "B_vector_RMSE_T": 0.2008957276624982,
+      "snapshots": 45
+    },
+    "seen9/case:390": {
+      "B_vector_nRMSE_percent": 16.509303883353276,
+      "B_magnitude_nRMSE_percent": 10.671551179749013,
+      "B_vector_RMSE_T": 0.16755191487193344,
+      "snapshots": 9
+    },
+    "unused36/case:390": {
+      "B_vector_nRMSE_percent": 20.553962965016133,
+      "B_magnitude_nRMSE_percent": 13.36235334700929,
+      "B_vector_RMSE_T": 0.2083997533190231,
+      "snapshots": 36
+    },
+    "all45/case:401": {
+      "B_vector_nRMSE_percent": 18.432540470047012,
+      "B_magnitude_nRMSE_percent": 11.127595898113514,
+      "B_vector_RMSE_T": 0.2036684806368051,
+      "snapshots": 45
+    },
+    "seen9/case:401": {
+      "B_vector_nRMSE_percent": 15.708441294231164,
+      "B_magnitude_nRMSE_percent": 9.465943729122984,
+      "B_vector_RMSE_T": 0.1734496279132074,
+      "snapshots": 9
+    },
+    "unused36/case:401": {
+      "B_vector_nRMSE_percent": 19.051758519335806,
+      "B_magnitude_nRMSE_percent": 11.504935226450373,
+      "B_vector_RMSE_T": 0.2105465932481285,
+      "snapshots": 36
+    },
+    "all45/case:402": {
+      "B_vector_nRMSE_percent": 17.974562644239004,
+      "B_magnitude_nRMSE_percent": 11.212537645603462,
+      "B_vector_RMSE_T": 0.19498206088913414,
+      "snapshots": 45
+    },
+    "seen9/case:402": {
+      "B_vector_nRMSE_percent": 15.311769606724154,
+      "B_magnitude_nRMSE_percent": 9.559092952965841,
+      "B_vector_RMSE_T": 0.16605126878749762,
+      "snapshots": 9
+    },
+    "unused36/case:402": {
+      "B_vector_nRMSE_percent": 18.58032088281172,
+      "B_magnitude_nRMSE_percent": 11.588843083288218,
+      "B_vector_RMSE_T": 0.20156698610436577,
+      "snapshots": 36
+    },
+    "all45/case:408": {
+      "B_vector_nRMSE_percent": 19.182965683815816,
+      "B_magnitude_nRMSE_percent": 11.969191294522771,
+      "B_vector_RMSE_T": 0.2059662641539369,
+      "snapshots": 45
+    },
+    "seen9/case:408": {
+      "B_vector_nRMSE_percent": 16.242754824028044,
+      "B_magnitude_nRMSE_percent": 10.152471141495242,
+      "B_vector_RMSE_T": 0.17435260889439907,
+      "snapshots": 9
+    },
+    "unused36/case:408": {
+      "B_vector_nRMSE_percent": 19.84966544438354,
+      "B_magnitude_nRMSE_percent": 12.38153076460119,
+      "B_vector_RMSE_T": 0.21313826167114014,
+      "snapshots": 36
+    },
+    "all45/case:414": {
+      "B_vector_nRMSE_percent": 21.58887484980618,
+      "B_magnitude_nRMSE_percent": 13.044647473817166,
+      "B_vector_RMSE_T": 0.23887564181880971,
+      "snapshots": 45
+    },
+    "seen9/case:414": {
+      "B_vector_nRMSE_percent": 19.007222464962346,
+      "B_magnitude_nRMSE_percent": 11.677024173718923,
+      "B_vector_RMSE_T": 0.21035522731177975,
+      "snapshots": 9
+    },
+    "unused36/case:414": {
+      "B_vector_nRMSE_percent": 22.187716639088176,
+      "B_magnitude_nRMSE_percent": 13.364872894205387,
+      "B_vector_RMSE_T": 0.245488563551236,
+      "snapshots": 36
+    },
+    "all45/case:432": {
+      "B_vector_nRMSE_percent": 19.12897110989291,
+      "B_magnitude_nRMSE_percent": 11.299100837722644,
+      "B_vector_RMSE_T": 0.2169665335438441,
+      "snapshots": 45
+    },
+    "seen9/case:432": {
+      "B_vector_nRMSE_percent": 16.229228690279477,
+      "B_magnitude_nRMSE_percent": 9.604592209754966,
+      "B_vector_RMSE_T": 0.18402270782152946,
+      "snapshots": 9
+    },
+    "unused36/case:432": {
+      "B_vector_nRMSE_percent": 19.787145721339435,
+      "B_magnitude_nRMSE_percent": 11.684115314350302,
+      "B_vector_RMSE_T": 0.22444822750629817,
+      "snapshots": 36
+    }
+  },
+  "seen9_anchor_difference_percentage_points": 7.318196537653421e-08,
+  "seen9_anchor_arithmetic_status": "PASS_float32_reduction_tolerance_0.0001pp_not_physics",
+  "copper_B2": {
+    "all45": {
+      "area_weighted_relative_MAE_percent": 15.71859735441583,
+      "signed_bias_percent": -9.731997996012515
+    },
+    "seen9": {
+      "area_weighted_relative_MAE_percent": 15.699950369241545,
+      "signed_bias_percent": -9.793986346085639
+    },
+    "unused36": {
+      "area_weighted_relative_MAE_percent": 15.724464063729151,
+      "signed_bias_percent": -9.716489043623746
+    }
+  },
+  "truth_seen9_vs_all45_copper_B2_sampling": {
+    "area_weighted_relative_MAE_percent": 0.2618765621330069,
+    "signed_bias_percent": 0.06124017274545746
+  },
+  "formal_AC_qualification": "UNKNOWN_not_evaluated",
+  "completed_UTC": "2026-10-28T07:56:30.214064+00:00"
+}

@@ -1,5 +1,5 @@
 {
-  "checked_UTC": "2026-10-28T07:13:16.689629+00:00",
+  "checked_UTC": "2026-10-28T08:16:44.206143+00:00",
   "source_session": {
     "platform": "Claude Code",
     "title": "MotorAI 학습 계속 진행",
@@ -12,7 +12,7 @@
     "planning_and_scientific_decisions": "Astra xHigh or higher",
     "execution": "Sol; continuation under current user handoff request"
   },
-  "existing_chain_status": "RUNNING",
+  "existing_chain_status": "COMPLETED",
   "gates": [
     {
       "step": "A0_s17_ref:evaluate",
@@ -29,45 +29,137 @@
       "elapsed_seconds": 175.01499999999942,
       "epoch1_dev": 47.803460632172296,
       "expected": 47.803460632172296
+    },
+    {
+      "step": "A2_s17:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.639999999999
+    },
+    {
+      "step": "A2_s29:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.609000000011
+    },
+    {
+      "step": "A2_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.625
+    },
+    {
+      "step": "A0_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.593000000008
+    },
+    {
+      "step": "A2_s17:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.03200000000652
+    },
+    {
+      "step": "A2_s29:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.03100000000268
+    },
+    {
+      "step": "A2_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.01600000000326
+    },
+    {
+      "step": "A0_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.01599999998871
     }
   ],
-  "owned_processes_identity_matched": 4,
+  "owned_processes_identity_matched": 0,
   "identity_check": "psutil PID and create_time within0.01s for each recorded owner; not based on process name",
-  "GPU": "4357 MiB, 100 %",
+  "GPU": "10 MiB, 0 %",
   "runs": {
-    "A0_s43/train": {
-      "status": "RUNNING",
+    "A0_s43/eval": {
+      "status": "COMPLETED",
       "arm": "A0",
       "seed": 43,
-      "training_updates": 45800,
-      "epochs_completed": 15,
+      "training_updates": 0,
+      "epochs_completed": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "A0_s43/train": {
+      "status": "COMPLETED",
+      "arm": "A0",
+      "seed": 43,
+      "training_updates": 88565,
+      "epochs_completed": 30,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s17/eval": {
+      "status": "COMPLETED",
+      "arm": "A2",
+      "seed": 17,
+      "training_updates": 0,
+      "epochs_completed": null,
       "error": null,
       "stop_reason": null
     },
     "A2_s17/train": {
-      "status": "RUNNING",
+      "status": "COMPLETED",
       "arm": "A2",
       "seed": 17,
-      "training_updates": 47200,
-      "epochs_completed": 15,
+      "training_updates": 88565,
+      "epochs_completed": 30,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s29/eval": {
+      "status": "COMPLETED",
+      "arm": "A2",
+      "seed": 29,
+      "training_updates": 0,
+      "epochs_completed": null,
       "error": null,
       "stop_reason": null
     },
     "A2_s29/train": {
-      "status": "RUNNING",
+      "status": "COMPLETED",
       "arm": "A2",
       "seed": 29,
-      "training_updates": 46700,
-      "epochs_completed": 15,
+      "training_updates": 88565,
+      "epochs_completed": 30,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s43/eval": {
+      "status": "COMPLETED",
+      "arm": "A2",
+      "seed": 43,
+      "training_updates": 0,
+      "epochs_completed": null,
       "error": null,
       "stop_reason": null
     },
     "A2_s43/train": {
-      "status": "RUNNING",
+      "status": "COMPLETED",
       "arm": "A2",
       "seed": 43,
-      "training_updates": 46300,
-      "epochs_completed": 15,
+      "training_updates": 88565,
+      "epochs_completed": 30,
       "error": null,
       "stop_reason": null
     }

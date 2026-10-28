@@ -1,0 +1,11 @@
+{
+  "thread": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "turn": "01a18186-5062-7700-b801-913621bcc689",
+  "message": "msg_092c79d4e2c5858d016ae1adf02ff881919f3903d9f6dc37af",
+  "model": "gpt-6-astra",
+  "thinking": "max",
+  "status": "COMPLETED",
+  "transform": "Local workspace links relativized; trailing Astra monitor closure XML omitted; scientific text preserved",
+  "file": "ASTRA_A2_FINAL_REVIEW_KO.md",
+  "sha256": "fbf2241bf66f9ca298af76ef1d161c7c5a7c111df49f1d48b43bf71742e660fa"
+}

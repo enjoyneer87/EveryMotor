@@ -2,6 +2,10 @@
 
 2026-10-28 KST. 분석·회수는 관리 PC DESKTOP-6QIVKIC, 기존 graph 검사는 133 CPU에서 수행했다. 과학 판정은 사용자 지정 **Astra xHigh**, 실행·문서화는 Sol이 담당한다. [Astra 판정문](ASTRA_REVIEW_KO.md), [수치·출처 manifest](DIAGNOSTIC_EVIDENCE.json), [원 graph 검사](GRAPH_TOPOLOGY_AUDIT.json)를 함께 보존한다.
 
+## 최신 A2 완료 판정
+
+A0/A2 각3seed가 정상 완료됐고 누락/실패0이다. A2 전체B벡터 평균22.8470%는A0 20.5993%보다악화했고highPA비악화gate도FAIL이어서NO_IMPROVEMENT_CLAIM이다. [최종 Astra Max 판정](../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md), [후속 C/G 단계](../next_improvement_20261028/REPORT_KO.md)를 따른다. 아래의 A2 진행 중·후보 표현은 최초 진단 당시 기록이다.
+
 ## 판단
 
 최근 모델의 토크·공극 정확도가 E1보다 나빠졌다는 결론은 아직 **UNKNOWN**이다. 최근 모델은 해당 두 지표를 측정하지 않았다. 이전의 5% 이하는 **공극 B크기 4.9563%와 토크 3.2146%**였고, 전체 B크기는 11.0967%였다. 최근에 주로 보고한 18~20%는 전체 **B벡터** 오차다.

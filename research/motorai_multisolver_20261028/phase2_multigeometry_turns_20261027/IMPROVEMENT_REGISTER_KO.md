@@ -1,6 +1,6 @@
 # MotorAI 개선 요청·아이디어 통합 대장
 
-갱신일: 2026-10-28 16:03 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
+갱신일: 2026-10-28 16:46 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
 
 사용자 요청, Astra 판정, 실행 계획과 실제 결과를 같은 항목 ID로 추적한다. 제안·판정·실행 완료는 서로 다른 상태다. 새 계산은 이 대장만으로 시작하지 않고 별도 bounded 실행 계약과 원자료/분할 gate를 통과해야 한다.
 
@@ -22,8 +22,9 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
-| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Claude 사용량 한도 후 Sol 실행·Astra xHigh 판정으로 인계 |
-| [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | 18 graph 구조감사·Astra xHigh 판정 완료; A2 추적 중 |
+| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra Max 주요판정 / Sol 실행 |
+| [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | A2 각3seed 완료·Astra Max 최종 판정 완료 |
+| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | Astra Max C/G선정·계약동결·CPU통과·GPU gate대기 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -91,7 +92,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **다음 행동:** 승인A2 3seed와추가A0seed43를기존계약대로완료·판정. 이후같은dev32/nativeID/mask에서stationary a1·Arkkio토크를공통평가하는실행계약. 다음단일축후보는field head전역정보피드백이며새계산자동시작안함.
 
-근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
+근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
 
 <a id="mi-005"></a>
 ## MI-005 · 이전 MotorAI 가중치의 전이학습
@@ -110,7 +111,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **다음 행동:** Astra가 재사용 모듈,freeze/unfreeze,adapter/새head,학습예산을정한다. 이전모델이현재dev32를pretrain에서보았는지감사한다.
 
-근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [TRANSFER_ADMISSION.json](TRANSFER_ADMISSION.json)
+근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [TRANSFER_ADMISSION.json](TRANSFER_ADMISSION.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
 
 <a id="mi-006"></a>
 ## MI-006 · 두 솔버·다중 정밀도·멀티모달 네트워크
@@ -276,24 +277,24 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-015"></a>
 ## MI-015 · Astra 전체계획·주요판정 / Sol 구현·실행 운영
 
-**P0 · Claude 사용량 한도 후 Sol 실행·Astra xHigh 판정으로 인계**
+**P0 · Astra Max 주요판정 / Sol 실행**
 
 **요청 출처:** 사용자 명시 요청
 
 **요청과 목표:** Astra가전체개발계획을수립하고Sol은그계획에따라실행한다.판단필요사항은Astra에게되돌린다.
 
-**확인된 근거와 현재 결과:** Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다. 2026-10-28 사용자 최신 지시로 현재채팅이 실행을 인계하고 Astra xHigh 판정채팅을 재사용했다. 기존Claude의명시승인A2 4작업은중복없이유지한다.
+**확인된 근거와 현재 결과:** Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다. 2026-10-28 사용자 최신 지시로 현재채팅이 실행을 인계하고 Astra xHigh 판정채팅을 재사용했다. 기존Claude의명시승인A2 4작업은중복없이유지한다. 사용자 추가 지시로 후속 구조·물리량·실험 설계 판정은 Astra Max로 올렸다. Ultra는 독립 병렬 감사가 필요할 때의 선택지이며 현재 활성화하지 않았다.
 
 **Astra 판정:** v1 D01: phase9 대 phase45 equal-update 비교 계약을 먼저 작성한다. 학습은 계약 승인 전 HOLD. E1 weights는 HOLD.
 
 **다음 행동:** 현재승인A2완료receipt회수·동일gate계산·게시. 과학적선택은Astra xHigh이상. 기존종료예약/다른캠페인불변.
 
-근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md) · [MASTER_DEVELOPMENT_PLAN_KO.md](MASTER_DEVELOPMENT_PLAN_KO.md) · [SOL_EXECUTION_LOG.json](SOL_EXECUTION_LOG.json) · [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
+근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md) · [MASTER_DEVELOPMENT_PLAN_KO.md](MASTER_DEVELOPMENT_PLAN_KO.md) · [SOL_EXECUTION_LOG.json](SOL_EXECUTION_LOG.json) · [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
 
 <a id="mi-016"></a>
 ## MI-016 · Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단
 
-**P0 · 18 graph 구조감사·Astra xHigh 판정 완료; A2 추적 중**
+**P0 · A2 각3seed 완료·Astra Max 최종 판정 완료**
 
 **요청 출처:** 사용자 2026-10-28 후속 지시
 
@@ -301,11 +302,28 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **확인된 근거와 현재 결과:** E1전체B크기11.0967/공극4.9563/토크3.2146%;최근A0전체벡터20.379이나같은예측크기13.504%. 같은공극/토크미평가. train6조건×3시각18/18graph에서rotor-stator경로단절;현재자계경로30594params.
 
-**Astra 판정:** 직접퇴보단정불가. 연결/전역정보경로·용량·prior·공극손실·각도·평가계약차이확인,기여량은ablation필요. 승인A2뒤공통공극/토크평가,그뒤globalcontext단일축우선.
+**Astra 판정:** A2 개선불가: 전체B벡터 평균20.599→22.847%, highPA +2.599pp FAIL. C/G는기계각유지. E1공극/토크와직접퇴보비교UNKNOWN.
 
-**다음 행동:** A2기존3seed계약완료및실패포함판정;reserved/oldvaltest보존. 새GPU/FEA는별도bounded계약이충족된범위에서만실행.
+**다음 행동:** 동결 C/G 정보전달범위 단일축 검증 후 실행; 공통a1/Arkkio평가는별도계약
 
-근거 파일: [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [HANDOFF_STATE.json](../performance_diagnosis_20261028/HANDOFF_STATE.json) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
+근거 파일: [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [HANDOFF_STATE.json](../performance_diagnosis_20261028/HANDOFF_STATE.json) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
+
+<a id="mi-017"></a>
+## MI-017 · 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용
+
+**P0 · Astra Max C/G선정·계약동결·CPU통과·GPU gate대기**
+
+**요청 출처:** 사용자 2026-10-28 후속 실행 지시
+
+**요청과 목표:** A2를 바꾸지 않고 완료한 뒤, 그래프 연결 복원과 E1의 구조·prior·공극 손실 재사용을 검토해 다음 개선 실험을 진행한다.
+
+**확인된 근거와 현재 결과:** train6 HDF5 hash전부일치. full-export dual/native-node graph1component, a2제거후2component. stationary a1은모든45시각고정. prior8개는45step/nodal3shape가맞지만nativeID/sourcehash없어bindingUNKNOWN. 기존mu_eff20은case4/7 B에서선정, windingtemplate은case0 J교정이력.
+
+**Astra 판정:** C/G동일71206parameter/328train/32dev/9phase/3seed/88565update. component대graph pool차이만. 물리mesh복원아님. E1prior/weights HOLD.
+
+**다음 행동:** GPU overfit·profile전체15분 및전체6h/훈련각2h gate통과시6run, 최대3병렬, retry0. 시드/예산변경없음.
+
+근거 파일: [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_AUDIT_PLAN.json](../next_improvement_20261028/ADMISSION_AUDIT_PLAN.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md) · [NATIVE_TOPOLOGY_PRIOR_AUDIT.json](../next_improvement_20261028/NATIVE_TOPOLOGY_PRIOR_AUDIT.json) · [ASTRA_MAX_REVIEW_KO.md](../next_improvement_20261028/ASTRA_MAX_REVIEW_KO.md) · [ASTRA_A2_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md) · [CONTEXT_CG_PLAN.json](../next_improvement_20261028/CONTEXT_CG_PLAN.json) · [STATUS.json](../next_improvement_20261028/STATUS.json)
 
 ## 갱신 규칙
 

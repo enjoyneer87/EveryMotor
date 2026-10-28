@@ -1,16 +1,11 @@
 {
-  "chain_status": "RUNNING",
-  "live_owned": [
-    "runs/A0_s43/train_OWNER.json",
-    "runs/A2_s17/train_OWNER.json",
-    "runs/A2_s29/train_OWNER.json",
-    "runs/A2_s43/train_OWNER.json"
-  ],
+  "chain_status": "COMPLETED",
+  "live_owned": [],
   "files": [
     {
       "path": "CHAIN_STATUS.json",
-      "sha256": "e3bc2dfd34c0fa6e5c9ca37ad55288c07b813ed518369cd5a3e79182fe796615",
-      "bytes": 577
+      "sha256": "ed161d44d127172e5c2451d41b1777a91e6434ab618634f3017cb57c12c4c228",
+      "bytes": 2013
     },
     {
       "path": "DEPLOY_RECEIPT.json",
@@ -56,6 +51,166 @@
       "path": "runs/smoke_A0_s17_prefetch/train_OWNER.json",
       "sha256": "414d83758c8c484123797ef3890e513427503cbdfdbad0af648be7ba9a943dbb",
       "bytes": 243
+    },
+    {
+      "path": "runs/A0_s43/train_RECEIPT.json",
+      "sha256": "f2e998134df2b42dc92864d66c16b50863c6c802c927167def711eb85100c4b7",
+      "bytes": 399
+    },
+    {
+      "path": "runs/A0_s43/train/RESULT.json",
+      "sha256": "cbe83e8838ecd0b3060f9420b943334b732850a32e8c25befbfb28bc0046cdd0",
+      "bytes": 1401743
+    },
+    {
+      "path": "runs/A0_s43/train_OWNER.json",
+      "sha256": "e762e6c859f1cb41344e80d4e29d80b154b109b5ad40d4a8385632e3db01e4c8",
+      "bytes": 242
+    },
+    {
+      "path": "runs/A0_s43/evaluate_RECEIPT.json",
+      "sha256": "dfe4cbdc69f64289804248b5521beea4c446cd7ea0b93d988a7a62f95e072bfd",
+      "bytes": 401
+    },
+    {
+      "path": "runs/A0_s43/eval/RESULT.json",
+      "sha256": "698ba32c3a21aefd4907c81621ec00a484be60225c418a40d55014d92d6c7075",
+      "bytes": 23512
+    },
+    {
+      "path": "runs/A0_s43/evaluate_OWNER.json",
+      "sha256": "7bb6a387b39f2fe6fc83ca5b5514e2b04779c3cb7687c87fbe8a11a8a51786d0",
+      "bytes": 244
+    },
+    {
+      "path": "runs/A0_s43/eval/snapshot_errors.csv",
+      "sha256": "4834bca091a1299fd904e41707e9bb9b6af07f554d9c8bd2118af31abd224f24",
+      "bytes": 76705
+    },
+    {
+      "path": "runs/A0_s43/eval/conductor_B2.csv",
+      "sha256": "21fa0c8b7f9dd65e0ae8b57acc4ee14e58569723acab602885a0efcc7e4ece13",
+      "bytes": 491327
+    },
+    {
+      "path": "runs/A2_s17/train_RECEIPT.json",
+      "sha256": "cdb9f961296d8354a0b2ef331a0eb8be69d640053b0da818b733679cbe2da73b",
+      "bytes": 399
+    },
+    {
+      "path": "runs/A2_s17/train/RESULT.json",
+      "sha256": "f968e69e2cdd4fece56f0c8f44f30c8cfe955ec33b0ccfa8089fe0dd7d586a57",
+      "bytes": 1401937
+    },
+    {
+      "path": "runs/A2_s17/train_OWNER.json",
+      "sha256": "9dc2a2bf606663adf297179c5a8b32e224fad9202e77b9cc3325cc9adb2e7ed4",
+      "bytes": 242
+    },
+    {
+      "path": "runs/A2_s17/evaluate_RECEIPT.json",
+      "sha256": "eb129b1fdeabe99900d9a103846bc6299928a2f302ffc26fe8e2d39260ec553e",
+      "bytes": 402
+    },
+    {
+      "path": "runs/A2_s17/eval/RESULT.json",
+      "sha256": "a271e44b0c9b6f778e1c622b6d837cd304c09985aa359b0b409379fd4a796e41",
+      "bytes": 23484
+    },
+    {
+      "path": "runs/A2_s17/evaluate_OWNER.json",
+      "sha256": "82d773f58b9f3e3109b6947e8fc53c08596213d652fabff911641fc32d71417e",
+      "bytes": 245
+    },
+    {
+      "path": "runs/A2_s17/eval/snapshot_errors.csv",
+      "sha256": "b2fd55550646f13e55014d4d2b4002f3f4b6f87ea7f59b5e225cda3edd4be0c0",
+      "bytes": 76643
+    },
+    {
+      "path": "runs/A2_s17/eval/conductor_B2.csv",
+      "sha256": "9756b5e78409345b6ee65162a9938fcdda16a384691ce3ee670c3f592afcac53",
+      "bytes": 490772
+    },
+    {
+      "path": "runs/A2_s29/train_RECEIPT.json",
+      "sha256": "1caba944358bbdddb8226db5a765e996622cd828e232c7372ae23b6bec382e5c",
+      "bytes": 398
+    },
+    {
+      "path": "runs/A2_s29/train/RESULT.json",
+      "sha256": "f598d7b388463545baebe4ba5e018fec9afed6b812c327f4f5550056dbf6d57e",
+      "bytes": 1401602
+    },
+    {
+      "path": "runs/A2_s29/train_OWNER.json",
+      "sha256": "574cc531f5aa658902ef2d061fb79831fc38735367c30c2ba5f325d92e3a2fed",
+      "bytes": 241
+    },
+    {
+      "path": "runs/A2_s29/evaluate_RECEIPT.json",
+      "sha256": "e680a082137ebc0ae41bb0cbae38c99b6116872e2e742a6f84bfa957efb90f75",
+      "bytes": 400
+    },
+    {
+      "path": "runs/A2_s29/eval/RESULT.json",
+      "sha256": "50aec624ecf932c03330a4019658e8e48359ada348c1e0dc742aa879af988088",
+      "bytes": 23487
+    },
+    {
+      "path": "runs/A2_s29/evaluate_OWNER.json",
+      "sha256": "737d455ece058f59d47ac9d109af2e967cbe9fe1889738c58907332ea266c5b8",
+      "bytes": 243
+    },
+    {
+      "path": "runs/A2_s29/eval/snapshot_errors.csv",
+      "sha256": "ed7ecf72505973319d4246f1d40044ac85c5365f45890a346a3a73927432ef62",
+      "bytes": 76689
+    },
+    {
+      "path": "runs/A2_s29/eval/conductor_B2.csv",
+      "sha256": "24d9ada32cec1ae2f049310cda1c5ff30c69b1bdfc03d93a58c9a4220de34e8e",
+      "bytes": 491980
+    },
+    {
+      "path": "runs/A2_s43/train_RECEIPT.json",
+      "sha256": "4174cb2ba6b668f077108516df7e5f2ca40442966d2d3e71799b58c843b6b6e6",
+      "bytes": 390
+    },
+    {
+      "path": "runs/A2_s43/train/RESULT.json",
+      "sha256": "b18ec228a9350bc79a08a45662e018dde4d47f240cfc37b50780a3c5cda2cc5c",
+      "bytes": 1401684
+    },
+    {
+      "path": "runs/A2_s43/train_OWNER.json",
+      "sha256": "51b014a848439329bdbe001d383ab68c0706910a16c6ee987ae67261a508e325",
+      "bytes": 242
+    },
+    {
+      "path": "runs/A2_s43/evaluate_RECEIPT.json",
+      "sha256": "d880eaca1e4cbbb409bf3bb3366610d76e1c9c798efa037c1b14637c4e5f0e7b",
+      "bytes": 401
+    },
+    {
+      "path": "runs/A2_s43/eval/RESULT.json",
+      "sha256": "e2e66a7053e7cad52a6fb7967bdf4e910326bcd16320b38be19391a55dfc9264",
+      "bytes": 23493
+    },
+    {
+      "path": "runs/A2_s43/evaluate_OWNER.json",
+      "sha256": "591a8bfa0020acd9c7b18ae02ba371a57cd4595d02378f8adc91f5eb35a7abee",
+      "bytes": 244
+    },
+    {
+      "path": "runs/A2_s43/eval/snapshot_errors.csv",
+      "sha256": "8130333a161cd06060b911dd0fb175db5bf36a0b9969aba5d83f040cd514f4f1",
+      "bytes": 76676
+    },
+    {
+      "path": "runs/A2_s43/eval/conductor_B2.csv",
+      "sha256": "ab7da2d70abf1c3685dac23950a83debf0f717b1ee9d4e809da2dbb0b9890796",
+      "bytes": 491661
     }
   ]
 }

@@ -17,7 +17,64 @@
       "elapsed_seconds": 175.01499999999942,
       "epoch1_dev": 47.803460632172296,
       "expected": 47.803460632172296
+    },
+    {
+      "step": "A2_s17:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.639999999999
+    },
+    {
+      "step": "A2_s29:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.609000000011
+    },
+    {
+      "step": "A2_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.625
+    },
+    {
+      "step": "A0_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5605.593000000008
+    },
+    {
+      "step": "A2_s17:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.03200000000652
+    },
+    {
+      "step": "A2_s29:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.03100000000268
+    },
+    {
+      "step": "A2_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.01600000000326
+    },
+    {
+      "step": "A0_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 80.01599999998871
     }
   ],
-  "status": "RUNNING"
+  "status": "COMPLETED",
+  "finished_UTC": "2026-10-28T07:56:37.704533+00:00"
 }

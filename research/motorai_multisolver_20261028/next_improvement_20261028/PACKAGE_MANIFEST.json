@@ -1,0 +1,125 @@
+{
+  "scope": "Owned source/receipt/report integrity only; not physical qualification",
+  "files": [
+    {
+      "path": "ADMISSION_AUDIT_PLAN.json",
+      "bytes": 1625,
+      "sha256": "070a6b32a17594d9c5b4889817c416bd512b4af4d6fbd018d270dcf3f982371f"
+    },
+    {
+      "path": "ADMISSION_REPORT_KO.md",
+      "bytes": 4116,
+      "sha256": "4e1f68bad8963606ed6d5215068b8e16d1c454bd3a90659e6d15e316261f3601"
+    },
+    {
+      "path": "ASTRA_A2_FINAL_REVIEW_KO.md",
+      "bytes": 5634,
+      "sha256": "fbf2241bf66f9ca298af76ef1d161c7c5a7c111df49f1d48b43bf71742e660fa"
+    },
+    {
+      "path": "ASTRA_A2_FINAL_REVIEW_RECEIPT.json",
+      "bytes": 503,
+      "sha256": "6911ba959240d73a3ea8185a6ff1720ab5e062dd7fc115b5160f1f18eba5de0a"
+    },
+    {
+      "path": "ASTRA_MAX_REVIEW_KO.md",
+      "bytes": 9630,
+      "sha256": "635231d1a049b50d80a57e626447003fa09954def3889e6f8a5a8fda203a2410"
+    },
+    {
+      "path": "ASTRA_MAX_REVIEW_RECEIPT.json",
+      "bytes": 755,
+      "sha256": "8398d3c516caf2402deb1ba1ecafc6d300c8ff87ce0618eedd8a74f9b9fee0c5"
+    },
+    {
+      "path": "audit_native_topology_prior.py",
+      "bytes": 7663,
+      "sha256": "8eb454c1c9c25670a671af17a135aa56a6305b9786132360b3d9f97568d8727b"
+    },
+    {
+      "path": "COMPONENT_MANIFEST.json",
+      "bytes": 277745,
+      "sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f"
+    },
+    {
+      "path": "CONTEXT.json",
+      "bytes": 2909,
+      "sha256": "46f5312670bb808087a93dbe344d7af7e2bcf10a8fe924c4a2681ab0a6a08257"
+    },
+    {
+      "path": "CONTEXT_CG_PLAN.json",
+      "bytes": 6031,
+      "sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2"
+    },
+    {
+      "path": "context_checkpoint.py",
+      "bytes": 1130,
+      "sha256": "7137453115485106cd8a00bb0b9a7dbab67c85dd711928764ff5d527664ac745"
+    },
+    {
+      "path": "CONTEXT_CPU_PREPARATION_RESULT.json",
+      "bytes": 641,
+      "sha256": "1ebc94d1ea4ee074db287f04fed5005a6713adb0f71f837ba01b501a5f0aa85b"
+    },
+    {
+      "path": "CONTEXT_DEPLOY_RECEIPT.json",
+      "bytes": 1875,
+      "sha256": "aefcfc72c2f4251537c775c65dd4ddc83377134b6febdce08cab27d643b1e4b0"
+    },
+    {
+      "path": "context_field_model.py",
+      "bytes": 4987,
+      "sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1"
+    },
+    {
+      "path": "evaluate_context.py",
+      "bytes": 10643,
+      "sha256": "3450f638787bbaf9cd5b86c9203e3be4275712286a1da52eb02360f28e8e21e4"
+    },
+    {
+      "path": "guard_context.py",
+      "bytes": 7956,
+      "sha256": "e57cec8fc8c78436b6dfba923a51df41ee0cc84b8b9b86d90d68b6cf41191a8d"
+    },
+    {
+      "path": "NATIVE_TOPOLOGY_PRIOR_AUDIT.json",
+      "bytes": 23629,
+      "sha256": "338cb582cb9d5833194c053a33677116d6fbf2e52c94829e09eeb03a9128a3e3"
+    },
+    {
+      "path": "overfit_context.py",
+      "bytes": 4333,
+      "sha256": "cef13e9278b3da38157a87b282c86e4143353747137e8b822bdd3f02b8d06f0d"
+    },
+    {
+      "path": "prepare_components.py",
+      "bytes": 3932,
+      "sha256": "2a21568839772c7e90017c43ad46a022ff5d0b8630cdaa9ec1628c798b4d5b82"
+    },
+    {
+      "path": "REPORT_KO.md",
+      "bytes": 2703,
+      "sha256": "7dc0915825b4dcc05143250330967481a20d8acbf4b93493ecc10040df1731fb"
+    },
+    {
+      "path": "STATUS.json",
+      "bytes": 507,
+      "sha256": "6ca2901cbc6a9b68af0edfe9ab2bc5fbf7d9967fd26dd2f5e969490f137ec989"
+    },
+    {
+      "path": "test_context_checkpoint.py",
+      "bytes": 2889,
+      "sha256": "126eb617f19f6b204b2a84fdc4ac10f63edb03a307222301ccb2ae9f6c20f71b"
+    },
+    {
+      "path": "test_context_contract.py",
+      "bytes": 3897,
+      "sha256": "209f3548243cd2486db43be36973f39787675d8eb0634a972f4f04de584a7cf9"
+    },
+    {
+      "path": "train_context.py",
+      "bytes": 13834,
+      "sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4"
+    }
+  ]
+}

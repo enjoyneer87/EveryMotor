@@ -8,6 +8,7 @@
 - [확대 학습 결과](phase2_multigeometry_turns_20261027/SCALE360_REPORT_KO.md)
 - [기존 MotorAI 점수·모델 계보](phase2_multigeometry_turns_20261027/PRIOR_MOTORAI_COMPARISON_KO.md)
 - [E1 대비 최근 모델 성능 차이 진단 · Astra xHigh](performance_diagnosis_20261028/REPORT_KO.md)
+- [A2 최종 판정·C/G 첫 개선 실험 · Astra Max](next_improvement_20261028/REPORT_KO.md)
 - [동결 새OP 손실 비교](new_op_validation_20261027/VALIDATION_REPORT_KO.md)
 
 이전 범위: `mgn_development_20261027`, `mgn_followup_20261027`, `new_op_validation_20261027`, `phase2_multigeometry_turns_20261027`의 코드·작은 모델/파형·검증·요청 대장과 필요한 baseline/reader/관측 참조. 각 파일의 원본·이전본 SHA-256은 MIGRATION_MANIFEST.json으로 대조한다.

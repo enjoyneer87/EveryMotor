@@ -1,0 +1,60 @@
+{
+  "id": "NEXT-IMPROVEMENT-CONTEXT-20261028",
+  "user_request": "Finish A2 unchanged; have Astra review graph disconnection fixes and E1 architecture/prior/airgap-loss reuse; proceed with the next improvement experiment",
+  "latest_reasoning_request": "User permits Astra Max; Ultra was discussed as an option, not selected",
+  "roles": {
+    "scientific_review": "gpt-6-astra/max",
+    "implementation_execution": "gpt-6.1-sol"
+  },
+  "review_thread": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "review_turn": "01a18166-b3bf-7b20-9a91-4ea7cf62d9ca",
+  "status": "ASTRA_MAX_COMPLETE_CG_CONTRACT_FROZEN_GPU_GATES_PENDING",
+  "goal": "Separate metric mismatch, graph information flow, architecture, physics prior and airgap loss effects using reusable native evidence and bounded fair comparisons",
+  "inputs": [
+    "Frozen train328/dev32 selection and source hashes",
+    "Six native HDF5 mesh audits",
+    "E1 source/recipe plus exposure ledger",
+    "Existing A0/A1 results and unchanged running A2"
+  ],
+  "interfaces": {
+    "current_node": "[native triangles,14] fixed-scaled material/geometry features",
+    "current_edge": "[native shared-edge directed pairs,4]",
+    "design_OP": "[12] including two declared angle features",
+    "field": "[native admitted triangles,2] Bx/By T",
+    "IDs": "Explicit native node and element IDs; no coordinate-nearest recovery"
+  },
+  "non_goals": [
+    "New FEA",
+    "Resuming old campaigns",
+    "Opening old val/test payloads",
+    "Loading unadmitted E1 weights/teacher/distillation",
+    "Claiming that reference topology is the remeshed per-step FE topology",
+    "Filling invalid a2 targets",
+    "AC-loss or cross-solver accuracy claims from B diagnostics"
+  ],
+  "acceptance": [
+    "A2 code/data/seed/update/checkpoint selection unchanged",
+    "Native source/ID/support/unit and physical metric masks pinned",
+    "One changed scientific axis per first comparison",
+    "Common donor Full cost/split/seed/update/LR reported",
+    "Train-only normalization and source admission",
+    "Contract, overfit, deterministic smoke and regression checks appropriate to the selected implementation",
+    "Failure/missing cases preserved"
+  ],
+  "execution_bounds": {
+    "first_improvement_total_wall_hours_max": 6,
+    "per_training_wall_hours_max": 2,
+    "automatic_retries": 0,
+    "new_FEA": 0,
+    "new_prior_solve_without_separate_admission": false,
+    "GPU_launch_after_A2_owned_processes_terminated": true,
+    "STOP_and_UTC_guard_and_owner_identity_required": true
+  },
+  "review_admission": "Astra must select the first concrete axis; this context is not an instruction to run every E1 component together",
+  "model_configuration_sources": [
+    "https://learn.chatgpt.com/docs/models?surface=app",
+    "https://learn.chatgpt.com/docs/model-selection"
+  ],
+  "final_A2_review": "ASTRA_A2_FINAL_REVIEW_KO.md",
+  "next_contract": "CONTEXT_CG_PLAN.json"
+}

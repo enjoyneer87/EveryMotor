@@ -42,16 +42,132 @@
         "interior_unused": 21.045950286289177,
         "after_last_seen": 31.019748751818646
       }
+    },
+    "A0_s43": {
+      "checkpoint_sha256": "fb921b53998b751ba0e4fd196fa27607cd0055deb3b186e065addb070fd65769",
+      "seed": 43,
+      "all45_vector": 21.25920294739166,
+      "all45_magnitude": 14.057961735485131,
+      "all45_vector_RMSE_T": 0.2092111928408115,
+      "seen9_vector": 18.730145878759657,
+      "unused36_vector": 21.846116411117812,
+      "all45_copper_vector": 33.98948077697813,
+      "copper_B2_bias": -9.86717726582836,
+      "PA_ge_70_mean_case_vector": 35.27743484230761,
+      "PA_lt_70_mean_case_vector": 19.544329710515903,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 20.065000064018445,
+        "interior_unused": 21.957877634335453,
+        "after_last_seen": 33.619510197033925
+      }
+    },
+    "A2_s17": {
+      "checkpoint_sha256": "e5086f04c86c4976e32c717a11c77e6b50e6698ea925bf7561bd4f47d1005df7",
+      "seed": 17,
+      "all45_vector": 22.64415668848371,
+      "all45_magnitude": 14.523953843091608,
+      "all45_vector_RMSE_T": 0.22284048199714662,
+      "seen9_vector": 18.32056056861543,
+      "unused36_vector": 23.6021878757652,
+      "all45_copper_vector": 31.77294193377771,
+      "copper_B2_bias": -5.8339749386811866,
+      "PA_ge_70_mean_case_vector": 37.07666981641236,
+      "PA_lt_70_mean_case_vector": 20.90176279856015,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.60513249194073,
+        "interior_unused": 22.753847289709086,
+        "after_last_seen": 40.03646161732803
+      }
+    },
+    "A2_s29": {
+      "checkpoint_sha256": "d74de31fd6a344c1f1d970567fdd9c2d8f27ede28eac52db34642c0189593f89",
+      "seed": 29,
+      "all45_vector": 24.33219502530164,
+      "all45_magnitude": 15.128047612445291,
+      "all45_vector_RMSE_T": 0.23945241777294335,
+      "seen9_vector": 19.334246913286293,
+      "unused36_vector": 25.429299808419163,
+      "all45_copper_vector": 32.80567781239757,
+      "copper_B2_bias": -11.774390777057006,
+      "PA_ge_70_mean_case_vector": 38.401959965814385,
+      "PA_lt_70_mean_case_vector": 22.66681699723391,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 20.5689290260179,
+        "interior_unused": 23.92935059238293,
+        "after_last_seen": 44.35150067891765
+      }
+    },
+    "A2_s43": {
+      "checkpoint_sha256": "eacb843f20ff5013c01fa5ed3942cecf342841843ffde33f320c4b1d7777ae55",
+      "seed": 43,
+      "all45_vector": 21.564573843053743,
+      "all45_magnitude": 13.906166618375776,
+      "all45_vector_RMSE_T": 0.2122163388709062,
+      "seen9_vector": 18.002619523847194,
+      "unused36_vector": 22.367079351344607,
+      "all45_copper_vector": 33.245218270375645,
+      "copper_B2_bias": -9.731997996012515,
+      "PA_ge_70_mean_case_vector": 35.766934051675705,
+      "PA_lt_70_mean_case_vector": 19.82339641676329,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.236138074586037,
+        "interior_unused": 22.186149911584614,
+        "after_last_seen": 35.49816135651002
+      }
     }
   },
-  "missing_or_failed": {
-    "A0_s43": "missing final evaluation or snapshot CSV",
-    "A2_s17": "missing final evaluation or snapshot CSV",
-    "A2_s29": "missing final evaluation or snapshot CSV",
-    "A2_s43": "missing final evaluation or snapshot CSV"
-  },
+  "missing_or_failed": {},
   "decision": {
-    "verdict": "INCOMPLETE_NO_CLAIM"
+    "arm_means": {
+      "A0": {
+        "all45_vector": 20.599302536114973,
+        "all45_magnitude": 13.617289517462293,
+        "seen9_vector": 18.26364513782505,
+        "unused36_vector": 21.143202298678005,
+        "all45_copper_vector": 34.52025295672689,
+        "copper_B2_bias": -8.78147568325013
+      },
+      "A2": {
+        "all45_vector": 22.846975185613033,
+        "all45_magnitude": 14.519389357970892,
+        "seen9_vector": 18.55247566858297,
+        "unused36_vector": 23.799522345176324,
+        "all45_copper_vector": 32.60794600551697,
+        "copper_B2_bias": -9.113454570583569
+      }
+    },
+    "delta_all45_vector_A0_minus_A2": -2.2476726494980603,
+    "paired_deltas_by_seed": {
+      "17": -2.2651892572904444,
+      "29": -4.17245779554165,
+      "43": -0.3053708956620831
+    },
+    "within_arm_ranges_pp": {
+      "A0": 1.09946571763167,
+      "A2": 2.767621182247897
+    },
+    "seed_spread_all45_vector": 2.767621182247897,
+    "range_interpretation": "descriptive observed max-min; neither best-seed selection nor a confidence interval",
+    "improvement": false,
+    "no_harm": {
+      "seen9_vector": {
+        "change_pp": 0.2888305307579202,
+        "limit_pp": 0.5,
+        "pass": true
+      },
+      "all45_copper_vector": {
+        "change_pp": -1.9123069512099207,
+        "limit_pp": 1.0,
+        "pass": true
+      },
+      "PA_ge_70_mean_case_vector": {
+        "change_pp": 2.5990846292282797,
+        "limit_pp": 1.0,
+        "pass": false
+      }
+    },
+    "no_harm_pass": false,
+    "verdict": "NO_IMPROVEMENT_CLAIM"
   },
   "scope": "innerdev32, E1 oldTRAIN exposed; no independent test, AC or E1-vs-new torque comparison",
   "review_status": "Arithmetic applies original margins; final scientific interpretation belongs to Astra xHigh or higher"

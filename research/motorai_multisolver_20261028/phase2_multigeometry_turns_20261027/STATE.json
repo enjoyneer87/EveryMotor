@@ -136,15 +136,16 @@
     "record": "SESSION_CLOSURE_20261028_KO.md"
   },
   "active_followup": {
-    "as_of_UTC": "2026-10-28T07:13:16.689629+00:00",
-    "source": "../performance_diagnosis_20261028/HANDOFF_STATE.json",
-    "experiment": "L12 A2 electrical angle3seed plus A0seed43",
-    "execution_status": "RUNNING",
-    "execution_owner": "Sol, handed off from Claude Code",
-    "scientific_owner": "Astra xHigh or higher",
+    "as_of_UTC": "2026-10-28T08:23:25.883284+00:00",
+    "source": "../next_improvement_20261028/STATUS.json",
+    "experiment": "C/G component versus graph-wide context, fixed3 seeds",
+    "execution_status": "DEPLOYED_GPU_GATES_NOT_YET_STARTED",
+    "execution_owner": "Sol",
+    "scientific_owner": "Astra Max",
     "prior_08KST_window": "CLOSED_NOT_REACTIVATED",
     "new_jobs_launched_by_handoff": 0,
     "current_airgap_torque_comparison": "UNKNOWN_not_evaluated",
-    "live_owned": 4
+    "live_owned": 0,
+    "A2_status": "COMPLETED_NO_IMPROVEMENT_CLAIM"
   }
 }

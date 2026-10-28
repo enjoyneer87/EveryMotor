@@ -1,0 +1,21 @@
+{
+  "id": "NEXT-ADMISSION-01",
+  "authority": "User requested A2 unchanged, Astra review and next improvement experiment; read-only preparation only",
+  "scientific_review_owner": "gpt-6-astra / max",
+  "execution_owner": "Sol",
+  "status": "CPU_AUDIT_ONLY_NO_NEW_TRAINING_RELEASE_FROM_THIS_FILE",
+  "selection": "Six evenly spaced sorted admitted train conditions, selected without field labels:40,111,184,340,411,479",
+  "source_selection": "../phase2_multigeometry_turns_20261027/SCALE360_SELECTION_FROZEN.json",
+  "read_scope": ["Hash-pinned HDF5 mesh/native IDs/region names/moving coordinates only", "Existing prior cache archive headers and current-scale scalar, without calling prior code or a solver"],
+  "checks": ["Full-export versus a2-removed dual-graph connectivity", "Full native node graph connectivity", "stationary a1 availability and area invariance across45 steps", "Prior shape and embedded native-ID/source-hash evidence"],
+  "host": "234 CPU",
+  "wall_seconds_max": 300,
+  "retries": 0,
+  "new_FEA": 0,
+  "new_linear_prior_solves": 0,
+  "new_training_or_inference": 0,
+  "old_val_test_payloads_opened": 0,
+  "prohibited": ["Calling nodal_prior_features, which recomputes/writes on cache miss", "Inferring exact source binding from array shape or filename alone", "Coordinate-nearest topology repair", "Using invalid a2 as field truth", "Changing any running A2 file or process"],
+  "stop": "One foreground bounded CPU subprocess; timeout terminates that owned subprocess; no detached children or solver invocation",
+  "artifacts": "Small JSON and code only; native HDF5/cache are preserved in place"
+}

@@ -7,7 +7,7 @@
     "reconstruction": "RECOVERED_FROM_ASTRA_TRANSCRIPT"
   },
   "roles": {
-    "planning_and_scientific_decisions": "Astra xHigh or higher; thread01a17d9e-8a81-7262-9eae-e086c1957892",
+    "planning_and_scientific_decisions": "Astra Max for major scientific decisions; Ultra not selected",
     "execution": "Sol; handoff from Claude c7aa7e1b-3e76-4741-a258-071716aa4e0a"
   },
   "window": {
@@ -317,7 +317,7 @@
         "G02",
         "G09"
       ],
-      "execution_status": "READ_ONLY_DIAGNOSIS_COMPLETED_A2_STILL_RUNNING",
+      "execution_status": "A2_COMPLETED_ALL3SEED_NO_IMPROVEMENT_CLAIM",
       "receipt": {
         "record": "../performance_diagnosis_20261028/HANDOFF_STATE.json",
         "topology": "../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json",
@@ -327,14 +327,59 @@
         "old_val_test_payloads_opened": 0
       },
       "result": "18/18 sampled train graphs have no rotor-stator message path; field-path params30594; E1-vs-current torque/airgap regression UNKNOWN",
-      "decision_request": "A2 three-seed range arithmetic compatibility sent to Astra; new inference/training release not inferred."
+      "decision_request": "Astra Max completed; see ASTRA_A2_FINAL_REVIEW_KO.md"
+    },
+    {
+      "stepid": "W03-W07-NEXT-ADMISSION-01",
+      "plan_sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "dependencies": [
+        "W03",
+        "W07",
+        "L12"
+      ],
+      "gates": [
+        "G01",
+        "G02",
+        "G09"
+      ],
+      "execution_status": "CPU_AUDIT_AND_ASTRA_MAX_DESIGN_COMPLETED",
+      "receipt": {
+        "path": "../next_improvement_20261028/NATIVE_TOPOLOGY_PRIOR_AUDIT.json",
+        "host": "234 CPU",
+        "returncode": 0,
+        "seconds": 9.37787720002234,
+        "new_FEA": 0,
+        "new_prior_solves": 0,
+        "new_training_updates": 0,
+        "field_arrays_read": 0
+      },
+      "result": "Full export is connected; a2 removal disconnects it. a1 stationary all45. prior identity and historical constants prevent unqualified cache reuse.",
+      "decision_request": "C/G context-scope axis chosen; prior and E1 weights remain HOLD"
+    },
+    {
+      "stepid": "W07-CONTEXT-CG-01",
+      "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+      "dependencies": [
+        "W03-W07-NEXT-ADMISSION-01",
+        "L12-A2 final three-seed review"
+      ],
+      "gates": [
+        "source/nativeID/split",
+        "CPU contract",
+        "CPU evaluator restore",
+        "GPU overfit/profile",
+        "six-run resource projection"
+      ],
+      "execution_status": "FROZEN_DEPLOYED_GPU_GATES_PENDING",
+      "receipt": {
+        "source": "../next_improvement_20261028/CONTEXT_DEPLOY_RECEIPT.json",
+        "CPU": "../next_improvement_20261028/CONTEXT_CPU_PREPARATION_RESULT.json"
+      },
+      "result": "C/G parameter matched71206; new FEA0, new prior solves0; engineering GPU and full runs not yet started",
+      "decision_request": "Astra Max selected C/G; routine engineering gates run by Sol under user instruction; no scope expansion"
     }
   ],
-  "next": [
-    "L12-A2 (user approval)",
-    "W05",
-    "W06"
-  ],
+  "next": "Pass evaluator/overfit/profile gates, then fixed six C/G runs only inside the frozen6h envelope; preserve all failures.",
   "role_history": [
     {
       "recorded_UTC": "2026-10-28T07:03:55.827823+00:00",

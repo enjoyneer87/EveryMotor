@@ -1,5 +1,5 @@
 {
-  "scope": "performance-diagnosis code,small evidence,review and report; not physical accuracy qualification",
+  "scope": "Owned source/receipt/report integrity only; not physical qualification",
   "files": [
     {
       "path": "A2_THREE_SEED_ARITHMETIC_REVIEW.json",
@@ -38,8 +38,8 @@
     },
     {
       "path": "HANDOFF_STATE.json",
-      "bytes": 2974,
-      "sha256": "ca9b30b7dd3791e4f40aefd09365bfd423da4d196101390137915a2a8e675955"
+      "bytes": 5203,
+      "sha256": "afcf2a628c81304d5cec722f92daed174cad7fb3d88b9833880fa49da99cbf6c"
     },
     {
       "path": "JUDGE_ARITHMETIC_VALIDATION.json",
@@ -53,8 +53,8 @@
     },
     {
       "path": "REPORT_KO.md",
-      "bytes": 8569,
-      "sha256": "aeec9a40cf64fc601b1c13e6bcfb4c6f270d815cef0615314720efdaaa8f3487"
+      "bytes": 9097,
+      "sha256": "19aae5b9239884ab1aeac48a627bd373dde54292764df434045440b9b6c1d9b3"
     }
   ]
 }

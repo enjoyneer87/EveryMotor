@@ -1,0 +1,23 @@
+{
+  "CPU_contract": {
+    "status": "PASS",
+    "scope": "synthetic CPU engineering checks only, not physics qualification",
+    "parameter_count_each": 71206,
+    "extra_parameters_each": 1024,
+    "same_initial_tensor_state": "PASS",
+    "zero_projection_exact_backbone": "PASS",
+    "no_cross_batch_pooling": "PASS",
+    "nonzero_projection_field_cross_component_derivative": "PASS",
+    "new_training_updates": 0,
+    "new_FEA": 0,
+    "GPU_work": 0
+  },
+  "prepare_components": {
+    "status": "COMPLETED",
+    "cases": 360,
+    "elapsed_seconds": 54.64100000000326,
+    "component_counts": [
+      2
+    ]
+  }
+}
