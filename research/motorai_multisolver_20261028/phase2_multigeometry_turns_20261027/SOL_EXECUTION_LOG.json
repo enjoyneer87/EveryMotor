@@ -375,7 +375,7 @@
         "source": "../next_improvement_20261028/CONTEXT_DEPLOY_RECEIPT.json",
         "CPU": "../next_improvement_20261028/CONTEXT_CPU_PREPARATION_RESULT.json",
         "terminal_collection": "../next_improvement_20261028/artifacts/COLLECTION_RECEIPT.json",
-        "checked_UTC": "2026-10-28T08:34:26.535809+00:00"
+        "checked_UTC": "2026-10-28T10:09:01.050536+00:00"
       },
       "result": "Engineering gates and matched six-run chain; see actual STATUS, no accuracy claim before all3seeds",
       "decision_request": "Astra Max selected C/G; routine engineering gates run by Sol under user instruction; no scope expansion"

@@ -16,4 +16,4 @@ dev32는 E1 oldTRAIN에 노출된 내부개발 집합이다. B²는 파생 감�
 
 ## 최신 실행 증거
 
-UTC 2026-10-28T08:34:26.535809+00:00: RUNNING. 평가기 복원 PASS, overfit PASS_ENGINEERING_ONLY, 본학습 시작 3/6. 이 상태는 정확도 개선 판정이 아니다. [상태와 소유 신원](STATUS.json), [회수 SHA receipt](artifacts/COLLECTION_RECEIPT.json).
+UTC 2026-10-28T10:09:01.050536+00:00: RUNNING. 평가기 복원 PASS, overfit PASS_ENGINEERING_ONLY, 본학습 시작 6/6. 이 상태는 정확도 개선 판정이 아니다. [상태와 소유 신원](STATUS.json), [회수 SHA receipt](artifacts/COLLECTION_RECEIPT.json).

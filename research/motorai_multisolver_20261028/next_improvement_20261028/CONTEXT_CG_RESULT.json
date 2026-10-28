@@ -5,12 +5,64 @@
     29,
     43
   ],
-  "runs": {},
+  "runs": {
+    "C_s17": {
+      "checkpoint_sha256": "22b4775e450df44a15d083886e68888158e47f0c612e4df43fe79361cf0dfb13",
+      "seed": 17,
+      "all45_vector": 19.896032578681105,
+      "all45_magnitude": 13.07642897138725,
+      "all45_vector_RMSE_T": 0.1957962732133485,
+      "seen9_vector": 17.695553165153367,
+      "unused36_vector": 20.409421059818374,
+      "all45_copper_vector": 35.93216052883953,
+      "copper_B2_bias": -6.798368519256951,
+      "PA_ge_70_mean_case_vector": 33.42298822807794,
+      "PA_lt_70_mean_case_vector": 18.219150703853995,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 18.957187483835977,
+        "interior_unused": 20.726504059197676,
+        "after_last_seen": 30.48611660508008
+      }
+    },
+    "C_s29": {
+      "checkpoint_sha256": "905b2a416112ac2f3347814fc4a3a153a2d1f1fef99aaf0bd45031dbd5853a78",
+      "seed": 29,
+      "all45_vector": 20.599103176383483,
+      "all45_magnitude": 13.517683872483413,
+      "all45_vector_RMSE_T": 0.2027151703498314,
+      "seen9_vector": 18.19089795682163,
+      "unused36_vector": 21.158703025740376,
+      "all45_copper_vector": 36.173075714166444,
+      "copper_B2_bias": -6.559283496259312,
+      "PA_ge_70_mean_case_vector": 33.69704052987116,
+      "PA_lt_70_mean_case_vector": 19.028458736133654,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.48335366336485,
+        "interior_unused": 21.408670991917926,
+        "after_last_seen": 31.520362015260684
+      }
+    },
+    "G_s17": {
+      "checkpoint_sha256": "64cb28127593d795cc4fda046c2c1058cefc943c7ae026a46819263f351dba16",
+      "seed": 17,
+      "all45_vector": 20.40615992637636,
+      "all45_magnitude": 13.4457871233127,
+      "all45_vector_RMSE_T": 0.20081642148401252,
+      "seen9_vector": 18.147467038187237,
+      "unused36_vector": 20.933100572430835,
+      "all45_copper_vector": 34.33823819660608,
+      "copper_B2_bias": -8.574796757055624,
+      "PA_ge_70_mean_case_vector": 33.66082423163709,
+      "PA_lt_70_mean_case_vector": 18.795634329884845,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.39511544591855,
+        "interior_unused": 21.053541051247475,
+        "after_last_seen": 31.997313175942242
+      }
+    }
+  },
   "missing_failed_or_inconsistent": {
-    "C_s17": "Missing terminal training/evaluation/receipts",
-    "C_s29": "Missing terminal training/evaluation/receipts",
     "C_s43": "Missing terminal training/evaluation/receipts",
-    "G_s17": "Missing terminal training/evaluation/receipts",
     "G_s29": "Missing terminal training/evaluation/receipts",
     "G_s43": "Missing terminal training/evaluation/receipts"
   },

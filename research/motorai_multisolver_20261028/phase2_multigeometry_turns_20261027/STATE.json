@@ -136,7 +136,7 @@
     "record": "SESSION_CLOSURE_20261028_KO.md"
   },
   "active_followup": {
-    "as_of_UTC": "2026-10-28T08:34:26.535809+00:00",
+    "as_of_UTC": "2026-10-28T10:09:01.050536+00:00",
     "source": "../next_improvement_20261028/STATUS.json",
     "experiment": "C/G component versus graph-wide context, fixed3 seeds",
     "execution_status": "RUNNING",

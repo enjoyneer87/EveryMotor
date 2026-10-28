@@ -1,5 +1,5 @@
 {
-  "checked_UTC": "2026-10-28T08:34:26.535809+00:00",
+  "checked_UTC": "2026-10-28T10:09:01.050536+00:00",
   "status": "RUNNING",
   "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
   "deadline_UTC": "2026-10-28T14:21:21.645052+00:00",
@@ -11,22 +11,22 @@
       "process_started_epoch": 1793175955.574427
     },
     {
-      "path": "runs\\C_s17\\train_OWNER.json",
-      "pid": 6424,
-      "process_started_epoch": 1793176390.9292529
+      "path": "runs\\C_s43\\train_OWNER.json",
+      "pid": 6456,
+      "process_started_epoch": 1793181340.5284271
     },
     {
-      "path": "runs\\C_s29\\train_OWNER.json",
-      "pid": 5696,
-      "process_started_epoch": 1793176396.930524
+      "path": "runs\\G_s29\\train_OWNER.json",
+      "pid": 3624,
+      "process_started_epoch": 1793181337.5275104
     },
     {
-      "path": "runs\\G_s17\\train_OWNER.json",
-      "pid": 16700,
-      "process_started_epoch": 1793176393.9298365
+      "path": "runs\\G_s43\\train_OWNER.json",
+      "pid": 1868,
+      "process_started_epoch": 1793181343.5290315
     }
   ],
-  "GPU": "2741 MiB, 99 %",
+  "GPU": "3287 MiB, 100 %",
   "steps": [
     {
       "step": "overfit",
@@ -48,35 +48,137 @@
       "returncode": 0,
       "stop_reason": null,
       "elapsed_seconds": 190.01600000000326
+    },
+    {
+      "step": "C_s17:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 4855.514999999999
+    },
+    {
+      "step": "G_s17:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 4855.483999999997
+    },
+    {
+      "step": "C_s29:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 4855.483999999997
+    },
+    {
+      "step": "C_s17:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.03099999998813
+    },
+    {
+      "step": "G_s17:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.01600000000326
+    },
+    {
+      "step": "C_s29:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.01600000000326
     }
   ],
   "runs": {
-    "runs\\C_s17\\train\\RESULT.json": {
-      "status": "RUNNING",
+    "runs\\C_s17\\eval\\RESULT.json": {
+      "status": "COMPLETED",
       "arm": "C",
       "seed": 17,
-      "training_updates": 5,
-      "elapsed_seconds": 1.9539999999979045,
+      "training_updates": 0,
+      "elapsed_seconds": 77.29699999999139,
+      "GPU_smoke": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\C_s17\\train\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "C",
+      "seed": 17,
+      "training_updates": 88565,
+      "elapsed_seconds": 4823.203999999998,
       "GPU_smoke": "PASS",
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\C_s29\\eval\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "C",
+      "seed": 29,
+      "training_updates": 0,
+      "elapsed_seconds": 77.26600000000326,
+      "GPU_smoke": null,
       "error": null,
       "stop_reason": null
     },
     "runs\\C_s29\\train\\RESULT.json": {
-      "status": "RUNNING",
+      "status": "COMPLETED",
       "arm": "C",
       "seed": 29,
-      "training_updates": 5,
-      "elapsed_seconds": 2.0310000000026776,
+      "training_updates": 88565,
+      "elapsed_seconds": 4824.75,
       "GPU_smoke": "PASS",
       "error": null,
       "stop_reason": null
     },
-    "runs\\G_s17\\train\\RESULT.json": {
+    "runs\\C_s43\\train\\RESULT.json": {
       "status": "RUNNING",
+      "arm": "C",
+      "seed": 43,
+      "training_updates": 10800,
+      "elapsed_seconds": 769.2350000000006,
+      "GPU_smoke": "PASS",
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s17\\eval\\RESULT.json": {
+      "status": "COMPLETED",
       "arm": "G",
       "seed": 17,
-      "training_updates": 5,
-      "elapsed_seconds": 1.9689999999973224,
+      "training_updates": 0,
+      "elapsed_seconds": 78.38999999999942,
+      "GPU_smoke": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s17\\train\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "G",
+      "seed": 17,
+      "training_updates": 88565,
+      "elapsed_seconds": 4827.233999999997,
+      "GPU_smoke": "PASS",
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s29\\train\\RESULT.json": {
+      "status": "RUNNING",
+      "arm": "G",
+      "seed": 29,
+      "training_updates": 11100,
+      "elapsed_seconds": 772.8439999999973,
+      "GPU_smoke": "PASS",
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s43\\train\\RESULT.json": {
+      "status": "RUNNING",
+      "arm": "G",
+      "seed": 43,
+      "training_updates": 10600,
+      "elapsed_seconds": 769.0630000000092,
       "GPU_smoke": "PASS",
       "error": null,
       "stop_reason": null
@@ -139,7 +241,7 @@
     "remaining_guard_seconds": 20890.724294,
     "pass": true
   },
-  "full_training_runs_started": 3,
+  "full_training_runs_started": 6,
   "automatic_retries": 0,
   "new_FEA": 0,
   "new_prior_solves": 0,

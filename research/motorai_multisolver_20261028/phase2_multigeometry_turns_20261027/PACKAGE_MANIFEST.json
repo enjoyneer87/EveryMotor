@@ -208,12 +208,12 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "8405c0c06596f5605691751d215e391050d011ae71be0a681341ecf50df6184a",
+      "sha256": "1571411330e7b2ac3be5c61214875f90e32b0b39bec9f2fe3ac4fb52351c10f8",
       "bytes": 21649
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "1e6ebe36640ec046c009f4b50aa81b93cb10234c77b5fb1deea8ea2f4afbf125",
+      "sha256": "0ae8db8da8e4e2f1e74dc5f774c92a901d63a9cc0eb2e63472ad947fb64fcc16",
       "bytes": 24927
     },
     {
@@ -793,7 +793,7 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "e2bf4d8ac7928d0e5f78f4f234c7d46f022ef3906e5c8f87a7168677c37f7215",
+      "sha256": "aa12f22b5ed06bd9ca01d798ae3b0845fda8ac51674e7702d29b97df7f01eb43",
       "bytes": 17032
     },
     {
@@ -808,13 +808,13 @@
     },
     {
       "path": "STATE.json",
-      "sha256": "b7833a576a31d25389446f9a82ef72836dcec2376a2ddd26c221e91cb0ae33cb",
+      "sha256": "18bee83e4ebe98d7ca0773cb789684ecd8a59433c200c0f8aec13839b4d01990",
       "bytes": 5177
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "d1c6789d80585f0e50ede0cfac057b97066be789fe6c576e18d6a03bc806d5d1",
-      "bytes": 13092
+      "sha256": "1fb4c1ddb869ca5472b5feef0166bf9fb944ffe6199686809372c0b3147e0e02",
+      "bytes": 13563
     },
     {
       "path": "STEP128_COMPARISON.json",
