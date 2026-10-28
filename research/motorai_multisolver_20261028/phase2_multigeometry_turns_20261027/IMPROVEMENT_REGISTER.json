@@ -295,7 +295,7 @@
       "priority": "P0",
       "title": "그래프 단절 수정과 E1 구조·prior·공극 손실 재사용",
       "origin": "사용자 2026-10-28 후속 실행 지시",
-      "status": "Astra Max C/G선정·계약동결·CPU통과·GPU gate대기",
+      "status": "C/G RUNNING; 평가기 PASS / overfit PASS_ENGINEERING_ONLY / 본학습 3/6",
       "request": "A2를 바꾸지 않고 완료한 뒤, 그래프 연결 복원과 E1의 구조·prior·공극 손실 재사용을 검토해 다음 개선 실험을 진행한다.",
       "confirmed": "train6 HDF5 hash전부일치. full-export dual/native-node graph1component, a2제거후2component. stationary a1은모든45시각고정. prior8개는45step/nodal3shape가맞지만nativeID/sourcehash없어bindingUNKNOWN. 기존mu_eff20은case4/7 B에서선정, windingtemplate은case0 J교정이력.",
       "Astra_decision": "C/G동일71206parameter/328train/32dev/9phase/3seed/88565update. component대graph pool차이만. 물리mesh복원아님. E1prior/weights HOLD.",

@@ -1,0 +1,8 @@
+{
+  "per_update_single_worker_seconds": 0.01905410889414235,
+  "concurrency_multiplier": 3,
+  "projected_training_seconds_each": 5062.581462629152,
+  "projected_remaining_stage_seconds": 13905.162925258304,
+  "remaining_guard_seconds": 20890.724294,
+  "pass": true
+}

@@ -1,0 +1,22 @@
+{
+  "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+  "fixed_seeds": [
+    17,
+    29,
+    43
+  ],
+  "runs": {},
+  "missing_failed_or_inconsistent": {
+    "C_s17": "Missing terminal training/evaluation/receipts",
+    "C_s29": "Missing terminal training/evaluation/receipts",
+    "C_s43": "Missing terminal training/evaluation/receipts",
+    "G_s17": "Missing terminal training/evaluation/receipts",
+    "G_s29": "Missing terminal training/evaluation/receipts",
+    "G_s43": "Missing terminal training/evaluation/receipts"
+  },
+  "decision": {
+    "verdict": "INCOMPLETE_NO_CLAIM"
+  },
+  "scope": "innerdev32/E1 oldTRAIN exposed, no independent test, a1 torque or AC qualification",
+  "scientific_review": "Final interpretation reserved for Astra Max; saved arithmetic does not authorize another experiment"
+}

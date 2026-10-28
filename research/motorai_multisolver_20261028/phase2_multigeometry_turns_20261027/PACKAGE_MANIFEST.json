@@ -208,13 +208,13 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "d4298906c0ebbff58427e822a502ef00fc98fa5d20d9f4840964d99d7ba6a668",
-      "bytes": 21634
+      "sha256": "8405c0c06596f5605691751d215e391050d011ae71be0a681341ecf50df6184a",
+      "bytes": 21649
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "891367aad164e752509efb8e5a4ea1d0b338ba25ced78a4c6795dbdfc552c9ff",
-      "bytes": 24897
+      "sha256": "1e6ebe36640ec046c009f4b50aa81b93cb10234c77b5fb1deea8ea2f4afbf125",
+      "bytes": 24927
     },
     {
       "path": "judge_l12_a2.py",
@@ -793,8 +793,8 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "b15963c85c88ac7314e9792119b574f1098b05a2e9d483004e17bb200d3117ce",
-      "bytes": 16511
+      "sha256": "e2bf4d8ac7928d0e5f78f4f234c7d46f022ef3906e5c8f87a7168677c37f7215",
+      "bytes": 17032
     },
     {
       "path": "source_manifest.json",
@@ -808,13 +808,13 @@
     },
     {
       "path": "STATE.json",
-      "sha256": "7bc2e087240dc50da22c770c9e4abb360ac222bef648db48b1e2b0b08309e609",
-      "bytes": 5053
+      "sha256": "b7833a576a31d25389446f9a82ef72836dcec2376a2ddd26c221e91cb0ae33cb",
+      "bytes": 5177
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "87f6303b7be56a9d2039bd632d79c45bcace193113f7611f15d2ed8575a3d013",
-      "bytes": 11787
+      "sha256": "d1c6789d80585f0e50ede0cfac057b97066be789fe6c576e18d6a03bc806d5d1",
+      "bytes": 13092
     },
     {
       "path": "STEP128_COMPARISON.json",
@@ -903,8 +903,8 @@
     },
     {
       "path": "update_dashboard.py",
-      "sha256": "5ad52044c6882ec9b359616a5d37f25f4702ac07cdac1a10fed98e5a260197cc",
-      "bytes": 14885
+      "sha256": "ea253c266c45c16502550c61a54f4719505985bdac9cf43ebcba29258cdd6350",
+      "bytes": 16482
     },
     {
       "path": "update_improvement_register.py",

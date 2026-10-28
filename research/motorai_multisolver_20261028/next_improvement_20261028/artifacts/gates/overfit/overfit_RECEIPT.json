@@ -1,0 +1,14 @@
+{
+  "step": "overfit",
+  "pid": 6340,
+  "process_started_epoch": 1793175960.7947235,
+  "guard_pid": 14832,
+  "guard_started_epoch": 1793175955.574427,
+  "started_UTC": "2026-10-28T08:26:00.790930+00:00",
+  "wall_seconds_max": 900,
+  "finished_UTC": "2026-10-28T08:26:55.806825+00:00",
+  "elapsed_seconds": 55.01499999999942,
+  "returncode": 0,
+  "stop_reason": null,
+  "retries": 0
+}

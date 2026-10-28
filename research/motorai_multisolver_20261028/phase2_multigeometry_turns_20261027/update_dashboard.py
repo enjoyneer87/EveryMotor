@@ -16,6 +16,12 @@ def main():
  handoff=json.loads(handoff_path.read_text(encoding='utf-8')) if handoff_path.exists() else {}
  active_rows=''.join(f'<tr><td>{html.escape(name)}</td><td>{html.escape(value["status"])}</td><td>{value.get("training_updates",0):,}/88,565</td></tr>' for name,value in handoff.get('runs',{}).items())
  handoff_card=(f'<section class="card warning"><h2>현재 A2 인계 · Astra xHigh 판정 / Sol 실행</h2><p>상태 확인 UTC {html.escape(handoff.get("checked_UTC",""))}. 기존 승인 작업 {handoff.get("owned_processes_identity_matched",0)}개의 PID·시작시각 일치. 예전 08시 예약은 재개하지 않았습니다.</p><table><tr><th>작업</th><th>상태</th><th>학습 update</th></tr>{active_rows}</table><p><a href="../performance_diagnosis_20261028/REPORT_KO.md">E1 대비 최근 모델의 성능 차이 진단</a> · <a href="../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md">Astra xHigh 판정문</a>. 18개 학습 graph에서 회전자–고정자 메시지 경로 단절을 확인했습니다. 공극/토크와 전체 B벡터는 다른 지표이며 새 모델의 공극·토크는 아직 미평가입니다.</p></section>') if handoff else ''
+ cg_path=R.parent/'next_improvement_20261028/STATUS.json'
+ if cg_path.exists():
+  cg=json.loads(cg_path.read_text(encoding='utf-8'))
+  cg_rows=''.join(f'<tr><td>{html.escape(name)}</td><td>{html.escape(v.get("status") or "UNKNOWN")}</td><td>{v.get("training_updates") or 0:,}</td></tr>' for name,v in cg.get('runs',{}).items())
+  cg_card=f'<section class="card warning"><h2>현재 C/G 단일축 · Astra Max 판정 / Sol 실행</h2><p>{html.escape(cg.get("status","UNKNOWN"))} · UTC {html.escape(cg.get("checked_UTC",""))} · 본 학습 시작 {cg.get("full_training_runs_started",0)}/6</p><p>평가기 복원 {html.escape(cg.get("evaluator_restore","PENDING"))} · 소규모 overfit {html.escape(cg.get("overfit",{}).get("status","PENDING"))}. 처리량 gate 통과 후 최대3작업 병렬, 각2시간·전체6시간·재시도0. 마감 UTC {html.escape(cg.get("deadline_UTC",""))}.</p><table><tr><th>작업</th><th>상태</th><th>updates</th></tr>{cg_rows}</table><p>성분 내부(C)와 전체 graph(G)의 요약 정보 전달만 비교합니다. 물리 mesh 복원·AC손실 성과는 아닙니다. A2는 정상 완료했으나 정확도 개선 실패: 20.599→22.847%, highPA FAIL.</p><p><a href="../next_improvement_20261028/REPORT_KO.md">실험 보고서·한계</a> · <a href="../next_improvement_20261028/CONTEXT_CG_PLAN.json">동결 계약</a> · <a href="../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md">Astra Max 판정</a></p></section>'
+  handoff_card=cg_card+handoff_card.replace('현재 A2 인계 · Astra xHigh 판정 / Sol 실행','완료된 A2 인계 이력')
  rows=[]
  for name,d in s['execution'].items():
   e=d.get('execution',{});p=d.get('progress') or {};state='완료' if e.get('returncode')==0 and not e.get('stop_reason') else ('실행 중' if d['owned_live_processes'] else '확인 필요')

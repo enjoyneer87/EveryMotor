@@ -13,3 +13,7 @@
 dev32는 E1 oldTRAIN에 노출된 내부개발 집합이다. B²는 파생 감독량으로 AC손실이나 JEET canonical Hybrid 분모가 아니다. reserved R1_0199/R1_0076 및 alias·HalfSC32/4·exact bridge0을 유지한다.
 
 재현: 원본 graph/checkpoint는133에 보존하고 private source-key 경로 매핑을 사용한다. 공유 코드의 --bundle/--components/--checkpoint 입력을 hash가 일치하는 자료에 연결한다. train_context.py와 evaluate_context.py는 수정된 공통계약과 동일 scope를 검사하며, guard_context.py가 정해진6run만 실행한다. raw/대형NPZ/weights는 Git에 포함하지 않는다.
+
+## 최신 실행 증거
+
+UTC 2026-10-28T08:34:26.535809+00:00: RUNNING. 평가기 복원 PASS, overfit PASS_ENGINEERING_ONLY, 본학습 시작 3/6. 이 상태는 정확도 개선 판정이 아니다. [상태와 소유 신원](STATUS.json), [회수 SHA receipt](artifacts/COLLECTION_RECEIPT.json).

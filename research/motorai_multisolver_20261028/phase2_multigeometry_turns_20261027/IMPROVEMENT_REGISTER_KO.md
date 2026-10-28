@@ -24,7 +24,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
 | [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra Max 주요판정 / Sol 실행 |
 | [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | A2 각3seed 완료·Astra Max 최종 판정 완료 |
-| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | Astra Max C/G선정·계약동결·CPU통과·GPU gate대기 |
+| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | C/G RUNNING; 평가기 PASS / overfit PASS_ENGINEERING_ONLY / 본학습 3/6 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -311,7 +311,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-017"></a>
 ## MI-017 · 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용
 
-**P0 · Astra Max C/G선정·계약동결·CPU통과·GPU gate대기**
+**P0 · C/G RUNNING; 평가기 PASS / overfit PASS_ENGINEERING_ONLY / 본학습 3/6**
 
 **요청 출처:** 사용자 2026-10-28 후속 실행 지시
 
