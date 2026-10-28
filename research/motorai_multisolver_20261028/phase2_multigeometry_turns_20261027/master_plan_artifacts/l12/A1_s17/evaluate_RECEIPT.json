@@ -1,0 +1,14 @@
+{
+  "step": "evaluate",
+  "pid": 16220,
+  "process_started_epoch": 1793163901.7698617,
+  "guard_pid": 16372,
+  "guard_started_epoch": 1793162211.5958776,
+  "started_UTC": "2026-10-28T05:05:01.763447+00:00",
+  "wall_seconds_max": 1800,
+  "finished_UTC": "2026-10-28T05:06:26.784251+00:00",
+  "elapsed_seconds": 85.03100000000268,
+  "returncode": 0,
+  "stop_reason": null,
+  "retries": 0
+}

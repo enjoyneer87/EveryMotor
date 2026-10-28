@@ -33,6 +33,13 @@
       "authority": "Claude acting as Astra",
       "record": "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
       "decision": "L12 decision rule and no-harm margins registered before results."
+    },
+    {
+      "id": "D01",
+      "version": "v3",
+      "authority": "Claude acting as Astra",
+      "record": "master_plan_artifacts/L12_PHASE45_REPORT_KO.md",
+      "decision": "Phase45 at equal updates: no improvement claim. Coverage mechanism confirmed; next axis A2 electrical-angle encoding."
     }
   ],
   "entries": [
@@ -219,19 +226,55 @@
         "G09",
         "G10"
       ],
-      "execution_status": "CONTRACT_DRAFT_AWAITING_USER",
+      "execution_status": "COMPLETED",
       "receipt": {
         "new_compute": "none (saved files only)",
         "outputs": {
-          "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json": "6b863aa20583ff4e5e79b3d7531d19db2663fedf1d765828281aeb9c3fc6c734"
+          "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json": "6b863aa20583ff4e5e79b3d7531d19db2663fedf1d765828281aeb9c3fc6c734",
+          "master_plan_artifacts/L12_PHASE45_REPORT_KO.md": "6dea6faae61b2a721f894a3d9f3fbe76304308a1e279fc104e9a96e6ff4a9345",
+          "master_plan_artifacts/l12/L12_PHASE45_RESULT.json": "903f8e92c7d7d55853938f6abde9a798a5869d1d919b241c86bd34ea34ac0734"
         }
       },
-      "result": "A1 phase45 equal-update contract drafted; A0 reused as reference. Preflight: 133 L40S idle with 1438 GiB free; 234 D: 232 GiB free.",
-      "decision_request": "User approval of option minimal (A1 seed17) or with_seed_check (A1 seed17, A0 seed29, A1 seed29) before any preparation or GPU run."
+      "result": "NO_IMPROVEMENT_CLAIM: all45 B-vector A0-A1 +0.813 pp (seeds 0.797/0.828, spread 0.251) below 1.0 pp; seen9 +1.54 pp exceeds 0.5 pp no-harm. Steps 41-44 error -8.8 pp (coverage effect confirmed), seen9 diluted.",
+      "decision_request": "Next single axis A2 (electrical-angle encoding on phase9 data): contract after native electrical-span check; needs user approval before any run.",
+      "attempts": [
+        {
+          "id": "prep_R1",
+          "result": "FAILED in 5 s: tuple vs JSON-list feature comparison bug; 0 graphs written"
+        },
+        {
+          "id": "prep_R2",
+          "result": "COMPLETED: 328 PASS/0 FAIL, 11808 graphs, 505 s; determinism PASS (case 40, 9 steps array-identical)"
+        },
+        {
+          "id": "transfer",
+          "result": "15.13 GB zip sha256 7abcd507…; merged 15048 graphs on 133 (manifest 0ab3743b…); first merge call failed on Windows command-line length, re-run as uploaded file"
+        },
+        {
+          "id": "chain_R1",
+          "result": "reference eval PASS (1e-9 pp equivalence to frozen diagnostic); A1_s17 FAILED at update 61400/88565 with PermissionError on RESULT.tmp->RESULT.json replace",
+          "cause": "Windows refuses os.replace while a reader holds the destination; the 5-minute read-only status poll opened RESULT.json at 03:02:13Z, the same second. Reproduced locally.",
+          "preserved": "A1_s17 partial checkpoint (epoch-20 equivalent, update 59045, sha256 eff19452c7dd9e75…) and RESULT.json on 133; dev 9-phase curve 99.56/51.44/34.52/31.43/21.49 at epochs 0/1/5/10/20",
+          "not_run": [
+            "A0_s29",
+            "A1_s29"
+          ],
+          "fix": "replace_retry (40 x 0.25 s) in train/evaluate save and guard write; metric code unchanged"
+        },
+        {
+          "id": "chain_R2",
+          "result": "reference eval PASS; A1_s17 88565 updates COMPLETED, dev curve bit-identical to R1 through epoch 20; chain stopped at A1_s17 eval by user decision (BLOCKED_GPU_BUSY, no GPU use)"
+        },
+        {
+          "id": "parallel_R2P",
+          "result": "A0_s29 and A1_s29 trained concurrently (4050 s each), all three evaluations COMPLETED; GPU utilisation 35% -> 74%",
+          "decision": "user, 2026-10-28"
+        }
+      ]
     }
   ],
   "next": [
-    "L12 (on user approval)",
+    "A2 contract (user approval)",
     "W05",
     "W06"
   ]

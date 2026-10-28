@@ -1,6 +1,6 @@
 # MotorAI 개선 요청·아이디어 통합 대장
 
-갱신일: 2026-10-28 09:00 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
+갱신일: 2026-10-28 14:55 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
 
 사용자 요청, Astra 판정, 실행 계획과 실제 결과를 같은 항목 ID로 추적한다. 제안·판정·실행 완료는 서로 다른 상태다. 새 계산은 이 대장만으로 시작하지 않고 별도 bounded 실행 계약과 원자료/분할 gate를 통과해야 한다.
 
@@ -17,7 +17,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-007](#mi-007) | P0 | 슬롯당 4·6·8도체 Field 데이터 확보 | 기하 완료·Field 확보 전 |
 | [MI-008](#mi-008) | P1 | 추가 형상 수 확대와 보류 원자료 복구 | 계보 복구 필요 |
 | [MI-009](#mi-009) | P0 | 구리 B²·전류·AC 손실 연결 | 물리량 정의·적분 검증 필요 |
-| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | W03 해석 완료·L12 계약 대기 |
+| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | L12 완료·개선 주장 불가·A2 후보 |
 | [MI-011](#mi-011) | P1 | 국소3-hop 한계와 global context/모델 용량 | 제안·우선순위 재검토 |
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
@@ -188,19 +188,19 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-010"></a>
 ## MI-010 · 미사용 위상36개에서 시간 일반화 진단
 
-**P1 · W03 해석 완료·L12 계약 대기**
+**P1 · L12 완료·개선 주장 불가·A2 후보**
 
 **요청 출처:** Astra 제안
 
 **요청과 목표:** 45개저장시각중학습에쓴9개외36개에서위상오차를확인한다.
 
-**확인된 근거와 현재 결과:** 동일dev32×45phase1440graph평가완료. 미사용36 Bvector20.9153%/|B|13.9440%,전체45 Bvector20.3790%/|B|13.5041%. 기존9위상성적산술재현. 학습/FEA0.
+**확인된 근거와 현재 결과:** L12 phase45 equal-update(2 seed): 전체 B벡터 +0.81 pp 개선(seed 일치)이나 1.0 pp 기준 미달, seen9 +1.54 pp 악화로 NO_IMPROVEMENT_CLAIM. 41–44 외삽 오차는 −8.8 pp로 해소되어 위상 범위 기제는 확인됨.
 
-**Astra 판정:** D01-v2(Claude 대행): unused 위상 오차는 마지막 학습 위상 뒤 41–44에 집중된다(기계각 인코딩 외삽). phase9 대 phase45 equal-update 비교(A1)를 먼저 하고, 전기각 인코딩(A2)은 별도 단일축으로 둔다.
+**Astra 판정:** D01-v3(Claude 대행): 다음 단일축은 phase9 데이터의 전기각 주기 인코딩(A2). 전기 주기 각도 폭 확인 후 계약, 사용자 승인 후 실행.
 
-**다음 행동:** L12_PHASE45_RUN_CONTRACT.json 사용자 승인 후 준비→전송→학습→평가.
+**다음 행동:** native rotate_step으로 전기 주기 폭 확인 → A2 실행계약 작성.
 
-근거 파일: [SCALE360_PLAN.json](SCALE360_PLAN.json) · [native_element_graph.py](native_element_graph.py) · [FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md](FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md) · [FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md](master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md) · [L12_PHASE45_RUN_CONTRACT.json](master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json)
+근거 파일: [SCALE360_PLAN.json](SCALE360_PLAN.json) · [native_element_graph.py](native_element_graph.py) · [FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md](FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md) · [FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md](master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md) · [L12_PHASE45_RUN_CONTRACT.json](master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json) · [L12_PHASE45_REPORT_KO.md](master_plan_artifacts/L12_PHASE45_REPORT_KO.md) · [L12_PHASE45_RESULT.json](master_plan_artifacts/l12/L12_PHASE45_RESULT.json)
 
 <a id="mi-011"></a>
 ## MI-011 · 국소3-hop 한계와 global context/모델 용량

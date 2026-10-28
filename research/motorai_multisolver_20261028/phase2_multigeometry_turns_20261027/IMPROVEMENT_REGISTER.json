@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_KST": "2026-10-28 09:00",
+  "updated_KST": "2026-10-28 14:55",
   "purpose": "User requests, research ideas, scientific decisions and execution evidence for MotorAI/JEET method development",
   "decision_policy": "A proposal is not an approved experiment. Scientific choices go to the user-requested Astra review chat; every new computation still requires a concrete bounded plan and source/split admission.",
   "Astra_review_thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
@@ -158,18 +158,20 @@
       "priority": "P1",
       "title": "미사용 위상36개에서 시간 일반화 진단",
       "origin": "Astra 제안",
-      "status": "W03 해석 완료·L12 계약 대기",
+      "status": "L12 완료·개선 주장 불가·A2 후보",
       "request": "45개저장시각중학습에쓴9개외36개에서위상오차를확인한다.",
       "evidence": [
         "SCALE360_PLAN.json",
         "native_element_graph.py",
         "FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md",
         "master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md",
-        "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json"
+        "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json",
+        "master_plan_artifacts/L12_PHASE45_REPORT_KO.md",
+        "master_plan_artifacts/l12/L12_PHASE45_RESULT.json"
       ],
-      "confirmed": "동일dev32×45phase1440graph평가완료. 미사용36 Bvector20.9153%/|B|13.9440%,전체45 Bvector20.3790%/|B|13.5041%. 기존9위상성적산술재현. 학습/FEA0.",
-      "next_action": "L12_PHASE45_RUN_CONTRACT.json 사용자 승인 후 준비→전송→학습→평가.",
-      "Astra_decision": "D01-v2(Claude 대행): unused 위상 오차는 마지막 학습 위상 뒤 41–44에 집중된다(기계각 인코딩 외삽). phase9 대 phase45 equal-update 비교(A1)를 먼저 하고, 전기각 인코딩(A2)은 별도 단일축으로 둔다."
+      "confirmed": "L12 phase45 equal-update(2 seed): 전체 B벡터 +0.81 pp 개선(seed 일치)이나 1.0 pp 기준 미달, seen9 +1.54 pp 악화로 NO_IMPROVEMENT_CLAIM. 41–44 외삽 오차는 −8.8 pp로 해소되어 위상 범위 기제는 확인됨.",
+      "next_action": "native rotate_step으로 전기 주기 폭 확인 → A2 실행계약 작성.",
+      "Astra_decision": "D01-v3(Claude 대행): 다음 단일축은 phase9 데이터의 전기각 주기 인코딩(A2). 전기 주기 각도 폭 확인 후 계약, 사용자 승인 후 실행."
     },
     {
       "id": "MI-011",

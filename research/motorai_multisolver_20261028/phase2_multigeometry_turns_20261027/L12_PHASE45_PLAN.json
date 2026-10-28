@@ -1,0 +1,53 @@
+{
+  "experiment": "L12 phase-coverage single-axis comparison on SCALE360 split",
+  "contract": "master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json",
+  "evaluation_contract": "master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
+  "user_approval": "2026-10-28 KST: option with_seed_check; order prepare, transfer, A1 seed17, A0 seed29, A1 seed29, evaluate",
+  "selection": "SCALE360_SELECTION_FROZEN.json",
+  "train_cases": 328,
+  "development_cases": 32,
+  "seen_steps": [0, 5, 10, 15, 20, 25, 30, 35, 40],
+  "unused_steps": [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 28, 29, 31, 32, 33, 34, 36, 37, 38, 39, 41, 42, 43, 44],
+  "arms": {
+    "A0": {"train_steps": "seen_steps", "train_graphs": 2952},
+    "A1": {"train_steps": "all 45", "train_graphs": 14760}
+  },
+  "runs": [
+    {"id": "A0_s17_ref", "arm": "A0", "seed": 17, "operation": "evaluate_existing", "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e"},
+    {"id": "A1_s17", "arm": "A1", "seed": 17, "operation": "train_then_evaluate"},
+    {"id": "A0_s29", "arm": "A0", "seed": 29, "operation": "train_then_evaluate"},
+    {"id": "A1_s29", "arm": "A1", "seed": 29, "operation": "train_then_evaluate"}
+  ],
+  "training": {
+    "host": "133",
+    "width": 32,
+    "depth": 3,
+    "smoke_updates": 5,
+    "expected_optimizer_updates": 88565,
+    "updates_per_A0_epoch": 2952,
+    "evaluation_updates": {"0": 5, "1": 2957, "5": 14765, "10": 29525, "20": 59045, "30": 88565},
+    "learning_rate": {"start": 0.001, "end": 1e-05, "rule": "epoch_equiv = clip(ceil((u-5)/2952),1,30) for update number u > 5; lr = end + 0.5*(start-end)*(1+cos(pi*(epoch_equiv-1)/29)); smoke uses start"},
+    "train_evaluation_subset": "phase9 train graphs (2952) for both arms",
+    "wall_seconds_max": 10800,
+    "torch_allocated_soft_limit_GiB": 10,
+    "retry": 0
+  },
+  "preparation": {
+    "host": "234",
+    "processes": 4,
+    "new_graphs": 11808,
+    "determinism_check": "first train case re-read at seen steps; every array equal (dtype and values) to the existing SCALE360 R2 bundle",
+    "wall_seconds_max": 1800,
+    "retry": 0
+  },
+  "evaluation": {
+    "bundle": "frozen diagnostic dev 32 x 45 bundle (manifest sha256 5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186)",
+    "metric_code": "identical to evaluate_frozen_field_diagnostic.py; only checkpoint pinning and anchor source are parameterised",
+    "equivalence_gate": "A0_s17_ref metrics must equal FROZEN_FIELD_DIAGNOSTIC_RESULT.json within 1e-9 pp before any training starts",
+    "wall_seconds_max": 1800
+  },
+  "guard_deadline_UTC": "2026-10-28T14:00:00Z",
+  "new_FEA": 0,
+  "reserved_or_old_val_test_read": false,
+  "stop": "STOP file in stage root or run directory; owner PID + create time; owned process tree only; chain stops at the first non-COMPLETED step"
+}

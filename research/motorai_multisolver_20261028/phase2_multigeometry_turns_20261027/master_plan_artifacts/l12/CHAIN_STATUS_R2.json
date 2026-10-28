@@ -1,0 +1,30 @@
+{
+  "started_UTC": "2026-10-28T04:00:30.289465+00:00",
+  "steps": [
+    {
+      "step": "A0_s17_ref:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 90.01600000000326,
+      "equivalence": "PASS_1e-9pp"
+    },
+    {
+      "step": "A1_s17:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 3755.5160000000033
+    },
+    {
+      "step": "A1_s17:evaluate",
+      "status": "BLOCKED_GPU_BUSY",
+      "returncode": null,
+      "stop_reason": null,
+      "elapsed_seconds": null,
+      "apps": "15032, C:\\Users\\HPC-133\\AppData\\Local\\Programs\\Python\\Python312\\pythonw.exe\n13660, C:\\Users\\HPC-133\\AppData\\Local\\Programs\\Python\\Python312\\pythonw.exe"
+    }
+  ],
+  "status": "FAILED_A1_s17_EVAL",
+  "finished_UTC": "2026-10-28T05:04:36.069365+00:00"
+}
