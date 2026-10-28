@@ -1,0 +1,56 @@
+{
+  "scientific_source": "ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md",
+  "scope": "Review priorities only; no new execution contract or computation",
+  "new_jobs": 0,
+  "items": [
+    {
+      "priority": 1,
+      "candidate": "Common dev32 stationary-a1/Arkkio evaluation",
+      "needed": [
+        "native IDs and common masks",
+        "stationary a1 evidence",
+        "same Arkkio operator for truth/prediction"
+      ],
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "priority": 2,
+      "candidate": "E1 architecture/code from-scratch and native information paths",
+      "needed": [
+        "separate capacity/structure axes",
+        "valid per-rotation native connectivity before mesh-restoration claim",
+        "no unadmitted weights or prior"
+      ],
+      "status": "DEFERRED"
+    },
+    {
+      "priority": 3,
+      "candidate": "Airgap-weighted and spectral loss",
+      "needed": [
+        "common a1 diagnostic",
+        "normalization equivalence audit",
+        "separate single-axis comparison"
+      ],
+      "status": "DEFERRED"
+    },
+    {
+      "priority": "HOLD",
+      "candidate": "E1 prior",
+      "needed": [
+        "source/nativeID/geometry/OP/material/current-scale binding",
+        "historical B/J calibration exposure accounting"
+      ],
+      "status": "HOLD"
+    },
+    {
+      "priority": "HOLD",
+      "candidate": "E1 weights/teacher/distillation",
+      "needed": [
+        "donor reserved exclusion",
+        "feature/normalizer compatibility",
+        "evaluation exposure ledger"
+      ],
+      "status": "HOLD"
+    }
+  ]
+}

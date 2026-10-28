@@ -136,16 +136,18 @@
     "record": "SESSION_CLOSURE_20261028_KO.md"
   },
   "active_followup": {
-    "as_of_UTC": "2026-10-28T10:09:01.050536+00:00",
+    "as_of_UTC": "2026-10-28T11:37:26.555846+00:00",
     "source": "../next_improvement_20261028/STATUS.json",
     "experiment": "C/G component versus graph-wide context, fixed3 seeds",
-    "execution_status": "RUNNING",
+    "execution_status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
     "execution_owner": "Sol",
     "scientific_owner": "Astra Max",
     "prior_08KST_window": "CLOSED_NOT_REACTIVATED",
     "new_jobs_launched_by_handoff": 1,
     "current_airgap_torque_comparison": "UNKNOWN_not_evaluated",
-    "live_owned": 4,
-    "A2_status": "COMPLETED_NO_IMPROVEMENT_CLAIM"
+    "live_owned": 0,
+    "A2_status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
+    "saved_arithmetic_verdict": "NO_IMPROVEMENT_CLAIM",
+    "scientific_review": "COMPLETED"
   }
 }

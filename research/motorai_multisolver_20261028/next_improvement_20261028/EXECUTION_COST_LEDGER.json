@@ -1,0 +1,22 @@
+{
+  "historical_Full_train_conditions": 328,
+  "historical_Full_development_conditions": 32,
+  "historical_geometry_groups": 320,
+  "new_FEA": 0,
+  "new_prior_solves": 0,
+  "fixed_full_training_runs": 6,
+  "updates_each": 88565,
+  "full_training_updates_total": 531390,
+  "engineering_overfit_updates": 3000,
+  "engineering_profile_updates": 5914,
+  "all_optimizer_updates_total": 540304,
+  "final_evaluation_models": 6,
+  "final_evaluation_snapshots_each": 1440,
+  "final_evaluation_snapshots_total": 8640,
+  "training_worker_seconds_sum": 29777.982000000004,
+  "evaluation_worker_seconds_sum": 510.125,
+  "whole_stage_elapsed_seconds": 10543.453076,
+  "time_scope": "Worker sums overlap on oneGPU; stage elapsed includes checks/profile/train/eval; not independent GPU-hours",
+  "raw_or_checkpoint_transfers_to_Git": 0,
+  "automatic_retries": 0
+}

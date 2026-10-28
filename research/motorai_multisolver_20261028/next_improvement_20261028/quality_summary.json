@@ -1,0 +1,91 @@
+{
+  "scope": "Numerical provenance, completion and preregistered inner-development comparison; separate from physical qualification",
+  "source_and_checkpoints": {
+    "status": "PASS",
+    "frozen_source_files": 15,
+    "component_sidecars": 360,
+    "final_checkpoint_hashes": 6,
+    "evidence": "TERMINAL_SOURCE_AUDIT.json"
+  },
+  "collected_artifacts": {
+    "status": "PASS",
+    "files": 64,
+    "hash_size_failures": 0,
+    "evidence": "artifacts/COLLECTION_RECEIPT.json"
+  },
+  "fixed_execution": {
+    "status": "PASS",
+    "completed_train": 6,
+    "completed_evaluation": 6,
+    "updates_each": 88565,
+    "snapshot_rows_each": 1440,
+    "live_owned": 0,
+    "retries": 0
+  },
+  "same_seed_initialization": {
+    "status": "PASS",
+    "pairs": 3
+  },
+  "saved_arithmetic_improvement_gate": {
+    "status": "FAIL",
+    "delta_C_minus_G_pp": -0.04778318503112189,
+    "minimum_delta_pp": 1.0,
+    "twice_spread_pp": 1.7678116561927695,
+    "verdict": "NO_IMPROVEMENT_CLAIM"
+  },
+  "no_harm_mean_gates": {
+    "status": "PASS",
+    "items": {
+      "seen9_vector": {
+        "change_G_minus_C_pp": 0.4026604722519167,
+        "limit_pp": 0.5,
+        "pass": true
+      },
+      "all45_copper_vector": {
+        "change_G_minus_C_pp": -0.5632856595503029,
+        "limit_pp": 1.0,
+        "pass": true
+      },
+      "PA_ge_70_mean_case_vector": {
+        "change_G_minus_C_pp": 0.30325404808067447,
+        "limit_pp": 1.0,
+        "pass": true
+      }
+    }
+  },
+  "Astra_scientific_review": {
+    "status": "PASS",
+    "scope": "Review completion only, not model or physics qualification",
+    "reason": "Astra Max final received"
+  },
+  "graph_disconnection_accuracy_contribution": {
+    "status": "UNKNOWN",
+    "reason": "Global mean feedback is not native mesh repair or an exhaustive topology/capacity experiment"
+  },
+  "common_stationary_a1_Arkkio_torque": {
+    "status": "UNKNOWN",
+    "reason": "Not evaluated in this bounded comparison"
+  },
+  "formal_mesh_period_current_physics": {
+    "status": "UNKNOWN",
+    "reason": "No new solver convergence or field-current reintegration in this B-only experiment"
+  },
+  "independent_final_test": {
+    "status": "UNKNOWN",
+    "reason": "dev32 is E1 oldTRAIN exposed; this is inner development"
+  },
+  "J_Je_AC_loss": {
+    "status": "UNKNOWN",
+    "reason": "Not admitted or evaluated; copper B2 is a snapshot-derived quantity"
+  },
+  "cross_solver_exact_bridges": 0,
+  "paired_alignment_active": false,
+  "E1_weights_prior_teacher": "HOLD",
+  "reserved_and_alias_exclusions": "Frozen declaration preserved; no oldval/test payload or donor weights used",
+  "new_FEA": 0,
+  "supplemental_B2_phase_observations": {
+    "source": "SECONDARY_DIAGNOSTICS.json",
+    "used_as_new_gate": false,
+    "scope": "Reporting only, not AC qualification"
+  }
+}

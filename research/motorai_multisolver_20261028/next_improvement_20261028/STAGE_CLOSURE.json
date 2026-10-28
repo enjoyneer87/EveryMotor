@@ -1,0 +1,15 @@
+{
+  "stage": "CONTEXT-CG-20261028",
+  "status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
+  "execution_finished_UTC": "2026-10-28T11:21:39.103627+00:00",
+  "scientific_review": "ASTRA_CONTEXT_CG_FINAL_REVIEW_RECEIPT.json",
+  "collection_files": 64,
+  "final_checkpoint_hashes": 6,
+  "owned_live": 0,
+  "new_FEA": 0,
+  "automatic_retries": 0,
+  "next_compute": "NONE",
+  "post_publication_action": "Delete only motorai-a2 after nonforce-push verification; do not touch old paused or other monitors",
+  "source_plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+  "compiled_UTC": "2026-10-28T11:38:33.575470+00:00"
+}

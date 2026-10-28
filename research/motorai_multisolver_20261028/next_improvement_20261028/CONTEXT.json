@@ -8,7 +8,7 @@
   },
   "review_thread": "01a17d9e-8a81-7262-9eae-e086c1957892",
   "review_turn": "01a18166-b3bf-7b20-9a91-4ea7cf62d9ca",
-  "status": "ASTRA_MAX_COMPLETE_CG_CONTRACT_FROZEN_GPU_GATES_PENDING",
+  "status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
   "goal": "Separate metric mismatch, graph information flow, architecture, physics prior and airgap loss effects using reusable native evidence and bounded fair comparisons",
   "inputs": [
     "Frozen train328/dev32 selection and source hashes",
@@ -56,5 +56,7 @@
     "https://learn.chatgpt.com/docs/model-selection"
   ],
   "final_A2_review": "ASTRA_A2_FINAL_REVIEW_KO.md",
-  "next_contract": "CONTEXT_CG_PLAN.json"
+  "next_contract": "CONTEXT_CG_PLAN.json",
+  "final_result": "CONTEXT_CG_RESULT.json",
+  "next_compute": "NONE_IN_THIS_STAGE"
 }

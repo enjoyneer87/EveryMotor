@@ -1,0 +1,11 @@
+{
+  "thread": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "turn": "01a18242-653f-7b20-b394-a3fb2c98d59d",
+  "message": "msg_04937dbce4e464bb016ae1ddc258e48191ac8d1a5651c0aa1b",
+  "model": "gpt-6-astra",
+  "thinking": "max",
+  "status": "COMPLETED",
+  "transform": "Local workspace links relativized; scientific text preserved",
+  "file": "ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md",
+  "sha256": "dd9673cd983f02312db22ead23ce44cd716db3853f0189a6b16f9ec696a3ee33"
+}

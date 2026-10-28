@@ -21,6 +21,13 @@ def main():
   cg=json.loads(cg_path.read_text(encoding='utf-8'))
   cg_rows=''.join(f'<tr><td>{html.escape(name)}</td><td>{html.escape(v.get("status") or "UNKNOWN")}</td><td>{v.get("training_updates") or 0:,}</td></tr>' for name,v in cg.get('runs',{}).items())
   cg_card=f'<section class="card warning"><h2>현재 C/G 단일축 · Astra Max 판정 / Sol 실행</h2><p>{html.escape(cg.get("status","UNKNOWN"))} · UTC {html.escape(cg.get("checked_UTC",""))} · 본 학습 시작 {cg.get("full_training_runs_started",0)}/6</p><p>평가기 복원 {html.escape(cg.get("evaluator_restore","PENDING"))} · 소규모 overfit {html.escape(cg.get("overfit",{}).get("status","PENDING"))}. 처리량 gate 통과 후 최대3작업 병렬, 각2시간·전체6시간·재시도0. 마감 UTC {html.escape(cg.get("deadline_UTC",""))}.</p><table><tr><th>작업</th><th>상태</th><th>updates</th></tr>{cg_rows}</table><p>성분 내부(C)와 전체 graph(G)의 요약 정보 전달만 비교합니다. 물리 mesh 복원·AC손실 성과는 아닙니다. A2는 정상 완료했으나 정확도 개선 실패: 20.599→22.847%, highPA FAIL.</p><p><a href="../next_improvement_20261028/REPORT_KO.md">실험 보고서·한계</a> · <a href="../next_improvement_20261028/CONTEXT_CG_PLAN.json">동결 계약</a> · <a href="../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md">Astra Max 판정</a></p></section>'
+  cg_result_path=cg_path.with_name('CONTEXT_CG_RESULT.json')
+  if cg_result_path.exists():
+   decision=json.loads(cg_result_path.read_text(encoding='utf-8')).get('decision',{})
+   if 'arm_means' in decision:
+    means=decision['arm_means'];review=('<a href="../next_improvement_20261028/ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md">Astra Max 최종 판정</a>' if cg.get('scientific_review_status')=='COMPLETED' else 'Astra Max 최종 판정 대기')
+    summary=f'<h2>C/G 전체3시드 완료 결과</h2><p>전체 B벡터 nRMSE: C {means["C"]["all45_vector"]:.3f}% / G {means["G"]["all45_vector"]:.3f}%. Δ=C−G {decision["delta_C_minus_G_pp"]:+.3f}pp · {html.escape(decision["verdict"])}. 평균 no-harm 통과와 개선 통과는 별개입니다. {review}.</p><p>innerdev32의 정보 전달 실험이며 공극·토크·AC손실·독립최종시험 성과가 아닙니다. <a href="../next_improvement_20261028/quality_summary.json">항목별 PASS/FAIL/UNKNOWN</a></p>'
+    cg_card=cg_card.replace('</section>',summary+'</section>')
   handoff_card=cg_card+handoff_card.replace('현재 A2 인계 · Astra xHigh 판정 / Sol 실행','완료된 A2 인계 이력')
  rows=[]
  for name,d in s['execution'].items():

@@ -1,0 +1,24 @@
+{
+  "C": {
+    "copper_B2_relative_MAE_percent": 14.221327422263373,
+    "phase_region_mean_snapshot_vector": {
+      "seen9": 19.250705332532483,
+      "interior_unused": 21.21570663597446,
+      "after_last_seen": 31.61009684799413
+    }
+  },
+  "G": {
+    "copper_B2_relative_MAE_percent": 16.44030579794864,
+    "phase_region_mean_snapshot_vector": {
+      "seen9": 19.653713729454658,
+      "interior_unused": 21.289035596665205,
+      "after_last_seen": 31.362556832924927
+    }
+  },
+  "scope": "Saved diagnostic arithmetic, no additional gate or new inference",
+  "phase_change_G_minus_C": {
+    "seen9": 0.40300839692217494,
+    "interior_unused": 0.0733289606907448,
+    "after_last_seen": -0.24754001506920176
+  }
+}

@@ -11,20 +11,20 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-001](#mi-001) | P0 | 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경 | 완료·보류 자료 별도 |
 | [MI-002](#mi-002) | P0 | 충분한 형상 수로 133 확대 학습 | 실행 완료 |
 | [MI-003](#mi-003) | P0 | 이전 MotorAI 5% 이하 성과의 지표 감사 | Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가 |
-| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | Astra xHigh 진단 완료; 승인된 A2 진행 중 |
+| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | A2·C/G 모두완료; 각사전등록 개선기준미달 |
 | [MI-005](#mi-005) | P0 | 이전 MotorAI 가중치의 전이학습 | 조건부사용·선행 감사 필요 |
 | [MI-006](#mi-006) | P0 | 두 솔버·다중 정밀도·멀티모달 네트워크 | 부분 구현·연결 전략 Astra 판정 중 |
 | [MI-007](#mi-007) | P0 | 슬롯당 4·6·8도체 Field 데이터 확보 | 기하 완료·Field 확보 전 |
 | [MI-008](#mi-008) | P1 | 추가 형상 수 확대와 보류 원자료 복구 | 계보 복구 필요 |
 | [MI-009](#mi-009) | P0 | 구리 B²·전류·AC 손실 연결 | 물리량 정의·적분 검증 필요 |
-| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | L12 완료·A2 계약 승인 대기 |
-| [MI-011](#mi-011) | P1 | 국소3-hop 한계와 global context/모델 용량 | 제안·우선순위 재검토 |
+| [MI-010](#mi-010) | P1 | 미사용 위상36개에서 시간 일반화 진단 | L12·A2·C/G 위상진단완료; 개선주장없음 |
+| [MI-011](#mi-011) | P1 | 국소3-hop 한계와 global context/모델 용량 | C/G 정보전달범위 실험완료·NO_IMPROVEMENT_CLAIM |
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
 | [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra Max 주요판정 / Sol 실행 |
 | [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | A2 각3seed 완료·Astra Max 최종 판정 완료 |
-| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | C/G RUNNING; 평가기 PASS / overfit PASS_ENGINEERING_ONLY / 본학습 6/6 |
+| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | C/G 6개완료·개선기준미달·Astra 최종판정완료 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -80,7 +80,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-004"></a>
 ## MI-004 · 전체 자계 정확도 개선
 
-**P0 · Astra xHigh 진단 완료; 승인된 A2 진행 중**
+**P0 · A2·C/G 모두완료; 각사전등록 개선기준미달**
 
 **요청 출처:** 사용자 요청
 
@@ -90,7 +90,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** 새 평가·모델 전략 검토 중; 목표치와 PASS gate는 아직 미확정.
 
-**다음 행동:** 승인A2 3seed와추가A0seed43를기존계약대로완료·판정. 이후같은dev32/nativeID/mask에서stationary a1·Arkkio토크를공통평가하는실행계약. 다음단일축후보는field head전역정보피드백이며새계산자동시작안함.
+**다음 행동:** 기존Max전략에따라공통a1/Arkkio평가와구조·공극loss후보를분리. 이번단계추가계산없음.
 
 근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
 
@@ -190,7 +190,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-010"></a>
 ## MI-010 · 미사용 위상36개에서 시간 일반화 진단
 
-**P1 · L12 완료·A2 계약 승인 대기**
+**P1 · L12·A2·C/G 위상진단완료; 개선주장없음**
 
 **요청 출처:** Astra 제안
 
@@ -200,14 +200,14 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** D01-v3(Claude 대행): 다음 단일축은 phase9 데이터의 전기각 주기 인코딩(A2). 전기 주기 각도 폭 확인 후 계약, 사용자 승인 후 실행.
 
-**다음 행동:** A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json 사용자 승인 후 게이트(평가기·prefetch·변환) → A2 seed 병렬 실행.
+**다음 행동:** 동결결과보존; 현재단계재학습·위상수재조정없음.
 
 근거 파일: [SCALE360_PLAN.json](SCALE360_PLAN.json) · [native_element_graph.py](native_element_graph.py) · [FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md](FROZEN_FIELD_DIAGNOSTIC_REPORT_KO.md) · [FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md](master_plan_artifacts/FROZEN_FIELD_DIAGNOSTIC_REVIEW_KO.md) · [L12_PHASE45_RUN_CONTRACT.json](master_plan_artifacts/L12_PHASE45_RUN_CONTRACT.json) · [L12_PHASE45_REPORT_KO.md](master_plan_artifacts/L12_PHASE45_REPORT_KO.md) · [L12_PHASE45_RESULT.json](master_plan_artifacts/l12/L12_PHASE45_RESULT.json) · [A2_ELECTRICAL_PERIOD_AUDIT.json](master_plan_artifacts/A2_ELECTRICAL_PERIOD_AUDIT.json) · [A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json](master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json)
 
 <a id="mi-011"></a>
 ## MI-011 · 국소3-hop 한계와 global context/모델 용량
 
-**P1 · 제안·우선순위 재검토**
+**P1 · C/G 정보전달범위 실험완료·NO_IMPROVEMENT_CLAIM**
 
 **요청 출처:** Astra 검토와 실행자 제안
 
@@ -215,9 +215,9 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **확인된 근거와 현재 결과:** 현field head는국소3-hop+design/OP조건을사용하고pooled graph정보를각element에재주입하지않는다.용량부족이나이구조가오차원인이라고확정하지않았다.
 
-**Astra 판정:** 기존E1재사용/공통평가를우선하고generic global-context는후순위로둔다.
+**Astra 판정:** native mesh단절의기여율은UNKNOWN. graph전체mean이성분내mean보다개선됐다는주장불가; topology/capacity/prior/loss는각각별도축.
 
-**다음 행동:** 기존E1재사용경로의prior/노출/메모리gate를먼저확인한다.
+**다음 행동:** 기존Max설계와최종판정에따른후속우선순위만기록. 용량/mesh재설계자동실행없음.
 
 근거 파일: [dual_solver_mgn.py](dual_solver_mgn.py) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md)
 
@@ -311,19 +311,19 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-017"></a>
 ## MI-017 · 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용
 
-**P0 · C/G RUNNING; 평가기 PASS / overfit PASS_ENGINEERING_ONLY / 본학습 6/6**
+**P0 · C/G 6개완료·개선기준미달·Astra 최종판정완료**
 
 **요청 출처:** 사용자 2026-10-28 후속 실행 지시
 
 **요청과 목표:** A2를 바꾸지 않고 완료한 뒤, 그래프 연결 복원과 E1의 구조·prior·공극 손실 재사용을 검토해 다음 개선 실험을 진행한다.
 
-**확인된 근거와 현재 결과:** train6 HDF5 hash전부일치. full-export dual/native-node graph1component, a2제거후2component. stationary a1은모든45시각고정. prior8개는45step/nodal3shape가맞지만nativeID/sourcehash없어bindingUNKNOWN. 기존mu_eff20은case4/7 B에서선정, windingtemplate은case0 J교정이력.
+**확인된 근거와 현재 결과:** train6 HDF5 hash전부일치. full-export dual/native-node graph1component, a2제거후2component. stationary a1은모든45시각고정. prior8개는45step/nodal3shape가맞지만nativeID/sourcehash없어bindingUNKNOWN. 기존mu_eff20은case4/7 B에서선정, windingtemplate은case0 J교정이력. C/G각3seed완료; 평균Bvector20.4250/20.4728%, delta-.0478pp, noharm평균PASS; source/sidecar/checkpoint검증PASS.
 
-**Astra 판정:** C/G동일71206parameter/328train/32dev/9phase/3seed/88565update. component대graph pool차이만. 물리mesh복원아님. E1prior/weights HOLD.
+**Astra 판정:** 최종 판정문 ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md 참조; NO_IMPROVEMENT_CLAIM. native mesh복원/공극토크/AC 성과로 확대 금지.
 
-**다음 행동:** GPU overfit·profile전체15분 및전체6h/훈련각2h gate통과시6run, 최대3병렬, retry0. 시드/예산변경없음.
+**다음 행동:** 이번단계게시·예약종료. 후속공통a1/Arkkio·E1구조/공극loss/prior admission은Astra기존전략에따라별도구체계약으로분리;자동추가계산없음.
 
-근거 파일: [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_AUDIT_PLAN.json](../next_improvement_20261028/ADMISSION_AUDIT_PLAN.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md) · [NATIVE_TOPOLOGY_PRIOR_AUDIT.json](../next_improvement_20261028/NATIVE_TOPOLOGY_PRIOR_AUDIT.json) · [ASTRA_MAX_REVIEW_KO.md](../next_improvement_20261028/ASTRA_MAX_REVIEW_KO.md) · [ASTRA_A2_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md) · [CONTEXT_CG_PLAN.json](../next_improvement_20261028/CONTEXT_CG_PLAN.json) · [STATUS.json](../next_improvement_20261028/STATUS.json)
+근거 파일: [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_AUDIT_PLAN.json](../next_improvement_20261028/ADMISSION_AUDIT_PLAN.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md) · [NATIVE_TOPOLOGY_PRIOR_AUDIT.json](../next_improvement_20261028/NATIVE_TOPOLOGY_PRIOR_AUDIT.json) · [ASTRA_MAX_REVIEW_KO.md](../next_improvement_20261028/ASTRA_MAX_REVIEW_KO.md) · [ASTRA_A2_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md) · [CONTEXT_CG_PLAN.json](../next_improvement_20261028/CONTEXT_CG_PLAN.json) · [STATUS.json](../next_improvement_20261028/STATUS.json) · [REPORT_KO.md](../next_improvement_20261028/REPORT_KO.md) · [TERMINAL_SOURCE_AUDIT.json](../next_improvement_20261028/TERMINAL_SOURCE_AUDIT.json) · [quality_summary.json](../next_improvement_20261028/quality_summary.json) · [EXECUTION_COST_LEDGER.json](../next_improvement_20261028/EXECUTION_COST_LEDGER.json) · [ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md)
 
 ## 갱신 규칙
 

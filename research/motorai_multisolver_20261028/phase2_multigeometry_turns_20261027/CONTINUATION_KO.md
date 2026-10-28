@@ -1,3 +1,9 @@
+<!-- CG_FINAL_STAGE -->
+# C/G 실행 완료 · 재시작 금지
+
+A2와후속C/G각3seed가모두완료됐다. C/G평균전체B벡터 C20.4250%/G20.4728%,사전등록NO_IMPROVEMENT_CLAIM이다. 원격소유PID0,checkpoint6개와작은파일64개해시검증완료. [보고서](../next_improvement_20261028/REPORT_KO.md)·[항목별품질](../next_improvement_20261028/quality_summary.json)를따른다. Astra Max최종판정과반환게시를마치고이번motorai-a2예약만종료한다. 추가학습·추론·FEA·prior solve·자동retry는시작하지않는다. 아래실행중안내는과거이력이다.
+
+<!-- CG_FINAL_STAGE_END -->
 # 최신 후속 단계 · 2026-10-28 오후
 
 A2/A0 3시드 비교는 모두 완료됐고, Astra Max 최종판정은 NO_IMPROVEMENT_CLAIM이다. 다음은 [C/G 계약](../next_improvement_20261028/CONTEXT_CG_PLAN.json)과 [STATUS](../next_improvement_20261028/STATUS.json)를 따른다. private context_cg133.py poll로 실제 소유 PID/start-time과 receipt를 먼저 본다. 이미 준비한360 component와 완료A2를 중복 실행하지 않는다. 다음 GPU는 guard의 evaluator/overfit/profile gate를 거쳐 최대3개씩6run만 허용하며 retry0/동결UTC마감/각2h/총6h를 유지한다. 아래 인계의 A2 실행 중 표현은 과거 기록이다.

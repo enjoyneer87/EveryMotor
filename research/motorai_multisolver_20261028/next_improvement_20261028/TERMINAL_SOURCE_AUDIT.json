@@ -1,0 +1,166 @@
+{
+  "checked_UTC": "2026-10-28T11:27:27.048382+00:00",
+  "verifier_sha256": "a836c85bd42fa482059e0eeadb37921b5ccfe5046c85848f5c6e7882a317aacd",
+  "source_commit": "2a8f755d82fa295b01e264c5a4c2d5741ca7555f",
+  "source_code": [
+    {
+      "file": "context_checkpoint.py",
+      "sha256": "7137453115485106cd8a00bb0b9a7dbab67c85dd711928764ff5d527664ac745",
+      "status": "PASS"
+    },
+    {
+      "file": "context_field_model.py",
+      "sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+      "status": "PASS"
+    },
+    {
+      "file": "evaluate_context.py",
+      "sha256": "3450f638787bbaf9cd5b86c9203e3be4275712286a1da52eb02360f28e8e21e4",
+      "status": "PASS"
+    },
+    {
+      "file": "guard_context.py",
+      "sha256": "e57cec8fc8c78436b6dfba923a51df41ee0cc84b8b9b86d90d68b6cf41191a8d",
+      "status": "PASS"
+    },
+    {
+      "file": "overfit_context.py",
+      "sha256": "cef13e9278b3da38157a87b282c86e4143353747137e8b822bdd3f02b8d06f0d",
+      "status": "PASS"
+    },
+    {
+      "file": "prepare_components.py",
+      "sha256": "2a21568839772c7e90017c43ad46a022ff5d0b8630cdaa9ec1628c798b4d5b82",
+      "status": "PASS"
+    },
+    {
+      "file": "test_context_checkpoint.py",
+      "sha256": "126eb617f19f6b204b2a84fdc4ac10f63edb03a307222301ccb2ae9f6c20f71b",
+      "status": "PASS"
+    },
+    {
+      "file": "test_context_contract.py",
+      "sha256": "209f3548243cd2486db43be36973f39787675d8eb0634a972f4f04de584a7cf9",
+      "status": "PASS"
+    },
+    {
+      "file": "train_context.py",
+      "sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+      "status": "PASS"
+    },
+    {
+      "file": "dual_solver_mgn.py",
+      "sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "status": "PASS"
+    },
+    {
+      "file": "guard_l12.py",
+      "sha256": "29eb5f7f6d63b0103ac8262a53c4be0a96aa97c5111447332cadab45ce14078a",
+      "status": "PASS"
+    },
+    {
+      "file": "B_FIELD_BUNDLE_MANIFEST.json",
+      "sha256": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3",
+      "status": "PASS"
+    },
+    {
+      "file": "SCALE360_SELECTION_FROZEN.json",
+      "sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "status": "PASS"
+    },
+    {
+      "file": "FROZEN_FIELD_DIAGNOSTIC_PLAN.json",
+      "sha256": "8eafa8ccafbdb575b93eccaf6c52098764d4591725a7bcbe139b0eec1038cfb8",
+      "status": "PASS"
+    },
+    {
+      "file": "CONTEXT_CG_PLAN.json",
+      "sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+      "status": "PASS"
+    }
+  ],
+  "component_sidecars": 360,
+  "checkpoints": [
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/C_s17/final88565",
+      "file": "runs/C_s17/train/last.pt",
+      "sha256": "22b4775e450df44a15d083886e68888158e47f0c612e4df43fe79361cf0dfb13",
+      "bytes": 817900,
+      "seed": 17,
+      "arm": "C",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/C_s29/final88565",
+      "file": "runs/C_s29/train/last.pt",
+      "sha256": "905b2a416112ac2f3347814fc4a3a153a2d1f1fef99aaf0bd45031dbd5853a78",
+      "bytes": 817900,
+      "seed": 29,
+      "arm": "C",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/C_s43/final88565",
+      "file": "runs/C_s43/train/last.pt",
+      "sha256": "9d9501434f4647b8d50a27a8ebf2be886dbcbd845561cc67e171684ebed5b1e9",
+      "bytes": 817900,
+      "seed": 43,
+      "arm": "C",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/G_s17/final88565",
+      "file": "runs/G_s17/train/last.pt",
+      "sha256": "64cb28127593d795cc4fda046c2c1058cefc943c7ae026a46819263f351dba16",
+      "bytes": 817900,
+      "seed": 17,
+      "arm": "G",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/G_s29/final88565",
+      "file": "runs/G_s29/train/last.pt",
+      "sha256": "3276e1db31f03e12820d9dd3230432c9f0a6072401cb1d1e2d0d98fb0232d9e4",
+      "bytes": 817900,
+      "seed": 29,
+      "arm": "G",
+      "status": "PASS"
+    },
+    {
+      "logical_source_key": "EveryMotor/ContextCG20261028/G_s43/final88565",
+      "file": "runs/G_s43/train/last.pt",
+      "sha256": "e98b0c4ce14e68c3a01d4f2f9406ef3aec43e383b6fda106c3034270aec93a88",
+      "bytes": 817900,
+      "seed": 43,
+      "arm": "G",
+      "status": "PASS"
+    }
+  ],
+  "seed_pairs": [
+    {
+      "seed": 17,
+      "initial_tensor_state_sha256": "a1f2066be57a7223b34bb10ba2933081db87af364bfb8847cc6cc02b8d26123a",
+      "split_and_encoding": "PASS",
+      "parameter_count_each": 71206
+    },
+    {
+      "seed": 29,
+      "initial_tensor_state_sha256": "e9fa11aac205ddad7bed73951e1e7d10bf02d7276dd3370244544a59fc6b6ba5",
+      "split_and_encoding": "PASS",
+      "parameter_count_each": 71206
+    },
+    {
+      "seed": 43,
+      "initial_tensor_state_sha256": "27c4a7235841a8b05204050ff3409c6b1b68c61bc765c9ab587a976f04e5d596",
+      "split_and_encoding": "PASS",
+      "parameter_count_each": 71206
+    }
+  ],
+  "GPU_operations": 0,
+  "new_FEA": 0,
+  "model_deserialization": 0,
+  "raw_graphs_opened": 0,
+  "status": "PASS_NUMERICAL_PROVENANCE_ONLY",
+  "owned_training_and_evaluation_live": 0,
+  "formal_mesh_period_physics_qualification": "UNKNOWN_not_tested_here"
+}

@@ -1,32 +1,11 @@
 {
-  "checked_UTC": "2026-10-28T10:09:01.050536+00:00",
-  "status": "RUNNING",
+  "checked_UTC": "2026-10-28T11:24:00.526075+00:00",
+  "status": "COMPLETED",
   "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
   "deadline_UTC": "2026-10-28T14:21:21.645052+00:00",
   "source_commit": "2a8f755d82fa295b01e264c5a4c2d5741ca7555f",
-  "owned_processes_identity_matched": [
-    {
-      "path": "GUARD_OWNER.json",
-      "pid": 14832,
-      "process_started_epoch": 1793175955.574427
-    },
-    {
-      "path": "runs\\C_s43\\train_OWNER.json",
-      "pid": 6456,
-      "process_started_epoch": 1793181340.5284271
-    },
-    {
-      "path": "runs\\G_s29\\train_OWNER.json",
-      "pid": 3624,
-      "process_started_epoch": 1793181337.5275104
-    },
-    {
-      "path": "runs\\G_s43\\train_OWNER.json",
-      "pid": 1868,
-      "process_started_epoch": 1793181343.5290315
-    }
-  ],
-  "GPU": "3287 MiB, 100 %",
+  "owned_processes_identity_matched": [],
+  "GPU": "10 MiB, 0 %",
   "steps": [
     {
       "step": "overfit",
@@ -90,6 +69,48 @@
       "returncode": 0,
       "stop_reason": null,
       "elapsed_seconds": 85.01600000000326
+    },
+    {
+      "step": "G_s29:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5070.546999999991
+    },
+    {
+      "step": "C_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5070.484000000011
+    },
+    {
+      "step": "G_s43:train",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 5070.468000000008
+    },
+    {
+      "step": "G_s29:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.03100000000268
+    },
+    {
+      "step": "C_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.01600000000326
+    },
+    {
+      "step": "G_s43:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 85.01499999999942
     }
   ],
   "runs": {
@@ -133,12 +154,22 @@
       "error": null,
       "stop_reason": null
     },
-    "runs\\C_s43\\train\\RESULT.json": {
-      "status": "RUNNING",
+    "runs\\C_s43\\eval\\RESULT.json": {
+      "status": "COMPLETED",
       "arm": "C",
       "seed": 43,
-      "training_updates": 10800,
-      "elapsed_seconds": 769.2350000000006,
+      "training_updates": 0,
+      "elapsed_seconds": 78.03100000000268,
+      "GPU_smoke": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\C_s43\\train\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "C",
+      "seed": 43,
+      "training_updates": 88565,
+      "elapsed_seconds": 5039.672000000006,
       "GPU_smoke": "PASS",
       "error": null,
       "stop_reason": null
@@ -163,22 +194,42 @@
       "error": null,
       "stop_reason": null
     },
-    "runs\\G_s29\\train\\RESULT.json": {
-      "status": "RUNNING",
+    "runs\\G_s29\\eval\\RESULT.json": {
+      "status": "COMPLETED",
       "arm": "G",
       "seed": 29,
-      "training_updates": 11100,
-      "elapsed_seconds": 772.8439999999973,
+      "training_updates": 0,
+      "elapsed_seconds": 79.04700000000594,
+      "GPU_smoke": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s29\\train\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "G",
+      "seed": 29,
+      "training_updates": 88565,
+      "elapsed_seconds": 5042.218999999997,
       "GPU_smoke": "PASS",
       "error": null,
       "stop_reason": null
     },
-    "runs\\G_s43\\train\\RESULT.json": {
-      "status": "RUNNING",
+    "runs\\G_s43\\eval\\RESULT.json": {
+      "status": "COMPLETED",
       "arm": "G",
       "seed": 43,
-      "training_updates": 10600,
-      "elapsed_seconds": 769.0630000000092,
+      "training_updates": 0,
+      "elapsed_seconds": 78.92199999999139,
+      "GPU_smoke": null,
+      "error": null,
+      "stop_reason": null
+    },
+    "runs\\G_s43\\train\\RESULT.json": {
+      "status": "COMPLETED",
+      "arm": "G",
+      "seed": 43,
+      "training_updates": 88565,
+      "elapsed_seconds": 5041.719000000012,
       "GPU_smoke": "PASS",
       "error": null,
       "stop_reason": null
@@ -245,5 +296,9 @@
   "automatic_retries": 0,
   "new_FEA": 0,
   "new_prior_solves": 0,
-  "final_scientific_verdict": "PENDING_all_fixed_seeds_and_Astra_review"
+  "final_scientific_verdict": "NO_IMPROVEMENT_CLAIM",
+  "saved_arithmetic_verdict": "NO_IMPROVEMENT_CLAIM",
+  "scientific_review_status": "COMPLETED",
+  "result_sha256": "249e593448f315ab4b3167d51deb1f44ff5c521a47f8d4d6f24add72df425c7f",
+  "terminal_source_audit": "TERMINAL_SOURCE_AUDIT.json"
 }
