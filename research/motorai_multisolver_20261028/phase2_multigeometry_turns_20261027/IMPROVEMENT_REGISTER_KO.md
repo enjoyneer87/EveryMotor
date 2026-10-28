@@ -1,6 +1,6 @@
 # MotorAI 개선 요청·아이디어 통합 대장
 
-갱신일: 2026-10-28 15:20 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
+갱신일: 2026-10-28 16:03 KST. 원본은 `IMPROVEMENT_REGISTER.json`이며 이 문서는 `python update_improvement_register.py`로 갱신한다.
 
 사용자 요청, Astra 판정, 실행 계획과 실제 결과를 같은 항목 ID로 추적한다. 제안·판정·실행 완료는 서로 다른 상태다. 새 계산은 이 대장만으로 시작하지 않고 별도 bounded 실행 계약과 원자료/분할 gate를 통과해야 한다.
 
@@ -10,8 +10,8 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 |---|---|---|---|
 | [MI-001](#mi-001) | P0 | 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경 | 완료·보류 자료 별도 |
 | [MI-002](#mi-002) | P0 | 충분한 형상 수로 133 확대 학습 | 실행 완료 |
-| [MI-003](#mi-003) | P0 | 이전 MotorAI 5% 이하 성과의 지표 감사 | 원점수·target 경로 확인 |
-| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | Astra 판정 중 |
+| [MI-003](#mi-003) | P0 | 이전 MotorAI 5% 이하 성과의 지표 감사 | Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가 |
+| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | Astra xHigh 진단 완료; 승인된 A2 진행 중 |
 | [MI-005](#mi-005) | P0 | 이전 MotorAI 가중치의 전이학습 | 조건부사용·선행 감사 필요 |
 | [MI-006](#mi-006) | P0 | 두 솔버·다중 정밀도·멀티모달 네트워크 | 부분 구현·연결 전략 Astra 판정 중 |
 | [MI-007](#mi-007) | P0 | 슬롯당 4·6·8도체 Field 데이터 확보 | 기하 완료·Field 확보 전 |
@@ -22,7 +22,8 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-012](#mi-012) | P0 | 공정 비교·사전학습 누출·Full-FEA 비용 | 항상 적용 |
 | [MI-013](#mi-013) | P0 | 동결 새OP 손실 비교 반환 | 6건 회수·집계 완료,2건 미실행 보존 |
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
-| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra 계획 v1 복원·Claude 대행 실행 중 |
+| [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Claude 사용량 한도 후 Sol 실행·Astra xHigh 판정으로 인계 |
+| [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | 18 graph 구조감사·Astra xHigh 판정 완료; A2 추적 중 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -61,7 +62,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-003"></a>
 ## MI-003 · 이전 MotorAI 5% 이하 성과의 지표 감사
 
-**P0 · 원점수·target 경로 확인**
+**P0 · Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가**
 
 **요청 출처:** 사용자 지적
 
@@ -69,16 +70,16 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **확인된 근거와 현재 결과:** E1 legacy6: 전체 |B|11.096697%,공극4.956319%,토크3.214573%. all18:전체 |B|10.859%,공극4.071%,토크2.982%. 현재18.0765%는다른분할의면적가중B벡터오차로직접비교불가.
 
-**Astra 판정:** E1 target=B, nodal Bx/By→element 평균을 확인. 초기 nodal-A/curl 단정은 철회한다.
+**Astra 판정:** 공극/토크5%와전체B벡터18~20%는직접비교불가. E1 target=B·전기각·prior·공극손실과현재경량모델의차이를확인. 새모델의토크/공극퇴보여부UNKNOWN.
 
 **다음 행동:** 실제 checkpoint hash·정규화·노출데이터 감사와 공통 평가 가중치를 추가 확인한다.
 
-근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md)
+근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
 
 <a id="mi-004"></a>
 ## MI-004 · 전체 자계 정확도 개선
 
-**P0 · Astra 판정 중**
+**P0 · Astra xHigh 진단 완료; 승인된 A2 진행 중**
 
 **요청 출처:** 사용자 요청
 
@@ -88,9 +89,9 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** 새 평가·모델 전략 검토 중; 목표치와 PASS gate는 아직 미확정.
 
-**다음 행동:** 공통 데이터·형상분할·위치·단위·가중치에서 |B|와B벡터를모두평가하고,영역별성능 및 B²/AC 연결을확인한다.
+**다음 행동:** 승인A2 3seed와추가A0seed43를기존계약대로완료·판정. 이후같은dev32/nativeID/mask에서stationary a1·Arkkio토크를공통평가하는실행계약. 다음단일축후보는field head전역정보피드백이며새계산자동시작안함.
 
-근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md)
+근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
 
 <a id="mi-005"></a>
 ## MI-005 · 이전 MotorAI 가중치의 전이학습
@@ -275,19 +276,36 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-015"></a>
 ## MI-015 · Astra 전체계획·주요판정 / Sol 구현·실행 운영
 
-**P0 · Astra 계획 v1 복원·Claude 대행 실행 중**
+**P0 · Claude 사용량 한도 후 Sol 실행·Astra xHigh 판정으로 인계**
 
 **요청 출처:** 사용자 명시 요청
 
 **요청과 목표:** Astra가전체개발계획을수립하고Sol은그계획에따라실행한다.판단필요사항은Astra에게되돌린다.
 
-**확인된 근거와 현재 결과:** Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다.
+**확인된 근거와 현재 결과:** Astra 계획 턴은 Codex 사용량 한도로 파일 기록 전에 멈췄다. Claude가 Astra의 JS 호출을 그대로 재생해 v1(19단계·10 gate·9 판정)을 복원했다. 08시 창은 b46a4d7로 종료했다. 이후 사용자 결정(D07)에 따라 Claude가 Astra 판정과 Sol 실행을 겸한다. 2026-10-28 사용자 최신 지시로 현재채팅이 실행을 인계하고 Astra xHigh 판정채팅을 재사용했다. 기존Claude의명시승인A2 4작업은중복없이유지한다.
 
 **Astra 판정:** v1 D01: phase9 대 phase45 equal-update 비교 계약을 먼저 작성한다. 학습은 계약 승인 전 HOLD. E1 weights는 HOLD.
 
-**다음 행동:** SOL_EXECUTION_LOG.json에 단계별 receipt를 기록한다. W04→W03→W07 순으로 문서·계약을 작성하고, W05/W06은 읽기전용 감사로 진행한다.
+**다음 행동:** 현재승인A2완료receipt회수·동일gate계산·게시. 과학적선택은Astra xHigh이상. 기존종료예약/다른캠페인불변.
 
-근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md) · [MASTER_DEVELOPMENT_PLAN_KO.md](MASTER_DEVELOPMENT_PLAN_KO.md) · [SOL_EXECUTION_LOG.json](SOL_EXECUTION_LOG.json) · [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md)
+근거 파일: [ASTRA_TRANSFER_MULTIMODAL_KO.md](ASTRA_TRANSFER_MULTIMODAL_KO.md) · [CONTINUATION_KO.md](CONTINUATION_KO.md) · [MASTER_DEVELOPMENT_PLAN_KO.md](MASTER_DEVELOPMENT_PLAN_KO.md) · [SOL_EXECUTION_LOG.json](SOL_EXECUTION_LOG.json) · [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
+
+<a id="mi-016"></a>
+## MI-016 · Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단
+
+**P0 · 18 graph 구조감사·Astra xHigh 판정 완료; A2 추적 중**
+
+**요청 출처:** 사용자 2026-10-28 후속 지시
+
+**요청과 목표:** Claude Code MotorAI 학습 계속 진행을 이어받고, 최근모델이과거공극/토크5%이하보다나빠보이는이유를먼저분석한다.
+
+**확인된 근거와 현재 결과:** E1전체B크기11.0967/공극4.9563/토크3.2146%;최근A0전체벡터20.379이나같은예측크기13.504%. 같은공극/토크미평가. train6조건×3시각18/18graph에서rotor-stator경로단절;현재자계경로30594params.
+
+**Astra 판정:** 직접퇴보단정불가. 연결/전역정보경로·용량·prior·공극손실·각도·평가계약차이확인,기여량은ablation필요. 승인A2뒤공통공극/토크평가,그뒤globalcontext단일축우선.
+
+**다음 행동:** A2기존3seed계약완료및실패포함판정;reserved/oldvaltest보존. 새GPU/FEA는별도bounded계약이충족된범위에서만실행.
+
+근거 파일: [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [HANDOFF_STATE.json](../performance_diagnosis_20261028/HANDOFF_STATE.json) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
 
 ## 갱신 규칙
 

@@ -34,9 +34,16 @@ def main():
  checkpoint=torch.load(a.checkpoint,map_location='cpu',weights_only=False);meta=checkpoint['metadata'];assert checkpoint['epoch']==30 and meta['training_updates']==88565 and not meta['old_checkpoint_reused'] and meta.get('status','COMPLETED') in ['COMPLETED','RUNNING']
  groups=sorted({x['geometry_group'] for x in selection['records'] if x['split']=='train'});assert meta['train_groups']==groups and set(meta['development_groups'])=={x['geometry_group'] for x in admitted.values()}
  gh=hashlib.sha256(json.dumps(groups).encode()).hexdigest();contract=DomainContract(tuple(manifest['node_features']),tuple(manifest['edge_features']),('native_element_Bx_T','native_element_By_T'),gh,'native_element_reported','native_explicit_ID')
+ enc=meta.get('phase_encoding','mechanical');assert enc in ('mechanical','electrical')
+ def design(z):
+  """Model input as trained: electrical checkpoints see sin/cos(4 x mechanical angle) in design_op[10:12]."""
+  d=z['design_op']
+  if enc=='mechanical':return d
+  m=np.deg2rad(float(z['mechanical_angle_deg']));assert abs(d[10]-np.sin(m))<1e-5 and abs(d[11]-np.cos(m))<1e-5
+  d=d.copy();d[10]=np.sin(4*m);d[11]=np.cos(4*m);return d
  model=DualSolverMGN({d:contract for d in ['elmer','motorcad']},len(manifest['design_features']),('MotorCAD_N45P1_formal_UNKNOWN',),width=32,depth=3).cuda();model.load_state_dict(checkpoint['model'],strict=True);model.eval()
  seen=set(plan['seen_phase_steps']);stats={};conductors={};snapshots=[]
- result={'status':'RUNNING','checkpoint_sha256':sha(a.checkpoint),'model_sha256':sha(r/'dual_solver_mgn.py'),'evaluator_sha256':sha(__file__),'arm':meta.get('arm','A0'),'seed':meta['seed'],'bundle_manifest_sha256':sha(a.bundle/'BUNDLE_MANIFEST.json'),'selection_sha256':manifest['selection_sha256'],'plan_sha256':manifest['plan_sha256'],'new_FEA':0,'training_updates':0,'cases':32,'geometry_role':'same inner development, not independent final test','scope':plan['physical_scope'],'graphs_processed':0}
+ result={'status':'RUNNING','checkpoint_sha256':sha(a.checkpoint),'model_sha256':sha(r/'dual_solver_mgn.py'),'evaluator_sha256':sha(__file__),'arm':meta.get('arm','A0'),'phase_encoding':enc,'seed':meta['seed'],'bundle_manifest_sha256':sha(a.bundle/'BUNDLE_MANIFEST.json'),'selection_sha256':manifest['selection_sha256'],'plan_sha256':manifest['plan_sha256'],'new_FEA':0,'training_updates':0,'cases':32,'geometry_role':'same inner development, not independent final test','scope':plan['physical_scope'],'graphs_processed':0}
  def save():
   result.update(elapsed_seconds=time.monotonic()-start,peak_torch_allocated_bytes=torch.cuda.max_memory_allocated());tmp=a.out/'RESULT.tmp';tmp.write_text(json.dumps(result,indent=2)+'\n');replace_retry(tmp,a.out/'RESULT.json')
  def check():
@@ -52,7 +59,7 @@ def main():
     check()
     with np.load(p,allow_pickle=False) as z:
      g={k:torch.as_tensor(z[k],device='cuda',dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),device='cuda',dtype=torch.long)
-     x=torch.as_tensor(z['design_op'],device='cuda')[None];pred=model.forward_fields('motorcad',g,x,torch.zeros(1,device='cuda',dtype=torch.long))['fields'].cpu().numpy().astype(float)
+     x=torch.as_tensor(design(z),device='cuda')[None];pred=model.forward_fields('motorcad',g,x,torch.zeros(1,device='cuda',dtype=torch.long))['fields'].cpu().numpy().astype(float)
      target=z['target_B_T'].astype(float);w=z['weights'].astype(float);node=z['node'];reg=z['native_reg_code'];step=int(z['step']);assert np.isfinite(pred).all();copper=node[:,6]>.5
     phase='seen9' if step in seen else 'unused36'
     for scope in ['all45',phase]:

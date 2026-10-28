@@ -1,0 +1,16 @@
+{
+  "thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "turn_id": "01a18150-6000-7c32-95b8-09ca91c42b63",
+  "message_id": "msg_092c79d4e2c5858d016ae19e20cce48191ba424d6456ff3487",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning": "xhigh",
+  "scope": "same preregistered arithmetic for the already approved three-seed option",
+  "message_phase": "commentary",
+  "judgment": "3시드 판정은 기존 규칙을 보수적으로 확장해 적용할 수 있습니다. 각 arm의 `max−min` 중 큰 값을 seed spread로 쓰고, 세 시드 전체 평균과 시드별 A0−A2 차이를 모두 보고하면 됩니다. 이를 “최선 시드 선택”이나 통계적 신뢰구간으로 표현하지 않고, 누락·실패가 있으면 `INCOMPLETE_NO_CLAIM`으로 두겠습니다. 현재 전달된 상태는 아직 학습 중이므로, 최신 실행 상태를 한 번 더 확인하겠습니다.\n",
+  "turn_status": "failed",
+  "turn_error": {
+    "message": "Selected model is at capacity. Please try a different model.",
+    "additionalDetails": null
+  },
+  "interpretation": "Explicit arithmetic guidance in commentary; final scientific interpretation after all seeds complete; no new experiment release."
+}

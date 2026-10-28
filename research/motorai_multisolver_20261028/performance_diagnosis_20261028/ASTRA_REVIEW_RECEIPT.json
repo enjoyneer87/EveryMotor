@@ -1,0 +1,11 @@
+{
+  "review_thread_id": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "turn_id": "01a18142-e1e3-7673-a45a-100bec54619c",
+  "message_id": "msg_092c79d4e2c5858d016ae19bfb256081918ebe4d14aa3ca71b",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning": "xhigh",
+  "raw_scientific_message_sha256": "57214e0566d171c1f2d09a4743900f079fde305fd2e2aedc0ceb174138c81953",
+  "shared_report_sha256": "adaf860ec589c1d3ba0c29210579c1f688969128a07dff8d1f14ffd2234b2fa1",
+  "transformation": "Only repository absolute links were converted to relative links; heading added. Scientific review body unchanged.",
+  "decision_scope": "Read-only performance diagnosis and next-step scientific prioritization; no new training or inference release"
+}

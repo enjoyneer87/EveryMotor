@@ -1,0 +1,206 @@
+{
+  "schema": "motorai.performance_diagnosis.evidence.v1",
+  "generated_UTC": "2026-10-28T07:13:17.778162+00:00",
+  "purpose": "Compare metric/model contracts and audit an implementation limitation; not a common-test scorecard",
+  "old_E1": {
+    "legacy6": {
+      "B_magnitude_nRMSE_percent": 11.096697,
+      "airgap_B_magnitude_nRMSE_percent": 4.956319,
+      "torque_nRMSE_percent": 3.214573
+    },
+    "historical_scorecard_sha256": "74cfb960df989da640e6104d501ac19dc9f549a434c7e7b610296962e87ccfa8",
+    "score_provenance_commit": "61ffd1bf040176116ec18536bd1805221514fc3f",
+    "best_checkpoint_sha256": "f58636620d5601f202d0203bff06d3f29c601e2885811c271edded28123bcba7",
+    "best_epoch": 47,
+    "epochs_trained": 50,
+    "train_conditions": 450,
+    "width": 256,
+    "processor_depth": 15,
+    "target": "nodal Bx/By averaged to native elements (not nodal A curl)",
+    "recipe": "linear solve prior, airgap weight5, band spectral weight30, all45 snapshots",
+    "historical_inclusion": "Saved aggregate evidence only; no old val/test payload or weights opened in this audit"
+  },
+  "recent_field_models": [
+    {
+      "run": "A0_s17_ref",
+      "all45_vector": 20.378967431193267,
+      "all45_magnitude": 13.504076625193747,
+      "seen9_vector": 18.076472602993967,
+      "unused36_vector": 20.91534204887506,
+      "all45_copper_vector": 35.0474345448286,
+      "copper_B2_bias": -9.458019134575801,
+      "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e"
+    },
+    {
+      "run": "A0_s29",
+      "all45_vector": 20.15973722975999,
+      "all45_magnitude": 13.289830191708003,
+      "seen9_vector": 17.98431693172153,
+      "unused36_vector": 20.66814843604114,
+      "all45_copper_vector": 34.52384354837395,
+      "copper_B2_bias": -7.01923064934623,
+      "checkpoint_sha256": "c2aa86cf05c96a8cbf6f90f80f83e19e154bb9d46589ed4761d88fa77b984f1a"
+    },
+    {
+      "run": "A1_s17",
+      "all45_vector": 19.582239556637223,
+      "all45_magnitude": 12.531329124767016,
+      "seen9_vector": 19.671038645351835,
+      "unused36_vector": 19.559963354251096,
+      "all45_copper_vector": 33.009814642041164,
+      "copper_B2_bias": -11.914060820169876,
+      "checkpoint_sha256": "11d92ee4569fb6a2817cfce61cc4a752cc8dedb0276f887e8bb86d69dc5d3268"
+    },
+    {
+      "run": "A1_s29",
+      "all45_vector": 19.331282918556276,
+      "all45_magnitude": 12.51716400665684,
+      "seen9_vector": 19.478705899537836,
+      "unused36_vector": 19.294228804175322,
+      "all45_copper_vector": 34.55044162840924,
+      "copper_B2_bias": -8.332895817683525,
+      "checkpoint_sha256": "ca24dc79780ce5974fa80700a0e135e7eeb1026552e9a7a9c802034bd400d8a0"
+    }
+  ],
+  "frozen_reference": {
+    "all45_vector": 20.378967431193267,
+    "all45_magnitude": 13.504076625193747
+  },
+  "current_airgap_only_nRMSE_percent": null,
+  "current_torque_nRMSE_percent": null,
+  "common_E1_vs_recent_regression_verdict": "UNKNOWN_not_measured_on_same_cases_support_weights_and_quantities",
+  "L12_phase45_verdict": "NO_IMPROVEMENT_CLAIM",
+  "topology": {
+    "verified_graphs": 18,
+    "graphs_without_rotor_stator_path": 18,
+    "capacity": {
+      "width": 32,
+      "depth": 3,
+      "all_instantiated_parameters": 70182,
+      "parameters_on_motorcad_field_prediction_path": 30594,
+      "unused_by_field_loss": 39588
+    },
+    "execution": {
+      "status": "COMPLETED",
+      "returncode": 0,
+      "wall_seconds": 4.577999999994063,
+      "wall_cap_seconds": 180,
+      "automatic_retries": 0
+    }
+  },
+  "interpretation_limits": [
+    "Disconnected native graph paths are confirmed in a train-only sample; accuracy attribution requires an ablation",
+    "Both components remain conditioned by a shared design/OP vector",
+    "Parameter count is a construction difference, not an error attribution or an expressivity measurement",
+    "Existing innerdev32 was exposed to E1 training and is not a new independent geometry test",
+    "No E1 weights, teacher, distillation, new prior solve or cross-solver paired alignment was admitted",
+    "No new FEA, training, inference or old val/test payload access was performed by this diagnostic"
+  ],
+  "source_manifest": [
+    {
+      "source_key": "research/motorai_multisolver_20261028/performance_diagnosis_20261028/audit_graph_connectivity.py",
+      "sha256": "b16205fb8df8b7c041ef6ca394721bd83272fa484abbf985a85190e63e64955a",
+      "bytes": 6021
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json",
+      "sha256": "6a419f00784d49f984e9a9c69a956e6448cd228a8c412ae0146870db74ca1192",
+      "bytes": 26715
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/dual_solver_mgn.py",
+      "sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "bytes": 9311
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/native_element_graph.py",
+      "sha256": "1a0a357a6861c65e51cbbefc53e4965d7630732e8e3b2e01e3e0e6c449a2bf66",
+      "bytes": 6370
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/train_field_scale360.py",
+      "sha256": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+      "bytes": 8330
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/train_field_l12.py",
+      "sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+      "bytes": 11819
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/evaluate_field_l12.py",
+      "sha256": "14c39449559aa3495c160a70feeda0a6bba9441d29161d2dbb7239a20b63ce72",
+      "bytes": 9722
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/SCALE360_SELECTION_FROZEN.json",
+      "sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "bytes": 575751
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/PRIOR_MOTORAI_COMPARISON_KO.md",
+      "sha256": "2b05d6779b9f53ec1bd3daa960bef43fad36febca7f3529bd47ac2099a127864",
+      "bytes": 2430
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/FROZEN_FIELD_DIAGNOSTIC_RESULT.json",
+      "sha256": "6c739483b5aec20669bad65d9a646e42df98715d77d912c5a9b17a2571b7e567",
+      "bytes": 23417
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/MASTER_DEVELOPMENT_PLAN.json",
+      "sha256": "ced76e8e21ed7bc295bf4dbd328616bc12597e4b3d3ec18f8c11f33bc173a40e",
+      "bytes": 98849
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/master_plan_artifacts/COMMON_EVALUATION_CONTRACT.json",
+      "sha256": "9ae115fd7a437e6876a62933f5b5f1cd5660c6ee2b6b4d81c2f26ca3c1dcea3e",
+      "bytes": 4005
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/master_plan_artifacts/l12/L12_PHASE45_RESULT.json",
+      "sha256": "903f8e92c7d7d55853938f6abde9a798a5869d1d919b241c86bd34ea34ac0734",
+      "bytes": 12870
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/master_plan_artifacts/L12_PHASE45_REPORT_KO.md",
+      "sha256": "6dea6faae61b2a721f894a3d9f3fbe76304308a1e279fc104e9a96e6ff4a9345",
+      "bytes": 4501
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/master_plan_artifacts/A2_ELECTRICAL_PERIOD_AUDIT.json",
+      "sha256": "456876bac76f4269d0eb59febdd29d6d5c0851dd092415cd8ac51de77a238e64",
+      "bytes": 5110
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json",
+      "sha256": "ed3e6c02e5e0e31db11c64d54fcfa332ee5fbd00b1b4a81a39cd46eec63ef827",
+      "bytes": 4740
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/L12_A2_PLAN.json",
+      "sha256": "a37ebf85aae6b5f931a04009da81365313258a0ee5716e685acc12c42e97b382",
+      "bytes": 1265
+    },
+    {
+      "source_key": "research/motorai_multisolver_20261028/phase2_multigeometry_turns_20261027/guard_l12_a2.py",
+      "sha256": "38bcf572cd5cbc8d80ebfc76c8cdbd3e258c5a4bebe6905219493570ca0286ba",
+      "bytes": 3802
+    },
+    {
+      "source_key": "results/logs/run_e1_airgap_docker.sh",
+      "sha256": "16b00f06e2486dd22d4870d55a9e7facf193b5f7f79375cb9ad874d0ff830132",
+      "bytes": 5533
+    },
+    {
+      "source_key": "train_doe_curl_mgn.py",
+      "sha256": "fdc37bf1662100636c184e1f948b896a480d4e25f7d7d68f2ba54d507fbf5a19",
+      "bytes": 54271
+    },
+    {
+      "source_key": "eval/metrics.py",
+      "sha256": "cf96d0c869657a87793907c7d71f1a596c4976ffbd7e1f1be9d751d737f71643",
+      "bytes": 7460
+    }
+  ]
+}

@@ -98,8 +98,8 @@
     },
     {
       "path": "CONTINUATION_KO.md",
-      "sha256": "d04c4bfa3800457bd0bfd521265f7fd5cb953daeef9cf1c2ea491d76be1c27b4",
-      "bytes": 6332
+      "sha256": "29ac0016af791e5aca9c9b6cd75836321bca7b8a78f199adee702367218fe886",
+      "bytes": 7986
     },
     {
       "path": "DATA_REUSE_KO.md",
@@ -118,8 +118,8 @@
     },
     {
       "path": "evaluate_field_l12.py",
-      "sha256": "4476bc495afbd74791700248822f37c3c20d0f27fa66430d1adbb3c45f73c860",
-      "bytes": 9272
+      "sha256": "14c39449559aa3495c160a70feeda0a6bba9441d29161d2dbb7239a20b63ce72",
+      "bytes": 9722
     },
     {
       "path": "evaluate_frozen_field_diagnostic.py",
@@ -192,6 +192,11 @@
       "bytes": 5983
     },
     {
+      "path": "guard_l12_a2.py",
+      "sha256": "38bcf572cd5cbc8d80ebfc76c8cdbd3e258c5a4bebe6905219493570ca0286ba",
+      "bytes": 3802
+    },
+    {
       "path": "guard_l12_parallel.py",
       "sha256": "e8d9e7132689702a586abba69c37b3bea6826c68898bdada50a5159b50dacf83",
       "bytes": 3288
@@ -203,18 +208,28 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "9644610c30be50c913bf50e663cf4bcd8f3d570732d267b35dc6463d7bc681c5",
-      "bytes": 16999
+      "sha256": "c0261ee4c56371ce25855a1ab4d2e9f5354e2b4f035aa001feaadea7267cb83a",
+      "bytes": 19470
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "777c4e3197d0d1b7ee5e66d9cc75237fc614737264d4ea0294bcf09b8119fc91",
-      "bytes": 19581
+      "sha256": "052aa2cf8e777b5c5493e5ebaec308592ef020553e7cbe7b38a58779e5ba4508",
+      "bytes": 22444
+    },
+    {
+      "path": "judge_l12_a2.py",
+      "sha256": "8f640b316e9c04f75c08e84fbd02a5868fe91da0224523af1a4cedad466792de",
+      "bytes": 8311
     },
     {
       "path": "judge_l12_phase45.py",
       "sha256": "b1bd0ff18c751515b2a4fcc4bfb4b05c57347b5804872bfb3d81e2801595bbea",
       "bytes": 5718
+    },
+    {
+      "path": "L12_A2_PLAN.json",
+      "sha256": "a37ebf85aae6b5f931a04009da81365313258a0ee5716e685acc12c42e97b382",
+      "bytes": 1265
     },
     {
       "path": "L12_PHASE45_PLAN.json",
@@ -422,6 +437,66 @@
       "bytes": 4422
     },
     {
+      "path": "master_plan_artifacts/l12a2/CHAIN_STATUS.json",
+      "sha256": "e3bc2dfd34c0fa6e5c9ca37ad55288c07b813ed518369cd5a3e79182fe796615",
+      "bytes": 577
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/COLLECTION_RECEIPT.json",
+      "sha256": "97404dfe21f363ae220f2cfe4dabf877bd46ee28685bff7c7aa3044e5145955e",
+      "bytes": 1976
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/DEPLOY_RECEIPT.json",
+      "sha256": "d7dd65f00cda69afa7650efc7708f885eec615a07da3b6980a152fe1f017621c",
+      "bytes": 1382
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/L12_A2_RESULT.json",
+      "sha256": "7030e9ffa1a66ead82b27b58da4223e278352527ec19250a3c65f79e34ea1ad3",
+      "bytes": 2329
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/A0_s17_ref/eval/conductor_B2.csv",
+      "sha256": "922d2b512faa5a5e81cdf7dd5c7a8c7d9785843260a553925030a491858bf650",
+      "bytes": 491296
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/A0_s17_ref/eval/RESULT.json",
+      "sha256": "9a340d8901caaa789b75b21cfd3917157a63704ad270a73d33b3736f1e0e9a1d",
+      "bytes": 23483
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/A0_s17_ref/eval/snapshot_errors.csv",
+      "sha256": "d8162a97531e842270cc6768c16e7ac0e1b36935220a5acfb47740ad2ca4a19f",
+      "bytes": 76545
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/A0_s17_ref/evaluate_OWNER.json",
+      "sha256": "ae6d2dd1ffe89e8e96cfd076d7a9638826d510a5556afae55a2a350862c64cb8",
+      "bytes": 245
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/A0_s17_ref/evaluate_RECEIPT.json",
+      "sha256": "d219bdb11396d95bf4cb3d8e645e639d36da5b9e3b650841b2b37e0c93599d05",
+      "bytes": 402
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/smoke_A0_s17_prefetch/train/RESULT.json",
+      "sha256": "a622fd6ab9da41beab172ebc2a99f8eb1993a5532308edafb212fa6ebf4ae1b0",
+      "bytes": 474390
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/smoke_A0_s17_prefetch/train_OWNER.json",
+      "sha256": "414d83758c8c484123797ef3890e513427503cbdfdbad0af648be7ba9a943dbb",
+      "bytes": 243
+    },
+    {
+      "path": "master_plan_artifacts/l12a2/runs/smoke_A0_s17_prefetch/train_RECEIPT.json",
+      "sha256": "c0c32784d2d283226b8a696c4c39e3befb02a7db15c613f888bc0d6c49cc7686",
+      "bytes": 401
+    },
+    {
       "path": "motorcad_geometry_probe.py",
       "sha256": "8bf223d5a2105e2c2cf4607c6e7a991c16d356670030a4d5a4092d243e2129f5",
       "bytes": 2840
@@ -558,8 +633,8 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "948aa4b5e6fa4e68daf7f39f6120e08f550ce28bd078debb09907eb5b149eadb",
-      "bytes": 12814
+      "sha256": "e27d21a8d58c46c595b60c12dff656fdbde783003cd5ab0bdad7453bd2f949c1",
+      "bytes": 14628
     },
     {
       "path": "source_manifest.json",
@@ -573,13 +648,13 @@
     },
     {
       "path": "STATE.json",
-      "sha256": "d3f31a97e230d9e5c062cc59242768bf51184ebe04a7d18de01826c22237c995",
-      "bytes": 4621
+      "sha256": "23361e8578d555377a88ca3b356f368f4841cdf4b24bb088d184c4d7e8cf08d7",
+      "bytes": 5167
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "20f9c0009fbb386c9073d7cef30b3dada208f901d8871581fcb306326bb95a48",
-      "bytes": 10305
+      "sha256": "4a7efd83426dc4746abe16d060aa2fe2000d46741da907dd12ee6c91c71e0828",
+      "bytes": 11523
     },
     {
       "path": "STEP128_COMPARISON.json",
@@ -648,8 +723,8 @@
     },
     {
       "path": "train_field_l12.py",
-      "sha256": "ec369a4e1189a0ca64616a933dba9420bc96b9872463c9032c497e391bf1cbb5",
-      "bytes": 9838
+      "sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+      "bytes": 11819
     },
     {
       "path": "train_field_scale360.py",
@@ -668,8 +743,8 @@
     },
     {
       "path": "update_dashboard.py",
-      "sha256": "8e554e09d4c73d0271775920d84d1bf7b0f30919804abeb287efa0a3c8932183",
-      "bytes": 13061
+      "sha256": "5ad52044c6882ec9b359616a5d37f25f4702ac07cdac1a10fed98e5a260197cc",
+      "bytes": 14885
     },
     {
       "path": "update_improvement_register.py",

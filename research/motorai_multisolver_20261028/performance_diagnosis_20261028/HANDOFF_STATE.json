@@ -1,0 +1,87 @@
+{
+  "checked_UTC": "2026-10-28T07:13:16.689629+00:00",
+  "source_session": {
+    "platform": "Claude Code",
+    "title": "MotorAI 학습 계속 진행",
+    "session_id": "c7aa7e1b-3e76-4741-a258-071716aa4e0a",
+    "last_human_approval_UTC": "2026-10-28T06:14:42.796Z",
+    "approval": "A2 s17/s29/s43 and A0 s43 in parallel after gates",
+    "stopped_due_to_usage_limit_UTC": "2026-10-28T06:22:36.980Z"
+  },
+  "current_authority": {
+    "planning_and_scientific_decisions": "Astra xHigh or higher",
+    "execution": "Sol; continuation under current user handoff request"
+  },
+  "existing_chain_status": "RUNNING",
+  "gates": [
+    {
+      "step": "A0_s17_ref:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 75.01600000000326
+    },
+    {
+      "step": "smoke_A0_s17_prefetch",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 175.01499999999942,
+      "epoch1_dev": 47.803460632172296,
+      "expected": 47.803460632172296
+    }
+  ],
+  "owned_processes_identity_matched": 4,
+  "identity_check": "psutil PID and create_time within0.01s for each recorded owner; not based on process name",
+  "GPU": "4357 MiB, 100 %",
+  "runs": {
+    "A0_s43/train": {
+      "status": "RUNNING",
+      "arm": "A0",
+      "seed": 43,
+      "training_updates": 45800,
+      "epochs_completed": 15,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s17/train": {
+      "status": "RUNNING",
+      "arm": "A2",
+      "seed": 17,
+      "training_updates": 47200,
+      "epochs_completed": 15,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s29/train": {
+      "status": "RUNNING",
+      "arm": "A2",
+      "seed": 29,
+      "training_updates": 46700,
+      "epochs_completed": 15,
+      "error": null,
+      "stop_reason": null
+    },
+    "A2_s43/train": {
+      "status": "RUNNING",
+      "arm": "A2",
+      "seed": 43,
+      "training_updates": 46300,
+      "epochs_completed": 15,
+      "error": null,
+      "stop_reason": null
+    }
+  },
+  "deployed_code_hashes": {
+    "train_field_l12.py": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+    "evaluate_field_l12.py": "14c39449559aa3495c160a70feeda0a6bba9441d29161d2dbb7239a20b63ce72",
+    "guard_l12_a2.py": "38bcf572cd5cbc8d80ebfc76c8cdbd3e258c5a4bebe6905219493570ca0286ba",
+    "L12_A2_PLAN.json": "a37ebf85aae6b5f931a04009da81365313258a0ee5716e685acc12c42e97b382"
+  },
+  "no_duplicate_launch": true,
+  "new_jobs_launched_by_this_handoff": 0,
+  "prior_08KST_window": "closed; no old automation reactivation",
+  "checkpoint_selection": "final update only, all fixed seeds; no best seed/epoch selection",
+  "source_field_or_checkpoint_copied_locally": false,
+  "followup": "Collect all final receipts and apply the unchanged preregistered margins; missing/failed runs stay explicit."
+}

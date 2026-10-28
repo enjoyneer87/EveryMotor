@@ -1,0 +1,19 @@
+{
+  "attempt": "A2",
+  "code_hashes": {
+    "dual_solver_mgn.py": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+    "train_field_l12.py": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+    "evaluate_field_l12.py": "14c39449559aa3495c160a70feeda0a6bba9441d29161d2dbb7239a20b63ce72",
+    "guard_l12.py": "29eb5f7f6d63b0103ac8262a53c4be0a96aa97c5111447332cadab45ce14078a",
+    "L12_PHASE45_PLAN.json": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+    "SCALE360_SELECTION_FROZEN.json": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+    "B_FIELD_BUNDLE_MANIFEST.json": "03d02816cdcf378386b0e3f5139ece00dd213170498c8240ca22b2200a69c6d3",
+    "FROZEN_FIELD_DIAGNOSTIC_PLAN.json": "8eafa8ccafbdb575b93eccaf6c52098764d4591725a7bcbe139b0eec1038cfb8",
+    "FROZEN_FIELD_DIAGNOSTIC_RESULT.json": "6c739483b5aec20669bad65d9a646e42df98715d77d912c5a9b17a2571b7e567",
+    "SCALE360_TRAIN_RESULT.json": "620e544cfbc84c4f3a8f0f79bcce859b9da74feb7dd5f01a2664d19706d05025",
+    "guard_l12_a2.py": "38bcf572cd5cbc8d80ebfc76c8cdbd3e258c5a4bebe6905219493570ca0286ba",
+    "L12_A2_PLAN.json": "a37ebf85aae6b5f931a04009da81365313258a0ee5716e685acc12c42e97b382"
+  },
+  "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+  "bundle": "L12 R1 stage, read-only"
+}

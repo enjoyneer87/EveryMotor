@@ -1,0 +1,58 @@
+{
+  "experiment": "L12 A2 electrical-angle encoding, phase9, fixed3 seeds per arm",
+  "evaluation_contract_sha256": "9ae115fd7a437e6876a62933f5b5f1cd5660c6ee2b6b4d81c2f26ca3c1dcea3e",
+  "fixed_seeds": [
+    17,
+    29,
+    43
+  ],
+  "runs": {
+    "A0_s17": {
+      "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+      "seed": 17,
+      "all45_vector": 20.378967431193267,
+      "all45_magnitude": 13.504076625193747,
+      "all45_vector_RMSE_T": 0.20054882093625676,
+      "seen9_vector": 18.076472602993967,
+      "unused36_vector": 20.91534204887506,
+      "all45_copper_vector": 35.0474345448286,
+      "copper_B2_bias": -9.458019134575801,
+      "PA_ge_70_mean_case_vector": 34.1017039258408,
+      "PA_lt_70_mean_case_vector": 18.69222949782826,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.392525246369477,
+        "interior_unused": 21.198844579480514,
+        "after_last_seen": 31.59650143862615
+      }
+    },
+    "A0_s29": {
+      "checkpoint_sha256": "c2aa86cf05c96a8cbf6f90f80f83e19e154bb9d46589ed4761d88fa77b984f1a",
+      "seed": 29,
+      "all45_vector": 20.15973722975999,
+      "all45_magnitude": 13.289830191708003,
+      "all45_vector_RMSE_T": 0.1983913829522417,
+      "seen9_vector": 17.98431693172153,
+      "unused36_vector": 20.66814843604114,
+      "all45_copper_vector": 34.52384354837395,
+      "copper_B2_bias": -7.01923064934623,
+      "PA_ge_70_mean_case_vector": 34.06917117806921,
+      "PA_lt_70_mean_case_vector": 18.447059861603968,
+      "phase_region_mean_snapshot_vector": {
+        "seen9": 19.305620679009888,
+        "interior_unused": 21.045950286289177,
+        "after_last_seen": 31.019748751818646
+      }
+    }
+  },
+  "missing_or_failed": {
+    "A0_s43": "missing final evaluation or snapshot CSV",
+    "A2_s17": "missing final evaluation or snapshot CSV",
+    "A2_s29": "missing final evaluation or snapshot CSV",
+    "A2_s43": "missing final evaluation or snapshot CSV"
+  },
+  "decision": {
+    "verdict": "INCOMPLETE_NO_CLAIM"
+  },
+  "scope": "innerdev32, E1 oldTRAIN exposed; no independent test, AC or E1-vs-new torque comparison",
+  "review_status": "Arithmetic applies original margins; final scientific interpretation belongs to Astra xHigh or higher"
+}

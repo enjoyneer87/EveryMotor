@@ -1,0 +1,14 @@
+{
+  "step": "train",
+  "pid": 16068,
+  "process_started_epoch": 1793168321.9627776,
+  "guard_pid": 12660,
+  "guard_started_epoch": 1793168246.8667686,
+  "started_UTC": "2026-10-28T06:18:41.961689+00:00",
+  "wall_seconds_max": 10800,
+  "finished_UTC": "2026-10-28T06:21:36.988154+00:00",
+  "elapsed_seconds": 175.01499999999942,
+  "returncode": 0,
+  "stop_reason": null,
+  "retries": 0
+}

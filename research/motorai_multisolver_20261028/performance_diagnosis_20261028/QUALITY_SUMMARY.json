@@ -1,0 +1,20 @@
+{
+  "checked_UTC": "2026-10-28T07:14:26.003361+00:00",
+  "source_integrity": "PASS_21_source_files_and18_graph_hashes",
+  "Astra_review_delivery": "PASS_completed_scientific_message_requested_gpt6astra_xhigh",
+  "graph_property": "18of18_sampled_graphs_have_no_rotor_stator_path",
+  "graph_causal_accuracy_attribution": "UNKNOWN_requires_ablation",
+  "common_E1_recent_airgap_torque_regression": "UNKNOWN_not_measured",
+  "old_val_test_payloads_opened": 0,
+  "new_FEA": 0,
+  "new_training_updates": 0,
+  "new_GPU_inference": 0,
+  "physical_AC_accuracy": "UNKNOWN_not_tested",
+  "formal_convergence": "UNKNOWN_not_requalified",
+  "A2_three_seed_approval": "Existing user approval preserved; explicit Astra arithmetic guidance recorded before its separate capacity error",
+  "A2_numeric_status": "INCOMPLETE_NO_CLAIM_4_new_runs_in_progress",
+  "execution_notes": [
+    "First inline audit transport failed before remote execution due to Windows command length. File transport correction executed the read-only audit once.",
+    "Current A2 jobs were never relaunched or modified by this handoff."
+  ]
+}

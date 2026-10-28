@@ -1,0 +1,60 @@
+{
+  "scope": "performance-diagnosis code,small evidence,review and report; not physical accuracy qualification",
+  "files": [
+    {
+      "path": "A2_THREE_SEED_ARITHMETIC_REVIEW.json",
+      "bytes": 1219,
+      "sha256": "f6b06921d03ed9c16ea210ba95de0856ba041fea85bbe926ea574d704ac219bd"
+    },
+    {
+      "path": "ASTRA_REVIEW_KO.md",
+      "bytes": 7985,
+      "sha256": "adaf860ec589c1d3ba0c29210579c1f688969128a07dff8d1f14ffd2234b2fa1"
+    },
+    {
+      "path": "ASTRA_REVIEW_RECEIPT.json",
+      "bytes": 740,
+      "sha256": "6bdce06b516afaee3929144fddf76409d36b84e2fa121ecff477be15cc70e37d"
+    },
+    {
+      "path": "audit_graph_connectivity.py",
+      "bytes": 6021,
+      "sha256": "b16205fb8df8b7c041ef6ca394721bd83272fa484abbf985a85190e63e64955a"
+    },
+    {
+      "path": "build_evidence.py",
+      "bytes": 5305,
+      "sha256": "814434da8fec602bb378ce64b1602cb25e6028e783047a85b02828c8452ce1bf"
+    },
+    {
+      "path": "DIAGNOSTIC_EVIDENCE.json",
+      "bytes": 9343,
+      "sha256": "76bafaabce94bed453d2c57f02e81a02d7053ee697ffe4e2c7d4b94cfd7ea2b4"
+    },
+    {
+      "path": "GRAPH_TOPOLOGY_AUDIT.json",
+      "bytes": 26715,
+      "sha256": "6a419f00784d49f984e9a9c69a956e6448cd228a8c412ae0146870db74ca1192"
+    },
+    {
+      "path": "HANDOFF_STATE.json",
+      "bytes": 2974,
+      "sha256": "ca9b30b7dd3791e4f40aefd09365bfd423da4d196101390137915a2a8e675955"
+    },
+    {
+      "path": "JUDGE_ARITHMETIC_VALIDATION.json",
+      "bytes": 332,
+      "sha256": "34d753e79693a4ee7ab5dcfe11641b013728c2ce69074a62812406bfbeda5b90"
+    },
+    {
+      "path": "QUALITY_SUMMARY.json",
+      "bytes": 1121,
+      "sha256": "b64009ce0f6f23695dfeb7d6ae4b3ad75c6fd700fb205a7e10075266642fa4c5"
+    },
+    {
+      "path": "REPORT_KO.md",
+      "bytes": 8569,
+      "sha256": "aeec9a40cf64fc601b1c13e6bcfb4c6f270d815cef0615314720efdaaa8f3487"
+    }
+  ]
+}

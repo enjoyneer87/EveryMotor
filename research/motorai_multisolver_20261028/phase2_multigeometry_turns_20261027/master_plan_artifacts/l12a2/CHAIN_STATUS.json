@@ -1,0 +1,23 @@
+{
+  "started_UTC": "2026-10-28T06:17:26.939580+00:00",
+  "mode": "gates_then_parallel",
+  "steps": [
+    {
+      "step": "A0_s17_ref:evaluate",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 75.01600000000326
+    },
+    {
+      "step": "smoke_A0_s17_prefetch",
+      "status": "COMPLETED",
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 175.01499999999942,
+      "epoch1_dev": 47.803460632172296,
+      "expected": 47.803460632172296
+    }
+  ],
+  "status": "RUNNING"
+}

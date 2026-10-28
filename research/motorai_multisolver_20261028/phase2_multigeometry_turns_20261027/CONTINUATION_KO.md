@@ -1,4 +1,12 @@
-# 08시까지 후속 작업
+# 현재 인계 · 2026-10-28 오후
+
+사용자 최신 지시로 Claude Code `MotorAI 학습 계속 진행` 세션을 Sol이 이어받았다. 판단은 Astra xHigh 이상 채팅 `01a17d9e-8a81-7262-9eae-e086c1957892`가 담당한다. 아래의 08시 창과 종료 receipt는 과거 이력이며 재활성화하지 않는다.
+
+현재 승인된 실행은 **A2 seed17/29/43 + A0 seed43** 네 건이다. Claude 세션의 2026-10-28 15:14 KST 사용자 승인 후 gate를 통과해 133에서 실행 중이다. 새 작업을 발사하지 말고 `motorai_ctl.py status`로 PID/start-time 및 receipt를 확인한다. A0 seed17/29는 완료 결과를 재사용한다. 학습·평가가 모두 끝나면 private `collect_l12_a2.py`로 작은 terminal 결과만 해시 검증 회수하고, `judge_l12_a2.py`로 모든 3seed를 포함해 기존 gate를 산술 계산한다. 누락·실패는 INCOMPLETE_NO_CLAIM이며 새 seed·재시도·best epoch 선택을 하지 않는다.
+
+[인계 상태](../performance_diagnosis_20261028/HANDOFF_STATE.json), [Astra 성능 차이 판정](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md), [진단 보고서](../performance_diagnosis_20261028/REPORT_KO.md)를 우선 읽는다. train6조건×3시각의18개 graph 모두 rotor–stator 메시지 경로가 끊겨 있었다. 기존 E1 공극/토크와 최근 전체B벡터 점수는 직접 비교하지 않는다. 다음은 같은 dev32의 stationary a1/Arkkio 토크 공통 평가 계약이며, 새 추론/학습은 승인된 구체 계약을 벗어나 시작하지 않는다. 원자료·weights와 기존 source/split/예약/다른 캠페인은 보존한다.
+
+# 종료된 08시까지 후속 작업
 
 > 종료(2026-10-28 08:18 KST): Astra 마스터플랜 미완성·미기록, 08시 이후 새 계산 없음. [SESSION_CLOSURE_20261028_KO.md](SESSION_CLOSURE_20261028_KO.md) 참조.
 

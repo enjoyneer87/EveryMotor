@@ -1,0 +1,8 @@
+{
+  "scope": "Arithmetic-only validation; synthetic midpoint third seed is a test fixture, not a trained model or observation",
+  "two_seed_legacy_L12_reproduction": "PASS",
+  "midpoint_fixture_three_seed_range_compatibility": "PASS",
+  "new_training_updates": 0,
+  "new_inference": 0,
+  "old_val_test_payloads_opened": 0
+}

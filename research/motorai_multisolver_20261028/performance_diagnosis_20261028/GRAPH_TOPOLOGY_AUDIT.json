@@ -1,0 +1,885 @@
+{
+  "schema": "motorai.performance_diagnosis.topology.v1",
+  "checked_UTC": "2026-10-28T06:51:03.214536+00:00",
+  "host_role": "133 CPU read-only audit while existing A2 GPU jobs continue",
+  "selection": "six evenly spaced sorted train condition IDs; steps0/20/40, chosen without labels",
+  "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+  "script_sha256": "b16205fb8df8b7c041ef6ca394721bd83272fa484abbf985a85190e63e64955a",
+  "model_code_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+  "requested_graphs": 18,
+  "verified_graphs": 18,
+  "graphs_without_rotor_stator_path": 18,
+  "capacity": {
+    "width": 32,
+    "depth": 3,
+    "all_instantiated_parameters": 70182,
+    "parameters_on_motorcad_field_prediction_path": 30594,
+    "unused_by_field_loss": 39588
+  },
+  "new_FEA": 0,
+  "new_training_updates": 0,
+  "GPU_inference": 0,
+  "field_label_arrays_read": 0,
+  "old_val_test_payloads_opened": 0,
+  "limitations": [
+    "18 train graphs are a topology sample, not a corpus census",
+    "No measured accuracy effect or causality from connectivity alone",
+    "Shared design/OP conditioning still reaches both components",
+    "No replacement connectivity or coordinate-nearest ID recovery performed"
+  ],
+  "graphs": [
+    {
+      "case_index": 40,
+      "geometry_group": "EveryMotor_DOE_group_40",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_240/case_0040/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "37fcfa8d52a6ec8d722f8675d4eba381e3060f1a9201719bb4a96685c0d1c45c",
+      "graph_name": "case0040_step00.npz",
+      "graph_sha256": "fe339d2a6b1d9c5d383edefcb1274c84bec0acd0b587a883b9798ef623fb7ad7",
+      "triangles": 18140,
+      "directed_edges": 53770,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12078,
+          "materials": {
+            "stator": 6750,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2754,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6062,
+          "materials": {
+            "stator": 0,
+            "rotor": 2983,
+            "magnet": 823,
+            "copper": 0,
+            "air": 2142,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 40,
+      "geometry_group": "EveryMotor_DOE_group_40",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_240/case_0040/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "37fcfa8d52a6ec8d722f8675d4eba381e3060f1a9201719bb4a96685c0d1c45c",
+      "graph_name": "case0040_step20.npz",
+      "graph_sha256": "2e1e1a3c5e96162f50ec929319d990836123a786066d5901c60f13e39f67862d",
+      "triangles": 18140,
+      "directed_edges": 53770,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12078,
+          "materials": {
+            "stator": 6750,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2754,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6062,
+          "materials": {
+            "stator": 0,
+            "rotor": 2983,
+            "magnet": 823,
+            "copper": 0,
+            "air": 2142,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 40,
+      "geometry_group": "EveryMotor_DOE_group_40",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_240/case_0040/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "37fcfa8d52a6ec8d722f8675d4eba381e3060f1a9201719bb4a96685c0d1c45c",
+      "graph_name": "case0040_step40.npz",
+      "graph_sha256": "529a9bee5eec20b0f32474b65a67004a72e6ee24df3baa61fd5229f4b29584c3",
+      "triangles": 18140,
+      "directed_edges": 53770,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12078,
+          "materials": {
+            "stator": 6750,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2754,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6062,
+          "materials": {
+            "stator": 0,
+            "rotor": 2983,
+            "magnet": 823,
+            "copper": 0,
+            "air": 2142,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 111,
+      "geometry_group": "EveryMotor_DOE_group_111",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_240/case_0111/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e23c0b946bac5da952ae3f6f3263baeb50f442c0abb2478d927e23bf28ada0a9",
+      "graph_name": "case0111_step00.npz",
+      "graph_sha256": "6899ed6ec672fe24b32fea8d51782cbedd093b9181c9a81d684454df98a7ed9a",
+      "triangles": 20638,
+      "directed_edges": 61140,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 14694,
+          "materials": {
+            "stator": 8712,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 894,
+            "wedge": 204,
+            "shaft": 0,
+            "impreg": 3444,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 5944,
+          "materials": {
+            "stator": 0,
+            "rotor": 2910,
+            "magnet": 793,
+            "copper": 0,
+            "air": 2127,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 111,
+      "geometry_group": "EveryMotor_DOE_group_111",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_240/case_0111/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e23c0b946bac5da952ae3f6f3263baeb50f442c0abb2478d927e23bf28ada0a9",
+      "graph_name": "case0111_step20.npz",
+      "graph_sha256": "c98991e862fef3e1552b60aaa7a6467930c5b3d93cf1b8592c0c8af23d658ed9",
+      "triangles": 20638,
+      "directed_edges": 61140,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 14694,
+          "materials": {
+            "stator": 8712,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 894,
+            "wedge": 204,
+            "shaft": 0,
+            "impreg": 3444,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 5944,
+          "materials": {
+            "stator": 0,
+            "rotor": 2910,
+            "magnet": 793,
+            "copper": 0,
+            "air": 2127,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 111,
+      "geometry_group": "EveryMotor_DOE_group_111",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_240/case_0111/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e23c0b946bac5da952ae3f6f3263baeb50f442c0abb2478d927e23bf28ada0a9",
+      "graph_name": "case0111_step40.npz",
+      "graph_sha256": "3117599d9d0ccb2f907448523ec4366c4ff8e40a017a16d1f64c2f34f39658e5",
+      "triangles": 20638,
+      "directed_edges": 61140,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 14694,
+          "materials": {
+            "stator": 8712,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 894,
+            "wedge": 204,
+            "shaft": 0,
+            "impreg": 3444,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 5944,
+          "materials": {
+            "stator": 0,
+            "rotor": 2910,
+            "magnet": 793,
+            "copper": 0,
+            "air": 2127,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 184,
+      "geometry_group": "EveryMotor_DOE_group_184",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_240/case_0184/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e9247697d0e733fac27d91b5ba26fd00478d75c07dfdaa7b9d486313ed13db56",
+      "graph_name": "case0184_step00.npz",
+      "graph_sha256": "0569bb42e92e971c6ca64bd4b518e3c9a53f8b220247bd02b35c768e6d7612b6",
+      "triangles": 19108,
+      "directed_edges": 56658,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 13038,
+          "materials": {
+            "stator": 7626,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 222,
+            "shaft": 0,
+            "impreg": 2844,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6070,
+          "materials": {
+            "stator": 0,
+            "rotor": 2974,
+            "magnet": 831,
+            "copper": 0,
+            "air": 2151,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 184,
+      "geometry_group": "EveryMotor_DOE_group_184",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_240/case_0184/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e9247697d0e733fac27d91b5ba26fd00478d75c07dfdaa7b9d486313ed13db56",
+      "graph_name": "case0184_step20.npz",
+      "graph_sha256": "ab8cda6b1dd9ba956e8fba88d367f98fff1ad108de26906dc033a58eea5058be",
+      "triangles": 19108,
+      "directed_edges": 56658,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 13038,
+          "materials": {
+            "stator": 7626,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 222,
+            "shaft": 0,
+            "impreg": 2844,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6070,
+          "materials": {
+            "stator": 0,
+            "rotor": 2974,
+            "magnet": 831,
+            "copper": 0,
+            "air": 2151,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 184,
+      "geometry_group": "EveryMotor_DOE_group_184",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_240/case_0184/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "e9247697d0e733fac27d91b5ba26fd00478d75c07dfdaa7b9d486313ed13db56",
+      "graph_name": "case0184_step40.npz",
+      "graph_sha256": "8d4f8e9a8b61ee58120e7fee6b82b2a532fbb917980f2e3c822e5bd54bc42868",
+      "triangles": 19108,
+      "directed_edges": 56658,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 13038,
+          "materials": {
+            "stator": 7626,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 222,
+            "shaft": 0,
+            "impreg": 2844,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6070,
+          "materials": {
+            "stator": 0,
+            "rotor": 2974,
+            "magnet": 831,
+            "copper": 0,
+            "air": 2151,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 340,
+      "geometry_group": "EveryMotor_DOE_group_340",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_v3/case_0340/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "49a3292ff9f66ae46d01cad339a7317ca4ad4360750506b5c26c145fb7fdd1e9",
+      "graph_name": "case0340_step00.npz",
+      "graph_sha256": "78cc27e5b0fb13bf82b569c7804f09da6cfa93db57836609b237716610b9bfc1",
+      "triangles": 19094,
+      "directed_edges": 56624,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12966,
+          "materials": {
+            "stator": 7308,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 216,
+            "shaft": 0,
+            "impreg": 3096,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6128,
+          "materials": {
+            "stator": 0,
+            "rotor": 3030,
+            "magnet": 832,
+            "copper": 0,
+            "air": 2152,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 340,
+      "geometry_group": "EveryMotor_DOE_group_340",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_v3/case_0340/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "49a3292ff9f66ae46d01cad339a7317ca4ad4360750506b5c26c145fb7fdd1e9",
+      "graph_name": "case0340_step20.npz",
+      "graph_sha256": "750e9d5ca0baf4ea9bcf2043b0dff9a6c74b9c709c53e31b1169b88aa517facc",
+      "triangles": 19094,
+      "directed_edges": 56624,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12966,
+          "materials": {
+            "stator": 7308,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 216,
+            "shaft": 0,
+            "impreg": 3096,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6128,
+          "materials": {
+            "stator": 0,
+            "rotor": 3030,
+            "magnet": 832,
+            "copper": 0,
+            "air": 2152,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 340,
+      "geometry_group": "EveryMotor_DOE_group_340",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_v3/case_0340/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "49a3292ff9f66ae46d01cad339a7317ca4ad4360750506b5c26c145fb7fdd1e9",
+      "graph_name": "case0340_step40.npz",
+      "graph_sha256": "c8685a49622c1859648b07500a7502528a4caec58891674d6d737c6436e63ad4",
+      "triangles": 19094,
+      "directed_edges": 56624,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 12966,
+          "materials": {
+            "stator": 7308,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 216,
+            "shaft": 0,
+            "impreg": 3096,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6128,
+          "materials": {
+            "stator": 0,
+            "rotor": 3030,
+            "magnet": 832,
+            "copper": 0,
+            "air": 2152,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 411,
+      "geometry_group": "EveryMotor_DOE_group_411",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_v3/case_0411/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "3d59aadacbca3268c5d4b09f76f7e86ce7236c925edd455e9d45de13d38a9194",
+      "graph_name": "case0411_step00.npz",
+      "graph_sha256": "7a67b8e75cc0e8f940c62dda247d34d93853f6f1d09ce21736b411331a392b4b",
+      "triangles": 18210,
+      "directed_edges": 53992,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 11586,
+          "materials": {
+            "stator": 6408,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2604,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6624,
+          "materials": {
+            "stator": 0,
+            "rotor": 3348,
+            "magnet": 834,
+            "copper": 0,
+            "air": 2328,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 411,
+      "geometry_group": "EveryMotor_DOE_group_411",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_v3/case_0411/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "3d59aadacbca3268c5d4b09f76f7e86ce7236c925edd455e9d45de13d38a9194",
+      "graph_name": "case0411_step20.npz",
+      "graph_sha256": "5aab257fced054f617cdd50b5a73639bcc5beab4e449b7b8f693ee8689d40651",
+      "triangles": 18210,
+      "directed_edges": 53992,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 11586,
+          "materials": {
+            "stator": 6408,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2604,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6624,
+          "materials": {
+            "stator": 0,
+            "rotor": 3348,
+            "magnet": 834,
+            "copper": 0,
+            "air": 2328,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 411,
+      "geometry_group": "EveryMotor_DOE_group_411",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_v3/case_0411/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "3d59aadacbca3268c5d4b09f76f7e86ce7236c925edd455e9d45de13d38a9194",
+      "graph_name": "case0411_step40.npz",
+      "graph_sha256": "968c181b17888c59f30a538198a9d79dc129a45988213f01452e0386cccaba5c",
+      "triangles": 18210,
+      "directed_edges": 53992,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 11586,
+          "materials": {
+            "stator": 6408,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 906,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2604,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6624,
+          "materials": {
+            "stator": 0,
+            "rotor": 3348,
+            "magnet": 834,
+            "copper": 0,
+            "air": 2328,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 479,
+      "geometry_group": "EveryMotor_DOE_group_434",
+      "split": "train",
+      "step": 0,
+      "source_key": "backup/doe_data_v3/case_0479/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "bbdd367545b1a9add9d54d90e8e63cda702469de83a052f5f95acfab88e32202",
+      "graph_name": "case0479_step00.npz",
+      "graph_sha256": "5f1b5a6688c7fa5d09d6156b8d445a56af1664ee76c3d614bc906ac3f7db0da4",
+      "triangles": 22614,
+      "directed_edges": 66964,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 15978,
+          "materials": {
+            "stator": 10524,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 1614,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2172,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6636,
+          "materials": {
+            "stator": 0,
+            "rotor": 3353,
+            "magnet": 847,
+            "copper": 0,
+            "air": 2322,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 479,
+      "geometry_group": "EveryMotor_DOE_group_434",
+      "split": "train",
+      "step": 20,
+      "source_key": "backup/doe_data_v3/case_0479/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "bbdd367545b1a9add9d54d90e8e63cda702469de83a052f5f95acfab88e32202",
+      "graph_name": "case0479_step20.npz",
+      "graph_sha256": "390b8103d7799fa547aa462f2c5b84a3bc4c56061d9ccf1fdfe82997d1acf25d",
+      "triangles": 22614,
+      "directed_edges": 66964,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 15978,
+          "materials": {
+            "stator": 10524,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 1614,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2172,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6636,
+          "materials": {
+            "stator": 0,
+            "rotor": 3353,
+            "magnet": 847,
+            "copper": 0,
+            "air": 2322,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    },
+    {
+      "case_index": 479,
+      "geometry_group": "EveryMotor_DOE_group_434",
+      "split": "train",
+      "step": 40,
+      "source_key": "backup/doe_data_v3/case_0479/postproc/Mag_OnLoadTorque_result_1.h5",
+      "source_sha256": "bbdd367545b1a9add9d54d90e8e63cda702469de83a052f5f95acfab88e32202",
+      "graph_name": "case0479_step40.npz",
+      "graph_sha256": "00dfc454775b31b5d40dc3c43ed2276fcc03576c00df0a0b7808158e7ae876a8",
+      "triangles": 22614,
+      "directed_edges": 66964,
+      "component_count": 2,
+      "isolated_triangles": 0,
+      "stator_component_count": 1,
+      "rotor_or_magnet_component_count": 1,
+      "rotor_or_magnet_can_message_stator": false,
+      "components": [
+        {
+          "triangles": 15978,
+          "materials": {
+            "stator": 10524,
+            "rotor": 0,
+            "magnet": 0,
+            "copper": 1440,
+            "air": 1614,
+            "wedge": 228,
+            "shaft": 0,
+            "impreg": 2172,
+            "other": 0
+          }
+        },
+        {
+          "triangles": 6636,
+          "materials": {
+            "stator": 0,
+            "rotor": 3353,
+            "magnet": 847,
+            "copper": 0,
+            "air": 2322,
+            "wedge": 0,
+            "shaft": 114,
+            "impreg": 0,
+            "other": 0
+          }
+        }
+      ]
+    }
+  ],
+  "execution": {
+    "status": "COMPLETED",
+    "returncode": 0,
+    "wall_seconds": 4.577999999994063,
+    "wall_cap_seconds": 180,
+    "automatic_retries": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "experiment": "L12-A2 electrical-angle phase encoding on phase9 data",
+  "contract": "master_plan_artifacts/A2_ELECTRICAL_ANGLE_RUN_CONTRACT.json",
+  "user_approval": "2026-10-28 KST: three-seed option; A2 s17, s29, s43 and A0 s43 in parallel after gates",
+  "shared_plan": "L12_PHASE45_PLAN.json (training spec, evaluation caps, guard deadline)",
+  "gates": {
+    "G-EVAL": {"run": "A0_s17_ref", "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e", "tolerance_pp": 1e-9},
+    "G-PREFETCH": {"run": "smoke_A0_s17_prefetch", "arm": "A0", "seed": 17, "prefetch": 8, "max_updates": 2957, "expected_epoch1_dev_vector_nRMSE_percent": 47.803460632172296, "tolerance_pp": 1e-9},
+    "G-TRANSFORM": "load_arrays/design assert design_op[10:12] equals sin/cos(mechanical angle) on every graph before rewriting"
+  },
+  "runs": [
+    {"id": "A2_s17", "arm": "A0", "seed": 17, "phase_encoding": "electrical"},
+    {"id": "A2_s29", "arm": "A0", "seed": 29, "phase_encoding": "electrical"},
+    {"id": "A2_s43", "arm": "A0", "seed": 43, "phase_encoding": "electrical"},
+    {"id": "A0_s43", "arm": "A0", "seed": 43, "phase_encoding": "mechanical"}
+  ],
+  "prefetch": 8,
+  "reference_runs_reused": ["A0_s17_ref", "A0_s29"],
+  "new_FEA": 0
+}
