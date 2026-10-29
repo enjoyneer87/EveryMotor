@@ -1,0 +1,19 @@
+{
+  "scope": "registered eval directories for all12 frozen runs",
+  "directories_checked": [
+    "logical-path://80514359ad8eaf2490c9",
+    "logical-path://0acc46511533bb688f25",
+    "logical-path://53b256fed42b9b3fc965",
+    "logical-path://978bc50b6b255903a233",
+    "logical-path://7c2a84dff7739ee15b79",
+    "logical-path://711d732dabe6235333a7",
+    "logical-path://dcadeaf5f2b73978a9f4",
+    "logical-path://8c09a4bf3d1046ef855f",
+    "logical-path://1ceb2f95bb46f38136f3",
+    "logical-path://0a782f39bf315246a302",
+    "logical-path://733ae30eaac9f84fb6eb",
+    "logical-path://13f38877295946ff242e"
+  ],
+  "prediction_candidates": [],
+  "unregistered_locations": "NOT_SEARCHED"
+}

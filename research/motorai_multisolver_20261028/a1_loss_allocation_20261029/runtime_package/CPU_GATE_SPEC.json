@@ -1,0 +1,97 @@
+{
+  "python_executable": "logical-path://715ead674333d6447f1f",
+  "source_files": [
+    {
+      "path": "logical-path://8dd3d178f805ee207371",
+      "sha256": "46c3a2a78331603064488bb3967509d64b5cd489575af184a82bc477f5b5e6e2",
+      "bytes": 21858
+    },
+    {
+      "path": "logical-path://1ee43e0f6b38e82fb5f6",
+      "sha256": "41283bbeac96df3437e8b52c326b7fe3110bc883c8559429acaeb5f5b63ae167",
+      "bytes": 6056
+    },
+    {
+      "path": "logical-path://87b1b2683fbf5a2bbe06",
+      "sha256": "9cd349f45788afd7b073e7d4750b743268ec6d40eb1db8eca3837d63396c2a04",
+      "bytes": 10266
+    },
+    {
+      "path": "logical-path://65f3052936788979dc00",
+      "sha256": "90d52dd0feef43e846c5fd8e9e0c8906d400a7bdaa4b5cc76dc4848c00a2d3c5",
+      "bytes": 25801
+    },
+    {
+      "path": "logical-path://ba6f16868b7ba93bb7ce",
+      "sha256": "474a22c8600f90415854efe6e22ee092e6e0871d3234b8d94c2a75046c40d451",
+      "bytes": 11504
+    },
+    {
+      "path": "logical-path://a6eb7b4b26876c45b55d",
+      "sha256": "13f857f0cdb10dd2cc03945ecec49a9081650ad99960b04515f55ffcdfbed658",
+      "bytes": 4097
+    },
+    {
+      "path": "logical-path://0586c1b312a424caa579",
+      "sha256": "74fc48f6d49f9c078ea24df62fd99b35744841148911ab2a7344aa7f42624284",
+      "bytes": 14906
+    },
+    {
+      "path": "logical-path://d4fd4288f30df4d495c1",
+      "sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "bytes": 18050
+    },
+    {
+      "path": "logical-path://9c1bf7f6c5fb9ba620ca",
+      "sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "bytes": 29021
+    },
+    {
+      "path": "logical-path://8aeb6979de9640669dc1",
+      "sha256": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+      "bytes": 1212
+    },
+    {
+      "path": "logical-path://e99a1f05a79b0160ed43",
+      "sha256": "943fb8c750122e8b63d7432bff6e26f83b56d1797b3ad7e5d610c48863b171de",
+      "bytes": 9906
+    },
+    {
+      "path": "logical-path://598f9c0225732bf77d0a",
+      "sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb",
+      "bytes": 8336
+    },
+    {
+      "path": "logical-path://22eb2884b104d8443bf7",
+      "sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "bytes": 7892
+    },
+    {
+      "path": "logical-path://81b0d0179d60201494f2",
+      "sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "bytes": 16548
+    },
+    {
+      "path": "logical-path://fd80f76598aa90a6cfb2",
+      "sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "bytes": 9311
+    },
+    {
+      "path": "logical-path://1e9f813884ddf1e12f2b",
+      "sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+      "bytes": 11819
+    },
+    {
+      "path": "logical-path://a5a2d24a64c253684ea2",
+      "sha256": "870d46e953d39eee358d4d65bc928b90bcb65c40ea10e5f3d700ef409a0d37ec",
+      "bytes": 13285
+    }
+  ],
+  "selection": {
+    "path": "logical-path://08463231fb66f8982c3c",
+    "sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d"
+  },
+  "train_bundle_dir": "logical-path://c2f2ebd04a61f432e9c7",
+  "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+  "test_packaging_repair": "Add original synthetic fixture omitted from CPU package; scientific model/trainer/loss/evaluator unchanged"
+}

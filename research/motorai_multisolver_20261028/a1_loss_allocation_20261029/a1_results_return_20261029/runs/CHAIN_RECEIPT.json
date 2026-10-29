@@ -1,0 +1,47 @@
+{
+  "status": "COMPLETED",
+  "chain_plan_sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+  "plan_sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+  "owner": {
+    "pid": 13024,
+    "create_time": 1793242534.196839
+  },
+  "started_UTC": "2026-10-29T02:55:34.514859+00:00",
+  "new_FEA": 0,
+  "new_prior_solves": 0,
+  "automatic_retries": 0,
+  "engineering_projection": {
+    "status": "PASS_RESOURCE_PROJECTION_ONLY",
+    "arms": {
+      "L0": {
+        "projected_train_seconds": 2631.3673017414394,
+        "profile_guard_seconds": 299.25,
+        "startup_seconds": 133.71900000001187,
+        "profile_update_seconds": 54.513999999995576,
+        "assessment_seconds": 111.01699999999255,
+        "safety_factor": 1.25
+      },
+      "L05": {
+        "projected_train_seconds": 2692.298607963323,
+        "profile_guard_seconds": 298.3429999999935,
+        "startup_seconds": 132.625,
+        "profile_update_seconds": 56.531999999977415,
+        "assessment_seconds": 109.18600000001607,
+        "safety_factor": 1.25
+      }
+    },
+    "projected_remaining_seconds": 27070.997729114286,
+    "available_remaining_seconds": 56906.108317,
+    "evaluation_reserve_seconds": 10800,
+    "collection_reserve_seconds": 300
+  },
+  "full_training_updates": 531390,
+  "engineering_updates": 5914,
+  "evaluation_graphs": 8640,
+  "elapsed_seconds": 13186.921999999991,
+  "completed_UTC": "2026-10-29T06:35:21.584605+00:00",
+  "scientific_verdict": "PENDING_PREREGISTERED_JSON_JUDGMENT",
+  "completed_train_runs": 6,
+  "completed_eval_runs": 6,
+  "completed_engineering_runs": 2
+}

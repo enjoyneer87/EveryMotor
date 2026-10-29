@@ -10,8 +10,8 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 |---|---|---|---|
 | [MI-001](#mi-001) | P0 | 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경 | 완료·보류 자료 별도 |
 | [MI-002](#mi-002) | P0 | 충분한 형상 수로 133 확대 학습 | 실행 완료 |
-| [MI-003](#mi-003) | P0 | 이전 MotorAI 5% 이하 성과의 지표 감사 | Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가 |
-| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | A2·C/G 모두완료; 각사전등록 개선기준미달 |
+| [MI-003](#mi-003) | P0 | 이전 MotorAI 5% 이하 성과의 지표 감사 | 공통dev32 a1·Arkkio완료; E1legacy6직접순위비교불가 |
+| [MI-004](#mi-004) | P0 | 전체 자계 정확도 개선 | A2/C-G/a1손실단일축완료·종합개선기준미달 |
 | [MI-005](#mi-005) | P0 | 이전 MotorAI 가중치의 전이학습 | 조건부사용·선행 감사 필요 |
 | [MI-006](#mi-006) | P0 | 두 솔버·다중 정밀도·멀티모달 네트워크 | 부분 구현·연결 전략 Astra 판정 중 |
 | [MI-007](#mi-007) | P0 | 슬롯당 4·6·8도체 Field 데이터 확보 | 기하 완료·Field 확보 전 |
@@ -24,7 +24,9 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 | [MI-014](#mi-014) | P0 | 실행 자원·마감·보존 관리 | 항상 적용 |
 | [MI-015](#mi-015) | P0 | Astra 전체계획·주요판정 / Sol 구현·실행 운영 | Astra Max 주요판정 / Sol 실행 |
 | [MI-016](#mi-016) | P0 | Claude MotorAI 세션 인계와 E1 대비 성능차이 원인 진단 | A2 각3seed 완료·Astra Max 최종 판정 완료 |
-| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | C/G 6개완료·개선기준미달·Astra 최종판정완료 |
+| [MI-017](#mi-017) | P0 | 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용 | 공통평가·a1손실실험도완료·미게시증거통합 |
+| [MI-018](#mi-018) | P0 | 세션 간 완료 증거와 공통 공극·토크 평가 통합 | 완료·검증·게시 |
+| [MI-019](#mi-019) | P0 | a1 손실 배분 α0 대0.5 단일축 결과 | 완료·검증·게시 |
 
 <a id="mi-001"></a>
 ## MI-001 · 기존 다형상 MES/NPZ/TXT/HDF5 회수와 실행 환경
@@ -63,7 +65,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-003"></a>
 ## MI-003 · 이전 MotorAI 5% 이하 성과의 지표 감사
 
-**P0 · Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가**
+**P0 · 공통dev32 a1·Arkkio완료; E1legacy6직접순위비교불가**
 
 **요청 출처:** 사용자 지적
 
@@ -73,14 +75,14 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** 공극/토크5%와전체B벡터18~20%는직접비교불가. E1 target=B·전기각·prior·공극손실과현재경량모델의차이를확인. 새모델의토크/공극퇴보여부UNKNOWN.
 
-**다음 행동:** 실제 checkpoint hash·정규화·노출데이터 감사와 공통 평가 가중치를 추가 확인한다.
+**다음 행동:** 완료공통평가를재실행하지않고새단일축후보의별도admission을검토한다.
 
 근거 파일: [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json)
 
 <a id="mi-004"></a>
 ## MI-004 · 전체 자계 정확도 개선
 
-**P0 · A2·C/G 모두완료; 각사전등록 개선기준미달**
+**P0 · A2/C-G/a1손실단일축완료·종합개선기준미달**
 
 **요청 출처:** 사용자 요청
 
@@ -90,7 +92,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** 새 평가·모델 전략 검토 중; 목표치와 PASS gate는 아직 미확정.
 
-**다음 행동:** 기존Max전략에따라공통a1/Arkkio평가와구조·공극loss후보를분리. 이번단계추가계산없음.
+**다음 행동:** A0/L0유지; 신규계약전추가튜닝·seed선택없음.
 
 근거 파일: [SCALE360_TRAIN_RESULT.json](SCALE360_TRAIN_RESULT.json) · [ASTRA_REVIEW_KO.md](ASTRA_REVIEW_KO.md) · [PRIOR_MOTORAI_COMPARISON_KO.md](PRIOR_MOTORAI_COMPARISON_KO.md) · [REPORT_KO.md](../performance_diagnosis_20261028/REPORT_KO.md) · [ASTRA_REVIEW_KO.md](../performance_diagnosis_20261028/ASTRA_REVIEW_KO.md) · [GRAPH_TOPOLOGY_AUDIT.json](../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json) · [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md)
 
@@ -311,7 +313,7 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 <a id="mi-017"></a>
 ## MI-017 · 그래프 단절 수정과 E1 구조·prior·공극 손실 재사용
 
-**P0 · C/G 6개완료·개선기준미달·Astra 최종판정완료**
+**P0 · 공통평가·a1손실실험도완료·미게시증거통합**
 
 **요청 출처:** 사용자 2026-10-28 후속 실행 지시
 
@@ -321,9 +323,43 @@ Astra 검토 채팅: `01a17d9e-8a81-7262-9eae-e086c1957892`. 전체 형상·OP·
 
 **Astra 판정:** 최종 판정문 ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md 참조; NO_IMPROVEMENT_CLAIM. native mesh복원/공극토크/AC 성과로 확대 금지.
 
-**다음 행동:** 이번단계게시·예약종료. 후속공통a1/Arkkio·E1구조/공극loss/prior admission은Astra기존전략에따라별도구체계약으로분리;자동추가계산없음.
+**다음 행동:** prior/weights/HOLD와구조/정규화/용량의별도단일축검토;완료단계반복금지.
 
 근거 파일: [CONTEXT.json](../next_improvement_20261028/CONTEXT.json) · [ADMISSION_AUDIT_PLAN.json](../next_improvement_20261028/ADMISSION_AUDIT_PLAN.json) · [ADMISSION_REPORT_KO.md](../next_improvement_20261028/ADMISSION_REPORT_KO.md) · [NATIVE_TOPOLOGY_PRIOR_AUDIT.json](../next_improvement_20261028/NATIVE_TOPOLOGY_PRIOR_AUDIT.json) · [ASTRA_MAX_REVIEW_KO.md](../next_improvement_20261028/ASTRA_MAX_REVIEW_KO.md) · [ASTRA_A2_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_A2_FINAL_REVIEW_KO.md) · [CONTEXT_CG_PLAN.json](../next_improvement_20261028/CONTEXT_CG_PLAN.json) · [STATUS.json](../next_improvement_20261028/STATUS.json) · [REPORT_KO.md](../next_improvement_20261028/REPORT_KO.md) · [TERMINAL_SOURCE_AUDIT.json](../next_improvement_20261028/TERMINAL_SOURCE_AUDIT.json) · [quality_summary.json](../next_improvement_20261028/quality_summary.json) · [EXECUTION_COST_LEDGER.json](../next_improvement_20261028/EXECUTION_COST_LEDGER.json) · [ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md](../next_improvement_20261028/ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md)
+
+<a id="mi-018"></a>
+## MI-018 · 세션 간 완료 증거와 공통 공극·토크 평가 통합
+
+**P0 · 완료·검증·게시**
+
+**요청 출처:** User-authorized separate Astra execution, recovered by Sol on2026-10-30
+
+**요청과 목표:** 진행 지시 및완료증거canonical동기화
+
+**확인된 근거와 현재 결과:** 12모델/17280graph·동일a1와Arkkio진단완료. 저장소의미실행표시정정·원본/공유SHA와JSON재검산통과.
+
+**Astra 판정:** ASTRA_SYNC_REVIEW_KO.md/ASTRA_FINAL_REPORT_KO.md 참조;새실행창불필요
+
+**다음 행동:** 완료단계재실행금지;다음실험HOLD
+
+근거 파일: [INTEGRATION_REPORT_KO.md](../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md) · [ASTRA_FINAL_REPORT_KO.md](../a1_loss_allocation_20261029/ASTRA_FINAL_REPORT_KO.md)
+
+<a id="mi-019"></a>
+## MI-019 · a1 손실 배분 α0 대0.5 단일축 결과
+
+**P0 · 완료·검증·게시**
+
+**요청 출처:** User-authorized separate Astra execution, recovered by Sol on2026-10-30
+
+**요청과 목표:** 진행 지시 및완료증거canonical동기화
+
+**확인된 근거와 현재 결과:** a1개선10.7399pp이나전체/seen9/구리/고PA no-harm FAIL. 최종NO_IMPROVEMENT_CLAIM, A0/L0유지.
+
+**Astra 판정:** ASTRA_SYNC_REVIEW_KO.md/ASTRA_FINAL_REPORT_KO.md 참조;새실행창불필요
+
+**다음 행동:** 완료단계재실행금지;다음실험HOLD
+
+근거 파일: [INTEGRATION_REPORT_KO.md](../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md) · [ASTRA_FINAL_REPORT_KO.md](../a1_loss_allocation_20261029/ASTRA_FINAL_REPORT_KO.md)
 
 ## 갱신 규칙
 

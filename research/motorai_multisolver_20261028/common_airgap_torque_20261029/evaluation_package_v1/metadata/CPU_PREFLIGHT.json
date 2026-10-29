@@ -1,0 +1,1530 @@
+{
+  "status": "PASS",
+  "scope": "CPU_METADATA_AND_SAVED_SOURCE_ONLY",
+  "checked_UTC": "2026-10-29T00:04:02.650191+00:00",
+  "script_sha256": "87a35968b31d108ec4a53ca813fc46730f58ebb0c9b057c1670ad32739f94ea4",
+  "operations": {
+    "remote_calls": 0,
+    "model_objects_created": 0,
+    "model_inference_calls": 0,
+    "training_updates": 0,
+    "FEA": 0,
+    "raw_graph_payloads_opened": 0,
+    "state_tensor_values_printed": 0,
+    "checkpoint_deserializations_CPU": 12
+  },
+  "checkpoint_hashes": [
+    {
+      "id": "A0_s17",
+      "path": "logical-path://3c693a0fa944dbe197c7",
+      "sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+      "bytes": 810545
+    },
+    {
+      "id": "A0_s29",
+      "path": "logical-path://2cb60164bcea5682a28f",
+      "sha256": "c2aa86cf05c96a8cbf6f90f80f83e19e154bb9d46589ed4761d88fa77b984f1a",
+      "bytes": 810801
+    },
+    {
+      "id": "A0_s43",
+      "path": "logical-path://bb31ccb72914b7aef45a",
+      "sha256": "fb921b53998b751ba0e4fd196fa27607cd0055deb3b186e065addb070fd65769",
+      "bytes": 810929
+    },
+    {
+      "id": "A2_s17",
+      "path": "logical-path://be569650ddc0688839f1",
+      "sha256": "e5086f04c86c4976e32c717a11c77e6b50e6698ea925bf7561bd4f47d1005df7",
+      "bytes": 810929
+    },
+    {
+      "id": "A2_s29",
+      "path": "logical-path://ff0dd6f410cdca44792e",
+      "sha256": "d74de31fd6a344c1f1d970567fdd9c2d8f27ede28eac52db34642c0189593f89",
+      "bytes": 810929
+    },
+    {
+      "id": "A2_s43",
+      "path": "logical-path://d0cfd4c1ebb59aa1a5a3",
+      "sha256": "eacb843f20ff5013c01fa5ed3942cecf342841843ffde33f320c4b1d7777ae55",
+      "bytes": 810929
+    },
+    {
+      "id": "C_s17",
+      "path": "logical-path://d8af2ec894d778843794",
+      "sha256": "22b4775e450df44a15d083886e68888158e47f0c612e4df43fe79361cf0dfb13",
+      "bytes": 817900
+    },
+    {
+      "id": "C_s29",
+      "path": "logical-path://173566acda33663e6eb4",
+      "sha256": "905b2a416112ac2f3347814fc4a3a153a2d1f1fef99aaf0bd45031dbd5853a78",
+      "bytes": 817900
+    },
+    {
+      "id": "C_s43",
+      "path": "logical-path://ad75259d77ff1b3d1224",
+      "sha256": "9d9501434f4647b8d50a27a8ebf2be886dbcbd845561cc67e171684ebed5b1e9",
+      "bytes": 817900
+    },
+    {
+      "id": "G_s17",
+      "path": "logical-path://d21e75fd74e84098c44f",
+      "sha256": "64cb28127593d795cc4fda046c2c1058cefc943c7ae026a46819263f351dba16",
+      "bytes": 817900
+    },
+    {
+      "id": "G_s29",
+      "path": "logical-path://53cd2944e003d69f3853",
+      "sha256": "3276e1db31f03e12820d9dd3230432c9f0a6072401cb1d1e2d0d98fb0232d9e4",
+      "bytes": 817900
+    },
+    {
+      "id": "G_s43",
+      "path": "logical-path://d27900d01ac5d0709b68",
+      "sha256": "e98b0c4ce14e68c3a01d4f2f9406ef3aec43e383b6fda106c3034270aec93a88",
+      "bytes": 817900
+    }
+  ],
+  "source_records": {
+    "selection": {
+      "path": "logical-path://c4dd93ead8d3ee350fe2",
+      "sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "bytes": 575751
+    },
+    "dev_bundle_manifest": {
+      "path": "logical-path://b1e8d36f0bf0bde948b6",
+      "sha256": "5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186",
+      "bytes": 719501
+    },
+    "component_manifest": {
+      "path": "logical-path://94b8da7de3596e23dfee",
+      "sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+      "bytes": 277745
+    },
+    "cg_plan": {
+      "path": "logical-path://95b668602ce931a2955f",
+      "sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+      "bytes": 6031
+    },
+    "legacy_A0_s17_trainer": {
+      "path": "logical-path://9cee49a3d3c69f388518",
+      "sha256": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+      "bytes": 8330
+    },
+    "legacy_A0_s17_plan": {
+      "path": "logical-path://f5774c14adc6294817d9",
+      "sha256": "e6773d8b4f66de674a3e0a28805a9018eaea751bd3175c99b7b76d2047ba5e14",
+      "bytes": 2332
+    },
+    "legacy_A0_s29_trainer": {
+      "path": "logical-path://8fc3414b4858d4a83273",
+      "sha256": "ec369a4e1189a0ca64616a933dba9420bc96b9872463c9032c497e391bf1cbb5",
+      "bytes": 9838
+    },
+    "legacy_A0_s29_evaluator": {
+      "path": "logical-path://ef861c195e196fa3d067",
+      "sha256": "4476bc495afbd74791700248822f37c3c20d0f27fa66430d1adbb3c45f73c860",
+      "bytes": 9272
+    },
+    "legacy_A0_s29_plan": {
+      "path": "logical-path://decce5b7fc930a8672e5",
+      "sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+      "bytes": 2870
+    }
+  },
+  "records": [
+    {
+      "id": "A0_s17",
+      "checkpoint_path": "logical-path://3c693a0fa944dbe197c7",
+      "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+      "metadata_missing_fields": [
+        "arm",
+        "phase_encoding"
+      ],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "PASS_CODE_AND_PLAN_HASH",
+        "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+        "allowed_absent_fields": [
+          "arm",
+          "phase_encoding"
+        ],
+        "phase_encoding_resolved": "mechanical",
+        "basis": "Pinned original trainer passes stored design_op directly; A0 contract precedes the separate electrical-angle axis",
+        "trainer": {
+          "path": "logical-path://9cee49a3d3c69f388518",
+          "sha256": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+          "bytes": 8330
+        },
+        "plan": {
+          "path": "logical-path://f5774c14adc6294817d9",
+          "sha256": "e6773d8b4f66de674a3e0a28805a9018eaea751bd3175c99b7b76d2047ba5e14",
+          "bytes": 2332
+        },
+        "design_op_lines": [
+          {
+            "line": 50,
+            "text": "  with np.load(p,allow_pickle=False) as z:"
+          },
+          {
+            "line": 51,
+            "text": "   g={k:torch.as_tensor(z[k],device=device,dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),dtype=torch.long,device=device)"
+          },
+          {
+            "line": 52,
+            "text": "   return g,torch.as_tensor(z['design_op'],device=device)[None],torch.as_tensor(z['target_B_T'],device=device)"
+          },
+          {
+            "line": 53,
+            "text": " def forward(g,x):return model.forward_fields('motorcad',g,x,torch.zeros(1,dtype=torch.long,device=device))['fields']"
+          },
+          {
+            "line": 54,
+            "text": " def update(p):"
+          }
+        ]
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 17,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+        "plan_sha256": "e6773d8b4f66de674a3e0a28805a9018eaea751bd3175c99b7b76d2047ba5e14",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "4f1a415b2b054e8e06543da992be44aacf2f916089539f04630fb5578d28f7b7",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "peak_torch_allocated_bytes",
+          "plan_sha256",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_groups",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "A0_s29",
+      "checkpoint_path": "logical-path://2cb60164bcea5682a28f",
+      "checkpoint_sha256": "c2aa86cf05c96a8cbf6f90f80f83e19e154bb9d46589ed4761d88fa77b984f1a",
+      "metadata_missing_fields": [
+        "phase_encoding"
+      ],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "PASS_CODE_AND_PLAN_HASH",
+        "checkpoint_sha256": "c2aa86cf05c96a8cbf6f90f80f83e19e154bb9d46589ed4761d88fa77b984f1a",
+        "allowed_absent_fields": [
+          "phase_encoding"
+        ],
+        "phase_encoding_resolved": "mechanical",
+        "basis": "Pinned original trainer passes stored design_op directly; A0 contract precedes the separate electrical-angle axis",
+        "trainer": {
+          "path": "logical-path://8fc3414b4858d4a83273",
+          "sha256": "ec369a4e1189a0ca64616a933dba9420bc96b9872463c9032c497e391bf1cbb5",
+          "bytes": 9838
+        },
+        "plan": {
+          "path": "logical-path://decce5b7fc930a8672e5",
+          "sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+          "bytes": 2870
+        },
+        "design_op_lines": [
+          {
+            "line": 65,
+            "text": "  with np.load(p,allow_pickle=False) as z:"
+          },
+          {
+            "line": 66,
+            "text": "   g={k:torch.as_tensor(z[k],device=device,dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),dtype=torch.long,device=device)"
+          },
+          {
+            "line": 67,
+            "text": "   return g,torch.as_tensor(z['design_op'],device=device)[None],torch.as_tensor(z['target_B_T'],device=device)"
+          },
+          {
+            "line": 68,
+            "text": " def forward(g,x):return model.forward_fields('motorcad',g,x,torch.zeros(1,dtype=torch.long,device=device))['fields']"
+          },
+          {
+            "line": 69,
+            "text": " def update(p):"
+          }
+        ]
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 29,
+        "arm": "A0",
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "ec369a4e1189a0ca64616a933dba9420bc96b9872463c9032c497e391bf1cbb5",
+        "plan_sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "plan_sha256",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "A0_s43",
+      "checkpoint_path": "logical-path://bb31ccb72914b7aef45a",
+      "checkpoint_sha256": "fb921b53998b751ba0e4fd196fa27607cd0055deb3b186e065addb070fd65769",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "fb921b53998b751ba0e4fd196fa27607cd0055deb3b186e065addb070fd65769",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 43,
+        "arm": "A0",
+        "data_arm": "A0",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+        "plan_sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "A2_s17",
+      "checkpoint_path": "logical-path://be569650ddc0688839f1",
+      "checkpoint_sha256": "e5086f04c86c4976e32c717a11c77e6b50e6698ea925bf7561bd4f47d1005df7",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "electrical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "e5086f04c86c4976e32c717a11c77e6b50e6698ea925bf7561bd4f47d1005df7",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 17,
+        "arm": "A2",
+        "data_arm": "A0",
+        "phase_encoding": "electrical",
+        "pole_pairs": 4,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+        "plan_sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "A2_s29",
+      "checkpoint_path": "logical-path://ff0dd6f410cdca44792e",
+      "checkpoint_sha256": "d74de31fd6a344c1f1d970567fdd9c2d8f27ede28eac52db34642c0189593f89",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "electrical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "d74de31fd6a344c1f1d970567fdd9c2d8f27ede28eac52db34642c0189593f89",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 29,
+        "arm": "A2",
+        "data_arm": "A0",
+        "phase_encoding": "electrical",
+        "pole_pairs": 4,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+        "plan_sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "A2_s43",
+      "checkpoint_path": "logical-path://d0cfd4c1ebb59aa1a5a3",
+      "checkpoint_sha256": "eacb843f20ff5013c01fa5ed3942cecf342841843ffde33f320c4b1d7777ae55",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "electrical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "eacb843f20ff5013c01fa5ed3942cecf342841843ffde33f320c4b1d7777ae55",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 43,
+        "arm": "A2",
+        "data_arm": "A0",
+        "phase_encoding": "electrical",
+        "pole_pairs": 4,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "trainer_sha256": "f14d726f1261e50b6958255e8833725756f7240d4d8d590f69503e67510c363e",
+        "plan_sha256": "3dc1d9cce74ba24d9fca836f120404aa4f8d39c0a159303377f7b6f9774deb91",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "original_val_test_used",
+          "paired_alignment",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "C_s17",
+      "checkpoint_path": "logical-path://d8af2ec894d778843794",
+      "checkpoint_sha256": "22b4775e450df44a15d083886e68888158e47f0c612e4df43fe79361cf0dfb13",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "22b4775e450df44a15d083886e68888158e47f0c612e4df43fe79361cf0dfb13",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 17,
+        "arm": "C",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "component",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "a1f2066be57a7223b34bb10ba2933081db87af364bfb8847cc6cc02b8d26123a",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "C_s29",
+      "checkpoint_path": "logical-path://173566acda33663e6eb4",
+      "checkpoint_sha256": "905b2a416112ac2f3347814fc4a3a153a2d1f1fef99aaf0bd45031dbd5853a78",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "905b2a416112ac2f3347814fc4a3a153a2d1f1fef99aaf0bd45031dbd5853a78",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 29,
+        "arm": "C",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "component",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "e9fa11aac205ddad7bed73951e1e7d10bf02d7276dd3370244544a59fc6b6ba5",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "C_s43",
+      "checkpoint_path": "logical-path://ad75259d77ff1b3d1224",
+      "checkpoint_sha256": "9d9501434f4647b8d50a27a8ebf2be886dbcbd845561cc67e171684ebed5b1e9",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "9d9501434f4647b8d50a27a8ebf2be886dbcbd845561cc67e171684ebed5b1e9",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 43,
+        "arm": "C",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "component",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "27c4a7235841a8b05204050ff3409c6b1b68c61bc765c9ab587a976f04e5d596",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "G_s17",
+      "checkpoint_path": "logical-path://d21e75fd74e84098c44f",
+      "checkpoint_sha256": "64cb28127593d795cc4fda046c2c1058cefc943c7ae026a46819263f351dba16",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "64cb28127593d795cc4fda046c2c1058cefc943c7ae026a46819263f351dba16",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 17,
+        "arm": "G",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "graph",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "a1f2066be57a7223b34bb10ba2933081db87af364bfb8847cc6cc02b8d26123a",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "G_s29",
+      "checkpoint_path": "logical-path://53cd2944e003d69f3853",
+      "checkpoint_sha256": "3276e1db31f03e12820d9dd3230432c9f0a6072401cb1d1e2d0d98fb0232d9e4",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "3276e1db31f03e12820d9dd3230432c9f0a6072401cb1d1e2d0d98fb0232d9e4",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 29,
+        "arm": "G",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "graph",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "e9fa11aac205ddad7bed73951e1e7d10bf02d7276dd3370244544a59fc6b6ba5",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    },
+    {
+      "id": "G_s43",
+      "checkpoint_path": "logical-path://d27900d01ac5d0709b68",
+      "checkpoint_sha256": "e98b0c4ce14e68c3a01d4f2f9406ef3aec43e383b6fda106c3034270aec93a88",
+      "metadata_missing_fields": [],
+      "phase_encoding_resolved": "mechanical",
+      "legacy_evidence": {
+        "status": "NOT_NEEDED",
+        "checkpoint_sha256": "e98b0c4ce14e68c3a01d4f2f9406ef3aec43e383b6fda106c3034270aec93a88",
+        "allowed_absent_fields": []
+      },
+      "metadata_summary": {
+        "status": "RUNNING",
+        "host": "133",
+        "seed": 43,
+        "arm": "G",
+        "data_arm": "phase9",
+        "phase_encoding": "mechanical",
+        "pole_pairs": null,
+        "training_updates": 88565,
+        "epochs_completed": 30,
+        "parameter_count": 71206,
+        "context_scope": "graph",
+        "old_checkpoint_reused": false,
+        "train_conditions": 328,
+        "development_conditions": 32,
+        "train_graphs": 2952,
+        "new_FEA": 0,
+        "AC_loss_training": false,
+        "MS_teacher_used": false,
+        "paired_alignment": false,
+        "original_val_test_used": 0,
+        "initial_tensor_state_sha256": "27c4a7235841a8b05204050ff3409c6b1b68c61bc765c9ab587a976f04e5d596",
+        "model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+        "context_model_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+        "component_manifest_sha256": "79b7f33e4c971723dd88d1b4c74c7864376621fec67b9d605e2a500059eec33f",
+        "trainer_sha256": "f24b5ecf15e7f8d0ed672de1e89554899b92376f01955ba70ece4468845534b4",
+        "plan_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+        "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+        "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+        "train_groups": {
+          "count": 288,
+          "sha256_canonical_json": "e1ad17e54e23333ac251d3e94731df741be2bead1f5da7bf3424960de5dc4a3e"
+        },
+        "development_groups": {
+          "count": 32,
+          "sha256_canonical_json": "6554774306fb6ea63a4ee0b708e840a341168da0918ad77cc9b72201441401f2"
+        },
+        "all_metadata_keys": [
+          "AC_loss_training",
+          "GPU_smoke",
+          "MS_teacher_used",
+          "arm",
+          "bundle_manifest_sha256",
+          "checked_UTC",
+          "component_manifest_sha256",
+          "context_model_sha256",
+          "context_scope",
+          "data_arm",
+          "development_conditions",
+          "development_groups",
+          "device",
+          "elapsed_seconds",
+          "epochs_completed",
+          "epochs_requested",
+          "fixed_pilot_development_groups",
+          "historical_Full_train_donor_conditions",
+          "host",
+          "initial_tensor_state_sha256",
+          "last_training_MSE_T2",
+          "max_updates",
+          "memory_scope",
+          "metrics",
+          "model_sha256",
+          "new_FEA",
+          "numpy",
+          "old_checkpoint_reused",
+          "optimizer_update_wall_seconds",
+          "original_val_test_used",
+          "paired_alignment",
+          "parameter_count",
+          "passes_completed",
+          "peak_torch_allocated_bytes",
+          "phase_encoding",
+          "plan_sha256",
+          "pole_pairs",
+          "prefetch_depth",
+          "scope",
+          "seed",
+          "seed_selection",
+          "selection_sha256",
+          "started_UTC",
+          "status",
+          "torch",
+          "train_conditions",
+          "train_graphs",
+          "train_groups",
+          "train_steps",
+          "trainer_sha256",
+          "training_updates"
+        ]
+      },
+      "checks": {
+        "final88565": "PASS",
+        "seed": "PASS",
+        "source_selection": "PASS",
+        "split": "PASS",
+        "encoding": "PASS"
+      }
+    }
+  ],
+  "all_checkpoint_hashes_verified_before_deserialization": true,
+  "legacy_design_op_source_lines": {
+    "legacy_A0_s17_trainer": [
+      {
+        "line": 50,
+        "text": "  with np.load(p,allow_pickle=False) as z:"
+      },
+      {
+        "line": 51,
+        "text": "   g={k:torch.as_tensor(z[k],device=device,dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),dtype=torch.long,device=device)"
+      },
+      {
+        "line": 52,
+        "text": "   return g,torch.as_tensor(z['design_op'],device=device)[None],torch.as_tensor(z['target_B_T'],device=device)"
+      },
+      {
+        "line": 53,
+        "text": " def forward(g,x):return model.forward_fields('motorcad',g,x,torch.zeros(1,dtype=torch.long,device=device))['fields']"
+      },
+      {
+        "line": 54,
+        "text": " def update(p):"
+      }
+    ],
+    "legacy_A0_s29_trainer": [
+      {
+        "line": 65,
+        "text": "  with np.load(p,allow_pickle=False) as z:"
+      },
+      {
+        "line": 66,
+        "text": "   g={k:torch.as_tensor(z[k],device=device,dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),dtype=torch.long,device=device)"
+      },
+      {
+        "line": 67,
+        "text": "   return g,torch.as_tensor(z['design_op'],device=device)[None],torch.as_tensor(z['target_B_T'],device=device)"
+      },
+      {
+        "line": 68,
+        "text": " def forward(g,x):return model.forward_fields('motorcad',g,x,torch.zeros(1,dtype=torch.long,device=device))['fields']"
+      },
+      {
+        "line": 69,
+        "text": " def update(p):"
+      }
+    ],
+    "legacy_A0_s29_evaluator": [
+      {
+        "line": 53,
+        "text": "    with np.load(p,allow_pickle=False) as z:"
+      },
+      {
+        "line": 54,
+        "text": "     g={k:torch.as_tensor(z[k],device='cuda',dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),device='cuda',dtype=torch.long)"
+      },
+      {
+        "line": 55,
+        "text": "     x=torch.as_tensor(z['design_op'],device='cuda')[None];pred=model.forward_fields('motorcad',g,x,torch.zeros(1,device='cuda',dtype=torch.long))['fields'].cpu().numpy().astype(float)"
+      },
+      {
+        "line": 56,
+        "text": "     target=z['target_B_T'].astype(float);w=z['weights'].astype(float);node=z['node'];reg=z['native_reg_code'];step=int(z['step']);assert np.isfinite(pred).all();copper=node[:,6]>.5"
+      },
+      {
+        "line": 57,
+        "text": "    phase='seen9' if step in seen else 'unused36'"
+      }
+    ]
+  },
+  "nvidia_gpu": [
+    "NVIDIA L40S, 46068 MiB, 45738 MiB, 10 MiB, 0 %"
+  ],
+  "nvidia_compute_apps": [],
+  "GPU_idle_observed": true,
+  "free_disk": {
+    "root": "logical-path://8545a81f99f36eda523c",
+    "total_bytes": 1919476035584,
+    "used_bytes": 394496860160,
+    "free_bytes": 1524979175424
+  },
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "executable": "logical-path://b8b8e84da4d92d591694",
+    "torch": "2.5.1+cu124",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "elapsed_seconds": 2.3440000000118744
+}

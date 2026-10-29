@@ -1,0 +1,12 @@
+{
+  "provenance_integrity": "PASS",
+  "saved_arithmetic_replay": "PASS",
+  "numerical_values_preserved": "PASS",
+  "physical_torque_qualification": "UNKNOWN",
+  "independent_final_test": "UNKNOWN",
+  "new_training_in_this_import": 0,
+  "new_inference_in_this_import": 0,
+  "new_FEA": 0,
+  "baseline_retained": "A0/L0",
+  "next_experiment": "HOLD"
+}

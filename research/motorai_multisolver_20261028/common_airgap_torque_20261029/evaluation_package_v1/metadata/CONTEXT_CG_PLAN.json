@@ -1,0 +1,138 @@
+{
+  "id": "CONTEXT-CG-20261028",
+  "status": "FROZEN_FOR_GATES_AND_FIXED_SIX_RUNS",
+  "authority": "Latest user requests following Astra Max review; no repeated approval for this bounded first comparison",
+  "scientific_review": "ASTRA_MAX_REVIEW_KO.md / turn01a18166-b3bf-7b20-9a91-4ea7cf62d9ca",
+  "claim_scope": "Effect of graph-wide versus connected-component-wide summary on innerdev32 B prediction; not physical FE topology repair or AC accuracy",
+  "reference_model_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+  "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+  "bundle_manifest_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+  "phase_encoding": "mechanical",
+  "phase_selection_rule": "electrical only if all three-seed A2 improvement and no-harm gates PASS; otherwise mechanical. Apply the same selected encoding to both C/G arms. Do not choose based on a single seed.",
+  "arms": {
+    "C": {
+      "context_scope": "component",
+      "definition": "area-weighted mean hidden state within the native-edge connected component",
+      "train_graphs": 2952
+    },
+    "G": {
+      "context_scope": "graph",
+      "definition": "area-weighted mean hidden state across the same physical graph",
+      "train_graphs": 2952
+    }
+  },
+  "same_in_both_arms": [
+    "Frozen native graph with a2 excluded",
+    "width32/depth3 backbone",
+    "1024-parameter bias-free32x32 context projection initialized zero",
+    "field(h + W context)",
+    "Same backbone initial tensor state per seed",
+    "train328/dev32 and phase9 train graphs",
+    "Physical area-weighted B MSE, no prior/AC/paired loss",
+    "Optimizer, update-indexed LR, data order and final checkpoint only"
+  ],
+  "fixed_seeds": [
+    17,
+    29,
+    43
+  ],
+  "training": {
+    "host": "133",
+    "width": 32,
+    "depth": 3,
+    "smoke_updates": 5,
+    "expected_optimizer_updates": 88565,
+    "updates_per_A0_epoch": 2952,
+    "evaluation_updates": {
+      "0": 5,
+      "1": 2957,
+      "5": 14765,
+      "10": 29525,
+      "20": 59045,
+      "30": 88565
+    },
+    "learning_rate": {
+      "start": 0.001,
+      "end": 1e-05,
+      "rule": "same learning_rate(update) as train_field_l12.py"
+    },
+    "wall_seconds_max": 7200,
+    "torch_allocated_soft_limit_GiB": 10,
+    "prefetch_depth": 8,
+    "retry": 0
+  },
+  "engineering_gates": {
+    "CPU_contract": "Same initialization/parameter count; W0 exact original backbone outputs; no cross-batch pooling; nonzeroW graph-context derivative across native components and zero component-context derivative",
+    "native_input": "360 admitted cases' component IDs from native edge_index only; source/selection/ID/edge hashes; no B-derived input",
+    "overfit": "Fixed train case40 step0, both scopes, 1500 updates each; finite loss/gradient and finalMSE<=0.1*initialMSE. Engineering-path gate only, not field accuracy qualification. Do not extend if failed.",
+    "GPU_smoke_profile": "Fixed one-A0-epoch equivalent2957 updates per scope seed17, isolated outputs; finite gradients/outputs, soft memory gate and completed resource projection with immutable code/inputs; no smoke weights reused",
+    "wall_projection": "Measured profile must project completion of six full fixed runs plus evaluation/collection inside the remaining6h envelope before launching full runs",
+    "total_GPU_engineering_wall_seconds_max": 900,
+    "evaluator_restore": "CPU synthetic C/G serialization exact with nonzero W and rejection of arm/scope mismatch; same checked loader used by frozen evaluator"
+  },
+  "evaluation": {
+    "bundle": "Existing dev32x45 frozen diagnostic bundle",
+    "graphs_per_model": 1440,
+    "wall_seconds_max": 1800,
+    "primary": "Same original L12 area-weighted B-vector nRMSE on all45",
+    "secondary": [
+      "B magnitude",
+      "seen9/unused36",
+      "copper B-vector/B2 bias",
+      "PA>=70/PA<70",
+      "physical RMSE T"
+    ],
+    "common_native_a1_Arkkio": "Separate pinned common-evaluation extension; no air-as-a1 fallback or independent-final-test claim"
+  },
+  "decision_rule": {
+    "delta": "mean(C)-mean(G)",
+    "spread": "max(max(C)-min(C),max(G)-min(G)) over all3 fixed seeds",
+    "improvement": "delta>=1.0pp and delta>2*spread",
+    "no_harm": {
+      "seen9_Bvector_pp": 0.5,
+      "copper_Bvector_pp": 1.0,
+      "PA_ge70_mean_case_pp": 1.0
+    },
+    "missing_failed": "INCOMPLETE_NO_CLAIM; no seed replacement or per-arm deletion"
+  },
+  "execution": {
+    "full_runs": 6,
+    "parallel_max": 3,
+    "GPU_launch_after_A2_identity_verified_terminated": true,
+    "whole_stage_wall_seconds_max": 21600,
+    "guard_deadline_UTC": "2026-10-28T14:21:21.645052+00:00",
+    "automatic_retries": 0,
+    "STOP": "stage or owned run STOP; PID+create_time guarded tree only",
+    "new_FEA": 0,
+    "new_prior_solves": 0,
+    "old_val_test_payloads_opened": 0
+  },
+  "source_cost": "Same328 train+32dev historical Full conditions, deduplicated; new Full0. Report incremental preparation/training/inference work separately. Current dev32 is E1 oldTRAIN exposed.",
+  "prohibited": [
+    "Changing running A2",
+    "Invalid a2 truth/geometry resurrection",
+    "Calling the context arm native mesh repair",
+    "Loading old E1 weights/teacher",
+    "Changing losses/capacity/prior in the same comparison",
+    "Best seed or checkpoint selection"
+  ],
+  "seen_steps": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40
+  ],
+  "phase_selection_receipt": {
+    "A2_result_sha256": "0270466b0eed5bb5cb634d34f44212841b135963808313eb8d79b404bfbddec9",
+    "A2_verdict": "NO_IMPROVEMENT_CLAIM",
+    "rule_predeclared_in": "ASTRA_MAX_REVIEW_KO.md",
+    "final_angle_selected_after_all6_results": true
+  },
+  "frozen_UTC": "2026-10-28T08:21:21.645052+00:00",
+  "scientific_final_review_receipt": "ASTRA_A2_FINAL_REVIEW_RECEIPT.json"
+}

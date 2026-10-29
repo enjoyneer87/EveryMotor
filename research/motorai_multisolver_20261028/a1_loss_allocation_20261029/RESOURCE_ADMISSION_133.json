@@ -1,0 +1,40 @@
+{
+  "checked_UTC": "2026-10-29T02:32:42.549877+00:00",
+  "hostname": "HPC_133",
+  "user": "hpc-133",
+  "python": "logical-path://b8b8e84da4d92d591694",
+  "torch": "2.5.1+cu124",
+  "disk_C_free_bytes": 1524877795328,
+  "RAM_available_bytes": 2162909708288,
+  "GPU": "NVIDIA L40S, 10 MiB, 46068 MiB, 0 %",
+  "GPU_compute": "",
+  "new_stage_exists": false,
+  "train_bundle": "logical-path://17b14cc8e68c946d43f8",
+  "train_bundle_sha256": "0ab3743b64274f3a46222de4ece9ab8138ca07ab87b0603a0f9fa642d892c4d4",
+  "manifest_keys": [
+    "selection_sha256",
+    "node_features",
+    "edge_features",
+    "design_features",
+    "records",
+    "reader_pass_cases",
+    "failed_cases",
+    "source_steps",
+    "provenance",
+    "new_FEA",
+    "training_updates"
+  ],
+  "records": 360,
+  "record_keys": [
+    "case_index",
+    "split",
+    "original_split",
+    "geometry_group",
+    "source_key",
+    "source_sha256",
+    "files",
+    "QA",
+    "status"
+  ],
+  "frozen_common_status": "COMPLETED"
+}

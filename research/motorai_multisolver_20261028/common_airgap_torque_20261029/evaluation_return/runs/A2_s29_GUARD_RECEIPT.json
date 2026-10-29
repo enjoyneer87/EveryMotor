@@ -1,0 +1,16 @@
+{
+  "id": "A2_s29",
+  "status": "COMPLETED",
+  "started_UTC": "2026-10-29T00:17:20.183662+00:00",
+  "job_sha256": "4b03a046aaa77839d38d7b8fde22c23c5c376e3c49975177bfed0bac9dfc6ded",
+  "owner": {
+    "pid": 10804,
+    "create_time": 1793233040.1921768
+  },
+  "returncode": 0,
+  "elapsed_seconds": 84.06299999999464,
+  "completed_UTC": "2026-10-29T00:18:44.239098+00:00",
+  "result_sha256": "6c8b28b208dbb0957137a43b55dc0a254514e5542c2f49cad33c4452f8537c95",
+  "evaluator_status": "COMPLETED",
+  "graphs_processed": 1440
+}

@@ -1,0 +1,11 @@
+{
+  "pid": 16844,
+  "create_time": 1793242534.0907228,
+  "started_UTC": "2026-10-29T02:55:34.169281+00:00",
+  "chain_plan_sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+  "bootstrap_attempt": 1,
+  "scientific_job_retries": 0,
+  "returncode": 0,
+  "elapsed_seconds": 13187.296999999991,
+  "completed_UTC": "2026-10-29T06:35:21.615848+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "action": "logical-path://715ead674333d6447f1f",
+  "arguments": "-B logical-path://b605d4ec30622f0a8738",
+  "process_stops": 0,
+  "last_result": 0,
+  "previous_state": "Ready",
+  "status": "REMOVED_COMPLETED_OWNED_ONESHOT_ONLY",
+  "task_name": "Codex-EveryMotor-CommonA1-Eval-133-20261029",
+  "checked_UTC": "2026-10-29T00:31:36.0423541Z"
+}

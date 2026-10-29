@@ -1,0 +1,150 @@
+{
+  "id": "COMMON-A1-TORQUE-20261029",
+  "version": "0.1",
+  "status": "DRAFT_HOLD_NO_EXECUTION_RELEASE",
+  "owner": "current MotorAI Astra review chat; user requested takeover on 2026-10-29",
+  "previous_owner_chat": "01a17ad2-55b9-7b83-90d7-ef66fcafc21b",
+  "scope": "common inner-development diagnostics on existing final checkpoints, not a new training experiment",
+  "stages": [
+    "dev32 geometry-only admission",
+    "hash-bound prediction cache inventory",
+    "if no admissible cache exists: separately released zero-update frozen inference"
+  ],
+  "baseline": "A0 mechanical; neither C nor G promoted to champion",
+  "arms": {
+    "A0": [
+      17,
+      29,
+      43
+    ],
+    "A2": [
+      17,
+      29,
+      43
+    ],
+    "C": [
+      17,
+      29,
+      43
+    ],
+    "G": [
+      17,
+      29,
+      43
+    ]
+  },
+  "checkpoint_policy": "all 12 existing final88565 checkpoints; no best checkpoint/seed or rerun",
+  "snapshots_per_model": 1440,
+  "maximum_fresh_inference_snapshots": 17280,
+  "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+  "dev_bundle_sha256": "5bf699ac5b89937f0ac7acb194c1ce8a075bef6b81c9e9e72b2834be4fc7c186",
+  "source_dependencies": [
+    {
+      "path": "logical-path://d7c7397cadf801da62ec",
+      "sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "bytes": 16548
+    },
+    {
+      "path": "logical-path://e8e4e2ee85d2f2349f9b",
+      "sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "bytes": 7892
+    },
+    {
+      "path": "logical-path://7e75c05b7d45100b5e93",
+      "sha256": "cf96d0c869657a87793907c7d71f1a596c4976ffbd7e1f1be9d751d737f71643",
+      "bytes": 7460
+    }
+  ],
+  "quantity": {
+    "field": "native element Bx/By T",
+    "coords": "native mm converted to m",
+    "area": "native triangle m2",
+    "stack_length": "selection-bound 0.15 m for all32; recheck source",
+    "torque": "CCW-positive N m, truth/prediction from identical stationary-a1 Arkkio operator"
+  },
+  "mapping": "exact native ID join; a2-excluded graph positions are not full-mesh positions; no nearest or nodal averaging",
+  "mask": "same all-admitted and strict a1 sets per case/step across all arms; no per-arm intersection",
+  "metrics": [
+    "all/a1 area-weighted and unweighted vector and magnitude nRMSE with RMSE T",
+    "seen9/unused36 and per-case/PA groups; report all seeds and mean/min/max",
+    "casewise torque nRMSE = 100*RMSE(pred-true)/RMS(true), absolute RMSE, mean and ripple",
+    "pooled torque nRMSE from all case/step squared errors; do not pool ripple across cases"
+  ],
+  "failures": [
+    "nonfinite input/intermediate/output is failure, never drop it",
+    "missing/duplicate native ID, case or step is failure, never shrink shared mask",
+    "zero reference RMS yields undefined normalized metric, retain absolute error; do not add epsilon",
+    "absent/moving/degenerate/nonstationary a1 is admission HOLD/FAIL"
+  ],
+  "decisions": {
+    "A2_CG_previous_verdicts": "unchanged NO_IMPROVEMENT_CLAIM",
+    "new_improvement_gate": "none; diagnostic evaluation only",
+    "legacy_G1prime_G2": "not applied to this innerdev",
+    "independent_generalization_AC_and_virtual_work_torque": "not qualified"
+  },
+  "proposed_resource_bounds_not_release": {
+    "geometry_CPU_wall_seconds_max": 600,
+    "inference_host": "133 existing environment",
+    "inference_workers": 1,
+    "per_model_wall_seconds_max": 1800,
+    "total_wall_seconds_max": 7200,
+    "torch_allocated_soft_GiB_max": 10,
+    "automatic_retries": 0,
+    "new_training_updates": 0,
+    "new_FEA": 0,
+    "new_prior_solves": 0,
+    "historical_timing_reference": "C/G evaluation worker sum 510.125 s for six models; new a1 I/O overhead unmeasured",
+    "prediction_storage": "native a1 fields and sufficient statistics, source/checkpoint/IDs/phase/operator hashes; private storage only"
+  },
+  "release_requirements": [
+    "32/32 geometry admission receipt with all45 proof and exact graph-ID correspondence",
+    "full checkpoint hashes verified remotely; historical metadata gaps explicitly resolved",
+    "canonical eval integration reviewed, evaluator/operator/mask/environment hashes frozen",
+    "existing-score reproduction and synthetic gate pass; no assertion that synthetic tests qualify real data",
+    "explicit bounded evaluation release, UTC deadline, disk budget and PID/create-time owner recorded"
+  ],
+  "STOP": "owned process only; STOP file, time/resource cap or source/ID/finite mismatch -> stop and preserve partial evidence; retry0",
+  "guard_deadline_UTC": null,
+  "prohibitions": [
+    "new training",
+    "old campaign resume",
+    "E1 weights/prior/teacher",
+    "reserved/aliases and old val/test payloads",
+    "invalid a2 truth or edge restoration",
+    "rewriting prior results or using aggregate B2 to reconstruct torque"
+  ],
+  "preparation_artifacts": {
+    "audit_dev32_geometry.py": {
+      "sha256": "dfb0db707804de8e28791268ad86054d5ad3e7298f4f9cb735f485781de5439f",
+      "bytes": 7601
+    },
+    "build_checkpoint_inventory.py": {
+      "sha256": "dc25824bccad7af534a140f85ab1f621501bc36ee71a033df67e0b9de8e59713",
+      "bytes": 8828
+    },
+    "CHECKPOINT_INVENTORY.json": {
+      "sha256": "65fc9bca911b981d4ab7254d94feaba6d247f2c8476b5cab65786e6255306836",
+      "bytes": 42116
+    },
+    "DEV32_GEOMETRY_REQUEST.json": {
+      "sha256": "8673711af45341c016d8c2bcc8a91ed35142fe89237f9ceb2b555e9c5be997a4",
+      "bytes": 13253
+    },
+    "prepare_takeover.py": {
+      "sha256": "86beff94a0ed353d158f264012d65db5f064fde6dd5ed7092ec413d3718f249b",
+      "bytes": 9327
+    },
+    "strict_airgap.py": {
+      "sha256": "47ef75dd6b19139113e1cac731384ceac8a188f246cd035e6c3ee4a66c970268",
+      "bytes": 17685
+    },
+    "test_geometry_reader.py": {
+      "sha256": "db201fc8fab41d1c1b999968bb50310341f727923e5046cc928b88dbf8501f97",
+      "bytes": 3376
+    },
+    "test_strict_airgap.py": {
+      "sha256": "870d46e953d39eee358d4d65bc928b90bcb65c40ea10e5f3d700ef409a0d37ec",
+      "bytes": 13285
+    }
+  }
+}

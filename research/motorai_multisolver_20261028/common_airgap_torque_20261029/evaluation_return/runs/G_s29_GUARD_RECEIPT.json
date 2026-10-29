@@ -1,0 +1,16 @@
+{
+  "id": "G_s29",
+  "status": "COMPLETED",
+  "started_UTC": "2026-10-29T00:25:46.975651+00:00",
+  "job_sha256": "97637845cf1b5de54b7a9ba9829f9d1e8db9065a8c958277aa58d0820c0faa25",
+  "owner": {
+    "pid": 15148,
+    "create_time": 1793233546.9870708
+  },
+  "returncode": 0,
+  "elapsed_seconds": 86.07799999997951,
+  "completed_UTC": "2026-10-29T00:27:13.044289+00:00",
+  "result_sha256": "e28f53edbe1b135c438a85debd57a60f524c3b7c112baed708c6d6d08a48d2af",
+  "evaluator_status": "COMPLETED",
+  "graphs_processed": 1440
+}

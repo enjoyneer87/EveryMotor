@@ -1,0 +1,25 @@
+{
+  "common_airgap_torque_20261029": {
+    "published_files_verified": 133,
+    "original_collection_pins_verified": 50
+  },
+  "a1_loss_allocation_20261029": {
+    "published_files_verified": 118,
+    "original_collection_pins_verified": 57
+  },
+  "common_metric_distributions_recomputed": 1140,
+  "loss_metric_distributions_recomputed": 650,
+  "status": "PASS_INTEGRITY_AND_SAVED_ARITHMETIC_ONLY",
+  "new_training": 0,
+  "new_inference": 0,
+  "new_FEA": 0,
+  "physical_qualification": "UNKNOWN_not_established_by_replay",
+  "checked_UTC": "2026-10-29T15:10:54.106063+00:00",
+  "manager_hostname": "DESKTOP-6QIVKIC",
+  "origin_execution_host": "HPC_133 / source runtime provenance retained",
+  "source_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "integration_owner_chat": "01a17ad2-55b9-7b83-90d7-ef66fcafc21b",
+  "common_original_full_json_replay": "PASS",
+  "allocation_original_frozen_judge_replay": "PASS",
+  "original_source_modified": false
+}

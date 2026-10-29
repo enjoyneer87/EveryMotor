@@ -29,6 +29,14 @@ def main():
     summary=f'<h2>C/G 전체3시드 완료 결과</h2><p>전체 B벡터 nRMSE: C {means["C"]["all45_vector"]:.3f}% / G {means["G"]["all45_vector"]:.3f}%. Δ=C−G {decision["delta_C_minus_G_pp"]:+.3f}pp · {html.escape(decision["verdict"])}. 평균 no-harm 통과와 개선 통과는 별개입니다. {review}.</p><p>innerdev32의 정보 전달 실험이며 공극·토크·AC손실·독립최종시험 성과가 아닙니다. <a href="../next_improvement_20261028/quality_summary.json">항목별 PASS/FAIL/UNKNOWN</a></p>'
     cg_card=cg_card.replace('</section>',summary+'</section>')
   handoff_card=cg_card+handoff_card.replace('현재 A2 인계 · Astra xHigh 판정 / Sol 실행','완료된 A2 인계 이력')
+ integrated_root=R.parent/'common_airgap_torque_20261029'
+ if (integrated_root/'INTEGRATION_VERIFICATION.json').exists():
+  common=json.loads((integrated_root/'COMMON_A1_SUMMARY.json').read_text(encoding='utf-8'))
+  allocation=json.loads((R.parent/'a1_loss_allocation_20261029/A1_ALLOCATION_VERDICT.json').read_text(encoding='utf-8'))
+  latest_rows=''.join(f'<tr><td>{a}</td><td>{common["arms"][a]["field/all45/a1/area/vector_nrmse_percent"]["mean"]:.3f}%</td><td>{common["arms"][a]["torque/all45/pooled/nrmse_percent"]["mean"]:.3f}%</td></tr>' for a in ('A0','A2','C','G'))
+  loss_rows=''.join(f'<tr><td>{a}</td><td>{allocation["arms"][a]["field/all45/all/area/vector_nrmse_percent"]["mean"]:.3f}%</td><td>{allocation["arms"][a]["field/all45/a1/area/vector_nrmse_percent"]["mean"]:.3f}%</td></tr>' for a in ('L0','L05'))
+  latest_card=f'<section class="card warning"><h2>최신 완료 증거 · 공통 공극·토크 및 a1 손실 배분</h2><p>별도 Astra 세션에서 완료된 공통12모델·17,280graph와 a1 손실6모델·8,640평가를 Sol이 회수·독립 JSON검증해 통합했습니다. 현재 새 계산은0, 기준A0/L0 유지, 다음 실험HOLD입니다.</p><table><tr><th>공통평가</th><th>a1 B벡터</th><th>동일Arkkio토크</th></tr>{latest_rows}</table><table><tr><th>a1손실</th><th>전체B벡터</th><th>a1 B벡터</th></tr>{loss_rows}</table><p>a1 개선에도 네 가지 no-harm 한도 초과로 NO_IMPROVEMENT_CLAIM입니다. independent test·물리 torque·AC성과는 아닙니다.</p><p><a href="../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md">통합보고서·정정사항</a> · <a href="../a1_loss_allocation_20261029/ASTRA_FINAL_REPORT_KO.md">최종판정</a> · <a href="../common_airgap_torque_20261029/INTEGRATION_VERIFICATION.json">회수·독립검증</a></p></section>'
+  handoff_card=latest_card+handoff_card.replace('현재 C/G 단일축','완료된 C/G 단일축')
  rows=[]
  for name,d in s['execution'].items():
   e=d.get('execution',{});p=d.get('progress') or {};state='완료' if e.get('returncode')==0 and not e.get('stop_reason') else ('실행 중' if d['owned_live_processes'] else '확인 필요')

@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "scope": "CPU_STRICT_STATE_RESTORE_AND_OPERATOR_IMPORT",
+  "model_forward_calls": 0,
+  "training_updates": 0,
+  "new_FEA": 0,
+  "records": [
+    {
+      "id": "A0_s17",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "A0_s29",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "A0_s43",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "A2_s17",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "A2_s29",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "A2_s43",
+      "parameters": 70182,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "C_s17",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "C_s29",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "C_s43",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "G_s17",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "G_s29",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    },
+    {
+      "id": "G_s43",
+      "parameters": 71206,
+      "status": "PASS_CPU_RESTORE"
+    }
+  ],
+  "plan_sha256": "0fcac205b8810f7ffece50b343158f187710d2cdb047b0026ea0c9c01c21cc24",
+  "checked_UTC": "2026-10-29T00:07:47.761818+00:00",
+  "torch": "2.5.1+cu124",
+  "numpy": "1.26.4",
+  "cuda_available": true,
+  "elapsed_seconds": 4.202999999979511
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\work\EveryMotor_CommonA1_20261029\src\guard_common_eval.py", line 274, in <module>
+    if __name__ == "__main__": main()
+                               ^^^^^^
+  File "C:\work\EveryMotor_CommonA1_20261029\src\guard_common_eval.py", line 271, in main
+    run_guard(plan, args.plan_sha256)
+  File "C:\work\EveryMotor_CommonA1_20261029\src\guard_common_eval.py", line 143, in run_guard
+    require(Path(sys.executable).resolve() == Path(plan["python_executable"]).resolve(), "wrong pinned Python runtime")
+  File "C:\work\EveryMotor_CommonA1_20261029\src\guard_common_eval.py", line 24, in require
+    if not condition: raise ValueError(message)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: wrong pinned Python runtime

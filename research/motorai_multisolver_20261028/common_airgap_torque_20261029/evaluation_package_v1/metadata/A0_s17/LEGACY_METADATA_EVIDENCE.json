@@ -1,0 +1,52 @@
+{
+  "id": "A0_s17",
+  "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+  "allowed_absent_fields": [
+    "arm",
+    "phase_encoding"
+  ],
+  "preflight_sha256": "aaeecc952c9fef625adfdc861b70fc78ffe6280845e22beb9a57772d11ec8681",
+  "evidence": {
+    "status": "PASS_CODE_AND_PLAN_HASH",
+    "checkpoint_sha256": "f47a32b665239ecb00479e8b66fe3707551ee15f38f2a6a3b5e07ab2d378ad6e",
+    "allowed_absent_fields": [
+      "arm",
+      "phase_encoding"
+    ],
+    "phase_encoding_resolved": "mechanical",
+    "basis": "Pinned original trainer passes stored design_op directly; A0 contract precedes the separate electrical-angle axis",
+    "trainer": {
+      "path": "logical-path://9cee49a3d3c69f388518",
+      "sha256": "42f842a6e4e94fd0a12efae7f38cf915819272a1712e70512436a6ab55131ac0",
+      "bytes": 8330
+    },
+    "plan": {
+      "path": "logical-path://f5774c14adc6294817d9",
+      "sha256": "e6773d8b4f66de674a3e0a28805a9018eaea751bd3175c99b7b76d2047ba5e14",
+      "bytes": 2332
+    },
+    "design_op_lines": [
+      {
+        "line": 50,
+        "text": "  with np.load(p,allow_pickle=False) as z:"
+      },
+      {
+        "line": 51,
+        "text": "   g={k:torch.as_tensor(z[k],device=device,dtype=torch.long if k=='edge_index' else torch.float32) for k in ['node','edge_index','edge_attr','weights']};g['batch']=torch.zeros(len(g['node']),dtype=torch.long,device=device)"
+      },
+      {
+        "line": 52,
+        "text": "   return g,torch.as_tensor(z['design_op'],device=device)[None],torch.as_tensor(z['target_B_T'],device=device)"
+      },
+      {
+        "line": 53,
+        "text": " def forward(g,x):return model.forward_fields('motorcad',g,x,torch.zeros(1,dtype=torch.long,device=device))['fields']"
+      },
+      {
+        "line": 54,
+        "text": " def update(p):"
+      }
+    ]
+  },
+  "phase_encoding_resolved": "mechanical"
+}

@@ -44,7 +44,7 @@
       "priority": "P0",
       "title": "이전 MotorAI 5% 이하 성과의 지표 감사",
       "origin": "사용자 지적",
-      "status": "Astra xHigh 비교 경계·구조 감사 완료; 공통 공극/토크 미평가",
+      "status": "공통dev32 a1·Arkkio완료; E1legacy6직접순위비교불가",
       "request": "이전 MotorAI 학습 성과와 현재 결과를 같은 의미의 지표로 비교한다.",
       "evidence": [
         "PRIOR_MOTORAI_COMPARISON_KO.md",
@@ -53,7 +53,7 @@
         "../performance_diagnosis_20261028/GRAPH_TOPOLOGY_AUDIT.json"
       ],
       "confirmed": "E1 legacy6: 전체 |B|11.096697%,공극4.956319%,토크3.214573%. all18:전체 |B|10.859%,공극4.071%,토크2.982%. 현재18.0765%는다른분할의면적가중B벡터오차로직접비교불가.",
-      "next_action": "실제 checkpoint hash·정규화·노출데이터 감사와 공통 평가 가중치를 추가 확인한다.",
+      "next_action": "완료공통평가를재실행하지않고새단일축후보의별도admission을검토한다.",
       "Astra_decision": "공극/토크5%와전체B벡터18~20%는직접비교불가. E1 target=B·전기각·prior·공극손실과현재경량모델의차이를확인. 새모델의토크/공극퇴보여부UNKNOWN."
     },
     {
@@ -61,7 +61,7 @@
       "priority": "P0",
       "title": "전체 자계 정확도 개선",
       "origin": "사용자 요청",
-      "status": "A2·C/G 모두완료; 각사전등록 개선기준미달",
+      "status": "A2/C-G/a1손실단일축완료·종합개선기준미달",
       "request": "이전 모델의 전체 |B| 약11.1%도 개선한다. 전체·공극·구리 영역 성능을 함께 본다.",
       "evidence": [
         "SCALE360_TRAIN_RESULT.json",
@@ -74,7 +74,7 @@
         "../next_improvement_20261028/ADMISSION_REPORT_KO.md"
       ],
       "confirmed": "현 모델 dev32 전체 B벡터18.08%,구리 영역34.61%. 공극/토크5% 이하를 전체 자계 성과로 바꾸지 않는다.",
-      "next_action": "기존Max전략에따라공통a1/Arkkio평가와구조·공극loss후보를분리. 이번단계추가계산없음.",
+      "next_action": "A0/L0유지; 신규계약전추가튜닝·seed선택없음.",
       "Astra_decision": "새 평가·모델 전략 검토 중; 목표치와 PASS gate는 아직 미확정."
     },
     {
@@ -295,11 +295,11 @@
       "priority": "P0",
       "title": "그래프 단절 수정과 E1 구조·prior·공극 손실 재사용",
       "origin": "사용자 2026-10-28 후속 실행 지시",
-      "status": "C/G 6개완료·개선기준미달·Astra 최종판정완료",
+      "status": "공통평가·a1손실실험도완료·미게시증거통합",
       "request": "A2를 바꾸지 않고 완료한 뒤, 그래프 연결 복원과 E1의 구조·prior·공극 손실 재사용을 검토해 다음 개선 실험을 진행한다.",
       "confirmed": "train6 HDF5 hash전부일치. full-export dual/native-node graph1component, a2제거후2component. stationary a1은모든45시각고정. prior8개는45step/nodal3shape가맞지만nativeID/sourcehash없어bindingUNKNOWN. 기존mu_eff20은case4/7 B에서선정, windingtemplate은case0 J교정이력. C/G각3seed완료; 평균Bvector20.4250/20.4728%, delta-.0478pp, noharm평균PASS; source/sidecar/checkpoint검증PASS.",
       "Astra_decision": "최종 판정문 ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md 참조; NO_IMPROVEMENT_CLAIM. native mesh복원/공극토크/AC 성과로 확대 금지.",
-      "next_action": "이번단계게시·예약종료. 후속공통a1/Arkkio·E1구조/공극loss/prior admission은Astra기존전략에따라별도구체계약으로분리;자동추가계산없음.",
+      "next_action": "prior/weights/HOLD와구조/정규화/용량의별도단일축검토;완료단계반복금지.",
       "evidence": [
         "../next_improvement_20261028/CONTEXT.json",
         "../next_improvement_20261028/ADMISSION_AUDIT_PLAN.json",
@@ -314,6 +314,36 @@
         "../next_improvement_20261028/quality_summary.json",
         "../next_improvement_20261028/EXECUTION_COST_LEDGER.json",
         "../next_improvement_20261028/ASTRA_CONTEXT_CG_FINAL_REVIEW_KO.md"
+      ]
+    },
+    {
+      "id": "MI-018",
+      "title": "세션 간 완료 증거와 공통 공극·토크 평가 통합",
+      "priority": "P0",
+      "origin": "User-authorized separate Astra execution, recovered by Sol on2026-10-30",
+      "status": "완료·검증·게시",
+      "request": "진행 지시 및완료증거canonical동기화",
+      "confirmed": "12모델/17280graph·동일a1와Arkkio진단완료. 저장소의미실행표시정정·원본/공유SHA와JSON재검산통과.",
+      "Astra_decision": "ASTRA_SYNC_REVIEW_KO.md/ASTRA_FINAL_REPORT_KO.md 참조;새실행창불필요",
+      "next_action": "완료단계재실행금지;다음실험HOLD",
+      "evidence": [
+        "../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md",
+        "../a1_loss_allocation_20261029/ASTRA_FINAL_REPORT_KO.md"
+      ]
+    },
+    {
+      "id": "MI-019",
+      "title": "a1 손실 배분 α0 대0.5 단일축 결과",
+      "priority": "P0",
+      "origin": "User-authorized separate Astra execution, recovered by Sol on2026-10-30",
+      "status": "완료·검증·게시",
+      "request": "진행 지시 및완료증거canonical동기화",
+      "confirmed": "a1개선10.7399pp이나전체/seen9/구리/고PA no-harm FAIL. 최종NO_IMPROVEMENT_CLAIM, A0/L0유지.",
+      "Astra_decision": "ASTRA_SYNC_REVIEW_KO.md/ASTRA_FINAL_REPORT_KO.md 참조;새실행창불필요",
+      "next_action": "완료단계재실행금지;다음실험HOLD",
+      "evidence": [
+        "../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md",
+        "../a1_loss_allocation_20261029/ASTRA_FINAL_REPORT_KO.md"
       ]
     }
   ]

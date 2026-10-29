@@ -1,3 +1,8 @@
+<!-- EXTERNAL_A1_INTEGRATED -->
+# 최신완료증거통합 · 2026-10-30
+
+공통a1/Arkkio12모델17280graph와후속a1손실6모델8640평가가다른Astra세션에서이미완료됐다. 이번Sol은기존자료를회수·해시/JSON검증해게시했다. [통합보고서](../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md)를먼저읽는다. 아래NOT_EVALUATED/다음공통평가표현은과거이력이며재실행하지않는다. 기준A0/L0유지,다음실험HOLD다.
+
 <!-- CG_FINAL_STAGE -->
 # C/G 실행 완료 · 재시작 금지
 

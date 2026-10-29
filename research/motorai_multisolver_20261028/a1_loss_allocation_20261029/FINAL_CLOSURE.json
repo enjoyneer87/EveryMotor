@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "created_UTC": "2026-10-29T06:49:15.360758+00:00",
+  "status": "CLOSED_COMPLETE_NO_IMPROVEMENT_CLAIM",
+  "owner_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "experiment": "stationary-a1 loss allocation alpha0 versus alpha0.5; seed17/29/43",
+  "completed_full_training_runs": 6,
+  "updates_each": 88565,
+  "completed_evaluation_graphs": 8640,
+  "decision": {
+    "verdict": "NO_IMPROVEMENT_CLAIM",
+    "primary": {
+      "delta_L0_minus_L05_pp": 10.739892121334947,
+      "spread_pp": 1.3480309262793355,
+      "twice_spread_pp": 2.696061852558671,
+      "minimum_improvement_pass": true,
+      "spread_pass": true,
+      "pass_": true
+    },
+    "no_harm": {
+      "all45_all_Bvector": {
+        "change_L05_minus_L0_pp": 2.321570615182612,
+        "limit_pp": 0.5,
+        "pass_": false
+      },
+      "seen9_all_Bvector": {
+        "change_L05_minus_L0_pp": 2.1600353098551572,
+        "limit_pp": 0.5,
+        "pass_": false
+      },
+      "copper_Bvector": {
+        "change_L05_minus_L0_pp": 1.8402413883653495,
+        "limit_pp": 1.0,
+        "pass_": false
+      },
+      "PA_ge70_mean_case_Bvector": {
+        "change_L05_minus_L0_pp": 2.2954392611544847,
+        "limit_pp": 1.0,
+        "pass_": false
+      },
+      "common_Arkkio_pooled_torque_nRMSE": {
+        "change_L05_minus_L0_pp": -3.5518343494090736,
+        "limit_pp": 1.0,
+        "pass_": true
+      }
+    },
+    "no_harm_pass": false,
+    "torque_metric_improvement_gate": {
+      "delta_L0_minus_L05_pp": 3.5518343494090736,
+      "spread_pp": 17.59011841095789,
+      "twice_spread_pp": 35.18023682191578,
+      "minimum_improvement_pass": true,
+      "spread_pass": false,
+      "pass_": false
+    },
+    "torque_gate_is_separate": true,
+    "range_interpretation": "descriptive three-seed max-min; not CI, significance, or equivalence"
+  },
+  "independent_audit_status": "PASS_INDEPENDENT_JSON_ARITHMETIC",
+  "baseline_retained": "A0 mechanical / L0 alpha0",
+  "historical_verdicts": {
+    "A2": "NO_IMPROVEMENT_CLAIM",
+    "C_vs_G": "NO_IMPROVEMENT_CLAIM"
+  },
+  "next_experiment_status": "HOLD_NO_NEW_TRAINING_OR_EVALUATION_RELEASE",
+  "scientific_scope": "E1-oldTRAIN-exposed innerdev32; saved-field common-operator diagnostics only",
+  "graph_disconnection_contribution": "UNKNOWN; this loss ablation does not measure native connectivity effect",
+  "evidence_pins": {
+    "CHAIN_PLAN.json": {
+      "path": "logical-path://a3519d3e6d2661b04d7f",
+      "sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+      "bytes": 7837
+    },
+    "runtime_package/NEXT_SINGLE_AXIS_PLAN.json": {
+      "path": "logical-path://696d6a346db86e64b727",
+      "sha256": "65da672079d62a44d3436d3d018050be525de7072e5eb7c766ea615b58d196b7",
+      "bytes": 5642
+    },
+    "A1_ALLOCATION_VERDICT.json": {
+      "path": "logical-path://3340a8472280321f6e34",
+      "sha256": "d66409cae4276f83ac14023fe23e3e11e7b5440ef1cd97897e1513156b7ae598",
+      "bytes": 1905849
+    },
+    "A1_INDEPENDENT_AUDIT.json": {
+      "path": "logical-path://b04cd82f70594e278baf",
+      "sha256": "7768d82bd5ccd6ad5594723ad4fd6b7b09491ff22137beaed2df8863ed02da24",
+      "bytes": 334547
+    },
+    "a1_results_return_20261029/COLLECTION_RECEIPT.json": {
+      "path": "logical-path://7892e7309e0e6fb5fd31",
+      "sha256": "a9bdcc68807df99ba6f63a7a667294a0d98ca32ba388ec82351f5bba90da4b8f",
+      "bytes": 15542
+    },
+    "TASK_CLEANUP_RECEIPT.json": {
+      "path": "logical-path://1c951a33ec494d541de3",
+      "sha256": "dd0c0acedb526cf34db160177c3c266e09afe442b6d1a6d7fcd6e1ddba8c34a1",
+      "bytes": 194
+    }
+  },
+  "verification_scope": "JSON SHA/size, declared frozen source/checkpoint hashes and completion receipts; no binary payload reopened",
+  "completed_owned_remote_task_cleanup": {
+    "status": "REMOVED_COMPLETED_OWNED_TASK",
+    "task": "Codex-EveryMotor-A1Loss-133-20261029",
+    "all_owned_processes_exited": true,
+    "checked_UTC": "2026-10-29T06:46:59.797974+00:00"
+  },
+  "completion_monitor": {
+    "id": "motorai-a1-6",
+    "status": "DELETED",
+    "confirmation": "automation_update returned deleteStatus=deleted",
+    "reason": "Completed experiment, evidence collection and final adjudication"
+  },
+  "other_automations_and_jobs_modified": false,
+  "closure_operations": {
+    "new_training": 0,
+    "new_evaluation": 0,
+    "new_FEA": 0,
+    "new_prior_solves": 0,
+    "retries": 0,
+    "binary_payloads_opened": 0,
+    "git_changes": 0,
+    "messages_to_other_chats": 0
+  }
+}

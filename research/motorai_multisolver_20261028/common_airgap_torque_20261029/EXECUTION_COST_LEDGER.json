@@ -1,0 +1,36 @@
+{
+  "checked_UTC": "2026-10-29T00:33:53.782088+00:00",
+  "new_training_updates": 0,
+  "new_FEA": 0,
+  "new_prior_solves": 0,
+  "fresh_frozen_inference_graphs": 17280,
+  "model_runs": 12,
+  "scientific_model_retries": 0,
+  "geometry_deployments": 3,
+  "geometry_auto_retries_each": 0,
+  "geometry_attempt_elapsed_seconds": {
+    "R1": 0.28167689964175224,
+    "R2": 0.5056142006069422,
+    "R3": 46.76360850036144
+  },
+  "CPU_runtime_restore_seconds": 4.202999999979511,
+  "evaluation_batch_wall_seconds": 1014.140000000014,
+  "evaluation_worker_seconds_sum": 1013.26800000004,
+  "started_UTC": "2026-10-29T00:11:44.531842+00:00",
+  "completed_UTC": "2026-10-29T00:28:38.681476+00:00",
+  "guard_bootstraps": 3,
+  "scientific_workers_started_by_failed_bootstraps": 0,
+  "collection_inventory_transport_attempts": 2,
+  "first_collection_transport": "command length rejected before destination creation; changed stdin transport only",
+  "raw_or_checkpoint_transfers": 0,
+  "Git_mutations": 0,
+  "app_automation_changes": 0,
+  "other_chat_messages": 0,
+  "one_shot_Windows_task": "created for this bounded batch and removed after successful exit; no process stop",
+  "next_plan_operations": {
+    "new_training": 0,
+    "new_evaluation": 0,
+    "new_FEA": 0,
+    "new_prior_solve": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "COMPLETED",
+  "plan_sha256": "0fcac205b8810f7ffece50b343158f187710d2cdb047b0026ea0c9c01c21cc24",
+  "owner": {
+    "pid": 10700,
+    "create_time": 1793232704.403757
+  },
+  "started_UTC": "2026-10-29T00:11:44.531842+00:00",
+  "new_training_updates": 0,
+  "new_FEA": 0,
+  "new_prior_solves": 0,
+  "automatic_retries": 0,
+  "elapsed_seconds": 1014.140000000014,
+  "completed_UTC": "2026-10-29T00:28:38.681476+00:00",
+  "completed_models": 12,
+  "completed_snapshots": 17280,
+  "scientific_scope": "diagnostics only; no new improvement gate"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "reviewer": "a1_audit",
+  "checked_UTC": "2026-10-29T02:57:02.284347+00:00",
+  "chain_plan_sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+  "source_files": 21,
+  "train_cases": 328,
+  "dev_cases": 32,
+  "PA_ge70_dev_cases": 7,
+  "a1_native_elements_min": 744,
+  "a1_native_elements_max": 1368,
+  "criteria_changed": false,
+  "source_changed": false,
+  "remote_operations": 0
+}

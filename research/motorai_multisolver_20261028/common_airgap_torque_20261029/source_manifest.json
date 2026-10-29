@@ -1,0 +1,1351 @@
+{
+  "source_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "importer_chat": "01a17ad2-55b9-7b83-90d7-ef66fcafc21b",
+  "imported_UTC": "2026-10-29T15:01:51.075223+00:00",
+  "original_collection_files_verified": 50,
+  "original_sources_modified": false,
+  "new_training": 0,
+  "new_inference": 0,
+  "new_FEA": 0,
+  "files": [
+    {
+      "source_key": "airgap_takeover_20261029/audit_dev32_geometry.py",
+      "path": "audit_dev32_geometry.py",
+      "source_sha256": "b4108ebeafdb0b6e0a8e5e6e0319815514ba2aa287f62a6147da4e01449bc820",
+      "source_bytes": 10024,
+      "published_sha256": "b4108ebeafdb0b6e0a8e5e6e0319815514ba2aa287f62a6147da4e01449bc820",
+      "published_bytes": 10024,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/CHECKPOINT_INVENTORY.json",
+      "path": "CHECKPOINT_INVENTORY.json",
+      "source_sha256": "65fc9bca911b981d4ab7254d94feaba6d247f2c8476b5cab65786e6255306836",
+      "source_bytes": 42116,
+      "published_sha256": "c84e2edf3473e7be011c60423689bf7f82e8d64405b634743b978ee195d77b05",
+      "published_bytes": 41242,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "993f63516eca485d997a5bef01da356873fb394490a24c6b72077b31be711ef6"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/COMMON_A1_REPORT_KO.md",
+      "path": "COMMON_A1_REPORT_KO.md",
+      "source_sha256": "cc5d8686b0bd3ded14aba4a3674cf2ed7caca35ddebf25a54dbb689e004bfefd",
+      "source_bytes": 15077,
+      "published_sha256": "cf0565225b956209534701d88bf73a13771093982764fd44e96e33a84946c4bd",
+      "published_bytes": 15121,
+      "transform": "Historical source report retained with canonical integration-status banner; original SHA preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/COMMON_A1_SUMMARY.json",
+      "path": "COMMON_A1_SUMMARY.json",
+      "source_sha256": "b58c2376f4f061fd846b0648a9f7551bfd79e9b9c1dd975e93160c871835191b",
+      "source_bytes": 3596793,
+      "published_sha256": "989f07be6d015824cd6d4f1761a981cf2db093e902f8dab4641da2ae3185bb99",
+      "published_bytes": 2369694,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "25e3cedcc1641dcfbc0c65c4e504fd57915cc3fd2f34a42561bde093ee2b7282"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/COMMON_A1_TORQUE_CONTRACT_DRAFT.json",
+      "path": "COMMON_A1_TORQUE_CONTRACT_DRAFT.json",
+      "source_sha256": "31a808f1bb9060fdd8a2c95b63a8f26f25de49ccc410d9e8a8cb3bcb612413a3",
+      "source_bytes": 6314,
+      "published_sha256": "be812d935b263c2eaa6a14725bf5e7e37713d6625dcba44ed2c94042a586013b",
+      "published_bytes": 6073,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "e500569829b71f7217624b941ae887bd86309c474f0732a9bcc9f321007f00e1"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluate_common_airgap.py",
+      "path": "evaluate_common_airgap.py",
+      "source_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "source_bytes": 29021,
+      "published_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "published_bytes": 29021,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/BATCH_PLAN.json",
+      "path": "evaluation_package_v1/BATCH_PLAN.json",
+      "source_sha256": "0fcac205b8810f7ffece50b343158f187710d2cdb047b0026ea0c9c01c21cc24",
+      "source_bytes": 8591,
+      "published_sha256": "b8bacbc5581dcddd710b7222b897e54b8f3c11da5c9ce5ce141dc752bb932d90",
+      "published_bytes": 7458,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "ca4b74ea8ac33652d4f2c02c8e50567b62d13e655ad7530adb7b65e68abb86cf"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A0_s17.json",
+      "path": "evaluation_package_v1/jobs/A0_s17.json",
+      "source_sha256": "ab2650ec0e859bb63c8b24b3f10f4940e93f85a211d20cfde92e22adcba20880",
+      "source_bytes": 5449,
+      "published_sha256": "fd6214d307696886b2ee71624607ba882b95855fbc0a5e89afd9b9a8d4cae201",
+      "published_bytes": 4733,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "5dfd6129f4fa225c3083588a88c9142e83cfc0f728b5089cc3661b5c6ce566fb"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A0_s29.json",
+      "path": "evaluation_package_v1/jobs/A0_s29.json",
+      "source_sha256": "bd1e602835d2439d7769fef36bd9261c4221ad4a0b6b37497ca431f0debcd501",
+      "source_bytes": 5449,
+      "published_sha256": "b4fc7477dd5d42969bbd393a6547ebaeb19e8c29a3597052d3785a288b078b0a",
+      "published_bytes": 4722,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "14d7ef2c2db34b64e9bdf9ab68953b0e328ca9e3cd5e69e8bf7ecf0b4b546e10"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A0_s43.json",
+      "path": "evaluation_package_v1/jobs/A0_s43.json",
+      "source_sha256": "844ca437b02957ae724c450dec553740c2c57f2b6c18a40d7a4d07f8cb49031d",
+      "source_bytes": 5183,
+      "published_sha256": "ceeb57be602638397763425fa7f98533dc284ba7d0344b940b6047b946a5cea3",
+      "published_bytes": 4519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "f8bf4bb1c4572cf25d45a91dc5d9d0f88a2dbe8e9b81af9d832ef0226262110c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A2_s17.json",
+      "path": "evaluation_package_v1/jobs/A2_s17.json",
+      "source_sha256": "737e2f5c3ea4ebe3fad01d30dc95a48e7a46c2bc3875f1819d462b239b9965ca",
+      "source_bytes": 5183,
+      "published_sha256": "13436a4823a2a7614cf3a53d3ab43216b91406e228f51b26a2373686782965c6",
+      "published_bytes": 4519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "8dce9419be1817603f35b726086255f41b5845aa479a3425aed1c8e5cd213447"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A2_s29.json",
+      "path": "evaluation_package_v1/jobs/A2_s29.json",
+      "source_sha256": "4b03a046aaa77839d38d7b8fde22c23c5c376e3c49975177bfed0bac9dfc6ded",
+      "source_bytes": 5183,
+      "published_sha256": "f73bb7163872a32e1c87e08a315067eb51820f4ab5862df02c21440e7969ca6c",
+      "published_bytes": 4519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "4a70a67bc7aebfb0c27b502c459de93a063c296138ac24b1ec6df03eba0ba4f2"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/A2_s43.json",
+      "path": "evaluation_package_v1/jobs/A2_s43.json",
+      "source_sha256": "60d38a2429a98ca3ec0af7475e6353c26a327a222c865dc008094e5a251d05db",
+      "source_bytes": 5183,
+      "published_sha256": "f4cbe6c056a9b328817c469c6b5e873313c038d7052b7a1c43299288d0c14c03",
+      "published_bytes": 4519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "007c53cfaee18edf375aea5fc937ed669dabfddc57b430010412ef24b245ebbb"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/C_s17.json",
+      "path": "evaluation_package_v1/jobs/C_s17.json",
+      "source_sha256": "0870f453d043deb4fc511f62dbd6ef8a79b6d9a2f20a8830a3af93625edb0c1a",
+      "source_bytes": 5896,
+      "published_sha256": "61b05b0d1a74896b218c4bd4ed1d6c531730d6503b981caabf1329628a9432f0",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "8d5405a680473bb0fbc5975b838fd7168306430592f42faf9dcbf389326b1297"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/C_s29.json",
+      "path": "evaluation_package_v1/jobs/C_s29.json",
+      "source_sha256": "221222bc7dd5d81a3ce586e447f96e87adc018c800be642cfacbc4cb48b076ee",
+      "source_bytes": 5896,
+      "published_sha256": "3f9291d39d200f3084409a67ee0a492963d4833c26bd760a7b9bad2d835bfeb0",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "63ecf28434be5beef40ddb698e973e0a690427e53b763e2f7e7de8def42f82fc"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/C_s43.json",
+      "path": "evaluation_package_v1/jobs/C_s43.json",
+      "source_sha256": "717b4830f7524aa0661708f9aabfe056d7f762049969559f8468bc54a61a676b",
+      "source_bytes": 5896,
+      "published_sha256": "3f3bcb94118561d105c5baa55c085fa765be13e0ed261306f8a6529429bcf2f6",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "bd15aceaf37766bb835bc6185975c3465845625c8c05a1fdbbdec11e096e085c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/G_s17.json",
+      "path": "evaluation_package_v1/jobs/G_s17.json",
+      "source_sha256": "750970604ee084a2883d541b96d88ac3f56d4c9636d5a64603f9f1e27f5d5fe5",
+      "source_bytes": 5896,
+      "published_sha256": "e1d95ffa8b94d6313ec2b67f8232f3d75cc0e5a30252f2c5173339a54eea2995",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "0a4ce2dc65ed3e8d199cd1d3c4f83a4c2be7887afae2bb425e552022f0c1fad5"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/G_s29.json",
+      "path": "evaluation_package_v1/jobs/G_s29.json",
+      "source_sha256": "97637845cf1b5de54b7a9ba9829f9d1e8db9065a8c958277aa58d0820c0faa25",
+      "source_bytes": 5896,
+      "published_sha256": "bf5920c1e24d9f9ab01fb39cde37463e5e4d0c8f98c42c6fb0cc93bb4aa1fd93",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "742e6d4c6b4b0bf852ba329a54b3f184256076e170df2fd9be0f5a1183fda9fb"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/jobs/G_s43.json",
+      "path": "evaluation_package_v1/jobs/G_s43.json",
+      "source_sha256": "29581f981b9ac3d54b2dcf5cf8676325edb28b9861c694e6eb5d275ab3fc8602",
+      "source_bytes": 5896,
+      "published_sha256": "1e8bb4a37b41991ed0a755113d53f0019eeb55f3919de6085c7c6485e1dc870e",
+      "published_bytes": 5152,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "782c477b1884cd7bc4102bd70471d3324e16aa0aa923ac97387f7ba53ffd3839"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s17/LEGACY_METADATA_EVIDENCE.json",
+      "path": "evaluation_package_v1/metadata/A0_s17/LEGACY_METADATA_EVIDENCE.json",
+      "source_sha256": "173d4c844938a7a7f82f58e7faa9aafaa534404b6d19bfd8280cca24abd16578",
+      "source_bytes": 1999,
+      "published_sha256": "58e0d5ff017c387f1ce95a0040b39d20279d2c9c4555c53d21ea8eca87c6f07b",
+      "published_bytes": 1890,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "0ca4a9725422fc50084fcd647a34125a96f1c433fe2090490810fad7aaca4f21"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s17/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A0_s17/original_eval.json",
+      "source_sha256": "9a340d8901caaa789b75b21cfd3917157a63704ad270a73d33b3736f1e0e9a1d",
+      "source_bytes": 23483,
+      "published_sha256": "7a851ff24ff125a8a5794c92a2618fef0c29107963e92e8e772ebcf5ca2fb570",
+      "published_bytes": 22827,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "4e5133c760beca2ea0ee2e5c6122054e041e2ec045ead1d4ddfbfcdba601e828"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s17/original_train.json",
+      "path": "evaluation_package_v1/metadata/A0_s17/original_train.json",
+      "source_sha256": "620e544cfbc84c4f3a8f0f79bcce859b9da74feb7dd5f01a2664d19706d05025",
+      "source_bytes": 1401449,
+      "published_sha256": "9c75080218e2f9b16d91f405cc99442a5c93ece353457798ec37e68fde83b075",
+      "published_bytes": 981340,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "038d76b341af34add1f6e36a004450b0e002f4434d4a613ca5bb5cbb6e9e949e"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s29/LEGACY_METADATA_EVIDENCE.json",
+      "path": "evaluation_package_v1/metadata/A0_s29/LEGACY_METADATA_EVIDENCE.json",
+      "source_sha256": "41e8319e326bd171942588eb365148b1a9f710a66c27b6df6737d9cafde1814b",
+      "source_bytes": 1973,
+      "published_sha256": "595c622b9e1681f79486d7acf257a87e2f87f2736cf994a4aca5372407299b0c",
+      "published_bytes": 1866,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "4e38646778921ed5746c467c2d82b33d1e44b8a7e606f9214b38ccbc2d27a92b"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s29/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A0_s29/original_eval.json",
+      "source_sha256": "fe2599fa0e4f48f933d94caa0d53f2f5c1d7c727d5d2f7ea8e9c748022ce1fb6",
+      "source_bytes": 23453,
+      "published_sha256": "3a4f4070df3d285bd6a7853ea3482677005ad310bae96a2cbd3936d847ab63ac",
+      "published_bytes": 22798,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "0ce344ca6208b5467258f9daf642554e5d61340cbf9f8a668cbae040519b82a8"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s29/original_train.json",
+      "path": "evaluation_package_v1/metadata/A0_s29/original_train.json",
+      "source_sha256": "41b9b90ca44d9795ffdda934a12ec15a996bb20b8e8effafd998a258a7bbc7b9",
+      "source_bytes": 1401792,
+      "published_sha256": "fc5d40721b522f2bec20581a5ce16453c225e465a18f7f133f3d6b37549a6a2c",
+      "published_bytes": 981551,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "c50845ba3da8034c68cced59db3e679886dda775ff5a6c577cef613ffd2c542e"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s43/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A0_s43/original_eval.json",
+      "source_sha256": "698ba32c3a21aefd4907c81621ec00a484be60225c418a40d55014d92d6c7075",
+      "source_bytes": 23512,
+      "published_sha256": "aafdd0ee2bb31996d3e5c9e271948daab42133ac791603e2462b5a000f0f75aa",
+      "published_bytes": 22856,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "050e64eb881f4d9fd36c5fbabf0c9c83abf7680abb5669469c09d0aa5e5a10f9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A0_s43/original_train.json",
+      "path": "evaluation_package_v1/metadata/A0_s43/original_train.json",
+      "source_sha256": "cbe83e8838ecd0b3060f9420b943334b732850a32e8c25befbfb28bc0046cdd0",
+      "source_bytes": 1401743,
+      "published_sha256": "2ddcc6af037185be2196d3fbade4839e2a25918ca0f4bdce9adc0cec4218c573",
+      "published_bytes": 981477,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "48edd4fb7920364e7617f953ee19772dafec66971a7447c7d9a8906bd7474c6f"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s17/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A2_s17/original_eval.json",
+      "source_sha256": "a271e44b0c9b6f778e1c622b6d837cd304c09985aa359b0b409379fd4a796e41",
+      "source_bytes": 23484,
+      "published_sha256": "c44530a3125e60b3432c1fd6d861265c87461422e851f04fc31a3ceb5b450a01",
+      "published_bytes": 22828,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "a40874f1d5124ec0fe2378914f1f79993e466cc92e2e7313bea9597ccde9bdd7"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s17/original_train.json",
+      "path": "evaluation_package_v1/metadata/A2_s17/original_train.json",
+      "source_sha256": "f968e69e2cdd4fece56f0c8f44f30c8cfe955ec33b0ccfa8089fe0dd7d586a57",
+      "source_bytes": 1401937,
+      "published_sha256": "f0d37a1f8e3aa8361053827106a2d7fd665a615822d6da65316e896a2f18fb5b",
+      "published_bytes": 981671,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "ca662988a19b869796e118a0c8b01898b2db2eb9d2c9f5737f0adc019401c8c8"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s29/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A2_s29/original_eval.json",
+      "source_sha256": "50aec624ecf932c03330a4019658e8e48359ada348c1e0dc742aa879af988088",
+      "source_bytes": 23487,
+      "published_sha256": "bc016b715468697cb20dcf0c155bec9f7b38ed74c3eb7801e40a8100aadd5814",
+      "published_bytes": 22831,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "6f114ec0fac46d1119637a5023151e5f236ccfdb754a00918b24b8419a0aa3b8"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s29/original_train.json",
+      "path": "evaluation_package_v1/metadata/A2_s29/original_train.json",
+      "source_sha256": "f598d7b388463545baebe4ba5e018fec9afed6b812c327f4f5550056dbf6d57e",
+      "source_bytes": 1401602,
+      "published_sha256": "c22fd1bfc10ad068bb9caca7899a21f5abdab80943b1589568ce4771994d4e63",
+      "published_bytes": 981336,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "d7eb2655380fbb49e49c35f2cd416177a4bfd0a0861b8c09bfdc6869b0d770da"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s43/original_eval.json",
+      "path": "evaluation_package_v1/metadata/A2_s43/original_eval.json",
+      "source_sha256": "e2e66a7053e7cad52a6fb7967bdf4e910326bcd16320b38be19391a55dfc9264",
+      "source_bytes": 23493,
+      "published_sha256": "6ba0e32406f7aa9ed891539face9b167114a422c830245b52e832024124869a9",
+      "published_bytes": 22837,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "27836a82886f2b7501fcf29e1175118cd34f0c1e1a2b2d7bd28e1fd9dc774c96"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/A2_s43/original_train.json",
+      "path": "evaluation_package_v1/metadata/A2_s43/original_train.json",
+      "source_sha256": "b18ec228a9350bc79a08a45662e018dde4d47f240cfc37b50780a3c5cda2cc5c",
+      "source_bytes": 1401684,
+      "published_sha256": "4c5d396058ee640a6df7d14facd6596f63e97ef407dca2df522c81f0b9c13b2a",
+      "published_bytes": 981418,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "97352596843de3968b244350c7307569debb0b296fb0feaced5280c439916a08"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/ADMITTED_GEOMETRY_COPY.json",
+      "path": "evaluation_package_v1/metadata/ADMITTED_GEOMETRY_COPY.json",
+      "source_sha256": "060222bb23cefaa9b33490c3e7f880a5ce7ba2459394356a10f25e649e6fb4dc",
+      "source_bytes": 461328,
+      "published_sha256": "852f3cbb87d6dbea972d52e9fc52c0253e594e9bdfdc7f8f9026ad8d599d39a5",
+      "published_bytes": 204695,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "b23252743c64ad5f7b45b893ba2deef24a207a6ab8b7d46730951c944b395458"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s17/original_eval.json",
+      "path": "evaluation_package_v1/metadata/C_s17/original_eval.json",
+      "source_sha256": "d35d20de81d76ca7135447462d49c14b28f4203eab210789b437c1fb77d17f18",
+      "source_bytes": 23705,
+      "published_sha256": "85e4f1c422f96e56138914a68172c33e25c30d719e5b411aaeb82e2d3b684b65",
+      "published_bytes": 23046,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "7dc8061f4ed731ec1f560aa312569b2cd7535e211a903af0328b66118a2242ae"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s17/original_train.json",
+      "path": "evaluation_package_v1/metadata/C_s17/original_train.json",
+      "source_sha256": "1f815f3a4dfdfc52a2c727eb5a902d4ac6cd717080336513930e0df9f84a16a2",
+      "source_bytes": 1402452,
+      "published_sha256": "03670944a19bd15a00562b08ab87b143d4c36545f212f339c82433af651c0317",
+      "published_bytes": 982151,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "fb373facb55e25abe8168d7332c752fe94e87858dd4faf3f980d729556496a80"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s29/original_eval.json",
+      "path": "evaluation_package_v1/metadata/C_s29/original_eval.json",
+      "source_sha256": "66d892804fba0fad9870a046e1a33e42cac2266c8e32dfd8d614320c8db57bb7",
+      "source_bytes": 23718,
+      "published_sha256": "92ea094b4bc615be622ae0d14ea6a3fd5f83727d159dac7e8faaf3b087384b83",
+      "published_bytes": 23059,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "032cab07be1505a255a0d1d22c5c96c68849a9c7766b02a0c44195c4237c700d"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s29/original_train.json",
+      "path": "evaluation_package_v1/metadata/C_s29/original_train.json",
+      "source_sha256": "956cd265c61332190d25732c58190509cc5434bc54581b27b1370e3eef26b01e",
+      "source_bytes": 1402758,
+      "published_sha256": "9378c10734c0fae6d74c7525725b66fcf8cb79b484a47b8c78362fbc1837a309",
+      "published_bytes": 982457,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "47ab6b89a7f5f68d7657819050c88ba0c9e527b6ef2a0b8a3c3dfbda882f5f5c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s43/original_eval.json",
+      "path": "evaluation_package_v1/metadata/C_s43/original_eval.json",
+      "source_sha256": "f454144cb0882ac7af7c6d8857193200bbcbf49b92e95fb02672be3beb38a859",
+      "source_bytes": 23713,
+      "published_sha256": "5e31555d65dab494a92500df8ae1e62bd80f0e894751adecd41860d92a554a5f",
+      "published_bytes": 23054,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "961471dc3821e77ada3763c5f32532d91b01096508b6f73320b09e9445d72d09"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/C_s43/original_train.json",
+      "path": "evaluation_package_v1/metadata/C_s43/original_train.json",
+      "source_sha256": "2a9e6f44b2181de3b6bc62acf4268b97ca0b005da124d0c8af9ed6f925bd20e4",
+      "source_bytes": 1403027,
+      "published_sha256": "c477a5e88485ed74534305f3b0d0c3811911676d890f23dd74b353c49fd61f2d",
+      "published_bytes": 982726,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "12cc3306dd318c7761da3508d03c4aae6f60182fe825a3d922e8743cbd127319"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/CHECKPOINT_INVENTORY.json",
+      "path": "evaluation_package_v1/metadata/CHECKPOINT_INVENTORY.json",
+      "source_sha256": "65fc9bca911b981d4ab7254d94feaba6d247f2c8476b5cab65786e6255306836",
+      "source_bytes": 42116,
+      "published_sha256": "c84e2edf3473e7be011c60423689bf7f82e8d64405b634743b978ee195d77b05",
+      "published_bytes": 41242,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "993f63516eca485d997a5bef01da356873fb394490a24c6b72077b31be711ef6"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/CONTEXT_CG_PLAN.json",
+      "path": "evaluation_package_v1/metadata/CONTEXT_CG_PLAN.json",
+      "source_sha256": "5a09c1923f5ab4629469a95fede3dc149b56a25274240aabefdc0a60416e7fc2",
+      "source_bytes": 6031,
+      "published_sha256": "3f4704746dab6f89daa5e720c92d42348e12ba728c30ade843aef649fab2e3fe",
+      "published_bytes": 5893,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "40ffc4d9745948d4901c9e5d3b029eb2dde48591a083050cac221326c35077ca"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/CPU_PREFLIGHT.json",
+      "path": "evaluation_package_v1/metadata/CPU_PREFLIGHT.json",
+      "source_sha256": "aaeecc952c9fef625adfdc861b70fc78ffe6280845e22beb9a57772d11ec8681",
+      "source_bytes": 56423,
+      "published_sha256": "939ae1272169a9bb7203d3bb3f0a01aa01006a0f8807f85298439cd7c153dff4",
+      "published_bytes": 53882,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "f10782dede4c3c9a091614e20e38371e21370a5cf2c2d87759d57dd7bb843fe9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s17/original_eval.json",
+      "path": "evaluation_package_v1/metadata/G_s17/original_eval.json",
+      "source_sha256": "be613202ec3458881bd0762d9c64bbb667e998948c250fd809c2cc3c8d81c1d8",
+      "source_bytes": 23719,
+      "published_sha256": "f5e3bff0a61f558f85c12a91c2f13fcbefe2f3862cd88047925a43534f119c2a",
+      "published_bytes": 23060,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "bed813f82e0d23d8d5c7afdaf0c65727f311fde42d1e64d26590ea9b48de0a74"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s17/original_train.json",
+      "path": "evaluation_package_v1/metadata/G_s17/original_train.json",
+      "source_sha256": "6198c7bda3046cdc8fecbebe0d35d15cd2be30251f3417f6f5e8d16e7d62ee77",
+      "source_bytes": 1402541,
+      "published_sha256": "b2e791915d66439e2580a66c5f8e58c50c36dc25c88889f526d3225fb29ac82b",
+      "published_bytes": 982240,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "85b2c681289de8b0f6f4700c35fb1d1b54e57b22db2383d7646c2c9c711ed6c1"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s29/original_eval.json",
+      "path": "evaluation_package_v1/metadata/G_s29/original_eval.json",
+      "source_sha256": "b48cdf5a35fd3111c27e9569ae5c991d0e5551d85dc1709449e100d751e3c9df",
+      "source_bytes": 23722,
+      "published_sha256": "3d6ce1c0ff7015721540c9adfee7040c4987c9d2084b2da4ea4f6cc55e947f2d",
+      "published_bytes": 23063,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "5dd368802ef66fd68533aaf4be101f2abe1b68441681c77c360f5d4d1e156210"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s29/original_train.json",
+      "path": "evaluation_package_v1/metadata/G_s29/original_train.json",
+      "source_sha256": "80043c1ccc5ab5a51a13cf7473f1fe05decb04993e4206bb0694fad101f0429c",
+      "source_bytes": 1402640,
+      "published_sha256": "f47a89e2b4ee9c4b8f6b77a772f5e4378b135ab2d12615745a36d952df8c7d28",
+      "published_bytes": 982339,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "c862971b85302a5d86a7ced9c1d933d3c58e4ffee61e68fb939f336e6bd36ad2"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s43/original_eval.json",
+      "path": "evaluation_package_v1/metadata/G_s43/original_eval.json",
+      "source_sha256": "b359da970451a802388407a1e3c90aef36eabe7f16eca41fa4c5d1d705e6837c",
+      "source_bytes": 23724,
+      "published_sha256": "5ebe29416e980b403ff6242e9bef8b0670bf4d90fca417bb1023a397f4fd2356",
+      "published_bytes": 23065,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "109cea5b1431fc4a8d8caeca27fd647781f6639c0e6ae9b9aea60eb3b5c58122"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/G_s43/original_train.json",
+      "path": "evaluation_package_v1/metadata/G_s43/original_train.json",
+      "source_sha256": "7cdf6cc9191a1fa9e07fa4c5f6432ad8d51bdbc476913546d9247af72b01eced",
+      "source_bytes": 1402405,
+      "published_sha256": "1cb4d4859d914c8152885bbb0642449e7d38bb52e1f8a09d2ffaa22fee07f1d1",
+      "published_bytes": 982104,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "deb02a74114bf667dea689c8d77487731b99e6cb3e83bf5395e29ac4ec4a8872"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/metadata/SCALE360_SELECTION_FROZEN.json",
+      "path": "evaluation_package_v1/metadata/SCALE360_SELECTION_FROZEN.json",
+      "source_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d",
+      "source_bytes": 575751,
+      "published_sha256": "fb7f4104e768f843fd6a0fb3382adafd0cd12142f2aa5d0227e9275950498579",
+      "published_bytes": 419099,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "92d67762105415f9387f7ba348c232f02449ba67719f405632cac3f365a7c0e8"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/PACKAGE_MANIFEST.json",
+      "path": "evaluation_package_v1/PACKAGE_MANIFEST.json",
+      "source_sha256": "b08eacd1ca96ba769fd554f6c03803c1fa8a7bbd260d541f0c5e89813a7a70a2",
+      "source_bytes": 9820,
+      "published_sha256": "dd1b1dec2f12e19cf43c60453b8fcf8ca5a8013eb297880ac5549c3a5079a782",
+      "published_bytes": 9534,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "9f79e620b0eff3aa4000029c6f2b28f9a6c61a8fe585b0d3df7d71b3b9e87d23"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/build_common_jobs.py",
+      "path": "evaluation_package_v1/src/build_common_jobs.py",
+      "source_sha256": "820666784e1cd98c40e1fc1e16ec0dd11dc9bcfa89a40ff5eb49fb016a7f2116",
+      "source_bytes": 14644,
+      "published_sha256": "820666784e1cd98c40e1fc1e16ec0dd11dc9bcfa89a40ff5eb49fb016a7f2116",
+      "published_bytes": 14644,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/context_checkpoint.py",
+      "path": "evaluation_package_v1/src/context_checkpoint.py",
+      "source_sha256": "7137453115485106cd8a00bb0b9a7dbab67c85dd711928764ff5d527664ac745",
+      "source_bytes": 1130,
+      "published_sha256": "7137453115485106cd8a00bb0b9a7dbab67c85dd711928764ff5d527664ac745",
+      "published_bytes": 1130,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/context_field_model.py",
+      "path": "evaluation_package_v1/src/context_field_model.py",
+      "source_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+      "source_bytes": 4987,
+      "published_sha256": "f0ab91d938d2481aa6f88b5ed52fe907b9ea7318217435d412017b445a0813b1",
+      "published_bytes": 4987,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/dual_solver_mgn.py",
+      "path": "evaluation_package_v1/src/dual_solver_mgn.py",
+      "source_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "source_bytes": 9311,
+      "published_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "published_bytes": 9311,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/eval/__init__.py",
+      "path": "evaluation_package_v1/src/eval/__init__.py",
+      "source_sha256": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+      "source_bytes": 1212,
+      "published_sha256": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+      "published_bytes": 1212,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/eval/case_split.py",
+      "path": "evaluation_package_v1/src/eval/case_split.py",
+      "source_sha256": "943fb8c750122e8b63d7432bff6e26f83b56d1797b3ad7e5d610c48863b171de",
+      "source_bytes": 9906,
+      "published_sha256": "943fb8c750122e8b63d7432bff6e26f83b56d1797b3ad7e5d610c48863b171de",
+      "published_bytes": 9906,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/eval/feature_guard.py",
+      "path": "evaluation_package_v1/src/eval/feature_guard.py",
+      "source_sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb",
+      "source_bytes": 8336,
+      "published_sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb",
+      "published_bytes": 8336,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/eval/mesh_regions.py",
+      "path": "evaluation_package_v1/src/eval/mesh_regions.py",
+      "source_sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "source_bytes": 7892,
+      "published_sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "published_bytes": 7892,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/eval/torque.py",
+      "path": "evaluation_package_v1/src/eval/torque.py",
+      "source_sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "source_bytes": 16548,
+      "published_sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "published_bytes": 16548,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/evaluate_common_airgap.py",
+      "path": "evaluation_package_v1/src/evaluate_common_airgap.py",
+      "source_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "source_bytes": 29021,
+      "published_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "published_bytes": 29021,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/guard_common_eval.py",
+      "path": "evaluation_package_v1/src/guard_common_eval.py",
+      "source_sha256": "8ca0ffc5b6cc130855f9622d3ee59106b2302ab13c3080ebf629020d505b5081",
+      "source_bytes": 14323,
+      "published_sha256": "8ca0ffc5b6cc130855f9622d3ee59106b2302ab13c3080ebf629020d505b5081",
+      "published_bytes": 14323,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_package_v1/src/strict_airgap.py",
+      "path": "evaluation_package_v1/src/strict_airgap.py",
+      "source_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "source_bytes": 18050,
+      "published_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "published_bytes": 18050,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/BOOTSTRAP3_OWNER.json",
+      "path": "evaluation_return/BOOTSTRAP3_OWNER.json",
+      "source_sha256": "035ad562824aa5618f99c1de64342a60fb6f4c0e5e1bb2f928ed8ce1154f57a8",
+      "source_bytes": 133,
+      "published_sha256": "00e11210251ed28297fa5181d258d6b0bd35c463c38c56973f7a3d589b777147",
+      "published_bytes": 129,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "84fd74d0885166fbb2fc283a6ca0c869f6fe81f6c4777cdd800238adad8d36de"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/BOOTSTRAP3_RECEIPT.json",
+      "path": "evaluation_return/BOOTSTRAP3_RECEIPT.json",
+      "source_sha256": "a8cb4b1b0c2d4cb9cd6845de4119fc3a6356fd9564c8dbb329db3bad2f24d027",
+      "source_bytes": 251,
+      "published_sha256": "c4b1a2bd095dbec9d0d7c6d2f67a1b83c1829cfc853451787cbf94539050ea99",
+      "published_bytes": 244,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "bcc8d7d7222df5dc167fc8e7d17c06e3085675501c6862e32f58a9a932911e83"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/COLLECTION_RECEIPT.json",
+      "path": "evaluation_return/COLLECTION_RECEIPT.json",
+      "source_sha256": "cb902ffde929879d902653b8538c87f36005b16102ceed30f50699d1f134ef69",
+      "source_bytes": 9600,
+      "published_sha256": "2e4266272b8e4c0fd83fbcfeb65bbba8568acfb0673d4795c58a21f4f80ac06f",
+      "published_bytes": 9312,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "a71c3170cea65ee7b56a42c2c0f70580e21951c1da911f25af5d87d6fe721a74"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/geometry/ADMITTED_GEOMETRY.json",
+      "path": "evaluation_return/geometry/ADMITTED_GEOMETRY.json",
+      "source_sha256": "060222bb23cefaa9b33490c3e7f880a5ce7ba2459394356a10f25e649e6fb4dc",
+      "source_bytes": 461328,
+      "published_sha256": "852f3cbb87d6dbea972d52e9fc52c0253e594e9bdfdc7f8f9026ad8d599d39a5",
+      "published_bytes": 204695,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "b23252743c64ad5f7b45b893ba2deef24a207a6ab8b7d46730951c944b395458"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/geometry/GEOMETRY_AUDIT.json",
+      "path": "evaluation_return/geometry/GEOMETRY_AUDIT.json",
+      "source_sha256": "f69d868a98e84fe4730ed082990948dfe16b2c89e8b0768699c1ce78834de7e7",
+      "source_bytes": 457864,
+      "published_sha256": "c09dc247ab8592842bd488407b743cd42af9304246680ce763de7ecb41109f37",
+      "published_bytes": 201827,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "7b3bc7aa03de6d9497a3c56cf6c9ca9fb456c7c22ebe9aee67c68d049ce072d8"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_bootstrap2_stderr.txt",
+      "path": "evaluation_return/guard_bootstrap2_stderr.txt",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_bootstrap2_stdout.txt",
+      "path": "evaluation_return/guard_bootstrap2_stdout.txt",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_bootstrap3_stderr.txt",
+      "path": "evaluation_return/guard_bootstrap3_stderr.txt",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_bootstrap3_stdout.txt",
+      "path": "evaluation_return/guard_bootstrap3_stdout.txt",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_stderr.txt",
+      "path": "evaluation_return/guard_stderr.txt",
+      "source_sha256": "ce8420644b2b38e02f22c1dadbfff92329310632132ff08ae9386ed1ee9803c2",
+      "source_bytes": 788,
+      "published_sha256": "ce8420644b2b38e02f22c1dadbfff92329310632132ff08ae9386ed1ee9803c2",
+      "published_bytes": 788,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/guard_stdout.txt",
+      "path": "evaluation_return/guard_stdout.txt",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s17/RESULT.json",
+      "path": "evaluation_return/runs/A0_s17/RESULT.json",
+      "source_sha256": "d349427a0ba847d054416a29757f3fdd6ab5e5b728523a74e90a3b857d4aa4f9",
+      "source_bytes": 592776,
+      "published_sha256": "38e05d77818721b97e4b0b2a689fbf7b7f754809491422cc89180d4d3db4e4b9",
+      "published_bytes": 430972,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "0567c06ac641510d46c7e8b036fcbbe44e4581efe51cbe29aa32fc2222e0e5bd"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s17_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A0_s17_GUARD_RECEIPT.json",
+      "source_sha256": "5caaea41f7ec5f1be746df0d65b9dcc3f9a78855412f26fb09d5f6993fba4671",
+      "source_bytes": 537,
+      "published_sha256": "dc771c7c1ce34f12062604bc1e98131d4da440c2b4c688ff81d9374b56e32c4c",
+      "published_bytes": 521,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "593a455c9b7c9921220c58f7f381b0d9a84606f330e7e32c4caf58f16628cef9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s29/RESULT.json",
+      "path": "evaluation_return/runs/A0_s29/RESULT.json",
+      "source_sha256": "f62fda3138c052a08da3e9121825b935d4b696e0d4d393aac42c05ab0f943e4c",
+      "source_bytes": 592971,
+      "published_sha256": "d31db8dc9e535e4eb96558df91daf9e8cf7f87174be7694faa6ce11b7f4ffafe",
+      "published_bytes": 431173,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1113a806422da35684ff2361a16fb195773c6897a2d6755672809012d50799d3"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s29_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A0_s29_GUARD_RECEIPT.json",
+      "source_sha256": "cbe75c0c87a6733cbbc5340b6716809ebf241b20ca5792a2124b3d131c0923b5",
+      "source_bytes": 537,
+      "published_sha256": "1e8f947deaee79de55f265d5f4ae0cd27f1cedd830bb421bfdbe9fe5eafc105e",
+      "published_bytes": 521,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "fda74037766e7348fb950533bcd667f0ec391093f8bb5e37d60606d4b2daeb68"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s43/RESULT.json",
+      "path": "evaluation_return/runs/A0_s43/RESULT.json",
+      "source_sha256": "9597f0c66bf516458a8d2bc240a9f790b789fe67e1042788306691d02e16fc18",
+      "source_bytes": 592938,
+      "published_sha256": "564244ef282d11f9a491385e61e3eda8c9d8d00f501e96043f7d3e00e96b7292",
+      "published_bytes": 431150,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1e603574803ab719ed5f1889bfe4ac40b7d7b8eeb14cc6017383696afeb0ebfc"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s43_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A0_s43_GUARD_RECEIPT.json",
+      "source_sha256": "21c6604f2d1872f2f5f8a18fa82bae32dfd30110ec745809be1c1df70fd15d29",
+      "source_bytes": 536,
+      "published_sha256": "b8ff0202bc99b6717d05dd2aa094666737d231fbf032ac231cb365877d5e241d",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "372061efa9bf216d2d6b10e05e3216a7d81d0915901e1c4d99c33ac7aa11161b"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s17/RESULT.json",
+      "path": "evaluation_return/runs/A2_s17/RESULT.json",
+      "source_sha256": "b4da816af511f9d82cbef3265fc1e6c4ac2ac7d74bfcc7c513cdd1c147638309",
+      "source_bytes": 592748,
+      "published_sha256": "2bd057c39673cba412062e8d9cd0090ac98a68c2c42011085adfb68ec05ee3f8",
+      "published_bytes": 430960,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "580cc591d51f53425bd51efcffbc81bd6b33a1c7c2b09b88c2f3d7d72f9e92a9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s17_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A2_s17_GUARD_RECEIPT.json",
+      "source_sha256": "8f91fc693b152c6648790e0903252d6c3d048c39417439869fbca04c1214bcce",
+      "source_bytes": 536,
+      "published_sha256": "9ad3998d0118d8ba1141e640dc3e97d65ab9ed7e1ce7ad5e551930cc25b11fba",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1e151262e5b3c973794ab1d78c6de0cf9a07935a911dc9ab1daf83e38e30c50a"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s29/RESULT.json",
+      "path": "evaluation_return/runs/A2_s29/RESULT.json",
+      "source_sha256": "6c8b28b208dbb0957137a43b55dc0a254514e5542c2f49cad33c4452f8537c95",
+      "source_bytes": 592836,
+      "published_sha256": "faab9a7f942b986525739d619d209426cbfec9624d22ef8ac06398277d53c469",
+      "published_bytes": 431048,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "c9ce0fa9815ea8de871e71254b5aa762d94259c50ae95bf515765a08fbdd53c4"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s29_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A2_s29_GUARD_RECEIPT.json",
+      "source_sha256": "4b1a9eccffcc2b7805bed23895184bc6d513484aaba44e192e237aa450253297",
+      "source_bytes": 537,
+      "published_sha256": "36435816a0aed1aa9290091d191637a24f43908bbe1e694197179e85ffa17f33",
+      "published_bytes": 521,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1ff17399830200cad193a28ae7dc8dc84b27df65c21f38d588720c30824e703f"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s43/RESULT.json",
+      "path": "evaluation_return/runs/A2_s43/RESULT.json",
+      "source_sha256": "33c1d2ebb7a8081c918b7e4ce39bd091806579313f6064fd2e11937ea437983d",
+      "source_bytes": 592619,
+      "published_sha256": "9208bd25524538720d6e3bd44fc015808d066edff601aa96a33f80a96ed39d2d",
+      "published_bytes": 430831,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "589b95abcf8565f494bed4701e1648aad36caf093d3d6b118bfacf62e0349e78"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s43_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/A2_s43_GUARD_RECEIPT.json",
+      "source_sha256": "41abba11ff7631d5c94d54db3f1c41ded62bd6ddf93763f4c383f807f1cee117",
+      "source_bytes": 535,
+      "published_sha256": "65e906796b1578ca0a278445b438c5b76932fa14b975e5ebd7ccb93c00022f2e",
+      "published_bytes": 519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "a376a48a3332b92615dd5dc1693b5cb90d7586d687e8709cafd991e75c4e705a"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/BATCH_STATUS.json",
+      "path": "evaluation_return/runs/BATCH_STATUS.json",
+      "source_sha256": "e06f0a3f82ebfb4a416e41f1c200ca1a61e97686c6aa29890772d3b380cd5514",
+      "source_bytes": 7804,
+      "published_sha256": "828588bbe79f55cb10b498276932257fa449a62afbdc6356bd5bda728345179e",
+      "published_bytes": 7592,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1c96a35f6530ebf400514dc2f4e1fe0b7c2d9c626e05c3899af774c6b1c7c2cc"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s17/RESULT.json",
+      "path": "evaluation_return/runs/C_s17/RESULT.json",
+      "source_sha256": "8eeb5cb6c827c6503b1273abf1b1f833e9adb45bc8a11467d1a977d3113783d1",
+      "source_bytes": 592769,
+      "published_sha256": "9d94239acb7caa71a1695b2a336a04abf1037552938e63c23832b46633460cc8",
+      "published_bytes": 430981,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "20c04c299b3d3f04da0205f27bb560615b59d49433bda6c75b05951735c557c6"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s17_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/C_s17_GUARD_RECEIPT.json",
+      "source_sha256": "6d3f7bd4129c834c78e47f852da56dfe888cb5995a5e6be33145c2dde63352f5",
+      "source_bytes": 536,
+      "published_sha256": "668fd5ed6461fd71a8f065ee87a7e292974fa0cffe014a48390031f10cf29dfe",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "da9b852eb553b9338a63f34225747f652acad89da92f112d7904c8d0428c7a9c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s29/RESULT.json",
+      "path": "evaluation_return/runs/C_s29/RESULT.json",
+      "source_sha256": "dac94250f32efb3b215fedf9024670710410f6df02853308423f6e4a03225c4a",
+      "source_bytes": 593002,
+      "published_sha256": "ee09fe97b222817cb92a8fcc6a8be4507c4dd9c89d9db59f410a7bcf6eb90571",
+      "published_bytes": 431214,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "1294ffbac1ed1cde38bb7a03f30b6943522596c12f8202e541fefb665268a875"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s29_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/C_s29_GUARD_RECEIPT.json",
+      "source_sha256": "414b464ac4816b665e9b2efe43e86fb6d7b64769dc5ee0d74c76e56dc6c704b9",
+      "source_bytes": 535,
+      "published_sha256": "e1effb33a3bb6e3e4b1770ba7686d4df5bd43c4b9b94307af5ef1471d8f9aa6a",
+      "published_bytes": 519,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "58d0679cbea769f5d03044971cce8ee1ca1fdf3106294b97ed37ff2c6b30a148"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s43/RESULT.json",
+      "path": "evaluation_return/runs/C_s43/RESULT.json",
+      "source_sha256": "2b846b8b63445ee25b211bc951d49f33b6fac48bafb9daf5159f8bf41ed13e1f",
+      "source_bytes": 592910,
+      "published_sha256": "1aaffdbc933c99dc9a4858e41602283b1c868925abb36d8262e51b165dbaaf9c",
+      "published_bytes": 431122,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "df58bdabc366e79d5cb5114a8b1452273f24cb100c1628d8b9fae3eafc669503"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s43_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/C_s43_GUARD_RECEIPT.json",
+      "source_sha256": "c3db03c07644b8d9a102d6bb4ed66d09b5f4f678a68dbc091360b5369e74bc54",
+      "source_bytes": 536,
+      "published_sha256": "3c13d546e9fcef3f205ab0e1dff0eb9fdba501dce25d9f7ad8f8daea5ddb321e",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "bd1ed29769d1b5e6ef2fff1694fc0c243db1ea78e925e3b8148b1ac083fd9e99"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s17/RESULT.json",
+      "path": "evaluation_return/runs/G_s17/RESULT.json",
+      "source_sha256": "4982f6ef1c59eb412887db3c9b1ceb2a80555439e6955238b1c2d5a7eacb1cfd",
+      "source_bytes": 592961,
+      "published_sha256": "1c7bf02297f3c28a1bf84c3080a09bbdd48ad3d2faf0536063d7470b1dd249ef",
+      "published_bytes": 431173,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "feef1b1ca15854727e6b056788a59a715ec34bc7069f9ad109f5d5bc689191c5"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s17_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/G_s17_GUARD_RECEIPT.json",
+      "source_sha256": "f7a3da38e1711f3ed31281a35a760ac6d149fca6cdb3a47f964b3f215a2fdc23",
+      "source_bytes": 536,
+      "published_sha256": "38ed2de0953fdc0e12d2b4bf643645fada3847c23127576ec5725cba06b58fbc",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "3642f7e702da42a8137b75ce5f99b6a8bd7772fcbaae00ae4ba5f479338fbf04"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s29/RESULT.json",
+      "path": "evaluation_return/runs/G_s29/RESULT.json",
+      "source_sha256": "e28f53edbe1b135c438a85debd57a60f524c3b7c112baed708c6d6d08a48d2af",
+      "source_bytes": 592924,
+      "published_sha256": "19ed220768c8dd3dcd2ee4f5c741322615c7698912d00cfcbd984c4063dd641e",
+      "published_bytes": 431136,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "5fae397e26293e293137d97e1694ec2215bc57409c2bcd62cf2cb473207bae76"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s29_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/G_s29_GUARD_RECEIPT.json",
+      "source_sha256": "1c4bf70ce3f6ca26426ef2f404afbd997dc592888ecbc509b57eef39bf55ca28",
+      "source_bytes": 536,
+      "published_sha256": "ef184b1bfcb15ca8d917c8c8b27dbb92e3933d47187d838c6d4fb87839f8d541",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "7fb3aa75ea4352e11ddda9f94acaa16cf89100f3d627440ca80ec4d850bc375c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s43/RESULT.json",
+      "path": "evaluation_return/runs/G_s43/RESULT.json",
+      "source_sha256": "6073d90185417bfcf6ac5f5f6c1d4f60d7e23c8e56c1c68647d16c98497f9f10",
+      "source_bytes": 592837,
+      "published_sha256": "087d0ddd98f9696918565dd916fe873860f814237cf7cbe2904e8f6b5ac4a98c",
+      "published_bytes": 431049,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "62760d3bdf6f40aa45d24b2cb6f9bde83a35dce87cfadb4fa3701d6f87994ddc"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s43_GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/G_s43_GUARD_RECEIPT.json",
+      "source_sha256": "738278289835ab33915fdfccf622b8545bb9a8e4e8ec3834553ac3dcb0ea7a44",
+      "source_bytes": 536,
+      "published_sha256": "a8c633522c9a22a8fe9cd8068b144293e6b265851c95ca5089035ad1cf94fb74",
+      "published_bytes": 520,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "a08f46520b399f0a992f64750bd54377bf466dfcea10b22f18b8fd1d7018e6b3"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/GUARD_OWNER.json",
+      "path": "evaluation_return/runs/GUARD_OWNER.json",
+      "source_sha256": "d2f0bf0d24eba9c6af1dbe2406d9bb024814d6c7ab09a74be35f65cf5d605033",
+      "source_bytes": 145,
+      "published_sha256": "566f50d77760b7e4418610278d2a893d1ecce73b6a7c6138582e6d3eeb55f20c",
+      "published_bytes": 140,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "5cf6fca368f6f6adb98bcb7fdf753854e21dfde6ec068d99ffa1580a46d34373"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/GUARD_RECEIPT.json",
+      "path": "evaluation_return/runs/GUARD_RECEIPT.json",
+      "source_sha256": "def1bce058cd1aeded08a5fc0a03c2976e5b228829cfe10bd00e315aef82fb23",
+      "source_bytes": 573,
+      "published_sha256": "90d0c3dfcf0323f774d28916f8f4eddf124cc17f4b68c13aa62604ae53672c7c",
+      "published_bytes": 555,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "c9274ced7aca0f7ac4181371b71d6e0ad6348150b71bf69d19dc6f19b323f7e6"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/RUNTIME_ADMISSION.json",
+      "path": "evaluation_return/RUNTIME_ADMISSION.json",
+      "source_sha256": "54a0209fd5ea1a099f3726c328493cde6180711591dd9f8c015f03407fb82d31",
+      "source_bytes": 1654,
+      "published_sha256": "f3ee808db1fd3b4e47c697dca2dd7c47b41d369bc146bd9a28b6bb79f960a894",
+      "published_bytes": 1579,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "89370f49f1e04423d411aa9a3dd34ac8b729e224ce323921252f0e91360a8388"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/EXECUTION_COST_LEDGER.json",
+      "path": "EXECUTION_COST_LEDGER.json",
+      "source_sha256": "fece3d4207ad72cd5b501a287e88b4205e4c757e4c6a5f1672bdcaafeeaac582",
+      "source_bytes": 1321,
+      "published_sha256": "c46e56d292bb64576e02cfe82d8d24e58b32a972a0885b72da7417e771ea8b0f",
+      "published_bytes": 1285,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "ace047ab81caac92ce56e9ca2661db6a126a8e1296329dc2c17fef07a1e1f2a7"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/FINAL_PACKAGE_MANIFEST.json",
+      "path": "FINAL_PACKAGE_MANIFEST.json",
+      "source_sha256": "4fa182699a4ec1072ea3805a6fe766372a6ce642678426bb109a1befe6ad553b",
+      "source_bytes": 8951,
+      "published_sha256": "177b48687076f0adf58ae0fdb1444b23735276cf6571ddb26d416d9840bdf8f8",
+      "published_bytes": 8710,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "776a9cb6d928c238a93f47f9c6d4610ed2245e885a14df6b12e0c1eb52f7b55d"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/FINAL_VALIDATION_RECEIPT.json",
+      "path": "FINAL_VALIDATION_RECEIPT.json",
+      "source_sha256": "08136fb842554d5efaed73f76a663fc5c347c9a35ef615d8149dbe2fef6f49c3",
+      "source_bytes": 1672,
+      "published_sha256": "08169c8b5fd88d3b46ac9e03878e7c364262a955c4e6962c787e74fc66c2e2d7",
+      "published_bytes": 1625,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "3d9c59a655e7dd4680d798f070eb6b2333c6a45104362a2d818fcaec9c65c7d9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/GEOMETRY_EXECUTION_CONTRACT.json",
+      "path": "GEOMETRY_EXECUTION_CONTRACT.json",
+      "source_sha256": "047360580c79834220f78fd2b4de09844f5e20cae903883d698aa8c819e3463a",
+      "source_bytes": 1166,
+      "published_sha256": "1869f6818e0c0666e0c8f2b1b0f43498305eb90a86e1390a5ec211ed6ff2111a",
+      "published_bytes": 1162,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "ad153f1d3e858a84bed7f9a7ba2fdc2d2d37324cf8d0cce45a0af14228f9dee9"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/GEOMETRY_EXECUTION_CONTRACT_R2.json",
+      "path": "GEOMETRY_EXECUTION_CONTRACT_R2.json",
+      "source_sha256": "fab249090c12595509348a06931693746ddab6a75e52b3f2fac5e7f5906b65d5",
+      "source_bytes": 1810,
+      "published_sha256": "40c5955064ca2f1b102f97dc9e8c503764d61a9ef6d1eaee14d0fff852b1783c",
+      "published_bytes": 1790,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "39e235b8464db8879d3f588f198abc67aca460a1e13d37bd2cd33afcd9aa4342"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/GEOMETRY_EXECUTION_CONTRACT_R3.json",
+      "path": "GEOMETRY_EXECUTION_CONTRACT_R3.json",
+      "source_sha256": "c70a3916fc8ce30ccf4167bb29755718d317231708685ed5cc2b290a1b869878",
+      "source_bytes": 2673,
+      "published_sha256": "c91a2f509172296956c4a82191359e3166b2b0357174756b7d03a717551d7811",
+      "published_bytes": 2630,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "b82c14a99c482b3154566fa390e39f02bf2bac6e6a0441e900f98e623f1529a4"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/guard_common_eval.py",
+      "path": "guard_common_eval.py",
+      "source_sha256": "8ca0ffc5b6cc130855f9622d3ee59106b2302ab13c3080ebf629020d505b5081",
+      "source_bytes": 14323,
+      "published_sha256": "8ca0ffc5b6cc130855f9622d3ee59106b2302ab13c3080ebf629020d505b5081",
+      "published_bytes": 14323,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/HISTORICAL_VERDICTS.json",
+      "path": "HISTORICAL_VERDICTS.json",
+      "source_sha256": "c6481299b516950e607f82da28d6e2dabb947f3954ffe3641b5024a3dc6e6aca",
+      "source_bytes": 15550,
+      "published_sha256": "746ddd592c3b8706fb2db8bdd9abdf2927d7c468063cbfb606e4162df6dffcd4",
+      "published_bytes": 14943,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "0c64d3534cbf3b2ea30953430d375fb3eb7c03539adecd1203188077b4d3e26c"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/NEXT_SINGLE_AXIS_PLAN.json",
+      "path": "NEXT_SINGLE_AXIS_PLAN.json",
+      "source_sha256": "65da672079d62a44d3436d3d018050be525de7072e5eb7c766ea615b58d196b7",
+      "source_bytes": 5642,
+      "published_sha256": "77b1490bdc7c09b697976d08fc3b050ce3a6a319027a5526b8ea775ecbcec791",
+      "published_bytes": 5799,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "32a8f3adc70f0e28f7a11601b948925f87e3ae57b4ec67fc6a59e05462e65151"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/PREDICTION_CACHE_INVENTORY.json",
+      "path": "PREDICTION_CACHE_INVENTORY.json",
+      "source_sha256": "46ae51119cdfa9cac5d8e23acbdb869aa31b5319d3181e4a66075d62998bcb3d",
+      "source_bytes": 846,
+      "published_sha256": "70244de3e335797ba62c3bf6fcbafbb0830dccd4ebc0cecf22c6d9ba3980710c",
+      "published_bytes": 689,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/README_KO.md",
+      "path": "README_KO.md",
+      "source_sha256": "6b619152795d7f97b2cbbf7780d1ee8ac07f844680979b086e711d50b899cfa0",
+      "source_bytes": 1706,
+      "published_sha256": "18f3fa221ff1bf54e0c12abd75d4dae5120610ea98762d6c59a2290f49c250c2",
+      "published_bytes": 2070,
+      "transform": "Historical source report retained with canonical integration-status banner; original SHA preserved; shared integration status link repaired; regenerated package manifest distinguished",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/RUNTIME_ADMISSION.json",
+      "path": "RUNTIME_ADMISSION.json",
+      "source_sha256": "54a0209fd5ea1a099f3726c328493cde6180711591dd9f8c015f03407fb82d31",
+      "source_bytes": 1654,
+      "published_sha256": "f3ee808db1fd3b4e47c697dca2dd7c47b41d369bc146bd9a28b6bb79f960a894",
+      "published_bytes": 1579,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "89370f49f1e04423d411aa9a3dd34ac8b729e224ce323921252f0e91360a8388"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/strict_airgap.py",
+      "path": "strict_airgap.py",
+      "source_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "source_bytes": 18050,
+      "published_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "published_bytes": 18050,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/summarize_common_results.py",
+      "path": "summarize_common_results.py",
+      "source_sha256": "f27cf7a158f7dfe8edabc5d1b8a94c9c058053ab5bb52fe12d61396f8b9d2dc6",
+      "source_bytes": 38732,
+      "published_sha256": "f27cf7a158f7dfe8edabc5d1b8a94c9c058053ab5bb52fe12d61396f8b9d2dc6",
+      "published_bytes": 38732,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/TASK_CLEANUP_RECEIPT.json",
+      "path": "TASK_CLEANUP_RECEIPT.json",
+      "source_sha256": "3ccd061a37075b4db368f2e951121f7b1e363650f81edbfdd0290a69e098cca0",
+      "source_bytes": 394,
+      "published_sha256": "bf178b289dc6be9c8e8e4c1dea3483091f80fdac1295de6db615ac1857c95ee2",
+      "published_bytes": 345,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "3d5812abc84c11768aa73a732c85d75dbed439188f5bb3239e9b762ea31d9862"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/test_evaluate_common_airgap.py",
+      "path": "test_evaluate_common_airgap.py",
+      "source_sha256": "27bef9961014d11fad203526aac41072cda0ae18a7107be62696f15133bced30",
+      "source_bytes": 11130,
+      "published_sha256": "27bef9961014d11fad203526aac41072cda0ae18a7107be62696f15133bced30",
+      "published_bytes": 11130,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/test_geometry_reader.py",
+      "path": "test_geometry_reader.py",
+      "source_sha256": "c08a865db80a111e68498527b6225dc27c69f808528bbf5e2c7b1f557385ce6d",
+      "source_bytes": 4114,
+      "published_sha256": "c08a865db80a111e68498527b6225dc27c69f808528bbf5e2c7b1f557385ce6d",
+      "published_bytes": 4114,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/test_strict_airgap.py",
+      "path": "test_strict_airgap.py",
+      "source_sha256": "870d46e953d39eee358d4d65bc928b90bcb65c40ea10e5f3d700ef409a0d37ec",
+      "source_bytes": 13285,
+      "published_sha256": "870d46e953d39eee358d4d65bc928b90bcb65c40ea10e5f3d700ef409a0d37ec",
+      "published_bytes": 13285,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/VALIDATION_RECEIPT.json",
+      "path": "VALIDATION_RECEIPT.json",
+      "source_sha256": "8cc56b35e8bc7f47278355e4af1c04fd934dfcf382e93ada3cc38a027f39768a",
+      "source_bytes": 1385,
+      "published_sha256": "07e02ec74381a7e536f82ad4155baff60f01867632584948e625821a586046b3",
+      "published_bytes": 1349,
+      "transform": "Absolute path strings normalized; large scalar JSON compacted; all numerical leaves preserved",
+      "numeric_fingerprint": "7d7d9f59fd18044360bc1fb129bfc1e3cb4f55a50b50263ba71094095912c348"
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s17.log",
+      "path": "evaluation_return/runs/A0_s17.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s29.log",
+      "path": "evaluation_return/runs/A0_s29.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A0_s43.log",
+      "path": "evaluation_return/runs/A0_s43.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s17.log",
+      "path": "evaluation_return/runs/A2_s17.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s29.log",
+      "path": "evaluation_return/runs/A2_s29.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/A2_s43.log",
+      "path": "evaluation_return/runs/A2_s43.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s17.log",
+      "path": "evaluation_return/runs/C_s17.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s29.log",
+      "path": "evaluation_return/runs/C_s29.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/C_s43.log",
+      "path": "evaluation_return/runs/C_s43.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s17.log",
+      "path": "evaluation_return/runs/G_s17.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s29.log",
+      "path": "evaluation_return/runs/G_s29.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    },
+    {
+      "source_key": "airgap_takeover_20261029/evaluation_return/runs/G_s43.log",
+      "path": "evaluation_return/runs/G_s43.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_bytes": 0,
+      "transform": "Worker text log; absolute path text normalized",
+      "numeric_fingerprint": null
+    }
+  ],
+  "omitted": [
+    {
+      "source_key": "airgap_takeover_20261029/test_common_job_guard.py",
+      "sha256": "bbfeb056bc8c8d81dde79ebb0083f8d40e9e2f606aefd9a3c636c6a97fd2f0d7",
+      "bytes": 11016,
+      "reason": "Private host/control binding in source test/helper; retained in original workspace, not published"
+    }
+  ],
+  "path_mapping": "Private logical-path mapping outside Git; source hashes refer to immutable originals, published hashes to this package"
+}

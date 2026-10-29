@@ -1,0 +1,16 @@
+{
+  "id": "G_s43",
+  "status": "COMPLETED",
+  "started_UTC": "2026-10-29T00:27:13.105956+00:00",
+  "job_sha256": "29581f981b9ac3d54b2dcf5cf8676325edb28b9861c694e6eb5d275ab3fc8602",
+  "owner": {
+    "pid": 10348,
+    "create_time": 1793233633.1170757
+  },
+  "returncode": 0,
+  "elapsed_seconds": 85.56299999999464,
+  "completed_UTC": "2026-10-29T00:28:38.665852+00:00",
+  "result_sha256": "6073d90185417bfcf6ac5f5f6c1d4f60d7e23c8e56c1c68647d16c98497f9f10",
+  "evaluator_status": "COMPLETED",
+  "graphs_processed": 1440
+}

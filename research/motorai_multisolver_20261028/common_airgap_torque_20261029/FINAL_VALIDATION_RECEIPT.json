@@ -1,0 +1,47 @@
+{
+  "checked_UTC": "2026-10-29T00:33:53.782088+00:00",
+  "status": "PASS_COMPLETED_COMMON_DIAGNOSTICS",
+  "completed_models": 12,
+  "graphs_each": 1440,
+  "graphs_total": 17280,
+  "collection_files_verified": 50,
+  "collection": {
+    "sha256": "cb902ffde929879d902653b8538c87f36005b16102ceed30f50699d1f134ef69",
+    "bytes": 9600
+  },
+  "summary": {
+    "sha256": "b58c2376f4f061fd846b0648a9f7551bfd79e9b9c1dd975e93160c871835191b",
+    "bytes": 3596793
+  },
+  "plan": {
+    "sha256": "0fcac205b8810f7ffece50b343158f187710d2cdb047b0026ea0c9c01c21cc24",
+    "bytes": 8591
+  },
+  "geometry_admission": {
+    "sha256": "060222bb23cefaa9b33490c3e7f880a5ce7ba2459394356a10f25e649e6fb4dc",
+    "bytes": 461328
+  },
+  "all12_checkpoint_runtime_CPU_restore": "PASS",
+  "all12_reproduction": "PASS_ARITHMETIC_ONLY",
+  "maximum_original_score_difference_pp": 7.786545097587805e-08,
+  "summary_internal_arithmetic": "all field sufficient-statistic partitions and1440 torque samples recomputed; common truth verified",
+  "synthetic_test_records": {
+    "evaluator_geometry_runtime_tests_passed": 44,
+    "collector_tests_passed": 12,
+    "JSON_summary_in_memory_valid_and_corruption_cases": "PASS"
+  },
+  "remote_processes_after": [],
+  "remote_payloads_transferred": 0,
+  "raw_prediction_files_remote": 384,
+  "one_shot_task_cleanup": {
+    "sha256": "3ccd061a37075b4db368f2e951121f7b1e363650f81edbfdd0290a69e098cca0",
+    "bytes": 394
+  },
+  "historical_verdicts": {
+    "A2": "NO_IMPROVEMENT_CLAIM",
+    "C_vs_G": "NO_IMPROVEMENT_CLAIM"
+  },
+  "next_training": "HOLD",
+  "physical_qualification": false,
+  "independent_test": false
+}

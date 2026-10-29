@@ -381,9 +381,31 @@
       },
       "result": "All six final88565/eval1440 complete; deltaCminusG=-0.047783pp; NO_IMPROVEMENT_CLAIM; newFEA0",
       "decision_request": "Final Astra Max review completed; no next compute authorized by this receipt"
+    },
+    {
+      "stepid": "W07-EXTERNAL-COMMON-A1-RECOVERY-20261030",
+      "plan_sha256": "668d1df9819f653ef0c008ac487e902204abfeff926bec97311c5fa9e6e5ccbd",
+      "dependencies": [
+        "Completed common-A1 evaluation",
+        "Completed a1 allocation, separate owner chat"
+      ],
+      "gates": [
+        "original50/57artifacthash",
+        "original JSON summarizer/judge replay",
+        "published numerical fingerprint",
+        "portable1790 metric-distribution replay"
+      ],
+      "execution_status": "COMPLETED_IMPORT_AND_REPLAY_NO_NEW_COMPUTE",
+      "receipt": {
+        "path": "../common_airgap_torque_20261029/INTEGRATION_VERIFICATION.json",
+        "origin_owner": "Astra review chat executing under its direct user takeover",
+        "current_owner": "Sol canonical integration/Git"
+      },
+      "result": "A0/L0 retained;common12 andloss6 complete;newtraining/inference/FEA0 in this recovery",
+      "decision_request": "Astra Max sync review confirms reuse, no new execution window"
     }
   ],
-  "next": "Close owned C/G stage after final Astra review and publication; no automatic expansion or retry",
+  "next": "Completed evidence synchronized; no duplicate common evaluation or loss-allocation run; next experiment HOLD pending its scientific contract",
   "role_history": [
     {
       "recorded_UTC": "2026-10-28T07:03:55.827823+00:00",

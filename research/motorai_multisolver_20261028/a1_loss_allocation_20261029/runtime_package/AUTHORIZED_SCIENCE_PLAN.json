@@ -1,0 +1,121 @@
+{
+  "id": "PROPOSED-A0-A1-LOSS-ALLOCATION-20261029",
+  "status": "AUTHORIZED_FOR_GATED_EXECUTION",
+  "owner_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "reason": "Completed common diagnostics show large stationary-a1 field error; graph-wide mean C/G did not pass the preregistered gate and did not improve pooled torque on average. Test loss allocation alone before combining architecture, capacity, prior, and spectral changes.",
+  "historical_verdicts": {
+    "A2": "NO_IMPROVEMENT_CLAIM",
+    "C_vs_G": "NO_IMPROVEMENT_CLAIM"
+  },
+  "historical_baseline": "A0 mechanical, width32/depth3, no C/G projection; old checkpoints are diagnostic anchors, not substitutes for newly paired control initialization",
+  "arms": {
+    "L0": {
+      "alpha": 0.0
+    },
+    "L05": {
+      "alpha": 0.5
+    }
+  },
+  "single_axis": "Fixed convex allocation between existing all-admitted-element area MSE and stationary-a1 area MSE",
+  "loss_contract": {
+    "formula": "L_alpha=(1-alpha)*L_all + alpha*L_a1",
+    "L_all": "sum_i A_i*((pred_Bx-true_Bx)^2+(pred_By-true_By)^2)/(2*sum_i A_i)",
+    "L_a1": "same formula restricted to admitted stationary native a1 elements",
+    "units": "T^2; existing per-graph optimizer reduction and sample ordering retained",
+    "overlap": "L_all already includes a1. q=area(a1)/area(all); alpha0.5 gives effective a1 allocation0.5+0.5q, not exactly50%.",
+    "q_audit": "Record train328 phase9 native-area q distribution without reading target_B; no per-case alpha adjustment",
+    "coefficients": "Only alpha0 and alpha0.5; no sweep, tuning from dev results, E1 weight5 or spectral30 reuse"
+  },
+  "fixed": {
+    "angle": "mechanical",
+    "width": 32,
+    "depth": 3,
+    "total_parameters": 70182,
+    "field_path_parameters": 30594,
+    "new_edges": 0,
+    "C_G_projection": false,
+    "prior_or_teacher": false,
+    "spectral_loss": false,
+    "train_conditions": 328,
+    "development_conditions": 32,
+    "train_steps": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "updates_per_run": 88565,
+    "full_runs": 6,
+    "total_full_training_updates_if_released": 531390,
+    "checkpoint": "last/final88565 only",
+    "initialization": "Identical backbone tensor initialization within each paired seed; same parameter count; record initial-state SHA",
+    "optimizer_LR_data_order": "Exact A0 Adam/update-indexed LR and sample order; pin trainer and dataset hashes before release",
+    "selection_sha256": "21e78f734250ace514f2d2e646e9a382ca271cc6cf703a54068b7c3e0a9acb7d"
+  },
+  "required_before_any_execution_release": [
+    "Latest user proceed authorizes this bounded experiment; engineering/native/hash/resource gates remain mandatory",
+    "Target-free native stationary-a1 mask admission on all328 training conditions and all9 selected phases, exact graph ID mapping, same dev32 admission reused by hash",
+    "Alpha0 exact original loss/gradient/optimizer-one-step equivalence including denominator2*area_sum; finite synthetic gradients and batch isolation",
+    "All losses use admitted physical elements only; no invalid a2 labels, nearest-neighbor edges, or arbitrary graph restoration",
+    "Freeze all source/trainer/evaluator/selection/geometry/initial-state/job hashes and UTC deadline; checkpoint SHA after each completed run",
+    "Separate bounded engineering resource projection within the same total envelope; preserve failure, no retry or smoke-weight reuse"
+  ],
+  "proposed_decision_rule_to_freeze_before_release": {
+    "primary": "Common dev32x45 area-weighted stationary-a1 B-vector nRMSE",
+    "delta": "three-seed mean L0 minus L05",
+    "spread": "max(range(L0 three seeds),range(L05 three seeds))",
+    "primary_improvement": "delta>=1.0pp AND delta>2*spread",
+    "mean_no_harm_L05_minus_L0_pp": {
+      "all45_all_Bvector": 0.5,
+      "seen9_all_Bvector": 0.5,
+      "copper_Bvector": 1.0,
+      "PA_ge70_mean_case_Bvector": 1.0,
+      "common_Arkkio_pooled_torque_nRMSE": 1.0
+    },
+    "torque_improvement_claim": "Requires its own delta>=1pp AND delta>2*torque_spread; primary a1 success alone does not imply torque success",
+    "report": "All paired seeds, arm mean/min/max/range, area/unweighted Bvector/Bmagnitude/RMSE T, copper B2 bias, phases, PA groups, torque mean/ripple/percase extremes",
+    "missing_failed": "INCOMPLETE_NO_CLAIM; no seed/checkpoint selection or replacement",
+    "uncertainty": "Three-seed range is descriptive arithmetic, not a confidence interval or significance test"
+  },
+  "resource_proposal_not_release": {
+    "host": "133 after fresh identity/resource admission",
+    "workers": 1,
+    "train_per_run_max_seconds": 7200,
+    "eval_per_run_max_seconds": 1800,
+    "engineering_GPU_max_seconds": 900,
+    "whole_stage_max_seconds": 57600,
+    "torch_allocated_soft_GiB_max": 10,
+    "disk_free_min_GiB": 10,
+    "prior_training_worker_sum_reference_seconds": 29777.982,
+    "runtime_estimate_status": "UNKNOWN until bounded profile; prior C/G worker sum8.27h is a reference with parallel contention, not a serial runtime prediction",
+    "new_FEA": 0,
+    "new_prior_solves": 0,
+    "automatic_retries": 0,
+    "deadline_UTC": null,
+    "STOP": "STOP file, time/memory/disk/source/native-ID/nonfinite mismatch: terminate only recorded PID+create_time tree and preserve all partial outputs"
+  },
+  "scientific_scope": "E1-oldTRAIN-exposed innerdev diagnostics; no independent-test, E1 superiority, native-connectivity causality, AC or physical torque qualification",
+  "graph_disconnection_contribution": "UNKNOWN; this loss ablation does not measure native connectivity effect",
+  "operations_performed_for_this_plan": {
+    "new_training": 0,
+    "new_evaluation": 0,
+    "new_FEA": 0,
+    "new_prior_solve": 0
+  },
+  "authorization": {
+    "human_request": "진행 부탁해",
+    "recorded_UTC": "2026-10-29T02:48:06.106237+00:00",
+    "interpretation": "Execute the preceding alpha0 versus alpha0.5 fixed-six-run plan after admission gates; no expansion of axis/data/FEA or retries",
+    "proposal_sha256": "65da672079d62a44d3436d3d018050be525de7072e5eb7c766ea615b58d196b7"
+  }
+}

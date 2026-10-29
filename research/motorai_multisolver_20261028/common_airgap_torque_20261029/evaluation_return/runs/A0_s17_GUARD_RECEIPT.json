@@ -1,0 +1,16 @@
+{
+  "id": "A0_s17",
+  "status": "COMPLETED",
+  "started_UTC": "2026-10-29T00:11:44.594741+00:00",
+  "job_sha256": "ab2650ec0e859bb63c8b24b3f10f4940e93f85a211d20cfde92e22adcba20880",
+  "owner": {
+    "pid": 12960,
+    "create_time": 1793232704.6071184
+  },
+  "returncode": 0,
+  "elapsed_seconds": 84.06299999999464,
+  "completed_UTC": "2026-10-29T00:13:08.655831+00:00",
+  "result_sha256": "d349427a0ba847d054416a29757f3fdd6ab5e5b728523a74e90a3b857d4aa4f9",
+  "evaluator_status": "COMPLETED",
+  "graphs_processed": 1440
+}

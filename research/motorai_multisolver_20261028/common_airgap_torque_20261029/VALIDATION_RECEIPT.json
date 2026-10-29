@@ -1,0 +1,27 @@
+{
+  "checked_UTC": "2026-10-28T15:43:21.606658+00:00",
+  "machine": "DESKTOP-6QIVKIC",
+  "interpreter": "logical-path://44fbd7004c3016cd7534",
+  "status": "PASS_SYNTHETIC_ONLY",
+  "tests_run": 20,
+  "failures": 0,
+  "errors": 0,
+  "command": "python -B -W error -m unittest -v test_geometry_reader test_strict_airgap",
+  "canonical_sources_unchanged": true,
+  "real_HDF5_IO_tested": false,
+  "physical_qualification": false,
+  "source_files": {
+    "audit_dev32_geometry.py": "dfb0db707804de8e28791268ad86054d5ad3e7298f4f9cb735f485781de5439f",
+    "build_checkpoint_inventory.py": "dc25824bccad7af534a140f85ab1f621501bc36ee71a033df67e0b9de8e59713",
+    "prepare_takeover.py": "86beff94a0ed353d158f264012d65db5f064fde6dd5ed7092ec413d3718f249b",
+    "strict_airgap.py": "47ef75dd6b19139113e1cac731384ceac8a188f246cd035e6c3ee4a66c970268",
+    "test_geometry_reader.py": "db201fc8fab41d1c1b999968bb50310341f727923e5046cc928b88dbf8501f97",
+    "test_strict_airgap.py": "870d46e953d39eee358d4d65bc928b90bcb65c40ea10e5f3d700ef409a0d37ec"
+  },
+  "review_findings_fixed": [
+    "excluded a2 geometry does not poison admitted area checks",
+    "explicit admitted a2 rejection",
+    "zero reference returns undefined normalized value with absolute error retained",
+    "two native angular boundary rays accepted; source symmetry binding remains pending"
+  ]
+}

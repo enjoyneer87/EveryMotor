@@ -136,18 +136,28 @@
     "record": "SESSION_CLOSURE_20261028_KO.md"
   },
   "active_followup": {
-    "as_of_UTC": "2026-10-28T11:37:26.555846+00:00",
-    "source": "../next_improvement_20261028/STATUS.json",
-    "experiment": "C/G component versus graph-wide context, fixed3 seeds",
-    "execution_status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
+    "as_of_UTC": "2026-10-29T15:10:54.106063+00:00",
+    "source": "../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md",
+    "experiment": "Recovered common a1/Arkkio and a1 loss allocation completion evidence",
+    "execution_status": "COMPLETED_IMPORTED_NO_IMPROVEMENT_CLAIM",
     "execution_owner": "Sol",
     "scientific_owner": "Astra Max",
     "prior_08KST_window": "CLOSED_NOT_REACTIVATED",
-    "new_jobs_launched_by_handoff": 1,
+    "new_jobs_launched_by_handoff": 0,
     "current_airgap_torque_comparison": "UNKNOWN_not_evaluated",
     "live_owned": 0,
     "A2_status": "COMPLETED_NO_IMPROVEMENT_CLAIM",
     "saved_arithmetic_verdict": "NO_IMPROVEMENT_CLAIM",
-    "scientific_review": "COMPLETED"
+    "scientific_review": "COMPLETED_ASTRA_MAX"
+  },
+  "external_completed_followups": {
+    "common_models": 12,
+    "common_eval_graphs": 17280,
+    "a1_loss_training_runs": 6,
+    "a1_loss_eval_graphs": 8640,
+    "source_owner_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+    "same_historical_Full_donors": 360,
+    "new_independent_Full_cases": 0,
+    "integration_new_training": 0
   }
 }

@@ -1,0 +1,21 @@
+{
+  "id": "COMMON-A1-GEOMETRY-20261029-R1",
+  "status": "RELEASED_CPU_METADATA_ONLY",
+  "user_authority": "2026-10-29 direct proceed after takeover and frozen-evaluation preparation",
+  "owner_chat": "01a17d9e-8a81-7262-9eae-e086c1957892",
+  "scope": "frozen dev32 geometry only; no field/model/GPU/FEA/prior",
+  "maximum_wall_seconds": 600,
+  "retries": 0,
+  "source_root": "logical-path://e7920604c35e0bd9a093",
+  "stage": "logical-path://57aa135e8ebd343341e2",
+  "hashes": {
+    "audit_dev32_geometry.py": "b9610634f7b52ead87489610cac739078844c32813dd137aadda60fd20d5b15e",
+    "strict_airgap.py": "47ef75dd6b19139113e1cac731384ceac8a188f246cd035e6c3ee4a66c970268",
+    "DEV32_GEOMETRY_REQUEST.json": "8673711af45341c016d8c2bcc8a91ed35142fe89237f9ceb2b555e9c5be997a4",
+    "eval/__init__.py": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+    "eval/torque.py": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+    "eval/mesh_regions.py": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e"
+  },
+  "created_UTC": "2026-10-28T23:56:14.772629+00:00",
+  "deadline_UTC": "2026-10-29T00:16:14.772629+00:00"
+}

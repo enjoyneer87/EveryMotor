@@ -2,6 +2,7 @@
 
 이 폴더의 정식 저장소는 **enjoyneer87/EveryMotor**, 연구 브랜치는 `codex/motorai-multisolver-20261028`이다. 사용자 요청으로 MotorAI 계열4개 연구 폴더를 JEET-repro의 작업에서 이전했다. 기존 JEET 커밋·원자료 반환 이력은 보존하며 신규 모델 개발은 여기서 이어간다.
 
+- [최신 완료 증거 · 공통 공극/토크와 a1 손실 실험](common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md)
 - [개선 요청·아이디어 통합 대장](phase2_multigeometry_turns_20261027/IMPROVEMENT_REGISTER_KO.md)
 - [Astra 전이학습·멀티모달 판정](phase2_multigeometry_turns_20261027/ASTRA_TRANSFER_MULTIMODAL_KO.md)
 - [현재 현황판](phase2_multigeometry_turns_20261027/STATUS_KO.html)

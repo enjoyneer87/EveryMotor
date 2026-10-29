@@ -11,7 +11,8 @@
         "stationary a1 evidence",
         "same Arkkio operator for truth/prediction"
       ],
-      "status": "NOT_EVALUATED"
+      "status": "COMPLETED_DIAGNOSTICS",
+      "evidence": "../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md"
     },
     {
       "priority": 2,
@@ -31,7 +32,10 @@
         "normalization equivalence audit",
         "separate single-axis comparison"
       ],
-      "status": "DEFERRED"
+      "status": "PARTIALLY_EVALUATED",
+      "a1_loss_allocation": "COMPLETED_NO_IMPROVEMENT_CLAIM",
+      "spectral": "NOT_EVALUATED",
+      "evidence": "../a1_loss_allocation_20261029/A1_ALLOCATION_VERDICT.json"
     },
     {
       "priority": "HOLD",
@@ -52,5 +56,8 @@
       ],
       "status": "HOLD"
     }
-  ]
+  ],
+  "current_completed_evidence": "../common_airgap_torque_20261029/INTEGRATION_REPORT_KO.md",
+  "synchronized_UTC": "2026-10-29T15:10:54.106063+00:00",
+  "next_experiment": "HOLD; no duplicate common evaluation or alpha0.5 run"
 }

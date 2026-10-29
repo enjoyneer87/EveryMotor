@@ -98,8 +98,8 @@
     },
     {
       "path": "CONTINUATION_KO.md",
-      "sha256": "c7a4e28572d922cc9fed9f6fc8b0989b3cac237a5d44277cbe634265893a8037",
-      "bytes": 9354
+      "sha256": "fa190a5c682ec11091561474cd1ef57dd42c6e5b0680dc345f3d535e282ad541",
+      "bytes": 9842
     },
     {
       "path": "DATA_REUSE_KO.md",
@@ -208,13 +208,13 @@
     },
     {
       "path": "IMPROVEMENT_REGISTER.json",
-      "sha256": "d3a8b1c328ce7108126f47f6acd17eb5e8e7820c177d832626ba7de7cb52b5e1",
-      "bytes": 22083
+      "sha256": "5d6ed5c00921d94e065b0fede7097d453552b5d39cb0e8ec454f0dfd64ce368d",
+      "bytes": 23559
     },
     {
       "path": "IMPROVEMENT_REGISTER_KO.md",
-      "sha256": "23b6542e5870b8b23615dc3899de96354a991b3a22a45d2eebc8dac0d75edeb8",
-      "bytes": 25489
+      "sha256": "4ed01940be2a11fe320d1d512d491ad1dbb2a0c00f640e9ced712a29a1f228f0",
+      "bytes": 27142
     },
     {
       "path": "judge_l12_a2.py",
@@ -793,8 +793,8 @@
     },
     {
       "path": "SOL_EXECUTION_LOG.json",
-      "sha256": "e0aa6ce03d9b6252c887e4e39b552aa1212e0a4149ca1b48d6e0655aa353012c",
-      "bytes": 16771
+      "sha256": "ab9c5b24cbaafd38808c4973cc983633001e4acc9dcf6c8bc766c74aad4c94df",
+      "bytes": 17833
     },
     {
       "path": "source_manifest.json",
@@ -808,13 +808,13 @@
     },
     {
       "path": "STATE.json",
-      "sha256": "208a6763f890891a73b659da4ba6d66efeba439b369debe68f5ea631b149195e",
-      "bytes": 5143
+      "sha256": "73b1d8d8da07afd6a43ed537db9754b4b1a95d583651927e26112abd16591574",
+      "bytes": 5535
     },
     {
       "path": "STATUS_KO.html",
-      "sha256": "f25c96d870e6905aa4e967cbba2620686452dbde2caf402597368ce87fd3841c",
-      "bytes": 14295
+      "sha256": "4fdff150f49ddee6c183e6dd359f570edf055045ed0c640c908556c4664144a1",
+      "bytes": 15573
     },
     {
       "path": "STEP128_COMPARISON.json",
@@ -903,8 +903,8 @@
     },
     {
       "path": "update_dashboard.py",
-      "sha256": "1fc9b22736fc64eea20e9d340e6775e24cca7d1ae1ea2e2bd2f0ef6767ea5f82",
-      "bytes": 17519
+      "sha256": "7434a951f739ebb0c428b4754a005f92f74fae9fdab6b608bffe8c9cb7c6648d",
+      "bytes": 19453
     },
     {
       "path": "update_improvement_register.py",
