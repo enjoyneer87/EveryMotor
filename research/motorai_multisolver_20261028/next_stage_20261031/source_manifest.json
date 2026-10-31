@@ -1,0 +1,793 @@
+{
+  "status": "COMPLETE_PUBLIC_LR20_REPORT_PACKAGE",
+  "created_UTC": "2026-10-31T02:02:46.866151+00:00",
+  "schema": "motorai.public-lr20-report.v1",
+  "scientific_scope": "EXPOSED_INNERDEV_SAVED_ARITHMETIC_ONLY",
+  "original_contour_operational_status": "INCOMPLETE_NO_CLAIM",
+  "contour_process_ancestry": "UNKNOWN",
+  "contour_render_qualification": "AUXILIARY_RECOVERED_ARTIFACTS",
+  "scalar_diagnostic_status": "ALL12_MATCH_EXISTING_SAVED_ARITHMETIC_TOLERANCE",
+  "private_originals_included": false,
+  "numeric_fingerprint_format": "json-pointer-type-value.v1",
+  "registered_training_updates": 265695,
+  "registered_evaluation_graphs": 4320,
+  "verdict": "NO_IMPROVEMENT_CLAIM",
+  "summary_file": "evidence/FINAL_LR20_DIAGNOSTICS.json",
+  "html_file": "index.html",
+  "files": [
+    {
+      "path": "evidence/FINAL_LR20_DIAGNOSTICS.json",
+      "source_key": "FINAL_LR20_DIAGNOSTICS.json",
+      "source_sha256": "3edcb26e37f9a501b73a0a611c0c405b628b594a32ff19457a186ded84d25abc",
+      "source_bytes": 10145023,
+      "published_sha256": "143335e629790402661ffc377019dada7d192f64f3a5cd46972b379e728387a4",
+      "published_bytes": 6475965,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "a1081f4ef59a61848bceb3605b2941c421eabe323770e087fc8cef1fa9f43acb"
+    },
+    {
+      "path": "evidence/NEXT_STAGE_PLAN.json",
+      "source_key": "NEXT_STAGE_PLAN.json",
+      "source_sha256": "816072ebcd9ee9df82ad76dbfd7060b82362e2303bdbccb354bf71ae043e60d8",
+      "source_bytes": 49829,
+      "published_sha256": "a7ed2b3e4bde4444409613746acd64c781b98c7021604d7fe1f771a55aae5888",
+      "published_bytes": 38280,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "3f427966623b388652925a279385104176babd7948d51d749821be07e30bff8f"
+    },
+    {
+      "path": "evidence/EXECUTION_CONTRACT.json",
+      "source_key": "EXECUTION_CONTRACT.json",
+      "source_sha256": "aaf07c35d1c4bca2aef9ae5e4fb47a0c8c0edab380678c4f9fd3931eb0eb0f90",
+      "source_bytes": 1086,
+      "published_sha256": "7e851a700b078cbcd02b87b89b08966edb3c31585702abb001b76251641072a1",
+      "published_bytes": 987,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "dc1f86ab58c99ddf726dfba91aee72629b8f085f052775d4951efec4dae3bddb"
+    },
+    {
+      "path": "evidence/CHAIN_LR20.json",
+      "source_key": "CHAIN_LR20.json",
+      "source_sha256": "3fc6975ade9d535728a770210f72f1e413032ea7fbe1943e7540e1fb7558ca32",
+      "source_bytes": 10024,
+      "published_sha256": "8359cbfe2f373e901918742b60ef1d8ec8321f3c04280cef3a03659b76fcf0d1",
+      "published_bytes": 8971,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "33d0cc308393305db73b6e19580a34eeebd02e45f2a24c7213c9f227776c64b2"
+    },
+    {
+      "path": "evidence/SCIENTIFIC_RELEASE.json",
+      "source_key": "SCIENTIFIC_RELEASE.json",
+      "source_sha256": "2073c31da7db05777aa764fec5bb4da3f85fbe4638ba608f0e6ed1ebb4e3ca0f",
+      "source_bytes": 993,
+      "published_sha256": "78d0f303242b5c2ccc218b1ec16761c34301f49e4b30fd578d6e9b970d1673cb",
+      "published_bytes": 879,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "5fc1205ba761a93dcf936f9cd9da220c5b3b158d56a254d599367ef0dc4eedda"
+    },
+    {
+      "path": "evidence/CPU_LR20_NUMERIC_ADMISSION.json",
+      "source_key": "CPU_LR20_NUMERIC_ADMISSION.json",
+      "source_sha256": "f6ab5a975a98a6685147ddaf7d2b8c7d9fba2eadd8cff9762ff17f47d8bd284b",
+      "source_bytes": 8433,
+      "published_sha256": "e5164b0a2f0b64f20695696b4b6638e709eecf4c23d9d1bc16fb71141676c520",
+      "published_bytes": 6808,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "2c4e94c9e33e959f5c08a1d6d2bef503122c6c033c52cc5eb336d01189395cfd"
+    },
+    {
+      "path": "evidence/FINAL_COLLECTION_EXECUTION_CONTRACT.json",
+      "source_key": "FINAL_COLLECTION_EXECUTION_CONTRACT.json",
+      "source_sha256": "35e196191c10a7d0aaa02a04a2af20041f73f03a5b2d08dfba22e1d4e57914db",
+      "source_bytes": 919,
+      "published_sha256": "64ee3eda418628efda279752ee96c7aef0d06c7f1bab1c304a43e6015151036f",
+      "published_bytes": 887,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "1bdbc522c262e7f8fa67bcaa9a825ae6e815cab1a0f9eee589cef10018c4502e"
+    },
+    {
+      "path": "evidence/FINAL_SUMMARY_EXECUTION_CONTRACT.json",
+      "source_key": "FINAL_SUMMARY_EXECUTION_CONTRACT.json",
+      "source_sha256": "487ad1e0163eeb2d5cdc36d052e5e8adef263b33eb28c2c8d6b0a5af53a1f9cf",
+      "source_bytes": 1425,
+      "published_sha256": "d72b1751a2aa42e3daf089e66ec12e09eac2d4fcc787ff486a814850a47ba3aa",
+      "published_bytes": 1344,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RELEASE.json",
+      "source_key": "CONTOUR_LR20_RELEASE.json",
+      "source_sha256": "066cfcfaf340769d20445c57d03b351fb662315ed01039c8f0e287296f80dd56",
+      "source_bytes": 5208,
+      "published_sha256": "b801bf1d74718cae30d34f12b5cd27fb6a48a6200808b7e3681ce07938ca9db5",
+      "published_bytes": 4133,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "fb5a2207aafe5b9196cbab7f86ba01680b3165d8c96a469afae29038d7885525"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RENDER_PLAN.json",
+      "source_key": "CONTOUR_LR20_RENDER_PLAN.json",
+      "source_sha256": "dc24442c8b8b6aeeee936842e9927461598ce72b65ab7341cb1f6edd678ca89f",
+      "source_bytes": 2926,
+      "published_sha256": "0e1c6bced811e914aa1ca1cd44259a7bb1d859b1e8d13e7dce6ed47072cb5b5f",
+      "published_bytes": 2236,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "81c342fa3475308fdbb74674ea92b63c3be0c58338c0a2a12b3bca5641d67a34"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERY_RENDER_EXECUTION_CONTRACT.json",
+      "source_key": "CONTOUR_LR20_RECOVERY_RENDER_EXECUTION_CONTRACT.json",
+      "source_sha256": "cca06f35deb7b0fc56a186ffad0157b50c965d5f148c726d6047c384b6513d7f",
+      "source_bytes": 6508,
+      "published_sha256": "bcb902daccef27ec9e314ee97d32fbee4961bccfef4f3bbab3ef23b35830bf71",
+      "published_bytes": 4253,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "0b45844546c3d877668d168fb2b7bae1773f7708d0622d2c843db2d0a7131bff"
+    },
+    {
+      "path": "evidence/LR20_DIAGNOSTIC_PLOT_EXECUTION_CONTRACT.json",
+      "source_key": "LR20_DIAGNOSTIC_PLOT_EXECUTION_CONTRACT.json",
+      "source_sha256": "21d1591aa2147e6fec9efa202a06008b7a1a89a3c967806527aad0421ef4fe7c",
+      "source_bytes": 915,
+      "published_sha256": "380dfef8ab5fff6d03c00533242db55c37f1e8f6fc84ce8565e3a404dd67c7ce",
+      "published_bytes": 854,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "1c22f1653c6d2c4749ba491a8c83a8aa47819d20344d71cefdee943c5a94e4bc"
+    },
+    {
+      "path": "evidence/HTML_LR20_RECOVERY_EXECUTION_CONTRACT.json",
+      "source_key": "HTML_LR20_RECOVERY_EXECUTION_CONTRACT.json",
+      "source_sha256": "dfd67e521c08e9ee5b4006fd7d7ce15246b8263178865b061e289760b3394cea",
+      "source_bytes": 1034,
+      "published_sha256": "69dd59dce575118fd749bfddd94b1db588b17acace6fa01f2c8dd96395f47e36",
+      "published_bytes": 963,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "d8908b5b87dbdce681fdacbc481ee8cb6b458747075b8dcd4d4f0bfed371ac9c"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERED_RENDER_RECEIPT.json",
+      "source_key": "CONTOUR_LR20_RECOVERED_RENDER_RECEIPT.json",
+      "source_sha256": "ed7183e4231fd8f422e74f787d3afb4dcedb2f1db7b4c96eda6dbcfddf471074",
+      "source_bytes": 106914,
+      "published_sha256": "81422e612e893e78e0c719382ebd0cb23c73fbf9886a88d5b730fe210efa016f",
+      "published_bytes": 73995,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "07593f715f5e3707d4845f09cefce7e3532099a654dadd99a9ae2e6b4d9c18ae"
+    },
+    {
+      "path": "evidence/LR20_DIAGNOSTIC_PLOT_RECEIPT.json",
+      "source_key": "LR20_DIAGNOSTIC_PLOT_RECEIPT.json",
+      "source_sha256": "87bf2accdbdda58e6a3178fc84ea76cc31917a4a0b336ff15f64a1db87daf0ef",
+      "source_bytes": 8299,
+      "published_sha256": "98128e5cb24f83743aa6d213233562e973b28ae7002f5d3f9f1808a8d725e6f5",
+      "published_bytes": 5214,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "1686ddbb68bbb8a688a035d249d4ce9476d3b270b08b05ee39311ed5e08f891e"
+    },
+    {
+      "path": "evidence/FINAL_LR20_VISUAL_QA_RECEIPT.json",
+      "source_key": "FINAL_LR20_VISUAL_QA_RECEIPT.json",
+      "source_sha256": "2ebc0b1f3d13d906f384f8a05b6685b72927db1178edcacecba54db01f161cd6",
+      "source_bytes": 6914,
+      "published_sha256": "7b247276a501d0ae207b030faf66bf88b77b5a37a7cefe9313b4840100a5c606",
+      "published_bytes": 3892,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "943890f72d34a7a18a5b5fe331b61f2c084bd681095f660148296c66ba6bddda"
+    },
+    {
+      "path": "evidence/FINAL_LR20_HTML_COMPLETION_RECEIPT.json",
+      "source_key": "FINAL_LR20_HTML_COMPLETION_RECEIPT.json",
+      "source_sha256": "2cc809702d79ffb841c2c16853c1491e98b76dfc391674f78152133c2508dd7e",
+      "source_bytes": 1065,
+      "published_sha256": "753be8bc27ada357384d6b7b78acb3ac3a79347eaa731c4007d2bb433efbb434",
+      "published_bytes": 938,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "0b45a877a96b410c064fbac9841f403e7cb21651927093d3d7247125f5c6ee56"
+    },
+    {
+      "path": "evidence/FINAL_LR20_SCIENTIFIC_REVIEW.json",
+      "source_key": "FINAL_LR20_SCIENTIFIC_REVIEW.json",
+      "source_sha256": "5ac624ba5bd1671e71b6fe1025951eff552152976d0ea4391ff8eac203016ebc",
+      "source_bytes": 276259,
+      "published_sha256": "d939a2ac65be4b8f74a934d53c12a626c170f37d2a337ad2349dcc62a960beb9",
+      "published_bytes": 193192,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "f4dc9cf7ffc5a2944a522570bad4a64a5ae1295e970ce0e119406828a99305f2"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_FAILURE_RECEIPT.json",
+      "source_key": "CONTOUR_LR20_FAILURE_RECEIPT.json",
+      "source_sha256": "4e0d4df7d6dc1fc4cb20db95b4c27f8b696535125f2663cf25259d0701418a09",
+      "source_bytes": 565,
+      "published_sha256": "881386a63e5ecf618f39404eebb59054ad38a0f8e09908fc9d8abfbd25c91a60",
+      "published_bytes": 422,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "86be9ca75b82c56f424c814a2910360038b1c2054b40b55e36b99a637b964b43"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_FAILURE_DIAGNOSIS.json",
+      "source_key": "CONTOUR_LR20_FAILURE_DIAGNOSIS.json",
+      "source_sha256": "73fb1a4aa75a8ced04d33eeff426e964d56f4c416d399b9bf5ab420591c39aeb",
+      "source_bytes": 9904,
+      "published_sha256": "e25fe0f6f3170bcac79165a6f5d7e2a700ae9c2477fd9c6372fcf94c3e21cb90",
+      "published_bytes": 2141,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "b6618242d5e8d721c4c5bdbe1f303e6852e5cec696d015ca636bb99b51c0c791"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RUNNER_EXIT_DIAGNOSIS.json",
+      "source_key": "CONTOUR_LR20_RUNNER_EXIT_DIAGNOSIS.json",
+      "source_sha256": "d864e92e4b830dc46e66ab536c87b239e9fc2ff439e97385f0472dc36ee4f4c2",
+      "source_bytes": 783,
+      "published_sha256": "2ebc8ee27ae824e13aa34dbac0540bc4a388768798c9c9d36ced0de4cd210a9a",
+      "published_bytes": 633,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "4c66751c6038884b6b0277bc0d53f48e5e8bda2efa60de5e37da76f7edc79e30"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERY_EXECUTION_CONTRACT.json",
+      "source_key": "CONTOUR_LR20_RECOVERY_EXECUTION_CONTRACT.json",
+      "source_sha256": "803a71d8082baf68a0502a61278d249eb06403a7abdc690538397c0057bfc548",
+      "source_bytes": 15185,
+      "published_sha256": "38a8d8e999d417063c0c5201812d234ac2a795222ed0938ce74730af54fdcad8",
+      "published_bytes": 10559,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "53a07db6da9907edb6cf8b9ecbe535516a4a029036767be590f3a64c09b5e4f0"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_FAILURE_RECOVERY_REVIEW_R2.json",
+      "source_key": "CONTOUR_LR20_FAILURE_RECOVERY_REVIEW_R2.json",
+      "source_sha256": "42ba31e32e98fd4741f47ce0f3b0123e1e02373711f56f008eb6f2c69481c2e9",
+      "source_bytes": 40114,
+      "published_sha256": "be737a6fda9b0b36c262895403ff7bc095e59711edb3a9b52f441fadb0904752",
+      "published_bytes": 31536,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "e876f9b59e9f09d850fce8eda67c8cba4f2ab0bc55a6b192291b70d4a3b775d1"
+    },
+    {
+      "path": "evidence/READ_ONLY_RECOVERY_RECEIPT.json",
+      "source_key": "READ_ONLY_RECOVERY_RECEIPT.json",
+      "source_sha256": "f2177af33d6d532b41fcbf2056d468f3c6aa5816b8e9f6d55b5aaec40cae6325",
+      "source_bytes": 41448,
+      "published_sha256": "5a06ad3fc21e9763007b5e344cac72cf73acc56744c266f815799d55ed8f63a8",
+      "published_bytes": 12136,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "99a537c9a6e065fb9a31d91599c66ec0b2942584674ad1e198859cc0f238c452"
+    },
+    {
+      "path": "evidence/EXACT_FIELD_BINDING_RECOVERY_RECEIPT.json",
+      "source_key": "EXACT_FIELD_BINDING_RECOVERY_RECEIPT.json",
+      "source_sha256": "5cd76b1fcb48772c52a94e7997e69fee41f6958c699ee9b433476eac1e1882c2",
+      "source_bytes": 23853,
+      "published_sha256": "f9b9aea77a50e4f2f62bcf12491b7e97c8fe49bc809f3f5db2683bfcf40afc51",
+      "published_bytes": 15245,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "a821ba331ebc097a665669460a27365c90deff142d13b207e45c94e1ec569db7"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERY_GUARD_RECEIPT.json",
+      "source_key": "CONTOUR_LR20_RECOVERY_GUARD_RECEIPT.json",
+      "source_sha256": "288c07bf9a3bf5fe084d5666f69a20f3ce3c04059f66be0ce91a4e95086804e1",
+      "source_bytes": 898,
+      "published_sha256": "8ab8002c8d762777fe7fcdd210ece9c999fcee961802106b4b7370871fd6467e",
+      "published_bytes": 768,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "e38340e8585d36fda41aba6d0e32d914ea68d14adb42375fddf56b4f1ce4d5a8"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERY_GUARD_EXIT_ATTESTATION.json",
+      "source_key": "CONTOUR_LR20_RECOVERY_GUARD_EXIT_ATTESTATION.json",
+      "source_sha256": "7f7bdcc34a6e77ae571f1710bebd5a1273a647a0fb90cc120cc7181225b9ad8f",
+      "source_bytes": 1221,
+      "published_sha256": "5d4bbd73eca578cbe851c14658b3ad57557c0762d5c6ba1eca98feb88c472738",
+      "published_bytes": 1152,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "b10205fcc688cfc5094ec41830e310a6a1aca1d74a7f1fbec3a74f29ef086add"
+    },
+    {
+      "path": "evidence/CONTOUR_LR20_RECOVERY_SOURCE_REVIEW_20261031_R1.json",
+      "source_key": "CONTOUR_LR20_RECOVERY_SOURCE_REVIEW_20261031_R1.json",
+      "source_sha256": "34fbd50a0cc16820bb0b84a607abb0a5fb8d1f261ca3ffa3da140b6678291534",
+      "source_bytes": 10409,
+      "published_sha256": "d5c8cd6ca42abc9d8feef36c56185ce2f39f577079449ae657292c8de21871b0",
+      "published_bytes": 8799,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "822d3dcf2fc847a66e5c832ead12410a503553f1a2b157a3e35661204b145670"
+    },
+    {
+      "path": "evidence/CONTOUR_SELECTION.json",
+      "source_key": "CONTOUR_SELECTION.json",
+      "source_sha256": "264e59c849668cfec86766c324ee6ab3e56ab526aeb7733da22579732b1fc116",
+      "source_bytes": 5314,
+      "published_sha256": "126027d60a365ac6b8de7b5ac14fd789b2cc87444c3e3fa0481e0fd7f6d20352",
+      "published_bytes": 3919,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "2af685fbaafd1fe79fd8d97a7cb1ad63d6848bb75355a0f6e3dc1bb3affd7e46"
+    },
+    {
+      "path": "evidence/CONTOUR_GEOMETRY_BINDING_RESULT.json",
+      "source_key": "CONTOUR_GEOMETRY_BINDING_RESULT.json",
+      "source_sha256": "efe835f398d83db904b8e2715b7992d1929e31dad4b51a1d7732b4474b7e4296",
+      "source_bytes": 10412,
+      "published_sha256": "cb5f63c6e0d9241435a0616afb1ef35914ec67befbf70f6d646c942dad39da79",
+      "published_bytes": 7725,
+      "transform": "opaque path-string aliases; JSON-pointer/type/value numeric fingerprint preserved",
+      "numeric_fingerprint": "cf39d2683c46d6f0c409f0afb70503f96e5507ba5220d09008b6e83c7ef95933"
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0208_Bx.png",
+      "source_key": "lr20_recovered_native_case0208_Bx.png",
+      "source_sha256": "4b33330fa1b13529d39020a9c57feadaa2b45eaaa9bd901d730cc1cc7b15526b",
+      "source_bytes": 617436,
+      "published_sha256": "4b33330fa1b13529d39020a9c57feadaa2b45eaaa9bd901d730cc1cc7b15526b",
+      "published_bytes": 617436,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0208_By.png",
+      "source_key": "lr20_recovered_native_case0208_By.png",
+      "source_sha256": "5781e88079c6e2e279f8d0ec3aa4312e678de130f270c6c4bf100eabf01e605b",
+      "source_bytes": 622472,
+      "published_sha256": "5781e88079c6e2e279f8d0ec3aa4312e678de130f270c6c4bf100eabf01e605b",
+      "published_bytes": 622472,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0208_norm.png",
+      "source_key": "lr20_recovered_native_case0208_norm.png",
+      "source_sha256": "45f64be6bb21fef798d053ef99e31194e9c3acc8e5720c408b1166086b69d899",
+      "source_bytes": 540395,
+      "published_sha256": "45f64be6bb21fef798d053ef99e31194e9c3acc8e5720c408b1166086b69d899",
+      "published_bytes": 540395,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0208_norm_a1crop.png",
+      "source_key": "lr20_recovered_native_case0208_norm_a1crop.png",
+      "source_sha256": "8e44de5a36fbc38b09606434b5680ae5765183078c6a935e0a0ef5e2d81539cf",
+      "source_bytes": 154784,
+      "published_sha256": "8e44de5a36fbc38b09606434b5680ae5765183078c6a935e0a0ef5e2d81539cf",
+      "published_bytes": 154784,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0408_Bx.png",
+      "source_key": "lr20_recovered_native_case0408_Bx.png",
+      "source_sha256": "60f773eff6fd524ef587a06730df9784a035b3e6ce93a3e15891e06dd156f5e9",
+      "source_bytes": 609275,
+      "published_sha256": "60f773eff6fd524ef587a06730df9784a035b3e6ce93a3e15891e06dd156f5e9",
+      "published_bytes": 609275,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0408_By.png",
+      "source_key": "lr20_recovered_native_case0408_By.png",
+      "source_sha256": "aca97224103014c48e68b2c1de25b5c0137af3a8127abfa8dff77f790166b515",
+      "source_bytes": 612724,
+      "published_sha256": "aca97224103014c48e68b2c1de25b5c0137af3a8127abfa8dff77f790166b515",
+      "published_bytes": 612724,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0408_norm.png",
+      "source_key": "lr20_recovered_native_case0408_norm.png",
+      "source_sha256": "cbf56fe94374a3b3be049920236ab365807b67af581b9e0f41fc2f49004d6fa0",
+      "source_bytes": 527109,
+      "published_sha256": "cbf56fe94374a3b3be049920236ab365807b67af581b9e0f41fc2f49004d6fa0",
+      "published_bytes": 527109,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0408_norm_a1crop.png",
+      "source_key": "lr20_recovered_native_case0408_norm_a1crop.png",
+      "source_sha256": "c0753b96deda6b341aab5e157986945905b417db99f76348c7a8e64bf6fb7e8d",
+      "source_bytes": 151948,
+      "published_sha256": "c0753b96deda6b341aab5e157986945905b417db99f76348c7a8e64bf6fb7e8d",
+      "published_bytes": 151948,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0049_Bx.png",
+      "source_key": "lr20_recovered_native_case0049_Bx.png",
+      "source_sha256": "f375f5bc4a1e33696a3937e4650fe93636c9566c97ff584dad9229b10b4a831d",
+      "source_bytes": 593067,
+      "published_sha256": "f375f5bc4a1e33696a3937e4650fe93636c9566c97ff584dad9229b10b4a831d",
+      "published_bytes": 593067,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0049_By.png",
+      "source_key": "lr20_recovered_native_case0049_By.png",
+      "source_sha256": "fc37b1ad20bf937d5979548c240d518a05a52a6cb4fc795065e0a39b03e33ee1",
+      "source_bytes": 596964,
+      "published_sha256": "fc37b1ad20bf937d5979548c240d518a05a52a6cb4fc795065e0a39b03e33ee1",
+      "published_bytes": 596964,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0049_norm.png",
+      "source_key": "lr20_recovered_native_case0049_norm.png",
+      "source_sha256": "bda475aa7c1bc55c6b077e8ffe8d6bb92530de0fddb2decc5c4b4d614c64c6cf",
+      "source_bytes": 529867,
+      "published_sha256": "bda475aa7c1bc55c6b077e8ffe8d6bb92530de0fddb2decc5c4b4d614c64c6cf",
+      "published_bytes": 529867,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_recovered_native_case0049_norm_a1crop.png",
+      "source_key": "lr20_recovered_native_case0049_norm_a1crop.png",
+      "source_sha256": "5cfabca5c58ba4ce51d45cfb572d497cc51ca9911cbd1124b14d161cf95c55e4",
+      "source_bytes": 153552,
+      "published_sha256": "5cfabca5c58ba4ce51d45cfb572d497cc51ca9911cbd1124b14d161cf95c55e4",
+      "published_bytes": 153552,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_seed_distributions.png",
+      "source_key": "lr20_seed_distributions.png",
+      "source_sha256": "07486c96709ea160a021f11ba0ef4b05171a7be96851e191c5fdf8075cc73ddd",
+      "source_bytes": 195828,
+      "published_sha256": "07486c96709ea160a021f11ba0ef4b05171a7be96851e191c5fdf8075cc73ddd",
+      "published_bytes": 195828,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_learning_curves.png",
+      "source_key": "lr20_learning_curves.png",
+      "source_sha256": "077ede7c25a5b40a76dfd36929739d1f550067c91694fee8db7b977a7c479e57",
+      "source_bytes": 168103,
+      "published_sha256": "077ede7c25a5b40a76dfd36929739d1f550067c91694fee8db7b977a7c479e57",
+      "published_bytes": 168103,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_phase_diagnostics.png",
+      "source_key": "lr20_phase_diagnostics.png",
+      "source_sha256": "1a119ed803b24305a9572d6c9b9da4619128b2eaea062e3e17b0e92d929577ef",
+      "source_bytes": 280068,
+      "published_sha256": "1a119ed803b24305a9572d6c9b9da4619128b2eaea062e3e17b0e92d929577ef",
+      "published_bytes": 280068,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_torque_waveforms.png",
+      "source_key": "lr20_torque_waveforms.png",
+      "source_sha256": "e8fdb85f2ad72482fe6f1fd1b52e3747d4560376d1e4d39c14d755b7e020f1b0",
+      "source_bytes": 674255,
+      "published_sha256": "e8fdb85f2ad72482fe6f1fd1b52e3747d4560376d1e4d39c14d755b7e020f1b0",
+      "published_bytes": 674255,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_learning_rate_policy.png",
+      "source_key": "lr20_learning_rate_policy.png",
+      "source_sha256": "05a1f6ef227599b28689ac2c563b20e8aa313adc0305ada44696628052b54ac8",
+      "source_bytes": 64985,
+      "published_sha256": "05a1f6ef227599b28689ac2c563b20e8aa313adc0305ada44696628052b54ac8",
+      "published_bytes": 64985,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "assets/lr20_snapshot_error_distributions.png",
+      "source_key": "lr20_snapshot_error_distributions.png",
+      "source_sha256": "e6f2312f51271f634159c30dd30878ee95c04585a5681978bcc83c8f8d954433",
+      "source_bytes": 160819,
+      "published_sha256": "e6f2312f51271f634159c30dd30878ee95c04585a5681978bcc83c8f8d954433",
+      "published_bytes": 160819,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/summarize_lr20.py",
+      "source_key": "summarize_lr20.py",
+      "source_sha256": "b4cffcfec8ebc243ad55e94741c8a454747d26a036117056d0cd23d3bb33beaa",
+      "source_bytes": 10421,
+      "published_sha256": "b4cffcfec8ebc243ad55e94741c8a454747d26a036117056d0cd23d3bb33beaa",
+      "published_bytes": 10421,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/reporting_metrics.py",
+      "source_key": "reporting_metrics.py",
+      "source_sha256": "f51ce21e9ef40b94dfd0db33e01f85d4fe02231efe9ec7a23a2205bbdb49cf83",
+      "source_bytes": 8127,
+      "published_sha256": "f51ce21e9ef40b94dfd0db33e01f85d4fe02231efe9ec7a23a2205bbdb49cf83",
+      "published_bytes": 8127,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/plot_lr20_recovered_native.py",
+      "source_key": "plot_lr20_recovered_native.py",
+      "source_sha256": "ea65464755a8ef878fa915912c14b9637143b321daec2bf6b67a3f2edb1ed812",
+      "source_bytes": 15416,
+      "published_sha256": "ea65464755a8ef878fa915912c14b9637143b321daec2bf6b67a3f2edb1ed812",
+      "published_bytes": 15416,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/native_plot_helpers.py",
+      "source_key": "native_plot_helpers.py",
+      "source_sha256": "2350297f84069fa0e3f9af05905d008e2e64d6c554ed25487e361808e64ba30c",
+      "source_bytes": 1846,
+      "published_sha256": "2350297f84069fa0e3f9af05905d008e2e64d6c554ed25487e361808e64ba30c",
+      "published_bytes": 1846,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/plot_lr20_diagnostics.py",
+      "source_key": "plot_lr20_diagnostics.py",
+      "source_sha256": "93db819f484e4665224d65e36fc9a745e297412cca7147a004d86fa7be5d9a04",
+      "source_bytes": 12187,
+      "published_sha256": "93db819f484e4665224d65e36fc9a745e297412cca7147a004d86fa7be5d9a04",
+      "published_bytes": 12187,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/assemble_lr20_recovery_html.py",
+      "source_key": "assemble_lr20_recovery_html.py",
+      "source_sha256": "c9330aef0257b2a2714e56336e0207a5f7ddafb8b210140acbb2ec2c951be6bc",
+      "source_bytes": 20712,
+      "published_sha256": "c9330aef0257b2a2714e56336e0207a5f7ddafb8b210140acbb2ec2c951be6bc",
+      "published_bytes": 20712,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/infer_lr20_contours.py",
+      "source_key": "infer_lr20_contours.py",
+      "source_sha256": "b2e934e368ac3f44807bad78347407ab999303680564bd1342fe492a6c6045ef",
+      "source_bytes": 13278,
+      "published_sha256": "b2e934e368ac3f44807bad78347407ab999303680564bd1342fe492a6c6045ef",
+      "published_bytes": 13278,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/supervise_lr20_contours.py",
+      "source_key": "supervise_lr20_contours.py",
+      "source_sha256": "f9b03fdea7defb395da0b7ef625200ba0c2a349f8c7f57ff808f909095705f52",
+      "source_bytes": 6236,
+      "published_sha256": "f9b03fdea7defb395da0b7ef625200ba0c2a349f8c7f57ff808f909095705f52",
+      "published_bytes": 6236,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/contour_child_guard.py",
+      "source_key": "contour_child_guard.py",
+      "source_sha256": "86d6a4ab2098108922b01de555c7ee828f8bffdf2640f9a1b0c20efed01b3b08",
+      "source_bytes": 2248,
+      "published_sha256": "86d6a4ab2098108922b01de555c7ee828f8bffdf2640f9a1b0c20efed01b3b08",
+      "published_bytes": 2248,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/recover_closed_lr20_artifacts.py",
+      "source_key": "recover_closed_lr20_artifacts.py",
+      "source_sha256": "5fba583a452293b5fb5a9b7ba55636f127e69c87146fd565a19416f03a14fda7",
+      "source_bytes": 18520,
+      "published_sha256": "5fba583a452293b5fb5a9b7ba55636f127e69c87146fd565a19416f03a14fda7",
+      "published_bytes": 18520,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/guard_lr20_readonly_recovery.py",
+      "source_key": "guard_lr20_readonly_recovery.py",
+      "source_sha256": "def4110d445632c85581a1667a7d0c28721ce338106b2c590092bf5f06905aca",
+      "source_bytes": 7314,
+      "published_sha256": "def4110d445632c85581a1667a7d0c28721ce338106b2c590092bf5f06905aca",
+      "published_bytes": 7314,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/a1_allocation_loss.py",
+      "source_key": "a1_allocation_loss.py",
+      "source_sha256": "41283bbeac96df3437e8b52c326b7fe3110bc883c8559429acaeb5f5b63ae167",
+      "source_bytes": 6056,
+      "published_sha256": "41283bbeac96df3437e8b52c326b7fe3110bc883c8559429acaeb5f5b63ae167",
+      "published_bytes": 6056,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/baseline_bridge.py",
+      "source_key": "baseline_bridge.py",
+      "source_sha256": "307728bc75d529dd1b30aff6469dc1fed6e04996d9bcefda82c50d17440ae5ff",
+      "source_bytes": 10205,
+      "published_sha256": "307728bc75d529dd1b30aff6469dc1fed6e04996d9bcefda82c50d17440ae5ff",
+      "published_bytes": 10205,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/capacity_contract.py",
+      "source_key": "capacity_contract.py",
+      "source_sha256": "11aa57849f0308866d69074fdc4f940cfef9879bc6b5293df87d73d1dab46d6f",
+      "source_bytes": 2494,
+      "published_sha256": "11aa57849f0308866d69074fdc4f940cfef9879bc6b5293df87d73d1dab46d6f",
+      "published_bytes": 2494,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/dual_solver_mgn.py",
+      "source_key": "dual_solver_mgn.py",
+      "source_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "source_bytes": 9311,
+      "published_sha256": "ae1966b5d660b8647ece32da3caf9af2e3dfd2ae11752738dfaba7d75e6663ed",
+      "published_bytes": 9311,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/evaluate_common_airgap.py",
+      "source_key": "evaluate_common_airgap.py",
+      "source_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "source_bytes": 29021,
+      "published_sha256": "06066d26b56fce3bb983c530e8aa7c7bf6be6dc4c06c3e32ca550b48b2c7822b",
+      "published_bytes": 29021,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/evaluate_width128.py",
+      "source_key": "evaluate_width128.py",
+      "source_sha256": "f404bc5bb1490a81dc118db7d769c38064a231f01522ae85e3e534fd45058063",
+      "source_bytes": 27221,
+      "published_sha256": "f404bc5bb1490a81dc118db7d769c38064a231f01522ae85e3e534fd45058063",
+      "published_bytes": 27221,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/lr_schedule.py",
+      "source_key": "lr_schedule.py",
+      "source_sha256": "48dbbf5d759824964faa92826c48395c96ccdda4c170caf0f356fd6a05ccf903",
+      "source_bytes": 652,
+      "published_sha256": "48dbbf5d759824964faa92826c48395c96ccdda4c170caf0f356fd6a05ccf903",
+      "published_bytes": 652,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/saved_metrics.py",
+      "source_key": "saved_metrics.py",
+      "source_sha256": "999aeade1399c05279b94948084b4e7fd208897367623d0531a6dc8325933d5b",
+      "source_bytes": 26538,
+      "published_sha256": "999aeade1399c05279b94948084b4e7fd208897367623d0531a6dc8325933d5b",
+      "published_bytes": 26538,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/strict_airgap.py",
+      "source_key": "strict_airgap.py",
+      "source_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "source_bytes": 18050,
+      "published_sha256": "f65f7465f66f7278cbf49a8c2acfbbb8d959c95f9e182ab0f0377e5d7727f080",
+      "published_bytes": 18050,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/train_width128.py",
+      "source_key": "train_width128.py",
+      "source_sha256": "a6d92a74546e5e5718307c7fe8bf7f01de549d93e93f3fd18e655ccf433b3ca6",
+      "source_bytes": 26182,
+      "published_sha256": "a6d92a74546e5e5718307c7fe8bf7f01de549d93e93f3fd18e655ccf433b3ca6",
+      "published_bytes": 26182,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/eval/case_split.py",
+      "source_key": "case_split.py",
+      "source_sha256": "943fb8c750122e8b63d7432bff6e26f83b56d1797b3ad7e5d610c48863b171de",
+      "source_bytes": 9906,
+      "published_sha256": "943fb8c750122e8b63d7432bff6e26f83b56d1797b3ad7e5d610c48863b171de",
+      "published_bytes": 9906,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/eval/feature_guard.py",
+      "source_key": "feature_guard.py",
+      "source_sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb",
+      "source_bytes": 8336,
+      "published_sha256": "49d835cfccdc86ddc9fd37b01e06e6b212abcd3f4778a6e795cca72ce6f2f8cb",
+      "published_bytes": 8336,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/eval/mesh_regions.py",
+      "source_key": "mesh_regions.py",
+      "source_sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "source_bytes": 7892,
+      "published_sha256": "c8f11470b191255b64c0929764e90f2c5f235fff41b556a0e6de339c35d0277e",
+      "published_bytes": 7892,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/eval/torque.py",
+      "source_key": "torque.py",
+      "source_sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "source_bytes": 16548,
+      "published_sha256": "da2249a6d93b72954d7839ece7d4b8b064eda50da5b5c0a79513ab6bc9e6c9db",
+      "published_bytes": 16548,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "repro/src/eval/__init__.py",
+      "source_key": "__init__.py",
+      "source_sha256": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+      "source_bytes": 1212,
+      "published_sha256": "cc46d51df0c1acf8bba27194cc4227c7a17c6d80e59a2c79ceef0739af07853f",
+      "published_bytes": 1212,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "verify_published_report.py",
+      "source_key": "verify_lr20_report.py",
+      "source_sha256": "377082845573b174c53339945b5335493f2941d76d273d101c068ece8c926081",
+      "source_bytes": 8876,
+      "published_sha256": "377082845573b174c53339945b5335493f2941d76d273d101c068ece8c926081",
+      "published_bytes": 8876,
+      "transform": "byte_preserved",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "index.html",
+      "source_key": "MOTORAI_NEXT_STAGE_20261031.html",
+      "source_sha256": "5593c61f0df9e030f797b1585fdfee46ced031c16cf2cac4667ffe91641aa722",
+      "source_bytes": 30156,
+      "published_sha256": "246c5b8bf2115f9bb722823accf508f5451afb02500e8424bffa5167411688de",
+      "published_bytes": 26188,
+      "transform": "only verified image and summary URI references rewritten to portable relative paths",
+      "numeric_fingerprint": null
+    },
+    {
+      "path": "README_KO.md",
+      "source_key": "generated_verified_scope",
+      "source_sha256": "5f322c2842a4035aa68b13aa97bea484be88f368441027d4546a1609d4bfdefe",
+      "source_bytes": 1303,
+      "published_sha256": "5f322c2842a4035aa68b13aa97bea484be88f368441027d4546a1609d4bfdefe",
+      "published_bytes": 1303,
+      "transform": "generated scope note",
+      "numeric_fingerprint": null
+    }
+  ],
+  "physical_BC_frame_pair": "UNKNOWN",
+  "browser_render": "UNVERIFIED_SECURITY_POLICY_BLOCK",
+  "portable_replay": "published hashes and saved scalar arithmetic only; private original hashes are recorded provenance",
+  "package_generator_sha256": "f0a90641273cf6d4628c0bc8e26985fe5f7a3fd4fcd7595c6f01f20a656d8111"
+}
