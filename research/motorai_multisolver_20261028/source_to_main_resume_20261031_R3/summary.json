@@ -1,0 +1,152 @@
+{
+  "schema": "motorai.r3-public-source-disposition.v1",
+  "UTC": "2026-10-31T07:32:55.283275+00:00",
+  "status": "HOLD_NOT_RUN",
+  "reason": "SOURCE_EVIDENCE_AND_NATIVE_ADMISSION_UNMET",
+  "native_admission": false,
+  "training_release": false,
+  "new_training": 0,
+  "new_inference": 0,
+  "new_FEA": 0,
+  "numeric_compute_anchor": null,
+  "model_performance_verdict": "NOT_EVALUATED_FOR_R3",
+  "native_BC_sign_frame_pair": "UNKNOWN",
+  "same_lab_angle_no_wrap_P0": "FAIL_PRESERVED",
+  "whole_corpus_admission": "NOT_ESTABLISHED",
+  "actual_generation_version": "UNKNOWN",
+  "actual_model_family": "UNKNOWN",
+  "current_install_version": "2026.1.1.1",
+  "current_version_is_generation_proof": false,
+  "next_new_experiment": "NO_RELEASE",
+  "source_locator_already_known": true,
+  "original_condition_reused_without_remote_reread": true,
+  "document_topics_reviewed": [
+    "Model Symmetry",
+    "Airgap Mesh Setup",
+    "FEA Display",
+    "FEA Editor",
+    "BPM-family Output Data (generic applicability only)",
+    "Export of Results in CSV Format"
+  ],
+  "document_scope": "Current installed Release2026R1 documentation, not actual historical solved state.",
+  "source_evidence_acquisition": {
+    "remote_metadata_probe_invocations": 5,
+    "initial_remote_status_invocations": 1,
+    "exact_help_container_transfers": 1,
+    "bounded_local_help_stages": "H0-H5 COMPLETE",
+    "phase_B_failure": "INCOMPLETE_METADATA_NO_CLAIM; RuntimeException after40034bytes; operations0; retry0",
+    "unread_API_capture": "Separate7previously unreadfiles89372bytes; not a successful retry of PhaseB",
+    "original_failure_preserved": true
+  },
+  "required_new_evidence": [
+    "Version-qualified supported metadata schema with exact field names, units, enums and state dependencies.",
+    "Actual saved-solve records binding generation build, model/result identity, applied boundary type/sign/sector transform and B basis/rotor-stator frames.",
+    "Native boundary/trace IDs and per-step correspondence or source-supported coupling weights.",
+    "Complete TRAIN328/dev32 all45 source/ID/operator/mask/coverage manifest and unchanged runtime gates."
+  ],
+  "supplier_route_absence_claim": false,
+  "immediately_executable_new_static_target": null,
+  "reconsideration_trigger": "New exact authoritative schema or case-bound record locator; no automatic repeat audit or training.",
+  "compute_deadline_UTC": "2026-11-01T08:00:00Z",
+  "report_deadline_UTC": "2026-11-01T09:00:00Z",
+  "max_numeric_compute_seconds": 28800,
+  "deadline_is_hold_reason": false,
+  "prior_completed_training": [
+    {
+      "model": "W64/full45/w1/LR30",
+      "primary_Bvector": {
+        "mean": 12.164889364712451,
+        "min": 11.79604090198232,
+        "max": 12.380870914843198,
+        "range": 0.5848300128608788,
+        "by_seed": {
+          "17": 11.79604090198232,
+          "29": 12.317756277311831,
+          "43": 12.380870914843198
+        }
+      },
+      "role": "prior width control"
+    },
+    {
+      "model": "W128/full45/w1/LR30",
+      "primary_Bvector": {
+        "mean": 9.796672678265669,
+        "min": 9.411981993431901,
+        "max": 10.122539151566246,
+        "range": 0.7105571581343444,
+        "by_seed": {
+          "17": 9.855496889798859,
+          "29": 10.122539151566246,
+          "43": 9.411981993431901
+        }
+      },
+      "verdict": "IMPROVEMENT_CLAIM_WITHIN_INNERDEV",
+      "role": "current saved reference"
+    },
+    {
+      "model": "W128/full45/w1/LR20",
+      "primary_Bvector": {
+        "mean": 10.809640432488466,
+        "min": 10.560324790631489,
+        "max": 11.220655557702681,
+        "range": 0.6603307670711924,
+        "by_seed": {
+          "17": 10.64794094913123,
+          "29": 11.220655557702681,
+          "43": 10.560324790631489
+        }
+      },
+      "verdict": "NO_IMPROVEMENT_CLAIM",
+      "role": "completed negative follow-up"
+    }
+  ],
+  "prior_scope": "Exposed innerdev32, stored45; three fixed seeds; range is not CI; physical native BC remains UNKNOWN.",
+  "scope_limits": [
+    "Exposed innerdev32, not independent test.",
+    "Range is not confidence interval.",
+    "45 stored solution samples do not establish a physical full360degree periodic cycle.",
+    "R3 has no candidate contour, learning curve or model result because no model was run.",
+    "Prior contour supervisor failure and recovered-output lineage UNKNOWN remain unchanged."
+  ],
+  "prior_publication_commits": [
+    "25f0834ed0fa197b3671289703b8c3122c505d75",
+    "930c2b329378bf6c552a252e029bb311e0a6c703"
+  ],
+  "evidence_pins": [
+    {
+      "bytes": 13879,
+      "sha256": "341bcabdfb4b68495beec42f4204bd118ecfa8e6b7626f8cb3c0da4abc1ab9cd",
+      "logical_name": "R3_FINAL_STATIC_ROUTE_ADMISSION.json"
+    },
+    {
+      "bytes": 11973,
+      "sha256": "e800eed765d9dbc01f4168938f7f310e5f7e536c1700ecf778b2bb8c316dfe66",
+      "logical_name": "CSV_EXPORT_HELP_ROUTE_DISPOSITION_R3.json"
+    },
+    {
+      "bytes": 2272,
+      "sha256": "1305cba9bb786a8388455da9697bd8e2ff30eabb16895b06abe82f5f75b5818c",
+      "logical_name": "PRIOR_COMPLETED_TRAINING_CONTEXT_R3.json"
+    },
+    {
+      "bytes": 2772,
+      "sha256": "a865c7d79a821ac0dfe100ac5d9a53d09d9e1bdddacbb3082044a2128855fcd8",
+      "logical_name": "HELP_STAGES_ACCEPTANCE_R3.json"
+    },
+    {
+      "bytes": 1755,
+      "sha256": "97165252ad77bdfbbf2eb8d53d797a92e502b48e8dcf9753569e04279e2c389e",
+      "logical_name": "HELP_SINGLE_OUTPUT_ACCEPTANCE_R3.json"
+    },
+    {
+      "bytes": 1806,
+      "sha256": "b17e4dd22de69049e8261d916b05a21327938eb6279a7f88d3e9f182cee88d3f",
+      "logical_name": "HELP_CSV_EXPORT_ACCEPTANCE_R3.json"
+    },
+    {
+      "bytes": 1759,
+      "sha256": "6b3395a3f89ee9c56c8ec712591012b221f6133decf256538d4d58ff78efa816",
+      "logical_name": "ORIGINAL_CONDITION_REUSE_ACCEPTANCE_R3.json"
+    }
+  ]
+}

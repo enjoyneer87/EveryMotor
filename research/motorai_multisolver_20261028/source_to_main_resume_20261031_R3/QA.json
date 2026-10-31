@@ -1,0 +1,12 @@
+{
+  "status": "PASS_STANDALONE_PNG_AND_STATIC_HTML",
+  "UTC": "2026-10-31T07:34:56.196953+00:00",
+  "method": "Actual PNG opened with view_image; full image reviewed for labels, axes, clipping, saved values and scope footnote. HTML structure/links and numeric values checked separately with portable verifier.",
+  "reviewed_files": {
+    "assets/prior_completed_results.png": "457735f1d50da3013dfdd8735280fd4576f028f941613f408d561628ecb639fa",
+    "index.html": "c57538f1d72ecc427882cff1b45c2d456c80c70c60de7ee6bcad767d543f04c2",
+    "summary.json": "9bcce4a15afcc0877de7ed95a5cbe89ee3224e79659343cb7340ee69856062a5"
+  },
+  "browser_rendering": "UNVERIFIED_SECURITY_POLICY_BLOCK",
+  "native_or_independent_physics_verification": false
+}

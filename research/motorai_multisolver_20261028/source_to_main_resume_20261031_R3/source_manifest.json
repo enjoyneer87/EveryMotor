@@ -1,0 +1,41 @@
+{
+  "schema": "motorai.public-report-file-manifest.v1",
+  "scope": "R3 source admission HOLD with historical completed scalar context only",
+  "files": [
+    {
+      "path": "assets/prior_completed_results.png",
+      "bytes": 65654,
+      "sha256": "457735f1d50da3013dfdd8735280fd4576f028f941613f408d561628ecb639fa"
+    },
+    {
+      "path": "index.html",
+      "bytes": 7426,
+      "sha256": "c57538f1d72ecc427882cff1b45c2d456c80c70c60de7ee6bcad767d543f04c2"
+    },
+    {
+      "path": "QA.json",
+      "bytes": 747,
+      "sha256": "b7dc215cba60d2a6c68bdb55b27cfd54f2c004cbe4327b827e5c443f3ad3f319"
+    },
+    {
+      "path": "README_KO.md",
+      "bytes": 946,
+      "sha256": "b7b2ba57793f31fbafa407b31e913cdf445a3c6b62592fb17fb6f18cea48af93"
+    },
+    {
+      "path": "RenderReport.py",
+      "bytes": 2021,
+      "sha256": "027ba449a44a4f5441091fb8dd5682b8976a47e6ef7906421116a4106702a169"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 5836,
+      "sha256": "9bcce4a15afcc0877de7ed95a5cbe89ee3224e79659343cb7340ee69856062a5"
+    },
+    {
+      "path": "VerifyReport.py",
+      "bytes": 3748,
+      "sha256": "c48a2e095e3501c8b3132c2d1fecc778e000f93428818f3372b5bb79ab96e3be"
+    }
+  ]
+}
